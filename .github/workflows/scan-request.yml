@@ -28,6 +28,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Persist event payload
         run: |
           mkdir -p .tmp
@@ -50,6 +53,7 @@ jobs:
           const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;
           const summaryPath = `${reportDir}/report.json`;
           const markdownPath = `${reportDir}/report.md`;
+          const csvPath = `${reportDir}/report.csv`;
 
           const output = process.env.GITHUB_OUTPUT;
           const lines = [
@@ -59,6 +63,7 @@ jobs:
             `report_dir=${reportDir}`,
             `summary_path=${summaryPath}`,
             `markdown_path=${markdownPath}`,
+            `csv_path=${csvPath}`,
             `stamp=${stamp}`
           ].join('\n') + '\n';
 
@@ -72,6 +77,7 @@ jobs:
           mkdir -p "${{ steps.meta.outputs.report_dir }}"
           cp .scan-output/report.json "${{ steps.meta.outputs.summary_path }}"
           cp .scan-output/report.md "${{ steps.meta.outputs.markdown_path }}"
+          cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
 
       - name: Commit and push report artifacts
         run: |
@@ -93,10 +99,13 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const markdownPath = process.env.MARKDOWN_PATH;
+            const csvPath = process.env.CSV_PATH;
             const acceptedCount = process.env.ACCEPTED_COUNT;
             const rejectedCount = process.env.REJECTED_COUNT;
             const pagesUrl = `https://${owner}.github.io/${repo}/${markdownPath}`;
+            const csvPagesUrl = `https://${owner}.github.io/${repo}/${csvPath}`;
             const blobUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
+            const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
 
             const body = [
               `Scan complete for **${process.env.SCAN_TITLE || context.payload.issue.title}**.`,
@@ -105,7 +114,9 @@ jobs:
               `- Rejected URLs: ${rejectedCount}`,
               "",
               `Report (Pages): ${pagesUrl}`,
-              `Fallback (GitHub): ${blobUrl}`
+              `Fallback (GitHub): ${blobUrl}`,
+              `CSV (Pages): ${csvPagesUrl}`,
+              `CSV Fallback (GitHub): ${csvBlobUrl}`
             ].join("\n");
 
             await github.rest.issues.createComment({
@@ -116,6 +127,7 @@ jobs:
             });
         env:
           MARKDOWN_PATH: ${{ steps.meta.outputs.markdown_path }}
+          CSV_PATH: ${{ steps.meta.outputs.csv_path }}
           ACCEPTED_COUNT: ${{ steps.meta.outputs.accepted_count }}
           REJECTED_COUNT: ${{ steps.meta.outputs.rejected_count }}
           SCAN_TITLE: ${{ steps.meta.outputs.scan_title }}
