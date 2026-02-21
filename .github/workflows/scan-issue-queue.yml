@@ -116,7 +116,12 @@ jobs:
                 }
 
                 const scanResult = scanProcess.stdout;
-                const meta = JSON.parse(scanResult);
+                let meta;
+                try {
+                  meta = JSON.parse(scanResult);
+                } catch (parseError) {
+                  throw new Error(`Failed to parse scan output as JSON: ${parseError.message}`);
+                }
                 console.log(`Scan completed:`, meta);
 
                 if (meta.skipped) {
@@ -144,31 +149,39 @@ jobs:
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
 
-                // Commit and push the report
-                execSync(`git config user.name "github-actions[bot]"`);
-                execSync(`git config user.email "41898282+github-actions[bot]@users.noreply.github.com"`);
-                execSync(`git add "${reportDir}"`);
+                // Commit and push the report using spawnSync for security
+                spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
+                spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
+                spawnSync('git', ['add', reportDir]);
 
-                try {
+                // Check if there are changes to commit
+                const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
+                if (statusResult.stdout.trim()) {
                   const commitMessage = `chore(scan): scheduled scan for issue #${issueNumber}`;
-                  execSync(`git commit -m "${commitMessage}"`);
-                  execSync(`git push origin HEAD:${defaultBranch}`);
-                  console.log(`Report committed and pushed for issue #${issueNumber}`);
-                } catch (e) {
-                  if (e.message.includes('nothing to commit')) {
-                    console.log(`No changes to commit for issue #${issueNumber}`);
+                  const commitResult = spawnSync('git', ['commit', '-m', commitMessage]);
+                  if (commitResult.status === 0) {
+                    const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`]);
+                    if (pushResult.status === 0) {
+                      console.log(`Report committed and pushed for issue #${issueNumber}`);
+                    } else {
+                      throw new Error(`Failed to push: ${pushResult.stderr}`);
+                    }
                   } else {
-                    throw e;
+                    throw new Error(`Failed to commit: ${commitResult.stderr}`);
                   }
+                } else {
+                  console.log(`No changes to commit for issue #${issueNumber}`);
                 }
 
                 // Post comment with results
                 const owner = context.repo.owner;
                 const repo = context.repo.repo;
-                const pagesUrl = `https://${owner}.github.io/${repo}/${markdownPath}`;
-                const csvPagesUrl = `https://${owner}.github.io/${repo}/${csvPath}`;
-                const blobUrl = `https://github.com/${owner}/${repo}/blob/${defaultBranch}/${markdownPath}`;
-                const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${defaultBranch}/${csvPath}`;
+                const encodedMarkdownPath = markdownPath.split('/').map(encodeURIComponent).join('/');
+                const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
+                const pagesUrl = `https://${owner}.github.io/${repo}/${encodedMarkdownPath}`;
+                const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
+                const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
+                const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
 
                 const body = [
                   `Scheduled scan complete for **${meta.scanTitle}**.`,
@@ -192,6 +205,7 @@ jobs:
                 console.log(`Comment posted to issue #${issueNumber}`);
 
                 // Close the issue if URLs were successfully scanned
+                // Note: Issues with zero accepted URLs remain open for review
                 if (meta.acceptedCount > 0) {
                   await github.rest.issues.update({
                     owner,
