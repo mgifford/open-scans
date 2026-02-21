@@ -7,6 +7,9 @@ import { validateTargets } from "./validate-targets.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 
+// Maximum number of failures to show per rule in detailed report
+const MAX_FAILURES_PER_RULE = 5;
+
 function runCommand(command, args, timeoutMs = 120000) {
   return new Promise((resolve) => {
     const child = spawn(command, args, {
@@ -67,8 +70,8 @@ function extractXPath(element) {
     return null;
   }
   
-  // Simple XPath generation based on element name
-  // In a real implementation, this would traverse the tree
+  // Note: This is a simplified XPath implementation that provides basic element identification.
+  // A more robust implementation would include parent hierarchy and element position for unique identification.
   const name = element.name || "unknown";
   return `//${name}`;
 }
@@ -421,7 +424,7 @@ function toMarkdownReport(summary) {
       lines.push(`#### Rule: [${rule}](${rule})`);
       lines.push("");
       
-      for (let i = 0; i < failures.length && i < 5; i++) {
+      for (let i = 0; i < failures.length && i < MAX_FAILURES_PER_RULE; i++) {
         const failure = failures[i];
         lines.push(`**Failure ${i + 1}:**`);
         if (failure.message) {
@@ -436,8 +439,8 @@ function toMarkdownReport(summary) {
         lines.push("");
       }
       
-      if (failures.length > 5) {
-        lines.push(`*... and ${failures.length - 5} more failures for this rule*`);
+      if (failures.length > MAX_FAILURES_PER_RULE) {
+        lines.push(`*... and ${failures.length - MAX_FAILURES_PER_RULE} more failures for this rule*`);
         lines.push("");
       }
     }
