@@ -95,11 +95,18 @@ jobs:
             git commit -m "chore(scan): issue #${{ github.event.issue.number }} ${{ steps.meta.outputs.scan_title }}"
             
             # Retry push with rebase up to 3 times
+            PUSH_SUCCESS=false
             for attempt in 1 2 3; do
               echo "Push attempt $attempt..."
               if git pull --rebase origin main && git push origin HEAD:main; then
                 echo "Successfully pushed on attempt $attempt"
-                exit 0
+                PUSH_SUCCESS=true
+                break
+              fi
+              
+              # Abort rebase if it's in progress
+              if git status | grep -q "rebase in progress"; then
+                git rebase --abort
               fi
               
               if [ $attempt -lt 3 ]; then
@@ -108,7 +115,11 @@ jobs:
               fi
             done
             
-            echo "Failed to push after 3 attempts"
+            if [ "$PUSH_SUCCESS" = false ]; then
+              echo "Failed to push after 3 attempts" >&2
+              exit 1
+            fi
+          fi
             exit 1
           fi
 

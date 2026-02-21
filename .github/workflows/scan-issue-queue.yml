@@ -182,6 +182,11 @@ jobs:
                       }
                     } else {
                       console.warn(`Rebase failed on attempt ${attempt}: ${pullResult.stderr}`);
+                      // Abort rebase if it's in progress
+                      const statusCheck = spawnSync('git', ['status'], { encoding: 'utf8' });
+                      if (statusCheck.stdout.includes('rebase in progress')) {
+                        spawnSync('git', ['rebase', '--abort']);
+                      }
                     }
                     
                     if (attempt < 3) {
