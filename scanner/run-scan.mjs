@@ -286,6 +286,11 @@ function toCsv(summary) {
   return [header.join(","), ...rows].join("\n") + "\n";
 }
 
+function extractRuleId(ruleUrl) {
+  const match = ruleUrl.match(/sia-r(\d+)$/);
+  return match ? match[1] : null;
+}
+
 function toMarkdownReport(summary) {
   const lines = [];
   lines.push(`# Scan Report: ${summary.scanTitle || `Issue #${summary.issueNumber}`}`);
@@ -299,6 +304,62 @@ function toMarkdownReport(summary) {
   lines.push(`- ALFA outcomes: ${summary.alfaTotals.passed} passed, ${summary.alfaTotals.failed} failed, ${summary.alfaTotals.cantTell} cantTell, ${summary.alfaTotals.inapplicable} inapplicable`);
   lines.push("");
 
+  // ACTION-ORIENTED SUMMARY: Pages with most errors
+  lines.push("## 🎯 Priority: Pages with Most Errors");
+  lines.push("");
+  lines.push("Focus your efforts on these pages to make the biggest impact:");
+  lines.push("");
+  
+  const pagesByErrorCount = [...summary.results]
+    .filter(r => r.alfa.counts.failed > 0)
+    .sort((a, b) => b.alfa.counts.failed - a.alfa.counts.failed)
+    .slice(0, 10);
+  
+  if (pagesByErrorCount.length > 0) {
+    lines.push("| Page | Failed Tests | Passed Tests | Page Title |");
+    lines.push("|---|---:|---:|---|");
+    for (const result of pagesByErrorCount) {
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | **${result.alfa.counts.failed}** | ${result.alfa.counts.passed} | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+    }
+  } else {
+    lines.push("✅ No pages with accessibility errors detected!");
+  }
+  lines.push("");
+
+  // ACTION-ORIENTED SUMMARY: Most common failed rules
+  lines.push("## 🔧 Priority: Most Common Issues");
+  lines.push("");
+  lines.push("These accessibility issues appear most frequently across your pages. Fixing these will have the most impact:");
+  lines.push("");
+  
+  const ruleFrequency = new Map();
+  for (const result of summary.results) {
+    for (const rule of result.alfa.failedRules) {
+      ruleFrequency.set(rule, (ruleFrequency.get(rule) || 0) + 1);
+    }
+  }
+  
+  const topFailedRules = [...ruleFrequency.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+  
+  if (topFailedRules.length > 0) {
+    lines.push("| Rule | Pages Affected | Documentation |");
+    lines.push("|---|---:|---|");
+    for (const [rule, count] of topFailedRules) {
+      const ruleId = extractRuleId(rule);
+      const ruleName = ruleId ? `SIA-R${ruleId}` : "Unknown Rule";
+      lines.push(`| ${ruleName} | **${count}** of ${summary.acceptedCount} | [View Rule](${rule}) |`);
+    }
+    lines.push("");
+    lines.push("> 💡 **Tip**: Click on the rule documentation links to learn how to fix each issue. Consider fixing the most common issues first for maximum impact.");
+    lines.push("");
+    lines.push("> 🤖 **Future Enhancement**: This report will soon include AI-powered fix suggestions for authenticated GitHub users (opt-in only, no auto-run AI).");
+  } else {
+    lines.push("✅ No failed rules detected!");
+  }
+  lines.push("");
+
   if (summary.rejected.length > 0) {
     lines.push("## Rejected URLs");
     lines.push("");
@@ -308,9 +369,12 @@ function toMarkdownReport(summary) {
     lines.push("");
   }
 
-  lines.push("## URL Scan Results");
+  lines.push("## 📊 Detailed Results");
   lines.push("");
-  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | ALFA Pass | ALFA Fail | Notes |\n|---|---|---:|---:|---:|---:|---:|---:|---|");
+  lines.push("Complete scan results for all tested pages:");
+  lines.push("");
+  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | ALFA Pass | ALFA Fail | Notes |");
+  lines.push("|---|---|---:|---:|---:|---:|---:|---:|---|");
   for (const result of summary.results) {
     const status = result.ok ? "OK" : "FAIL";
     const httpCode = result.statusCode ?? "-";
