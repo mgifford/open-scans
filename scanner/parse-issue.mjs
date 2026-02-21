@@ -100,8 +100,8 @@ export function validateScanRequest(candidate) {
   if (!Array.isArray(candidate.requestedUrls)) {
     errors.push("requestedUrls must be an array");
   } else {
-    if (candidate.requestedUrls.length < 1 || candidate.requestedUrls.length > 100) {
-      errors.push("requestedUrls must contain between 1 and 100 URLs");
+    if (candidate.requestedUrls.length < 1 || candidate.requestedUrls.length > 500) {
+      errors.push("requestedUrls must contain between 1 and 500 URLs");
     }
 
     candidate.requestedUrls.forEach((value, index) => {
