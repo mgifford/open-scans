@@ -40,11 +40,11 @@ jobs:
               state: 'open',
               per_page: 100
             });
-            
-            const scanIssues = issues.filter(issue => 
+
+            const scanIssues = issues.filter(issue =>
               issue.title.startsWith('SCAN:') && !issue.pull_request
             );
-            
+
             console.log(`Found ${scanIssues.length} open SCAN issues`);
             return scanIssues.map(issue => issue.number);
           result-encoding: json
@@ -57,19 +57,19 @@ jobs:
             const { execSync } = require('child_process');
             const fs = require('fs');
             const path = require('path');
-            
+
             const issueNumbers = ${{ steps.fetch-issues.outputs.result }};
-            
+
             if (!issueNumbers || issueNumbers.length === 0) {
               console.log('No SCAN issues to process');
               return;
             }
-            
+
             console.log(`Processing ${issueNumbers.length} issues: ${issueNumbers.join(', ')}`);
-            
+
             for (const issueNumber of issueNumbers) {
               console.log(`\n=== Processing issue #${issueNumber} ===`);
-              
+
               try {
                 // Fetch the issue details
                 const { data: issue } = await github.rest.issues.get({
@@ -77,55 +77,55 @@ jobs:
                   repo: context.repo.repo,
                   issue_number: issueNumber
                 });
-                
+
                 // Create event payload for the scanner
                 const eventPayload = {
                   action: 'scheduled-scan',
                   issue: issue
                 };
-                
+
                 // Create temp directory and event file
                 fs.mkdirSync('.tmp', { recursive: true });
                 const eventPath = `.tmp/issue-${issueNumber}-event.json`;
                 fs.writeFileSync(eventPath, JSON.stringify(eventPayload, null, 2));
-                
+
                 // Create scan output directory
                 const scanOutputDir = `.scan-output-${issueNumber}`;
                 fs.mkdirSync(scanOutputDir, { recursive: true });
-                
+
                 // Run the scan
                 console.log(`Running scan for issue #${issueNumber}...`);
                 const scanResult = execSync(
                   `node scanner/run-scan.mjs ${eventPath} ${scanOutputDir}`,
                   { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }
                 );
-                
+
                 const meta = JSON.parse(scanResult);
                 console.log(`Scan completed:`, meta);
-                
+
                 if (meta.skipped) {
                   console.log(`Issue #${issueNumber} was skipped: ${meta.reason}`);
                   continue;
                 }
-                
+
                 // Prepare report paths
                 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
                 const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;
                 const summaryPath = `${reportDir}/report.json`;
                 const markdownPath = `${reportDir}/report.md`;
                 const csvPath = `${reportDir}/report.csv`;
-                
+
                 // Create report directory and copy files
                 fs.mkdirSync(reportDir, { recursive: true });
                 fs.copyFileSync(`${scanOutputDir}/report.json`, summaryPath);
                 fs.copyFileSync(`${scanOutputDir}/report.md`, markdownPath);
                 fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
-                
+
                 // Commit and push the report
                 execSync(`git config user.name "github-actions[bot]"`);
                 execSync(`git config user.email "41898282+github-actions[bot]@users.noreply.github.com"`);
                 execSync(`git add "${reportDir}"`);
-                
+
                 try {
                   execSync(`git commit -m "chore(scan): scheduled scan for issue #${issueNumber} ${meta.scanTitle}"`);
                   execSync('git push origin HEAD:main');
@@ -137,7 +137,7 @@ jobs:
                     throw e;
                   }
                 }
-                
+
                 // Post comment with results
                 const owner = context.repo.owner;
                 const repo = context.repo.repo;
@@ -145,7 +145,7 @@ jobs:
                 const csvPagesUrl = `https://${owner}.github.io/${repo}/${csvPath}`;
                 const blobUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
                 const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
-                
+
                 const body = [
                   `Scheduled scan complete for **${meta.scanTitle}**.`,
                   "",
@@ -157,16 +157,16 @@ jobs:
                   `CSV (Pages): ${csvPagesUrl}`,
                   `CSV Fallback (GitHub): ${csvBlobUrl}`
                 ].join("\n");
-                
+
                 await github.rest.issues.createComment({
                   owner,
                   repo,
                   issue_number: issueNumber,
                   body
                 });
-                
+
                 console.log(`Comment posted to issue #${issueNumber}`);
-                
+
                 // Close the issue if URLs were successfully scanned
                 if (meta.acceptedCount > 0) {
                   await github.rest.issues.update({
@@ -177,10 +177,10 @@ jobs:
                   });
                   console.log(`Issue #${issueNumber} closed`);
                 }
-                
+
               } catch (error) {
                 console.error(`Error processing issue #${issueNumber}:`, error);
-                
+
                 // Post error comment
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
