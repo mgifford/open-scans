@@ -195,25 +195,61 @@ jobs:
                   `CSV Fallback (GitHub): ${csvBlobUrl}`
                 ].join("\n");
 
-                await github.rest.issues.createComment({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  body
-                });
-
-                console.log(`Comment posted to issue #${issueNumber}`);
+                // Retry posting comment with exponential backoff
+                let commentPosted = false;
+                for (let attempt = 0; attempt < 3; attempt++) {
+                  try {
+                    await github.rest.issues.createComment({
+                      owner,
+                      repo,
+                      issue_number: issueNumber,
+                      body
+                    });
+                    console.log(`Comment posted to issue #${issueNumber}`);
+                    commentPosted = true;
+                    break;
+                  } catch (commentError) {
+                    console.warn(`Attempt ${attempt + 1} failed to post comment:`, commentError.message);
+                    if (attempt < 2) {
+                      const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
+                      console.log(`Retrying in ${delay}ms...`);
+                      await new Promise(resolve => setTimeout(resolve, delay));
+                    }
+                  }
+                }
+                
+                if (!commentPosted) {
+                  console.error(`Failed to post success comment after 3 attempts`);
+                }
 
                 // Close the issue if URLs were successfully scanned
                 // Note: Issues with zero accepted URLs remain open for review
                 if (meta.acceptedCount > 0) {
-                  await github.rest.issues.update({
-                    owner,
-                    repo,
-                    issue_number: issueNumber,
-                    state: 'closed'
-                  });
-                  console.log(`Issue #${issueNumber} closed`);
+                  let issueClosed = false;
+                  for (let attempt = 0; attempt < 3; attempt++) {
+                    try {
+                      await github.rest.issues.update({
+                        owner,
+                        repo,
+                        issue_number: issueNumber,
+                        state: 'closed'
+                      });
+                      console.log(`Issue #${issueNumber} closed`);
+                      issueClosed = true;
+                      break;
+                    } catch (closeError) {
+                      console.warn(`Attempt ${attempt + 1} failed to close issue:`, closeError.message);
+                      if (attempt < 2) {
+                        const delay = Math.pow(2, attempt) * 1000; // 1s, 2s
+                        console.log(`Retrying in ${delay}ms...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                      }
+                    }
+                  }
+                  
+                  if (!issueClosed) {
+                    console.error(`Failed to close issue after 3 attempts. Scan completed successfully but issue remains open.`);
+                  }
                 }
 
               } catch (error) {
@@ -227,12 +263,16 @@ jobs:
                   console.error(`Failed to clean up temporary files:`, cleanupError);
                 }
 
-                // Post error comment
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `❌ Scheduled scan failed: ${error.message}`
-                });
+                // Post error comment (no retry - best effort)
+                try {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: `❌ Scheduled scan encountered an error: ${error.message}\n\nPlease check the [workflow logs](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
+                  });
+                } catch (commentError) {
+                  console.error(`Failed to post error comment:`, commentError.message);
+                }
               }
             }
