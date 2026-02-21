@@ -120,8 +120,6 @@ jobs:
               exit 1
             fi
           fi
-            exit 1
-          fi
 
       - name: Comment report link
         uses: actions/github-script@v7
