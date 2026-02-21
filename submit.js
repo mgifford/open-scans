@@ -193,9 +193,9 @@ function initForm() {
     if (accepted.length === 0) {
       urlCountDiv.className = "url-count invalid";
       submitButton.disabled = true;
-    } else if (accepted.length > 100) {
+    } else if (accepted.length > 500) {
       urlCountDiv.className = "url-count invalid";
-      urlCountDiv.textContent += " - Maximum 100 URLs allowed";
+      urlCountDiv.textContent += " - Maximum 500 URLs allowed";
       submitButton.disabled = true;
     } else {
       urlCountDiv.className = "url-count valid";
@@ -242,8 +242,8 @@ function initForm() {
       return;
     }
 
-    if (accepted.length > 100) {
-      errorDiv.textContent = `Too many URLs. Maximum 100 URLs allowed, but ${accepted.length} were provided.`;
+    if (accepted.length > 500) {
+      errorDiv.textContent = `Too many URLs. Maximum 500 URLs allowed, but ${accepted.length} were provided.`;
       errorDiv.classList.add("visible");
       return;
     }

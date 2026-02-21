@@ -15,8 +15,8 @@ test("parseScanIssue parses valid issue payload", () => {
   assert.ok(result.value.requestId.startsWith("42-"));
 });
 
-test("validateScanRequest rejects more than 100 URLs", () => {
-  const overLimitUrls = Array.from({ length: 101 }, (_, index) => `https://example.com/page-${index}`);
+test("validateScanRequest rejects more than 500 URLs", () => {
+  const overLimitUrls = Array.from({ length: 501 }, (_, index) => `https://example.com/page-${index}`);
   const request = {
     requestId: "test-request",
     issueNumber: 99,
@@ -29,7 +29,7 @@ test("validateScanRequest rejects more than 100 URLs", () => {
 
   const validation = validateScanRequest(request);
   assert.equal(validation.ok, false);
-  assert.ok(validation.errors.some((message) => message.includes("between 1 and 100")));
+  assert.ok(validation.errors.some((message) => message.includes("between 1 and 500")));
 });
 
 test("parseScanIssue returns explicit error for missing issue payload", () => {

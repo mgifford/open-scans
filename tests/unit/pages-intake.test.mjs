@@ -324,20 +324,20 @@ test("formatIssueBody handles single URL", () => {
 });
 
 // Integration test: end-to-end parsing and validation
-test("Integration: parse and validate mixed input with >100 URLs rejected", () => {
-  // Create input with 105 URLs (should be rejected)
-  const urls = Array.from({ length: 105 }, (_, i) => `https://example${i}.com`);
+test("Integration: parse and validate mixed input with >500 URLs rejected", () => {
+  // Create input with 505 URLs (should be rejected)
+  const urls = Array.from({ length: 505 }, (_, i) => `https://example${i}.com`);
   const input = urls.join("\n");
   
   const parsed = parseUrls(input);
-  assert.equal(parsed.length, 105);
+  assert.equal(parsed.length, 505);
   
   const { accepted, rejected } = validateUrls(parsed);
-  assert.equal(accepted.length, 105);
+  assert.equal(accepted.length, 505);
   
-  // The form should enforce max 100 on the client side
-  // This test validates that we can detect when count > 100
-  assert.ok(accepted.length > 100, "Should detect when count exceeds 100");
+  // The form should enforce max 500 on the client side
+  // This test validates that we can detect when count > 500
+  assert.ok(accepted.length > 500, "Should detect when count exceeds 500");
 });
 
 test("Integration: parse and validate complex real-world input", () => {
