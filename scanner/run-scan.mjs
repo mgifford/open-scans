@@ -10,17 +10,31 @@ const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli
 // Lazy-load Playwright and axe-core to avoid errors when not installed
 let playwright = null;
 let axePlaywright = null;
+let axeCoreVersion = null;
 
 async function loadAxeDependencies() {
   if (!playwright) {
     try {
       playwright = await import("playwright");
       axePlaywright = await import("@axe-core/playwright");
+      
+      // Get axe-core version from package.json
+      try {
+        const axeCorePackageJson = JSON.parse(
+          readFileSync(
+            fileURLToPath(new URL("../node_modules/axe-core/package.json", import.meta.url)),
+            "utf8"
+          )
+        );
+        axeCoreVersion = axeCorePackageJson.version;
+      } catch {
+        axeCoreVersion = "4.11"; // Fallback version
+      }
     } catch (error) {
       console.warn("Playwright/axe-core not available:", error.message);
     }
   }
-  return { playwright, axePlaywright };
+  return { playwright, axePlaywright, axeCoreVersion };
 }
 
 // Maximum number of failures to show per rule in detailed report
@@ -586,7 +600,7 @@ export function extractRuleId(ruleUrl) {
   return match ? match[1] : null;
 }
 
-export function toMarkdownReport(summary) {
+export function toMarkdownReport(summary, axeVersion = "4.11") {
   const lines = [];
   lines.push(`# Scan Report: ${summary.scanTitle || `Issue #${summary.issueNumber}`}`);
   lines.push("");
@@ -681,7 +695,7 @@ export function toMarkdownReport(summary) {
     lines.push("|---|---:|---|");
     for (const [rule, count] of topAxeFailedRules) {
       // axe rules don't have the same URL pattern, so we'll use the rule ID directly
-      const ruleUrl = `https://dequeuniversity.com/rules/axe/4.11/${rule}`;
+      const ruleUrl = `https://dequeuniversity.com/rules/axe/${axeVersion}/${rule}`;
       lines.push(`| ${rule} | **${count}** of ${summary.acceptedCount} | [View Rule](${ruleUrl}) |`);
     }
     lines.push("");
@@ -798,7 +812,7 @@ export function toMarkdownReport(summary) {
     }
     
     for (const [rule, failures] of axeFailuresByRule) {
-      const ruleUrl = failures[0].ruleUrl || `https://dequeuniversity.com/rules/axe/4.11/${rule}`;
+      const ruleUrl = failures[0].ruleUrl || `https://dequeuniversity.com/rules/axe/${axeVersion}/${rule}`;
       lines.push(`#### Rule: [${rule}](${ruleUrl})`);
       if (failures[0].impact) {
         lines.push(`**Impact**: ${failures[0].impact}`);
@@ -910,7 +924,7 @@ async function main() {
   const markdownPath = join(outputDir, "report.md");
   const csvPath = join(outputDir, "report.csv");
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
-  writeFileSync(markdownPath, toMarkdownReport(summary), "utf8");
+  writeFileSync(markdownPath, toMarkdownReport(summary, axeCoreVersion || "4.11"), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
 
   console.log(JSON.stringify({
