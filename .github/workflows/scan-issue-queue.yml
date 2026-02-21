@@ -152,10 +152,18 @@ jobs:
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
 
+                // Regenerate reports.html
+                console.log('Regenerating reports.html...');
+                const generateResult = spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
+                if (generateResult.status !== 0) {
+                  console.warn('Failed to regenerate reports.html:', generateResult.stderr);
+                }
+
                 // Commit and push the report using spawnSync for security
                 spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
                 spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
                 spawnSync('git', ['add', reportDir]);
+                spawnSync('git', ['add', 'reports.html']);
 
                 // Check if there are changes to commit
                 const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
