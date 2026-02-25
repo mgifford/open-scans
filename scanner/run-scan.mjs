@@ -7,6 +7,8 @@ import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
+const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
+const SCANNER_ORDER = ["axe", "alfa", "equalAccess", "accesslint"];
 
 // Timeout configuration (in milliseconds)
 // These can be adjusted via environment variables for flexibility
@@ -37,6 +39,7 @@ const TIMEOUTS = {
 let playwright = null;
 let axePlaywright = null;
 let axeCoreVersion = null;
+let equalAccessChecker = null;
 
 async function loadAxeDependencies() {
   if (!playwright) {
@@ -61,6 +64,18 @@ async function loadAxeDependencies() {
     }
   }
   return { playwright, axePlaywright, axeCoreVersion };
+}
+
+async function loadEqualAccessChecker() {
+  if (!equalAccessChecker) {
+    try {
+      const module = await import("accessibility-checker");
+      equalAccessChecker = module.default ?? module;
+    } catch {
+      equalAccessChecker = null;
+    }
+  }
+  return equalAccessChecker;
 }
 
 // Maximum number of failures to show per rule in detailed report
@@ -259,6 +274,88 @@ function extractFailureMessage(expectations) {
   return null;
 }
 
+function createScannerBaseError(errorMessage = null) {
+  return {
+    executed: false,
+    error: errorMessage,
+    counts: {
+      passed: 0,
+      failed: 0,
+      cantTell: 0,
+      inapplicable: 0
+    },
+    failedRules: [],
+    passedRules: [],
+    failures: [],
+    outcomeCount: 0,
+    uniqueFailedCount: 0,
+    duplicateFailedCount: 0
+  };
+}
+
+function normalizeFindingLocator(value) {
+  const text = String(value ?? "").trim();
+  return text ? text.replace(/\s+/g, " ").toLowerCase() : "(no-locator)";
+}
+
+function normalizeRuleKey(failure) {
+  const wcagSc = Array.isArray(failure.wcagSc)
+    ? failure.wcagSc.filter(Boolean).map((entry) => String(entry).trim().toLowerCase()).sort().join("+")
+    : String(failure.wcagSc ?? "").trim().toLowerCase();
+
+  const actRule = String(failure.actRuleId ?? "").trim().toLowerCase();
+  const rule = String(failure.rule ?? "").trim().toLowerCase();
+  const message = String(failure.message ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .slice(0, 120);
+
+  if (actRule) {
+    return `act:${actRule}`;
+  }
+  if (wcagSc) {
+    return `wcag:${wcagSc}`;
+  }
+  if (rule) {
+    return `rule:${rule}`;
+  }
+  return `msg:${message || "unknown"}`;
+}
+
+function addDuplicateMetadata(result) {
+  const seen = new Map();
+  let duplicateCount = 0;
+
+  for (const scannerName of SCANNER_ORDER) {
+    const scanner = result[scannerName];
+    if (!scanner || !Array.isArray(scanner.failures)) {
+      continue;
+    }
+
+    for (const failure of scanner.failures) {
+      const locator = normalizeFindingLocator(failure.xpath || failure.selector || failure.html);
+      const ruleKey = normalizeRuleKey(failure);
+      const dedupeKey = `${result.finalUrl}|${locator}|${ruleKey}`;
+
+      if (seen.has(dedupeKey)) {
+        failure.isDuplicate = true;
+        failure.duplicateOf = seen.get(dedupeKey);
+        duplicateCount += 1;
+      } else {
+        failure.isDuplicate = false;
+        failure.duplicateOf = null;
+        seen.set(dedupeKey, scannerName);
+      }
+    }
+
+    scanner.duplicateFailedCount = scanner.failures.filter((failure) => failure.isDuplicate).length;
+    scanner.uniqueFailedCount = scanner.failures.length - scanner.duplicateFailedCount;
+  }
+
+  result.duplicateFindingCount = duplicateCount;
+}
+
 async function runAlfaAudit(url) {
   const args = [
     alfaCliPath,
@@ -366,20 +463,7 @@ async function runAlfaAudit(url) {
 }
 
 async function runAxeAudit(url) {
-  const base = {
-    executed: false,
-    error: null,
-    counts: {
-      passed: 0,
-      failed: 0,
-      cantTell: 0,
-      inapplicable: 0
-    },
-    failedRules: [],
-    passedRules: [],
-    failures: [],
-    outcomeCount: 0
-  };
+  const base = createScannerBaseError(null);
 
   try {
     const { playwright: pw, axePlaywright: axe } = await loadAxeDependencies();
@@ -428,6 +512,7 @@ async function runAxeAudit(url) {
       for (const violation of results.violations || []) {
         counts.failed += violation.nodes?.length || 0;
         failedRules.add(violation.id);
+        const wcagSc = (violation.tags || []).filter((tag) => /^wcag\d+/i.test(tag));
         
         // Extract failure details from each node
         for (const node of violation.nodes || []) {
@@ -435,6 +520,7 @@ async function runAxeAudit(url) {
             rule: violation.id,
             ruleUrl: violation.helpUrl,
             impact: violation.impact,
+            wcagSc,
             xpath: node.target?.[0] || null,
             html: node.html || null,
             message: violation.help || node.failureSummary || null
@@ -481,6 +567,159 @@ async function runAxeAudit(url) {
   }
 }
 
+async function runAccessLintAudit(url) {
+  const base = createScannerBaseError(null);
+
+  try {
+    const { playwright: pw } = await loadAxeDependencies();
+    if (!pw) {
+      return {
+        ...base,
+        error: "Playwright not available for AccessLint"
+      };
+    }
+
+    const browser = await pw.chromium.launch({
+      headless: true,
+      timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+    });
+
+    try {
+      const context = await browser.newContext();
+      const page = await context.newPage();
+      await page.goto(url, {
+        waitUntil: "domcontentloaded",
+        timeout: TIMEOUTS.PLAYWRIGHT_NAV_TIMEOUT
+      });
+
+      await page.addScriptTag({ path: accessLintIifePath });
+
+      const audit = await page.evaluate(() => {
+        const runner = globalThis.AccessLint;
+        if (!runner || typeof runner.runAudit !== "function") {
+          return { violations: [], ruleCount: 0 };
+        }
+        return runner.runAudit(document);
+      });
+
+      await browser.close();
+
+      const violations = Array.isArray(audit?.violations) ? audit.violations : [];
+      const ruleCount = Number(audit?.ruleCount ?? 0);
+      const failedRules = new Set();
+      const failures = [];
+
+      for (const violation of violations) {
+        const rule = String(violation?.ruleId ?? "unknown-rule");
+        failedRules.add(rule);
+        failures.push({
+          rule,
+          xpath: violation?.selector ?? null,
+          selector: violation?.selector ?? null,
+          html: violation?.html ?? null,
+          impact: violation?.impact ?? null,
+          message: violation?.message ?? null
+        });
+      }
+
+      return {
+        executed: true,
+        error: null,
+        counts: {
+          passed: Math.max(ruleCount - violations.length, 0),
+          failed: violations.length,
+          cantTell: 0,
+          inapplicable: 0
+        },
+        failedRules: [...failedRules].sort(),
+        passedRules: [],
+        failures,
+        outcomeCount: ruleCount || violations.length,
+        uniqueFailedCount: violations.length,
+        duplicateFailedCount: 0
+      };
+    } catch (error) {
+      await browser.close();
+      throw error;
+    }
+  } catch (error) {
+    return {
+      ...base,
+      error: error instanceof Error ? error.message : String(error)
+    };
+  }
+}
+
+async function runEqualAccessAudit(url) {
+  const base = createScannerBaseError(null);
+
+  try {
+    const checker = await loadEqualAccessChecker();
+    if (!checker?.getCompliance) {
+      return {
+        ...base,
+        error: "accessibility-checker module not available"
+      };
+    }
+
+    const result = await checker.getCompliance(url, `scan-${Date.now()}`);
+    const report = result?.report;
+    const issues = Array.isArray(report?.results) ? report.results : [];
+    const failedIssues = issues.filter((issue) => {
+      const policy = String(issue?.value?.[0] ?? "").toUpperCase();
+      const confidence = String(issue?.value?.[1] ?? "").toUpperCase();
+      return policy === "VIOLATION" || confidence === "FAIL";
+    });
+
+    const failedRules = new Set();
+    const failures = [];
+
+    for (const issue of failedIssues) {
+      const rule = String(issue?.ruleId ?? "unknown-rule");
+      failedRules.add(rule);
+      failures.push({
+        rule,
+        xpath: issue?.path?.xpath || null,
+        html: issue?.snippet || null,
+        message: issue?.message || null
+      });
+    }
+
+    const summaryCounts = report?.summary?.counts || {};
+
+    return {
+      executed: true,
+      error: null,
+      counts: {
+        passed: Number(summaryCounts.pass ?? 0),
+        failed: failedIssues.length,
+        cantTell: Number(summaryCounts.potentialviolation ?? 0) + Number(summaryCounts.manual ?? 0),
+        inapplicable: Number(summaryCounts.ignored ?? 0)
+      },
+      failedRules: [...failedRules].sort(),
+      passedRules: [],
+      failures,
+      outcomeCount: Number(report?.numExecuted ?? failedIssues.length),
+      uniqueFailedCount: failedIssues.length,
+      duplicateFailedCount: 0
+    };
+  } catch (error) {
+    return {
+      ...base,
+      error: error instanceof Error ? error.message : String(error)
+    };
+  } finally {
+    try {
+      const checker = await loadEqualAccessChecker();
+      if (checker?.close) {
+        await checker.close();
+      }
+    } catch {
+      // Ignore cleanup errors to avoid failing the scan pipeline.
+    }
+  }
+}
+
 function extractHtmlTitle(html) {
   const match = html.match(/<title[^>]*>([^<]+)<\/title>/i);
   return match ? match[1].trim() : null;
@@ -517,10 +756,12 @@ async function scanOneUrl(target) {
         pageTitle = extractHtmlTitle(html);
       }
 
-      const alfa = await runAlfaAudit(finalUrl);
       const axe = await runAxeAudit(finalUrl);
+      const alfa = await runAlfaAudit(finalUrl);
+      const equalAccess = await runEqualAccessAudit(finalUrl);
+      const accesslint = await runAccessLintAudit(finalUrl);
 
-      return {
+      const result = {
         submittedUrl: target.submittedUrl,
         finalUrl,
         redirected: finalUrl !== target.normalizedUrl,
@@ -531,24 +772,17 @@ async function scanOneUrl(target) {
         elapsedMs: Date.now() - started,
         error: null,
         alfa,
-        axe
+        axe,
+        equalAccess,
+        accesslint,
+        duplicateFindingCount: 0
       };
+
+      addDuplicateMetadata(result);
+      return result;
     } catch (error) {
       // Handle errors from fetch or audits
-      const baseErrorResult = {
-        executed: false,
-        error: error.name === "AbortError" ? "Request timed out" : "Skipped because initial URL fetch failed",
-        counts: {
-          passed: 0,
-          failed: 0,
-          cantTell: 0,
-          inapplicable: 0
-        },
-        failedRules: [],
-        passedRules: [],
-        failures: [],
-        outcomeCount: 0
-      };
+      const baseErrorResult = createScannerBaseError(error.name === "AbortError" ? "Request timed out" : "Skipped because initial URL fetch failed");
       
       return {
         submittedUrl: target.submittedUrl,
@@ -561,7 +795,10 @@ async function scanOneUrl(target) {
         elapsedMs: Date.now() - started,
         error: error instanceof Error ? error.message : String(error),
         alfa: baseErrorResult,
-        axe: baseErrorResult
+        axe: baseErrorResult,
+        equalAccess: baseErrorResult,
+        accesslint: baseErrorResult,
+        duplicateFindingCount: 0
       };
     }
   })();
@@ -571,20 +808,7 @@ async function scanOneUrl(target) {
     return await Promise.race([scanPromise, timeoutPromise]);
   } catch (timeoutError) {
     // Handle per-URL timeout
-    const baseErrorResult = {
-      executed: false,
-      error: "URL scan timeout exceeded",
-      counts: {
-        passed: 0,
-        failed: 0,
-        cantTell: 0,
-        inapplicable: 0
-      },
-      failedRules: [],
-      passedRules: [],
-      failures: [],
-      outcomeCount: 0
-    };
+    const baseErrorResult = createScannerBaseError("URL scan timeout exceeded");
     
     return {
       submittedUrl: target.submittedUrl,
@@ -597,7 +821,10 @@ async function scanOneUrl(target) {
       elapsedMs: Date.now() - started,
       error: timeoutError instanceof Error ? timeoutError.message : String(timeoutError),
       alfa: baseErrorResult,
-      axe: baseErrorResult
+      axe: baseErrorResult,
+      equalAccess: baseErrorResult,
+      accesslint: baseErrorResult,
+      duplicateFindingCount: 0
     };
   }
 }
@@ -632,6 +859,25 @@ function toCsv(summary) {
     "axe_inapplicable",
     "axe_failed_rules",
     "axe_error",
+    "equal_access_executed",
+    "equal_access_passed",
+    "equal_access_failed",
+    "equal_access_failed_unique",
+    "equal_access_failed_duplicates",
+    "equal_access_cant_tell",
+    "equal_access_inapplicable",
+    "equal_access_failed_rules",
+    "equal_access_error",
+    "accesslint_executed",
+    "accesslint_passed",
+    "accesslint_failed",
+    "accesslint_failed_unique",
+    "accesslint_failed_duplicates",
+    "accesslint_cant_tell",
+    "accesslint_inapplicable",
+    "accesslint_failed_rules",
+    "accesslint_error",
+    "duplicate_findings",
     "fetch_error",
     "page_title"
   ];
@@ -647,6 +893,8 @@ function toCsv(summary) {
   const rows = summary.results.map((result) => {
     const alfa = result.alfa;
     const axe = result.axe;
+    const equalAccess = result.equalAccess;
+    const accesslint = result.accesslint;
     return [
       summary.issueNumber,
       summary.scanTitle,
@@ -670,6 +918,25 @@ function toCsv(summary) {
       axe.counts.inapplicable,
       axe.failedRules.join(";"),
       axe.error ?? "",
+      equalAccess.executed,
+      equalAccess.counts.passed,
+      equalAccess.counts.failed,
+      equalAccess.uniqueFailedCount ?? equalAccess.counts.failed,
+      equalAccess.duplicateFailedCount ?? 0,
+      equalAccess.counts.cantTell,
+      equalAccess.counts.inapplicable,
+      equalAccess.failedRules.join(";"),
+      equalAccess.error ?? "",
+      accesslint.executed,
+      accesslint.counts.passed,
+      accesslint.counts.failed,
+      accesslint.uniqueFailedCount ?? accesslint.counts.failed,
+      accesslint.duplicateFailedCount ?? 0,
+      accesslint.counts.cantTell,
+      accesslint.counts.inapplicable,
+      accesslint.failedRules.join(";"),
+      accesslint.error ?? "",
+      result.duplicateFindingCount ?? 0,
       result.error ?? "",
       result.pageTitle ?? ""
     ].map(escapeCell).join(",");
@@ -711,28 +978,41 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push(`- Rejected URLs: ${summary.rejectedCount}`);
   lines.push(`- ALFA outcomes: ${summary.alfaTotals.passed} passed, ${summary.alfaTotals.failed} failed, ${summary.alfaTotals.cantTell} cantTell, ${summary.alfaTotals.inapplicable} inapplicable`);
   lines.push(`- axe outcomes: ${summary.axeTotals.passed} passed, ${summary.axeTotals.failed} failed, ${summary.axeTotals.cantTell} cantTell, ${summary.axeTotals.inapplicable} inapplicable`);
+  if (summary.equalAccessTotals) {
+    lines.push(`- Equal Access outcomes: ${summary.equalAccessTotals.passed} passed, ${summary.equalAccessTotals.failed} failed (${summary.equalAccessTotals.uniqueFailed} unique, ${summary.equalAccessTotals.duplicates} duplicate), ${summary.equalAccessTotals.cantTell} cantTell, ${summary.equalAccessTotals.inapplicable} inapplicable`);
+  }
+  if (summary.accesslintTotals) {
+    lines.push(`- AccessLint outcomes: ${summary.accesslintTotals.passed} passed, ${summary.accesslintTotals.failed} failed (${summary.accesslintTotals.uniqueFailed} unique, ${summary.accesslintTotals.duplicates} duplicate), ${summary.accesslintTotals.cantTell} cantTell, ${summary.accesslintTotals.inapplicable} inapplicable`);
+  }
+  if (summary.duplicateFindingTotals !== undefined) {
+    lines.push(`- Duplicate findings caught by later scanners: ${summary.duplicateFindingTotals}`);
+  }
   lines.push("");
 
   // ACTION-ORIENTED SUMMARY: Pages with most errors
   lines.push("## 🎯 Priority: Pages with Most Errors");
   lines.push("");
-  lines.push("Focus your efforts on these pages to make the biggest impact (combined ALFA + axe results):");
+  lines.push("Focus your efforts on these pages to make the biggest impact (combined scanner unique failures):");
   lines.push("");
   
   const pagesByErrorCount = [...summary.results]
-    .filter(r => (r.alfa.counts.failed + r.axe.counts.failed) > 0)
+    .filter(r => ((r.axe.uniqueFailedCount ?? r.axe.counts.failed) + (r.alfa.uniqueFailedCount ?? r.alfa.counts.failed) + (r.equalAccess?.uniqueFailedCount ?? r.equalAccess?.counts?.failed ?? 0) + (r.accesslint?.uniqueFailedCount ?? r.accesslint?.counts?.failed ?? 0)) > 0)
     .sort((a, b) => 
-      (b.alfa.counts.failed + b.axe.counts.failed) - 
-      (a.alfa.counts.failed + a.axe.counts.failed)
+      ((b.axe.uniqueFailedCount ?? b.axe.counts.failed) + (b.alfa.uniqueFailedCount ?? b.alfa.counts.failed) + (b.equalAccess?.uniqueFailedCount ?? b.equalAccess?.counts?.failed ?? 0) + (b.accesslint?.uniqueFailedCount ?? b.accesslint?.counts?.failed ?? 0)) -
+      ((a.axe.uniqueFailedCount ?? a.axe.counts.failed) + (a.alfa.uniqueFailedCount ?? a.alfa.counts.failed) + (a.equalAccess?.uniqueFailedCount ?? a.equalAccess?.counts?.failed ?? 0) + (a.accesslint?.uniqueFailedCount ?? a.accesslint?.counts?.failed ?? 0))
     )
     .slice(0, 10);
   
   if (pagesByErrorCount.length > 0) {
-    lines.push("| Page | ALFA Failed | axe Failed | Total Failed | Page Title |");
-    lines.push("|---|---:|---:|---:|---|");
+    lines.push("| Page | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | Total Unique | Page Title |");
+    lines.push("|---|---:|---:|---:|---:|---:|---|");
     for (const result of pagesByErrorCount) {
-      const totalFailed = result.alfa.counts.failed + result.axe.counts.failed;
-      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${result.alfa.counts.failed} | ${result.axe.counts.failed} | **${totalFailed}** | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+      const axeUnique = result.axe.uniqueFailedCount ?? result.axe.counts.failed;
+      const alfaUnique = result.alfa.uniqueFailedCount ?? result.alfa.counts.failed;
+      const equalAccessUnique = result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
+      const accesslintUnique = result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
+      const totalFailed = axeUnique + alfaUnique + equalAccessUnique + accesslintUnique;
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${axeUnique} | ${alfaUnique} | ${equalAccessUnique} | ${accesslintUnique} | **${totalFailed}** | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
     }
   } else {
     lines.push("✅ No pages with accessibility errors detected!");
@@ -960,18 +1240,19 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("Complete scan results for all tested pages:");
   lines.push("");
-  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | ALFA Pass | ALFA Fail | axe Pass | axe Fail | Notes |");
-  lines.push("|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|");
+  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | Duplicates | Notes |");
+  lines.push("|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|");
   for (const result of summary.results) {
     const status = result.ok ? "OK" : "FAIL";
     const httpCode = result.statusCode ?? "-";
     const redirected = result.redirected ? "yes" : "no";
-    const alfaPass = result.alfa.counts.passed;
-    const alfaFail = result.alfa.counts.failed;
-    const axePass = result.axe.counts.passed;
-    const axeFail = result.axe.counts.failed;
-    const notes = result.error || result.alfa.error || result.axe.error || result.pageTitle || "";
-    lines.push(`| ${escapeMarkdown(result.submittedUrl)} | ${escapeMarkdown(result.finalUrl)} | ${status} | ${httpCode} | ${redirected} | ${result.elapsedMs} | ${alfaPass} | ${alfaFail} | ${axePass} | ${axeFail} | ${escapeMarkdown(notes)} |`);
+    const axeUnique = result.axe.uniqueFailedCount ?? result.axe.counts.failed;
+    const alfaUnique = result.alfa.uniqueFailedCount ?? result.alfa.counts.failed;
+    const equalAccessUnique = result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
+    const accesslintUnique = result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
+    const duplicates = result.duplicateFindingCount ?? 0;
+    const notes = result.error || result.alfa.error || result.axe.error || result.equalAccess?.error || result.accesslint?.error || result.pageTitle || "";
+    lines.push(`| ${escapeMarkdown(result.submittedUrl)} | ${escapeMarkdown(result.finalUrl)} | ${status} | ${httpCode} | ${redirected} | ${result.elapsedMs} | ${axeUnique} | ${alfaUnique} | ${equalAccessUnique} | ${accesslintUnique} | ${duplicates} | ${escapeMarkdown(notes)} |`);
 
     if (result.alfa.failedRules.length > 0) {
       const formattedRules = result.alfa.failedRules.map(rule => {
@@ -982,6 +1263,12 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     }
     if (result.axe.failedRules.length > 0) {
       lines.push(`|  |  |  |  |  |  |  |  |  |  | axe failed rules: ${escapeMarkdown(result.axe.failedRules.join(", "))} |`);
+    }
+    if ((result.equalAccess?.failedRules || []).length > 0) {
+      lines.push(`|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: ${escapeMarkdown(result.equalAccess.failedRules.join(", "))} |`);
+    }
+    if ((result.accesslint?.failedRules || []).length > 0) {
+      lines.push(`|  |  |  |  |  |  |  |  |  |  | AccessLint failed rules: ${escapeMarkdown(result.accesslint.failedRules.join(", "))} |`);
     }
   }
   lines.push("");
@@ -1000,7 +1287,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     
     // Group failures by rule
     const failuresByRule = new Map();
-    for (const failure of result.alfa.failures) {
+    for (const failure of result.alfa.failures.filter((entry) => !entry.isDuplicate)) {
       if (!failuresByRule.has(failure.rule)) {
         failuresByRule.set(failure.rule, []);
       }
@@ -1051,7 +1338,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     
     // Group failures by rule
     const axeFailuresByRule = new Map();
-    for (const failure of result.axe.failures) {
+    for (const failure of result.axe.failures.filter((entry) => !entry.isDuplicate)) {
       const ruleKey = failure.rule || "unknown";
       if (!axeFailuresByRule.has(ruleKey)) {
         axeFailuresByRule.set(ruleKey, []);
@@ -1458,6 +1745,26 @@ async function main() {
     inapplicable: 0
   };
 
+  const equalAccessTotals = {
+    passed: 0,
+    failed: 0,
+    uniqueFailed: 0,
+    duplicates: 0,
+    cantTell: 0,
+    inapplicable: 0
+  };
+
+  const accesslintTotals = {
+    passed: 0,
+    failed: 0,
+    uniqueFailed: 0,
+    duplicates: 0,
+    cantTell: 0,
+    inapplicable: 0
+  };
+
+  let duplicateFindingTotals = 0;
+
   for (const result of results) {
     alfaTotals.passed += result.alfa.counts.passed;
     alfaTotals.failed += result.alfa.counts.failed;
@@ -1468,6 +1775,22 @@ async function main() {
     axeTotals.failed += result.axe.counts.failed;
     axeTotals.cantTell += result.axe.counts.cantTell;
     axeTotals.inapplicable += result.axe.counts.inapplicable;
+
+    equalAccessTotals.passed += result.equalAccess.counts.passed;
+    equalAccessTotals.failed += result.equalAccess.counts.failed;
+    equalAccessTotals.uniqueFailed += result.equalAccess.uniqueFailedCount ?? result.equalAccess.counts.failed;
+    equalAccessTotals.duplicates += result.equalAccess.duplicateFailedCount ?? 0;
+    equalAccessTotals.cantTell += result.equalAccess.counts.cantTell;
+    equalAccessTotals.inapplicable += result.equalAccess.counts.inapplicable;
+
+    accesslintTotals.passed += result.accesslint.counts.passed;
+    accesslintTotals.failed += result.accesslint.counts.failed;
+    accesslintTotals.uniqueFailed += result.accesslint.uniqueFailedCount ?? result.accesslint.counts.failed;
+    accesslintTotals.duplicates += result.accesslint.duplicateFailedCount ?? 0;
+    accesslintTotals.cantTell += result.accesslint.counts.cantTell;
+    accesslintTotals.inapplicable += result.accesslint.counts.inapplicable;
+
+    duplicateFindingTotals += result.duplicateFindingCount ?? 0;
   }
 
   const scannedAt = new Date().toISOString();
@@ -1488,6 +1811,9 @@ async function main() {
     rejected: validation.rejected,
     alfaTotals,
     axeTotals,
+    equalAccessTotals,
+    accesslintTotals,
+    duplicateFindingTotals,
     results
   };
   
@@ -1523,6 +1849,9 @@ async function main() {
     totalElapsedMs: totalElapsedTime,
     alfaTotals,
     axeTotals,
+    equalAccessTotals,
+    accesslintTotals,
+    duplicateFindingTotals,
     summaryPath,
     markdownPath,
     htmlPath,
