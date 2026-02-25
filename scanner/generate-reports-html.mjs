@@ -92,6 +92,7 @@ export function generateTableRows(reports) {
             <a href="${path}/report.html">HTML</a>
             <a href="${path}/report.md">Markdown</a>
             <a href="${path}/report.csv">CSV</a>
+            <a href="${path}/report-overlap.md">Overlap</a>
             <a href="${path}/report.json">JSON</a>
           </td>
         </tr>`;

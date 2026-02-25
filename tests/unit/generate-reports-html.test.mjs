@@ -76,6 +76,7 @@ describe('generate-reports-html', () => {
       assert.ok(html.includes('125 can\'t tell'), 'Should include can\'t tell count');
       assert.ok(html.includes('/report.md'), 'Should include markdown link');
       assert.ok(html.includes('/report.csv'), 'Should include CSV link');
+      assert.ok(html.includes('/report-overlap.md'), 'Should include overlap report link');
       assert.ok(html.includes('/report.json'), 'Should include JSON link');
     });
 
