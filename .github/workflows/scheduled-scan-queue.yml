@@ -169,12 +169,16 @@ jobs:
             const markdownPath = `${reportDir}/report.md`;
             const htmlPath = `${reportDir}/report.html`;
             const csvPath = `${reportDir}/report.csv`;
+            const overlapJsonPath = `${reportDir}/report-overlap.json`;
+            const overlapMarkdownPath = `${reportDir}/report-overlap.md`;
 
             mkdirSync(reportDir, { recursive: true });
             copyFileSync('.scan-output/report.json', jsonPath);
             copyFileSync('.scan-output/report.md', markdownPath);
             copyFileSync('.scan-output/report.html', htmlPath);
             copyFileSync('.scan-output/report.csv', csvPath);
+            copyFileSync('.scan-output/report-overlap.json', overlapJsonPath);
+            copyFileSync('.scan-output/report-overlap.md', overlapMarkdownPath);
 
             appendFileSync('.tmp/scheduled-results.ndjson', JSON.stringify({
               issueNumber: issue.number,
@@ -187,6 +191,7 @@ jobs:
               markdownPath,
               htmlPath,
               csvPath,
+              overlapMarkdownPath,
               scannedAt: meta.scannedAt || new Date().toISOString()
             }) + '\n', 'utf8');
             NODE
@@ -252,7 +257,9 @@ jobs:
               const pagesMdUrl = `https://${owner}.github.io/${repo}/${item.markdownPath}`;
               const pagesHtmlUrl = `https://${owner}.github.io/${repo}/${item.htmlPath}`;
               const pagesCsvUrl = `https://${owner}.github.io/${repo}/${item.csvPath}`;
+              const pagesOverlapUrl = `https://${owner}.github.io/${repo}/${item.overlapMarkdownPath}`;
               const ghMdUrl = `https://github.com/${owner}/${repo}/blob/main/${item.markdownPath}`;
+              const ghOverlapUrl = `https://github.com/${owner}/${repo}/blob/main/${item.overlapMarkdownPath}`;
 
               const body = [
                 `Scheduled scan complete for **${item.scanTitle}** (${item.triggerType}).`,
@@ -264,7 +271,9 @@ jobs:
                 `Latest report (Pages, HTML): ${pagesHtmlUrl}`,
                 `Latest report (Pages, Markdown): ${pagesMdUrl}`,
                 `Latest CSV (Pages): ${pagesCsvUrl}`,
+                `Scanner overlap report (Pages): ${pagesOverlapUrl}`,
                 `Fallback (GitHub): ${ghMdUrl}`,
+                `Overlap fallback (GitHub): ${ghOverlapUrl}`,
                 '',
                 '_Issue remains open for future scheduled scans._'
               ].join('\n');

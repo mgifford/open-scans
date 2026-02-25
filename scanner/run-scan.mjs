@@ -950,6 +950,168 @@ export function extractRuleId(ruleUrl) {
   return match ? match[1] : null;
 }
 
+function buildOverlapReport(summary) {
+  const scannerLabels = {
+    axe: "axe",
+    alfa: "ALFA",
+    equalAccess: "Equal Access",
+    accesslint: "AccessLint"
+  };
+
+  const dedupeMap = new Map();
+
+  for (const result of summary.results) {
+    for (const scannerName of SCANNER_ORDER) {
+      const scanner = result[scannerName];
+      if (!scanner || !Array.isArray(scanner.failures)) {
+        continue;
+      }
+
+      for (const failure of scanner.failures) {
+        const locator = normalizeFindingLocator(failure.xpath || failure.selector || failure.html);
+        const ruleKey = normalizeRuleKey(failure);
+        const dedupeKey = `${result.finalUrl}|${locator}|${ruleKey}`;
+
+        if (!dedupeMap.has(dedupeKey)) {
+          dedupeMap.set(dedupeKey, {
+            key: dedupeKey,
+            url: result.finalUrl,
+            locator,
+            ruleKey,
+            scanners: new Set(),
+            examples: []
+          });
+        }
+
+        const entry = dedupeMap.get(dedupeKey);
+        entry.scanners.add(scannerName);
+        if (entry.examples.length < 2) {
+          entry.examples.push({
+            scanner: scannerName,
+            rule: failure.rule ?? null,
+            message: failure.message ?? null,
+            xpath: failure.xpath ?? failure.selector ?? null
+          });
+        }
+      }
+    }
+  }
+
+  const scannerStats = {};
+  for (const scannerName of SCANNER_ORDER) {
+    const totalsKey = `${scannerName}Totals`;
+    const totals = summary[totalsKey] || {
+      failed: 0,
+      uniqueFailed: 0,
+      duplicates: 0
+    };
+
+    scannerStats[scannerName] = {
+      label: scannerLabels[scannerName] || scannerName,
+      failed: totals.failed ?? 0,
+      uniqueFailed: totals.uniqueFailed ?? totals.failed ?? 0,
+      duplicates: totals.duplicates ?? 0
+    };
+  }
+
+  const scannersInUse = SCANNER_ORDER.filter((scannerName) => {
+    return summary.results.some((result) => {
+      const scanner = result[scannerName];
+      return scanner && (scanner.counts?.failed > 0 || scanner.counts?.passed > 0 || scanner.executed);
+    });
+  });
+
+  const matrix = {};
+  for (const scannerA of scannersInUse) {
+    matrix[scannerA] = {};
+    for (const scannerB of scannersInUse) {
+      let count = 0;
+      for (const entry of dedupeMap.values()) {
+        if (entry.scanners.has(scannerA) && entry.scanners.has(scannerB)) {
+          count += 1;
+        }
+      }
+      matrix[scannerA][scannerB] = count;
+    }
+  }
+
+  const overlapEntries = [...dedupeMap.values()]
+    .map((entry) => ({
+      ...entry,
+      scanners: [...entry.scanners]
+    }))
+    .filter((entry) => entry.scanners.length > 1)
+    .sort((a, b) => b.scanners.length - a.scanners.length)
+    .slice(0, 100);
+
+  return {
+    generatedAt: new Date().toISOString(),
+    issueNumber: summary.issueNumber,
+    scanTitle: summary.scanTitle,
+    scannersInUse,
+    scannerStats,
+    matrix,
+    duplicateFindingTotals: summary.duplicateFindingTotals ?? 0,
+    overlapEntryCount: overlapEntries.length,
+    overlapEntries
+  };
+}
+
+function toOverlapMarkdown(overlap) {
+  const lines = [];
+  lines.push(`# Scanner Overlap Report: ${overlap.scanTitle || `Issue #${overlap.issueNumber}`}`);
+  lines.push("");
+  lines.push(`- Generated at: ${overlap.generatedAt}`);
+  lines.push(`- Overlap entries: ${overlap.overlapEntryCount}`);
+  lines.push(`- Duplicate findings in later scanners: ${overlap.duplicateFindingTotals}`);
+  lines.push("");
+
+  lines.push("## Scanner Summary");
+  lines.push("");
+  lines.push("| Scanner | Failed | Unique Failed | Duplicates |");
+  lines.push("|---|---:|---:|---:|");
+  for (const scannerName of overlap.scannersInUse) {
+    const stats = overlap.scannerStats[scannerName];
+    lines.push(`| ${stats.label} | ${stats.failed} | ${stats.uniqueFailed} | ${stats.duplicates} |`);
+  }
+  lines.push("");
+
+  lines.push("## Overlap Matrix (shared findings by scanner pair)");
+  lines.push("");
+  if (overlap.scannersInUse.length > 0) {
+    const header = ["Scanner", ...overlap.scannersInUse.map((name) => overlap.scannerStats[name].label)];
+    lines.push(`| ${header.join(" | ")} |`);
+    lines.push(`| ${header.map(() => "---:").join(" | ")} |`);
+    for (const scannerA of overlap.scannersInUse) {
+      const row = [overlap.scannerStats[scannerA].label];
+      for (const scannerB of overlap.scannersInUse) {
+        row.push(String(overlap.matrix[scannerA][scannerB] ?? 0));
+      }
+      lines.push(`| ${row.join(" | ")} |`);
+    }
+  }
+  lines.push("");
+
+  lines.push("## Top Shared Findings");
+  lines.push("");
+  if (overlap.overlapEntries.length === 0) {
+    lines.push("No cross-scanner overlaps were detected.");
+  } else {
+    for (const entry of overlap.overlapEntries.slice(0, 25)) {
+      lines.push(`### ${escapeMarkdown(entry.ruleKey)}`);
+      lines.push(`- URL: ${escapeMarkdown(entry.url)}`);
+      lines.push(`- Locator: ${escapeMarkdown(entry.locator)}`);
+      lines.push(`- Scanners: ${entry.scanners.map((name) => overlap.scannerStats[name]?.label || name).join(", ")}`);
+      if (entry.examples[0]?.message) {
+        lines.push(`- Example: ${escapeMarkdown(entry.examples[0].message)}`);
+      }
+      lines.push("");
+    }
+  }
+
+  return `${lines.join("\n")}\n`;
+}
+
 export function toMarkdownReport(summary, axeVersion = "4.11") {
   const lines = [];
   lines.push(`# Scan Report: ${summary.scanTitle || `Issue #${summary.issueNumber}`}`);
@@ -1830,12 +1992,18 @@ async function main() {
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
+  const overlapJsonPath = join(outputDir, "report-overlap.json");
+  const overlapMarkdownPath = join(outputDir, "report-overlap.md");
   
   const markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
+  const overlapReport = buildOverlapReport(summary);
+  const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(markdownPath, markdownContent, "utf8");
   writeFileSync(htmlPath, markdownToHtml(markdownContent, summary), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
+  writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
+  writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");
 
   console.log(JSON.stringify({
     skipped: false,
@@ -1855,7 +2023,9 @@ async function main() {
     summaryPath,
     markdownPath,
     htmlPath,
-    csvPath
+    csvPath,
+    overlapJsonPath,
+    overlapMarkdownPath
   }, null, 2));
 }
 

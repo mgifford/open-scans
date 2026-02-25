@@ -79,6 +79,8 @@ jobs:
           const summaryPath = `${reportDir}/report.json`;
           const markdownPath = `${reportDir}/report.md`;
           const csvPath = `${reportDir}/report.csv`;
+          const overlapJsonPath = `${reportDir}/report-overlap.json`;
+          const overlapMarkdownPath = `${reportDir}/report-overlap.md`;
 
           const output = process.env.GITHUB_OUTPUT;
           const lines = [
@@ -91,6 +93,8 @@ jobs:
             `summary_path=${summaryPath}`,
             `markdown_path=${markdownPath}`,
             `csv_path=${csvPath}`,
+            `overlap_json_path=${overlapJsonPath}`,
+            `overlap_markdown_path=${overlapMarkdownPath}`,
             `stamp=${stamp}`
           ].join('\n') + '\n';
 
@@ -105,6 +109,8 @@ jobs:
           cp .scan-output/report.json "${{ steps.meta.outputs.summary_path }}"
           cp .scan-output/report.md "${{ steps.meta.outputs.markdown_path }}"
           cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
+          cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
+          cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
 
       - name: Regenerate reports.html
         run: node scanner/generate-reports-html.mjs
@@ -155,12 +161,15 @@ jobs:
             const repo = context.repo.repo;
             const markdownPath = process.env.MARKDOWN_PATH;
             const csvPath = process.env.CSV_PATH;
+            const overlapMarkdownPath = process.env.OVERLAP_MARKDOWN_PATH;
             const acceptedCount = process.env.ACCEPTED_COUNT;
             const rejectedCount = process.env.REJECTED_COUNT;
             const pagesUrl = `https://${owner}.github.io/${repo}/${markdownPath}`;
             const csvPagesUrl = `https://${owner}.github.io/${repo}/${csvPath}`;
+            const overlapPagesUrl = `https://${owner}.github.io/${repo}/${overlapMarkdownPath}`;
             const blobUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
             const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
+            const overlapBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${overlapMarkdownPath}`;
 
             const body = [
               `Scan complete for **${process.env.SCAN_TITLE || context.payload.issue.title}**.`,
@@ -180,7 +189,9 @@ jobs:
               `Report (Pages): ${pagesUrl}`,
               `Fallback (GitHub): ${blobUrl}`,
               `CSV (Pages): ${csvPagesUrl}`,
-              `CSV Fallback (GitHub): ${csvBlobUrl}`
+              `CSV Fallback (GitHub): ${csvBlobUrl}`,
+              `Scanner Overlap (Pages): ${overlapPagesUrl}`,
+              `Scanner Overlap Fallback (GitHub): ${overlapBlobUrl}`
             );
             
             const commentBody = body.join("\n");
@@ -210,6 +221,7 @@ jobs:
         env:
           MARKDOWN_PATH: ${{ steps.meta.outputs.markdown_path }}
           CSV_PATH: ${{ steps.meta.outputs.csv_path }}
+          OVERLAP_MARKDOWN_PATH: ${{ steps.meta.outputs.overlap_markdown_path }}
           ACCEPTED_COUNT: ${{ steps.meta.outputs.accepted_count }}
           SCANNED_COUNT: ${{ steps.meta.outputs.scanned_count }}
           SKIPPED_DUE_TO_TIMEOUT: ${{ steps.meta.outputs.skipped_due_to_timeout }}
