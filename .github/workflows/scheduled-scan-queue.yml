@@ -124,7 +124,7 @@ jobs:
           appendFileSync(process.env.GITHUB_OUTPUT, `due_count=${due.length}\n`, 'utf8');
           
           if (due.length === 0) {
-            console.log('ℹ️  No timed issues are due today.');
+            console.log('[INFO] No timed issues are due today.');
             console.log('');
             console.log('This workflow only processes issues with timed prefixes:');
             console.log('  - WEEKLY: (runs every Monday)');
@@ -134,7 +134,7 @@ jobs:
             console.log('');
             console.log('To scan regular "SCAN:" issues, use the "Scan All Open SCAN Issues" workflow instead.');
           } else {
-            console.log(`✓ Found ${due.length} timed issue(s) due today:`);
+            console.log(`[SUCCESS] Found ${due.length} timed issue(s) due today:`);
             for (const item of due) {
               console.log(`  - Issue #${item.number}: ${item.title}`);
             }
