@@ -1,4 +1,8 @@
-name: Scheduled Scan Queue
+# This workflow scans ONLY issues with timed prefixes (WEEKLY:, MONTHLY:, QUARTERLY:, MONDAY:, etc.)
+# It runs daily at 00:15 UTC and can also be triggered manually.
+# Use this workflow for recurring scheduled scans, NOT for regular "SCAN:" issues.
+
+name: Scan Timed Issues (WEEKLY, MONTHLY, etc.)
 
 on:
   schedule:
@@ -118,6 +122,23 @@ jobs:
           writeFileSync('.tmp/due-issues.ndjson', due.map((item) => JSON.stringify(item)).join('\n') + (due.length ? '\n' : ''), 'utf8');
 
           appendFileSync(process.env.GITHUB_OUTPUT, `due_count=${due.length}\n`, 'utf8');
+          
+          if (due.length === 0) {
+            console.log('[INFO] No timed issues are due today.');
+            console.log('');
+            console.log('This workflow only processes issues with timed prefixes:');
+            console.log('  - WEEKLY: (runs every Monday)');
+            console.log('  - MONTHLY: (runs on 1st of each month)');
+            console.log('  - QUARTERLY: (runs on Jan 1, Apr 1, Jul 1, Oct 1)');
+            console.log('  - MONDAY:, TUESDAY:, WEDNESDAY:, THURSDAY:, FRIDAY:, SATURDAY:, SUNDAY:');
+            console.log('');
+            console.log('To scan regular "SCAN:" issues, use the "Scan All Open SCAN Issues" workflow instead.');
+          } else {
+            console.log(`[SUCCESS] Found ${due.length} timed issue(s) due today:`);
+            for (const item of due) {
+              console.log(`  - Issue #${item.number}: ${item.title}`);
+            }
+          }
           NODE
 
       - name: Process due issue scans

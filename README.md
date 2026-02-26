@@ -37,14 +37,32 @@ Visit the [Reports page](https://mgifford.github.io/alfa-scan/reports.html) to s
 
 ## Scanning Triggers
 
-Scans can be triggered in three ways:
+Scans can be triggered in multiple ways:
 
-1. **On Issue Creation/Edit**: When an issue with a title starting with "SCAN:" is created or edited, it automatically triggers a scan
-2. **Daily Schedule**: All open "SCAN:" issues are automatically scanned daily at midnight UTC
-3. **Manual Trigger**: You can manually trigger a scan of all open "SCAN:" issues by:
-   - Going to the Actions tab
-   - Selecting "Scan Issue Queue" workflow
-   - Clicking "Run workflow"
+### 1. Automatic On Issue Creation/Edit
+
+When an issue with a title starting with "SCAN:" is created or edited, it automatically triggers a scan via the "Scan Request" workflow.
+
+### 2. Daily Scheduled Scans
+
+**All Open SCAN Issues** - The "Scan All Open SCAN Issues" workflow runs daily at midnight UTC and scans ALL open issues with titles starting with "SCAN:". This ensures that any pending scan requests are processed regularly.
+
+**Timed Issues Only** - The "Scan Timed Issues (WEEKLY, MONTHLY, etc.)" workflow runs daily at 00:15 UTC but ONLY processes issues with timed prefixes that are due on that day:
+- `WEEKLY:` - Scans every Monday
+- `MONTHLY:` - Scans on the 1st of each month
+- `QUARTERLY:` - Scans on Jan 1, Apr 1, Jul 1, Oct 1
+- `MONDAY:`, `TUESDAY:`, `WEDNESDAY:`, `THURSDAY:`, `FRIDAY:`, `SATURDAY:`, `SUNDAY:` - Scans on the corresponding day of the week
+
+### 3. Manual Trigger
+
+You can manually trigger scans by:
+1. Going to the [Actions tab](https://github.com/mgifford/alfa-scan/actions)
+2. Selecting the appropriate workflow:
+   - **"Scan All Open SCAN Issues"** - To scan all pending "SCAN:" issues (recommended for regular scan requests)
+   - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** - To scan recurring timed issues (only if timed issues are due today)
+3. Clicking "Run workflow" button
+
+**Important**: If you have a regular scan request (issue title starting with "SCAN:"), use the "Scan All Open SCAN Issues" workflow, not the "Scan Timed Issues" workflow.
 
 ## Current status
 

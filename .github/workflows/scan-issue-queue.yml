@@ -1,4 +1,8 @@
-name: Scan Issue Queue
+# This workflow scans ALL open issues with titles starting with "SCAN:"
+# It runs daily at midnight UTC and can also be triggered manually.
+# Use this workflow to process regular scan requests submitted via the web form.
+
+name: Scan All Open SCAN Issues
 
 on:
   schedule:
