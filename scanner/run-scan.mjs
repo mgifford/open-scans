@@ -1988,6 +1988,10 @@ async function main() {
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
+    console.warn(`\nTip: For large URL lists (${acceptedTargets.length} URLs), consider splitting into smaller batches:`);
+    console.warn(`  - Option 1: Create multiple scan issues with 100-150 URLs each`);
+    console.warn(`  - Option 2: Increase timeout via TOTAL_SCAN_TIMEOUT_MS environment variable in workflow`);
+    console.warn(`  - Option 3: The scanned URLs (${results.length}/${acceptedTargets.length}) are included in this report`);
   }
   
   console.error(`Total scan time: ${(totalElapsedTime / 1000).toFixed(1)}s`);
