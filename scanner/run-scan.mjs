@@ -2033,6 +2033,20 @@ async function main() {
     overlapJsonPath,
     overlapMarkdownPath
   }, null, 2));
+
+  // Clean up Equal Access Checker browser pool to prevent "No usable sandbox" errors
+  // This is critical when scans timeout or complete to ensure all browser instances are closed
+  try {
+    console.error("Cleaning up Equal Access Checker browser pool...");
+    const checker = await loadEqualAccessChecker();
+    if (checker?.close) {
+      await checker.close();
+      console.error("Successfully closed Equal Access Checker browser pool");
+    }
+  } catch (error) {
+    // Log cleanup errors but don't fail the workflow
+    console.error(`Warning: Failed to clean up Equal Access Checker: ${error.message}`);
+  }
 }
 
 // Only run main if this file is executed directly, not when imported
