@@ -14,63 +14,63 @@ export function generateInteractiveHtml(summary) {
     const displayDesc = ruleInfo.description || "";
     const rolesData = JSON.stringify(f.metadata.roles);
     
-    return \`
+    return `
       <details class="rule-card" 
                data-roles='\${rolesData}' 
                data-severity="\${f.metadata.severity}"
-               data-search="\${(displayId + " " + displayDesc).toLowerCase()}">
+               data-search="${(displayId + " " + displayDesc).toLowerCase()}">
         <summary>
           <div class="rule-summary-info">
-            <span class="badge badge-count">\${f.totalOccurrences}</span>
-            <span class="badge badge-severity severity-\${f.metadata.severity}">\${f.metadata.severity}</span>
-            <span><strong>\${displayId}</strong>: \${displayDesc}</span>
+            <span class="badge badge-count">${f.totalOccurrences}</span>
+            <span class="badge badge-severity severity-${f.metadata.severity}">${f.metadata.severity}</span>
+            <span><strong>${displayId}</strong>: ${displayDesc}</span>
           </div>
           <div style="color: #57606a; font-size: 0.8rem;">
-            \${f.pages.size} pages affected
+            ${f.pages.size} pages affected
           </div>
         </summary>
         <div class="rule-content">
           <div class="rule-details">
             <div>
               <h4>Rule Information</h4>
-              <p><strong>Engine:</strong> \${f.engine}</p>
-              <p><strong>Roles:</strong> \${f.metadata.roles.join(', ')}</p>
-              <p><strong>Blocking:</strong> \${f.metadata.blocking ? '⚠️ Yes (Task-Blocking)' : 'No'}</p>
+              <p><strong>Engine:</strong> ${f.engine}</p>
+              <p><strong>Roles:</strong> ${f.metadata.roles.join(', ')}</p>
+              <p><strong>Blocking:</strong> ${f.metadata.blocking ? '⚠️ Yes (Task-Blocking)' : 'No'}</p>
             </div>
             <div>
               <h4>Affected Pages</h4>
               <ul style="max-height: 150px; overflow-y: auto; font-size: 0.85rem;">
-                \${Array.from(f.pages.entries()).map(([url, count]) => \`
-                  <li><a href="\${url}" target="_blank">\${url}</a> (\${count} occurrences)</li>
-                \`).join('')}
+                ${Array.from(f.pages.entries()).map(([url, count]) => `
+                  <li><a href="${url}" target="_blank">${url}</a> (${count} occurrences)</li>
+                `).join('')}
               </ul>
             </div>
           </div>
           <h4>Examples</h4>
           <div class="example-list">
-            \${f.examples.map((ex, i) => \`
+            ${f.examples.map((ex, i) => `
               <div class="example-item">
                 <div class="example-meta">
-                  <span>Example \${i+1}</span>
-                  <a href="\${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
+                  <span>Example ${i+1}</span>
+                  <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
                 </div>
-                \${ex.message ? \`<div style="margin-bottom: 0.5rem; font-weight: 600;">\${ex.message}</div>\` : ''}
-                \${ex.html ? \`<div style="color: #0550ae;">\${escapeHtml(ex.html)}</div>\` : ''}
-                \${ex.xpath ? \`<div style="color: #663399; margin-top: 0.5rem;">XPath: \${ex.xpath}</div>\` : ''}
+                ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${ex.message}</div>` : ''}
+                ${ex.html ? `<div style="color: #0550ae;">${escapeHtml(ex.html)}</div>` : ''}
+                ${ex.xpath ? `<div style="color: #663399; margin-top: 0.5rem;">XPath: ${ex.xpath}</div>` : ''}
               </div>
-            \`).join('')}
+            `).join('')}
           </div>
         </div>
       </details>
-    \`;
+    `;
   }).join('');
 
-  return \`<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Report: \${scanTitle || \`Issue #\${issueNumber}\`}</title>
+  <title>Accessibility Report: ${scanTitle || `Issue #${issueNumber}`}</title>
   <style>
     :root {
       --primary: #0969da;
@@ -192,51 +192,51 @@ export function generateInteractiveHtml(summary) {
     <header>
       <h1>Accessibility Scan Report</h1>
       <div class="meta">
-        <span><strong>Title:</strong> \${scanTitle || \`Issue #\${issueNumber}\`}</span>
-        <span><strong>Issue:</strong> <a href="\${issueUrl}" target="_blank">#\${issueNumber}</a></span>
-        <span><strong>Date:</strong> \${new Date(scannedAt).toLocaleString()}</span>
-        <span><strong>Duration:</strong> \${(totalElapsedMs / 60000).toFixed(1)}m</span>
-        <span><strong>URLs:</strong> \${acceptedCount} / \${totalSubmitted}</span>
+        <span><strong>Title:</strong> ${scanTitle || `Issue #${issueNumber}`}</span>
+        <span><strong>Issue:</strong> <a href="${issueUrl}" target="_blank">#${issueNumber}</a></span>
+        <span><strong>Date:</strong> ${new Date(scannedAt).toLocaleString()}</span>
+        <span><strong>Duration:</strong> ${(totalElapsedMs / 60000).toFixed(1)}m</span>
+        <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
       </div>
     </header>
 
     <div class="dashboard">
       <div class="card">
         <h3>Total Issues</h3>
-        <div class="stat">\${consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0)}</div>
-        <p>Across \${consolidatedFailures.length} unique rules</p>
+        <div class="stat">${consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0)}</div>
+        <p>Across ${consolidatedFailures.length} unique rules</p>
       </div>
       <div class="card">
         <h3>By Severity</h3>
         <div class="bar-chart">
-          \${severitiesList.map(s => {
+          ${severitiesList.map(s => {
             const count = severityStats[s] || 0;
             const max = Math.max(...Object.values(severityStats), 1);
             const percent = (count / max) * 100;
-            return \`
+            return `
               <div class="bar-item">
-                <span class="bar-label severity-\${s}">\${s}</span>
-                <div class="bar-container"><div class="bar-fill" style="width: \${percent}%; background-color: var(--\${s.toLowerCase()})"></div></div>
-                <span>\${count}</span>
+                <span class="bar-label severity-${s}">${s}</span>
+                <div class="bar-container"><div class="bar-fill" style="width: ${percent}%; background-color: var(--${s.toLowerCase()})"></div></div>
+                <span>${count}</span>
               </div>
-            \`;
+            `;
           }).join('')}
         </div>
       </div>
       <div class="card">
         <h3>By Role</h3>
         <div class="bar-chart">
-          \${rolesList.map(r => {
+          ${rolesList.map(r => {
             const count = roleStats[r] || 0;
             const max = Math.max(...Object.values(roleStats), 1);
             const percent = (count / max) * 100;
-            return \`
+            return `
               <div class="bar-item">
-                <span class="bar-label">\${r}</span>
-                <div class="bar-container"><div class="bar-fill" style="width: \${percent}%"></div></div>
-                <span>\${count}</span>
+                <span class="bar-label">${r}</span>
+                <div class="bar-container"><div class="bar-fill" style="width: ${percent}%"></div></div>
+                <span>${count}</span>
               </div>
-            \`;
+            `;
           }).join('')}
         </div>
       </div>
@@ -244,14 +244,14 @@ export function generateInteractiveHtml(summary) {
 
     <div class="nav" id="roleTabs">
       <div class="nav-item active" data-role="all">All Issues</div>
-      \${rolesList.map(r => \`<div class="nav-item" data-role="\${r}">\${r}</div>\`).join('')}
+      ${rolesList.map(r => `<div class="nav-item" data-role="${r}">${r}</div>`).join('')}
     </div>
 
     <div class="filters">
       <label for="severityFilter">Severity:</label>
       <select id="severityFilter">
         <option value="all">All Severities</option>
-        \${severitiesList.map(s => \`<option value="\${s}">\${s}</option>\`).join('')}
+        ${severitiesList.map(s => `<option value="${s}">${s}</option>`).join('')}
       </select>
       
       <label for="search">Search:</label>
@@ -259,7 +259,7 @@ export function generateInteractiveHtml(summary) {
     </div>
 
     <div class="rule-list" id="ruleList">
-      \${ruleCardsHtml}
+      ${ruleCardsHtml}
     </div>
   </div>
 
@@ -309,7 +309,7 @@ export function generateInteractiveHtml(summary) {
     searchInput.addEventListener('input', filterRules);
   </script>
 </body>
-</html>\`;
+</html>`;
 
   function escapeHtml(text) {
     return String(text ?? "")

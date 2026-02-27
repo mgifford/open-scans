@@ -1182,7 +1182,7 @@ function buildEnhancedSummary(summary) {
 
         const ruleId = failure.rule;
         const metadata = getRuleMetadata(engine, ruleId);
-        const key = \`\${engine}:\${ruleId}\`;
+        const key = `${engine}:${ruleId}`;
 
         if (!consolidatedFailures.has(key)) {
           consolidatedFailures.set(key, {
@@ -2084,7 +2084,13 @@ async function main() {
 
   const scannedAt = new Date().toISOString();
   const totalElapsedTime = Date.now() - scanStartTime;
+  
+  // Create initial summary for enhanced data aggregation
+  const initialSummary = {
+    results
+  };
   const enhancedData = buildEnhancedSummary(initialSummary);
+  
   const summary = {
     issueNumber: request.issueNumber,
     issueUrl: request.issueUrl,
