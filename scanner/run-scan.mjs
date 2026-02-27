@@ -2118,6 +2118,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // Handle unhandled promise rejections that may occur during cleanup
   // This is particularly important for accessibility-checker's browser close operations
   // which may throw errors asynchronously when pages are detached
+  //
+  // Note: This handler is intentionally inside the import guard because:
+  // - It's only needed when running as a CLI tool (direct execution)
+  // - Tests import functions but don't run main(), so they don't need this handler
+  // - Placing it here ensures it doesn't interfere with test error handling
   process.on('unhandledRejection', (reason, promise) => {
     const msg = reason instanceof Error ? reason.message : String(reason);
     // If it's a browser/page close error, log it as a warning but don't crash
