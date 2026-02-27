@@ -147,7 +147,7 @@ export async function createGitHubIssue(scanTitle, urls) {
   
   // Prepend "SCAN: " if not already present (case-insensitive check)
   // Normalize any existing prefix to "SCAN: " for consistency
-  const issueTitle = scanTitle.toLowerCase().startsWith('scan: ') 
+  const issueTitle = scanTitle.match(/^scan:\s*/i)
     ? `SCAN: ${scanTitle.replace(/^scan:\s*/i, '')}` 
     : `SCAN: ${scanTitle}`;
   const issueBody = formatIssueBody(scanTitle, urls);

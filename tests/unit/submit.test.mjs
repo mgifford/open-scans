@@ -195,3 +195,17 @@ test('createGitHubIssue normalizes mixed-case "ScAn: " prefix', withMockedLocati
   // Should normalize to "SCAN: My Mixed Case Scan"
   assert.strictEqual(titleParam, 'SCAN: My Mixed Case Scan');
 }));
+
+test('createGitHubIssue handles prefix without space "scan:MyTitle"', withMockedLocation(async () => {
+  // If a user types "scan:MyTitle" without space, we should normalize it
+  const scanTitle = 'scan:MyTitle';
+  const urls = ['https://example.com'];
+  
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  
+  // Should normalize to "SCAN: MyTitle"
+  assert.strictEqual(titleParam, 'SCAN: MyTitle');
+}));
