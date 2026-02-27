@@ -169,7 +169,7 @@ test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', w
 }));
 
 test('createGitHubIssue handles lowercase "scan: " prefix case-insensitively', withMockedLocation(async () => {
-  // If a user types "scan: " in lowercase, we should not prepend "SCAN: " again
+  // If a user types "scan: " in lowercase, we should normalize it to "SCAN: "
   const scanTitle = 'scan: My Lowercase Scan';
   const urls = ['https://example.com'];
   
@@ -178,7 +178,20 @@ test('createGitHubIssue handles lowercase "scan: " prefix case-insensitively', w
   const urlObj = new URL(githubUrl);
   const titleParam = urlObj.searchParams.get('title');
   
-  // Should keep the original casing: "scan: My Lowercase Scan", not "SCAN: scan: My Lowercase Scan"
-  assert.strictEqual(titleParam, 'scan: My Lowercase Scan');
-  assert.ok(!titleParam.toLowerCase().includes('scan: scan:'));
+  // Should normalize to "SCAN: My Lowercase Scan", not keep "scan: " or double-prefix
+  assert.strictEqual(titleParam, 'SCAN: My Lowercase Scan');
+}));
+
+test('createGitHubIssue normalizes mixed-case "ScAn: " prefix', withMockedLocation(async () => {
+  // If a user types "ScAn: " in mixed case, we should normalize it to "SCAN: "
+  const scanTitle = 'ScAn: My Mixed Case Scan';
+  const urls = ['https://example.com'];
+  
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  
+  // Should normalize to "SCAN: My Mixed Case Scan"
+  assert.strictEqual(titleParam, 'SCAN: My Mixed Case Scan');
 }));
