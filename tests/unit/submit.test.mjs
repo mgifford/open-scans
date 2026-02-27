@@ -167,3 +167,18 @@ test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', w
   assert.strictEqual(titleParam, 'SCAN: My Scan');
   assert.ok(!titleParam.includes('SCAN: SCAN:'));
 }));
+
+test('createGitHubIssue handles lowercase "scan: " prefix case-insensitively', withMockedLocation(async () => {
+  // If a user types "scan: " in lowercase, we should not prepend "SCAN: " again
+  const scanTitle = 'scan: My Lowercase Scan';
+  const urls = ['https://example.com'];
+  
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  
+  // Should keep the original casing: "scan: My Lowercase Scan", not "SCAN: scan: My Lowercase Scan"
+  assert.strictEqual(titleParam, 'scan: My Lowercase Scan');
+  assert.ok(!titleParam.toLowerCase().includes('scan: scan:'));
+}));
