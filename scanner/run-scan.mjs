@@ -15,7 +15,7 @@ const SCANNER_ORDER = ["axe", "alfa", "equalAccess", "accesslint"];
  * @param {string[]} engines - Array of engine names (e.g., ["axe", "alfa"] or ["all"])
  * @returns {Object} Object with boolean flags for each scanner
  */
-function determineScannersToRun(engines) {
+export function determineScannersToRun(engines) {
   // Default to all if not specified or if "all" is in the list
   if (!engines || engines.length === 0 || engines.includes("all")) {
     return {
