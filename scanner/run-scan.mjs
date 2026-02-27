@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 import { parseScanIssue } from "./parse-issue.mjs";
 import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
+import { getRuleMetadata, ROLES, SEVERITY } from "./rule-metadata.mjs";
+import { generateInteractiveHtml } from "./interactive-report.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -1151,6 +1153,83 @@ function toOverlapMarkdown(overlap) {
   return `${lines.join("\n")}\n`;
 }
 
+
+/**
+ * Enhanced data aggregation for the interactive report
+ */
+function buildEnhancedSummary(summary) {
+  const consolidatedFailures = new Map(); // Key: ruleId, Value: { rule, engine, metadata, pages: Set, totalOccurrences, failures: [] }
+  const roleStats = {
+    [ROLES.UX]: 0,
+    [ROLES.VISUAL]: 0,
+    [ROLES.CONTENT]: 0,
+    [ROLES.DEV]: 0
+  };
+  const severityStats = {
+    [SEVERITY.CRITICAL]: 0,
+    [SEVERITY.SERIOUS]: 0,
+    [SEVERITY.MODERATE]: 0,
+    [SEVERITY.MINOR]: 0
+  };
+
+  for (const result of summary.results) {
+    for (const engine of SCANNER_ORDER) {
+      const engineResult = result[engine];
+      if (!engineResult || !engineResult.failures) continue;
+
+      for (const failure of engineResult.failures) {
+        if (failure.isDuplicate) continue;
+
+        const ruleId = failure.rule;
+        const metadata = getRuleMetadata(engine, ruleId);
+        const key = \`\${engine}:\${ruleId}\`;
+
+        if (!consolidatedFailures.has(key)) {
+          consolidatedFailures.set(key, {
+            rule: ruleId,
+            engine,
+            metadata,
+            pages: new Map(), // pageUrl -> count
+            totalOccurrences: 0,
+            examples: [] // Store a few unique examples
+          });
+        }
+
+        const entry = consolidatedFailures.get(key);
+        entry.totalOccurrences++;
+        
+        const pageCount = entry.pages.get(result.submittedUrl) || 0;
+        entry.pages.set(result.submittedUrl, pageCount + 1);
+
+        // Update stats (only once per unique failure)
+        severityStats[metadata.severity]++;
+        for (const role of metadata.roles) {
+          roleStats[role]++;
+        }
+
+        // Keep up to 5 examples
+        if (entry.examples.length < 5) {
+          entry.examples.push({
+            url: result.submittedUrl,
+            html: failure.html,
+            xpath: failure.xpath,
+            message: failure.message
+          });
+        }
+      }
+    }
+  }
+
+  return {
+    consolidatedFailures: Array.from(consolidatedFailures.values())
+      .sort((a, b) => b.totalOccurrences - a.totalOccurrences),
+    roleStats,
+    severityStats
+  };
+}
+
+
+
 export function toMarkdownReport(summary, axeVersion = "4.11") {
   const lines = [];
   lines.push(`# Scan Report: ${summary.scanTitle || `Issue #${summary.issueNumber}`}`);
@@ -2005,6 +2084,7 @@ async function main() {
 
   const scannedAt = new Date().toISOString();
   const totalElapsedTime = Date.now() - scanStartTime;
+  const enhancedData = buildEnhancedSummary(initialSummary);
   const summary = {
     issueNumber: request.issueNumber,
     issueUrl: request.issueUrl,
@@ -2025,7 +2105,8 @@ async function main() {
     equalAccessTotals,
     accesslintTotals,
     duplicateFindingTotals,
-    results
+    results,
+    enhanced: enhancedData
   };
   
   // Log warning if scan was incomplete
