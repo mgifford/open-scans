@@ -106,85 +106,64 @@ test('formatIssueBody creates proper markdown format', () => {
   assert.match(body, /https:\/\/example\.org/);
 });
 
-test('createGitHubIssue prepends "SCAN: " prefix to title', async () => {
-  // Mock window.location for the test
-  const originalWindow = global.window;
-  global.window = {
-    location: {
-      hostname: 'mgifford.github.io',
-      pathname: '/alfa-scan/'
+// Helper function to mock window.location for GitHub issue tests
+function withMockedLocation(testFn) {
+  return async () => {
+    const originalWindow = global.window;
+    global.window = {
+      location: {
+        hostname: 'mgifford.github.io',
+        pathname: '/alfa-scan/'
+      }
+    };
+    
+    try {
+      await testFn();
+    } finally {
+      global.window = originalWindow;
     }
   };
-  
-  try {
-    const scanTitle = 'GSA.gov Homepage and Key Pages';
-    const urls = ['https://www.gsa.gov', 'https://www.gsa.gov/about-us'];
-    
-    const githubUrl = await createGitHubIssue(scanTitle, urls);
-    
-    // Verify the URL contains the properly encoded title with "SCAN: " prefix
-    assert.match(githubUrl, /title=SCAN%3A%20GSA\.gov%20Homepage%20and%20Key%20Pages/);
-    
-    // Decode the title from the URL to verify it exactly
-    const urlObj = new URL(githubUrl);
-    const titleParam = urlObj.searchParams.get('title');
-    assert.strictEqual(titleParam, 'SCAN: GSA.gov Homepage and Key Pages');
-  } finally {
-    global.window = originalWindow;
-  }
-});
+}
 
-test('createGitHubIssue prepends "SCAN: " to any title', async () => {
-  // Mock window.location for the test
-  const originalWindow = global.window;
-  global.window = {
-    location: {
-      hostname: 'mgifford.github.io',
-      pathname: '/alfa-scan/'
-    }
-  };
+test('createGitHubIssue prepends "SCAN: " prefix to title', withMockedLocation(async () => {
+  const scanTitle = 'GSA.gov Homepage and Key Pages';
+  const urls = ['https://www.gsa.gov', 'https://www.gsa.gov/about-us'];
   
-  try {
-    const scanTitle = 'My Custom Scan Title';
-    const urls = ['https://example.com'];
-    
-    const githubUrl = await createGitHubIssue(scanTitle, urls);
-    
-    const urlObj = new URL(githubUrl);
-    const titleParam = urlObj.searchParams.get('title');
-    
-    // Verify "SCAN: " is prepended to the user's title
-    assert.strictEqual(titleParam, 'SCAN: My Custom Scan Title');
-    assert.ok(titleParam.startsWith('SCAN: '));
-  } finally {
-    global.window = originalWindow;
-  }
-});
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  // Verify the URL contains the properly encoded title with "SCAN: " prefix
+  assert.match(githubUrl, /title=SCAN%3A%20GSA\.gov%20Homepage%20and%20Key%20Pages/);
+  
+  // Decode the title from the URL to verify it exactly
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  assert.strictEqual(titleParam, 'SCAN: GSA.gov Homepage and Key Pages');
+}));
 
-test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', async () => {
-  // Mock window.location for the test
-  const originalWindow = global.window;
-  global.window = {
-    location: {
-      hostname: 'mgifford.github.io',
-      pathname: '/alfa-scan/'
-    }
-  };
+test('createGitHubIssue prepends "SCAN: " to any title', withMockedLocation(async () => {
+  const scanTitle = 'My Custom Scan Title';
+  const urls = ['https://example.com'];
   
-  try {
-    // If a user accidentally types "SCAN: " themselves, we should not prepend it again
-    const scanTitle = 'SCAN: My Scan';
-    const urls = ['https://example.com'];
-    
-    const githubUrl = await createGitHubIssue(scanTitle, urls);
-    
-    const urlObj = new URL(githubUrl);
-    const titleParam = urlObj.searchParams.get('title');
-    
-    // Should NOT result in "SCAN: SCAN: My Scan" - just "SCAN: My Scan"
-    assert.strictEqual(titleParam, 'SCAN: My Scan');
-    assert.ok(!titleParam.includes('SCAN: SCAN:'));
-  } finally {
-    global.window = originalWindow;
-  }
-});
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  
+  // Verify "SCAN: " is prepended to the user's title
+  assert.strictEqual(titleParam, 'SCAN: My Custom Scan Title');
+}));
+
+test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', withMockedLocation(async () => {
+  // If a user accidentally types "SCAN: " themselves, we should not prepend it again
+  const scanTitle = 'SCAN: My Scan';
+  const urls = ['https://example.com'];
+  
+  const githubUrl = await createGitHubIssue(scanTitle, urls);
+  
+  const urlObj = new URL(githubUrl);
+  const titleParam = urlObj.searchParams.get('title');
+  
+  // Should NOT result in "SCAN: SCAN: My Scan" - just "SCAN: My Scan"
+  assert.strictEqual(titleParam, 'SCAN: My Scan');
+  assert.ok(!titleParam.includes('SCAN: SCAN:'));
+}));
