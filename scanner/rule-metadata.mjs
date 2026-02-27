@@ -246,7 +246,7 @@ export const ruleMapping = {
  */
 export function getRuleMetadata(engine, ruleId) {
   const normalizedEngine = engine.toLowerCase();
-  const key = \`\${normalizedEngine}:\${ruleId.toLowerCase()}\`;
+  const key = `${normalizedEngine}:${ruleId.toLowerCase()}`;
   
   // Try exact match
   if (ruleMapping[key]) {
@@ -255,9 +255,9 @@ export function getRuleMetadata(engine, ruleId) {
   
   // For ALFA, handle full URLs if passed
   if (normalizedEngine === 'alfa' && ruleId.startsWith('http')) {
-    const match = ruleId.match(/sia-r(\\d+)$/);
+    const match = ruleId.match(/sia-r(\d+)$/);
     if (match) {
-      const siaKey = \`alfa:sia-r\${match[1]}\`;
+      const siaKey = `alfa:sia-r${match[1]}`;
       if (ruleMapping[siaKey]) return ruleMapping[siaKey];
     }
   }

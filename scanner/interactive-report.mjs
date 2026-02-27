@@ -7,6 +7,9 @@ export function generateInteractiveHtml(summary) {
 
   const rolesList = Object.values(ROLES);
   const severitiesList = Object.values(SEVERITY);
+  
+  // Calculate total issues once
+  const totalIssues = consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0);
 
   const ruleCardsHtml = consolidatedFailures.map(f => {
     const ruleInfo = f.engine === 'alfa' ? formatAlfaRule(f.rule) : { id: f.rule, description: f.metadata.description };
@@ -14,63 +17,63 @@ export function generateInteractiveHtml(summary) {
     const displayDesc = ruleInfo.description || "";
     const rolesData = JSON.stringify(f.metadata.roles);
     
-    return \`
+    return `
       <details class="rule-card" 
-               data-roles='\${rolesData}' 
-               data-severity="\${f.metadata.severity}"
-               data-search="\${(displayId + " " + displayDesc).toLowerCase()}">
+               data-roles='${rolesData}' 
+               data-severity="${f.metadata.severity}"
+               data-search="${(displayId + " " + displayDesc).toLowerCase()}">
         <summary>
           <div class="rule-summary-info">
-            <span class="badge badge-count">\${f.totalOccurrences}</span>
-            <span class="badge badge-severity severity-\${f.metadata.severity}">\${f.metadata.severity}</span>
-            <span><strong>\${displayId}</strong>: \${displayDesc}</span>
+            <span class="badge badge-count">${f.totalOccurrences}</span>
+            <span class="badge badge-severity severity-${f.metadata.severity}">${f.metadata.severity}</span>
+            <span><strong>${displayId}</strong>: ${displayDesc}</span>
           </div>
           <div style="color: #57606a; font-size: 0.8rem;">
-            \${f.pages.size} pages affected
+            ${f.pages.size} pages affected
           </div>
         </summary>
         <div class="rule-content">
           <div class="rule-details">
             <div>
               <h4>Rule Information</h4>
-              <p><strong>Engine:</strong> \${f.engine}</p>
-              <p><strong>Roles:</strong> \${f.metadata.roles.join(', ')}</p>
-              <p><strong>Blocking:</strong> \${f.metadata.blocking ? '⚠️ Yes (Task-Blocking)' : 'No'}</p>
+              <p><strong>Engine:</strong> ${f.engine}</p>
+              <p><strong>Roles:</strong> ${f.metadata.roles.join(', ')}</p>
+              <p><strong>Blocking:</strong> ${f.metadata.blocking ? '⚠️ Yes (Task-Blocking)' : 'No'}</p>
             </div>
             <div>
               <h4>Affected Pages</h4>
               <ul style="max-height: 150px; overflow-y: auto; font-size: 0.85rem;">
-                \${Array.from(f.pages.entries()).map(([url, count]) => \`
-                  <li><a href="\${url}" target="_blank">\${url}</a> (\${count} occurrences)</li>
-                \`).join('')}
+                ${Array.from(f.pages.entries()).map(([url, count]) => `
+                  <li><a href="${url}" target="_blank">${url}</a> (${count} occurrences)</li>
+                `).join('')}
               </ul>
             </div>
           </div>
           <h4>Examples</h4>
           <div class="example-list">
-            \${f.examples.map((ex, i) => \`
+            ${f.examples.map((ex, i) => `
               <div class="example-item">
                 <div class="example-meta">
-                  <span>Example \${i+1}</span>
-                  <a href="\${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
+                  <span>Example ${i+1}</span>
+                  <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
                 </div>
-                \${ex.message ? \`<div style="margin-bottom: 0.5rem; font-weight: 600;">\${ex.message}</div>\` : ''}
-                \${ex.html ? \`<div style="color: #0550ae;">\${escapeHtml(ex.html)}</div>\` : ''}
-                \${ex.xpath ? \`<div style="color: #663399; margin-top: 0.5rem;">XPath: \${ex.xpath}</div>\` : ''}
+                ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${ex.message}</div>` : ''}
+                ${ex.html ? `<div style="color: #0550ae;">${escapeHtml(ex.html)}</div>` : ''}
+                ${ex.xpath ? `<div style="color: #663399; margin-top: 0.5rem;">XPath: ${ex.xpath}</div>` : ''}
               </div>
-            \`).join('')}
+            `).join('')}
           </div>
         </div>
       </details>
-    \`;
+    `;
   }).join('');
 
-  return \`<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Report: \${scanTitle || \`Issue #\${issueNumber}\`}</title>
+  <title>Accessibility Report: ${scanTitle || `Issue #${issueNumber}`}</title>
   <style>
     :root {
       --primary: #0969da;
@@ -113,6 +116,8 @@ export function generateInteractiveHtml(summary) {
       border-bottom: 2px solid transparent;
       font-weight: 500;
     }
+    .nav-item:hover { background: #f0f0f0; }
+    .nav-item:focus { outline: 2px solid var(--primary); outline-offset: -2px; }
     .nav-item.active { border-bottom-color: var(--primary); color: var(--primary); }
 
     .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
@@ -133,6 +138,7 @@ export function generateInteractiveHtml(summary) {
 
     .filters { margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
     select, input { padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; }
+    select:focus, input:focus { outline: 2px solid var(--primary); outline-offset: 2px; border-color: var(--primary); }
 
     .rule-list { display: flex; flex-direction: column; gap: 1rem; }
     details { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
@@ -146,6 +152,7 @@ export function generateInteractiveHtml(summary) {
       align-items: center; 
     }
     summary:hover { background: #f0f0f0; }
+    summary:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
     summary::-webkit-details-marker { display: none; }
     .rule-summary-info { display: flex; align-items: center; gap: 1rem; }
     .badge { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
@@ -168,6 +175,7 @@ export function generateInteractiveHtml(summary) {
     .example-meta { font-family: sans-serif; font-weight: 600; margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
 
     .hidden { display: none !important; }
+    .visually-hidden { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
     @media print {
       body::before {
@@ -192,74 +200,79 @@ export function generateInteractiveHtml(summary) {
     <header>
       <h1>Accessibility Scan Report</h1>
       <div class="meta">
-        <span><strong>Title:</strong> \${scanTitle || \`Issue #\${issueNumber}\`}</span>
-        <span><strong>Issue:</strong> <a href="\${issueUrl}" target="_blank">#\${issueNumber}</a></span>
-        <span><strong>Date:</strong> \${new Date(scannedAt).toLocaleString()}</span>
-        <span><strong>Duration:</strong> \${(totalElapsedMs / 60000).toFixed(1)}m</span>
-        <span><strong>URLs:</strong> \${acceptedCount} / \${totalSubmitted}</span>
+        <span><strong>Title:</strong> ${scanTitle || `Issue #${issueNumber}`}</span>
+        <span><strong>Issue:</strong> <a href="${issueUrl}" target="_blank">#${issueNumber}</a></span>
+        <span><strong>Date:</strong> ${new Date(scannedAt).toLocaleString()}</span>
+        <span><strong>Duration:</strong> ${(totalElapsedMs / 60000).toFixed(1)}m</span>
+        <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
       </div>
     </header>
 
     <div class="dashboard">
       <div class="card">
         <h3>Total Issues</h3>
-        <div class="stat">\${consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0)}</div>
-        <p>Across \${consolidatedFailures.length} unique rules</p>
+        <div class="stat" aria-label="${totalIssues} total issues">${totalIssues}</div>
+        <p>Across ${consolidatedFailures.length} unique rules</p>
       </div>
       <div class="card">
         <h3>By Severity</h3>
-        <div class="bar-chart">
-          \${severitiesList.map(s => {
+        <div class="bar-chart" role="list" aria-label="Issues by severity">
+          ${severitiesList.map(s => {
             const count = severityStats[s] || 0;
             const max = Math.max(...Object.values(severityStats), 1);
             const percent = (count / max) * 100;
-            return \`
-              <div class="bar-item">
-                <span class="bar-label severity-\${s}">\${s}</span>
-                <div class="bar-container"><div class="bar-fill" style="width: \${percent}%; background-color: var(--\${s.toLowerCase()})"></div></div>
-                <span>\${count}</span>
+            return `
+              <div class="bar-item" role="listitem">
+                <span class="bar-label severity-${s}">${s}</span>
+                <div class="bar-container" role="img" aria-label="${s}: ${count} issues, ${percent.toFixed(0)}% of maximum"><div class="bar-fill" style="width: ${percent}%; background-color: var(--${s.toLowerCase()})"></div></div>
+                <span aria-hidden="true">${count}</span>
               </div>
-            \`;
+            `;
           }).join('')}
         </div>
       </div>
       <div class="card">
         <h3>By Role</h3>
-        <div class="bar-chart">
-          \${rolesList.map(r => {
+        <div class="bar-chart" role="list" aria-label="Issues by role">
+          ${rolesList.map(r => {
             const count = roleStats[r] || 0;
             const max = Math.max(...Object.values(roleStats), 1);
             const percent = (count / max) * 100;
-            return \`
-              <div class="bar-item">
-                <span class="bar-label">\${r}</span>
-                <div class="bar-container"><div class="bar-fill" style="width: \${percent}%"></div></div>
-                <span>\${count}</span>
+            return `
+              <div class="bar-item" role="listitem">
+                <span class="bar-label">${r}</span>
+                <div class="bar-container" role="img" aria-label="${r}: ${count} issues, ${percent.toFixed(0)}% of maximum"><div class="bar-fill" style="width: ${percent}%"></div></div>
+                <span aria-hidden="true">${count}</span>
               </div>
-            \`;
+            `;
           }).join('')}
         </div>
       </div>
     </div>
 
-    <div class="nav" id="roleTabs">
-      <div class="nav-item active" data-role="all">All Issues</div>
-      \${rolesList.map(r => \`<div class="nav-item" data-role="\${r}">\${r}</div>\`).join('')}
+    <h2 id="filters-heading" class="visually-hidden">Filter Issues</h2>
+
+    <div class="nav" role="tablist" aria-labelledby="filters-heading" id="roleTabs">
+      <button class="nav-item active" role="tab" aria-selected="true" aria-controls="ruleList" data-role="all" tabindex="0">All Issues</button>
+      ${rolesList.map((r, i) => `<button class="nav-item" role="tab" aria-selected="false" aria-controls="ruleList" data-role="${r}" tabindex="-1">${r}</button>`).join('')}
     </div>
 
     <div class="filters">
       <label for="severityFilter">Severity:</label>
-      <select id="severityFilter">
+      <select id="severityFilter" aria-label="Filter by severity">
         <option value="all">All Severities</option>
-        \${severitiesList.map(s => \`<option value="\${s}">\${s}</option>\`).join('')}
+        ${severitiesList.map(s => `<option value="${s}">${s}</option>`).join('')}
       </select>
       
       <label for="search">Search:</label>
-      <input type="text" id="search" placeholder="Filter by rule or description...">
+      <input type="text" id="search" placeholder="Filter by rule or description..." aria-label="Search rules and descriptions">
     </div>
 
-    <div class="rule-list" id="ruleList">
-      \${ruleCardsHtml}
+    <!-- Screen reader announcement for filter results -->
+    <div id="filter-announcement" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+
+    <div class="rule-list" id="ruleList" role="tabpanel" aria-atomic="false">
+      ${ruleCardsHtml}
     </div>
   </div>
 
@@ -268,6 +281,7 @@ export function generateInteractiveHtml(summary) {
     const severityFilter = document.getElementById('severityFilter');
     const searchInput = document.getElementById('search');
     const ruleCards = document.querySelectorAll('.rule-card');
+    const tabs = roleTabs.querySelectorAll('[role="tab"]');
 
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -276,10 +290,11 @@ export function generateInteractiveHtml(summary) {
     }
 
     function filterRules() {
-      const activeRole = roleTabs.querySelector('.active').dataset.role;
+      const activeRole = roleTabs.querySelector('[aria-selected="true"]').dataset.role;
       const activeSeverity = severityFilter.value;
       const searchTerm = searchInput.value.toLowerCase();
 
+      let visibleCount = 0;
       ruleCards.forEach(card => {
         const roles = JSON.parse(card.dataset.roles);
         const severity = card.dataset.severity;
@@ -291,17 +306,71 @@ export function generateInteractiveHtml(summary) {
 
         if (roleMatch && severityMatch && searchMatch) {
           card.classList.remove('hidden');
+          visibleCount++;
         } else {
           card.classList.add('hidden');
         }
       });
+      
+      // Announce result count to screen readers
+      const announcement = document.getElementById('filter-announcement');
+      if (announcement) {
+        announcement.textContent = visibleCount + ' rule' + (visibleCount !== 1 ? 's' : '') + ' shown';
+      }
+    }
+
+    function activateTab(tab) {
+      // Deactivate all tabs
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
+      
+      // Activate selected tab
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+      tab.focus();
+      
+      filterRules();
     }
 
     roleTabs.addEventListener('click', (e) => {
-      if (e.target.classList.contains('nav-item')) {
-        roleTabs.querySelectorAll('.nav-item').forEach(t => t.classList.remove('active'));
-        e.target.classList.add('active');
-        filterRules();
+      if (e.target.getAttribute('role') === 'tab') {
+        activateTab(e.target);
+      }
+    });
+
+    roleTabs.addEventListener('keydown', (e) => {
+      const currentTab = e.target;
+      if (currentTab.getAttribute('role') !== 'tab') return;
+      
+      const tabArray = Array.from(tabs);
+      const currentIndex = tabArray.indexOf(currentTab);
+      let nextIndex;
+
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          e.preventDefault();
+          nextIndex = (currentIndex + 1) % tabArray.length;
+          activateTab(tabArray[nextIndex]);
+          break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          e.preventDefault();
+          nextIndex = (currentIndex - 1 + tabArray.length) % tabArray.length;
+          activateTab(tabArray[nextIndex]);
+          break;
+        case 'Home':
+          e.preventDefault();
+          activateTab(tabArray[0]);
+          break;
+        case 'End':
+          e.preventDefault();
+          activateTab(tabArray[tabArray.length - 1]);
+          break;
       }
     });
 
@@ -309,7 +378,7 @@ export function generateInteractiveHtml(summary) {
     searchInput.addEventListener('input', filterRules);
   </script>
 </body>
-</html>\`;
+</html>`;
 
   function escapeHtml(text) {
     return String(text ?? "")
