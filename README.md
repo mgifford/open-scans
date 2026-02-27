@@ -13,7 +13,7 @@ Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Acti
 
 ### Quick Start: Submit Your Scan in 5 Minutes
 
-1. **Prepare your URLs**: Gather a list of web pages you want to scan for accessibility issues (up to 100 URLs per scan)
+1. **Prepare your URLs**: Gather a list of web pages you want to scan for accessibility issues (recommended: 100-150 URLs per scan)
 2. **Submit your scan**: Go to [https://mgifford.github.io/alfa-scan/](https://mgifford.github.io/alfa-scan/)
    - Enter a descriptive title for your scan
    - Paste your URLs (one per line or comma-separated)
@@ -49,7 +49,7 @@ The form validates URLs in real-time and blocks:
 - Link-local addresses (169.254.x.x)
 - Private IPv6 addresses
 
-**Note**: For large sites with many URLs, consider splitting into batches of 100-150 URLs per scan to avoid timeout issues.
+**Note**: The form accepts up to 500 URLs, but for best results, split large scans into batches of 100-150 URLs to avoid timeout issues.
 
 ### View Scan Results
 
@@ -63,12 +63,12 @@ Visit the [Reports page](https://mgifford.github.io/alfa-scan/reports.html) to s
 ### Troubleshooting
 
 **Scan not appearing after 30-60 minutes?**
-- Check the [GitHub Actions tab](https://github.com/mgifford/alfa-scan/actions) for any errors
+- [View workflow history in GitHub Actions](https://github.com/mgifford/alfa-scan/actions) to check for errors
 - Look for your scan issue number in the workflow runs
 - Common issues include invalid URLs or network timeouts
 
 **Need help?**
-- Review workflow logs in the GitHub Actions tab for detailed error messages
+- Review [workflow run logs in GitHub Actions](https://github.com/mgifford/alfa-scan/actions) for detailed error messages
 - Check that your URLs are publicly accessible
 - Ensure URLs don't include localhost or private IP addresses
 
