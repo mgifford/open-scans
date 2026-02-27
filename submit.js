@@ -145,7 +145,8 @@ export async function createGitHubIssue(scanTitle, urls) {
   // Since we can't make authenticated API calls from client-side JavaScript,
   // we'll redirect to GitHub's issue creation URL with pre-filled data
   
-  const issueTitle = `SCAN: ${scanTitle}`;
+  // Prepend "SCAN: " if not already present
+  const issueTitle = scanTitle.startsWith('SCAN: ') ? scanTitle : `SCAN: ${scanTitle}`;
   const issueBody = formatIssueBody(scanTitle, urls);
   
   // Encode the issue title and body for URL

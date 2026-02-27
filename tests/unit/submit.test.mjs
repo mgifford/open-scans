@@ -172,8 +172,7 @@ test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', a
   };
   
   try {
-    // If a user accidentally types "SCAN: " themselves, it will be prepended again
-    // This documents current behavior - we prepend regardless
+    // If a user accidentally types "SCAN: " themselves, we should not prepend it again
     const scanTitle = 'SCAN: My Scan';
     const urls = ['https://example.com'];
     
@@ -182,8 +181,9 @@ test('createGitHubIssue does not double-prepend "SCAN: " if user includes it', a
     const urlObj = new URL(githubUrl);
     const titleParam = urlObj.searchParams.get('title');
     
-    // Current behavior: will result in "SCAN: SCAN: My Scan"
-    assert.strictEqual(titleParam, 'SCAN: SCAN: My Scan');
+    // Should NOT result in "SCAN: SCAN: My Scan" - just "SCAN: My Scan"
+    assert.strictEqual(titleParam, 'SCAN: My Scan');
+    assert.ok(!titleParam.includes('SCAN: SCAN:'));
   } finally {
     global.window = originalWindow;
   }
