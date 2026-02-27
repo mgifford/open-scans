@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-02-27T14:03:06.236Z",
+  "issueNumber": 28,
+  "scanTitle": "USA Cities over 100k",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 2255,
+      "uniqueFailed": 2255,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 16058,
+      "uniqueFailed": 16058,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 13737,
+      "uniqueFailed": 10590,
+      "duplicates": 3147
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 3127,
+      "uniqueFailed": 3031,
+      "duplicates": 96
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 2190,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 2832,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 10324,
+      "accesslint": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 2997
+    }
+  },
+  "duplicateFindingTotals": 16424,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
