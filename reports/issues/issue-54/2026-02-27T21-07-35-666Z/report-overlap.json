@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-02-27T21:06:46.101Z",
+  "issueNumber": 54,
+  "scanTitle": "Nova Scotia",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 9,
+      "uniqueFailed": 9,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 294,
+      "uniqueFailed": 294,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 124,
+      "uniqueFailed": 104,
+      "duplicates": 20
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 9,
+      "uniqueFailed": 9,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 9,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 32,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 104,
+      "accesslint": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 9
+    }
+  },
+  "duplicateFindingTotals": 282,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
