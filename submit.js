@@ -3,6 +3,10 @@
  * Parses URLs, validates them, and creates GitHub issues for scanning
  */
 
+// Regex to match any case variation of "scan:" prefix with zero or more spaces
+// Intentionally uses \s* to handle spaces, tabs, and other whitespace that users might accidentally include
+const SCAN_PREFIX_REGEX = /^scan:\s*/i;
+
 // Parse URLs from text input (supports line-by-line and CSV formats)
 export function parseUrls(rawText) {
   return rawText
@@ -145,7 +149,9 @@ export async function createGitHubIssue(scanTitle, urls) {
   // Since we can't make authenticated API calls from client-side JavaScript,
   // we'll redirect to GitHub's issue creation URL with pre-filled data
   
-  const issueTitle = `SCAN: ${scanTitle}`;
+  // Prepend "SCAN: " and normalize any existing prefix (case-insensitive)
+  // replace() returns the original string if pattern doesn't match
+  const issueTitle = `SCAN: ${scanTitle.replace(SCAN_PREFIX_REGEX, '')}`;
   const issueBody = formatIssueBody(scanTitle, urls);
   
   // Encode the issue title and body for URL
@@ -279,9 +285,11 @@ function initForm() {
   });
 }
 
-// Initialize when DOM is ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initForm);
-} else {
-  initForm();
+// Initialize when DOM is ready (only in browser, not during testing)
+if (typeof document !== 'undefined') {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initForm);
+  } else {
+    initForm();
+  }
 }
