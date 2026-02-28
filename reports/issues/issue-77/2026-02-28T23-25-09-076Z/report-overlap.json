@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-02-28T23:24:31.868Z",
+  "issueNumber": 77,
+  "scanTitle": "Estonia valitsus.ee",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1660,
+      "uniqueFailed": 1660,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4824,
+      "uniqueFailed": 4824,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 9652,
+      "uniqueFailed": 6029,
+      "duplicates": 3623
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 1019,
+      "uniqueFailed": 1011,
+      "duplicates": 8
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 1216,
+      "uniqueFailed": 1216,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1660,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 2412,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 6029,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 1011,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 244
+    }
+  },
+  "duplicateFindingTotals": 7015,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
