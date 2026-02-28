@@ -1419,7 +1419,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   // Add engine information
   if (summary.engines && Array.isArray(summary.engines)) {
     const engineDisplay = summary.engines.includes("all") 
-      ? "All engines (AXE, ALFA, Equal Access, AccessLint)" 
+      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)" 
       : summary.engines.map(e => e.toUpperCase()).join(", ");
     lines.push(`- Engines used: ${engineDisplay}`);
   }
@@ -1450,6 +1450,9 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.accesslintTotals) {
     lines.push(`- AccessLint outcomes: ${summary.accesslintTotals.passed} passed, ${summary.accesslintTotals.failed} failed (${summary.accesslintTotals.uniqueFailed} unique, ${summary.accesslintTotals.duplicates} duplicate), ${summary.accesslintTotals.cantTell} cantTell, ${summary.accesslintTotals.inapplicable} inapplicable`);
   }
+  if (summary.qualwebTotals) {
+    lines.push(`- QualWeb outcomes: ${summary.qualwebTotals.passed} passed, ${summary.qualwebTotals.failed} failed, ${summary.qualwebTotals.cantTell} cantTell, ${summary.qualwebTotals.inapplicable} inapplicable`);
+  }
   if (summary.duplicateFindingTotals !== undefined) {
     lines.push(`- Duplicate findings caught by later scanners: ${summary.duplicateFindingTotals}`);
   }
@@ -1462,23 +1465,24 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   
   const pagesByErrorCount = [...summary.results]
-    .filter(r => ((r.axe.uniqueFailedCount ?? r.axe.counts.failed) + (r.alfa.uniqueFailedCount ?? r.alfa.counts.failed) + (r.equalAccess?.uniqueFailedCount ?? r.equalAccess?.counts?.failed ?? 0) + (r.accesslint?.uniqueFailedCount ?? r.accesslint?.counts?.failed ?? 0)) > 0)
+    .filter(r => ((r.axe.uniqueFailedCount ?? r.axe.counts.failed) + (r.alfa.uniqueFailedCount ?? r.alfa.counts.failed) + (r.equalAccess?.uniqueFailedCount ?? r.equalAccess?.counts?.failed ?? 0) + (r.accesslint?.uniqueFailedCount ?? r.accesslint?.counts?.failed ?? 0) + (r.qualweb?.counts?.failed ?? 0)) > 0)
     .sort((a, b) => 
-      ((b.axe.uniqueFailedCount ?? b.axe.counts.failed) + (b.alfa.uniqueFailedCount ?? b.alfa.counts.failed) + (b.equalAccess?.uniqueFailedCount ?? b.equalAccess?.counts?.failed ?? 0) + (b.accesslint?.uniqueFailedCount ?? b.accesslint?.counts?.failed ?? 0)) -
-      ((a.axe.uniqueFailedCount ?? a.axe.counts.failed) + (a.alfa.uniqueFailedCount ?? a.alfa.counts.failed) + (a.equalAccess?.uniqueFailedCount ?? a.equalAccess?.counts?.failed ?? 0) + (a.accesslint?.uniqueFailedCount ?? a.accesslint?.counts?.failed ?? 0))
+      ((b.axe.uniqueFailedCount ?? b.axe.counts.failed) + (b.alfa.uniqueFailedCount ?? b.alfa.counts.failed) + (b.equalAccess?.uniqueFailedCount ?? b.equalAccess?.counts?.failed ?? 0) + (b.accesslint?.uniqueFailedCount ?? b.accesslint?.counts?.failed ?? 0) + (b.qualweb?.counts?.failed ?? 0)) -
+      ((a.axe.uniqueFailedCount ?? a.axe.counts.failed) + (a.alfa.uniqueFailedCount ?? a.alfa.counts.failed) + (a.equalAccess?.uniqueFailedCount ?? a.equalAccess?.counts?.failed ?? 0) + (a.accesslint?.uniqueFailedCount ?? a.accesslint?.counts?.failed ?? 0) + (a.qualweb?.counts?.failed ?? 0))
     )
     .slice(0, 10);
   
   if (pagesByErrorCount.length > 0) {
-    lines.push("| Page | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | Total Unique | Page Title |");
-    lines.push("|---|---:|---:|---:|---:|---:|---|");
+    lines.push("| Page | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | QualWeb | Total Unique | Page Title |");
+    lines.push("|---|---:|---:|---:|---:|---:|---:|---|");
     for (const result of pagesByErrorCount) {
       const axeUnique = result.axe.uniqueFailedCount ?? result.axe.counts.failed;
       const alfaUnique = result.alfa.uniqueFailedCount ?? result.alfa.counts.failed;
       const equalAccessUnique = result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
       const accesslintUnique = result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
-      const totalFailed = axeUnique + alfaUnique + equalAccessUnique + accesslintUnique;
-      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${axeUnique} | ${alfaUnique} | ${equalAccessUnique} | ${accesslintUnique} | **${totalFailed}** | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+      const qualwebFailed = result.qualweb?.counts?.failed ?? 0;
+      const totalFailed = axeUnique + alfaUnique + equalAccessUnique + accesslintUnique + qualwebFailed;
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${axeUnique} | ${alfaUnique} | ${equalAccessUnique} | ${accesslintUnique} | ${qualwebFailed} | **${totalFailed}** | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
     }
   } else {
     lines.push("✅ No pages with accessibility errors detected!");
@@ -2230,6 +2234,13 @@ async function main() {
     inapplicable: 0
   };
 
+  const qualwebTotals = {
+    passed: 0,
+    failed: 0,
+    cantTell: 0,
+    inapplicable: 0
+  };
+
   let duplicateFindingTotals = 0;
 
   for (const result of results) {
@@ -2256,6 +2267,11 @@ async function main() {
     accesslintTotals.duplicates += result.accesslint.duplicateFailedCount ?? 0;
     accesslintTotals.cantTell += result.accesslint.counts.cantTell;
     accesslintTotals.inapplicable += result.accesslint.counts.inapplicable;
+
+    qualwebTotals.passed += result.qualweb?.counts?.passed ?? 0;
+    qualwebTotals.failed += result.qualweb?.counts?.failed ?? 0;
+    qualwebTotals.cantTell += result.qualweb?.counts?.cantTell ?? 0;
+    qualwebTotals.inapplicable += result.qualweb?.counts?.inapplicable ?? 0;
 
     duplicateFindingTotals += result.duplicateFindingCount ?? 0;
   }
@@ -2288,6 +2304,7 @@ async function main() {
     axeTotals,
     equalAccessTotals,
     accesslintTotals,
+    qualwebTotals,
     duplicateFindingTotals,
     results,
     enhanced: enhancedData
