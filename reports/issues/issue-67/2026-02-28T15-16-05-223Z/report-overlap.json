@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-02-28T15:15:19.317Z",
+  "issueNumber": 67,
+  "scanTitle": "Colorado.gov",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 49,
+      "uniqueFailed": 49,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 705,
+      "uniqueFailed": 705,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 505,
+      "uniqueFailed": 470,
+      "duplicates": 35
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 65,
+      "uniqueFailed": 65,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 49,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 136,
+      "equalAccess": 0,
+      "accesslint": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 470,
+      "accesslint": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 65
+    }
+  },
+  "duplicateFindingTotals": 604,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
