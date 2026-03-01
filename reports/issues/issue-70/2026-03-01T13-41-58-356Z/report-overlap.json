@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-01T13:41:09.642Z",
+  "issueNumber": 70,
+  "scanTitle": "Italy",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 588,
+      "uniqueFailed": 588,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 6219,
+      "uniqueFailed": 6219,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 2728,
+      "uniqueFailed": 2288,
+      "duplicates": 440
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 809,
+      "uniqueFailed": 809,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 2579,
+      "uniqueFailed": 2579,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 577,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1079,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 2248,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 797,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 214
+    }
+  },
+  "duplicateFindingTotals": 7921,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
