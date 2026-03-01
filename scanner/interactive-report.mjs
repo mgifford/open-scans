@@ -7,7 +7,7 @@ export function generateInteractiveHtml(summary) {
 
   const rolesList = Object.values(ROLES);
   const severitiesList = Object.values(SEVERITY);
-  
+
   // Calculate total issues once
   const totalIssues = consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0);
 
@@ -16,7 +16,7 @@ export function generateInteractiveHtml(summary) {
     const displayId = ruleInfo.id;
     const displayDesc = ruleInfo.description || "";
     const rolesData = JSON.stringify(f.metadata.roles);
-    
+
     return `
       <details class="rule-card" 
                data-roles='${rolesData}' 
@@ -54,10 +54,13 @@ export function generateInteractiveHtml(summary) {
             ${f.examples.map((ex, i) => `
               <div class="example-item">
                 <div class="example-meta">
-                  <span>Example ${i+1}</span>
+                  <span>Example ${i + 1}</span>
                   <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
                 </div>
                 ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${ex.message}</div>` : ''}
+                <div style="font-size: 0.75rem; color: #57606a; margin-bottom: 0.5rem;">
+                  <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
+                </div>
                 ${ex.html ? `<div style="color: #0550ae;">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div style="color: #663399; margin-top: 0.5rem;">XPath: ${ex.xpath}</div>` : ''}
               </div>
@@ -158,6 +161,8 @@ export function generateInteractiveHtml(summary) {
     .badge { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
     .badge-severity { background: #eee; }
     .badge-count { background: var(--primary); color: white; }
+    .badge-light { background: #fff; border: 1px solid var(--border); color: #24292f; }
+    .badge-dark { background: #24292f; color: #fff; }
     
     .rule-content { padding: 1.5rem; border-top: 1px solid var(--border); }
     .rule-details { margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -218,34 +223,34 @@ export function generateInteractiveHtml(summary) {
         <h3>By Severity</h3>
         <div class="bar-chart" role="list" aria-label="Issues by severity">
           ${severitiesList.map(s => {
-            const count = severityStats[s] || 0;
-            const max = Math.max(...Object.values(severityStats), 1);
-            const percent = (count / max) * 100;
-            return `
+    const count = severityStats[s] || 0;
+    const max = Math.max(...Object.values(severityStats), 1);
+    const percent = (count / max) * 100;
+    return `
               <div class="bar-item" role="listitem">
                 <span class="bar-label severity-${s}">${s}</span>
                 <div class="bar-container" role="img" aria-label="${s}: ${count} issues, ${percent.toFixed(0)}% of maximum"><div class="bar-fill" style="width: ${percent}%; background-color: var(--${s.toLowerCase()})"></div></div>
                 <span aria-hidden="true">${count}</span>
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       </div>
       <div class="card">
         <h3>By Role</h3>
         <div class="bar-chart" role="list" aria-label="Issues by role">
           ${rolesList.map(r => {
-            const count = roleStats[r] || 0;
-            const max = Math.max(...Object.values(roleStats), 1);
-            const percent = (count / max) * 100;
-            return `
+    const count = roleStats[r] || 0;
+    const max = Math.max(...Object.values(roleStats), 1);
+    const percent = (count / max) * 100;
+    return `
               <div class="bar-item" role="listitem">
                 <span class="bar-label">${r}</span>
                 <div class="bar-container" role="img" aria-label="${r}: ${count} issues, ${percent.toFixed(0)}% of maximum"><div class="bar-fill" style="width: ${percent}%"></div></div>
                 <span aria-hidden="true">${count}</span>
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       </div>
     </div>

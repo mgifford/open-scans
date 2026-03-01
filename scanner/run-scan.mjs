@@ -29,7 +29,7 @@ export function determineScannersToRun(engines) {
       runQualWeb: true
     };
   }
-  
+
   // Map engine names to scanner flags
   return {
     runAxe: engines.includes("axe"),
@@ -46,22 +46,22 @@ export function determineScannersToRun(engines) {
 const TIMEOUTS = {
   // Maximum time for initial HTTP fetch (default: 30s)
   FETCH_TIMEOUT: parseInt(process.env.FETCH_TIMEOUT_MS || "30000", 10),
-  
+
   // Maximum time for a single URL scan including fetch and all audits (default: 60s)
   PER_URL_TIMEOUT: parseInt(process.env.PER_URL_TIMEOUT_MS || "60000", 10),
-  
+
   // Maximum total time for the entire scan (default: 50 minutes to stay under 1 hour)
   TOTAL_SCAN_TIMEOUT: parseInt(process.env.TOTAL_SCAN_TIMEOUT_MS || "3000000", 10),
-  
+
   // ALFA CLI page load timeout (default: 30s)
   ALFA_PAGE_TIMEOUT: parseInt(process.env.ALFA_PAGE_TIMEOUT_MS || "30000", 10),
-  
+
   // ALFA command execution timeout (default: 3 minutes)
   ALFA_COMMAND_TIMEOUT: parseInt(process.env.ALFA_COMMAND_TIMEOUT_MS || "180000", 10),
-  
+
   // Playwright/Puppeteer page navigation timeout (default: 30s)
   BROWSER_NAV_TIMEOUT: parseInt(process.env.BROWSER_NAV_TIMEOUT_MS || process.env.PLAYWRIGHT_NAV_TIMEOUT_MS || "30000", 10),
-  
+
   // Playwright browser launch timeout (default: 30s)
   PLAYWRIGHT_LAUNCH_TIMEOUT: parseInt(process.env.PLAYWRIGHT_LAUNCH_TIMEOUT_MS || "30000", 10)
 };
@@ -79,7 +79,7 @@ async function loadAxeDependencies() {
     try {
       playwright = await import("playwright");
       axePlaywright = await import("@axe-core/playwright");
-      
+
       // Get axe-core version from package.json
       try {
         const axeCorePackageJson = JSON.parse(
@@ -202,15 +202,15 @@ function extractXPath(element) {
   if (!element || element.type !== "element") {
     return null;
   }
-  
+
   // Build XPath with parent hierarchy and element position for unique identification
   const pathSegments = [];
   let current = element;
-  
+
   while (current && current.type === "element") {
     const name = current.name || "unknown";
     let segment = name;
-    
+
     // Add id attribute if present for more specific identification
     const id = getAttributeValue(current, "id");
     if (id) {
@@ -221,18 +221,18 @@ function extractXPath(element) {
       if (position !== null) {
         segment += `[${position}]`;
       }
-      
+
       // Add class attribute if present and no id
       const className = getAttributeValue(current, "class");
       if (className) {
         segment += `[@class="${escapeXPathValue(className)}"]`;
       }
     }
-    
+
     pathSegments.unshift(segment);
     current = current.parent;
   }
-  
+
   return pathSegments.length > 0 ? "/" + pathSegments.join("/") : null;
 }
 
@@ -240,13 +240,13 @@ function getAttributeValue(element, attrName) {
   if (!element || !Array.isArray(element.attributes)) {
     return null;
   }
-  
+
   for (const attr of element.attributes) {
     if (attr && attr.name === attrName && attr.value !== undefined) {
       return attr.value;
     }
   }
-  
+
   return null;
 }
 
@@ -256,10 +256,10 @@ function getElementPosition(element) {
   if (!parent || !Array.isArray(parent.children)) {
     return null;
   }
-  
+
   const elementName = element.name;
   let position = 1;
-  
+
   for (const sibling of parent.children) {
     if (sibling === element) {
       return position;
@@ -268,7 +268,7 @@ function getElementPosition(element) {
       position++;
     }
   }
-  
+
   return null;
 }
 
@@ -281,7 +281,7 @@ function extractHtmlSnippet(target) {
   if (!target || target.type !== "element") {
     return null;
   }
-  
+
   const attrs = [];
   if (Array.isArray(target.attributes)) {
     for (const attr of target.attributes) {
@@ -290,21 +290,21 @@ function extractHtmlSnippet(target) {
       }
     }
   }
-  
+
   const attrStr = attrs.length > 0 ? " " + attrs.join(" ") : "";
   const hasChildren = Array.isArray(target.children) && target.children.length > 0;
-  
+
   if (!hasChildren) {
     return `<${target.name}${attrStr} />`;
   }
-  
+
   // For elements with text content, show it
   if (target.children.length === 1 && target.children[0].type === "text") {
     const text = target.children[0].data || "";
     const truncated = text.length > 50 ? text.substring(0, 50) + "..." : text;
     return `<${target.name}${attrStr}>${truncated}</${target.name}>`;
   }
-  
+
   return `<${target.name}${attrStr}>...</${target.name}>`;
 }
 
@@ -312,7 +312,7 @@ function extractFailureMessage(expectations) {
   if (!Array.isArray(expectations) || expectations.length === 0) {
     return null;
   }
-  
+
   for (const expectation of expectations) {
     if (Array.isArray(expectation) && expectation.length >= 2) {
       const result = expectation[1];
@@ -321,7 +321,7 @@ function extractFailureMessage(expectations) {
       }
     }
   }
-  
+
   return null;
 }
 
@@ -362,16 +362,18 @@ function normalizeRuleKey(failure) {
     .replace(/\s+/g, " ")
     .slice(0, 120);
 
+  const colorScheme = failure.colorScheme || "light";
+
   if (actRule) {
-    return `act:${actRule}`;
+    return `act:${actRule}|${colorScheme}`;
   }
   if (wcagSc) {
-    return `wcag:${wcagSc}`;
+    return `wcag:${wcagSc}|${colorScheme}`;
   }
   if (rule) {
-    return `rule:${rule}`;
+    return `rule:${rule}|${colorScheme}`;
   }
-  return `msg:${message || "unknown"}`;
+  return `msg:${message || "unknown"}|${colorScheme}`;
 }
 
 function addDuplicateMetadata(result) {
@@ -481,7 +483,7 @@ async function runAlfaAudit(url) {
       counts.failed += 1;
       const ruleUri = normalizeRuleReference(outcome.rule);
       failedRules.add(ruleUri);
-      
+
       // Capture detailed failure information
       failures.push({
         rule: ruleUri,
@@ -513,12 +515,47 @@ async function runAlfaAudit(url) {
   };
 }
 
-async function runAxeAudit(url) {
+async function isDarkModeSupported(page) {
+  try {
+    // Check if the page has any dark mode media queries
+    const hasDarkMediaQuery = await page.evaluate(() => {
+      return Array.from(document.styleSheets).some(sheet => {
+        try {
+          return Array.from(sheet.cssRules).some(rule =>
+            rule.media && rule.media.mediaText.includes('prefers-color-scheme: dark')
+          );
+        } catch {
+          return false;
+        }
+      });
+    });
+
+    if (hasDarkMediaQuery) return true;
+
+    // Fallback: Emulate dark mode and check if anything changed (bg color)
+    const getBg = () => window.getComputedStyle(document.body).backgroundColor;
+    const initialBg = await page.evaluate(getBg);
+
+    await page.emulateMedia({ colorScheme: 'dark' });
+    // Wait a bit for potential transitions
+    await page.waitForTimeout(500);
+    const darkBg = await page.evaluate(getBg);
+
+    // Reset to light for now
+    await page.emulateMedia({ colorScheme: 'light' });
+
+    return initialBg !== darkBg;
+  } catch {
+    return false;
+  }
+}
+
+export async function runAxeAudit(url) {
   const base = createScannerBaseError(null);
 
   try {
     const { playwright: pw, axePlaywright: axe } = await loadAxeDependencies();
-    
+
     if (!pw || !axe) {
       return {
         ...base,
@@ -535,64 +572,71 @@ async function runAxeAudit(url) {
     try {
       const context = await browser.newContext();
       const page = await context.newPage();
-      
+
       // Navigate to URL with timeout
       await page.goto(url, {
         waitUntil: "domcontentloaded",
         timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT
       });
 
-      // Run axe scan using AxeBuilder
-      const { AxeBuilder } = axe;
-      const results = await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"])
-        .analyze();
+      const darkSupported = await isDarkModeSupported(page);
+      const modesToRun = ["light"];
+      if (darkSupported) {
+        modesToRun.push("dark");
+      }
 
-      // Normalize axe results to match ALFA structure
-      const failedRules = new Set();
-      const passedRules = new Set();
-      const counts = {
-        passed: 0,
-        failed: 0,
-        cantTell: 0,
-        inapplicable: 0
+      const allResults = {
+        failedRules: new Set(),
+        passedRules: new Set(),
+        counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+        failures: []
       };
-      const failures = [];
 
-      // Process violations (failures)
-      for (const violation of results.violations || []) {
-        counts.failed += violation.nodes?.length || 0;
-        failedRules.add(violation.id);
-        const wcagSc = (violation.tags || []).filter((tag) => /^wcag\d+/i.test(tag));
-        
-        // Extract failure details from each node
-        for (const node of violation.nodes || []) {
-          failures.push({
-            rule: violation.id,
-            ruleUrl: violation.helpUrl,
-            impact: violation.impact,
-            wcagSc,
-            xpath: node.target?.[0] || null,
-            html: node.html || null,
-            message: violation.help || node.failureSummary || null
-          });
+      for (const mode of modesToRun) {
+        await page.emulateMedia({ colorScheme: mode });
+        // Give time for layout/styles to settle
+        await page.waitForTimeout(500);
+
+        const { AxeBuilder } = axe;
+        const results = await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"])
+          .analyze();
+
+        // Process violations (failures)
+        for (const violation of results.violations || []) {
+          allResults.counts.failed += violation.nodes?.length || 0;
+          allResults.failedRules.add(violation.id);
+          const wcagSc = (violation.tags || []).filter((tag) => /^wcag\d+/i.test(tag));
+
+          for (const node of violation.nodes || []) {
+            allResults.failures.push({
+              rule: violation.id,
+              ruleUrl: violation.helpUrl,
+              impact: violation.impact,
+              wcagSc,
+              xpath: node.target?.[0] || null,
+              html: node.html || null,
+              message: violation.help || node.failureSummary || null,
+              colorScheme: mode
+            });
+          }
         }
-      }
 
-      // Process passes
-      for (const pass of results.passes || []) {
-        counts.passed += pass.nodes?.length || 0;
-        passedRules.add(pass.id);
-      }
+        // Process passes
+        for (const pass of results.passes || []) {
+          allResults.counts.passed += pass.nodes?.length || 0;
+          allResults.passedRules.add(pass.id);
+        }
 
-      // Process incomplete (cantTell)
-      for (const incomplete of results.incomplete || []) {
-        counts.cantTell += incomplete.nodes?.length || 0;
-      }
+        // Process incomplete (cantTell)
+        for (const incomplete of results.incomplete || []) {
+          allResults.counts.cantTell += incomplete.nodes?.length || 0;
+        }
 
-      // Process inapplicable
-      for (const inapplicable of results.inapplicable || []) {
-        counts.inapplicable += 1; // Count rules, not nodes
+        // Process inapplicable
+        for (const inapplicable of results.inapplicable || []) {
+          allResults.counts.inapplicable += 1;
+        }
       }
 
       await browser.close();
@@ -600,11 +644,12 @@ async function runAxeAudit(url) {
       return {
         executed: true,
         error: null,
-        counts,
-        failedRules: [...failedRules].sort(),
-        passedRules: [...passedRules].sort(),
-        failures,
-        outcomeCount: counts.passed + counts.failed + counts.cantTell + counts.inapplicable
+        counts: allResults.counts,
+        failedRules: [...allResults.failedRules].sort(),
+        passedRules: [...allResults.passedRules].sort(),
+        failures: allResults.failures,
+        outcomeCount: allResults.counts.passed + allResults.counts.failed + allResults.counts.cantTell + allResults.counts.inapplicable,
+        darkModeScanned: darkSupported
       };
     } catch (error) {
       await browser.close();
@@ -768,26 +813,26 @@ async function runEqualAccessAudit(url) {
 
 async function runQualWebAudit(url) {
   const base = createScannerBaseError(null);
-  
+
   // QualWeb requires a browser instance to be managed, so we create a new instance per URL
   let qualweb = null;
-  
+
   try {
     const { qualWebCore: QualWeb, qualWebActRules: ACTRules } = await loadQualWeb();
-    
+
     if (!QualWeb || !ACTRules) {
       return {
         ...base,
         error: "QualWeb not available"
       };
     }
-    
+
     // Initialize QualWeb instance
     qualweb = new QualWeb({
       adBlock: false,
       stealth: false
     });
-    
+
     // Start QualWeb with puppeteer configuration
     // maxConcurrency is set to 1 by default for safety as QualWeb creates isolated browser instances
     // Can be increased via QUALWEB_MAX_CONCURRENCY env var for better performance
@@ -803,33 +848,33 @@ async function runQualWebAudit(url) {
         args: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     );
-    
+
     // Create ACT Rules module instance
     const actRulesModule = new ACTRules();
-    
+
     // Run evaluation
     const reports = await qualweb.evaluate({
       url,
       modules: [actRulesModule]
     });
-    
+
     // Stop QualWeb instance
     await qualweb.stop();
-    
+
     // Extract report for this URL
     const report = reports?.[url];
-    
+
     if (!report) {
       return {
         ...base,
         error: "QualWeb evaluation returned no report"
       };
     }
-    
+
     // Process ACT Rules results
     const actResults = report.modules?.["act-rules"];
     const assertions = actResults?.assertions || {};
-    
+
     const failedRules = new Set();
     const passedRules = new Set();
     const failures = [];
@@ -839,22 +884,22 @@ async function runQualWebAudit(url) {
       cantTell: 0,
       inapplicable: 0
     };
-    
+
     // Process each assertion
     for (const [ruleId, assertion] of Object.entries(assertions)) {
       const metadata = assertion.metadata || {};
       const results = assertion.results || [];
-      
+
       for (const result of results) {
         const verdict = result.verdict;
-        
+
         if (verdict === "passed") {
           counts.passed++;
           passedRules.add(ruleId);
         } else if (verdict === "failed") {
           counts.failed++;
           failedRules.add(ruleId);
-          
+
           // Capture failure details
           failures.push({
             rule: ruleId,
@@ -872,7 +917,7 @@ async function runQualWebAudit(url) {
         }
       }
     }
-    
+
     return {
       executed: true,
       error: null,
@@ -891,7 +936,7 @@ async function runQualWebAudit(url) {
         // Ignore cleanup errors
       }
     }
-    
+
     return {
       ...base,
       error: error instanceof Error ? error.message : String(error)
@@ -910,17 +955,17 @@ async function scanOneUrl(target, engines = ["all"]) {
     const elapsedSec = Math.floor((Date.now() - started) / 1000);
     console.error(`[heartbeat] Scanning ${target.submittedUrl} (${elapsedSec}s elapsed)`);
   }, 30000);
-  
+
   // Determine which scanners to run
   const scannersToRun = determineScannersToRun(engines);
-  
+
   // Create a promise that rejects on per-URL timeout
   const timeoutPromise = new Promise((_, reject) => {
     setTimeout(() => {
       reject(new Error(`URL scan exceeded ${TIMEOUTS.PER_URL_TIMEOUT / 1000}s timeout`));
     }, TIMEOUTS.PER_URL_TIMEOUT);
   });
-  
+
   // Wrap the actual scan logic in a race against the timeout
   const scanPromise = (async () => {
     try {
@@ -943,20 +988,20 @@ async function scanOneUrl(target, engines = ["all"]) {
       }
 
       // Run only the selected scanners
-      const axe = scannersToRun.runAxe 
-        ? await runAxeAudit(finalUrl) 
+      const axe = scannersToRun.runAxe
+        ? await runAxeAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
-      const alfa = scannersToRun.runAlfa 
-        ? await runAlfaAudit(finalUrl) 
+      const alfa = scannersToRun.runAlfa
+        ? await runAlfaAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
-      const equalAccess = scannersToRun.runEqualAccess 
-        ? await runEqualAccessAudit(finalUrl) 
+      const equalAccess = scannersToRun.runEqualAccess
+        ? await runEqualAccessAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
-      const accesslint = scannersToRun.runAccesslint 
-        ? await runAccessLintAudit(finalUrl) 
+      const accesslint = scannersToRun.runAccesslint
+        ? await runAccessLintAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
-      const qualweb = scannersToRun.runQualWeb 
-        ? await runQualWebAudit(finalUrl) 
+      const qualweb = scannersToRun.runQualWeb
+        ? await runQualWebAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
 
       const result = {
@@ -982,7 +1027,7 @@ async function scanOneUrl(target, engines = ["all"]) {
     } catch (error) {
       // Handle errors from fetch or audits
       const baseErrorResult = createScannerBaseError(error.name === "AbortError" ? "Request timed out" : "Skipped because initial URL fetch failed");
-      
+
       return {
         submittedUrl: target.submittedUrl,
         finalUrl: target.normalizedUrl,
@@ -1002,14 +1047,14 @@ async function scanOneUrl(target, engines = ["all"]) {
       };
     }
   })();
-  
+
   // Race between the actual scan and the timeout
   try {
     return await Promise.race([scanPromise, timeoutPromise]);
   } catch (timeoutError) {
     // Handle per-URL timeout
     const baseErrorResult = createScannerBaseError("URL scan timeout exceeded");
-    
+
     return {
       submittedUrl: target.submittedUrl,
       finalUrl: target.normalizedUrl,
@@ -1375,7 +1420,7 @@ function buildEnhancedSummary(summary) {
 
         const entry = consolidatedFailures.get(key);
         entry.totalOccurrences++;
-        
+
         const pageCount = entry.pages.get(result.submittedUrl) || 0;
         entry.pages.set(result.submittedUrl, pageCount + 1);
 
@@ -1415,24 +1460,24 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push(`- Issue: ${summary.issueUrl}`);
   lines.push(`- Submitted by: ${summary.submittedBy}`);
   lines.push(`- Scanned at: ${summary.scannedAt}`);
-  
+
   // Add engine information
   if (summary.engines && Array.isArray(summary.engines)) {
-    const engineDisplay = summary.engines.includes("all") 
-      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)" 
+    const engineDisplay = summary.engines.includes("all")
+      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)"
       : summary.engines.map(e => e.toUpperCase()).join(", ");
     lines.push(`- Engines used: ${engineDisplay}`);
   }
-  
+
   // Add timing information
   if (summary.totalElapsedMs !== undefined) {
     const elapsedMinutes = (summary.totalElapsedMs / 60000).toFixed(1);
     lines.push(`- Scan duration: ${elapsedMinutes} minutes`);
   }
-  
+
   lines.push(`- Total URLs submitted: ${summary.totalSubmitted}`);
   lines.push(`- Accepted public URLs: ${summary.acceptedCount}`);
-  
+
   // Add scanned count if different from accepted
   if (summary.scannedCount !== undefined && summary.scannedCount !== summary.acceptedCount) {
     lines.push(`- **URLs scanned: ${summary.scannedCount}**`);
@@ -1440,7 +1485,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       lines.push(`- ⚠️ **${summary.skippedDueToTimeout} URLs skipped due to timeout**`);
     }
   }
-  
+
   lines.push(`- Rejected URLs: ${summary.rejectedCount}`);
   lines.push(`- ALFA outcomes: ${summary.alfaTotals.passed} passed, ${summary.alfaTotals.failed} failed, ${summary.alfaTotals.cantTell} cantTell, ${summary.alfaTotals.inapplicable} inapplicable`);
   lines.push(`- axe outcomes: ${summary.axeTotals.passed} passed, ${summary.axeTotals.failed} failed, ${summary.axeTotals.cantTell} cantTell, ${summary.axeTotals.inapplicable} inapplicable`);
@@ -1463,15 +1508,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("Focus your efforts on these pages to make the biggest impact (combined scanner unique failures):");
   lines.push("");
-  
+
   const pagesByErrorCount = [...summary.results]
     .filter(r => ((r.axe.uniqueFailedCount ?? r.axe.counts.failed) + (r.alfa.uniqueFailedCount ?? r.alfa.counts.failed) + (r.equalAccess?.uniqueFailedCount ?? r.equalAccess?.counts?.failed ?? 0) + (r.accesslint?.uniqueFailedCount ?? r.accesslint?.counts?.failed ?? 0) + (r.qualweb?.counts?.failed ?? 0)) > 0)
-    .sort((a, b) => 
+    .sort((a, b) =>
       ((b.axe.uniqueFailedCount ?? b.axe.counts.failed) + (b.alfa.uniqueFailedCount ?? b.alfa.counts.failed) + (b.equalAccess?.uniqueFailedCount ?? b.equalAccess?.counts?.failed ?? 0) + (b.accesslint?.uniqueFailedCount ?? b.accesslint?.counts?.failed ?? 0) + (b.qualweb?.counts?.failed ?? 0)) -
       ((a.axe.uniqueFailedCount ?? a.axe.counts.failed) + (a.alfa.uniqueFailedCount ?? a.alfa.counts.failed) + (a.equalAccess?.uniqueFailedCount ?? a.equalAccess?.counts?.failed ?? 0) + (a.accesslint?.uniqueFailedCount ?? a.accesslint?.counts?.failed ?? 0) + (a.qualweb?.counts?.failed ?? 0))
     )
     .slice(0, 10);
-  
+
   if (pagesByErrorCount.length > 0) {
     lines.push("| Page | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | QualWeb | Total Unique | Page Title |");
     lines.push("|---|---:|---:|---:|---:|---:|---:|---|");
@@ -1494,24 +1539,24 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("These ALFA accessibility issues appear most frequently across your pages:");
   lines.push("");
-  
+
   const alfaRuleFrequency = new Map();
   for (const result of summary.results) {
     for (const rule of result.alfa.failedRules) {
       alfaRuleFrequency.set(rule, (alfaRuleFrequency.get(rule) || 0) + 1);
     }
   }
-  
+
   const topAlfaFailedRules = [...alfaRuleFrequency.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
-  
+
   if (topAlfaFailedRules.length > 0) {
     lines.push("| Rule | Pages Affected | Documentation |");
     lines.push("|---|---:|---|");
     for (const [rule, count] of topAlfaFailedRules) {
       const ruleInfo = formatAlfaRule(rule);
-      const displayName = ruleInfo.description 
+      const displayName = ruleInfo.description
         ? `[${ruleInfo.id}](${rule}): ${ruleInfo.description}`
         : `[${ruleInfo.id}](${rule})`;
       lines.push(`| ${displayName} | **${count}** of ${summary.acceptedCount} | [View Rule](${rule}) |`);
@@ -1529,18 +1574,18 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("These axe accessibility issues appear most frequently across your pages:");
   lines.push("");
-  
+
   const axeRuleFrequency = new Map();
   for (const result of summary.results) {
     for (const rule of result.axe.failedRules) {
       axeRuleFrequency.set(rule, (axeRuleFrequency.get(rule) || 0) + 1);
     }
   }
-  
+
   const topAxeFailedRules = [...axeRuleFrequency.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
-  
+
   if (topAxeFailedRules.length > 0) {
     lines.push("| Rule | Pages Affected | Documentation |");
     lines.push("|---|---:|---|");
@@ -1563,10 +1608,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("These HTML patterns cause the same accessibility errors across multiple pages. **Fix the pattern once in your codebase to fix it everywhere!**");
   lines.push("");
-  
+
   // Collect all failures with their HTML snippets and group by (rule + html) pattern
   const patternMap = new Map(); // Key: "rule|html", Value: { rule, html, xpath, message, pages: Set, count }
-  
+
   for (const result of summary.results) {
     // Process ALFA failures
     if (result.alfa.failures) {
@@ -1590,7 +1635,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         }
       }
     }
-    
+
     // Process axe failures
     if (result.axe.failures) {
       for (const failure of result.axe.failures) {
@@ -1616,7 +1661,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       }
     }
   }
-  
+
   // Filter to patterns that appear on multiple pages and sort by impact
   const crossPagePatterns = [...patternMap.values()]
     .filter(p => p.pages.size > 1)
@@ -1628,21 +1673,21 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       return b.count - a.count;
     })
     .slice(0, 15); // Show top 15 patterns
-  
+
   if (crossPagePatterns.length > 0) {
     lines.push("### 🎯 Top Patterns to Fix (Highest Impact)");
     lines.push("");
-    
+
     for (let i = 0; i < crossPagePatterns.length; i++) {
       const pattern = crossPagePatterns[i];
       const ruleInfo = pattern.scanner === 'ALFA' ? formatAlfaRule(pattern.rule) : null;
-      const ruleDisplay = ruleInfo 
+      const ruleDisplay = ruleInfo
         ? `${ruleInfo.id}: ${ruleInfo.description || 'No description'}`
         : pattern.rule;
-      const ruleUrl = pattern.scanner === 'ALFA' 
-        ? pattern.rule 
+      const ruleUrl = pattern.scanner === 'ALFA'
+        ? pattern.rule
         : pattern.ruleUrl || `https://dequeuniversity.com/rules/axe/${axeVersion}/${pattern.rule}`;
-      
+
       lines.push(`#### Pattern ${i + 1}: Affects ${pattern.pages.size} page(s) - ${pattern.count} occurrence(s)`);
       lines.push("");
       lines.push(`**Scanner**: ${pattern.scanner}`);
@@ -1689,7 +1734,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       lines.push("---");
       lines.push("");
     }
-    
+
     lines.push("> 💡 **Pro Tip**: These patterns likely come from shared components or templates in your codebase. Fix them in the component/template source, and the fix will propagate to all affected pages.");
     lines.push("");
   } else {
@@ -1746,15 +1791,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   // Add detailed failure information section
   lines.push("## Detailed Failure Information (ALFA)");
   lines.push("");
-  
+
   for (const result of summary.results) {
     if (!result.alfa.failures || result.alfa.failures.length === 0) {
       continue;
     }
-    
+
     lines.push(`### ${escapeMarkdown(result.submittedUrl)}`);
     lines.push("");
-    
+
     // Group failures by rule
     const failuresByRule = new Map();
     for (const failure of result.alfa.failures.filter((entry) => !entry.isDuplicate)) {
@@ -1763,15 +1808,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       }
       failuresByRule.get(failure.rule).push(failure);
     }
-    
+
     for (const [rule, failures] of failuresByRule) {
       const ruleInfo = formatAlfaRule(rule);
-      const ruleDisplay = ruleInfo.description 
+      const ruleDisplay = ruleInfo.description
         ? `${ruleInfo.id}: ${ruleInfo.description}`
         : ruleInfo.id;
       lines.push(`#### Rule: [${ruleDisplay}](${rule})`);
       lines.push("");
-      
+
       for (let i = 0; i < failures.length && i < MAX_FAILURES_PER_RULE; i++) {
         const failure = failures[i];
         lines.push(`**Failure ${i + 1}:**`);
@@ -1786,7 +1831,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         }
         lines.push("");
       }
-      
+
       if (failures.length > MAX_FAILURES_PER_RULE) {
         lines.push(`*... and ${failures.length - MAX_FAILURES_PER_RULE} more failures for this rule*`);
         lines.push("");
@@ -1797,15 +1842,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   // Add detailed failure information section for axe
   lines.push("## Detailed Failure Information (axe)");
   lines.push("");
-  
+
   for (const result of summary.results) {
     if (!result.axe.failures || result.axe.failures.length === 0) {
       continue;
     }
-    
+
     lines.push(`### ${escapeMarkdown(result.submittedUrl)}`);
     lines.push("");
-    
+
     // Group failures by rule
     const axeFailuresByRule = new Map();
     for (const failure of result.axe.failures.filter((entry) => !entry.isDuplicate)) {
@@ -1815,7 +1860,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       }
       axeFailuresByRule.get(ruleKey).push(failure);
     }
-    
+
     for (const [rule, failures] of axeFailuresByRule) {
       const ruleUrl = failures[0].ruleUrl || `https://dequeuniversity.com/rules/axe/${axeVersion}/${rule}`;
       lines.push(`#### Rule: [${rule}](${ruleUrl})`);
@@ -1823,7 +1868,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         lines.push(`**Impact**: ${failures[0].impact}`);
       }
       lines.push("");
-      
+
       for (let i = 0; i < failures.length && i < MAX_FAILURES_PER_RULE; i++) {
         const failure = failures[i];
         lines.push(`**Failure ${i + 1}:**`);
@@ -1838,7 +1883,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         }
         lines.push("");
       }
-      
+
       if (failures.length > MAX_FAILURES_PER_RULE) {
         lines.push(`*... and ${failures.length - MAX_FAILURES_PER_RULE} more failures for this rule*`);
         lines.push("");
@@ -1857,15 +1902,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
  */
 export function markdownToHtml(markdown, summary) {
   let html = markdown;
-  
+
   // First, protect escaped pipes in content by temporarily replacing them
   html = html.replace(/\\\|/g, '&#124;');
-  
+
   // Escape HTML in code blocks and inline code first
   html = html.replace(/`([^`]+)`/g, (match, code) => {
     return `<code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>`;
   });
-  
+
   // Tables - Convert markdown tables to HTML (do this before other conversions)
   const tableRegex = /^\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/gm;
   html = html.replace(tableRegex, (match, header, rows) => {
@@ -1875,7 +1920,7 @@ export function markdownToHtml(markdown, summary) {
       .filter(cell => cell.length > 0)
       .map(cell => `<th>${cell}</th>`)
       .join('');
-    
+
     // Parse rows
     const rowsHtml = rows.trim().split('\n').map(row => {
       const cells = row.substring(1, row.length - 1) // Remove leading and trailing |
@@ -1884,43 +1929,43 @@ export function markdownToHtml(markdown, summary) {
         .join('');
       return `<tr>${cells}</tr>`;
     }).join('\n');
-    
+
     return `<table>\n<thead>\n<tr>${headerCells}</tr>\n</thead>\n<tbody>\n${rowsHtml}\n</tbody>\n</table>`;
   });
-  
+
   // Headers
   html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
   html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
   html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-  
+
   // Bold and italic (non-greedy matching)
   html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  
+
   // Links - [text](url)
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  
+
   // Blockquotes
   html = html.replace(/^&gt; (.*)$/gim, '<blockquote>$1</blockquote>');
   html = html.replace(/^> (.*)$/gim, '<blockquote>$1</blockquote>');
-  
+
   // Lists
   html = html.replace(/^\* (.*)$/gim, '<li>$1</li>');
   html = html.replace(/^- (.*)$/gim, '<li>$1</li>');
-  
+
   // Wrap consecutive list items in ul
   html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
-  
+
   // Paragraphs - wrap non-HTML lines in <p> tags
   const lines = html.split('\n');
   const processedLines = [];
   let inParagraph = false;
-  
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
-    
+
     // Skip empty lines
     if (!line) {
       if (inParagraph) {
@@ -1930,7 +1975,7 @@ export function markdownToHtml(markdown, summary) {
       processedLines.push('');
       continue;
     }
-    
+
     // Check if line is already HTML
     if (line.startsWith('<')) {
       if (inParagraph) {
@@ -1947,13 +1992,13 @@ export function markdownToHtml(markdown, summary) {
       processedLines.push(line);
     }
   }
-  
+
   if (inParagraph) {
     processedLines.push('</p>');
   }
-  
+
   const bodyContent = processedLines.join('\n');
-  
+
   // Create full HTML document with styling
   return `<!DOCTYPE html>
 <html lang="en">
@@ -2178,10 +2223,10 @@ async function main() {
 
   const results = [];
   let skippedDueToTimeout = 0;
-  
+
   for (const target of acceptedTargets) {
     const elapsedTime = Date.now() - scanStartTime;
-    
+
     // Check if we're approaching the total scan timeout
     // Leave a buffer for report generation (5 minutes)
     if (elapsedTime > TIMEOUTS.TOTAL_SCAN_TIMEOUT - 300000) {
@@ -2189,10 +2234,10 @@ async function main() {
       skippedDueToTimeout = acceptedTargets.length - results.length;
       break;
     }
-    
+
     const result = await scanOneUrl(target, engines);
     results.push(result);
-    
+
     // Log progress to help with debugging (stderr to not interfere with JSON output)
     const progress = `[${results.length}/${acceptedTargets.length}]`;
     if (result.error) {
@@ -2248,7 +2293,7 @@ async function main() {
     alfaTotals.failed += result.alfa.counts.failed;
     alfaTotals.cantTell += result.alfa.counts.cantTell;
     alfaTotals.inapplicable += result.alfa.counts.inapplicable;
-    
+
     axeTotals.passed += result.axe.counts.passed;
     axeTotals.failed += result.axe.counts.failed;
     axeTotals.cantTell += result.axe.counts.cantTell;
@@ -2278,13 +2323,13 @@ async function main() {
 
   const scannedAt = new Date().toISOString();
   const totalElapsedTime = Date.now() - scanStartTime;
-  
+
   // Create initial summary for enhanced data aggregation
   const initialSummary = {
     results
   };
   const enhancedData = buildEnhancedSummary(initialSummary);
-  
+
   const summary = {
     issueNumber: request.issueNumber,
     issueUrl: request.issueUrl,
@@ -2309,7 +2354,7 @@ async function main() {
     results,
     enhanced: enhancedData
   };
-  
+
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
@@ -2318,7 +2363,7 @@ async function main() {
     console.warn(`  - Option 2: Increase timeout via TOTAL_SCAN_TIMEOUT_MS environment variable in workflow`);
     console.warn(`  - Option 3: The scanned URLs (${results.length}/${acceptedTargets.length}) are included in this report`);
   }
-  
+
   console.error(`Total scan time: ${(totalElapsedTime / 1000).toFixed(1)}s`);
   console.error(`Successfully scanned: ${results.length}/${acceptedTargets.length} URLs`);
 
@@ -2329,7 +2374,7 @@ async function main() {
   const csvPath = join(outputDir, "report.csv");
   const overlapJsonPath = join(outputDir, "report-overlap.json");
   const overlapMarkdownPath = join(outputDir, "report-overlap.md");
-  
+
   const markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
   const overlapReport = buildOverlapReport(summary);
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
