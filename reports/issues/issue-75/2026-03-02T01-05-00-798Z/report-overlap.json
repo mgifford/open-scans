@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-03-02T01:04:14.571Z",
+  "issueNumber": 75,
+  "scanTitle": "NL Gov",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 12,
+      "uniqueFailed": 12,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 2880,
+      "uniqueFailed": 2880,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 750,
+      "uniqueFailed": 568,
+      "duplicates": 182
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 999,
+      "uniqueFailed": 999,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 12,
+      "alfa": 0,
+      "equalAccess": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 286,
+      "equalAccess": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 568,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "qualweb": 64
+    }
+  },
+  "duplicateFindingTotals": 3711,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
