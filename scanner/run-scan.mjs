@@ -930,7 +930,7 @@ async function runQualWebAudit(url) {
 
       // Stop QualWeb instance
       await qualweb.stop();
-      qualweb = null; // Clear reference so error handler knows cleanup succeeded
+      qualweb = null; // Clear reference to prevent double cleanup in error handler
       
       return reports;
     });
