@@ -418,3 +418,188 @@ test("Cross-page pattern analysis identifies recurring HTML issues", () => {
   assert.ok(report.includes("shared components or templates"), 
     "Report should mention shared components");
 });
+
+test("Report includes dark mode information when URLs support it", () => {
+  const summary = {
+    issueNumber: 4,
+    issueUrl: "https://github.com/example/repo/issues/4",
+    scanTitle: "Dark Mode Test",
+    submittedBy: "testuser",
+    scannedAt: "2026-03-02T00:00:00.000Z",
+    totalSubmitted: 3,
+    acceptedCount: 3,
+    scannedCount: 3,
+    darkModeUrlCount: 2,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: {
+      passed: 100,
+      failed: 0,
+      cantTell: 0,
+      inapplicable: 0
+    },
+    axeTotals: {
+      passed: 80,
+      failed: 0,
+      cantTell: 0,
+      inapplicable: 0
+    },
+    results: [
+      {
+        submittedUrl: "https://example.com/page1",
+        finalUrl: "https://example.com/page1",
+        alfa: {
+          executed: true,
+          counts: { passed: 50, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 50
+        },
+        axe: {
+          executed: true,
+          counts: { passed: 40, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 40,
+          darkModeScanned: true
+        }
+      },
+      {
+        submittedUrl: "https://example.com/page2",
+        finalUrl: "https://example.com/page2",
+        alfa: {
+          executed: true,
+          counts: { passed: 50, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 50
+        },
+        axe: {
+          executed: true,
+          counts: { passed: 40, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 40,
+          darkModeScanned: true
+        }
+      },
+      {
+        submittedUrl: "https://example.com/page3",
+        finalUrl: "https://example.com/page3",
+        alfa: {
+          executed: true,
+          counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 0
+        },
+        axe: {
+          executed: true,
+          counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 0,
+          darkModeScanned: false
+        }
+      }
+    ]
+  };
+
+  const report = toMarkdownReport(summary);
+
+  // Verify dark mode information is present
+  assert.ok(report.includes("🌙"), "Report should include dark mode emoji");
+  assert.ok(report.includes("Dark mode tested: 2 of 3 URLs"), 
+    "Report should show dark mode count");
+  assert.ok(report.includes("67%") || report.includes("(67%)"), 
+    "Report should show percentage of URLs with dark mode support");
+  assert.ok(report.includes("prefers-color-scheme: dark"), 
+    "Report should mention prefers-color-scheme: dark");
+});
+
+test("Report shows message when no URLs support dark mode", () => {
+  const summary = {
+    issueNumber: 5,
+    issueUrl: "https://github.com/example/repo/issues/5",
+    scanTitle: "No Dark Mode Test",
+    submittedBy: "testuser",
+    scannedAt: "2026-03-02T00:00:00.000Z",
+    totalSubmitted: 2,
+    acceptedCount: 2,
+    scannedCount: 2,
+    darkModeUrlCount: 0,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: {
+      passed: 100,
+      failed: 0,
+      cantTell: 0,
+      inapplicable: 0
+    },
+    axeTotals: {
+      passed: 80,
+      failed: 0,
+      cantTell: 0,
+      inapplicable: 0
+    },
+    results: [
+      {
+        submittedUrl: "https://example.com/page1",
+        finalUrl: "https://example.com/page1",
+        alfa: {
+          executed: true,
+          counts: { passed: 50, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 50
+        },
+        axe: {
+          executed: true,
+          counts: { passed: 40, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 40,
+          darkModeScanned: false
+        }
+      },
+      {
+        submittedUrl: "https://example.com/page2",
+        finalUrl: "https://example.com/page2",
+        alfa: {
+          executed: true,
+          counts: { passed: 50, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 50
+        },
+        axe: {
+          executed: true,
+          counts: { passed: 40, failed: 0, cantTell: 0, inapplicable: 0 },
+          failedRules: [],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 40,
+          darkModeScanned: false
+        }
+      }
+    ]
+  };
+
+  const report = toMarkdownReport(summary);
+
+  // Verify dark mode information is present
+  assert.ok(report.includes("🌙"), "Report should include dark mode emoji");
+  assert.ok(report.includes("Dark mode: None of the scanned URLs support"), 
+    "Report should show that no URLs support dark mode");
+  assert.ok(report.includes("prefers-color-scheme: dark"), 
+    "Report should mention prefers-color-scheme: dark");
+});
