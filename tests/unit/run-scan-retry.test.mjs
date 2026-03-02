@@ -4,6 +4,17 @@ import assert from "node:assert";
 // We need to import the scanner module but can't directly test private functions
 // So we'll test the behavior indirectly through the public API
 
+// Helper function to check if a message matches navigation error patterns
+function matchesNavigationErrorPattern(message) {
+  return (
+    message.includes("Execution context was destroyed") ||
+    message.includes("Protocol error") ||
+    message.includes("Target closed") ||
+    message.includes("Session closed") ||
+    message.includes("Navigation timeout")
+  );
+}
+
 describe("Navigation Error Retry Logic", () => {
   it("should detect navigation errors correctly", () => {
     // Test navigation error detection patterns
@@ -23,27 +34,13 @@ describe("Navigation Error Retry Logic", () => {
     // Since isNavigationError is not exported, we'll verify the pattern matching works
     // by checking that the error messages contain the expected patterns
     navigationErrors.forEach((error) => {
-      const message = error.message;
-      const hasPattern = 
-        message.includes("Execution context was destroyed") ||
-        message.includes("Protocol error") ||
-        message.includes("Target closed") ||
-        message.includes("Session closed") ||
-        message.includes("Navigation timeout");
-      
-      assert.strictEqual(hasPattern, true, `Should detect "${message}" as navigation error`);
+      const hasPattern = matchesNavigationErrorPattern(error.message);
+      assert.strictEqual(hasPattern, true, `Should detect "${error.message}" as navigation error`);
     });
 
     nonNavigationErrors.forEach((error) => {
-      const message = error.message;
-      const hasPattern = 
-        message.includes("Execution context was destroyed") ||
-        message.includes("Protocol error") ||
-        message.includes("Target closed") ||
-        message.includes("Session closed") ||
-        message.includes("Navigation timeout");
-      
-      assert.strictEqual(hasPattern, false, `Should NOT detect "${message}" as navigation error`);
+      const hasPattern = matchesNavigationErrorPattern(error.message);
+      assert.strictEqual(hasPattern, false, `Should NOT detect "${error.message}" as navigation error`);
     });
   });
 

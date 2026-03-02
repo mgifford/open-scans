@@ -243,7 +243,7 @@ async function retryOnNavigationError(fn, maxRetries = 2, baseDelay = 1000) {
       
       // Exponential backoff: wait before retrying
       const delay = baseDelay * Math.pow(2, attempt);
-      console.error(`Navigation error detected, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries + 1})...`);
+      console.error(`Navigation error detected, retrying in ${delay}ms (retry ${attempt + 1} of ${maxRetries})...`);
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
@@ -930,7 +930,7 @@ async function runQualWebAudit(url) {
 
       // Stop QualWeb instance
       await qualweb.stop();
-      qualweb = null; // Mark as cleaned up
+      qualweb = null; // Clear reference so error handler knows cleanup succeeded
       
       return reports;
     });
