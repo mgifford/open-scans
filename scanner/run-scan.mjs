@@ -198,6 +198,60 @@ function normalizeRuleReference(rule) {
   );
 }
 
+/**
+ * Check if an error is related to page navigation or execution context issues
+ * @param {Error} error - The error to check
+ * @returns {boolean} True if the error is navigation-related
+ */
+function isNavigationError(error) {
+  if (!error) return false;
+  const message = error.message || String(error);
+  return (
+    message.includes("Execution context was destroyed") ||
+    message.includes("Protocol error") ||
+    message.includes("Target closed") ||
+    message.includes("Session closed") ||
+    message.includes("Navigation timeout")
+  );
+}
+
+/**
+ * Retry a function if it fails with navigation-related errors
+ * @param {Function} fn - Async function to retry
+ * @param {number} maxRetries - Maximum number of retries (default: 2)
+ * @param {number} baseDelay - Base delay in ms for exponential backoff (default: 1000)
+ * @returns {Promise} Result from the function
+ */
+async function retryOnNavigationError(fn, maxRetries = 2, baseDelay = 1000) {
+  let lastError = null;
+  
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      
+      // Only retry on navigation-related errors
+      if (!isNavigationError(error)) {
+        throw error;
+      }
+      
+      // Don't retry if we've exhausted attempts
+      if (attempt === maxRetries) {
+        break;
+      }
+      
+      // Exponential backoff: wait before retrying
+      const delay = baseDelay * Math.pow(2, attempt);
+      console.error(`Navigation error detected, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries + 1})...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  
+  // All retries exhausted, throw the last error
+  throw lastError;
+}
+
 function extractXPath(element) {
   if (!element || element.type !== "element") {
     return null;
@@ -758,8 +812,12 @@ async function runEqualAccessAudit(url) {
       };
     }
 
-    const result = await checker.getCompliance(url, `scan-${Date.now()}`);
-    const report = result?.report;
+    // Wrap the actual scanning with retry logic for navigation errors
+    const scanResult = await retryOnNavigationError(async () => {
+      return await checker.getCompliance(url, `scan-${Date.now()}`);
+    });
+
+    const report = scanResult?.report;
     const issues = Array.isArray(report?.results) ? report.results : [];
     const failedIssues = issues.filter((issue) => {
       const policy = String(issue?.value?.[0] ?? "").toUpperCase();
@@ -800,9 +858,15 @@ async function runEqualAccessAudit(url) {
       duplicateFailedCount: 0
     };
   } catch (error) {
+    // Check if this is a navigation error that exhausted retries
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const isNavError = isNavigationError(error);
+    
     return {
       ...base,
-      error: error instanceof Error ? error.message : String(error)
+      error: isNavError 
+        ? `Navigation error (page may have redirected or closed): ${errorMessage}`
+        : errorMessage
     };
   }
   // NOTE: We don't close the checker here because:
@@ -827,42 +891,52 @@ async function runQualWebAudit(url) {
       };
     }
 
-    // Initialize QualWeb instance
-    qualweb = new QualWeb({
-      adBlock: false,
-      stealth: false
+    // Wrap QualWeb scan with retry logic for navigation errors
+    const scanResult = await retryOnNavigationError(async () => {
+      // Initialize QualWeb instance
+      qualweb = new QualWeb({
+        adBlock: false,
+        stealth: false
+      });
+
+      // Start QualWeb with puppeteer configuration
+      // maxConcurrency is set to 1 by default for safety as QualWeb creates isolated browser instances
+      // Can be increased via QUALWEB_MAX_CONCURRENCY env var for better performance
+      const maxConcurrency = parseInt(process.env.QUALWEB_MAX_CONCURRENCY || "1", 10);
+      await qualweb.start(
+        {
+          maxConcurrency,
+          timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT,
+          monitor: false,
+          // Wait for network to be mostly idle to reduce navigation races
+          waitUntil: ['networkidle2']
+        },
+        {
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        }
+      );
+
+      // Create ACT Rules module instance
+      const actRulesModule = new ACTRules();
+
+      // Run evaluation
+      const reports = await qualweb.evaluate({
+        url,
+        modules: [actRulesModule],
+        // Wait for network to be mostly idle before evaluation
+        waitUntil: ['networkidle2']
+      });
+
+      // Stop QualWeb instance
+      await qualweb.stop();
+      qualweb = null; // Mark as cleaned up
+      
+      return reports;
     });
-
-    // Start QualWeb with puppeteer configuration
-    // maxConcurrency is set to 1 by default for safety as QualWeb creates isolated browser instances
-    // Can be increased via QUALWEB_MAX_CONCURRENCY env var for better performance
-    const maxConcurrency = parseInt(process.env.QUALWEB_MAX_CONCURRENCY || "1", 10);
-    await qualweb.start(
-      {
-        maxConcurrency,
-        timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT,
-        monitor: false
-      },
-      {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      }
-    );
-
-    // Create ACT Rules module instance
-    const actRulesModule = new ACTRules();
-
-    // Run evaluation
-    const reports = await qualweb.evaluate({
-      url,
-      modules: [actRulesModule]
-    });
-
-    // Stop QualWeb instance
-    await qualweb.stop();
 
     // Extract report for this URL
-    const report = reports?.[url];
+    const report = scanResult?.[url];
 
     if (!report) {
       return {
@@ -937,9 +1011,15 @@ async function runQualWebAudit(url) {
       }
     }
 
+    // Check if this is a navigation error that exhausted retries
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const isNavError = isNavigationError(error);
+
     return {
       ...base,
-      error: error instanceof Error ? error.message : String(error)
+      error: isNavError 
+        ? `Navigation error (page may have redirected or closed): ${errorMessage}`
+        : errorMessage
     };
   }
 }
