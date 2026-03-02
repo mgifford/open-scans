@@ -1436,7 +1436,8 @@ function buildEnhancedSummary(summary) {
             url: result.submittedUrl,
             html: failure.html,
             xpath: failure.xpath,
-            message: failure.message
+            message: failure.message,
+            colorScheme: failure.colorScheme
           });
         }
       }
@@ -1487,6 +1488,17 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   }
 
   lines.push(`- Rejected URLs: ${summary.rejectedCount}`);
+  
+  // Add dark mode information
+  if (summary.darkModeUrlCount !== undefined && summary.scannedCount > 0) {
+    const percentage = ((summary.darkModeUrlCount / summary.scannedCount) * 100).toFixed(0);
+    if (summary.darkModeUrlCount > 0) {
+      lines.push(`- 🌙 **Dark mode tested: ${summary.darkModeUrlCount} of ${summary.scannedCount} URLs (${percentage}%) support \`prefers-color-scheme: dark\`**`);
+    } else {
+      lines.push(`- 🌙 Dark mode: None of the scanned URLs support \`prefers-color-scheme: dark\``);
+    }
+  }
+  
   lines.push(`- ALFA outcomes: ${summary.alfaTotals.passed} passed, ${summary.alfaTotals.failed} failed, ${summary.alfaTotals.cantTell} cantTell, ${summary.alfaTotals.inapplicable} inapplicable`);
   lines.push(`- axe outcomes: ${summary.axeTotals.passed} passed, ${summary.axeTotals.failed} failed, ${summary.axeTotals.cantTell} cantTell, ${summary.axeTotals.inapplicable} inapplicable`);
   if (summary.equalAccessTotals) {
@@ -2287,6 +2299,7 @@ async function main() {
   };
 
   let duplicateFindingTotals = 0;
+  let darkModeUrlCount = 0;
 
   for (const result of results) {
     alfaTotals.passed += result.alfa.counts.passed;
@@ -2298,6 +2311,11 @@ async function main() {
     axeTotals.failed += result.axe.counts.failed;
     axeTotals.cantTell += result.axe.counts.cantTell;
     axeTotals.inapplicable += result.axe.counts.inapplicable;
+
+    // Track URLs with dark mode support
+    if (result.axe.darkModeScanned) {
+      darkModeUrlCount++;
+    }
 
     equalAccessTotals.passed += result.equalAccess.counts.passed;
     equalAccessTotals.failed += result.equalAccess.counts.failed;
@@ -2351,6 +2369,7 @@ async function main() {
     accesslintTotals,
     qualwebTotals,
     duplicateFindingTotals,
+    darkModeUrlCount,
     results,
     enhanced: enhancedData
   };
@@ -2400,6 +2419,7 @@ async function main() {
     equalAccessTotals,
     accesslintTotals,
     duplicateFindingTotals,
+    darkModeUrlCount,
     summaryPath,
     markdownPath,
     htmlPath,

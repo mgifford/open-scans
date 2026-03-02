@@ -2,7 +2,7 @@ import { ROLES, SEVERITY } from "./rule-metadata.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 
 export function generateInteractiveHtml(summary) {
-  const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, results } = summary;
+  const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, results } = summary;
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
   const rolesList = Object.values(ROLES);
@@ -210,6 +210,7 @@ export function generateInteractiveHtml(summary) {
         <span><strong>Date:</strong> ${new Date(scannedAt).toLocaleString()}</span>
         <span><strong>Duration:</strong> ${(totalElapsedMs / 60000).toFixed(1)}m</span>
         <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
+        ${darkModeUrlCount !== undefined && scannedCount > 0 && darkModeUrlCount > 0 ? `<span><strong>🌙 Dark Mode:</strong> ${darkModeUrlCount} / ${scannedCount} URLs</span>` : ''}
       </div>
     </header>
 
