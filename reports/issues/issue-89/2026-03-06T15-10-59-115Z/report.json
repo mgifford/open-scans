@@ -1,0 +1,4114 @@
+{
+  "issueNumber": 89,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/89",
+  "issueTitle": "SCAN: .gov",
+  "scanTitle": ".gov",
+  "submittedBy": "saz33m1",
+  "engines": [
+    "all"
+  ],
+  "scannedAt": "2026-03-06T15:10:14.845Z",
+  "totalElapsedMs": 49665,
+  "totalSubmitted": 3,
+  "acceptedCount": 3,
+  "scannedCount": 3,
+  "skippedDueToTimeout": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 2710,
+    "failed": 134,
+    "cantTell": 20,
+    "inapplicable": 146
+  },
+  "axeTotals": {
+    "passed": 1806,
+    "failed": 3,
+    "cantTell": 69,
+    "inapplicable": 133
+  },
+  "equalAccessTotals": {
+    "passed": 4605,
+    "failed": 78,
+    "uniqueFailed": 48,
+    "duplicates": 30,
+    "cantTell": 58,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 268,
+    "failed": 8,
+    "uniqueFailed": 8,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 1014,
+    "failed": 40,
+    "cantTell": 276,
+    "inapplicable": 3
+  },
+  "duplicateFindingTotals": 180,
+  "darkModeUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://maryland.gov",
+      "finalUrl": "https://www.maryland.gov/",
+      "redirected": true,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Maryland.gov",
+      "elapsedMs": 13893,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 1439,
+          "failed": 40,
+          "cantTell": 2,
+          "inapplicable": 47
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r14",
+          "https://alfa.siteimprove.com/rules/sia-r73"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r110",
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r113",
+          "https://alfa.siteimprove.com/rules/sia-r12",
+          "https://alfa.siteimprove.com/rules/sia-r14",
+          "https://alfa.siteimprove.com/rules/sia-r16",
+          "https://alfa.siteimprove.com/rules/sia-r17",
+          "https://alfa.siteimprove.com/rules/sia-r18",
+          "https://alfa.siteimprove.com/rules/sia-r19",
+          "https://alfa.siteimprove.com/rules/sia-r2",
+          "https://alfa.siteimprove.com/rules/sia-r20",
+          "https://alfa.siteimprove.com/rules/sia-r21",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r40",
+          "https://alfa.siteimprove.com/rules/sia-r41",
+          "https://alfa.siteimprove.com/rules/sia-r42",
+          "https://alfa.siteimprove.com/rules/sia-r43",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r53",
+          "https://alfa.siteimprove.com/rules/sia-r56",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r67",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r8",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r86",
+          "https://alfa.siteimprove.com/rules/sia-r87",
+          "https://alfa.siteimprove.com/rules/sia-r90"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"usa-banner__additional-link\"]",
+            "html": "<a href=\"https://translate.google.com/translate?u=https://www.maryland.gov/welcome-maryland\" class=\"usa-banner__additional-link\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/services/driving-and-transportation/drivers-and-motor-vehicles\">Drivers and Motor Vehicles</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://dhs.maryland.gov/supplemental-nutrition-assistance-program/\">Food Assistance and SNAP</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/benefits/unemployment\">Unemployment</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/services/taxes\">Taxes</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://elections.maryland.gov/voter_registration/index.html\">Register to Vote</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"ext\"]",
+            "html": "<a href=\"https://www.visitmaryland.org/\" class=\"ext\" data-extlink=\"\" rel=\"nofollow noreferrer\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/benefits\">More Maryland Benefits</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/services\">More Maryland Services</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://governor.maryland.gov/Pages/home.aspx\">Governor Wes Moore</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://governor.maryland.gov/leadership/cabinet/Pages/default.aspx\">Maryland Cabinet Agencies</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/your-government/state-agencies-and-departments\">All State Agencies</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.doit.state.md.us/phonebook/\">State Employee Directory</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/business-and-work/state-employees\">For State Employees</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/business-and-work/job-and-career-support\">Maryland State Jobs</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://ola.maryland.gov/fraud/ola-fraud-hotline/\">Report State Government Fraud</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.doit.state.md.us/selectsurvey/TakeSurvey.aspx?SurveyID=86M2956#\">Customer Service Survey</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/accessibility-policy\">Accessibility</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/privacy-and-security-policy\">Privacy and Security</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.maryland.gov/terms-use\">Terms of Use</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"tel:711\">Maryland Relay: 7-1-1</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://news.maryland.gov/\">Maryland News</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://mdready.maryland.gov/be-informed/Pages/sign-up-for-alerts.aspx\">Emergency Alerts</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://chart.maryland.gov/Incidents/GetIncidents\">Travel Alerts</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"ext\"]",
+            "html": "<a href=\"https://doitmaryland.service-now.com/cybersecurityincident/\" class=\"ext\" data-extlink=\"\" rel=\"nofollow noreferrer\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://gocpp.maryland.gov/victim-services/human-trafficking/\">Report Human Trafficking</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://response.maryland.gov/bridge\">Key Bridge Updates</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/a[@class=\"maryland-card__link\"]",
+            "html": "<a href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\" class=\"maryland-card__link\" aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\">...</a>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/a[@class=\"maryland-card__link\"]",
+            "html": "<a href=\"https://www.mdot.maryland.gov/tso/pages/newsroomdetails.aspx?newsId=988&PageId=38\" class=\"maryland-card__link\" aria-label=\" - The symbol supports people with hidden disabilities. It was created to help save lives and promote understanding.\">...</a>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/a[@class=\"maryland-card__link\"]",
+            "html": "<a href=\"https://governor.maryland.gov/news/press/pages/governor-moore-signs-legislation-to-protect-and-strengthen-the-chesapeake-bay-economy.aspx\" class=\"maryland-card__link\" aria-label=\" - The new law sets out to improve Bay water quality. It also promotes economic growth by using methods that are safe for the environment.\">...</a>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p[@class=\"usa-banner__header-text\"]",
+            "html": "<p class=\"usa-banner__header-text\">\n          An official website of the State of Mar...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Get the support you need to live well in Maryland.</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Maryland provides public services that keep Maryla...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Explore the outdoors or find new activities. Maryl...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Find out what support you and your family may be e...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>To commemorate the MARYLAND 250, Maryland State Pa...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>The symbol supports people with hidden disabilitie...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>The new law sets out to improve Bay water quality....</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>From green mountains to historic cities, Maryland ...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>We’re committed to serving you. If you’re looking ...</p>",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          }
+        ],
+        "outcomeCount": 1528,
+        "duplicateFailedCount": 34,
+        "uniqueFailedCount": 6
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 885,
+          "failed": 0,
+          "cantTell": 52,
+          "inapplicable": 43
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region",
+          "scrollable-region-focusable",
+          "skip-link",
+          "svg-img-alt",
+          "tabindex"
+        ],
+        "failures": [],
+        "outcomeCount": 980,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 2260,
+          "failed": 27,
+          "cantTell": 17,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "aria_content_in_landmark",
+          "aria_role_redundant",
+          "element_tabbable_visible",
+          "figure_label_exists",
+          "input_label_visible",
+          "label_name_visible",
+          "page_title_valid",
+          "style_color_misuse",
+          "style_focus_visible",
+          "style_highcontrast_visible",
+          "svg_graphics_labelled",
+          "text_block_heading",
+          "text_quoted_correctly",
+          "text_sensory_misuse"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "page_title_valid",
+            "xpath": null,
+            "html": "<title>",
+            "message": "Verify that using the filename as the page <title> value is descriptive",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_color_misuse",
+            "xpath": null,
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "element_tabbable_visible",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<header role=\"banner\">",
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "svg_graphics_labelled",
+            "xpath": null,
+            "html": "<svg fill=\"currentColor\" width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "message": "The SVG element has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "svg_graphics_labelled",
+            "xpath": null,
+            "html": "<svg width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "message": "The SVG element has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" type=\"button\" aria-controls=\"system_menu_block-main\" aria-label=\"Open main menu\" class=\"maryland-nav__toggle\">",
+            "message": "The input element does not have an associated visible label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "text_quoted_correctly",
+            "xpath": null,
+            "html": "<span class=\"usa-sr-only\" id=\"maryland-promo-toggle-desc-0\">",
+            "message": "If the following text is a quotation, mark it as a <q> or <blockquote> element: \"Benefits for Marylanders\"",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Jobs and career support' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Professional licenses and permits' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'State of Maryland job openings' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Apprenticeships and training' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Service and volunteerism in Maryland' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Start your own business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Manage your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Doing business with Maryland government' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Doing business in Maryland' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\" class=\"maryland-card__link\" href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - The symbol supports people with hidden disabilities. It was created to help save lives and promote understanding.\" class=\"maryland-card__link\" href=\"https://www.mdot.maryland.gov/tso/pages/newsroomdetails.aspx?newsId=988&PageId=38\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - The new law sets out to improve Bay water quality. It also promotes economic growth by using methods that are safe for the environment.\" class=\"maryland-card__link\" href=\"https://governor.maryland.gov/news/press/pages/governor-moore-signs-legislation-to-protect-and-strengthen-the-chesapeake-bay-economy.aspx\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_sensory_misuse",
+            "xpath": null,
+            "html": "<h3 class=\"maryland-footer__link-group-heading\" id=\"global-footer--top-benefits-services\">",
+            "message": "Confirm the word(s) 'Top' of the user instruction is used to indicate a logical rather than visual position",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 2287,
+        "uniqueFailedCount": 17,
+        "duplicateFailedCount": 10
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 92,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 545,
+          "failed": 15,
+          "cantTell": 183,
+          "inapplicable": 1
+        },
+        "failedRules": [
+          "QW-ACT-R30",
+          "QW-ACT-R76"
+        ],
+        "passedRules": [
+          "QW-ACT-R1",
+          "QW-ACT-R11",
+          "QW-ACT-R12",
+          "QW-ACT-R13",
+          "QW-ACT-R16",
+          "QW-ACT-R17",
+          "QW-ACT-R2",
+          "QW-ACT-R20",
+          "QW-ACT-R21",
+          "QW-ACT-R25",
+          "QW-ACT-R27",
+          "QW-ACT-R28",
+          "QW-ACT-R30",
+          "QW-ACT-R34",
+          "QW-ACT-R35",
+          "QW-ACT-R37",
+          "QW-ACT-R43",
+          "QW-ACT-R48",
+          "QW-ACT-R5",
+          "QW-ACT-R65",
+          "QW-ACT-R76"
+        ],
+        "failures": [
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          }
+        ],
+        "outcomeCount": 744,
+        "duplicateFailedCount": 13,
+        "uniqueFailedCount": 2
+      },
+      "duplicateFindingCount": 57
+    },
+    {
+      "submittedUrl": "https://onestop.md.gov",
+      "finalUrl": "https://onestop.md.gov/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Home | Maryland OneStop",
+      "elapsedMs": 19954,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 698,
+          "failed": 64,
+          "cantTell": 5,
+          "inapplicable": 53
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r73",
+          "https://alfa.siteimprove.com/rules/sia-r74"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r110",
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r113",
+          "https://alfa.siteimprove.com/rules/sia-r12",
+          "https://alfa.siteimprove.com/rules/sia-r17",
+          "https://alfa.siteimprove.com/rules/sia-r18",
+          "https://alfa.siteimprove.com/rules/sia-r19",
+          "https://alfa.siteimprove.com/rules/sia-r2",
+          "https://alfa.siteimprove.com/rules/sia-r20",
+          "https://alfa.siteimprove.com/rules/sia-r21",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r42",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r53",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r73",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r8",
+          "https://alfa.siteimprove.com/rules/sia-r80",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r86",
+          "https://alfa.siteimprove.com/rules/sia-r90"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"btn blue outline login-btn\"]",
+            "html": "<a class=\"btn blue outline login-btn\" data-remote=\"true\" href=\"/sign_in\">Log in</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"btn blue outline login-btn\"]",
+            "html": "<a class=\"btn blue outline login-btn\" data-remote=\"true\" href=\"/sign_up\">Register</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"btn-link\"]",
+            "html": "<a target=\"_blank\" rel=\"noopener\" class=\"btn-link\" href=\"http://www.maryland.gov/pages/privacy_security.aspx\">Privacy</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"btn-link\"]",
+            "html": "<a target=\"_blank\" rel=\"noopener\" class=\"btn-link\" href=\"http://www.maryland.gov/pages/accessibility.aspx\">Accessibility</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 4.53:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 4.53:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 6.47:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 6.47:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 6.47:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>OneStop is the central hub for Maryland State lice...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Browse professional licenses and permits for indiv...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Browse licenses and permits for business use.</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>Browse licenses, permits, and certification for pe...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>OneStop is the central hub for Maryland State lice...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>Browse professional licenses and permits for indiv...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>Browse licenses and permits for business use.</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>Browse licenses, permits, and certification for pe...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+            "xpath": "/p",
+            "html": "<p>...</p>",
+            "message": "The font size is specified using an absolute unit",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          }
+        ],
+        "outcomeCount": 820,
+        "duplicateFailedCount": 59,
+        "uniqueFailedCount": 5
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 413,
+          "failed": 0,
+          "cantTell": 15,
+          "inapplicable": 47
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "input-button-name",
+          "label",
+          "label-title-only",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region"
+        ],
+        "failures": [],
+        "outcomeCount": 475,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 1216,
+          "failed": 5,
+          "cantTell": 6,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "input_label_visible",
+          "style_color_misuse",
+          "style_highcontrast_visible"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "style_color_misuse",
+            "xpath": null,
+            "html": "<link href=\"/vite/assets/application-cafe887e.css\" rel=\"stylesheet\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<link href=\"/vite/assets/application-cafe887e.css\" rel=\"stylesheet\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<button aria-label=\"Toggle navigation\" aria-expanded=\"false\" aria-controls=\"navbarText\" data-target=\"#navbarText\" data-toggle=\"collapse\" type=\"button\" class=\"navbar-toggler\">",
+            "message": "The input element does not have an associated visible label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<input aria-describedby=\"q-label\" aria-label=\"Search form control\" placeholder=\"Search for licenses and permits...\" id=\"q\" name=\"q\" type=\"text\">",
+            "message": "The ‘placeholder’ is the only visible label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<input aria-label=\"Search submit button\" id=\"search_submit_button\" value=\"\" class=\"icomoon\" type=\"submit\">",
+            "message": "The input element does not have an associated visible label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 1224,
+        "uniqueFailedCount": 5,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 90,
+          "failed": 2,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "aria/aria-allowed-role",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "landmarks/region",
+            "xpath": "#unclaimedRecordModal",
+            "selector": "#unclaimedRecordModal",
+            "html": "<div id=\"unclaimedRecordModal\" class=\"modal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"bubble\">\n...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria/aria-allowed-role",
+            "xpath": "#session-timeout",
+            "selector": "#session-timeout",
+            "html": "<aside id=\"session-timeout\" class=\"modal fade contact session-timeout-modal\" data-keyboard=\"false\" data-backdrop=\"static\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-dialog-centered ...",
+            "impact": "minor",
+            "message": "Role \"dialog\" is not allowed on element <aside>.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 2,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 245,
+          "failed": 7,
+          "cantTell": 41,
+          "inapplicable": 1
+        },
+        "failedRules": [
+          "QW-ACT-R76"
+        ],
+        "passedRules": [
+          "QW-ACT-R1",
+          "QW-ACT-R11",
+          "QW-ACT-R12",
+          "QW-ACT-R13",
+          "QW-ACT-R16",
+          "QW-ACT-R17",
+          "QW-ACT-R2",
+          "QW-ACT-R20",
+          "QW-ACT-R25",
+          "QW-ACT-R27",
+          "QW-ACT-R34",
+          "QW-ACT-R35",
+          "QW-ACT-R37",
+          "QW-ACT-R48",
+          "QW-ACT-R5",
+          "QW-ACT-R65",
+          "QW-ACT-R76"
+        ],
+        "failures": [
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          }
+        ],
+        "outcomeCount": 294,
+        "duplicateFailedCount": 6,
+        "uniqueFailedCount": 1
+      },
+      "duplicateFindingCount": 65
+    },
+    {
+      "submittedUrl": "https://businessexpress.maryland.gov/",
+      "finalUrl": "https://businessexpress.maryland.gov/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Maryland Business Express",
+      "elapsedMs": 15806,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 573,
+          "failed": 30,
+          "cantTell": 13,
+          "inapplicable": 46
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r56",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r85"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r110",
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r113",
+          "https://alfa.siteimprove.com/rules/sia-r12",
+          "https://alfa.siteimprove.com/rules/sia-r13",
+          "https://alfa.siteimprove.com/rules/sia-r14",
+          "https://alfa.siteimprove.com/rules/sia-r16",
+          "https://alfa.siteimprove.com/rules/sia-r17",
+          "https://alfa.siteimprove.com/rules/sia-r18",
+          "https://alfa.siteimprove.com/rules/sia-r19",
+          "https://alfa.siteimprove.com/rules/sia-r2",
+          "https://alfa.siteimprove.com/rules/sia-r20",
+          "https://alfa.siteimprove.com/rules/sia-r21",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r42",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r53",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r67",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r73",
+          "https://alfa.siteimprove.com/rules/sia-r74",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r80",
+          "https://alfa.siteimprove.com/rules/sia-r83",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r86",
+          "https://alfa.siteimprove.com/rules/sia-r87",
+          "https://alfa.siteimprove.com/rules/sia-r90"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/button[@class=\"ewf-headerbanner__btn\"]",
+            "html": "<button class=\"ewf-headerbanner__btn\" aria-expanded=\"false\" aria-controls=\"official-banner\">...</button>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/button[@id=\"mdg-mainNavToggle\"]",
+            "html": "<button id=\"mdg-mainNavToggle\" class=\"mdg-entNav__btn\" aria-controls=\"mdg-leftNav\" aria-expanded=\"false\">...</button>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"/contact\">Contact Us</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"http://www.maryland.gov/pages/privacy_security.aspx\" target=\"_blank\">Privacy & Security</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" target=\"_blank\">Accessibility</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"http://www.maryland.gov/pages/online_services.aspx\" target=\"_blank\">More Online Services</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r56",
+            "xpath": null,
+            "html": null,
+            "message": "Some `banner` have the same name.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r68",
+            "xpath": "/ul[@class=\"mdg-list\"]",
+            "html": "<ul class=\"mdg-list\">...</ul>",
+            "message": "The element owns no elements as required by its semantic role",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">File Annual Reports</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r85",
+            "xpath": "/p[@class=\"mbe-tileCaption\"]",
+            "html": "<p class=\"mbe-tileCaption\">Turn your great idea into a great business</p>",
+            "message": "The text of the paragraph is all italic",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r85",
+            "xpath": "/p[@class=\"mbe-tileCaption\"]",
+            "html": "<p class=\"mbe-tileCaption\">Register, file and launch your business</p>",
+            "message": "The text of the paragraph is all italic",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r85",
+            "xpath": "/p[@class=\"mbe-tileCaption\"]",
+            "html": "<p class=\"mbe-tileCaption\">Run your business and prepare for success</p>",
+            "message": "The text of the paragraph is all italic",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r85",
+            "xpath": "/p[@class=\"mbe-tileCaption\"]",
+            "html": "<p class=\"mbe-tileCaption\">Find new funding, locations & customers</p>",
+            "message": "The text of the paragraph is all italic",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          }
+        ],
+        "outcomeCount": 662,
+        "duplicateFailedCount": 21,
+        "uniqueFailedCount": 9
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 508,
+          "failed": 3,
+          "cantTell": 2,
+          "inapplicable": 43
+        },
+        "failedRules": [
+          "landmark-no-duplicate-banner",
+          "list",
+          "region"
+        ],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "frame-tested",
+          "frame-title",
+          "frame-title-unique",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-in-text-block",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "scrollable-region-focusable",
+          "skip-link",
+          "tabindex"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-no-duplicate-banner",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-no-duplicate-banner?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "header",
+            "html": "<header class=\"mdg-entNav\">",
+            "message": "Document should not have more than one banner landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "list",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/list?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag131"
+            ],
+            "xpath": ".mdg-list",
+            "html": "<ul class=\"mdg-list\">\n            <p>No notices at this time.</p>\n</ul>",
+            "message": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".p-3",
+            "html": "<div class=\"p-3 bg-white border-top\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 556,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 3
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 1129,
+          "failed": 46,
+          "cantTell": 35,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "a_text_purpose",
+          "aria_banner_label_unique",
+          "aria_child_valid",
+          "aria_content_in_landmark",
+          "aria_descendant_valid",
+          "aria_landmark_name_unique",
+          "aria_role_redundant",
+          "element_attribute_deprecated",
+          "frame_src_valid",
+          "style_color_misuse",
+          "style_focus_visible",
+          "style_highcontrast_visible",
+          "style_viewport_resizable",
+          "text_block_heading"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "style_color_misuse",
+            "xpath": null,
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_viewport_resizable",
+            "xpath": null,
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "message": "Verify that text sized using viewport units can be resized up to 200%",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<a class=\"mdg-skipNav\" href=\"#mainContent\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<button aria-controls=\"official-banner\" aria-expanded=\"false\" class=\"ewf-headerbanner__btn\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-controls=\"official-banner\" aria-expanded=\"false\" class=\"ewf-headerbanner__btn\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_banner_label_unique",
+            "xpath": null,
+            "html": "<header class=\"mdg-entNav\">",
+            "message": "Multiple elements with \"banner\" role do not have unique labels",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_landmark_name_unique",
+            "xpath": null,
+            "html": "<header class=\"mdg-entNav\">",
+            "message": "Multiple elements with \"banner\" landmarks within the same parent region are not distinguished from one another because they have the same \"\" label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" aria-controls=\"mdg-leftNav\" class=\"mdg-entNav__btn\" id=\"mdg-mainNavToggle\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "a_text_purpose",
+            "xpath": null,
+            "html": "<a aria-expanded=\"true\" aria-haspopup=\"true\" class=\"mdg-dropDown__trigger\" href=\"/search\">",
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "a_text_purpose",
+            "xpath": null,
+            "html": "<a href=\"/contact\">",
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "a_text_purpose",
+            "xpath": null,
+            "html": "<a href=\"https://egov.maryland.gov/BusinessExpress/Account/LogOn\">",
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_banner_label_unique",
+            "xpath": null,
+            "html": "<section role=\"banner\" class=\"mdg-hero mdg-util--dark\" id=\"mbe-Hero\">",
+            "message": "Multiple elements with \"banner\" role do not have unique labels",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_landmark_name_unique",
+            "xpath": null,
+            "html": "<section role=\"banner\" class=\"mdg-hero mdg-util--dark\" id=\"mbe-Hero\">",
+            "message": "Multiple elements with \"banner\" landmarks within the same parent region are not distinguished from one another because they have the same \"\" label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"heading\" which are ignored by browsers",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"paragraph\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"heading\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"paragraph\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"heading\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"paragraph\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"heading\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "aria_descendant_valid",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "message": "The element with role \"button\" contains descendants with implicit roles \"paragraph\" which are ignored by browsers",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "element_attribute_deprecated",
+            "xpath": null,
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "message": "The HTML attribute(s) \"frameborder\" is deprecated for the <iframe> element in HTML 5",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "frame_src_valid",
+            "xpath": null,
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "message": "Verify <frame> content is accessible",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_child_valid",
+            "xpath": null,
+            "html": "<ul class=\"mdg-list\">",
+            "message": "The element with role \"list\" owns the child element with the role \"paragraph\" that is not one of the allowed role(s): \"listitem\"",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a class=\"mbe-checkListBtn mdg-btn mdg-btn--block mdg-btn--jumbo mdg-btn--default\" target=\"_blank\" href=\"/documents/7StepstoStartingYourBusiness-20231017.pdf\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'FAQs' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'Search' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'Documents' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'Your Business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'a Trade Name' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'Property Tax Returns' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<br>",
+            "message": "Confirm this text 'Maryland?' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<p class=\"fw-bold m-0 mb-3\">",
+            "message": "Confirm this text 'Did you find what you were looking for?' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<p class=\"fw-bold m-0 mb-3\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a class=\"btn btn-outline-dark text-decoration-none\" target=\"_blank\" href=\"https://www.surveymonkey.com/r/Q7VSDV8?P=%2F&S=MBEx\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<footer role=\"contentinfo\">",
+            "message": "The explicitly-assigned ARIA role \"contentinfo\" is redundant with the implicit role of the element <footer>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 1192,
+        "uniqueFailedCount": 26,
+        "duplicateFailedCount": 20
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 86,
+          "failed": 6,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "adaptable/list-children",
+          "landmarks/banner-is-top-level",
+          "landmarks/landmark-unique"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "adaptable/list-children",
+            "xpath": "ul > p",
+            "selector": "ul > p",
+            "html": "<p>No notices at this time.</p>",
+            "impact": "serious",
+            "message": "List contains non-<li> child <p>.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/banner-is-top-level",
+            "xpath": "#mbe-Hero",
+            "selector": "#mbe-Hero",
+            "html": "<section id=\"mbe-Hero\" class=\"mdg-hero mdg-util--dark\" role=\"banner\">\n        <h1 class=\"sr-only\">Maryland Business Express</h1>\n        <div class=\"container-fluid\">\n            <div class=\"mbe-brand...",
+            "impact": "moderate",
+            "message": "Banner landmark is nested within another landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-unique",
+            "xpath": "div:nth-of-type(1) > div > div > nav",
+            "selector": "div:nth-of-type(1) > div > div > nav",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/plan/create-business-plan\">1. Create a Business Plan</a></li>\n        <li><a href=\"/plan/find-business-fu...",
+            "impact": "moderate",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-unique",
+            "xpath": "div:nth-of-type(2) > div > div > nav",
+            "selector": "div:nth-of-type(2) > div > div > nav",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/start/register-a-business-in-maryland\">1. Register Your Business in Maryland</a></li>\n        <li><a href...",
+            "impact": "moderate",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-unique",
+            "xpath": "div:nth-of-type(3) > div > div > nav",
+            "selector": "div:nth-of-type(3) > div > div > nav",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/manage/maintain-good-standing-status\">Maintain Good Standing Status</a></li>\n        <li><a href=\"/manage...",
+            "impact": "moderate",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-unique",
+            "xpath": "div:nth-of-type(4) > div > div > nav",
+            "selector": "div:nth-of-type(4) > div > div > nav",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/grow/workforce\">Workforce Development</a></li>\n        <li><a href=\"/grow/funding-and-incentives\">Funding...",
+            "impact": "moderate",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 6,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 224,
+          "failed": 18,
+          "cantTell": 52,
+          "inapplicable": 1
+        },
+        "failedRules": [
+          "QW-ACT-R76"
+        ],
+        "passedRules": [
+          "QW-ACT-R1",
+          "QW-ACT-R11",
+          "QW-ACT-R12",
+          "QW-ACT-R13",
+          "QW-ACT-R17",
+          "QW-ACT-R19",
+          "QW-ACT-R2",
+          "QW-ACT-R20",
+          "QW-ACT-R25",
+          "QW-ACT-R27",
+          "QW-ACT-R28",
+          "QW-ACT-R30",
+          "QW-ACT-R34",
+          "QW-ACT-R35",
+          "QW-ACT-R37",
+          "QW-ACT-R48",
+          "QW-ACT-R5",
+          "QW-ACT-R63",
+          "QW-ACT-R64",
+          "QW-ACT-R65",
+          "QW-ACT-R70",
+          "QW-ACT-R73",
+          "QW-ACT-R75",
+          "QW-ACT-R76"
+        ],
+        "failures": [
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          }
+        ],
+        "outcomeCount": 295,
+        "duplicateFailedCount": 17,
+        "uniqueFailedCount": 1
+      },
+      "duplicateFindingCount": 58
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "UX Designer",
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 8,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a href=\"https://translate.google.com/translate?u=https://www.maryland.gov/welcome-maryland\" class=\"usa-banner__additional-link\">...</a>",
+            "xpath": "/a[@class=\"usa-banner__additional-link\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<a href=\"https://www.maryland.gov/services/driving-and-transportation/drivers-and-motor-vehicles\">Drivers and Motor Vehicles</a>",
+            "xpath": "/a",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<a href=\"https://www.visitmaryland.org/\" class=\"ext\" data-extlink=\"\" rel=\"nofollow noreferrer\">...</a>",
+            "xpath": "/a[@class=\"ext\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<a class=\"btn blue outline login-btn\" data-remote=\"true\" href=\"/sign_in\">Log in</a>",
+            "xpath": "/a[@class=\"btn blue outline login-btn\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<a target=\"_blank\" rel=\"noopener\" class=\"btn-link\" href=\"http://www.maryland.gov/pages/privacy_security.aspx\">Privacy</a>",
+            "xpath": "/a[@class=\"btn-link\"]",
+            "message": "Target has insufficient size"
+          }
+        ]
+      },
+      {
+        "rule": "style_focus_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 7,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<button aria-controls=\"official-banner\" aria-expanded=\"false\" class=\"ewf-headerbanner__btn\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<button aria-expanded=\"false\" aria-controls=\"mdg-leftNav\" class=\"mdg-entNav__btn\" id=\"mdg-mainNavToggle\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          }
+        ]
+      },
+      {
+        "rule": "aria_content_in_landmark",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 4,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<a class=\"mdg-skipNav\" href=\"#mainContent\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<button aria-controls=\"official-banner\" aria-expanded=\"false\" class=\"ewf-headerbanner__btn\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<p class=\"fw-bold m-0 mb-3\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element"
+          }
+        ]
+      },
+      {
+        "rule": "input_label_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 4,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<button aria-expanded=\"false\" type=\"button\" aria-controls=\"system_menu_block-main\" aria-label=\"Open main menu\" class=\"maryland-nav__toggle\">",
+            "xpath": null,
+            "message": "The input element does not have an associated visible label"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<button aria-label=\"Toggle navigation\" aria-expanded=\"false\" aria-controls=\"navbarText\" data-target=\"#navbarText\" data-toggle=\"collapse\" type=\"button\" class=\"navbar-toggler\">",
+            "xpath": null,
+            "message": "The input element does not have an associated visible label"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<input aria-describedby=\"q-label\" aria-label=\"Search form control\" placeholder=\"Search for licenses and permits...\" id=\"q\" name=\"q\" type=\"text\">",
+            "xpath": null,
+            "message": "The ‘placeholder’ is the only visible label"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<input aria-label=\"Search submit button\" id=\"search_submit_button\" value=\"\" class=\"icomoon\" type=\"submit\">",
+            "xpath": null,
+            "message": "The input element does not have an associated visible label"
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/landmark-unique",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 4,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/plan/create-business-plan\">1. Create a Business Plan</a></li>\n        <li><a href=\"/plan/find-business-fu...",
+            "xpath": "div:nth-of-type(1) > div > div > nav",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes."
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/start/register-a-business-in-maryland\">1. Register Your Business in Maryland</a></li>\n        <li><a href...",
+            "xpath": "div:nth-of-type(2) > div > div > nav",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes."
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/manage/maintain-good-standing-status\">Maintain Good Standing Status</a></li>\n        <li><a href=\"/manage...",
+            "xpath": "div:nth-of-type(3) > div > div > nav",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes."
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<nav>\n    <ul class=\"mdg-listNav mdg-listNav--block mdg-util--noMargin\">\n        <li><a href=\"/grow/workforce\">Workforce Development</a></li>\n        <li><a href=\"/grow/funding-and-incentives\">Funding...",
+            "xpath": "div:nth-of-type(4) > div > div > nav",
+            "message": "Multiple navigation landmarks have no label. Add unique aria-label attributes."
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<p class=\"usa-banner__header-text\">\n          An official website of the State of Mar...</p>",
+            "xpath": "/p[@class=\"usa-banner__header-text\"]",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<p>Get the support you need to live well in Maryland.</p>",
+            "xpath": "/p",
+            "message": "The line height of the paragraph is `normal` which will result in a line height of less than 1.5"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<p>OneStop is the central hub for Maryland State lice...</p>",
+            "xpath": "/p",
+            "message": "The line height of the paragraph is less than 1.5"
+          }
+        ]
+      },
+      {
+        "rule": "style_color_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Verify color is not used as the only visual means of conveying information"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<link href=\"/vite/assets/application-cafe887e.css\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Verify color is not used as the only visual means of conveying information"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "xpath": null,
+            "message": "Verify color is not used as the only visual means of conveying information"
+          }
+        ]
+      },
+      {
+        "rule": "style_highcontrast_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<link href=\"/vite/assets/application-cafe887e.css\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+          }
+        ]
+      },
+      {
+        "rule": "text_block_heading",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "xpath": null,
+            "message": "Confirm this text 'Jobs and career support' is used as a heading and if so, modify to use a heading element or role"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<br>",
+            "xpath": null,
+            "message": "Confirm this text 'your business' is used as a heading and if so, modify to use a heading element or role"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<p class=\"fw-bold m-0 mb-3\">",
+            "xpath": null,
+            "message": "Confirm this text 'Did you find what you were looking for?' is used as a heading and if so, modify to use a heading element or role"
+          }
+        ]
+      },
+      {
+        "rule": "label_name_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\" class=\"maryland-card__link\" href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<a aria-label=\" - The symbol supports people with hidden disabilities. It was created to help save lives and promote understanding.\" class=\"maryland-card__link\" href=\"https://www.mdot.maryland.gov/tso/pages/newsroomdetails.aspx?newsId=988&PageId=38\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<a aria-label=\" - The new law sets out to improve Bay water quality. It also promotes economic growth by using methods that are safe for the environment.\" class=\"maryland-card__link\" href=\"https://governor.maryland.gov/news/press/pages/governor-moore-signs-legislation-to-protect-and-strengthen-the-chesapeake-bay-economy.aspx\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R76",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": null,
+            "xpath": null,
+            "message": "Element has contrast ratio lower than minimum."
+          },
+          {
+            "url": "https://onestop.md.gov",
+            "html": null,
+            "xpath": null,
+            "message": "Element has contrast ratio lower than minimum."
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": null,
+            "xpath": null,
+            "message": "Element has contrast ratio lower than minimum."
+          }
+        ]
+      },
+      {
+        "rule": "a_text_purpose",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<a aria-expanded=\"true\" aria-haspopup=\"true\" class=\"mdg-dropDown__trigger\" href=\"/search\">",
+            "xpath": null,
+            "message": "Hyperlink has no link text, label or image with a text alternative"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<a href=\"/contact\">",
+            "xpath": null,
+            "message": "Hyperlink has no link text, label or image with a text alternative"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<a href=\"https://egov.maryland.gov/BusinessExpress/Account/LogOn\">",
+            "xpath": null,
+            "message": "Hyperlink has no link text, label or image with a text alternative"
+          }
+        ]
+      },
+      {
+        "rule": "aria_role_redundant",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<header role=\"banner\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<footer role=\"contentinfo\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"contentinfo\" is redundant with the implicit role of the element <footer>"
+          }
+        ]
+      },
+      {
+        "rule": "svg_graphics_labelled",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<svg fill=\"currentColor\" width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "xpath": null,
+            "message": "The SVG element has no accessible name"
+          },
+          {
+            "url": "https://maryland.gov",
+            "html": "<svg width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "xpath": null,
+            "message": "The SVG element has no accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Visual Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://onestop.md.gov",
+            "html": null,
+            "xpath": null,
+            "message": "The highest possible contrast of the text is 4.53:1 which is\n        below the required contrast of 7:1"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": null,
+            "xpath": null,
+            "message": "The highest possible contrast of the text is 5.87:1 which is\n        below the required contrast of 7:1"
+          }
+        ]
+      },
+      {
+        "rule": "aria_banner_label_unique",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<header class=\"mdg-entNav\">",
+            "xpath": null,
+            "message": "Multiple elements with \"banner\" role do not have unique labels"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<section role=\"banner\" class=\"mdg-hero mdg-util--dark\" id=\"mbe-Hero\">",
+            "xpath": null,
+            "message": "Multiple elements with \"banner\" role do not have unique labels"
+          }
+        ]
+      },
+      {
+        "rule": "aria_landmark_name_unique",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<header class=\"mdg-entNav\">",
+            "xpath": null,
+            "message": "Multiple elements with \"banner\" landmarks within the same parent region are not distinguished from one another because they have the same \"\" label"
+          },
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<section role=\"banner\" class=\"mdg-hero mdg-util--dark\" id=\"mbe-Hero\">",
+            "xpath": null,
+            "message": "Multiple elements with \"banner\" landmarks within the same parent region are not distinguished from one another because they have the same \"\" label"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author"
+          ],
+          "severity": "Critical",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\" class=\"maryland-card__link\" aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\">...</a>",
+            "xpath": "/a[@class=\"maryland-card__link\"]",
+            "message": "The visible text content of the element is not included within its accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "page_title_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<title>",
+            "xpath": null,
+            "message": "Verify that using the filename as the page <title> value is descriptive"
+          }
+        ]
+      },
+      {
+        "rule": "element_tabbable_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus"
+          }
+        ]
+      },
+      {
+        "rule": "figure_label_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<figure class=\"maryland-promo__img\">",
+            "xpath": null,
+            "message": "The <figure> element does not have an associated label"
+          }
+        ]
+      },
+      {
+        "rule": "text_quoted_correctly",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<span class=\"usa-sr-only\" id=\"maryland-promo-toggle-desc-0\">",
+            "xpath": null,
+            "message": "If the following text is a quotation, mark it as a <q> or <blockquote> element: \"Benefits for Marylanders\""
+          }
+        ]
+      },
+      {
+        "rule": "text_sensory_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": "<h3 class=\"maryland-footer__link-group-heading\" id=\"global-footer--top-benefits-services\">",
+            "xpath": null,
+            "message": "Confirm the word(s) 'Top' of the user instruction is used to indicate a logical rather than visual position"
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R30",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://maryland.gov",
+            "html": null,
+            "xpath": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name."
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<p>OneStop is the central hub for Maryland State lice...</p>",
+            "xpath": "/p",
+            "message": "The font size is specified using an absolute unit"
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/region",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<div id=\"unclaimedRecordModal\" class=\"modal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"bubble\">\n...",
+            "xpath": "#unclaimedRecordModal",
+            "message": "Content is not contained within a landmark region."
+          }
+        ]
+      },
+      {
+        "rule": "aria/aria-allowed-role",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://onestop.md.gov",
+            "html": "<aside id=\"session-timeout\" class=\"modal fade contact session-timeout-modal\" data-keyboard=\"false\" data-backdrop=\"static\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog modal-dialog-centered ...",
+            "xpath": "#session-timeout",
+            "message": "Role \"dialog\" is not allowed on element <aside>."
+          }
+        ]
+      },
+      {
+        "rule": "landmark-no-duplicate-banner",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<header class=\"mdg-entNav\">",
+            "xpath": "header",
+            "message": "Document should not have more than one banner landmark",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "list",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "Front-End Developer"
+          ],
+          "severity": "Serious",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<ul class=\"mdg-list\">\n            <p>No notices at this time.</p>\n</ul>",
+            "xpath": ".mdg-list",
+            "message": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<div class=\"p-3 bg-white border-top\">",
+            "xpath": ".p-3",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r56",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": null,
+            "xpath": null,
+            "message": "Some `banner` have the same name."
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": null,
+            "xpath": null,
+            "message": "The text is not included in a landmark region"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r68",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<ul class=\"mdg-list\">...</ul>",
+            "xpath": "/ul[@class=\"mdg-list\"]",
+            "message": "The element owns no elements as required by its semantic role"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<h3 class=\"mdg-tile__heading\">...</h3>",
+            "xpath": "/h3[@class=\"mdg-tile__heading\"]",
+            "message": "There is no content between this heading and the next"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r85",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<p class=\"mbe-tileCaption\">Turn your great idea into a great business</p>",
+            "xpath": "/p[@class=\"mbe-tileCaption\"]",
+            "message": "The text of the paragraph is all italic"
+          }
+        ]
+      },
+      {
+        "rule": "style_viewport_resizable",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<link rel=\"stylesheet\" href=\"/css/main.min.css\">",
+            "xpath": null,
+            "message": "Verify that text sized using viewport units can be resized up to 200%"
+          }
+        ]
+      },
+      {
+        "rule": "aria_descendant_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<button aria-expanded=\"false\" class=\"mdg-flipTile__front\" type=\"button\">",
+            "xpath": null,
+            "message": "The element with role \"button\" contains descendants with implicit roles \"heading\" which are ignored by browsers"
+          }
+        ]
+      },
+      {
+        "rule": "element_attribute_deprecated",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "xpath": null,
+            "message": "The HTML attribute(s) \"frameborder\" is deprecated for the <iframe> element in HTML 5"
+          }
+        ]
+      },
+      {
+        "rule": "frame_src_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<iframe allowfullscreen=\"\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" frameborder=\"0\" src=\"https://www.youtube.com/embed/NYCCOFsy46Y\" height=\"315\" width=\"560\" title=\"Welcome to MBE video\">",
+            "xpath": null,
+            "message": "Verify <frame> content is accessible"
+          }
+        ]
+      },
+      {
+        "rule": "aria_child_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<ul class=\"mdg-list\">",
+            "xpath": null,
+            "message": "The element with role \"list\" owns the child element with the role \"paragraph\" that is not one of the allowed role(s): \"listitem\""
+          }
+        ]
+      },
+      {
+        "rule": "adaptable/list-children",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<p>No notices at this time.</p>",
+            "xpath": "ul > p",
+            "message": "List contains non-<li> child <p>."
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/banner-is-top-level",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://businessexpress.maryland.gov/",
+            "html": "<section id=\"mbe-Hero\" class=\"mdg-hero mdg-util--dark\" role=\"banner\">\n        <h1 class=\"sr-only\">Maryland Business Express</h1>\n        <div class=\"container-fluid\">\n            <div class=\"mbe-brand...",
+            "xpath": "#mbe-Hero",
+            "message": "Banner landmark is nested within another landmark."
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 8,
+      "Visual Designer": 10,
+      "Content Author": 2,
+      "Front-End Developer": 72
+    },
+    "severityStats": {
+      "Critical": 1,
+      "Serious": 9,
+      "Moderate": 73,
+      "Minor": 0
+    }
+  }
+}
