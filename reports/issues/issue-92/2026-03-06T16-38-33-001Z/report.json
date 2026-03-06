@@ -1,0 +1,2381 @@
+{
+  "issueNumber": 92,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/92",
+  "issueTitle": "SCAN: Bob's first try",
+  "scanTitle": "Bob's first try",
+  "submittedBy": "bobdodd",
+  "engines": [
+    "all"
+  ],
+  "scannedAt": "2026-03-06T16:37:56.561Z",
+  "totalElapsedMs": 23628,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 1100,
+    "failed": 64,
+    "cantTell": 9,
+    "inapplicable": 44
+  },
+  "axeTotals": {
+    "passed": 922,
+    "failed": 2,
+    "cantTell": 6,
+    "inapplicable": 41
+  },
+  "equalAccessTotals": {
+    "passed": 3085,
+    "failed": 34,
+    "uniqueFailed": 33,
+    "duplicates": 1,
+    "cantTell": 21,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 76,
+    "failed": 16,
+    "uniqueFailed": 14,
+    "duplicates": 2,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 606,
+    "failed": 10,
+    "cantTell": 106,
+    "inapplicable": 7
+  },
+  "duplicateFindingTotals": 51,
+  "darkModeUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://cnib.ca",
+      "finalUrl": "https://www.cnib.ca/en",
+      "redirected": true,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Home | CNIB",
+      "elapsedMs": 23620,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 1100,
+          "failed": 64,
+          "cantTell": 9,
+          "inapplicable": 44
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r12",
+          "https://alfa.siteimprove.com/rules/sia-r14",
+          "https://alfa.siteimprove.com/rules/sia-r18",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r78"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r110",
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r113",
+          "https://alfa.siteimprove.com/rules/sia-r12",
+          "https://alfa.siteimprove.com/rules/sia-r14",
+          "https://alfa.siteimprove.com/rules/sia-r16",
+          "https://alfa.siteimprove.com/rules/sia-r17",
+          "https://alfa.siteimprove.com/rules/sia-r18",
+          "https://alfa.siteimprove.com/rules/sia-r19",
+          "https://alfa.siteimprove.com/rules/sia-r2",
+          "https://alfa.siteimprove.com/rules/sia-r20",
+          "https://alfa.siteimprove.com/rules/sia-r21",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r41",
+          "https://alfa.siteimprove.com/rules/sia-r42",
+          "https://alfa.siteimprove.com/rules/sia-r43",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r53",
+          "https://alfa.siteimprove.com/rules/sia-r56",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r67",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r7",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r73",
+          "https://alfa.siteimprove.com/rules/sia-r74",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r8",
+          "https://alfa.siteimprove.com/rules/sia-r81",
+          "https://alfa.siteimprove.com/rules/sia-r83",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r86",
+          "https://alfa.siteimprove.com/rules/sia-r87",
+          "https://alfa.siteimprove.com/rules/sia-r90",
+          "https://alfa.siteimprove.com/rules/sia-r94"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/button[@id=\"show-hide\"]",
+            "html": "<button id=\"show-hide\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" role=\"button\" aria-controls=\"fluid-id-8ci5kgjj-598\" aria-label=\"Show Display Preferences\" aria-pressed=\"false\">+ Show Preferences</button>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"tel:18005632642\" aria-label=\"Phone us by number: 1-800-563-2642\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"language-link\"]",
+            "html": "<a href=\"/fr\" class=\"language-link\" lang=\"fr\" aria-current=\"false\" hreflang=\"fr\" data-drupal-link-system-path=\"<front>\">Français</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"button btn-lg\"]",
+            "html": "<a class=\"button btn-lg\" href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\">Donate</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0 is-active\"]",
+            "html": "<a href=\"/en\" class=\"menu__link menu__link-level-0 is-active\" target=\"_self\" data-drupal-link-system-path=\"<front>\" aria-current=\"page\">Home</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/programs-and-services\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"taxonomy/term/199\">Programs and Services</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/support-us\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"node/32254\">Support Us</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/about-us\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"taxonomy/term/324\">About Us</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/advocate\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"node/35044\">Advocate</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/resources\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"taxonomy/term/269\">Resources</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/event\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"event\">Calendar</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"http://shop.cnib.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">Shop</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/form/contact-us\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"webform/contact_us\">Contact Us</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"button\"]",
+            "html": "<a class=\"button\" href=\"/en/select-your-regional-e-newsletter-list-subscription\">Subscribe to our e-newsletter</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.facebook.com/myCNIB/\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://twitter.com/CNIB\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.youtube.com/user/cnibnatcomm\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.instagram.com/cnibfoundation/\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.linkedin.com/company/cnib/\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://www.cnib.ca/en/careers-cnib\" class=\"menu__link menu__link-level-0\" target=\"_blank\">Careers</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/get-involved/volunteer/volunteer-opportunities/list\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"get-involved/volunteer/volunteer-opportunities/list\">Volunteer Opportunities</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/cnib-guide-dogs\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"node/35313\">CNIB Guide Dogs</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/media\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"media\">Media</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/aoda-commitments\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"node/35486\">AODA Commitments</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/disclaimer\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"taxonomy/term/371\">Disclaimer</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"/en/privacy-policy\" class=\"menu__link menu__link-level-0\" target=\"_self\" data-drupal-link-system-path=\"taxonomy/term/370\">Privacy Policy</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://cnib-accesslabs.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Access Labs</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://cnib-beyondprint.ca\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Beyond Print</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://clearingourpath.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Clearing Our Path</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://cometowork.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Come to Work</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://www.phoneitforward.ca/home.html\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Phone it Forward </a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://cnibsmartlife.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Smartlife </a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://deafblindservices.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">CNIB Deafblind Community Services</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0\"]",
+            "html": "<a href=\"https://www.visionlossrehab.ca/\" class=\"menu__link menu__link-level-0\" target=\"_blank\">Vision Loss Rehabilitation Canada</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"/office-locations\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"3col-footer-link\"]",
+            "html": "<a class=\"3col-footer-link\" href=\"/en/form/donor-update-form\" style=\"display:flex;\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"tel:18005632642\" aria-label=\"Phone us by number: 1-800-563-2642\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"/form/contact-us\">...</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a[@class=\"button btn-lg\"]",
+            "html": "<a class=\"button btn-lg\" href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\">Donate</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r12",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "message": "The button does not have an accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/button[@id=\"show-hide\"]",
+            "html": "<button id=\"show-hide\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" role=\"button\" aria-controls=\"fluid-id-8ci5kgjj-598\" aria-label=\"Show Display Preferences\" aria-pressed=\"false\">+ Show Preferences</button>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/a[@class=\"button-primary-cta \"]",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" Reading Room\" href=\"/en/node/34142\">Read more</a>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+            "xpath": "/a[@class=\"button-primary-cta \"]",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" The Athlete-Guide Partnership\" href=\"/en/node/37373\">Read more</a>",
+            "message": "The visible text content of the element is not included within its accessible name",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r18",
+            "xpath": null,
+            "html": null,
+            "message": "The attribute is not allowed for the element on which it is specified",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/form[@id=\"search-block-form\"]",
+            "html": "<form block=\"block-searchform\" action=\"/en/search/node\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">...</form>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/input[@id=\"edit-keys\"]",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\" />",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"edit-actions\"]",
+            "html": "<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"utility-nav-toggle\"]",
+            "html": "<div class=\"navbar navbar-expand-xl navbar-light\" id=\"utility-nav-toggle\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"header-collapsible\"]",
+            "html": "<div class=\"collapse\" id=\"header-collapsible\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"block-octheme-search\"]",
+            "html": "<div class=\"search-block-form block block-search container-inline\" data-drupal-selector=\"search-block-form\" id=\"block-octheme-search\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/form[@id=\"search-block-form\"]",
+            "html": "<form block=\"block-octheme-search\" action=\"/en/search/node\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">...</form>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/input[@id=\"edit-keys\"]",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\" />",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"edit-actions\"]",
+            "html": "<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"utility-nav-toggle\"]",
+            "html": "<div class=\"navbar navbar-expand-xl navbar-light\" id=\"utility-nav-toggle\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"header-collapsible\"]",
+            "html": "<div class=\"collapse\" id=\"header-collapsible\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"block-octheme-search\"]",
+            "html": "<div class=\"search-block-form block block-search container-inline\" data-drupal-selector=\"search-block-form\" id=\"block-octheme-search\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/form[@id=\"search-block-form\"]",
+            "html": "<form block=\"block-octheme-search\" action=\"/en/search/node\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">...</form>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/input[@id=\"edit-keys\"]",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\" />",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/div[@id=\"edit-actions\"]",
+            "html": "<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\">...</div>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "message": "The element does not have a unique ID",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r64",
+            "xpath": "/h1[@class=\"page-title --section--100\"]",
+            "html": "<h1 class=\"page-title --section--100\" />",
+            "message": "The heading does not have an accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+            "xpath": "/h2[@id=\"block-octheme-footer-social-links\"]",
+            "html": "<h2 class=\"visually-hidden\" id=\"block-octheme-footer-social-links\">Social media links</h2>",
+            "message": "There is no content between this heading and the next",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 1217,
+        "duplicateFailedCount": 43,
+        "uniqueFailedCount": 21
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 922,
+          "failed": 2,
+          "cantTell": 6,
+          "inapplicable": 41
+        },
+        "failedRules": [
+          "button-name",
+          "empty-heading"
+        ],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-command-name",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-complementary-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "svg-img-alt",
+          "valid-lang"
+        ],
+        "failures": [
+          {
+            "rule": "button-name",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=playwright",
+            "impact": "critical",
+            "wcagSc": [
+              "wcag2a",
+              "wcag412"
+            ],
+            "xpath": "form[block=\"block-searchform\"] > .form-actions.js-form-wrapper.form-wrapper > .js-form-submit.form-submit[data-twig-suggestion=\"header_search_form\"]",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">",
+            "message": "Buttons must have discernible text",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "empty-heading",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/empty-heading?application=playwright",
+            "impact": "minor",
+            "wcagSc": [],
+            "xpath": "h1",
+            "html": "<h1 class=\"page-title --section--100\"></h1>",
+            "message": "Headings should not be empty",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 971,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 2
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 3085,
+          "failed": 34,
+          "cantTell": 21,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "aria_accessiblename_exists",
+          "aria_attribute_valid",
+          "aria_child_tabbable",
+          "aria_complementary_labelled",
+          "aria_content_in_landmark",
+          "aria_keyboard_handler_exists",
+          "aria_role_redundant",
+          "element_tabbable_unobscured",
+          "heading_content_exists",
+          "input_label_visible",
+          "label_name_visible",
+          "style_color_misuse",
+          "style_focus_visible",
+          "style_highcontrast_visible",
+          "svg_graphics_labelled",
+          "text_block_heading"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<html style=\"font-size: 16px;\" class=\" js\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \" dir=\"ltr\" lang=\"en\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_color_misuse",
+            "xpath": null,
+            "html": "<link href=\"/sites/default/files/css/css_7DIdhpomcDTiqINpaQeTVPL_slfJqnzC6Q3M6JHYvqo.css?delta=0&language=en&theme=octheme&include=eJxli0EOgzAMBD8U4ichJzHg1omrOKbl96WoNy470u5s1k5Qur9QIj7wExZxLs7wZ-S2uLG22zA2qhQ0z6aZUWbbsHNb4dbEHymJ5uepXzdYRRPKZOOQ0wh22KAKCY3CzvQ2uDJWLS70BZu6QA4\" media=\"all\" rel=\"stylesheet\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<a class=\"u-visually--hidden visually-hidden focusable skip-link\" href=\"#main-content\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "element_tabbable_unobscured",
+            "xpath": null,
+            "html": "<a class=\"u-visually--hidden visually-hidden focusable skip-link\" href=\"#main-content\">",
+            "message": "Confirm that when the element receives focus, it is not covered or, if covered by user action, can be uncovered without moving focus",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_complementary_labelled",
+            "xpath": null,
+            "html": "<div id=\"fluid-id-8zkfs429-331\" role=\"complementary\" class=\"flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel\">",
+            "message": "Element with \"complementary\" role does not have a label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_attribute_valid",
+            "xpath": null,
+            "html": "<div style=\"height: 0px;\" aria-expanded=\"false\" role=\"group\" aria-label=\"User Preferences\" id=\"fluid-id-8zkfs429-429\" class=\"flc-slidingPanel-panel flc-prefsEditor-iframe\">",
+            "message": "The ARIA attributes \"aria-expanded\" are not valid for the element <div> with ARIA role \"group\"",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<button aria-pressed=\"false\" aria-label=\"Show Display Preferences\" aria-controls=\"fluid-id-8zkfs429-429\" role=\"button\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" id=\"show-hide\">",
+            "message": "The explicitly-assigned ARIA role \"button\" is redundant with the implicit role of the element <button>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<button aria-pressed=\"false\" aria-label=\"Show Display Preferences\" aria-controls=\"fluid-id-8zkfs429-429\" role=\"button\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" id=\"show-hide\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<header class=\"header header--default\" role=\"banner\">",
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_keyboard_handler_exists",
+            "xpath": null,
+            "html": "<ul role=\"menu\" block=\"block-octheme-languageswitcher\">",
+            "message": "Verify the <ul> element with \"menu\" role has keyboard access",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_child_tabbable",
+            "xpath": null,
+            "html": "<ul role=\"menu\" block=\"block-octheme-languageswitcher\">",
+            "message": "None of the descendent elements with \"menuitem\" role is tabbable",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "element_tabbable_unobscured",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable skip-link\" href=\"#block-secondarycontent-4\">",
+            "message": "Confirm that when the element receives focus, it is not covered or, if covered by user action, can be uncovered without moving focus",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\" class=\"button btn-lg\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<button aria-label=\"Toggle navigation\" aria-expanded=\"false\" aria-controls=\"header-collapsible\" data-target=\"#header-collapsible\" data-toggle=\"collapse\" type=\"button\" class=\"navbar-toggler\">",
+            "message": "The input element does not have an associated visible label",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<main class=\"main  header--default\" role=\"main\" id=\"main-content\">",
+            "message": "The explicitly-assigned ARIA role \"main\" is redundant with the implicit role of the element <main>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "heading_content_exists",
+            "xpath": null,
+            "html": "<h1 class=\"page-title --section--100\">",
+            "message": "Heading element has no descriptive content",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_accessiblename_exists",
+            "xpath": null,
+            "html": "<h1 class=\"page-title --section--100\">",
+            "message": "Element <h1> with \"heading\" role has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37302\" aria-label=\"Read more about CNIB Partners With THE TEN SPOT® To Launch Braille Nails in Support of Braille Literacy\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "The explicitly-assigned ARIA role \"link\" is redundant with the implicit role of the element <a>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37302\" aria-label=\"Read more about CNIB Partners With THE TEN SPOT® To Launch Braille Nails in Support of Braille Literacy\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "The explicitly-assigned ARIA role \"link\" is redundant with the implicit role of the element <a>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37373\" aria-label=\" The Athlete-Guide Partnership\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "The explicitly-assigned ARIA role \"link\" is redundant with the implicit role of the element <a>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37373\" aria-label=\" The Athlete-Guide Partnership\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37373\" aria-label=\" The Athlete-Guide Partnership\" role=\"link\" class=\"button-primary-cta \">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/event/learning-academy-cnib-score-program-2026\" class=\"card-link mt-auto\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "svg_graphics_labelled",
+            "xpath": null,
+            "html": "<svg viewBox=\"0 0 150 80\" xmlns=\"http://www.w3.org/2000/svg\" class=\"icon play svg\">",
+            "message": "The SVG element has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<p class=\"card-text text-center font-weight-bold pt-5 pb-5\">",
+            "message": "Confirm this text 'Become a volunteer!' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"https://cnib.tfaforms.net/5047080?tfa_35=CNIB%20website\" class=\"button-primary-cta width-half\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/37079\" class=\"more-link\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/node/36986\" class=\"more-link\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<footer class=\"footer\" role=\"contentinfo\">",
+            "message": "The explicitly-assigned ARIA role \"contentinfo\" is redundant with the implicit role of the element <footer>",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"/en/select-your-regional-e-newsletter-list-subscription\" class=\"button\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\" class=\"button btn-lg\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          }
+        ],
+        "outcomeCount": 3137,
+        "uniqueFailedCount": 33,
+        "duplicateFailedCount": 1
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 76,
+          "failed": 16,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/color-contrast",
+          "labels-and-names/button-name",
+          "labels-and-names/duplicate-id-aria",
+          "labels-and-names/label-content-mismatch",
+          "labels-and-names/multiple-labels",
+          "landmarks/landmark-unique",
+          "navigable/empty-heading",
+          "navigable/page-has-heading-one"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "#icon-social-facebook-title",
+            "selector": "#icon-social-facebook-title",
+            "html": "<title id=\"icon-social-facebook-title\">Follow us on facebook</title>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1).",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "#icon-social-twitter-title",
+            "selector": "#icon-social-twitter-title",
+            "html": "<title id=\"icon-social-twitter-title\">Follow us on X</title>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1).",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "#icon-social-youtube-title",
+            "selector": "#icon-social-youtube-title",
+            "html": "<title id=\"icon-social-youtube-title\">Follow us on youtube</title>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1).",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "#icon-social-instagram-title",
+            "selector": "#icon-social-instagram-title",
+            "html": "<title id=\"icon-social-instagram-title\">Follow us on instagram</title>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1).",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "#icon-social-linkedin-title",
+            "selector": "#icon-social-linkedin-title",
+            "html": "<title id=\"icon-social-linkedin-title\">Follow us on linkedin</title>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1).",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "navigable/page-has-heading-one",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page does not contain a level-one heading.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "navigable/empty-heading",
+            "xpath": "#block-octheme-page-title > h1",
+            "selector": "#block-octheme-page-title > h1",
+            "html": "<h1 class=\"page-title --section--100\"></h1>",
+            "impact": "minor",
+            "message": "Heading is empty. Add text content or remove the heading element.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-unique",
+            "xpath": "#block-secondarycontent-4",
+            "selector": "#block-secondarycontent-4",
+            "html": "<nav aria-label=\"Primary navigation\" id=\"block-secondarycontent-4\" class=\"block block-menu navigation menu--secondary-content\">\n  \n  <div class=\"navbar navbar-expand-xl navbar-light\" id=\"utility-nav-t...",
+            "impact": "moderate",
+            "message": "Multiple navigation landmarks have the same label \"primary navigation\".",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/multiple-labels",
+            "xpath": "#edit-keys",
+            "selector": "#edit-keys",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "impact": "moderate",
+            "message": "Form field has 3 labels. Use a single label element.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/multiple-labels",
+            "xpath": "#edit-keys",
+            "selector": "#edit-keys",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "impact": "moderate",
+            "message": "Form field has 3 labels. Use a single label element.",
+            "isDuplicate": true,
+            "duplicateOf": "accesslint"
+          },
+          {
+            "rule": "labels-and-names/multiple-labels",
+            "xpath": "#edit-keys",
+            "selector": "#edit-keys",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "impact": "moderate",
+            "message": "Form field has 3 labels. Use a single label element.",
+            "isDuplicate": true,
+            "duplicateOf": "accesslint"
+          },
+          {
+            "rule": "labels-and-names/label-content-mismatch",
+            "xpath": "div > a[href=\"/en/node/34142\"]",
+            "selector": "div > a[href=\"/en/node/34142\"]",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" Reading Room\" href=\"/en/node/34142\">Read more</a>",
+            "impact": "serious",
+            "message": "Accessible name \"Reading Room\" does not contain visible text \"Read more\".",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/label-content-mismatch",
+            "xpath": "div > a[href=\"/en/node/37373\"]",
+            "selector": "div > a[href=\"/en/node/37373\"]",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" The Athlete-Guide Partnership\" href=\"/en/node/37373\">Read more</a>",
+            "impact": "serious",
+            "message": "Accessible name \"The Athlete-Guide Partnership\" does not contain visible text \"Read more\".",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/button-name",
+            "xpath": "#edit-submit",
+            "selector": "#edit-submit",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">\n  <svg tabindex=\"-1\" aria-...",
+            "impact": "critical",
+            "message": "Button has no discernible text.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/duplicate-id-aria",
+            "xpath": "#edit-keys",
+            "selector": "#edit-keys",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "impact": "critical",
+            "message": "Duplicate ID \"edit-keys\" referenced by label[for].",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "labels-and-names/duplicate-id-aria",
+            "xpath": "#header-collapsible",
+            "selector": "#header-collapsible",
+            "html": "<div class=\"collapse\" id=\"header-collapsible\">\n        \n\n<div class=\"search-block-form block block-search container-inline\" data-drupal-selector=\"search-block-form\" id=\"block-octheme-search\">\n  \n    \n...",
+            "impact": "critical",
+            "message": "Duplicate ID \"header-collapsible\" referenced by aria-controls.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 14,
+        "duplicateFailedCount": 2
+      },
+      "qualweb": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 606,
+          "failed": 10,
+          "cantTell": 106,
+          "inapplicable": 7
+        },
+        "failedRules": [
+          "QW-ACT-R11",
+          "QW-ACT-R16",
+          "QW-ACT-R25",
+          "QW-ACT-R30",
+          "QW-ACT-R35"
+        ],
+        "passedRules": [
+          "QW-ACT-R1",
+          "QW-ACT-R11",
+          "QW-ACT-R12",
+          "QW-ACT-R13",
+          "QW-ACT-R16",
+          "QW-ACT-R17",
+          "QW-ACT-R2",
+          "QW-ACT-R20",
+          "QW-ACT-R21",
+          "QW-ACT-R22",
+          "QW-ACT-R25",
+          "QW-ACT-R27",
+          "QW-ACT-R28",
+          "QW-ACT-R30",
+          "QW-ACT-R33",
+          "QW-ACT-R34",
+          "QW-ACT-R35",
+          "QW-ACT-R37",
+          "QW-ACT-R38",
+          "QW-ACT-R44",
+          "QW-ACT-R48",
+          "QW-ACT-R5",
+          "QW-ACT-R63",
+          "QW-ACT-R64",
+          "QW-ACT-R65",
+          "QW-ACT-R66",
+          "QW-ACT-R73",
+          "QW-ACT-R75",
+          "QW-ACT-R76",
+          "QW-ACT-R9"
+        ],
+        "failures": [
+          {
+            "rule": "QW-ACT-R11",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/",
+            "description": "The test target doesn't have an accessible name, or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target doesn't have an accessible name, or it's empty ('').",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R25",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/5c01ea/",
+            "description": "The `aria-expanded` property is neither inherited nor supported by the `role` group.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The `aria-expanded` property is neither inherited nor supported by the `role` group.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R16",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
+            "description": "The test target accessible name doesn't exist or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('').",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R16",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
+            "description": "The test target accessible name doesn't exist or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('').",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R16",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
+            "description": "The test target accessible name doesn't exist or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('').",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R16",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
+            "description": "The test target accessible name doesn't exist or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('').",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R30",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+            "description": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          },
+          {
+            "rule": "QW-ACT-R35",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/ffd0e9/",
+            "description": "The test target accessible name doesn't exist or it's empty ('').",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('').",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 729,
+        "duplicateFailedCount": 5,
+        "uniqueFailedCount": 5
+      },
+      "duplicateFindingCount": 51
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "style_focus_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 9,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\" class=\"button btn-lg\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/37302\" aria-label=\"Read more about CNIB Partners With THE TEN SPOT® To Launch Braille Nails in Support of Braille Literacy\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/37373\" aria-label=\" The Athlete-Guide Partnership\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/event/learning-academy-cnib-score-program-2026\" class=\"card-link mt-auto\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "UX Designer",
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 8,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button id=\"show-hide\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" role=\"button\" aria-controls=\"fluid-id-8ci5kgjj-598\" aria-label=\"Show Display Preferences\" aria-pressed=\"false\">+ Show Preferences</button>",
+            "xpath": "/button[@id=\"show-hide\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"tel:18005632642\" aria-label=\"Phone us by number: 1-800-563-2642\">...</a>",
+            "xpath": "/a",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/fr\" class=\"language-link\" lang=\"fr\" aria-current=\"false\" hreflang=\"fr\" data-drupal-link-system-path=\"<front>\">Français</a>",
+            "xpath": "/a[@class=\"language-link\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"button btn-lg\" href=\"https://secure.cnib.ca/ui/GNdonate/donations/start\">Donate</a>",
+            "xpath": "/a[@class=\"button btn-lg\"]",
+            "message": "Target has insufficient size"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en\" class=\"menu__link menu__link-level-0 is-active\" target=\"_self\" data-drupal-link-system-path=\"<front>\" aria-current=\"page\">Home</a>",
+            "xpath": "/a[@class=\"menu__link menu__link-level-0 is-active\"]",
+            "message": "Target has insufficient size"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r3",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 7,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<form block=\"block-searchform\" action=\"/en/search/node\" method=\"get\" id=\"search-block-form\" accept-charset=\"UTF-8\">...</form>",
+            "xpath": "/form[@id=\"search-block-form\"]",
+            "message": "The element does not have a unique ID"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\" />",
+            "xpath": "/input[@id=\"edit-keys\"]",
+            "message": "The element does not have a unique ID"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<div data-drupal-selector=\"edit-actions\" class=\"form-actions js-form-wrapper form-wrapper\" id=\"edit-actions\">...</div>",
+            "xpath": "/div[@id=\"edit-actions\"]",
+            "message": "The element does not have a unique ID"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "message": "The element does not have a unique ID"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<div class=\"navbar navbar-expand-xl navbar-light\" id=\"utility-nav-toggle\">...</div>",
+            "xpath": "/div[@id=\"utility-nav-toggle\"]",
+            "message": "The element does not have a unique ID"
+          }
+        ]
+      },
+      {
+        "rule": "aria_role_redundant",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 7,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button aria-pressed=\"false\" aria-label=\"Show Display Preferences\" aria-controls=\"fluid-id-8zkfs429-429\" role=\"button\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" id=\"show-hide\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"button\" is redundant with the implicit role of the element <button>"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<header class=\"header header--default\" role=\"banner\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<main class=\"main  header--default\" role=\"main\" id=\"main-content\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"main\" is redundant with the implicit role of the element <main>"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/37302\" aria-label=\"Read more about CNIB Partners With THE TEN SPOT® To Launch Braille Nails in Support of Braille Literacy\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"link\" is redundant with the implicit role of the element <a>"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"link\" is redundant with the implicit role of the element <a>"
+          }
+        ]
+      },
+      {
+        "rule": "distinguishable/color-contrast",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 5,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<title id=\"icon-social-facebook-title\">Follow us on facebook</title>",
+            "xpath": "#icon-social-facebook-title",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1)."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<title id=\"icon-social-twitter-title\">Follow us on X</title>",
+            "xpath": "#icon-social-twitter-title",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1)."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<title id=\"icon-social-youtube-title\">Follow us on youtube</title>",
+            "xpath": "#icon-social-youtube-title",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1)."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<title id=\"icon-social-instagram-title\">Follow us on instagram</title>",
+            "xpath": "#icon-social-instagram-title",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1)."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<title id=\"icon-social-linkedin-title\">Follow us on linkedin</title>",
+            "xpath": "#icon-social-linkedin-title",
+            "message": "Insufficient color contrast ratio of 3.57:1 (required 4.5:1)."
+          }
+        ]
+      },
+      {
+        "rule": "label_name_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button aria-pressed=\"false\" aria-label=\"Show Display Preferences\" aria-controls=\"fluid-id-8zkfs429-429\" role=\"button\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" id=\"show-hide\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/34142\" aria-label=\" Reading Room\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a href=\"/en/node/37373\" aria-label=\" The Athlete-Guide Partnership\" role=\"link\" class=\"button-primary-cta \">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r14",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author"
+          ],
+          "severity": "Critical",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button id=\"show-hide\" class=\"flc-slidingPanel-toggleButton fl-prefsEditor-showHide\" role=\"button\" aria-controls=\"fluid-id-8ci5kgjj-598\" aria-label=\"Show Display Preferences\" aria-pressed=\"false\">+ Show Preferences</button>",
+            "xpath": "/button[@id=\"show-hide\"]",
+            "message": "The visible text content of the element is not included within its accessible name"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" Reading Room\" href=\"/en/node/34142\">Read more</a>",
+            "xpath": "/a[@class=\"button-primary-cta \"]",
+            "message": "The visible text content of the element is not included within its accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "element_tabbable_unobscured",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"u-visually--hidden visually-hidden focusable skip-link\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Confirm that when the element receives focus, it is not covered or, if covered by user action, can be uncovered without moving focus"
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"visually-hidden focusable skip-link\" href=\"#block-secondarycontent-4\">",
+            "xpath": null,
+            "message": "Confirm that when the element receives focus, it is not covered or, if covered by user action, can be uncovered without moving focus"
+          }
+        ]
+      },
+      {
+        "rule": "labels-and-names/label-content-mismatch",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" Reading Room\" href=\"/en/node/34142\">Read more</a>",
+            "xpath": "div > a[href=\"/en/node/34142\"]",
+            "message": "Accessible name \"Reading Room\" does not contain visible text \"Read more\"."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"button-primary-cta \" role=\"link\" aria-label=\" The Athlete-Guide Partnership\" href=\"/en/node/37373\">Read more</a>",
+            "xpath": "div > a[href=\"/en/node/37373\"]",
+            "message": "Accessible name \"The Athlete-Guide Partnership\" does not contain visible text \"Read more\"."
+          }
+        ]
+      },
+      {
+        "rule": "labels-and-names/duplicate-id-aria",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "xpath": "#edit-keys",
+            "message": "Duplicate ID \"edit-keys\" referenced by label[for]."
+          },
+          {
+            "url": "https://cnib.ca",
+            "html": "<div class=\"collapse\" id=\"header-collapsible\">\n        \n\n<div class=\"search-block-form block block-search container-inline\" data-drupal-selector=\"search-block-form\" id=\"block-octheme-search\">\n  \n    \n...",
+            "xpath": "#header-collapsible",
+            "message": "Duplicate ID \"header-collapsible\" referenced by aria-controls."
+          }
+        ]
+      },
+      {
+        "rule": "button-name",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "Content Author"
+          ],
+          "severity": "Critical",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">",
+            "xpath": "form[block=\"block-searchform\"] > .form-actions.js-form-wrapper.form-wrapper > .js-form-submit.form-submit[data-twig-suggestion=\"header_search_form\"]",
+            "message": "Buttons must have discernible text",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "empty-heading",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h1 class=\"page-title --section--100\"></h1>",
+            "xpath": "h1",
+            "message": "Headings should not be empty",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r12",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">...</button>",
+            "xpath": "/button[@id=\"edit-submit\"]",
+            "message": "The button does not have an accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r18",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The attribute is not allowed for the element on which it is specified"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r64",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h1 class=\"page-title --section--100\" />",
+            "xpath": "/h1[@class=\"page-title --section--100\"]",
+            "message": "The heading does not have an accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h2 class=\"visually-hidden\" id=\"block-octheme-footer-social-links\">Social media links</h2>",
+            "xpath": "/h2[@id=\"block-octheme-footer-social-links\"]",
+            "message": "There is no content between this heading and the next"
+          }
+        ]
+      },
+      {
+        "rule": "style_highcontrast_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<html style=\"font-size: 16px;\" class=\" js\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \" dir=\"ltr\" lang=\"en\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+          }
+        ]
+      },
+      {
+        "rule": "style_color_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<link href=\"/sites/default/files/css/css_7DIdhpomcDTiqINpaQeTVPL_slfJqnzC6Q3M6JHYvqo.css?delta=0&language=en&theme=octheme&include=eJxli0EOgzAMBD8U4ichJzHg1omrOKbl96WoNy470u5s1k5Qur9QIj7wExZxLs7wZ-S2uLG22zA2qhQ0z6aZUWbbsHNb4dbEHymJ5uepXzdYRRPKZOOQ0wh22KAKCY3CzvQ2uDJWLS70BZu6QA4\" media=\"all\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Verify color is not used as the only visual means of conveying information"
+          }
+        ]
+      },
+      {
+        "rule": "aria_content_in_landmark",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<a class=\"u-visually--hidden visually-hidden focusable skip-link\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element"
+          }
+        ]
+      },
+      {
+        "rule": "aria_complementary_labelled",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<div id=\"fluid-id-8zkfs429-331\" role=\"complementary\" class=\"flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel\">",
+            "xpath": null,
+            "message": "Element with \"complementary\" role does not have a label"
+          }
+        ]
+      },
+      {
+        "rule": "aria_attribute_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<div style=\"height: 0px;\" aria-expanded=\"false\" role=\"group\" aria-label=\"User Preferences\" id=\"fluid-id-8zkfs429-429\" class=\"flc-slidingPanel-panel flc-prefsEditor-iframe\">",
+            "xpath": null,
+            "message": "The ARIA attributes \"aria-expanded\" are not valid for the element <div> with ARIA role \"group\""
+          }
+        ]
+      },
+      {
+        "rule": "aria_keyboard_handler_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<ul role=\"menu\" block=\"block-octheme-languageswitcher\">",
+            "xpath": null,
+            "message": "Verify the <ul> element with \"menu\" role has keyboard access"
+          }
+        ]
+      },
+      {
+        "rule": "aria_child_tabbable",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<ul role=\"menu\" block=\"block-octheme-languageswitcher\">",
+            "xpath": null,
+            "message": "None of the descendent elements with \"menuitem\" role is tabbable"
+          }
+        ]
+      },
+      {
+        "rule": "input_label_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button aria-label=\"Toggle navigation\" aria-expanded=\"false\" aria-controls=\"header-collapsible\" data-target=\"#header-collapsible\" data-toggle=\"collapse\" type=\"button\" class=\"navbar-toggler\">",
+            "xpath": null,
+            "message": "The input element does not have an associated visible label"
+          }
+        ]
+      },
+      {
+        "rule": "heading_content_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h1 class=\"page-title --section--100\">",
+            "xpath": null,
+            "message": "Heading element has no descriptive content"
+          }
+        ]
+      },
+      {
+        "rule": "aria_accessiblename_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h1 class=\"page-title --section--100\">",
+            "xpath": null,
+            "message": "Element <h1> with \"heading\" role has no accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "svg_graphics_labelled",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<svg viewBox=\"0 0 150 80\" xmlns=\"http://www.w3.org/2000/svg\" class=\"icon play svg\">",
+            "xpath": null,
+            "message": "The SVG element has no accessible name"
+          }
+        ]
+      },
+      {
+        "rule": "text_block_heading",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<p class=\"card-text text-center font-weight-bold pt-5 pb-5\">",
+            "xpath": null,
+            "message": "Confirm this text 'Become a volunteer!' is used as a heading and if so, modify to use a heading element or role"
+          }
+        ]
+      },
+      {
+        "rule": "navigable/page-has-heading-one",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page does not contain a level-one heading."
+          }
+        ]
+      },
+      {
+        "rule": "navigable/empty-heading",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<h1 class=\"page-title --section--100\"></h1>",
+            "xpath": "#block-octheme-page-title > h1",
+            "message": "Heading is empty. Add text content or remove the heading element."
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/landmark-unique",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<nav aria-label=\"Primary navigation\" id=\"block-secondarycontent-4\" class=\"block block-menu navigation menu--secondary-content\">\n  \n  <div class=\"navbar navbar-expand-xl navbar-light\" id=\"utility-nav-t...",
+            "xpath": "#block-secondarycontent-4",
+            "message": "Multiple navigation landmarks have the same label \"primary navigation\"."
+          }
+        ]
+      },
+      {
+        "rule": "labels-and-names/multiple-labels",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<input placeholder=\"Search...\" data-drupal-selector=\"edit-keys\" type=\"search\" id=\"edit-keys\" name=\"keys\" value=\"\" size=\"15\" maxlength=\"128\" class=\"form-search\">",
+            "xpath": "#edit-keys",
+            "message": "Form field has 3 labels. Use a single label element."
+          }
+        ]
+      },
+      {
+        "rule": "labels-and-names/button-name",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": "<button data-twig-suggestion=\"header_search_form\" data-drupal-selector=\"edit-submit\" type=\"submit\" id=\"edit-submit\" value=\"Search\" class=\"button js-form-submit form-submit\">\n  <svg tabindex=\"-1\" aria-...",
+            "xpath": "#edit-submit",
+            "message": "Button has no discernible text."
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R11",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The test target doesn't have an accessible name, or it's empty ('')."
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R25",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The `aria-expanded` property is neither inherited nor supported by the `role` group."
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R16",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('')."
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R30",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The complete visible text content of the test target neither matches or is contained within its accessible name."
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R35",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false
+        },
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://cnib.ca",
+            "html": null,
+            "xpath": null,
+            "message": "The test target accessible name doesn't exist or it's empty ('')."
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 9,
+      "Visual Designer": 8,
+      "Content Author": 4,
+      "Front-End Developer": 64
+    },
+    "severityStats": {
+      "Critical": 3,
+      "Serious": 9,
+      "Moderate": 63,
+      "Minor": 0
+    }
+  }
+}
