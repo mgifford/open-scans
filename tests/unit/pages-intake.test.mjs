@@ -71,6 +71,29 @@ function isPrivateIPv6(hostname) {
   return false;
 }
 
+// File extensions that indicate non-web documents which cannot be accessibility-scanned
+const NON_WEB_EXTENSIONS = new Set([
+  "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+  "odt", "ods", "odp", "rtf", "txt", "csv",
+  "jpg", "jpeg", "png", "gif", "bmp", "svg", "ico", "webp", "tiff", "tif", "avif",
+  "mp3", "wav", "ogg", "flac", "aac", "m4a",
+  "mp4", "avi", "mov", "wmv", "mkv", "webm", "flv",
+  "zip", "tar", "gz", "bz2", "rar", "7z",
+  "exe", "dmg", "pkg", "msi", "apk", "deb", "rpm",
+  "json", "xml", "yaml", "yml", "rss", "atom",
+  "ttf", "otf", "woff", "woff2", "eot"
+]);
+
+// Check if URL points to a non-web document that cannot be accessibility-scanned
+function isNonWebDocument(url) {
+  const path = url.pathname.toLowerCase();
+  const lastSegment = path.split("/").pop() || "";
+  const dotIndex = lastSegment.lastIndexOf(".");
+  if (dotIndex === -1) return false;
+  const ext = lastSegment.slice(dotIndex + 1);
+  return NON_WEB_EXTENSIONS.has(ext);
+}
+
 // Validate that URL is publicly accessible
 function validateUrl(urlString) {
   if (!isValidUrl(urlString)) {
@@ -92,6 +115,11 @@ function validateUrl(urlString) {
   // Check for private IPv6
   if (isPrivateIPv6(url.hostname)) {
     return { valid: false, reason: "Private IPv6 addresses are not allowed" };
+  }
+
+  // Check for non-web document file types
+  if (isNonWebDocument(url)) {
+    return { valid: false, reason: "Non-web document URLs cannot be accessibility-scanned (e.g. PDFs, images, videos)" };
   }
 
   return { valid: true, reason: "" };
@@ -378,4 +406,41 @@ test("Integration: issue body matches parser expectations", () => {
   
   const reparsed = parseUrls(urlSection);
   assert.deepEqual(reparsed, urls, "Formatted body should be parseable back to original URLs");
+});
+
+// Tests for non-web document filtering
+test("validateUrl rejects PDF URLs", () => {
+  const result = validateUrl("https://www.example.com/docs/report.pdf");
+  assert.equal(result.valid, false);
+  assert.match(result.reason, /non-web document/i);
+});
+
+test("validateUrl rejects image URLs", () => {
+  const result = validateUrl("https://example.com/images/photo.png");
+  assert.equal(result.valid, false);
+  assert.match(result.reason, /non-web document/i);
+});
+
+test("validateUrl accepts regular web page URLs", () => {
+  const result = validateUrl("https://example.com/page.html");
+  assert.equal(result.valid, true);
+});
+
+test("validateUrl accepts URLs with no file extension", () => {
+  const result = validateUrl("https://example.com/about");
+  assert.equal(result.valid, true);
+});
+
+test("validateUrls filters out non-web document URLs", () => {
+  const urls = [
+    "https://example.com/page",
+    "https://example.com/report.pdf",
+    "https://example.com/photo.jpg"
+  ];
+  const { accepted, rejected } = validateUrls(urls);
+  assert.equal(accepted.length, 1);
+  assert.equal(rejected.length, 2);
+  for (const r of rejected) {
+    assert.match(r.reason, /non-web document/i);
+  }
 });

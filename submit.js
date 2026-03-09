@@ -7,6 +7,37 @@
 // Intentionally uses \s* to handle spaces, tabs, and other whitespace that users might accidentally include
 const SCAN_PREFIX_REGEX = /^scan:\s*/i;
 
+// File extensions that indicate non-web documents which cannot be accessibility-scanned
+const NON_WEB_EXTENSIONS = new Set([
+  // Documents
+  "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+  "odt", "ods", "odp", "rtf", "txt", "csv",
+  // Images
+  "jpg", "jpeg", "png", "gif", "bmp", "svg", "ico", "webp", "tiff", "tif", "avif",
+  // Audio
+  "mp3", "wav", "ogg", "flac", "aac", "m4a",
+  // Video
+  "mp4", "avi", "mov", "wmv", "mkv", "webm", "flv",
+  // Archives
+  "zip", "tar", "gz", "bz2", "rar", "7z",
+  // Executables / packages
+  "exe", "dmg", "pkg", "msi", "apk", "deb", "rpm",
+  // Data / code (not HTML pages)
+  "json", "xml", "yaml", "yml", "rss", "atom",
+  // Fonts
+  "ttf", "otf", "woff", "woff2", "eot"
+]);
+
+// Check if URL points to a non-web document that cannot be accessibility-scanned
+function isNonWebDocument(url) {
+  const path = url.pathname.toLowerCase();
+  const lastSegment = path.split("/").pop() || "";
+  const dotIndex = lastSegment.lastIndexOf(".");
+  if (dotIndex === -1) return false;
+  const ext = lastSegment.slice(dotIndex + 1);
+  return NON_WEB_EXTENSIONS.has(ext);
+}
+
 // Parse URLs from text input (supports line-by-line and CSV formats)
 export function parseUrls(rawText) {
   return rawText
@@ -95,6 +126,11 @@ export function validateUrl(urlString) {
   // Check for private IPv6
   if (isPrivateIPv6(url.hostname)) {
     return { valid: false, reason: "Private IPv6 addresses are not allowed" };
+  }
+
+  // Check for non-web document file types
+  if (isNonWebDocument(url)) {
+    return { valid: false, reason: "Non-web document URLs cannot be accessibility-scanned (e.g. PDFs, images, videos)" };
   }
 
   return { valid: true, reason: "" };

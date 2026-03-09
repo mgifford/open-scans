@@ -1,5 +1,36 @@
 import { isIP } from "node:net";
 
+// File extensions that indicate non-web documents which cannot be accessibility-scanned
+const NON_WEB_EXTENSIONS = new Set([
+  // Documents
+  "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+  "odt", "ods", "odp", "rtf", "txt", "csv",
+  // Images
+  "jpg", "jpeg", "png", "gif", "bmp", "svg", "ico", "webp", "tiff", "tif", "avif",
+  // Audio
+  "mp3", "wav", "ogg", "flac", "aac", "m4a",
+  // Video
+  "mp4", "avi", "mov", "wmv", "mkv", "webm", "flv",
+  // Archives
+  "zip", "tar", "gz", "bz2", "rar", "7z",
+  // Executables / packages
+  "exe", "dmg", "pkg", "msi", "apk", "deb", "rpm",
+  // Data / code (not HTML pages)
+  "json", "xml", "yaml", "yml", "rss", "atom",
+  // Fonts
+  "ttf", "otf", "woff", "woff2", "eot"
+]);
+
+export function isNonWebDocument(parsedUrl) {
+  // Extract the pathname (ignore query string / fragment)
+  const path = parsedUrl.pathname.toLowerCase();
+  const lastSegment = path.split("/").pop() || "";
+  const dotIndex = lastSegment.lastIndexOf(".");
+  if (dotIndex === -1) return false;
+  const ext = lastSegment.slice(dotIndex + 1);
+  return NON_WEB_EXTENSIONS.has(ext);
+}
+
 function normalizeUrl(rawUrl) {
   const parsed = new URL(rawUrl);
   parsed.hash = "";
@@ -69,6 +100,15 @@ export function validateTarget(rawUrl) {
       return {
         accepted: false,
         reason: blockedReason,
+        submittedUrl: rawUrl,
+        normalizedUrl: parsed.toString()
+      };
+    }
+
+    if (isNonWebDocument(parsed)) {
+      return {
+        accepted: false,
+        reason: "non-web document URLs cannot be accessibility-scanned",
         submittedUrl: rawUrl,
         normalizedUrl: parsed.toString()
       };
