@@ -121,21 +121,32 @@ When an issue with a title starting with "SCAN:" is created or edited, it automa
 
 **Multiple Scans Processing**: If you create multiple SCAN issues at once, they will be processed sequentially (one after another) rather than simultaneously. This ensures stable operation and prevents conflicts when pushing scan results to the repository. Each scan will wait for the previous one to complete before starting.
 
-**Specifying Accessibility Engines**: You can optionally specify which accessibility engines to run by including keywords in the issue title:
-- `AXE` - Run only axe-core scanner
-- `ALFA` - Run only Siteimprove ALFA scanner
-- `EQUALACCESS` - Run only IBM Equal Access Checker
-- `ACCESSLINT` - Run only AccessLint scanner
-- `QUALWEB` - Run only QualWeb scanner
-- `ALL` - Run all available scanners (default if no engine specified)
+**Specifying Accessibility Engines**: You can optionally specify which accessibility engines to run. If no engines are specified, the default behaviour is to run **axe** plus one randomly chosen engine from [ALFA, Equal Access, AccessLint, QualWeb] — giving thorough-but-fast results without running all five engines every time.
 
-You can specify multiple engines in a single scan. The engine keywords are removed from the scan title automatically.
+There are two ways to specify engines:
+
+**1. In the issue title** — include one or more engine keywords:
+- `AXE` - axe-core scanner
+- `ALFA` - Siteimprove ALFA scanner
+- `EQUALACCESS` - IBM Equal Access Checker
+- `ACCESSLINT` - AccessLint scanner
+- `QUALWEB` - QualWeb scanner
+- `ALL` - Run all available scanners
+
+The engine keywords are removed from the scan title automatically. You can combine multiple keywords.
+
+**2. In the first line of the issue body** — use an `Engine:` prefix:
+```
+Engine: axe, alfa
+```
+List engine names separated by spaces or commas. This overrides any engine keywords in the title. Supported values: `axe`, `alfa`, `equalaccess`, `accesslint`, `qualweb`, `all`.
 
 **Examples**:
-- `SCAN: AXE Homepage accessibility check` - Runs only axe-core
-- `SCAN: ALFA EQUALACCESS Government site scan` - Runs ALFA and Equal Access Checker
-- `SCAN: Homepage check` - Runs all engines (default)
-- `SCAN: ALL Complete accessibility audit` - Runs all engines explicitly
+- `SCAN: AXE Homepage accessibility check` — Runs only axe-core
+- `SCAN: ALFA EQUALACCESS Government site scan` — Runs ALFA and Equal Access Checker
+- `SCAN: ALL Complete accessibility audit` — Runs all five engines
+- `SCAN: Homepage check` — Runs axe + one randomly chosen engine (default)
+- Body first line `Engine: axe accesslint` with any title — Runs axe and AccessLint
 
 ### 2. Daily Scheduled Scans
 
@@ -189,7 +200,7 @@ The system supports multiple accessibility scanning engines that can be run indi
 4. **AccessLint** - Automated accessibility testing tool
 5. **QualWeb** - University of Lisbon's WCAG and ACT Rules evaluator
 
-By default, all scanners run for comprehensive coverage. You can specify which scanners to use via the issue title (see [Scanning Triggers](#scanning-triggers) above).
+By default, **axe** plus one randomly selected engine run for a balanced result without the overhead of all five scanners. Use `ALL` in the title or `Engine: all` in the body to run every scanner. You can specify which scanners to use via the issue title or body (see [Scanning Triggers](#scanning-triggers) above).
 
 ## Configuration
 

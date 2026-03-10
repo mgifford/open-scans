@@ -4,6 +4,42 @@ import { randomUUID } from "node:crypto";
 const schemaPath = new URL("./schemas/scan-request.schema.json", import.meta.url);
 const scanRequestSchema = JSON.parse(readFileSync(schemaPath, "utf8"));
 
+/**
+ * The non-axe engines available for random selection when no engines are specified.
+ * axe is always included in the default selection; one of these is chosen at random.
+ */
+export const NON_AXE_ENGINES = ["alfa", "equalaccess", "accesslint", "qualweb"];
+
+/**
+ * Returns the default engines to use when none are specified:
+ * always axe plus one randomly selected engine from NON_AXE_ENGINES.
+ * @returns {string[]} Array of two engine names
+ */
+export function getDefaultEngines() {
+  const randomIndex = Math.floor(Math.random() * NON_AXE_ENGINES.length);
+  return ["axe", NON_AXE_ENGINES[randomIndex]];
+}
+
+/**
+ * Parse engine names from an "Engine: ..." line at the start of an issue body.
+ * @param {string} body - The issue body text
+ * @returns {string[]|null} Array of valid engine names, or null if not found
+ */
+function extractBodyEngines(body) {
+  if (!body) return null;
+  const firstLine = body.split("\n")[0].trim();
+  const match = firstLine.match(/^Engine:\s*(.+)$/i);
+  if (!match) return null;
+
+  const knownEngines = new Set(["axe", "alfa", "equalaccess", "accesslint", "qualweb", "all"]);
+  const engineList = match[1]
+    .split(/[\s,]+/)
+    .map((e) => e.trim().toLowerCase())
+    .filter((e) => Boolean(e) && knownEngines.has(e));
+
+  return engineList.length > 0 ? engineList : null;
+}
+
 function splitUrls(rawText) {
   return rawText
     .split(/[\n,]/g)
@@ -54,8 +90,8 @@ function extractScanTitle(issueTitle) {
   // Clean up extra whitespace
   scanTitle = scanTitle.replace(/\s+/g, " ").trim();
   
-  // Default to "all" if no engines specified
-  const engines = foundEngines.length > 0 ? foundEngines : ["all"];
+  // Return engines found in the title, or empty array if none — caller resolves the default
+  const engines = [...foundEngines];
 
   return {
     isScanIssue,
@@ -84,6 +120,11 @@ export function parseScanIssue(issueEvent) {
   const fallbackUrls = splitUrls(body).filter((value) => value.startsWith("http://") || value.startsWith("https://"));
   const requestedUrls = splitUrls(urlsSection).length > 0 ? splitUrls(urlsSection) : fallbackUrls;
 
+  // Engine selection priority: body "Engine:" line > title keywords > default (axe + random)
+  const bodyEngines = extractBodyEngines(body);
+  const titleEngines = titleInfo.engines;
+  const engines = bodyEngines ?? (titleEngines.length > 0 ? titleEngines : getDefaultEngines());
+
   const requestId = `${issue.number}-${randomUUID()}`;
   const request = {
     requestId,
@@ -95,7 +136,7 @@ export function parseScanIssue(issueEvent) {
     issueTitle,
     scanTitle: titleInfo.scanTitle,
     requestedUrls,
-    engines: titleInfo.engines
+    engines
   };
 
   const validation = validateScanRequest(request);
@@ -107,7 +148,7 @@ export function parseScanIssue(issueEvent) {
     isTimedIssue: titleInfo.isTimedIssue,
     isRunnableIssue: titleInfo.isRunnableIssue,
     triggerType: titleInfo.triggerType,
-    engines: titleInfo.engines
+    engines
   };
 }
 
