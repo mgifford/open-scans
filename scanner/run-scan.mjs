@@ -2054,6 +2054,12 @@ export function markdownToHtml(markdown, summary) {
   // all empty cells except the last) into collapsible <details> elements within
   // the preceding URL row's last cell. Done after list conversion to avoid
   // double-wrapping the <li> elements added in the details block.
+  //
+  // Continuation rows have at least this many leading empty <td></td> cells.
+  // The Detailed Results table has 11 data columns; continuation rows omit all
+  // of them and only populate the last (Notes) column, so ≥5 empty leading cells
+  // is a reliable signal that the row carries scanner failure details.
+  const MIN_EMPTY_CELLS_FOR_CONTINUATION = 5;
   html = html.replace(
     /(<h2>📊 Detailed Results<\/h2>[\s\S]*?<tbody>\n?)([\s\S]*?)(\n?<\/tbody>)/,
     (match, before, tbody, after) => {
@@ -2061,7 +2067,8 @@ export function markdownToHtml(markdown, summary) {
       const groups = [];
       for (const row of rows) {
         // Continuation rows start with multiple consecutive empty <td></td> cells
-        if (/^<tr>(<td><\/td>){5,}/.test(row) && groups.length > 0) {
+        const continuationPattern = new RegExp(`^<tr>(<td><\/td>){${MIN_EMPTY_CELLS_FOR_CONTINUATION},}`);
+        if (continuationPattern.test(row) && groups.length > 0) {
           // Extract content from the last <td> cell using lastIndexOf for reliability
           const lastTdStart = row.lastIndexOf('<td>');
           const lastTdEnd = row.lastIndexOf('</td>');
@@ -2247,7 +2254,6 @@ export function markdownToHtml(markdown, summary) {
       color: #0969da;
       font-size: 0.875rem;
       padding: 0.25rem 0;
-      user-select: none;
     }
     
     summary:hover {
