@@ -1987,6 +1987,57 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
 }
 
 /**
+ * Wrap specific H2 sections in <details>/<summary> accordion elements.
+ * @param {string} html - HTML body content
+ * @returns {string} HTML with target sections wrapped in accordions
+ */
+function wrapSectionsInAccordions(html) {
+  // These headings are hardcoded strings from toMarkdownReport – safe to embed directly.
+  const ACCORDION_HEADINGS = new Set([
+    '🔧 Priority: Most Common Issues (ALFA)',
+    '🔧 Priority: Most Common Issues (axe)',
+    '🔍 Cross-Page Patterns: Common HTML Issues',
+    '📊 Detailed Results',
+    'Detailed Failure Information (ALFA)',
+    'Detailed Failure Information (axe)',
+  ]);
+
+  // Split by <h2>…</h2> tags (capturing group keeps delimiters in the array).
+  // H2 headings from markdown conversion never contain newlines or nested tags.
+  const parts = html.split(/(<h2>[^<]*<\/h2>)/);
+
+  const result = [];
+  let i = 0;
+  while (i < parts.length) {
+    const part = parts[i];
+    const h2Match = part.match(/^<h2>([^<]*)<\/h2>$/);
+
+    if (h2Match && i + 1 < parts.length) {
+      const headingText = h2Match[1];
+      const content = parts[i + 1];
+
+      if (ACCORDION_HEADINGS.has(headingText)) {
+        result.push(
+          `<details class="accordion-section">\n` +
+          `<summary class="accordion-header"><h2>${headingText}</h2></summary>\n` +
+          `<div class="accordion-content">\n${content}</div>\n` +
+          `</details>\n`
+        );
+        i += 2; // consume both the h2 tag and its content
+      } else {
+        result.push(part);
+        i++;
+      }
+    } else {
+      result.push(part);
+      i++;
+    }
+  }
+
+  return result.join('');
+}
+
+/**
  * Convert markdown to HTML with basic styling
  * @param {string} markdown - Markdown content
  * @param {object} summary - Report summary for metadata
@@ -2049,6 +2100,48 @@ export function markdownToHtml(markdown, summary) {
 
   // Wrap consecutive list items in ul
   html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+  // Post-process the Detailed Results table: merge continuation rows (rows with
+  // all empty cells except the last) into collapsible <details> elements within
+  // the preceding URL row's last cell. Done after list conversion to avoid
+  // double-wrapping the <li> elements added in the details block.
+  //
+  // Continuation rows have at least this many leading empty <td></td> cells.
+  // The Detailed Results table has 11 data columns; continuation rows omit all
+  // of them and only populate the last (Notes) column, so ≥5 empty leading cells
+  // is a reliable signal that the row carries scanner failure details.
+  const MIN_EMPTY_CELLS_FOR_CONTINUATION = 5;
+  html = html.replace(
+    /(<h2>📊 Detailed Results<\/h2>[\s\S]*?<tbody>\n?)([\s\S]*?)(\n?<\/tbody>)/,
+    (match, before, tbody, after) => {
+      const rows = tbody.trim().split('\n').filter(r => r.trim().length > 0);
+      const groups = [];
+      for (const row of rows) {
+        // Continuation rows start with multiple consecutive empty <td></td> cells
+        const continuationPattern = new RegExp(`^<tr>(<td><\/td>){${MIN_EMPTY_CELLS_FOR_CONTINUATION},}`);
+        if (continuationPattern.test(row) && groups.length > 0) {
+          // Extract content from the last <td> cell using lastIndexOf for reliability
+          const lastTdStart = row.lastIndexOf('<td>');
+          const lastTdEnd = row.lastIndexOf('</td>');
+          if (lastTdStart !== -1 && lastTdEnd > lastTdStart) {
+            const content = row.substring(lastTdStart + 4, lastTdEnd);
+            groups[groups.length - 1].continuations.push(content);
+          }
+        } else {
+          groups.push({ row, continuations: [] });
+        }
+      }
+      const outputRows = groups.map(({ row, continuations }) => {
+        if (continuations.length === 0) return row;
+        const items = continuations.map(c => `<li>${c}</li>`).join('');
+        const scannerCount = continuations.length;
+        const label = `View failed rules (${scannerCount} scanner${scannerCount !== 1 ? 's' : ''})`;
+        const detailsHtml = `<details><summary>${label}</summary><ul>${items}</ul></details>`;
+        return row.replace(/<\/td><\/tr>$/, `${detailsHtml}</td></tr>`);
+      });
+      return before + outputRows.join('\n') + after;
+    }
+  );
 
   // Paragraphs - wrap non-HTML lines in <p> tags
   const lines = html.split('\n');
@@ -2203,6 +2296,33 @@ export function markdownToHtml(markdown, summary) {
       background-color: #f6f8fa;
     }
     
+    details {
+      margin-top: 0.5rem;
+    }
+    
+    summary {
+      cursor: pointer;
+      color: #0969da;
+      font-size: 0.875rem;
+      padding: 0.25rem 0;
+    }
+    
+    summary:hover {
+      text-decoration: underline;
+    }
+    
+    details ul {
+      margin: 0.5rem 0 0 1rem;
+      padding: 0;
+      list-style: disc;
+    }
+    
+    details li {
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+      color: #57606a;
+    }
+    
     ul {
       margin-left: 2rem;
       margin-bottom: 1rem;
@@ -2264,6 +2384,70 @@ export function markdownToHtml(markdown, summary) {
     footer a:hover {
       text-decoration: underline;
     }
+    
+    /* Accordion sections (details/summary) */
+    details.accordion-section {
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+    }
+    
+    details.accordion-section > summary.accordion-header {
+      padding: 0.75rem 1rem;
+      background-color: #f6f8fa;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-radius: 6px;
+    }
+    
+    details.accordion-section[open] > summary.accordion-header {
+      border-radius: 6px 6px 0 0;
+      border-bottom: 1px solid #d0d7de;
+    }
+    
+    details.accordion-section > summary.accordion-header::-webkit-details-marker {
+      display: none;
+    }
+    
+    details.accordion-section > summary.accordion-header::marker {
+      content: none;
+    }
+    
+    details.accordion-section > summary.accordion-header::before {
+      content: '▶';
+      font-size: 0.7rem;
+      color: #57606a;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    
+    details.accordion-section[open] > summary.accordion-header::before {
+      transform: rotate(90deg);
+    }
+    
+    details.accordion-section > summary.accordion-header h2 {
+      margin: 0;
+      padding: 0;
+      border: none;
+      font-size: 1.25rem;
+      color: #24292f;
+    }
+    
+    details.accordion-section > summary.accordion-header:hover {
+      background-color: #eaeef2;
+    }
+    
+    details.accordion-section > summary.accordion-header:focus-visible {
+      outline: 2px solid #0969da;
+      outline-offset: -2px;
+    }
+    
+    .accordion-content {
+      padding: 1rem 1.5rem;
+    }
   </style>
 </head>
 <body>
@@ -2274,7 +2458,7 @@ export function markdownToHtml(markdown, summary) {
       <a href="${summary.issueUrl}" target="_blank" rel="noopener">View Issue #${summary.issueNumber}</a>
     </nav>
     
-    ${bodyContent}
+    ${wrapSectionsInAccordions(bodyContent)}
     
     <footer>
       <a href="https://github.com/mgifford/alfa-scan">Join our GitHub Community</a>
