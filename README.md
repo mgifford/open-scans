@@ -1,4 +1,4 @@
-# alfa-scan
+# Open Scans
 
 Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Actions.
 
@@ -14,29 +14,29 @@ Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Acti
 ### Quick Start: Submit Your Scan in 5 Minutes
 
 1. **Prepare your URLs**: Gather a list of web pages you want to scan for accessibility issues (recommended: 100-150 URLs per scan)
-2. **Submit your scan**: Go to [https://mgifford.github.io/alfa-scan/](https://mgifford.github.io/alfa-scan/)
+2. **Submit your scan**: Go to [https://mgifford.github.io/open-scans/](https://mgifford.github.io/open-scans/)
    - Enter a descriptive title for your scan
    - Paste your URLs (one per line or comma-separated)
    - Click "Create Scan Request" - this creates a GitHub issue that triggers the scan
 3. **Wait for results**: Scans typically complete in 30-60 minutes depending on the number of URLs
-4. **View your report**: Check [https://mgifford.github.io/alfa-scan/reports.html](https://mgifford.github.io/alfa-scan/reports.html) for your completed scan results
+4. **View your report**: Check [https://mgifford.github.io/open-scans/reports.html](https://mgifford.github.io/open-scans/reports.html) for your completed scan results
 
 ### Integration with Top Task Finder
 
-If you're using the [Top Task Finder](https://mgifford.github.io/top-task-finder/) to identify your most important pages, alfa-scan is the perfect next step:
+If you're using the [Top Task Finder](https://mgifford.github.io/top-task-finder/) to identify your most important pages, open-scans is the perfect next step:
 
 1. **Identify your top tasks**: Use the Top Task Finder to determine which pages are most critical for your users
 2. **Export your URLs**: Get the list of URLs corresponding to your top tasks
-3. **Scan for accessibility**: Paste those URLs into alfa-scan to check for accessibility issues
+3. **Scan for accessibility**: Paste those URLs into open-scans to check for accessibility issues
 4. **Prioritize fixes**: Focus on fixing accessibility issues on your most important pages first
 
-Even if you haven't completed a formal top tasks analysis, alfa-scan can help you get started by scanning your key pages (homepage, main navigation pages, common user journeys, etc.).
+Even if you haven't completed a formal top tasks analysis, open-scans can help you get started by scanning your key pages (homepage, main navigation pages, common user journeys, etc.).
 
 ## How to Use
 
 ### Submit URLs for Scanning
 
-1. Visit the [GitHub Pages site](https://mgifford.github.io/alfa-scan/)
+1. Visit the [GitHub Pages site](https://mgifford.github.io/open-scans/)
 2. Enter a descriptive scan title (e.g., "GSA.gov Homepage and Key Pages")
 3. Enter up to 100 URLs to scan (one per line or comma-separated)
 4. Review the validation preview showing accepted/rejected URLs
@@ -53,7 +53,7 @@ The form validates URLs in real-time and blocks:
 
 ### View Scan Results
 
-Visit the [Reports page](https://mgifford.github.io/alfa-scan/reports.html) to see all completed scans with:
+Visit the [Reports page](https://mgifford.github.io/open-scans/reports.html) to see all completed scans with:
 - Issue number and scan title
 - Scan timestamp
 - Number of URLs scanned
@@ -63,12 +63,12 @@ Visit the [Reports page](https://mgifford.github.io/alfa-scan/reports.html) to s
 ### Troubleshooting
 
 **Scan not appearing after 30-60 minutes?**
-- [View workflow history in GitHub Actions](https://github.com/mgifford/alfa-scan/actions) to check for errors
+- [View workflow history in GitHub Actions](https://github.com/mgifford/open-scans/actions) to check for errors
 - Look for your scan issue number in the workflow runs
 - Common issues include invalid URLs or network timeouts
 
 **Need help?**
-- Review [workflow run logs in GitHub Actions](https://github.com/mgifford/alfa-scan/actions) for detailed error messages
+- Review [workflow run logs in GitHub Actions](https://github.com/mgifford/open-scans/actions) for detailed error messages
 - Check that your URLs are publicly accessible
 - Ensure URLs don't include localhost or private IP addresses
 
@@ -78,7 +78,7 @@ Visit the [Reports page](https://mgifford.github.io/alfa-scan/reports.html) to s
 
 If you find the scan results useful and want to run the same scan regularly:
 
-1. **Find your scan issue**: Go to [https://github.com/mgifford/alfa-scan/issues](https://github.com/mgifford/alfa-scan/issues)
+1. **Find your scan issue**: Go to [https://github.com/mgifford/open-scans/issues](https://github.com/mgifford/open-scans/issues)
    - Your issue may be closed after the scan completes - use the search/filter if needed
    - Look for your issue number (e.g., `#54`)
 
@@ -152,7 +152,7 @@ You can specify multiple engines in a single scan. The engine keywords are remov
 ### 3. Manual Trigger
 
 You can manually trigger scans by:
-1. Going to the [Actions tab](https://github.com/mgifford/alfa-scan/actions)
+1. Going to the [Actions tab](https://github.com/mgifford/open-scans/actions)
 2. Selecting the appropriate workflow:
    - **"Scan All Open SCAN Issues"** - To scan all pending "SCAN:" issues (recommended for regular scan requests)
    - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** - To scan recurring timed issues (only if timed issues are due today)
