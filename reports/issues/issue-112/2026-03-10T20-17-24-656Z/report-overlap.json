@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-10T20:17:03.235Z",
+  "issueNumber": 112,
+  "scanTitle": "bundesregierung.de",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 892,
+      "uniqueFailed": 892,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4662,
+      "uniqueFailed": 4662,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 4757,
+      "uniqueFailed": 3256,
+      "duplicates": 1501
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 2167,
+      "uniqueFailed": 2165,
+      "duplicates": 2
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 2298,
+      "uniqueFailed": 2298,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 892,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1368,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 3256,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 2165,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 227
+    }
+  },
+  "duplicateFindingTotals": 6868,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
