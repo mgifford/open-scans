@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { parseScanIssue, validateScanRequest } from "../../scanner/parse-issue.mjs";
+import { parseScanIssue, validateScanRequest, NON_AXE_ENGINES, getDefaultEngines } from "../../scanner/parse-issue.mjs";
 
 test("parseScanIssue parses valid issue payload", () => {
   const payload = JSON.parse(readFileSync(new URL("../fixtures/issue-valid.json", import.meta.url), "utf8"));
@@ -169,7 +169,7 @@ test("parseScanIssue extracts QUALWEB engine from title", () => {
   assert.equal(result.value.scanTitle, "ACT Rules scan");
 });
 
-test("parseScanIssue defaults to all engines when none specified", () => {
+test("parseScanIssue defaults to axe plus a random engine when none specified", () => {
   const payload = {
     issue: {
       number: 105,
@@ -183,9 +183,11 @@ test("parseScanIssue defaults to all engines when none specified", () => {
 
   const result = parseScanIssue(payload);
   assert.equal(result.ok, true);
-  assert.deepEqual(result.engines, ["all"]);
+  assert.equal(result.engines.length, 2, "should use exactly 2 engines by default");
+  assert.equal(result.engines[0], "axe", "axe should always be the first default engine");
+  assert.ok(NON_AXE_ENGINES.includes(result.engines[1]), "second engine should be from the non-axe pool");
   assert.equal(result.value.scanTitle, "Basic homepage test");
-  assert.deepEqual(result.value.engines, ["all"]);
+  assert.deepEqual(result.value.engines, result.engines);
 });
 
 test("parseScanIssue recognizes ALL keyword", () => {
@@ -222,4 +224,100 @@ test("parseScanIssue handles case-insensitive engine names", () => {
   assert.equal(result.ok, true);
   assert.deepEqual(result.engines, ["axe", "alfa", "equalaccess"]);
   assert.equal(result.value.scanTitle, "Test");
+});
+
+test("getDefaultEngines returns axe plus one NON_AXE_ENGINE", () => {
+  for (let i = 0; i < 20; i++) {
+    const engines = getDefaultEngines();
+    assert.equal(engines.length, 2);
+    assert.equal(engines[0], "axe");
+    assert.ok(NON_AXE_ENGINES.includes(engines[1]), `expected a NON_AXE_ENGINE, got: ${engines[1]}`);
+  }
+});
+
+test("parseScanIssue reads engines from 'Engine:' first body line", () => {
+  const payload = {
+    issue: {
+      number: 108,
+      html_url: "https://github.com/example/repo/issues/108",
+      title: "SCAN: Homepage accessibility check",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Engine: axe, alfa\n# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.engines, ["axe", "alfa"]);
+  assert.equal(result.value.scanTitle, "Homepage accessibility check");
+});
+
+test("parseScanIssue 'Engine:' body line overrides title engine keywords", () => {
+  const payload = {
+    issue: {
+      number: 109,
+      html_url: "https://github.com/example/repo/issues/109",
+      title: "SCAN: QUALWEB homepage check",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Engine: axe equalaccess\n# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.engines, ["axe", "equalaccess"]);
+});
+
+test("parseScanIssue 'Engine: ALL' in body runs all engines", () => {
+  const payload = {
+    issue: {
+      number: 110,
+      html_url: "https://github.com/example/repo/issues/110",
+      title: "SCAN: Full site audit",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Engine: ALL\n# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.engines, ["all"]);
+});
+
+test("parseScanIssue ignores unknown tokens in 'Engine:' body line", () => {
+  const payload = {
+    issue: {
+      number: 111,
+      html_url: "https://github.com/example/repo/issues/111",
+      title: "SCAN: Test",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Engine: axe, unknown-tool, accesslint\n# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.engines, ["axe", "accesslint"]);
+});
+
+test("parseScanIssue uses default when 'Engine:' line has only unknown tokens", () => {
+  const payload = {
+    issue: {
+      number: 112,
+      html_url: "https://github.com/example/repo/issues/112",
+      title: "SCAN: Test",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "Engine: unknown-tool\n# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.engines[0], "axe", "should fall back to default (axe + random)");
+  assert.equal(result.engines.length, 2);
 });
