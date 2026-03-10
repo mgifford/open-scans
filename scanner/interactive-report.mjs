@@ -539,6 +539,62 @@ export function generateInteractiveHtml(summary) {
     .btn-copy:hover { background: #156b31; }
     .btn-copy.copied { background: var(--muted); border-color: var(--muted); }
 
+    /* Priority table */
+    .priority-section { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: #f6f8fa; }
+    .priority-section h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .priority-section > p { color: #57606a; font-size: 0.9rem; margin-bottom: 1rem; }
+    .table-wrapper { overflow-x: auto; }
+    .priority-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .priority-table th { background: #e8ecf0; padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+    .priority-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .priority-table tr:last-child td { border-bottom: none; }
+    .priority-table tr:hover td { background: #eaf1fb; }
+    .count-cell { text-align: right; }
+    .count-zero { color: #8c959f; }
+    .count-total { text-align: right; }
+    .count-btn {
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      min-width: 2.5rem;
+      text-align: right;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .count-btn:hover { background: #dbeafe; border-color: var(--primary); }
+    .count-btn:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .count-btn.active-filter { background: var(--primary); color: white; border-color: var(--primary); }
+    .page-link { font-weight: 500; }
+    .page-title-text { display: block; font-size: 0.8rem; color: #57606a; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Active filter banner */
+    .filter-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      background: #dbeafe;
+      border: 1px solid #b6d9fb;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .filter-banner.hidden { display: none !important; }
+    .filter-banner-text { flex: 1; }
+    .filter-banner-actions { display: flex; gap: 0.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1px solid; }
+    .btn:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .btn-clear { background: white; color: var(--text); border-color: var(--border); }
+    .btn-clear:hover { background: #f0f0f0; }
+    .btn-copy { background: var(--success); color: white; border-color: var(--success); }
+    .btn-copy:hover { background: #156b31; }
+    .btn-copy.copied { background: #57606a; border-color: #57606a; }
+
     .hidden { display: none !important; }
     .visually-hidden {
       position: absolute;
