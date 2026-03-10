@@ -1987,6 +1987,57 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
 }
 
 /**
+ * Wrap specific H2 sections in <details>/<summary> accordion elements.
+ * @param {string} html - HTML body content
+ * @returns {string} HTML with target sections wrapped in accordions
+ */
+function wrapSectionsInAccordions(html) {
+  // These headings are hardcoded strings from toMarkdownReport – safe to embed directly.
+  const ACCORDION_HEADINGS = new Set([
+    '🔧 Priority: Most Common Issues (ALFA)',
+    '🔧 Priority: Most Common Issues (axe)',
+    '🔍 Cross-Page Patterns: Common HTML Issues',
+    '📊 Detailed Results',
+    'Detailed Failure Information (ALFA)',
+    'Detailed Failure Information (axe)',
+  ]);
+
+  // Split by <h2>…</h2> tags (capturing group keeps delimiters in the array).
+  // H2 headings from markdown conversion never contain newlines or nested tags.
+  const parts = html.split(/(<h2>[^<]*<\/h2>)/);
+
+  const result = [];
+  let i = 0;
+  while (i < parts.length) {
+    const part = parts[i];
+    const h2Match = part.match(/^<h2>([^<]*)<\/h2>$/);
+
+    if (h2Match && i + 1 < parts.length) {
+      const headingText = h2Match[1];
+      const content = parts[i + 1];
+
+      if (ACCORDION_HEADINGS.has(headingText)) {
+        result.push(
+          `<details class="accordion-section">\n` +
+          `<summary class="accordion-header"><h2>${headingText}</h2></summary>\n` +
+          `<div class="accordion-content">\n${content}</div>\n` +
+          `</details>\n`
+        );
+        i += 2; // consume both the h2 tag and its content
+      } else {
+        result.push(part);
+        i++;
+      }
+    } else {
+      result.push(part);
+      i++;
+    }
+  }
+
+  return result.join('');
+}
+
+/**
  * Convert markdown to HTML with basic styling
  * @param {string} markdown - Markdown content
  * @param {object} summary - Report summary for metadata
@@ -2264,6 +2315,70 @@ export function markdownToHtml(markdown, summary) {
     footer a:hover {
       text-decoration: underline;
     }
+    
+    /* Accordion sections (details/summary) */
+    details.accordion-section {
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+    }
+    
+    details.accordion-section > summary.accordion-header {
+      padding: 0.75rem 1rem;
+      background-color: #f6f8fa;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-radius: 6px;
+    }
+    
+    details.accordion-section[open] > summary.accordion-header {
+      border-radius: 6px 6px 0 0;
+      border-bottom: 1px solid #d0d7de;
+    }
+    
+    details.accordion-section > summary.accordion-header::-webkit-details-marker {
+      display: none;
+    }
+    
+    details.accordion-section > summary.accordion-header::marker {
+      content: none;
+    }
+    
+    details.accordion-section > summary.accordion-header::before {
+      content: '▶';
+      font-size: 0.7rem;
+      color: #57606a;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    
+    details.accordion-section[open] > summary.accordion-header::before {
+      transform: rotate(90deg);
+    }
+    
+    details.accordion-section > summary.accordion-header h2 {
+      margin: 0;
+      padding: 0;
+      border: none;
+      font-size: 1.25rem;
+      color: #24292f;
+    }
+    
+    details.accordion-section > summary.accordion-header:hover {
+      background-color: #eaeef2;
+    }
+    
+    details.accordion-section > summary.accordion-header:focus-visible {
+      outline: 2px solid #0969da;
+      outline-offset: -2px;
+    }
+    
+    .accordion-content {
+      padding: 1rem 1.5rem;
+    }
   </style>
 </head>
 <body>
@@ -2274,7 +2389,7 @@ export function markdownToHtml(markdown, summary) {
       <a href="${summary.issueUrl}" target="_blank" rel="noopener">View Issue #${summary.issueNumber}</a>
     </nav>
     
-    ${bodyContent}
+    ${wrapSectionsInAccordions(bodyContent)}
     
     <footer>
       <a href="https://github.com/mgifford/alfa-scan">Join our GitHub Community</a>
