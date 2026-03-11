@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-03-11T00:38:34.216Z",
+  "issueNumber": 91,
+  "scanTitle": "Homepage",
+  "scannersInUse": [
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 333,
+      "uniqueFailed": 333,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "qualweb": {
+      "qualweb": 61
+    }
+  },
+  "duplicateFindingTotals": 258,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
