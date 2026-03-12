@@ -42,6 +42,10 @@ export function determineScannersToRun(engines) {
 }
 
 
+// Maximum number of net::ERR_ABORTED errors (per-URL) before stopping the scan early.
+// Configurable via ERR_ABORTED_THRESHOLD env var. Default is 5.
+const ERR_ABORTED_THRESHOLD = parseInt(process.env.ERR_ABORTED_THRESHOLD || "5", 10);
+
 // Timeout configuration (in milliseconds)
 // These can be adjusted via environment variables for flexibility
 const TIMEOUTS = {
@@ -197,6 +201,21 @@ function normalizeRuleReference(rule) {
     rule.requirement?.uri ||
     "unknown-rule"
   );
+}
+
+/**
+ * Check if a scan result contains net::ERR_ABORTED errors from any scanner.
+ * These errors indicate Chrome aborted the navigation (e.g., PDFs, binary content).
+ * @param {object} result - The scan result object from scanOneUrl
+ * @returns {boolean} True if any scanner result contains an ERR_ABORTED error
+ */
+export function hasErrAbortedError(result) {
+  if (!result) return false;
+  if (result.error && String(result.error).includes("ERR_ABORTED")) return true;
+  for (const scanner of ["axe", "alfa", "equalAccess", "accesslint", "qualweb"]) {
+    if (result[scanner]?.error && String(result[scanner].error).includes("ERR_ABORTED")) return true;
+  }
+  return false;
 }
 
 /**
@@ -1068,22 +1087,44 @@ async function scanOneUrl(target, engines = ["all"]) {
         pageTitle = extractHtmlTitle(html);
       }
 
+      // Skip browser-based scanners for non-HTML content (e.g., PDFs, images).
+      // Browser-based scanners attempt to navigate to the URL; non-HTML resources
+      // cause Chrome to repeatedly emit net::ERR_ABORTED, leading to memory exhaustion.
+      // An empty/unknown content type is treated as potentially HTML to preserve
+      // existing behaviour for servers that omit the Content-Type header.
+      const contentTypeLower = contentType.toLowerCase();
+      const isDefinitelyNotHtml = contentType !== "" &&
+        !contentTypeLower.includes("text/html") &&
+        !contentTypeLower.includes("application/xhtml");
+
+      const browserSkipReason = isDefinitelyNotHtml
+        ? `Skipped (non-HTML content type: ${contentType.split(";")[0].trim()})`
+        : null;
+
       // Run only the selected scanners
-      const axe = scannersToRun.runAxe
-        ? await runAxeAudit(finalUrl)
-        : createScannerBaseError("Skipped (not requested)");
+      const axe = browserSkipReason
+        ? createScannerBaseError(browserSkipReason)
+        : scannersToRun.runAxe
+          ? await runAxeAudit(finalUrl)
+          : createScannerBaseError("Skipped (not requested)");
       const alfa = scannersToRun.runAlfa
         ? await runAlfaAudit(finalUrl)
         : createScannerBaseError("Skipped (not requested)");
-      const equalAccess = scannersToRun.runEqualAccess
-        ? await runEqualAccessAudit(finalUrl)
-        : createScannerBaseError("Skipped (not requested)");
-      const accesslint = scannersToRun.runAccesslint
-        ? await runAccessLintAudit(finalUrl)
-        : createScannerBaseError("Skipped (not requested)");
-      const qualweb = scannersToRun.runQualWeb
-        ? await runQualWebAudit(finalUrl)
-        : createScannerBaseError("Skipped (not requested)");
+      const equalAccess = browserSkipReason
+        ? createScannerBaseError(browserSkipReason)
+        : scannersToRun.runEqualAccess
+          ? await runEqualAccessAudit(finalUrl)
+          : createScannerBaseError("Skipped (not requested)");
+      const accesslint = browserSkipReason
+        ? createScannerBaseError(browserSkipReason)
+        : scannersToRun.runAccesslint
+          ? await runAccessLintAudit(finalUrl)
+          : createScannerBaseError("Skipped (not requested)");
+      const qualweb = browserSkipReason
+        ? createScannerBaseError(browserSkipReason)
+        : scannersToRun.runQualWeb
+          ? await runQualWebAudit(finalUrl)
+          : createScannerBaseError("Skipped (not requested)");
 
       const result = {
         submittedUrl: target.submittedUrl,
@@ -1571,6 +1612,9 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     lines.push(`- **URLs scanned: ${summary.scannedCount}**`);
     if (summary.skippedDueToTimeout > 0) {
       lines.push(`- ⚠️ **${summary.skippedDueToTimeout} URLs skipped due to timeout**`);
+    }
+    if (summary.skippedDueToErrAborted > 0) {
+      lines.push(`- ⚠️ **${summary.skippedDueToErrAborted} URLs not scanned — scan stopped after repeated net::ERR_ABORTED errors (possible non-HTML content)**`);
     }
   }
 
@@ -2540,6 +2584,8 @@ async function main() {
 
   const results = [];
   let skippedDueToTimeout = 0;
+  let skippedDueToErrAborted = 0;
+  let consecutiveErrAbortedCount = 0;
 
   for (const target of acceptedTargets) {
     const elapsedTime = Date.now() - scanStartTime;
@@ -2561,6 +2607,22 @@ async function main() {
       console.error(`${progress} Error scanning ${target.submittedUrl}: ${result.error}`);
     } else {
       console.error(`${progress} Scanned ${target.submittedUrl} in ${result.elapsedMs}ms`);
+    }
+
+    // Track consecutive net::ERR_ABORTED errors across scanner results.
+    // ERR_ABORTED occurs when Chrome aborts navigation (e.g., PDF or binary content).
+    // Repeated failures indicate a problematic URL pattern; stopping early prevents OOM.
+    if (hasErrAbortedError(result)) {
+      consecutiveErrAbortedCount++;
+      console.error(`net::ERR_ABORTED detected for ${target.submittedUrl} (${consecutiveErrAbortedCount} consecutive)`);
+      if (consecutiveErrAbortedCount >= ERR_ABORTED_THRESHOLD) {
+        console.error(`Reached ${ERR_ABORTED_THRESHOLD} consecutive net::ERR_ABORTED errors. Finalizing report with ${results.length} scanned URLs.`);
+        skippedDueToErrAborted = acceptedTargets.length - results.length;
+        break;
+      }
+    } else {
+      // Reset consecutive counter on a successful (or non-ERR_ABORTED) scan
+      consecutiveErrAbortedCount = 0;
     }
   }
 
@@ -2666,6 +2728,7 @@ async function main() {
     acceptedCount: acceptedTargets.length,
     scannedCount: results.length,
     skippedDueToTimeout,
+    skippedDueToErrAborted,
     rejectedCount: validation.rejected.length,
     rejected: validation.rejected,
     alfaTotals,
@@ -2686,6 +2749,11 @@ async function main() {
     console.warn(`  - Option 1: Create multiple scan issues with 100-150 URLs each`);
     console.warn(`  - Option 2: Increase timeout via TOTAL_SCAN_TIMEOUT_MS environment variable in workflow`);
     console.warn(`  - Option 3: The scanned URLs (${results.length}/${acceptedTargets.length}) are included in this report`);
+  }
+
+  if (skippedDueToErrAborted > 0) {
+    console.warn(`WARNING: Scan stopped after ${ERR_ABORTED_THRESHOLD} consecutive net::ERR_ABORTED errors. ${skippedDueToErrAborted} URLs were not scanned.`);
+    console.warn(`Tip: Remove non-HTML URLs (e.g., PDFs) from your URL list to avoid this issue.`);
   }
 
   console.error(`Total scan time: ${(totalElapsedTime / 1000).toFixed(1)}s`);
@@ -2716,6 +2784,7 @@ async function main() {
     acceptedCount: summary.acceptedCount,
     scannedCount: summary.scannedCount,
     skippedDueToTimeout: summary.skippedDueToTimeout,
+    skippedDueToErrAborted: summary.skippedDueToErrAborted,
     rejectedCount: summary.rejectedCount,
     scannedAt,
     totalElapsedMs: totalElapsedTime,

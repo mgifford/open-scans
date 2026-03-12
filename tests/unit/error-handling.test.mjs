@@ -1,5 +1,6 @@
 import { describe, test } from "node:test";
 import assert from "node:assert";
+import { hasErrAbortedError } from "../../scanner/run-scan.mjs";
 
 /**
  * Tests for error handling in scanner modules
@@ -119,3 +120,76 @@ describe("Error Handling Tests", () => {
     });
   });
 });
+
+describe("hasErrAbortedError", () => {
+  test("returns false for null/undefined result", () => {
+    assert.strictEqual(hasErrAbortedError(null), false);
+    assert.strictEqual(hasErrAbortedError(undefined), false);
+  });
+
+  test("detects ERR_ABORTED in top-level result.error", () => {
+    const result = {
+      error: "net::ERR_ABORTED at https://example.com/file.pdf",
+      axe: { error: null },
+      alfa: { error: null },
+      equalAccess: { error: null },
+      accesslint: { error: null },
+      qualweb: { error: null }
+    };
+    assert.strictEqual(hasErrAbortedError(result), true);
+  });
+
+  test("detects ERR_ABORTED in scanner sub-result errors", () => {
+    const scanners = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
+    for (const scanner of scanners) {
+      const result = {
+        error: null,
+        axe: { error: null },
+        alfa: { error: null },
+        equalAccess: { error: null },
+        accesslint: { error: null },
+        qualweb: { error: null },
+        [scanner]: { error: "page.goto: net::ERR_ABORTED at https://example.com/doc.pdf" }
+      };
+      assert.strictEqual(hasErrAbortedError(result), true,
+        `Should detect ERR_ABORTED in ${scanner} scanner result`);
+    }
+  });
+
+  test("returns false when no ERR_ABORTED errors are present", () => {
+    const result = {
+      error: null,
+      axe: { error: null },
+      alfa: { error: "Alfa audit timed out" },
+      equalAccess: { error: null },
+      accesslint: { error: "Skipped (not requested)" },
+      qualweb: { error: null }
+    };
+    assert.strictEqual(hasErrAbortedError(result), false);
+  });
+
+  test("returns false for a successful scan result", () => {
+    const result = {
+      error: null,
+      axe: { error: null, counts: { failed: 3 } },
+      alfa: { error: null },
+      equalAccess: { error: null },
+      accesslint: { error: null },
+      qualweb: { error: null }
+    };
+    assert.strictEqual(hasErrAbortedError(result), false);
+  });
+
+  test("is case-sensitive for ERR_ABORTED", () => {
+    const result = {
+      error: "err_aborted",  // lowercase – should NOT match
+      axe: { error: null },
+      alfa: { error: null },
+      equalAccess: { error: null },
+      accesslint: { error: null },
+      qualweb: { error: null }
+    };
+    assert.strictEqual(hasErrAbortedError(result), false);
+  });
+});
+
