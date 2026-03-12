@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-12T01:20:00.633Z",
+  "issueNumber": 63,
+  "scanTitle": "WA.gov Washington State",
+  "scannersInUse": [
+    "axe",
+    "accesslint"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1664,
+      "uniqueFailed": 1664,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 1985,
+      "uniqueFailed": 1980,
+      "duplicates": 5
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1664,
+      "accesslint": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "accesslint": 1980
+    }
+  },
+  "duplicateFindingTotals": 5,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
