@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-13T16:53:04.145Z",
+  "issueNumber": 139,
+  "scanTitle": "Preserve Chunk 1 Scan",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 606,
+      "uniqueFailed": 606,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 3402,
+      "uniqueFailed": 3402,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 3250,
+      "uniqueFailed": 3134,
+      "duplicates": 116
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 883,
+      "uniqueFailed": 883,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 1847,
+      "uniqueFailed": 1847,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 606,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1111,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 3134,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 883,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 415
+    }
+  },
+  "duplicateFindingTotals": 3839,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
