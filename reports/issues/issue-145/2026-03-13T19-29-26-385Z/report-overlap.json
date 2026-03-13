@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-13T19:28:37.885Z",
+  "issueNumber": 145,
+  "scanTitle": "welcometofrance.com —",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 4860,
+      "uniqueFailed": 4860,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 7276,
+      "uniqueFailed": 5722,
+      "duplicates": 1554
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 4860,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 5722
+    }
+  },
+  "duplicateFindingTotals": 1554,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
