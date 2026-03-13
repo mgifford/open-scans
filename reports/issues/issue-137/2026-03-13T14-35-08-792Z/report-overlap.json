@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-13T14:34:17.789Z",
+  "issueNumber": 137,
+  "scanTitle": "Texas.gov —",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 307,
+      "uniqueFailed": 307,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 11475,
+      "uniqueFailed": 11475,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 7868,
+      "uniqueFailed": 6303,
+      "duplicates": 1565
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 1071,
+      "uniqueFailed": 802,
+      "duplicates": 269
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 3184,
+      "uniqueFailed": 3184,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 305,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 2078,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 6303,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 802,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 226
+    }
+  },
+  "duplicateFindingTotals": 14191,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
