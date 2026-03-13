@@ -1098,7 +1098,7 @@ export function generateInteractiveHtml(summary) {
       const total = allCards.length;
       const hasActiveFilters = type !== 'all' || level !== 'all' || version !== 'all' || engine !== 'all';
       filterRuleCountEl.textContent = hasActiveFilters
-        ? ('Showing ' + visibleCount + ' of ' + total + ' rules')
+        ? \`Showing \${visibleCount} of \${total} rules\`
         : '';
       clearRuleFiltersBtn.hidden = !hasActiveFilters;
     }
