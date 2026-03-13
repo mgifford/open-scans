@@ -1,0 +1,3867 @@
+{
+  "issueNumber": 134,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/134",
+  "issueTitle": "Scan: NFP.org",
+  "scanTitle": "NFP.org",
+  "submittedBy": "mgifford",
+  "engines": [
+    "axe",
+    "accesslint"
+  ],
+  "scannedAt": "2026-03-13T13:38:55.118Z",
+  "totalElapsedMs": 37664,
+  "totalSubmitted": 18,
+  "acceptedCount": 18,
+  "scannedCount": 18,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 1044,
+    "failed": 72,
+    "cantTell": 18,
+    "inapplicable": 1296
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 1602,
+    "failed": 54,
+    "uniqueFailed": 54,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://nfb.org/",
+      "finalUrl": "https://nfb.org/",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 4903,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/about-us/contact-us",
+      "finalUrl": "https://nfb.org/about-us/contact-us",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1954,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/about-us/state-affiliates",
+      "finalUrl": "https://nfb.org/about-us/state-affiliates",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1945,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/resources/publications-and-media",
+      "finalUrl": "https://nfb.org/resources/publications-and-media",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1922,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/get-involved/join-us",
+      "finalUrl": "https://nfb.org/get-involved/join-us",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1948,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/free-white-cane-program",
+      "finalUrl": "https://nfb.org/programs-services/free-white-cane-program",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1937,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/independence-market",
+      "finalUrl": "https://nfb.org/programs-services/independence-market",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1935,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/resources/publications-and-media/braille-monitor",
+      "finalUrl": "https://nfb.org/resources/publications-and-media/braille-monitor",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1931,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/blog",
+      "finalUrl": "https://nfb.org/blog",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1919,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/about-us/leadership/board-directors",
+      "finalUrl": "https://nfb.org/about-us/leadership/board-directors",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1925,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/nfb-newsline",
+      "finalUrl": "https://nfb.org/programs-services/nfb-newsline",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1918,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/resources/jacobus-tenbroek-library",
+      "finalUrl": "https://nfb.org/resources/jacobus-tenbroek-library",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1916,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/get-involved/national-convention",
+      "finalUrl": "https://nfb.org/get-involved/national-convention",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1920,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/legal-program",
+      "finalUrl": "https://nfb.org/programs-services/legal-program",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1912,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/education",
+      "finalUrl": "https://nfb.org/programs-services/education",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1908,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/programs-services/braille-certification",
+      "finalUrl": "https://nfb.org/programs-services/braille-certification",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1931,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/about-us/press-room",
+      "finalUrl": "https://nfb.org/about-us/press-room",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1914,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://nfb.org/about-us/annual-report-and-financials",
+      "finalUrl": "https://nfb.org/about-us/annual-report-and-financials",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Attention Required! | Cloudflare",
+      "elapsedMs": 1915,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 58,
+          "failed": 4,
+          "cantTell": 1,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-header",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".cf-section.cf-wrapper",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".text-13",
+            "html": "<p class=\"text-13\">",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 135,
+        "darkModeScanned": false,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 89,
+          "failed": 3,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/link-in-text-block",
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/link-in-text-block",
+            "xpath": "#brand_link",
+            "selector": "#brand_link",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "impact": "serious",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "#cf-wrapper",
+            "selector": "#cf-wrapper",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 3,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "pages": {},
+        "totalOccurrences": 54,
+        "examples": [
+          {
+            "url": "https://nfb.org/",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "xpath": ".cf-header",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "xpath": ".cf-section.cf-wrapper",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/",
+            "html": "<p class=\"text-13\">",
+            "xpath": ".text-13",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> nfb.org</h2>\n      </div>",
+            "xpath": ".cf-header",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<div class=\"cf-section cf-wrapper\">",
+            "xpath": ".cf-section.cf-wrapper",
+            "message": "All page content should be contained by landmarks",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "landmark-one-main",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "pages": {},
+        "totalOccurrences": 18,
+        "examples": [
+          {
+            "url": "https://nfb.org/",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/about-us/state-affiliates",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/resources/publications-and-media",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light"
+          },
+          {
+            "url": "https://nfb.org/get-involved/join-us",
+            "html": "<html class=\"no-js\" lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "colorScheme": "light"
+          }
+        ]
+      },
+      {
+        "rule": "distinguishable/link-in-text-block",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "pages": {},
+        "totalOccurrences": 18,
+        "examples": [
+          {
+            "url": "https://nfb.org/",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "xpath": "#brand_link",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border."
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "xpath": "#brand_link",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border."
+          },
+          {
+            "url": "https://nfb.org/about-us/state-affiliates",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "xpath": "#brand_link",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border."
+          },
+          {
+            "url": "https://nfb.org/resources/publications-and-media",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "xpath": "#brand_link",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border."
+          },
+          {
+            "url": "https://nfb.org/get-involved/join-us",
+            "html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>",
+            "xpath": "#brand_link",
+            "message": "Link in text block is not visually distinguishable from surrounding text. Add a non-color visual indicator such as an underline or border."
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/landmark-main",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "pages": {},
+        "totalOccurrences": 18,
+        "examples": [
+          {
+            "url": "https://nfb.org/",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark."
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark."
+          },
+          {
+            "url": "https://nfb.org/about-us/state-affiliates",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark."
+          },
+          {
+            "url": "https://nfb.org/resources/publications-and-media",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark."
+          },
+          {
+            "url": "https://nfb.org/get-involved/join-us",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark."
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/region",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "pages": {},
+        "totalOccurrences": 18,
+        "examples": [
+          {
+            "url": "https://nfb.org/",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "xpath": "#cf-wrapper",
+            "message": "Content is not contained within a landmark region."
+          },
+          {
+            "url": "https://nfb.org/about-us/contact-us",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "xpath": "#cf-wrapper",
+            "message": "Content is not contained within a landmark region."
+          },
+          {
+            "url": "https://nfb.org/about-us/state-affiliates",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "xpath": "#cf-wrapper",
+            "message": "Content is not contained within a landmark region."
+          },
+          {
+            "url": "https://nfb.org/resources/publications-and-media",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "xpath": "#cf-wrapper",
+            "message": "Content is not contained within a landmark region."
+          },
+          {
+            "url": "https://nfb.org/get-involved/join-us",
+            "html": "<div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-e...",
+            "xpath": "#cf-wrapper",
+            "message": "Content is not contained within a landmark region."
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 126
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 126,
+      "Minor": 0
+    }
+  }
+}
