@@ -888,3 +888,115 @@ test("issues overview card shows total count with engine and rule counts", () =>
   assert.ok(html.includes("2 accessibility engines"), "Issues card should mention 2 accessibility engines");
   assert.ok(html.includes("unique rules &amp;"), "Issues card should use '&amp;' not 'and' in total line");
 });
+
+// ── Copy failure details ──────────────────────────────────────────────────────
+
+test("generateInteractiveHtml includes Copy failure details button in example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('btn-copy-failure'),
+    "Should include a button with class btn-copy-failure"
+  );
+  assert.ok(
+    html.includes('Copy failure details'),
+    "Button should have 'Copy failure details' text"
+  );
+});
+
+test("generateInteractiveHtml includes data attributes on example items for copy", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-rule-id="color-contrast"'),
+    "Should have data-copy-rule-id attribute with rule ID"
+  );
+  assert.ok(
+    html.includes('data-copy-desc='),
+    "Should have data-copy-desc attribute with rule description"
+  );
+  assert.ok(
+    html.includes('data-copy-engine="axe"'),
+    "Should have data-copy-engine attribute with engine name"
+  );
+  assert.ok(
+    html.includes('data-copy-page-url='),
+    "Should have data-copy-page-url attribute"
+  );
+  assert.ok(
+    html.includes('data-copy-html='),
+    "Should have data-copy-html attribute with HTML snippet"
+  );
+  assert.ok(
+    html.includes('data-copy-xpath='),
+    "Should have data-copy-xpath attribute with element path"
+  );
+  assert.ok(
+    html.includes('data-copy-message='),
+    "Should have data-copy-message attribute with failure message"
+  );
+  assert.ok(
+    html.includes('data-copy-wcag-scs='),
+    "Should have data-copy-wcag-scs attribute with WCAG SCs JSON"
+  );
+});
+
+test("generateInteractiveHtml includes SCAN_TITLE constant in script for copy", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('const SCAN_TITLE = "Test Site"'),
+    "Should embed scan title as SCAN_TITLE constant in script"
+  );
+});
+
+test("generateInteractiveHtml includes buildFailureDetails function in script", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('function buildFailureDetails'),
+    "Should include buildFailureDetails function in script"
+  );
+  assert.ok(
+    html.includes('btn-copy-failure'),
+    "Should include click handler for .btn-copy-failure"
+  );
+});
+
+test("generateInteractiveHtml includes ruleUrl data attribute when ruleUrl is present", () => {
+  const summary = makeSummary({
+    enhanced: {
+      consolidatedFailures: [
+        {
+          rule: "list",
+          engine: "axe",
+          ruleUrl: "https://dequeuniversity.com/rules/axe/4.11/list",
+          totalOccurrences: 1,
+          pages: new Map([["https://example.com/", 1]]),
+          wcag: { scs: ["1.3.1"], level: "A" },
+          metadata: { severity: "Serious", roles: ["Content Author"], blocking: false, description: "Ensure that lists are structured correctly" },
+          examples: [
+            {
+              url: "https://example.com/",
+              message: "List element has direct children that are not allowed: h2",
+              colorScheme: "light",
+              html: "<ul>",
+              xpath: "#gnbList > h2",
+            },
+          ],
+        },
+      ],
+      roleStats: { "Content Author": 1 },
+      severityStats: { Serious: 1, Critical: 0, Moderate: 0, Minor: 0 },
+    },
+  });
+  const html = generateInteractiveHtml(summary);
+  assert.ok(
+    html.includes('data-copy-rule-url="https://dequeuniversity.com/rules/axe/4.11/list"'),
+    "Should embed ruleUrl in data-copy-rule-url attribute"
+  );
+});
+
+test("generateInteractiveHtml Copy failure details button has accessible aria-label", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('aria-label="Copy failure details for example'),
+    "Copy button should have a descriptive aria-label"
+  );
+});

@@ -309,10 +309,22 @@ export function generateInteractiveHtml(summary) {
           <h4>Examples</h4>
           <div class="example-list">
             ${f.examples.map((ex, i) => `
-              <div class="example-item">
+              <div class="example-item"
+                   data-copy-rule-id="${escapeHtml(displayId)}"
+                   data-copy-rule-url="${escapeHtml(f.ruleUrl || '')}"
+                   data-copy-desc="${escapeHtml(displayDesc)}"
+                   data-copy-engine="${escapeHtml(f.engine)}"
+                   data-copy-wcag-scs="${escapeHtml(JSON.stringify(wcag.scs || []))}"
+                   data-copy-page-url="${escapeHtml(ex.url || '')}"
+                   data-copy-html="${escapeHtml(ex.html || '')}"
+                   data-copy-xpath="${escapeHtml(ex.xpath || '')}"
+                   data-copy-message="${escapeHtml(ex.message || '')}">
                 <div class="example-meta">
                   <span>Example ${i + 1}</span>
                   <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
+                  <button class="btn btn-copy btn-copy-failure" type="button" aria-label="Copy failure details for example ${i + 1} to clipboard">
+                    📋 Copy failure details
+                  </button>
                 </div>
                 ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${escapeHtml(ex.message)}</div>` : ''}
                 <div class="example-mode">
@@ -1215,6 +1227,116 @@ export function generateInteractiveHtml(summary) {
       filterEngineEl.value = 'all';
       applyRuleFilters();
     });
+
+    // ── Copy failure details ──
+    const SCAN_TITLE = ${JSON.stringify(scanTitle || `Issue #${issueNumber}`)};
+
+    function getEnvironment() {
+      const ua = navigator.userAgent;
+      const edgeMatch = ua.match(/Edg\\/([\d.]+)/);
+      const chromeMatch = ua.match(/Chrome\\/([\d.]+)/);
+      const firefoxMatch = ua.match(/Firefox\\/([\d.]+)/);
+      const safariMatch = ua.match(/Version\\/([\d.]+).*Safari/);
+      if (edgeMatch) return \`Microsoft Edge version \${edgeMatch[1]}\`;
+      if (chromeMatch) return \`Chrome version \${chromeMatch[1]}\`;
+      if (firefoxMatch) return \`Firefox version \${firefoxMatch[1]}\`;
+      if (safariMatch) return \`Safari version \${safariMatch[1]}\`;
+      return ua;
+    }
+
+    function buildFailureDetails(el) {
+      const ruleId = el.dataset.copyRuleId || '';
+      const ruleUrl = el.dataset.copyRuleUrl || '';
+      const desc = el.dataset.copyDesc || '';
+      const engine = el.dataset.copyEngine || '';
+      let wcagScs = [];
+      try { wcagScs = JSON.parse(el.dataset.copyWcagScs || '[]'); } catch (e) {}
+      const pageUrl = el.dataset.copyPageUrl || '';
+      const html = el.dataset.copyHtml || '';
+      const xpath = el.dataset.copyXpath || '';
+      const message = el.dataset.copyMessage || '';
+
+      // Extract element ID from xpath (first token if starts with #)
+      const xpathTrimmed = xpath.trimStart();
+      const elementId = xpathTrimmed.startsWith('#') ? xpathTrimmed.split(/\\s/)[0] : '';
+      const titleSuffix = elementId ? \` (\${elementId})\` : '';
+
+      // Build WCAG prefix for title (first SC only)
+      const wcagPrefix = wcagScs.length > 0 ? \`WCAG \${wcagScs[0]}: \` : '';
+      const title = \`\${wcagPrefix}\${desc}\${titleSuffix}\`;
+      const wcagTags = wcagScs.map(sc => \`WCAG \${sc}\`);
+      const tags = ['Accessibility', ...wcagTags, ruleId].filter(Boolean).join(', ');
+      const issueText = ruleUrl
+        ? \`\${desc} (\${ruleId} - \${ruleUrl} )\`
+        : (ruleId ? \`\${desc} (\${ruleId})\` : desc);
+      const engineLabels = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb' };
+      const engineLabel = engineLabels[engine] || engine;
+
+      return [
+        \`Title: \${title}\`,
+        \`Tags: \${tags}\`,
+        '',
+        \`Issue: \${issueText}\`,
+        '',
+        \`Target application: \${SCAN_TITLE} - \${pageUrl}\`,
+        '',
+        \`Element path: \${xpath}\`,
+        '',
+        \`Snippet: \${html}\`,
+        '',
+        'Related paths: ',
+        '',
+        'How to fix: ',
+        message,
+        '',
+        \`Environment: \${getEnvironment()}\`,
+        '',
+        '====',
+        '',
+        \`This accessibility issue was found using \${engineLabel} and https://github.com/mgifford/open-scans/\`
+      ].join('\\n');
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-copy-failure');
+      if (!btn) return;
+      const exampleItem = btn.closest('.example-item');
+      if (!exampleItem) return;
+
+      const text = buildFailureDetails(exampleItem);
+      const originalLabel = btn.getAttribute('aria-label');
+
+      function showCopied() {
+        btn.textContent = '✅ Copied!';
+        btn.classList.add('copied');
+        btn.setAttribute('aria-label', 'Copied to clipboard');
+        setTimeout(() => {
+          btn.innerHTML = '📋 Copy failure details';
+          btn.classList.remove('copied');
+          btn.setAttribute('aria-label', originalLabel);
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(() => {
+          fallbackCopy(text);
+          showCopied();
+        });
+      } else {
+        fallbackCopy(text);
+        showCopied();
+      }
+    });
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
   </script>
 </body>
 </html>`;
