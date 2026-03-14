@@ -726,16 +726,16 @@ export function generateInteractiveHtml(summary) {
       background: var(--code-bg); 
       padding: 1rem; 
       margin-bottom: 1rem; 
-      font-family: monospace;
       font-size: 0.85rem;
-      white-space: pre-wrap;
-      word-break: break-all;
       color: var(--text);
     }
-    .example-meta { font-family: sans-serif; font-weight: 600; margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
-    .example-mode { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .example-detail { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1rem; margin: 0; font-family: monospace; }
+    .example-detail dt { font-family: sans-serif; font-weight: 600; color: var(--muted); white-space: nowrap; }
+    .example-detail dd { margin: 0; word-break: break-all; white-space: pre-wrap; }
+    .example-detail .example-url { font-family: sans-serif; }
+    .example-detail .example-fix { font-family: sans-serif; white-space: pre-wrap; }
+    .example-detail ul { margin: 0; padding-left: 1.5rem; }
     .example-code { color: var(--code-color); }
-    .example-xpath { color: var(--xpath-color); margin-top: 0.5rem; }
 
     /* Priority table */
     .priority-section { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
