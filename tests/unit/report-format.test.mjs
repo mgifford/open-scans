@@ -637,7 +637,7 @@ test("Report includes all accessibility media queries in personalization section
   assert.ok(report.includes("prefers-contrast: more"), "High contrast query should be mentioned");
   assert.ok(report.includes("🖥️") && report.includes("1 of 4 URLs"), "Forced colors count should be shown");
   assert.ok(report.includes("forced-colors: active"), "Forced colors query should be mentioned");
-  assert.ok(report.includes("🪟"), "Reduced transparency emoji should be shown");
+  assert.ok(report.includes("🪟") && report.includes("1 of 4 URLs"), "Reduced transparency count should be shown");
   assert.ok(report.includes("prefers-reduced-transparency: reduce"), "Reduced transparency query should be mentioned");
 });
 

@@ -973,7 +973,7 @@ export function generateInteractiveHtml(summary) {
           <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
           ${scannedCount > 0 ? (() => {
             const items = [];
-            if (darkModeUrlCount > 0) items.push(`<span title="prefers-color-scheme: dark"><strong>🌙 Dark Mode:</strong> ${darkModeUrlCount} / ${scannedCount} URLs</span>`);
+            if ((darkModeUrlCount ?? 0) > 0) items.push(`<span title="prefers-color-scheme: dark"><strong>🌙 Dark Mode:</strong> ${darkModeUrlCount} / ${scannedCount} URLs</span>`);
             if ((reducedMotionUrlCount ?? 0) > 0) items.push(`<span title="prefers-reduced-motion: reduce"><strong>⚡ Reduced Motion:</strong> ${reducedMotionUrlCount} / ${scannedCount} URLs</span>`);
             if ((highContrastUrlCount ?? 0) > 0) items.push(`<span title="prefers-contrast: more"><strong>🔍 High Contrast:</strong> ${highContrastUrlCount} / ${scannedCount} URLs</span>`);
             if ((forcedColorsUrlCount ?? 0) > 0) items.push(`<span title="forced-colors: active"><strong>🖥️ Forced Colors:</strong> ${forcedColorsUrlCount} / ${scannedCount} URLs</span>`);
