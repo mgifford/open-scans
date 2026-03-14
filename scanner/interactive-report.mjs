@@ -85,7 +85,7 @@ function getRuleWcag(f) {
 const DISABILITY_INFO = {
   visual: {
     label: "Visual",
-    description: "Affects users with visual disabilities (blindness, low vision, colour blindness)",
+    description: "Affects users with visual disabilities (blindness, low vision, color blindness)",
     /* Eye icon – two concentric shapes: outer eye outline + pupil dot */
     svgContent: `<path d="M10 4C6.3 4 3.1 6.1 1.3 9.3c-.2.4-.2.9 0 1.4C3.1 13.9 6.3 16 10 16s6.9-2.1 8.7-5.3c.2-.4.2-.9 0-1.4C16.9 6.1 13.7 4 10 4zm0 10c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5zm0-8a3 3 0 100 6 3 3 0 000-6z"/>`,
     color: "#1565c0",

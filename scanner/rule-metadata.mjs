@@ -248,7 +248,7 @@ export const WCAG_SC_TO_DISABILITIES = {
  * @returns {string[]} Sorted, deduplicated array of disability categories
  */
 export function getDisabilitiesFromScs(scs) {
-  if (!Array.isArray(scs) || scs.length === 0) return [];
+  if (!scs || !Array.isArray(scs) || scs.length === 0) return [];
   const result = new Set();
   for (const sc of scs) {
     const cats = WCAG_SC_TO_DISABILITIES[sc];
