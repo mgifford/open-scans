@@ -1230,6 +1230,7 @@ export function generateInteractiveHtml(summary) {
 
     // ── Copy failure details ──
     const SCAN_TITLE = ${JSON.stringify(scanTitle || `Issue #${issueNumber}`)};
+    const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb' };
 
     function getEnvironment() {
       const ua = navigator.userAgent;
@@ -1269,8 +1270,7 @@ export function generateInteractiveHtml(summary) {
       const issueText = ruleUrl
         ? \`\${desc} (\${ruleId} - \${ruleUrl} )\`
         : (ruleId ? \`\${desc} (\${ruleId})\` : desc);
-      const engineLabels = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb' };
-      const engineLabel = engineLabels[engine] || engine;
+      const engineLabel = ENGINE_DISPLAY_LABELS[engine] || engine;
 
       return [
         \`Title: \${title}\`,
