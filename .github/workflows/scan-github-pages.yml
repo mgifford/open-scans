@@ -202,20 +202,21 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "> For AI-powered fix suggestions, see [github/accessibility-scanner](https://github.com/github/accessibility-scanner)" >> "$GITHUB_STEP_SUMMARY"
 
-  # Optional: GitHub Accessibility Scanner (github/accessibility-scanner)
-  # This job uses axe-core via GitHub's action and creates trackable issues.
+  # GitHub Accessibility Scanner (github/accessibility-scanner)
+  # This job uses axe-core via GitHub's action and creates trackable issues with
+  # optional Copilot-powered fix suggestions.
   # It requires a GH_TOKEN secret (fine-grained PAT) with:
   #   - actions: write, contents: write, issues: write, pull-requests: write
   #
   # To enable this job:
   #   1. Create a fine-grained PAT at https://github.com/settings/tokens
   #   2. Add it as a repository secret named GH_TOKEN
-  #   3. Change the `if: false` condition below to `if: ${{ secrets.GH_TOKEN != '' }}`
+  #   (This job runs automatically when GH_TOKEN is set.)
   #
   # Reference: https://github.com/github/accessibility-scanner
   github-a11y-scanner:
     runs-on: ubuntu-latest
-    if: false # Set to `${{ secrets.GH_TOKEN != '' }}` to enable when GH_TOKEN secret is available
+    if: ${{ secrets.GH_TOKEN != '' }}
     steps:
       - name: Determine GitHub Pages URL
         id: pages-url
