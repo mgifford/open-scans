@@ -4,8 +4,7 @@ name: Create Agent Technique Issues
 # from the AI agent techniques described in:
 # https://accessibility.github.com/documentation/guide/getting-started-with-agents/
 #
-# This workflow runs automatically when changes are pushed to the main branch,
-# and can also be triggered manually via the Actions tab.
+# This workflow is triggered manually via the Actions tab.
 # Idempotency checks prevent duplicate issues from being created on re-runs.
 #
 # Prerequisites: The 'enhancement' and 'documentation' labels must exist in the
@@ -13,9 +12,6 @@ name: Create Agent Technique Issues
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions:
   issues: write
