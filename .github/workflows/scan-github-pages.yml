@@ -73,7 +73,7 @@ jobs:
           const pagesUrl = process.env.PAGES_URL;
           const event = {
             issue: {
-              number: 0,
+              number: parseInt(process.env.GITHUB_RUN_NUMBER, 10),
               html_url: `https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
               title: 'SCAN: AXE GitHub Pages accessibility check',
               created_at: new Date().toISOString(),
