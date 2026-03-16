@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-03-16T14:50:32.262Z",
+  "issueNumber": 167,
+  "scanTitle": "VA.gov —",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 6,
+      "uniqueFailed": 6,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 6537,
+      "uniqueFailed": 6537,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 1223,
+      "uniqueFailed": 1093,
+      "duplicates": 130
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 523,
+      "uniqueFailed": 522,
+      "duplicates": 1
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 2353,
+      "uniqueFailed": 2353,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 6,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1216,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 1093,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 522,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 223
+    }
+  },
+  "duplicateFindingTotals": 7582,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
