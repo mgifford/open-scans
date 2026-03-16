@@ -213,25 +213,36 @@ jobs:
   # To enable this job:
   #   1. Create a fine-grained PAT at https://github.com/settings/tokens
   #   2. Add it as a repository secret named GH_TOKEN
-  #   (This job runs automatically when GH_TOKEN is set.)
+  #   (This job runs automatically when GH_TOKEN is set; skipped otherwise.)
+  #
+  # Note: The secrets context is not available in job-level if conditions,
+  #       so the GH_TOKEN check is performed inside the job steps instead.
   #
   # Reference: https://github.com/github/accessibility-scanner
   github-a11y-scanner:
     runs-on: ubuntu-latest
-    if: ${{ secrets.GH_TOKEN != '' }}
     steps:
-      - name: Determine GitHub Pages URL
-        id: pages-url
+      - name: Determine GitHub Pages URL and check token
+        id: setup
         run: |
           OWNER="${{ github.repository_owner }}"
           REPO_NAME="${{ github.repository }}"
           REPO_NAME="${REPO_NAME##*/}"
           echo "url=https://${OWNER}.github.io/${REPO_NAME}/" >> "$GITHUB_OUTPUT"
+          if [ -n "$GH_TOKEN" ]; then
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "GH_TOKEN secret is not set — skipping GitHub Accessibility Scanner." >&2
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Run GitHub Accessibility Scanner
+        if: ${{ steps.setup.outputs.has_token == 'true' }}
         uses: github/accessibility-scanner@v2
         with:
-          urls: ${{ steps.pages-url.outputs.url }}
+          urls: ${{ steps.setup.outputs.url }}
           repository: ${{ github.repository }}
           token: ${{ secrets.GH_TOKEN }}
           cache_key: ${{ github.repository }}-pages
