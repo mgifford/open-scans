@@ -5,7 +5,7 @@
 #      which requires a GH_TOKEN secret with write access — see README for setup.
 #
 # Triggers:
-#   - On push to main when GitHub Pages content files change
+#   - On push to main when GitHub Pages content files or this workflow change
 #   - Monthly on the 1st of each month at 02:00 UTC
 #   - Manually via workflow_dispatch
 #
@@ -21,6 +21,7 @@ on:
       - 'index.html'
       - 'reports.html'
       - 'submit.js'
+      - '.github/workflows/scan-github-pages.yml'
   schedule:
     # Monthly on the 1st at 02:00 UTC
     - cron: '0 2 1 * *'
@@ -136,7 +137,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/pages reports.html
+          [ -d reports/pages ] && git add reports/pages || true
+          git add reports.html
           if git diff --cached --quiet; then
             echo "No report changes to commit."
           else
