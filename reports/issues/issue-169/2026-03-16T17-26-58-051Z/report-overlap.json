@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-03-16T17:26:14.568Z",
+  "issueNumber": 169,
+  "scanTitle": "NSF.gov —",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 263,
+      "uniqueFailed": 263,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 5639,
+      "uniqueFailed": 5639,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 1221,
+      "uniqueFailed": 1047,
+      "duplicates": 174
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 260,
+      "alfa": 0,
+      "equalAccess": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 978,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 1031
+    }
+  },
+  "duplicateFindingTotals": 4817,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
