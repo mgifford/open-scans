@@ -1,122 +1,129 @@
-# GitHub Copilot Instructions for alfa-scan
+# GitHub Copilot Instructions for open-scans
+
+## Primary References
+
+Before making any changes, read these documents in the repository root:
+
+- **[AGENTS.md](../AGENTS.md)** - AI agent instructions, coding standards, and project conventions. This is the primary guide for all coding agents.
+- **[ACCESSIBILITY.md](../ACCESSIBILITY.md)** - WCAG 2.2 AA requirements, accessible development best practices, and quality gates.
+- **[SUSTAINABILITY.md](../SUSTAINABILITY.md)** - Digital sustainability policy: minimize compute waste, assess third-party dependencies, and disclose AI usage in PRs.
+
+For Spec Kitty project management rules (work packages, path references, encoding), see **[.kittify/AGENTS.md](../.kittify/AGENTS.md)**.
+
+---
 
 ## Project Overview
 
-This is an issue-driven accessibility scanning prototype that uses GitHub Pages and GitHub Actions to perform automated accessibility scans using Siteimprove's Alfa library.
+`open-scans` is an issue-driven accessibility scanning tool hosted on GitHub Pages and GitHub Actions. It accepts URL batches via a form, creates GitHub issues, runs multi-engine accessibility scans in CI, and publishes comparison-ready reports to GitHub Pages.
+
+- **Live site**: <https://mgifford.github.io/open-scans/>
+- **Reports**: <https://mgifford.github.io/open-scans/reports.html>
+- **Repository**: <https://github.com/mgifford/open-scans>
 
 ### Architecture
 
-- **Frontend**: GitHub Pages form (`index.html`) for submitting URL batches
-- **Backend**: GitHub Actions workflows triggered by issues
-- **Scanner**: Node.js modules in `scanner/` directory using @siteimprove/alfa-cli
-- **Results**: Published to GitHub Pages for comparison
+- **Frontend** (`index.html`, `reports.html`, `submit.js`): GitHub Pages form for submitting URL batches and viewing results
+- **Scanner** (`scanner/*.mjs`): Node.js ES modules that parse issues, validate URLs, run scans, and generate reports
+- **Workflows** (`.github/workflows/`): GitHub Actions workflows triggered by issues or schedules
+- **Reports** (`reports/`): Generated scan output published to GitHub Pages
 
-## Key Components
+### Scanning Engines
 
-### Scanner Modules
+Five accessibility engines are supported (run individually or in combination via the issue title or body):
 
-1. **parse-issue.mjs**: Parses scan request issues to extract URLs
-2. **validate-targets.mjs**: Validates URL targets before scanning
-3. **run-scan.mjs**: Executes accessibility scans and generates reports
+1. **axe-core** (`@axe-core/playwright`) - Deque's industry-standard engine
+2. **Siteimprove ALFA** (`@siteimprove/alfa-cli`) - Standards-first, ACT-rules-based
+3. **IBM Equal Access Checker** (`accessibility-checker`) - IBM's comprehensive checker
+4. **AccessLint** (`@accesslint/core`) - Automated accessibility testing
+5. **QualWeb** (`@qualweb/core`) - University of Lisbon WCAG/ACT evaluator
 
-### Workflows
+Default: **axe** plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all five.
 
-- **scan-request.yml**: Triggered on issue creation/edit for issues titled "SCAN:"
-- **scan-issue-queue.yml**: Daily scheduled scan + manual trigger option
+---
 
-## Coding Conventions
-
-### Module Structure
-
-- Use ES modules (`type: "module"` in package.json)
-- Export functions from modules for testing
-- Use import guard to prevent main() execution during testing:
-  ```javascript
-  if (import.meta.url === `file://${process.argv[1]}`) {
-    main();
-  }
-  ```
-
-### Testing Practices
-
-- Test files located in `tests/unit/` with `.test.mjs` extension
-- Run tests with: `npm test`
-- Export functions from scanner modules for unit testing
-- Use Node.js built-in test runner
-
-### Code Quality
-
-- Lint with: `npm run lint` (checks all scanner modules)
-- Follow existing code patterns in the scanner/ directory
-- Node.js version: >= 20 (see package.json engines)
-
-### Security
-
-- Use `spawnSync` with argument arrays instead of `execSync` with template strings to prevent command injection
-- Never commit secrets or credentials
-- Validate all user inputs before processing
-
-### Stdout/Stderr Convention
-
-**CRITICAL**: Scanner modules must output structured data (JSON) to stdout and progress/diagnostic messages to stderr.
-
-- **stdout**: Reserved ONLY for structured data (JSON) that workflows will parse
-- **stderr**: Use for all progress messages, warnings, errors, and diagnostic output
-- **Rationale**: Workflows redirect stdout to files or parse it as JSON. Any non-JSON output breaks parsing.
-
-**Example (run-scan.mjs)**:
-```javascript
-// ✅ CORRECT: Progress to stderr
-console.error(`[1/100] Scanned ${url} in ${ms}ms`);
-
-// ✅ CORRECT: Warnings to stderr  
-console.warn(`WARNING: Scan incomplete`);
-
-// ✅ CORRECT: Final JSON to stdout
-console.log(JSON.stringify({ results: [...] }));
-
-// ❌ WRONG: Progress to stdout corrupts JSON
-console.log(`[1/100] Scanned ${url}`); // Breaks workflow parsing!
-```
-
-**Testing**: See `tests/unit/run-scan-output.test.mjs` for examples of validating stdout/stderr separation.
-
-### Git Practices
-
-- Keep `node_modules/` in .gitignore (never commit dependencies)
-- Write clear, descriptive commit messages
-- Follow existing branch naming conventions
-
-## Testing Commands
+## Key Commands
 
 ```bash
 # Run all unit tests
 npm test
 
-# Lint code
+# Lint all scanner modules
 npm run lint
 
 # Run individual scanner modules
 npm run run:parse
 npm run run:validate
 npm run run:scan
+npm run run:generate-reports
+npm run run:analyse-trends
 ```
 
-## Report Format
+---
 
-- Accessibility reports should be action-oriented
-- Prioritize sections showing pages with most errors first
-- Display most common issues prominently
-- Use structured format for easy comparison across scans
+## Coding Conventions
 
-## Dependencies
+### Module Structure
 
-- `@siteimprove/alfa-cli`: Core accessibility testing library
-- `@siteimprove/alfa-formatter-earl`: EARL report formatting
-- `@siteimprove/alfa-formatter-json`: JSON report formatting
+- ES modules (`type: "module"` in `package.json`), Node.js >= 20
+- Use an import guard so `main()` does not run during tests:
+  ```javascript
+  if (import.meta.url === `file://${process.argv[1]}`) {
+    main();
+  }
+  ```
+- Export functions from modules for unit testing
 
-## Important Notes
+### Stdout / Stderr Convention
 
-- This project uses Spec Kitty for project management (see `.kittify/` directory)
-- Work packages are organized under `kitty-specs/`
-- `.github/prompts/` contains Spec Kitty command templates (not Copilot instructions)
+**CRITICAL** - workflows parse stdout as JSON. Any non-JSON output on stdout breaks parsing.
+
+- **stdout**: structured JSON output only
+- **stderr**: all progress messages, warnings, and diagnostics
+
+```javascript
+// CORRECT
+console.error(`[1/100] Scanned ${url} in ${ms}ms`); // progress to stderr
+console.log(JSON.stringify({ results: [] }));          // JSON to stdout
+
+// WRONG - corrupts workflow JSON parsing
+console.log(`[1/100] Scanned ${url}`);
+```
+
+### Security
+
+- Use `spawnSync` with argument arrays - never `execSync` with template strings (command injection risk)
+- Validate all user-supplied URLs before processing
+- Never commit secrets, credentials, or agent-specific directories (`.claude/`, `.codex/`, `.gemini/`, etc.)
+
+### File Organization
+
+| Path | Purpose |
+|------|---------|
+| `scanner/*.mjs` | Scanner modules |
+| `tests/unit/*.test.mjs` | Unit tests (Node.js built-in runner) |
+| `.github/workflows/` | GitHub Actions workflows |
+| `reports/` | Generated scan output (GitHub Pages) |
+| `kitty-specs/` | Spec Kitty work packages |
+
+### Workflows
+
+- **`scan-request.yml`**: Triggered on issue creation/edit for `SCAN:` issues
+- **`scan-issue-queue.yml`**: Daily scheduled scan of all open `SCAN:` issues + manual trigger
+- **`scheduled-scan-queue.yml`**: Timed issues (`WEEKLY:`, `MONTHLY:`, etc.)
+- All workflows share the `scan-repository` concurrency group (sequential processing)
+
+### Never Commit
+
+- `node_modules/` (in `.gitignore`)
+- Secrets or credentials
+- Agent-specific runtime directories (`.claude/`, `.cursor/`, `.gemini/`, `.codex/`)
+
+---
+
+## Pull Request Checklist
+
+Every PR should include (per `SUSTAINABILITY.md`):
+
+- Sustainability impact: `improves` / `neutral` / `regresses`
+- AI usage disclosure if AI assistance was used
+- All tests passing (`npm test`) and lint clean (`npm run lint`)
