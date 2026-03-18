@@ -10,6 +10,9 @@ const scanRequestSchema = JSON.parse(readFileSync(schemaPath, "utf8"));
  */
 export const NON_AXE_ENGINES = ["alfa", "equalaccess", "accesslint", "qualweb"];
 
+/** All valid engine names accepted by the scanner (including the "all" alias). */
+const KNOWN_ENGINES = new Set(["axe", "alfa", "equalaccess", "accesslint", "qualweb", "all"]);
+
 /**
  * Returns the default engines to use when none are specified:
  * always axe plus one randomly selected engine from NON_AXE_ENGINES.
@@ -29,8 +32,6 @@ export function getDefaultEngines() {
 function extractBodyEngines(body) {
   if (!body) return null;
 
-  const knownEngines = new Set(["axe", "alfa", "equalaccess", "accesslint", "qualweb", "all"]);
-
   // Check for "Engine: ..." on the first line (manually written issues)
   const firstLine = body.split("\n")[0].trim();
   const match = firstLine.match(/^Engine:\s*(.+)$/i);
@@ -38,7 +39,7 @@ function extractBodyEngines(body) {
     const engineList = match[1]
       .split(/[\s,]+/)
       .map((e) => e.trim().toLowerCase())
-      .filter((e) => Boolean(e) && knownEngines.has(e));
+      .filter((e) => Boolean(e) && KNOWN_ENGINES.has(e));
     if (engineList.length > 0) return engineList;
   }
 
@@ -49,7 +50,7 @@ function extractBodyEngines(body) {
     const engineList = engineSection
       .split(/[\s,]+/)
       .map((e) => e.trim().toLowerCase())
-      .filter((e) => Boolean(e) && knownEngines.has(e));
+      .filter((e) => Boolean(e) && KNOWN_ENGINES.has(e));
     if (engineList.length > 0) return engineList;
   }
 
