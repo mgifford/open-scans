@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-19T17:34:51.886Z",
+  "issueNumber": 138,
+  "scanTitle": "fosdem.org",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 5212,
+      "uniqueFailed": 5212,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 8092,
+      "uniqueFailed": 6965,
+      "duplicates": 1127
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 5212,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 6965
+    }
+  },
+  "duplicateFindingTotals": 1127,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
