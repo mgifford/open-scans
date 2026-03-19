@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   run-scan-request:
-    if: startsWith(github.event.issue.title, 'SCAN:')
+    if: startsWith(github.event.issue.title, 'SCAN:') && github.event.issue.state == 'open'
     runs-on: ubuntu-latest
 
     steps:
