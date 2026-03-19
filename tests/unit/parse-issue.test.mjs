@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { parseScanIssue, validateScanRequest, NON_AXE_ENGINES, getDefaultEngines } from "../../scanner/parse-issue.mjs";
+import { parseScanIssue, validateScanRequest, NON_AXE_ENGINES, getDefaultEngines, extractPageCount } from "../../scanner/parse-issue.mjs";
 
 test("parseScanIssue parses valid issue payload", () => {
   const payload = JSON.parse(readFileSync(new URL("../fixtures/issue-valid.json", import.meta.url), "utf8"));
@@ -672,4 +672,132 @@ test("parseScanIssue handles mixed HTML, Markdown, and plain URLs (like AI-gener
   );
   // Google wrapper itself should not be in the list
   assert.ok(!result.value.requestedUrls.some((u) => u.includes("google.com")), "should not include google.com wrapper URLs");
+});
+// --- Crawl mode detection ---
+
+test("parseScanIssue detects crawl mode when title is a URL and body has no URLs", () => {
+  const payload = {
+    issue: {
+      number: 195,
+      html_url: "https://github.com/mgifford/open-scans/issues/195",
+      title: "SCAN: https://www.kingston.gov.uk/",
+      created_at: "2026-03-19T13:41:03Z",
+      user: { login: "mgifford" },
+      body: "### URLs\n\nPage: 50\n\n### Accessibility engines\n\nDefault (axe + one random engine)"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `expected ok, got errors: ${result.errors.join(", ")}`);
+  assert.equal(result.needsCrawl, true, "should detect crawl mode");
+  assert.equal(result.crawlBaseUrl, "https://www.kingston.gov.uk/", "should extract base URL from title");
+  assert.equal(result.crawlPageCount, 50, "should extract page count from body");
+  // requestedUrls should be seeded with the base URL so validation passes
+  assert.deepEqual(result.value.requestedUrls, ["https://www.kingston.gov.uk/"]);
+});
+
+test("parseScanIssue does NOT trigger crawl mode when body has valid URLs", () => {
+  const payload = {
+    issue: {
+      number: 196,
+      html_url: "https://github.com/example/repo/issues/196",
+      title: "SCAN: https://www.example.com/",
+      created_at: "2026-03-01T00:00:00Z",
+      user: { login: "octocat" },
+      body: "### URLs\n\nhttps://www.example.com/page1\nhttps://www.example.com/page2"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.needsCrawl, false, "should not trigger crawl mode when URLs are present");
+  assert.equal(result.crawlBaseUrl, null);
+  assert.ok(result.value.requestedUrls.includes("https://www.example.com/page1"));
+});
+
+test("parseScanIssue does NOT trigger crawl mode for normal title with body URLs", () => {
+  const payload = {
+    issue: {
+      number: 197,
+      html_url: "https://github.com/example/repo/issues/197",
+      title: "SCAN: Example site scan",
+      created_at: "2026-03-01T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.needsCrawl, false);
+  assert.equal(result.crawlBaseUrl, null);
+});
+
+test("parseScanIssue crawl mode uses default page count when Page: not specified", () => {
+  const payload = {
+    issue: {
+      number: 198,
+      html_url: "https://github.com/example/repo/issues/198",
+      title: "SCAN: https://example.com/",
+      created_at: "2026-03-01T00:00:00Z",
+      user: { login: "octocat" },
+      body: "### URLs\n\n_No URLs specified_\n\n### Accessibility engines\n\nDefault"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.needsCrawl, true);
+  assert.equal(result.crawlBaseUrl, "https://example.com/");
+  assert.equal(result.crawlPageCount, 20, "should use default page count of 20");
+});
+
+test("parseScanIssue crawl mode works with HTTPS and HTTP base URLs", () => {
+  const payload = {
+    issue: {
+      number: 199,
+      html_url: "https://github.com/example/repo/issues/199",
+      title: "SCAN: http://example.com/",
+      created_at: "2026-03-01T00:00:00Z",
+      user: { login: "octocat" },
+      body: ""
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.needsCrawl, true);
+  assert.equal(result.crawlBaseUrl, "http://example.com/");
+});
+
+// --- extractPageCount ---
+
+test("extractPageCount parses 'Page: 50'", () => {
+  assert.equal(extractPageCount("Page: 50"), 50);
+});
+
+test("extractPageCount parses 'Pages: 100'", () => {
+  assert.equal(extractPageCount("Pages: 100"), 100);
+});
+
+test("extractPageCount is case-insensitive", () => {
+  assert.equal(extractPageCount("page: 30"), 30);
+  assert.equal(extractPageCount("PAGES: 25"), 25);
+});
+
+test("extractPageCount returns default when not found", () => {
+  assert.equal(extractPageCount("No page spec here"), 20);
+  assert.equal(extractPageCount(""), 20);
+  assert.equal(extractPageCount(null), 20);
+});
+
+test("extractPageCount returns custom default", () => {
+  assert.equal(extractPageCount("", 50), 50);
+});
+
+test("extractPageCount clamps to valid range (1-500)", () => {
+  assert.equal(extractPageCount("Page: 0"), 20); // below minimum, returns default
+  assert.equal(extractPageCount("Page: 501"), 20); // above maximum, returns default
+  assert.equal(extractPageCount("Page: 500"), 500); // at maximum
+  assert.equal(extractPageCount("Page: 1"), 1); // at minimum
 });

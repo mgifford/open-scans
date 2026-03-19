@@ -188,6 +188,29 @@ jobs:
                   continue;
                 }
 
+                // If crawl mode was used, update the issue body with discovered URLs
+                // so future re-runs use the same URL list instead of crawling again.
+                if (meta.discoveredUrls && meta.discoveredUrls.length > 0) {
+                  try {
+                    const { data: issueData } = await github.rest.issues.get({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber
+                    });
+                    const urlsList = meta.discoveredUrls.join('\n');
+                    let updatedBody = (issueData.body || '').replace(/^Page:\s*\d+\s*$/m, urlsList);
+                    await github.rest.issues.update({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      body: updatedBody
+                    });
+                    console.log(`Updated issue #${issueNumber} body with ${meta.discoveredUrls.length} discovered URLs`);
+                  } catch (updateError) {
+                    console.warn(`Failed to update issue #${issueNumber} with discovered URLs:`, updateError.message);
+                  }
+                }
+
                 // Prepare report paths
                 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
                 const reportDir = `reports/issues/issue-${issueNumber}/${stamp}`;

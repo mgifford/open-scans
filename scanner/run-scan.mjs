@@ -8,6 +8,7 @@ import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
+import { crawlSiteForUrls } from "./crawl-urls.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -2671,6 +2672,30 @@ async function main() {
   // Convert pageLoadDelay from seconds (as stored in request) to milliseconds
   const pageLoadDelayMs = (request.pageLoadDelay ?? 2) * 1000;
   console.error(`Page load delay: ${pageLoadDelayMs}ms`);
+
+  // When crawl mode is detected (issue title is a URL with no body URLs),
+  // discover URLs via sitemap.xml or page crawl before scanning.
+  let discoveredUrls = null;
+  if (parsed.needsCrawl && parsed.crawlBaseUrl) {
+    console.error(`[crawl] Crawl mode: discovering URLs for ${parsed.crawlBaseUrl}`);
+    try {
+      const crawledUrls = await crawlSiteForUrls(
+        parsed.crawlBaseUrl,
+        parsed.crawlPageCount ?? 20,
+        TIMEOUTS.FETCH_TIMEOUT
+      );
+      if (crawledUrls.length > 0) {
+        discoveredUrls = crawledUrls;
+        request.requestedUrls = crawledUrls;
+        console.error(`[crawl] Discovered ${crawledUrls.length} URLs to scan`);
+      } else {
+        console.error(`[crawl] No URLs discovered; falling back to base URL only`);
+      }
+    } catch (err) {
+      console.error(`[crawl] Crawl failed: ${err.message}; falling back to base URL only`);
+    }
+  }
+
   const validation = validateTargets(request.requestedUrls);
   const acceptedTargets = validation.accepted;
 
@@ -2911,6 +2936,7 @@ async function main() {
     highContrastUrlCount,
     forcedColorsUrlCount,
     reducedTransparencyUrlCount,
+    discoveredUrls,
     summaryPath,
     markdownPath,
     htmlPath,

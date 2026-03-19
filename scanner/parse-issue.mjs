@@ -124,6 +124,23 @@ function extractSection(body, sectionName) {
   return match ? match[1].trim() : "";
 }
 
+/**
+ * Parse a page/URL count from a text like "Page: 50" or "Pages: 20".
+ * Used when the issue body specifies how many URLs to discover via crawling.
+ * @param {string} text - Text to search (typically the URLs section content)
+ * @param {number} defaultCount - Default count if not found
+ * @returns {number}
+ */
+export function extractPageCount(text, defaultCount = 20) {
+  if (!text) return defaultCount;
+  const match = text.match(/\bpages?:\s*(\d+)/i);
+  if (match) {
+    const count = parseInt(match[1], 10);
+    if (count >= 1 && count <= 500) return count;
+  }
+  return defaultCount;
+}
+
 function extractScanTitle(issueTitle) {
   const title = issueTitle ?? "";
   const match = title.match(/^\s*(SCAN|WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):\s*(.+?)\s*$/i);
@@ -232,6 +249,27 @@ export function parseScanIssue(issueEvent) {
     }
   }
 
+  // Determine if crawl mode is needed.
+  // This occurs when the scan title is itself a valid URL (e.g. "SCAN: https://example.com/")
+  // and no valid HTTP/HTTPS URLs were found in the issue body.
+  // In crawl mode, the scanner will discover URLs via sitemap.xml or page crawl before scanning.
+  const scanTitleIsUrl = validateUriLike(titleInfo.scanTitle);
+  const isValidBodyUrl = (v) => v.startsWith("http://") || v.startsWith("https://");
+  const hasValidBodyUrls = requestedUrls.some(isValidBodyUrl);
+  const needsCrawl = scanTitleIsUrl && !hasValidBodyUrls;
+
+  let crawlBaseUrl = null;
+  let crawlPageCount = null;
+  let finalRequestedUrls = requestedUrls;
+
+  if (needsCrawl) {
+    crawlBaseUrl = titleInfo.scanTitle;
+    crawlPageCount = extractPageCount(urlsSection);
+    // Use the base URL as the sole requested URL so schema validation passes.
+    // run-scan.mjs will replace this list with the crawled URLs before scanning.
+    finalRequestedUrls = [crawlBaseUrl];
+  }
+
   // Engine selection priority: body "Engine:" line > title keywords > default (axe + random)
   const bodyEngines = extractBodyEngines(body);
   const titleEngines = titleInfo.engines;
@@ -247,7 +285,7 @@ export function parseScanIssue(issueEvent) {
     requestLabel: extractSection(body, "Request Label") || "scan-request",
     issueTitle,
     scanTitle: titleInfo.scanTitle,
-    requestedUrls,
+    requestedUrls: finalRequestedUrls,
     engines,
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2
   };
@@ -262,7 +300,10 @@ export function parseScanIssue(issueEvent) {
     isRunnableIssue: titleInfo.isRunnableIssue,
     triggerType: titleInfo.triggerType,
     engines,
-    pageLoadDelay: titleInfo.pageLoadDelay ?? 2
+    pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
+    needsCrawl,
+    crawlBaseUrl,
+    crawlPageCount
   };
 }
 
