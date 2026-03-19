@@ -101,6 +101,12 @@ jobs:
           ].join('\n') + '\n';
 
           appendFileSync(output, lines, 'utf8');
+
+          // Write discovered URLs as a multiline output (only when crawl mode was used)
+          if (meta.discoveredUrls && meta.discoveredUrls.length > 0) {
+            const urlsOutput = `discovered_urls<<__URLS__\n${meta.discoveredUrls.join('\n')}\n__URLS__\n`;
+            appendFileSync(output, urlsOutput, 'utf8');
+          }
           NODE
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -258,6 +264,40 @@ jobs:
           SKIPPED_DUE_TO_TIMEOUT: ${{ steps.meta.outputs.skipped_due_to_timeout }}
           REJECTED_COUNT: ${{ steps.meta.outputs.rejected_count }}
           SCAN_TITLE: ${{ steps.meta.outputs.scan_title }}
+
+      - name: Update issue with discovered URLs
+        if: steps.meta.outputs.discovered_urls != ''
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const discoveredUrlsList = process.env.DISCOVERED_URLS;
+            if (!discoveredUrlsList) return;
+
+            const urls = discoveredUrlsList.split('\n').filter(Boolean);
+            if (urls.length === 0) return;
+
+            // Fetch the current issue body
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number
+            });
+
+            // Replace the "Page: N" placeholder in the URLs section with the
+            // actual discovered URLs so future re-runs use the same list.
+            let body = issue.body || '';
+            const urlsList = urls.join('\n');
+            body = body.replace(/^Page:\s*\d+\s*$/m, urlsList);
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body
+            });
+            console.log(`Updated issue body with ${urls.length} discovered URLs`);
+        env:
+          DISCOVERED_URLS: ${{ steps.meta.outputs.discovered_urls }}
 
       - name: Close issue after scan
         if: ${{ steps.meta.outputs.accepted_count != '0' }}
