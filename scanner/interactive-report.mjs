@@ -240,7 +240,7 @@ export function generateInteractiveHtml(summary) {
       return { result: r, counts, total };
     })
     .filter(p => p.total > 0)
-    .sort((a, b) => b.total - a.total);
+    .sort((a, b) => (b.counts.axe || 0) - (a.counts.axe || 0) || b.total - a.total);
 
   const totalPageCount = pagesByErrorCount.length;
   const extraPageCount = Math.max(0, totalPageCount - PRIORITY_TABLE_DEFAULT_ROWS);
@@ -253,9 +253,9 @@ export function generateInteractiveHtml(summary) {
         <table class="priority-table" aria-label="Pages sorted by total unique accessibility errors">
           <thead>
             <tr>
-              <th scope="col">Page</th>
-              ${SCANNERS.map(eng => `<th scope="col">${SCANNER_LABELS[eng]} Unique</th>`).join('')}
-              <th scope="col">Total Unique</th>
+              <th scope="col" aria-sort="none"><button class="priority-sort-btn" data-sort-col="page" aria-label="Sort by page">Page <span class="sort-icon" aria-hidden="true">↕</span></button></th>
+              ${SCANNERS.map(eng => `<th scope="col" aria-sort="${eng === 'axe' ? 'descending' : 'none'}"><button class="priority-sort-btn" data-sort-col="${eng.toLowerCase()}" aria-label="Sort by ${SCANNER_LABELS[eng]} Unique">${SCANNER_LABELS[eng]} Unique <span class="sort-icon" aria-hidden="true">${eng === 'axe' ? '↓' : '↕'}</span></button></th>`).join('')}
+              <th scope="col" aria-sort="none"><button class="priority-sort-btn" data-sort-col="total" aria-label="Sort by Total Unique">Total Unique <span class="sort-icon" aria-hidden="true">↕</span></button></th>
             </tr>
           </thead>
           <tbody>
@@ -264,13 +264,13 @@ export function generateInteractiveHtml(summary) {
     const filterUrl = r.submittedUrl;  // Must match the URL stored in consolidatedFailures.pages
     const pageTitle = r.pageTitle || displayUrl;
     const isExtra = index >= PRIORITY_TABLE_DEFAULT_ROWS;
+    const sortAttrs = `data-sort-page="${escapeHtml(pageTitle)}" data-sort-total="${total}" ${SCANNERS.map(eng => `data-sort-${eng.toLowerCase()}="${escapeHtml(counts[eng])}"`).join(' ')}`;
     return `
-              <tr${isExtra ? ' class="priority-row-extra" hidden' : ''}>
+              <tr${isExtra ? ' class="priority-row-extra" hidden' : ''} ${sortAttrs}>
                 <td>
-                  <a href="${escapeHtml(displayUrl)}" target="_blank" rel="noopener" title="${escapeHtml(pageTitle)}" class="page-link">
-                    View Page
+                  <a href="${escapeHtml(displayUrl)}" target="_blank" rel="noopener" title="${escapeHtml(displayUrl)}" class="page-link">
+                    ${escapeHtml(pageTitle)}
                   </a>
-                  <span class="page-title-text">${escapeHtml(pageTitle)}</span>
                 </td>
                 ${SCANNERS.map(eng => {
       const count = counts[eng];
@@ -891,8 +891,12 @@ export function generateInteractiveHtml(summary) {
     .count-btn:hover { background: var(--hover-bg); border-color: var(--primary); }
     .count-btn:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
     .count-btn.active-filter { background: var(--primary); color: var(--badge-count-text); border-color: var(--primary); }
-    .page-link { font-weight: 500; }
-    .page-title-text { display: block; font-size: 0.8rem; color: var(--muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .page-link { font-weight: 500; max-width: 320px; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+    .priority-sort-btn { background: none; border: none; cursor: pointer; font-size: inherit; font-weight: 600; color: inherit; padding: 0; display: inline-flex; align-items: center; gap: 0.3em; }
+    .priority-sort-btn:hover { color: var(--primary); }
+    .priority-sort-btn:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .priority-sort-btn .sort-icon { font-size: 0.75em; opacity: 0.6; }
+    .priority-table th[aria-sort] .sort-icon { opacity: 1; color: var(--primary); }
 
     /* Accordion sections for per-engine issue groups */
     .accordion-section {
@@ -1235,6 +1239,71 @@ export function generateInteractiveHtml(summary) {
       });
     }
 
+    // ── Priority table column sorting ──
+    const priorityTable = document.querySelector('.priority-table');
+    if (priorityTable) {
+      const ptTbody = priorityTable.querySelector('tbody');
+      const PT_DEFAULT_ROWS = ${PRIORITY_TABLE_DEFAULT_ROWS};
+      let ptSortCol = 'axe';
+      let ptSortDir = 'desc';
+
+      function getPtSortValue(row, col) {
+        if (col === 'page') return (row.dataset.sortPage || '').toLowerCase();
+        const dsKey = 'sort' + col.charAt(0).toUpperCase() + col.slice(1);
+        return parseInt(row.dataset[dsKey], 10) || 0;
+      }
+
+      function updatePtSortIcons() {
+        priorityTable.querySelectorAll('.priority-sort-btn').forEach(function(btn) {
+          const icon = btn.querySelector('.sort-icon');
+          const col = btn.dataset.sortCol;
+          if (col === ptSortCol) {
+            icon.textContent = ptSortDir === 'asc' ? '↑' : '↓';
+            btn.closest('th').setAttribute('aria-sort', ptSortDir === 'asc' ? 'ascending' : 'descending');
+          } else {
+            icon.textContent = '↕';
+            btn.closest('th').setAttribute('aria-sort', 'none');
+          }
+        });
+      }
+
+      function sortPriorityTable() {
+        const showAllBtn = document.getElementById('show-all-pages-btn');
+        const isExpanded = showAllBtn && showAllBtn.getAttribute('aria-expanded') === 'true';
+        const rows = Array.from(ptTbody.querySelectorAll('tr'));
+        rows.sort(function(a, b) {
+          const valA = getPtSortValue(a, ptSortCol);
+          const valB = getPtSortValue(b, ptSortCol);
+          const cmp = valA < valB ? -1 : valA > valB ? 1 : 0;
+          return ptSortDir === 'asc' ? cmp : -cmp;
+        });
+        rows.forEach(function(row, i) {
+          ptTbody.appendChild(row);
+          if (i < PT_DEFAULT_ROWS) {
+            row.classList.remove('priority-row-extra');
+            row.hidden = false;
+          } else {
+            row.classList.add('priority-row-extra');
+            row.hidden = !isExpanded;
+          }
+        });
+      }
+
+      priorityTable.querySelectorAll('.priority-sort-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const col = btn.dataset.sortCol;
+          if (col === ptSortCol) {
+            ptSortDir = ptSortDir === 'asc' ? 'desc' : 'asc';
+          } else {
+            ptSortCol = col;
+            ptSortDir = col === 'page' ? 'asc' : 'desc';
+          }
+          updatePtSortIcons();
+          sortPriorityTable();
+        });
+      });
+    }
+
     // ── Rule card filtering ──
     const filterTypeEl = document.getElementById('filter-type');
     const filterLevelEl = document.getElementById('filter-level');
@@ -1430,6 +1499,38 @@ export function generateInteractiveHtml(summary) {
       try { document.execCommand('copy'); } catch (e) {}
       document.body.removeChild(ta);
     }
+
+    // ── Open details elements when navigating to an anchor ──
+    function openDetailsByHash(hash) {
+      if (!hash) return;
+      const id = hash.replace(/^#/, '');
+      const target = document.getElementById(id);
+      if (!target) return;
+      // Open the target itself if it is a <details> element
+      if (target.tagName === 'DETAILS') {
+        target.setAttribute('open', '');
+      }
+      // Open every ancestor <details> element (e.g. accordion sections)
+      let el = target.parentElement;
+      while (el) {
+        if (el.tagName === 'DETAILS') {
+          el.setAttribute('open', '');
+        }
+        el = el.parentElement;
+      }
+      // Scroll into view after a brief layout tick
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+
+    // Handle the hash present when the page first loads
+    openDetailsByHash(window.location.hash);
+
+    // Handle hash changes after page load (e.g. clicking an anchor link)
+    window.addEventListener('hashchange', () => {
+      openDetailsByHash(window.location.hash);
+    });
   </script>
 </body>
 </html>`;
