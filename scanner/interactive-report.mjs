@@ -310,7 +310,7 @@ export function generateInteractiveHtml(summary) {
   };
 
   function makeRuleCard(f) {
-    const ruleInfo = f.engine === 'alfa' ? formatAlfaRule(f.rule) : { id: f.rule, description: f.metadata.description };
+    const ruleInfo = f.engine === 'alfa' ? formatAlfaRule(f.rule) : { id: f.rule, description: f.ruleTitle || f.metadata.description };
     const displayId = ruleInfo.id;
     const displayDesc = ruleInfo.description || "";
     const rolesData = JSON.stringify(f.metadata.roles);

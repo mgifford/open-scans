@@ -1599,6 +1599,7 @@ function buildEnhancedSummary(summary) {
             metadata,
             wcag: wcagTagsForEntry,
             ruleUrl: failure.ruleUrl || null,
+            ruleTitle: failure.description || null,
             pages: new Map(), // pageUrl -> count
             totalOccurrences: 0,
             examples: [] // Store a few unique examples
