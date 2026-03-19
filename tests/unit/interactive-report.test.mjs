@@ -1178,3 +1178,78 @@ test("disability icons have aria-hidden SVGs with visible text labels", () => {
     "Disability badge should include a visible text label for the category"
   );
 });
+
+// ── QualWeb rule titles ────────────────────────────────────────────────────────
+
+test("QualWeb rule title is displayed with rule ID in rule card", () => {
+  const summary = makeSummary({
+    enhanced: {
+      consolidatedFailures: [
+        {
+          rule: "QW-ACT-R76",
+          engine: "qualweb",
+          ruleTitle: "Text has enhanced contrast",
+          totalOccurrences: 3,
+          pages: new Map([["https://example.com/page1", 3]]),
+          metadata: {
+            severity: "Moderate",
+            roles: ["Front-End Developer"],
+            blocking: false,
+          },
+          examples: [
+            {
+              url: "https://example.com/page1",
+              message: "Element has insufficient contrast",
+              colorScheme: "light",
+              html: "<p>Low contrast</p>",
+              xpath: "/html/body/p",
+            },
+          ],
+        },
+      ],
+      roleStats: { "Front-End Developer": 3 },
+      severityStats: { Moderate: 3 },
+    },
+  });
+
+  const html = generateInteractiveHtml(summary);
+
+  assert.ok(
+    html.includes("QW-ACT-R76"),
+    "Rule ID should be present in the report"
+  );
+  assert.ok(
+    html.includes("Text has enhanced contrast"),
+    "Rule title from ruleTitle field should be shown in the report"
+  );
+});
+
+test("QualWeb rule card shows only rule ID when ruleTitle is absent", () => {
+  const summary = makeSummary({
+    enhanced: {
+      consolidatedFailures: [
+        {
+          rule: "QW-ACT-R2",
+          engine: "qualweb",
+          totalOccurrences: 1,
+          pages: new Map([["https://example.com/page1", 1]]),
+          metadata: {
+            severity: "Moderate",
+            roles: ["Front-End Developer"],
+            blocking: false,
+          },
+          examples: [],
+        },
+      ],
+      roleStats: { "Front-End Developer": 1 },
+      severityStats: { Moderate: 1 },
+    },
+  });
+
+  const html = generateInteractiveHtml(summary);
+
+  assert.ok(
+    html.includes("QW-ACT-R2"),
+    "Rule ID should be present even without a ruleTitle"
+  );
+});
