@@ -405,7 +405,9 @@ export function generateInteractiveHtml(summary) {
                    data-copy-page-url="${escapeHtml(ex.url || '')}"
                    data-copy-html="${escapeHtml(ex.html || '')}"
                    data-copy-xpath="${escapeHtml(ex.xpath || '')}"
-                   data-copy-message="${escapeHtml(ex.message || '')}">
+                   data-copy-message="${escapeHtml(ex.message || '')}"
+                   data-copy-color-scheme="${escapeHtml(ex.colorScheme || 'light')}"
+                   data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}">
                 <div class="example-meta">
                   <span>Example ${i + 1}</span>
                   <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
@@ -1443,6 +1445,8 @@ export function generateInteractiveHtml(summary) {
       const html = el.dataset.copyHtml || '';
       const xpath = el.dataset.copyXpath || '';
       const message = el.dataset.copyMessage || '';
+      const colorScheme = el.dataset.copyColorScheme || 'light';
+      const viewport = el.dataset.copyViewport || 'desktop';
 
       // Extract element ID from xpath (first token if starts with #)
       const xpathTrimmed = xpath.trimStart();
@@ -1477,6 +1481,8 @@ export function generateInteractiveHtml(summary) {
         message,
         '',
         \`Environment: \${getEnvironment()}\`,
+        \`Color scheme: \${colorScheme}\`,
+        \`Viewport: \${viewport}\`,
         '',
         '====',
         '',
