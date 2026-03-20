@@ -1073,6 +1073,42 @@ test("generateInteractiveHtml Copy failure details button has accessible aria-la
   );
 });
 
+test("generateInteractiveHtml includes data-copy-color-scheme attribute on example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-color-scheme="light"'),
+    "Should have data-copy-color-scheme attribute with light value for light mode example"
+  );
+  assert.ok(
+    html.includes('data-copy-color-scheme="dark"'),
+    "Should have data-copy-color-scheme attribute with dark value for dark mode example"
+  );
+});
+
+test("generateInteractiveHtml includes data-copy-viewport attribute on example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-viewport="desktop"'),
+    "Should have data-copy-viewport attribute with desktop value"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Color scheme line", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('`Color scheme: ${colorScheme}`'),
+    "buildFailureDetails should include Color scheme line in copied text"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Viewport line", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('`Viewport: ${viewport}`'),
+    "buildFailureDetails should include Viewport line in copied text"
+  );
+});
+
 // ── Disability category icons ─────────────────────────────────────────────────
 
 test("rule card includes data-disabilities attribute with affected disability categories", () => {
