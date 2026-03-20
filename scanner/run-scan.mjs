@@ -430,12 +430,25 @@ function normalizeFindingLocator(value) {
   return text ? text.replace(/\s+/g, " ").toLowerCase() : "(no-locator)";
 }
 
+/** Matches WCAG SC number tags (3+ digits) such as wcag143, wcag1411. Excludes level tags like wcag2aa. */
+const WCAG_SC_TAG_RE = /^wcag\d{3,}$/;
+
+/**
+ * Format a date string as a human-readable date in YYYY-MM-DD (ISO 8601 calendar) format.
+ * Uses 'en-CA' locale for consistent YYYY-MM-DD output across platforms.
+ * @param {string} isoDate - ISO 8601 date string
+ * @returns {string}
+ */
+export function formatFirstSeenDate(isoDate) {
+  return new Date(isoDate).toLocaleDateString("en-CA");
+}
+
 function normalizeRuleKey(failure) {
   // Only keep WCAG SC number tags (e.g. wcag143, wcag1411) — strip level tags like wcag2a, wcag21aa.
   // SC tags have 3+ digits after "wcag"; level tags end with letters.
   const wcagSc = Array.isArray(failure.wcagSc)
     ? failure.wcagSc
-        .filter(tag => Boolean(tag) && /^wcag\d{3,}$/.test(String(tag)))
+        .filter(tag => Boolean(tag) && WCAG_SC_TAG_RE.test(String(tag)))
         .map(entry => String(entry).trim().toLowerCase())
         .sort()
         .join("+")
@@ -532,7 +545,7 @@ function computeCrossEngineWcagOverlap(result) {
     if (failure.isDuplicate) continue;
     if (!Array.isArray(failure.wcagSc)) continue;
     for (const tag of failure.wcagSc) {
-      if (/^wcag\d{3,}$/.test(String(tag))) {
+      if (WCAG_SC_TAG_RE.test(String(tag))) {
         axeWcagScs.add(String(tag).toLowerCase());
       }
     }
@@ -2271,7 +2284,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         const failure = failures[i];
         lines.push(`**Failure ${i + 1}:**`);
         if (failure.firstSeenAt) {
-          const dateStr = new Date(failure.firstSeenAt).toLocaleDateString('en-CA');
+          const dateStr = formatFirstSeenDate(failure.firstSeenAt);
           lines.push(`- First identified: ${dateStr}`);
         }
         if (failure.message) {
@@ -2336,7 +2349,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         const failure = failures[i];
         lines.push(`**Failure ${i + 1}:**`);
         if (failure.firstSeenAt) {
-          const dateStr = new Date(failure.firstSeenAt).toLocaleDateString('en-CA');
+          const dateStr = formatFirstSeenDate(failure.firstSeenAt);
           lines.push(`- First identified: ${dateStr}`);
         }
         if (failure.message) {

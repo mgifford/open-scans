@@ -1,11 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { writeFileSync, rmSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import {
   computeFindingFingerprint,
   loadFingerprintStore,
   annotateWithFingerprints
 } from "../../scanner/run-scan.mjs";
+
+const TMP = tmpdir();
 
 // ── computeFindingFingerprint ──────────────────────────────────────────────
 
@@ -33,23 +37,25 @@ test("computeFindingFingerprint differs for different inputs", () => {
 // ── loadFingerprintStore ───────────────────────────────────────────────────
 
 test("loadFingerprintStore returns empty object when file does not exist", () => {
-  const store = loadFingerprintStore("/tmp/does-not-exist-fingerprints.json");
+  const store = loadFingerprintStore(join(TMP, "does-not-exist-fingerprints.json"));
   assert.deepEqual(store, {});
 });
 
 test("loadFingerprintStore returns empty object for invalid JSON", () => {
-  writeFileSync("/tmp/bad-fingerprints.json", "not valid json");
-  const store = loadFingerprintStore("/tmp/bad-fingerprints.json");
+  const badPath = join(TMP, "bad-fingerprints.json");
+  writeFileSync(badPath, "not valid json");
+  const store = loadFingerprintStore(badPath);
   assert.deepEqual(store, {});
-  rmSync("/tmp/bad-fingerprints.json");
+  rmSync(badPath);
 });
 
 test("loadFingerprintStore loads existing store", () => {
+  const testPath = join(TMP, "test-fingerprints.json");
   const data = { abc123: { firstSeenAt: "2026-01-01T00:00:00Z", lastSeenAt: "2026-01-02T00:00:00Z" } };
-  writeFileSync("/tmp/test-fingerprints.json", JSON.stringify(data));
-  const store = loadFingerprintStore("/tmp/test-fingerprints.json");
+  writeFileSync(testPath, JSON.stringify(data));
+  const store = loadFingerprintStore(testPath);
   assert.deepEqual(store, data);
-  rmSync("/tmp/test-fingerprints.json");
+  rmSync(testPath);
 });
 
 // ── annotateWithFingerprints ───────────────────────────────────────────────

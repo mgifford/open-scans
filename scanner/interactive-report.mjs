@@ -29,6 +29,11 @@ function slugify(text) {
     .replace(/^-|-$/g, "");
 }
 
+/** Format an ISO date string as YYYY-MM-DD for consistent display. */
+function formatFirstSeenDate(isoDate) {
+  return new Date(isoDate).toLocaleDateString("en-CA");
+}
+
 /**
  * WCAG Success Criteria introduced in WCAG 2.1 (not in 2.0).
  * @type {Set<string>}
@@ -432,7 +437,7 @@ export function generateInteractiveHtml(summary) {
                 ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${escapeHtml(ex.message)}</div>` : ''}
                 <div class="example-mode">
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
-                  ${ex.firstSeenAt ? `<span class="first-seen" title="Finding fingerprint: ${escapeHtml(ex.fingerprint || '')}">🕑 First identified: ${escapeHtml(new Date(ex.firstSeenAt).toLocaleDateString('en-CA'))}</span>` : ''}
+                  ${ex.firstSeenAt ? `<span class="first-seen" title="Finding fingerprint: ${escapeHtml(ex.fingerprint || '')}">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
