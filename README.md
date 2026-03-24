@@ -1,6 +1,6 @@
 # Open Scans
 
-Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Actions.
+Issue-driven accessibility scanning prototype using GitHub Pages and GitHub Actions. This project was inspired by [Oobee](https://github.com/GovTechSG/oobee) a project of [GovTech Singapore](https://www.tech.gov.sg/).
 
 ## What it is
 
