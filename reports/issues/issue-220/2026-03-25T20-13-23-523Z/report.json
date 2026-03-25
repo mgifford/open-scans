@@ -1,0 +1,264 @@
+{
+  "issueNumber": 220,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/220",
+  "issueTitle": "SCAN: Drupal",
+  "scanTitle": "Drupal",
+  "submittedBy": "mgifford",
+  "engines": [
+    "axe",
+    "accesslint"
+  ],
+  "scannedAt": "2026-03-25T20:12:51.300Z",
+  "totalElapsedMs": 28118,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 90,
+    "failed": 2,
+    "uniqueFailed": 2,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://www.drupal.org",
+      "finalUrl": "https://www.drupal.org/",
+      "redirected": false,
+      "statusCode": 403,
+      "ok": false,
+      "contentType": "text/html",
+      "pageTitle": "Access to this page has been denied.",
+      "elapsedMs": 27844,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": false,
+        "error": "frame.evaluate: TypeError: Cannot read properties of undefined (reading 'toLowerCase')\n    at flattenTree (eval at evaluate (:290:30), <anonymous>:18422:37)\n    at eval (eval at evaluate (:290:30), <anonymous>:18410:21)\n    at Array.forEach (<anonymous>)\n    at createChildren (eval at evaluate (:290:30), <anonymous>:18409:18)\n    at flattenTree (eval at evaluate (:290:30), <anonymous>:18451:26)\n    at eval (eval at evaluate (:290:30), <anonymous>:18410:21)\n    at Array.forEach (<anonymous>)\n    at createChildren (eval at evaluate (:290:30), <anonymous>:18409:18)\n    at flattenTree (eval at evaluate (:290:30), <anonymous>:18451:26)\n    at eval (eval at evaluate (:290:30), <anonymous>:18410:21)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 90,
+          "failed": 2,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "landmarks/landmark-main",
+          "landmarks/region"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "landmarks/landmark-main",
+            "xpath": "html",
+            "selector": "html",
+            "html": "<html>",
+            "impact": "moderate",
+            "message": "Page has no main landmark.",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "1ae1881985d1",
+            "firstSeenAt": "2026-03-25T20:12:51.300Z"
+          },
+          {
+            "rule": "landmarks/region",
+            "xpath": "body > section",
+            "selector": "body > section",
+            "html": "<section class=\"container\"> <div class=\"customer-logo-wrapper\"> <div class=\"customer-logo\"> <img src=\"https://www.drupal.org/files/drupal_logo-blue.png\" alt=\"Logo\"> </div> </div> <div class=\"page-titl...",
+            "impact": "moderate",
+            "message": "Content is not contained within a landmark region.",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d4f1aee58796",
+            "firstSeenAt": "2026-03-25T20:12:51.300Z"
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 2,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "landmarks/landmark-main",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.drupal.org",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Page has no main landmark.",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/region",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.drupal.org",
+            "html": "<section class=\"container\"> <div class=\"customer-logo-wrapper\"> <div class=\"customer-logo\"> <img src=\"https://www.drupal.org/files/drupal_logo-blue.png\" alt=\"Logo\"> </div> </div> <div class=\"page-titl...",
+            "xpath": "body > section",
+            "message": "Content is not contained within a landmark region.",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 2
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 2,
+      "Minor": 0
+    }
+  }
+}
