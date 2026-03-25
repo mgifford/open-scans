@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-25T14:35:04.124Z",
+  "issueNumber": 214,
+  "scanTitle": "LGE",
+  "scannersInUse": [
+    "axe",
+    "accesslint"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 47,
+      "uniqueFailed": 47,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 90,
+      "uniqueFailed": 77,
+      "duplicates": 13
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 47,
+      "accesslint": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "accesslint": 77
+    }
+  },
+  "duplicateFindingTotals": 13,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
