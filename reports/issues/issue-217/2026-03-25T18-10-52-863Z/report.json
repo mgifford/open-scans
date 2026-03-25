@@ -1,0 +1,953 @@
+{
+  "issueNumber": 217,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/217",
+  "issueTitle": "SCAN: https://www.maryland.gov/",
+  "scanTitle": "https://www.maryland.gov/",
+  "submittedBy": "raybell-md",
+  "engines": [
+    "axe",
+    "equalaccess"
+  ],
+  "scannedAt": "2026-03-25T18:10:01.633Z",
+  "totalElapsedMs": 8838,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 929,
+    "failed": 0,
+    "cantTell": 52,
+    "inapplicable": 43
+  },
+  "equalAccessTotals": {
+    "passed": 2349,
+    "failed": 27,
+    "uniqueFailed": 17,
+    "duplicates": 10,
+    "cantTell": 17,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 10,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://www.maryland.gov/",
+      "finalUrl": "https://www.maryland.gov/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Maryland.gov",
+      "elapsedMs": 8830,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 929,
+          "failed": 0,
+          "cantTell": 52,
+          "inapplicable": 43
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region",
+          "scrollable-region-focusable",
+          "skip-link",
+          "svg-img-alt",
+          "tabindex"
+        ],
+        "failures": [],
+        "outcomeCount": 1024,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 2349,
+          "failed": 27,
+          "cantTell": 17,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "aria_content_in_landmark",
+          "aria_role_redundant",
+          "element_tabbable_visible",
+          "figure_label_exists",
+          "input_label_visible",
+          "label_name_visible",
+          "page_title_valid",
+          "style_color_misuse",
+          "style_focus_visible",
+          "style_highcontrast_visible",
+          "svg_graphics_labelled",
+          "text_block_heading",
+          "text_quoted_correctly",
+          "text_sensory_misuse"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "page_title_valid",
+            "xpath": null,
+            "html": "<title>",
+            "message": "Verify that using the filename as the page <title> value is descriptive",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "c90ad644ad97",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "style_color_misuse",
+            "xpath": null,
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "da8888b497d0",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "b840619483d5",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d945cb7a2949",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "element_tabbable_visible",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "e86892bef9b2",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "style_focus_visible",
+            "xpath": null,
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "7be6f830b8ea",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "aria_role_redundant",
+            "xpath": null,
+            "html": "<header role=\"banner\">",
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "9b43f78ae93f",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "svg_graphics_labelled",
+            "xpath": null,
+            "html": "<svg fill=\"currentColor\" width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "message": "The SVG element has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "0b17159d49a7",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "svg_graphics_labelled",
+            "xpath": null,
+            "html": "<svg width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "message": "The SVG element has no accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "6dd76e31e070",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "input_label_visible",
+            "xpath": null,
+            "html": "<button aria-expanded=\"false\" type=\"button\" aria-controls=\"system_menu_block-main\" aria-label=\"Open main menu\" class=\"maryland-nav__toggle\">",
+            "message": "The input element does not have an associated visible label",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "4a6fdc47f474",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ff1f83402600",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "text_quoted_correctly",
+            "xpath": null,
+            "html": "<span class=\"usa-sr-only\" id=\"maryland-promo-toggle-desc-0\">",
+            "message": "If the following text is a quotation, mark it as a <q> or <blockquote> element: \"Benefits for Marylanders\"",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "79de7feb50d2",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Jobs and career support' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "2c16c0daac33",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Professional licenses and permits' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'State of Maryland job openings' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Apprenticeships and training' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Service and volunteerism in Maryland' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Start your own business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Manage your business' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Doing business with Maryland government' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": null,
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "message": "Confirm this text 'Doing business in Maryland' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\" class=\"maryland-card__link\" href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "01fe4b1afb12",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - The symbol supports people with hidden disabilities. It was created to help save lives and promote understanding.\" class=\"maryland-card__link\" href=\"https://www.mdot.maryland.gov/tso/pages/newsroomdetails.aspx?newsId=988&PageId=38\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8a4717357c9c",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "label_name_visible",
+            "xpath": null,
+            "html": "<a aria-label=\" - The new law sets out to improve Bay water quality. It also promotes economic growth by using methods that are safe for the environment.\" class=\"maryland-card__link\" href=\"https://governor.maryland.gov/news/press/pages/governor-moore-signs-legislation-to-protect-and-strengthen-the-chesapeake-bay-economy.aspx\">",
+            "message": "Accessible name does not match or contain the visible label text",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "30a19b5a45a5",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          },
+          {
+            "rule": "figure_label_exists",
+            "xpath": null,
+            "html": "<figure class=\"maryland-promo__img\">",
+            "message": "The <figure> element does not have an associated label",
+            "isDuplicate": true,
+            "duplicateOf": "equalAccess"
+          },
+          {
+            "rule": "text_sensory_misuse",
+            "xpath": null,
+            "html": "<h3 class=\"maryland-footer__link-group-heading\" id=\"global-footer--top-benefits-services\">",
+            "message": "Confirm the word(s) 'Top' of the user instruction is used to indicate a logical rather than visual position",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8b3c35e70068",
+            "firstSeenAt": "2026-03-25T18:10:01.633Z"
+          }
+        ],
+        "outcomeCount": 2376,
+        "uniqueFailedCount": 17,
+        "duplicateFailedCount": 10,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 10
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "label_name_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a aria-label=\" - To commemorate the MARYLAND 250, Maryland State Parks is challenging you to hike 250 miles in State Parks this year!\" class=\"maryland-card__link\" href=\"https://dnr.maryland.gov/publiclands/Pages/Miles-for-Maryland.aspx\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a aria-label=\" - The symbol supports people with hidden disabilities. It was created to help save lives and promote understanding.\" class=\"maryland-card__link\" href=\"https://www.mdot.maryland.gov/tso/pages/newsroomdetails.aspx?newsId=988&PageId=38\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a aria-label=\" - The new law sets out to improve Bay water quality. It also promotes economic growth by using methods that are safe for the environment.\" class=\"maryland-card__link\" href=\"https://governor.maryland.gov/news/press/pages/governor-moore-signs-legislation-to-protect-and-strengthen-the-chesapeake-bay-economy.aspx\">",
+            "xpath": null,
+            "message": "Accessible name does not match or contain the visible label text",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "svg_graphics_labelled",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<svg fill=\"currentColor\" width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "xpath": null,
+            "message": "The SVG element has no accessible name",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<svg width=\"20px\" viewBox=\"0 -960 960 960\" height=\"20px\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "xpath": null,
+            "message": "The SVG element has no accessible name",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "page_title_valid",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<title>",
+            "xpath": null,
+            "message": "Verify that using the filename as the page <title> value is descriptive",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "style_color_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "style_highcontrast_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<link href=\"/s3fs-public/css/css_83W9Uu22sM61s9bp5S7EBf1VwGuZFfyff1-XtsHEnMI.css?delta=0&language=en&theme=maryland&include=eJxljlEKwzAMQy8UkiMFNxbM1IlLnLbL7deOfa0_AukJobKCZVjPHb5ZczmQBy2K9B9kFt-UZsB7qLQ1cd830viz4UK2j7tV7ECfyRqKaajUp1LjVPlkjzfrwvDgVoQ01-sA5XvC0zOK44WK4NMHalrIEQ7B6emrsRrvig-um06L\" media=\"all\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "aria_content_in_landmark",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "element_tabbable_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "style_focus_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<a class=\"visually-hidden focusable\" href=\"#main-content\">",
+            "xpath": null,
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "aria_role_redundant",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<header role=\"banner\">",
+            "xpath": null,
+            "message": "The explicitly-assigned ARIA role \"banner\" is redundant with the implicit role of the element <header>",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "input_label_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<button aria-expanded=\"false\" type=\"button\" aria-controls=\"system_menu_block-main\" aria-label=\"Open main menu\" class=\"maryland-nav__toggle\">",
+            "xpath": null,
+            "message": "The input element does not have an associated visible label",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "figure_label_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<figure class=\"maryland-promo__img\">",
+            "xpath": null,
+            "message": "The <figure> element does not have an associated label",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "text_quoted_correctly",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<span class=\"usa-sr-only\" id=\"maryland-promo-toggle-desc-0\">",
+            "xpath": null,
+            "message": "If the following text is a quotation, mark it as a <q> or <blockquote> element: \"Benefits for Marylanders\"",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "text_block_heading",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<div class=\"maryland-link-collection__link-top\">",
+            "xpath": null,
+            "message": "Confirm this text 'Jobs and career support' is used as a heading and if so, modify to use a heading element or role",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "text_sensory_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.maryland.gov/",
+            "html": "<h3 class=\"maryland-footer__link-group-heading\" id=\"global-footer--top-benefits-services\">",
+            "xpath": null,
+            "message": "Confirm the word(s) 'Top' of the user instruction is used to indicate a logical rather than visual position",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 17
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 17,
+      "Minor": 0
+    }
+  }
+}
