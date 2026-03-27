@@ -7,6 +7,7 @@ on:
 permissions:
   contents: write
   issues: write
+  models: read
 
 concurrency:
   group: scan-repository
@@ -56,7 +57,10 @@ jobs:
         run: |
           mkdir -p .scan-output
           node scanner/run-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
-        # Uncomment and adjust these environment variables to customize timeouts:
+        # GITHUB_TOKEN is provided so that the REMEDIATE keyword can call GitHub Models API.
+        # Timeout environment variables can be uncommented and adjusted as needed:
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # env:
         #   FETCH_TIMEOUT_MS: "30000"           # 30s for initial HTTP fetch
         #   PER_URL_TIMEOUT_MS: "60000"         # 60s per URL total
@@ -120,6 +124,10 @@ jobs:
           cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
           cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
           cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
+          # Copy AI fix suggestions if they were generated (REMEDIATE mode only)
+          if [ -f .scan-output/fix-suggestions.json ]; then
+            cp .scan-output/fix-suggestions.json "${{ steps.meta.outputs.report_dir }}/fix-suggestions.json"
+          fi
 
       - name: Regenerate reports.html
         run: node scanner/generate-reports-html.mjs

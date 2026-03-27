@@ -175,6 +175,13 @@ function extractScanTitle(issueTitle) {
     }
   }
 
+  // Extract REMEDIATE keyword — opt-in flag for AI-powered fix suggestions
+  let remediate = false;
+  if (/\bREMEDIATE\b/i.test(scanTitle)) {
+    remediate = true;
+    scanTitle = scanTitle.replace(/\bREMEDIATE\b/i, "").trim();
+  }
+
   // Extract TIME:N delay specification from the title (e.g. "TIME:5" = 5 second delay)
   // Default delay is 2 seconds to allow slow-loading pages to fully render
   const DEFAULT_PAGE_LOAD_DELAY = 2;
@@ -199,7 +206,8 @@ function extractScanTitle(issueTitle) {
     triggerType: normalizedPrefix,
     scanTitle,
     engines,
-    pageLoadDelay
+    pageLoadDelay,
+    remediate
   };
 }
 
@@ -306,6 +314,7 @@ export function parseScanIssue(issueEvent) {
     triggerType: titleInfo.triggerType,
     engines,
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
+    remediate: titleInfo.remediate ?? false,
     needsCrawl,
     crawlBaseUrl,
     crawlPageCount

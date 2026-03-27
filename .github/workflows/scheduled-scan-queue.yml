@@ -12,13 +12,7 @@ on:
 permissions:
   contents: write
   issues: write
-
-concurrency:
-  group: scan-repository
-  cancel-in-progress: false
-
-jobs:
-  run-scheduled-queue:
+  models: read
     runs-on: ubuntu-latest
 
     steps:
@@ -178,7 +172,7 @@ jobs:
             node scanner/run-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
 
             node --input-type=module <<'NODE'
-            import { appendFileSync, copyFileSync, mkdirSync, readFileSync } from 'node:fs';
+            import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 
             const issue = JSON.parse(readFileSync('.tmp/issue-row.json', 'utf8'));
             const meta = JSON.parse(readFileSync('.scan-output/meta.json', 'utf8'));
@@ -202,6 +196,11 @@ jobs:
             copyFileSync('.scan-output/report.csv', csvPath);
             copyFileSync('.scan-output/report-overlap.json', overlapJsonPath);
             copyFileSync('.scan-output/report-overlap.md', overlapMarkdownPath);
+
+            // Copy AI fix suggestions if generated (REMEDIATE mode only)
+            if (existsSync('.scan-output/fix-suggestions.json')) {
+              copyFileSync('.scan-output/fix-suggestions.json', `${reportDir}/fix-suggestions.json`);
+            }
 
             appendFileSync('.tmp/scheduled-results.ndjson', JSON.stringify({
               issueNumber: issue.number,
