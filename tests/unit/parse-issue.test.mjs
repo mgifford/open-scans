@@ -903,3 +903,77 @@ test("parseScanIssue extracts URLs from Markdown bullet lists with asterisk and 
   assert.ok(result.value.requestedUrls.includes("https://example.com/plus"), "should include plus-prefixed URL");
   assert.ok(result.value.requestedUrls.includes("https://example.com/dash"), "should include dash-prefixed URL");
 });
+
+// ── REMEDIATE keyword ─────────────────────────────────────────────────────────
+
+test("parseScanIssue detects REMEDIATE keyword in title", () => {
+  const payload = {
+    issue: {
+      number: 300,
+      html_url: "https://github.com/example/repo/issues/300",
+      title: "SCAN: REMEDIATE My Site",
+      created_at: "2026-03-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.remediate, true);
+  assert.equal(result.value.scanTitle, "My Site", "REMEDIATE keyword should be stripped from scan title");
+});
+
+test("parseScanIssue defaults remediate to false when keyword absent", () => {
+  const payload = {
+    issue: {
+      number: 301,
+      html_url: "https://github.com/example/repo/issues/301",
+      title: "SCAN: My Site",
+      created_at: "2026-03-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.remediate, false);
+});
+
+test("parseScanIssue handles REMEDIATE combined with engine keyword", () => {
+  const payload = {
+    issue: {
+      number: 302,
+      html_url: "https://github.com/example/repo/issues/302",
+      title: "SCAN: AXE REMEDIATE Homepage",
+      created_at: "2026-03-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.remediate, true);
+  assert.deepEqual(result.engines, ["axe"]);
+  assert.equal(result.value.scanTitle, "Homepage");
+});
+
+test("parseScanIssue REMEDIATE keyword is case-insensitive", () => {
+  const payload = {
+    issue: {
+      number: 303,
+      html_url: "https://github.com/example/repo/issues/303",
+      title: "SCAN: remediate Government Site",
+      created_at: "2026-03-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.remediate, true);
+  assert.equal(result.value.scanTitle, "Government Site");
+});

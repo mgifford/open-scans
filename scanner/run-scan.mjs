@@ -10,6 +10,7 @@ import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
+import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -2886,6 +2887,10 @@ async function main() {
   if (!engines.includes("all") && !engines.includes("axe")) {
     engines.push("axe");
   }
+  const remediateMode = parsed.remediate === true;
+  if (remediateMode) {
+    console.error("[ai-remediation] REMEDIATE keyword detected — AI suggestions will be generated after scan");
+  }
   // Convert pageLoadDelay from seconds (as stored in request) to milliseconds
   const pageLoadDelayMs = (request.pageLoadDelay ?? 2) * 1000;
   console.error(`Page load delay: ${pageLoadDelayMs}ms`);
@@ -3139,12 +3144,44 @@ async function main() {
   }
   // ─────────────────────────────────────────────────────────────────────────
 
-  const markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
+  // ── AI Remediation Suggestions (opt-in via REMEDIATE keyword) ────────────
+  let remediationResult = null;
+  let fixSuggestionsPath = null;
+  if (remediateMode) {
+    console.error("[ai-remediation] Building enhanced summary for remediation…");
+    const enhanced = buildEnhancedSummary(summary);
+    const githubToken = process.env.GITHUB_TOKEN;
+    try {
+      remediationResult = await generateRemediationSuggestions(
+        enhanced.consolidatedFailures,
+        { token: githubToken }
+      );
+      fixSuggestionsPath = join(outputDir, "fix-suggestions.json");
+      writeFileSync(
+        fixSuggestionsPath,
+        JSON.stringify(remediationResult, null, 2) + "\n",
+        "utf8"
+      );
+      console.error(
+        `[ai-remediation] Generated ${remediationResult.suggestions.length} suggestion(s) → ${fixSuggestionsPath}`
+      );
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error(`[ai-remediation] Error generating suggestions: ${msg}`);
+      remediationResult = null;
+    }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
+  let markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
+  if (remediationResult) {
+    markdownContent += "\n" + formatRemediationMarkdown(remediationResult);
+  }
   const overlapReport = buildOverlapReport(summary);
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(markdownPath, markdownContent, "utf8");
-  writeFileSync(htmlPath, generateInteractiveHtml(summary), "utf8");
+  writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
   writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
   writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");
@@ -3177,7 +3214,8 @@ async function main() {
     csvPath,
     overlapJsonPath,
     overlapMarkdownPath,
-    fingerprintStorePath
+    fingerprintStorePath,
+    fixSuggestionsPath: fixSuggestionsPath ?? null
   }, null, 2));
 
   // Clean up Equal Access Checker browser pool to prevent "No usable sandbox" errors
