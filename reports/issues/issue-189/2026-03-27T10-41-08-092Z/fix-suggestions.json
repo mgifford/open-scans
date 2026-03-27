@@ -1,0 +1,202 @@
+{
+  "suggestions": [
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r73",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r73",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 343,
+      "pageCount": 45,
+      "suggestion": {
+        "beforeCode": "<p class=\"banner-text\" style=\"line-height: 1.2;\">...</p>",
+        "afterCode": "<p class=\"banner-text\" style=\"line-height: 1.5;\">...</p>",
+        "explanation": "The line height of the paragraph is set to less than 1.5, which can affect readability for users with visual impairments. Increasing the line height to 1.5 improves text legibility.",
+        "wcagReference": "1.4.12 Text Spacing"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r111",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r111",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [
+          "2.5.8"
+        ],
+        "level": "AA"
+      },
+      "totalOccurrences": 101,
+      "pageCount": 45,
+      "suggestion": {
+        "beforeCode": "<div tabindex=\"0\" role=\"button\" class=\"close-icon\">...</div>",
+        "afterCode": "<div tabindex=\"0\" role=\"button\" class=\"close-icon\" style=\"min-width: 44px; min-height: 44px;\">...</div>",
+        "explanation": "The target element does not meet the minimum size requirement for touch targets, which can hinder usability for users with motor impairments. The fix applies minimum width and height to ensure it is large enough to be easily activated.",
+        "wcagReference": "2.5.8 Target Size (Minimum)"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r74",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r74",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r74",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 89,
+      "pageCount": 30,
+      "suggestion": {
+        "beforeCode": "<p class=\"body-large\" style=\"font-size: 16px;\">Working for the greater good is in our DNA. From h...</p>",
+        "afterCode": "<p class=\"body-large\" style=\"font-size: 1rem;\">Working for the greater good is in our DNA. From h...</p>",
+        "explanation": "Using absolute units like pixels for font size can hinder accessibility for users who need to adjust text size. The fix changes the font size to a relative unit (rem), allowing for better scalability and user control.",
+        "wcagReference": "1.4.4 Resize text"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r80",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r80",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r80",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 88,
+      "pageCount": 30,
+      "suggestion": {
+        "beforeCode": "<p class=\"body-large\" style=\"line-height: 20px;\">Working for the greater good is in our DNA. From h...</p>",
+        "afterCode": "<p class=\"body-large\" style=\"line-height: 1.5;\">Working for the greater good is in our DNA. From h...</p>",
+        "explanation": "Using absolute units for line height can lead to accessibility issues, as it may not scale well for users with visual impairments. The fix changes the line height to a relative unit, ensuring better scalability and readability.",
+        "wcagReference": "1.4.12 Text Spacing"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r57",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r57",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 45,
+      "pageCount": 45,
+      "suggestion": {
+        "beforeCode": "<p>This is some text that is not within a landmark region.</p>",
+        "afterCode": "<main><p>This is some text that is now within a landmark region.</p></main>",
+        "explanation": "Text outside of landmark regions can be difficult for users to navigate. By placing the text inside a <main> landmark, it becomes part of a defined structure, improving accessibility.",
+        "wcagReference": "N/A"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r66",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r66",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [
+          "1.4.6"
+        ],
+        "level": "AAA"
+      },
+      "totalOccurrences": 45,
+      "pageCount": 45,
+      "suggestion": {
+        "beforeCode": "<p style='color: #999999;'>This is some text.</p>",
+        "afterCode": "<p style='color: #000000;'>This is some text.</p>",
+        "explanation": "The text color was too light, resulting in insufficient contrast against the background. Changing the text color to a darker shade improves the contrast ratio to meet the required 7:1 standard.",
+        "wcagReference": "1.4.6 Contrast (Enhanced)"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r17",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r17",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r17",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 44,
+      "pageCount": 44,
+      "suggestion": {
+        "beforeCode": "<div id=\"\" class=\"bm-menu-wrap\" style=\"position:fixed;right:0;z-index:1100;width:75%;height:100%;-moz-transform:translate3d(100%, 0, 0);-ms-transform:translate3d(100%, 0, 0);-o-transform:translate3d(100%, 0, 0);-webkit-transform:translate3d(100%, 0, 0);transform:translate3d(100%, 0, 0)\" aria-hidden=\"true\">...</div>",
+        "afterCode": "<div id=\"\" class=\"bm-menu-wrap\" style=\"position:fixed;right:0;z-index:1100;width:75%;height:100%;-moz-transform:translate3d(100%, 0, 0);-ms-transform:translate3d(100%, 0, 0);-o-transform:translate3d(100%, 0, 0);-webkit-transform:translate3d(100%, 0, 0);transform:translate3d(100%, 0, 0)\" aria-hidden=\"true\" tabindex=\"-1\">...</div>",
+        "explanation": "The element is marked as 'aria-hidden' but may still be tabbable, which can confuse users relying on keyboard navigation. Adding 'tabindex=\"-1\"' ensures it is not focusable, improving accessibility.",
+        "wcagReference": "2.4.3 Focus Order"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r72",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r72",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r72",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 14,
+      "pageCount": 14,
+      "suggestion": {
+        "beforeCode": "<p class=\"label\">CLEAN AND USEFUL TECHNOLOGY</p>",
+        "afterCode": "<p class=\"label\">Clean and useful technology</p>",
+        "explanation": "Uppercased text can hinder readability and accessibility for users with cognitive disabilities. The fix changes the text to sentence case, improving clarity.",
+        "wcagReference": "1.4.5 Images of Text (No Exception)"
+      }
+    },
+    {
+      "ruleKey": "axe:color-contrast",
+      "rule": "color-contrast",
+      "engine": "axe",
+      "ruleTitle": "Ensures text and interactive elements have sufficient contrast ratio (4.5:1 for normal text, 3:1 for large text) against their background.",
+      "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+      "wcag": {
+        "scs": [
+          "1.4.3"
+        ],
+        "level": "AA"
+      },
+      "totalOccurrences": 7,
+      "pageCount": 5,
+      "suggestion": {
+        "beforeCode": "<a class=\"external-link\" href=\"https://accessibility.civicactions.com/posts/heart-accessibility \" style=\"color: #aaa;\">Accessibility consulting and training</a>",
+        "afterCode": "<a class=\"external-link\" href=\"https://accessibility.civicactions.com/posts/heart-accessibility \" style=\"color: #000;\">Accessibility consulting and training</a>",
+        "explanation": "The original link color does not provide sufficient contrast against the background, making it difficult for users with visual impairments to read. Changing the color to a darker shade improves the contrast ratio, ensuring better accessibility.",
+        "wcagReference": "1.4.3 Contrast (Minimum)"
+      }
+    },
+    {
+      "ruleKey": "alfa:https://alfa.siteimprove.com/rules/sia-r78",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r78",
+      "engine": "alfa",
+      "ruleTitle": "https://alfa.siteimprove.com/rules/sia-r78",
+      "ruleUrl": null,
+      "wcag": {
+        "scs": [],
+        "level": null
+      },
+      "totalOccurrences": 6,
+      "pageCount": 5,
+      "suggestion": {
+        "beforeCode": "<h3 class=\"h5\">Web & CMS</h3>",
+        "afterCode": "<h3 class=\"h5\">Web & CMS</h3>\n<p></p>",
+        "explanation": "Headings should have content following them to provide context and structure to the document. Adding a paragraph or other content after the heading ensures that it is meaningful and accessible.",
+        "wcagReference": "1.3.1 Info and Relationships"
+      }
+    }
+  ],
+  "disclaimer": "⚠️ **AI Disclaimer**: These suggestions are generated by an AI model (GitHub Models / gpt-4o-mini) and may contain errors or omissions. Always review and test suggested fixes in your own codebase before applying them. Suggestions are based on the example HTML snippets captured during scanning and may not account for your full page context.",
+  "model": "gpt-4o-mini"
+}
