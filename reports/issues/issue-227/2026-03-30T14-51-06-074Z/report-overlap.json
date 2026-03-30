@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-30T14:50:12.587Z",
+  "issueNumber": 227,
+  "scanTitle": "MD Labor Accessbility Scan",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 298,
+      "uniqueFailed": 298,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 4286,
+      "uniqueFailed": 3910,
+      "duplicates": 376
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 260,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 3736
+    }
+  },
+  "duplicateFindingTotals": 379,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
