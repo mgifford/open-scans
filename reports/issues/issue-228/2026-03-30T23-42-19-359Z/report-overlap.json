@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-30T23:41:31.820Z",
+  "issueNumber": 228,
+  "scanTitle": "https://oregon.gov/",
+  "scannersInUse": [
+    "axe",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 392,
+      "uniqueFailed": 392,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 2631,
+      "uniqueFailed": 2631,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 341,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "qualweb": 206
+    }
+  },
+  "duplicateFindingTotals": 2424,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
