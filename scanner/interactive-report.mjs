@@ -430,12 +430,18 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
                    data-copy-desc="${escapeHtml(displayDesc)}"
                    data-copy-engine="${escapeHtml(f.engine)}"
                    data-copy-wcag-scs="${escapeHtml(JSON.stringify(wcag.scs || []))}"
+                   data-copy-wcag-level="${escapeHtml(wcagLevel)}"
                    data-copy-page-url="${escapeHtml(ex.url || '')}"
                    data-copy-html="${escapeHtml(ex.html || '')}"
                    data-copy-xpath="${escapeHtml(ex.xpath || '')}"
                    data-copy-message="${escapeHtml(ex.message || '')}"
                    data-copy-color-scheme="${escapeHtml(ex.colorScheme || 'light')}"
-                   data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}">
+                   data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}"
+                   data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
+                   data-copy-fingerprint="${escapeHtml(ex.fingerprint || '')}"
+                   data-copy-pages-count="${f.pages.size}"
+                   data-copy-occurrences="${f.totalOccurrences}"
+                   data-copy-disabilities="${escapeHtml(disabilities.join(', '))}">
                 <div class="example-meta">
                   <span>Example ${i + 1}</span>
                   <a href="${ex.url}" target="_blank" style="font-size: 0.75rem;">View on Page</a>
@@ -1582,52 +1588,128 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
       const engine = el.dataset.copyEngine || '';
       let wcagScs = [];
       try { wcagScs = JSON.parse(el.dataset.copyWcagScs || '[]'); } catch (e) {}
+      const wcagLevel = el.dataset.copyWcagLevel || '';
       const pageUrl = el.dataset.copyPageUrl || '';
       const html = el.dataset.copyHtml || '';
       const xpath = el.dataset.copyXpath || '';
       const message = el.dataset.copyMessage || '';
       const colorScheme = el.dataset.copyColorScheme || 'light';
       const viewport = el.dataset.copyViewport || 'desktop';
+      const severity = el.dataset.copySeverity || '';
+      const fingerprint = el.dataset.copyFingerprint || '';
+      const pagesCount = el.dataset.copyPagesCount || '';
+      const occurrences = el.dataset.copyOccurrences || '';
+      const disabilities = el.dataset.copyDisabilities || '';
 
-      // Extract element ID from xpath (first token if starts with #)
-      const xpathTrimmed = xpath.trimStart();
-      const elementId = xpathTrimmed.startsWith('#') ? xpathTrimmed.split(/\\s/)[0] : '';
-      const titleSuffix = elementId ? \` (\${elementId})\` : '';
-
-      // Build WCAG prefix for title (first SC only)
-      const wcagPrefix = wcagScs.length > 0 ? \`WCAG \${wcagScs[0]}: \` : '';
-      const title = \`\${wcagPrefix}\${desc}\${titleSuffix}\`;
-      const wcagTags = wcagScs.map(sc => \`WCAG \${sc}\`);
-      const tags = ['Accessibility', ...wcagTags, ruleId].filter(Boolean).join(', ');
-      const issueText = ruleUrl
-        ? \`\${desc} (\${ruleId} - \${ruleUrl} )\`
-        : (ruleId ? \`\${desc} (\${ruleId})\` : desc);
       const engineLabel = ENGINE_DISPLAY_LABELS[engine] || engine;
 
+      // Build WCAG citation string
+      const wcagCitation = wcagScs.length > 0
+        ? wcagScs.map(sc => \`SC \${sc}\`).join(', ') + (wcagLevel ? \` (Level \${wcagLevel})\` : '')
+        : '';
+
+      // Severity display (capitalise first letter)
+      const severityDisplay = severity ? severity.charAt(0).toUpperCase() + severity.slice(1) : 'Unknown';
+
+      // Frequency line
+      const frequencyDisplay = (() => {
+        const parts = [];
+        if (occurrences) parts.push(\`\${occurrences} total occurrence(s) across scan\`);
+        if (pagesCount) parts.push(\`\${pagesCount} page(s) affected\`);
+        return parts.length > 0 ? parts.join('; ') : 'See scan report';
+      })();
+
+      // Issue title: component/rule — description — WCAG SC
+      const wcagPrefix = wcagScs.length > 0 ? \` (\${wcagScs[0]})\` : '';
+      const title = \`\${desc || ruleId}\${wcagPrefix}\`;
+
+      // Impact line from disability categories
+      const impactLine = disabilities
+        ? \`\${disabilities} users may be affected.\`
+        : 'See scan report for affected disability groups.';
+
+      const lines = [
+        \`## Accessibility Issue: \${title}\`,
+        '',
+        fingerprint ? \`**Bug ID:** \\\`\${fingerprint}\\\`\` : '',
+        \`**URL:** \${pageUrl}\`,
+        xpath ? \`**XPath:** \\\`\${xpath}\\\`\` : '',
+        wcagCitation ? \`**WCAG SC:** \${wcagCitation}\` : '',
+        \`**Rule:** \${engineLabel} — \${ruleId}\${ruleUrl ? \` (\${ruleUrl})\` : ''}\`,
+        \`**Severity:** \${severityDisplay}\`,
+        \`**Frequency:** \${frequencyDisplay}\`,
+        \`**Screen type:** \${viewport} | **Colour mode:** \${colorScheme}\`,
+        '',
+      ].filter(line => line !== undefined && (line !== '' || true));
+
+      // Only include non-empty header lines (filter blank placeholders)
+      const headerLines = lines.filter(Boolean);
+      // Re-add a single blank line after the last metadata line
+      const metaBlock = headerLines.join('\\n') + '\\n';
+
+      const htmlBlock = html ? [
+        '',
+        '### HTML Snippet',
+        '',
+        '\`\`\`html',
+        html,
+        '\`\`\`',
+        '',
+      ].join('\\n') : '';
+
+      const descBlock = [
+        '### Description',
+        '',
+        desc || ruleId,
+        '',
+      ].join('\\n');
+
+      const expectedBlock = [
+        '### Expected Behaviour',
+        '',
+        '[What the correct, accessible experience should be]',
+        '',
+      ].join('\\n');
+
+      const actualBlock = [
+        '### Actual Behaviour',
+        '',
+        message || \`\${desc} — see rule \${ruleId} for details.\`,
+        '',
+      ].join('\\n');
+
+      const impactBlock = [
+        '### Impact',
+        '',
+        impactLine,
+        '',
+      ].join('\\n');
+
+      const envBlock = [
+        '### Testing Environment',
+        '',
+        '| Item | Value |',
+        '|------|-------|',
+        \`| Browser | \${getEnvironment()} |\`,
+        \`| Testing tool | \${engineLabel} |\`,
+        '',
+      ].join('\\n');
+
+      const footerBlock = [
+        '---',
+        \`*Found by [open-scans](https://github.com/mgifford/open-scans) using \${engineLabel}.*\`,
+        \`*Scan: \${SCAN_TITLE}*\`,
+      ].join('\\n');
+
       return [
-        \`Title: \${title}\`,
-        \`Tags: \${tags}\`,
-        '',
-        \`Issue: \${issueText}\`,
-        '',
-        \`Target application: \${SCAN_TITLE} - \${pageUrl}\`,
-        '',
-        \`Element path: \${xpath}\`,
-        '',
-        \`Snippet: \${html}\`,
-        '',
-        'Related paths: ',
-        '',
-        'How to fix: ',
-        message,
-        '',
-        \`Environment: \${getEnvironment()}\`,
-        \`Color scheme: \${colorScheme}\`,
-        \`Viewport: \${viewport}\`,
-        '',
-        '====',
-        '',
-        \`This accessibility issue was found using \${engineLabel} and https://github.com/mgifford/open-scans/\`
+        metaBlock,
+        htmlBlock,
+        descBlock,
+        expectedBlock,
+        actualBlock,
+        impactBlock,
+        envBlock,
+        footerBlock,
       ].join('\\n');
     }
 
