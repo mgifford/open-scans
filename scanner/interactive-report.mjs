@@ -1628,24 +1628,20 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
         ? \`\${disabilities} users may be affected.\`
         : 'See scan report for affected disability groups.';
 
-      const lines = [
+      const metaParts = [
         \`## Accessibility Issue: \${title}\`,
         '',
-        fingerprint ? \`**Bug ID:** \\\`\${fingerprint}\\\`\` : '',
-        \`**URL:** \${pageUrl}\`,
-        xpath ? \`**XPath:** \\\`\${xpath}\\\`\` : '',
-        wcagCitation ? \`**WCAG SC:** \${wcagCitation}\` : '',
-        \`**Rule:** \${engineLabel} — \${ruleId}\${ruleUrl ? \` (\${ruleUrl})\` : ''}\`,
-        \`**Severity:** \${severityDisplay}\`,
-        \`**Frequency:** \${frequencyDisplay}\`,
-        \`**Screen type:** \${viewport} | **Colour mode:** \${colorScheme}\`,
-        '',
-      ].filter(line => line !== undefined && (line !== '' || true));
+      ];
+      if (fingerprint) metaParts.push(\`**Bug ID:** \\\`\${fingerprint}\\\`\`);
+      metaParts.push(\`**URL:** \${pageUrl}\`);
+      if (xpath) metaParts.push(\`**XPath:** \\\`\${xpath}\\\`\`);
+      if (wcagCitation) metaParts.push(\`**WCAG SC:** \${wcagCitation}\`);
+      metaParts.push(\`**Rule:** \${engineLabel} — \${ruleId}\${ruleUrl ? \` (\${ruleUrl})\` : ''}\`);
+      metaParts.push(\`**Severity:** \${severityDisplay}\`);
+      metaParts.push(\`**Frequency:** \${frequencyDisplay}\`);
+      metaParts.push(\`**Screen type:** \${viewport} | **Colour mode:** \${colorScheme}\`);
 
-      // Only include non-empty header lines (filter blank placeholders)
-      const headerLines = lines.filter(Boolean);
-      // Re-add a single blank line after the last metadata line
-      const metaBlock = headerLines.join('\\n') + '\\n';
+      const metaBlock = metaParts.join('\\n') + '\\n';
 
       const htmlBlock = html ? [
         '',
