@@ -255,7 +255,7 @@ test("isNonWebDocument returns false for .htm extension", () => {
   assert.equal(isNonWebDocument(new URL("https://example.com/page.htm")), false);
 });
 
-test("isNonWebDocument returns false for uppercase extension (.PDF)", () => {
+test("isNonWebDocument returns true for uppercase extension (.PDF)", () => {
   // The implementation lowercases the extension, so .PDF should match
   assert.equal(isNonWebDocument(new URL("https://example.com/REPORT.PDF")), true);
 });
