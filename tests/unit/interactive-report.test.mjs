@@ -1093,19 +1093,83 @@ test("generateInteractiveHtml includes data-copy-viewport attribute on example i
   );
 });
 
-test("generateInteractiveHtml buildFailureDetails includes Color scheme line", () => {
+test("generateInteractiveHtml includes data-copy-severity attribute on example items", () => {
   const html = generateInteractiveHtml(makeSummary());
   assert.ok(
-    html.includes('`Color scheme: ${colorScheme}`'),
-    "buildFailureDetails should include Color scheme line in copied text"
+    html.includes('data-copy-severity='),
+    "Should have data-copy-severity attribute on example items"
+  );
+});
+
+test("generateInteractiveHtml includes data-copy-pages-count attribute on example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-pages-count='),
+    "Should have data-copy-pages-count attribute on example items"
+  );
+});
+
+test("generateInteractiveHtml includes data-copy-occurrences attribute on example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-occurrences='),
+    "Should have data-copy-occurrences attribute on example items"
+  );
+});
+
+test("generateInteractiveHtml includes data-copy-disabilities attribute on example items", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('data-copy-disabilities='),
+    "Should have data-copy-disabilities attribute on example items"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Colour mode line", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('${colorScheme}'),
+    "buildFailureDetails should include colour mode in copied text"
   );
 });
 
 test("generateInteractiveHtml buildFailureDetails includes Viewport line", () => {
   const html = generateInteractiveHtml(makeSummary());
   assert.ok(
-    html.includes('`Viewport: ${viewport}`'),
-    "buildFailureDetails should include Viewport line in copied text"
+    html.includes('${viewport}'),
+    "buildFailureDetails should include viewport in copied text"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails uses Markdown heading format", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('## Accessibility Issue:'),
+    "buildFailureDetails should use Markdown heading for issue title"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Severity field", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('**Severity:**'),
+    "buildFailureDetails should include Severity field in copied text"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Frequency field", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('**Frequency:**'),
+    "buildFailureDetails should include Frequency field in copied text"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Impact section", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes('### Impact'),
+    "buildFailureDetails should include Impact section"
   );
 });
 
