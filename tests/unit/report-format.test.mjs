@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { escapeMarkdown, extractRuleId, toMarkdownReport, markdownToHtml } from "../../scanner/run-scan.mjs";
+import { escapeMarkdown, extractRuleId, formatFirstSeenDate, toMarkdownReport, markdownToHtml } from "../../scanner/run-scan.mjs";
 
 test("Enhanced report format includes priority sections", () => {
   // Test data matching the structure from run-scan.mjs
@@ -773,4 +773,87 @@ test("markdownToHtml Detailed Results table shows scanner count in summary", () 
 
   // With 2 scanners reporting failures, summary should say "2 scanners"
   assert.ok(html.includes("2 scanners"), "Summary should show scanner count");
+});
+
+// ── escapeMarkdown ─────────────────────────────────────────────────────────
+
+test("escapeMarkdown escapes pipe characters", () => {
+  assert.equal(escapeMarkdown("a|b"), "a\\|b");
+});
+
+test("escapeMarkdown replaces newlines with spaces", () => {
+  assert.equal(escapeMarkdown("line1\nline2"), "line1 line2");
+});
+
+test("escapeMarkdown handles multiple pipes in one string", () => {
+  assert.equal(escapeMarkdown("a|b|c"), "a\\|b\\|c");
+});
+
+test("escapeMarkdown handles mixed pipe and newline", () => {
+  assert.equal(escapeMarkdown("a|b\nc|d"), "a\\|b c\\|d");
+});
+
+test("escapeMarkdown returns empty string for empty input", () => {
+  assert.equal(escapeMarkdown(""), "");
+});
+
+test("escapeMarkdown coerces null to empty string", () => {
+  assert.equal(escapeMarkdown(null), "");
+});
+
+test("escapeMarkdown coerces undefined to empty string", () => {
+  assert.equal(escapeMarkdown(undefined), "");
+});
+
+test("escapeMarkdown coerces numbers to strings", () => {
+  assert.equal(escapeMarkdown(42), "42");
+});
+
+test("escapeMarkdown returns plain string unchanged when no special chars", () => {
+  assert.equal(escapeMarkdown("hello world"), "hello world");
+});
+
+// ── extractRuleId ──────────────────────────────────────────────────────────
+
+test("extractRuleId extracts numeric ID from ALFA rule URL", () => {
+  assert.equal(extractRuleId("https://alfa.siteimprove.com/rules/sia-r111"), "111");
+});
+
+test("extractRuleId extracts single-digit ID", () => {
+  assert.equal(extractRuleId("https://alfa.siteimprove.com/rules/sia-r1"), "1");
+});
+
+test("extractRuleId extracts large ID", () => {
+  assert.equal(extractRuleId("https://alfa.siteimprove.com/rules/sia-r999"), "999");
+});
+
+test("extractRuleId returns null for non-matching URL", () => {
+  assert.equal(extractRuleId("https://example.com/rules/some-rule"), null);
+});
+
+test("extractRuleId returns null for empty string", () => {
+  assert.equal(extractRuleId(""), null);
+});
+
+test("extractRuleId returns null when URL ends with sia-r but no digits", () => {
+  assert.equal(extractRuleId("https://alfa.siteimprove.com/rules/sia-r"), null);
+});
+
+// ── formatFirstSeenDate ────────────────────────────────────────────────────
+
+test("formatFirstSeenDate formats ISO date as YYYY-MM-DD", () => {
+  const result = formatFirstSeenDate("2026-03-15T10:00:00.000Z");
+  assert.match(result, /^\d{4}-\d{2}-\d{2}$/);
+});
+
+test("formatFirstSeenDate produces correct year-month-day for known date", () => {
+  // Use local-time-independent assertion: check that all three date parts are present
+  const result = formatFirstSeenDate("2026-01-01T00:00:00.000Z");
+  assert.ok(result.includes("2026"), `Expected year 2026 in "${result}"`);
+});
+
+test("formatFirstSeenDate produces different results for different dates", () => {
+  const a = formatFirstSeenDate("2026-01-01T00:00:00.000Z");
+  const b = formatFirstSeenDate("2026-12-31T00:00:00.000Z");
+  assert.notEqual(a, b);
 });

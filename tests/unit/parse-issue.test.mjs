@@ -977,3 +977,165 @@ test("parseScanIssue REMEDIATE keyword is case-insensitive", () => {
   assert.equal(result.remediate, true);
   assert.equal(result.value.scanTitle, "Government Site");
 });
+
+// ── validateScanRequest ────────────────────────────────────────────────────
+
+test("validateScanRequest accepts a fully valid request object", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.errors, []);
+});
+
+test("validateScanRequest rejects when requestId is missing", () => {
+  const request = {
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("requestId")));
+});
+
+test("validateScanRequest rejects when submittedBy is empty string", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("submittedBy")));
+});
+
+test("validateScanRequest rejects when issueNumber is 0", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 0,
+    issueUrl: "https://github.com/example/repo/issues/0",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("issueNumber")));
+});
+
+test("validateScanRequest rejects when issueNumber is negative", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: -5,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("issueNumber")));
+});
+
+test("validateScanRequest rejects when issueNumber is a float", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1.5,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("issueNumber")));
+});
+
+test("validateScanRequest rejects when issueUrl is not a valid URL", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "not-a-url",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("issueUrl")));
+});
+
+test("validateScanRequest rejects when requestedUrls is not an array", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: "https://example.com/"
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("requestedUrls")));
+});
+
+test("validateScanRequest rejects when requestedUrls is empty", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: []
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("between 1 and 500")));
+});
+
+test("validateScanRequest rejects when a requestedUrls entry is not a valid URL", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/", "not-a-url"]
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("requestedUrls[1]")));
+});
+
+test("validateScanRequest rejects unexpected fields", () => {
+  const request = {
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-01-01T00:00:00Z",
+    requestedUrls: ["https://example.com/"],
+    unknownField: "oops"
+  };
+  const result = validateScanRequest(request);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some(e => e.includes("unknownField")));
+});
+
+test("validateScanRequest accumulates multiple errors", () => {
+  const result = validateScanRequest({});
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.length > 1, "Should report multiple missing fields");
+});
