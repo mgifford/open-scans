@@ -135,3 +135,127 @@ test("validateTargets filters out epub and mobi URLs", () => {
     assert.match(rejected.reason, /non-web document/);
   }
 });
+// ── Additional validateTarget edge cases ──────────────────────────────────
+
+test("validateTarget rejects ftp:// protocol", () => {
+  const result = validateTarget("ftp://files.example.com/pub/doc.txt");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /http\/https/);
+});
+
+test("validateTarget rejects javascript: protocol", () => {
+  const result = validateTarget("javascript:alert(1)");
+  assert.equal(result.accepted, false);
+});
+
+test("validateTarget rejects completely invalid URL", () => {
+  const result = validateTarget("not a url at all");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /invalid URL/i);
+});
+
+test("validateTarget rejects 192.168.x.x private IPv4", () => {
+  const result = validateTarget("https://192.168.1.100/");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /private\/internal IPv4/);
+});
+
+test("validateTarget rejects 172.16.x.x private IPv4 range", () => {
+  const result = validateTarget("https://172.16.0.1/");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /private\/internal IPv4/);
+});
+
+test("validateTarget rejects 172.31.x.x private IPv4 range", () => {
+  const result = validateTarget("https://172.31.255.255/");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /private\/internal IPv4/);
+});
+
+test("validateTarget accepts 172.15.x.x (just outside private range)", () => {
+  const result = validateTarget("https://172.15.0.1/");
+  assert.equal(result.accepted, true);
+});
+
+test("validateTarget accepts 172.32.x.x (just above private range)", () => {
+  const result = validateTarget("https://172.32.0.1/");
+  assert.equal(result.accepted, true);
+});
+
+test("validateTarget rejects 127.0.0.1 loopback", () => {
+  const result = validateTarget("https://127.0.0.1/");
+  assert.equal(result.accepted, false);
+});
+
+test("validateTarget rejects .local hostnames", () => {
+  const result = validateTarget("http://myserver.local/");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /local network/i);
+});
+
+test("validateTarget rejects IPv6 loopback ::1", () => {
+  const result = validateTarget("https://[::1]/");
+  assert.equal(result.accepted, false);
+  assert.match(result.reason, /private\/internal IPv6/);
+});
+
+test("validateTarget strips fragment from normalizedUrl", () => {
+  const result = validateTarget("https://example.com/page#section");
+  assert.equal(result.accepted, true);
+  assert.equal(result.normalizedUrl, "https://example.com/page");
+});
+
+test("validateTarget preserves query string in normalizedUrl", () => {
+  const result = validateTarget("https://example.com/search?q=test");
+  assert.equal(result.accepted, true);
+  assert.ok(result.normalizedUrl.includes("?q=test"));
+});
+
+test("validateTarget returns submittedUrl matching original input", () => {
+  const input = "https://example.com/path?q=1#anchor";
+  const result = validateTarget(input);
+  assert.equal(result.submittedUrl, input);
+});
+
+// ── Additional isNonWebDocument edge cases ────────────────────────────────
+
+test("isNonWebDocument returns true for audio mp3", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/audio/track.mp3")), true);
+});
+
+test("isNonWebDocument returns true for video mp4", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/video/clip.mp4")), true);
+});
+
+test("isNonWebDocument returns true for zip archive", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/downloads/data.zip")), true);
+});
+
+test("isNonWebDocument returns true for woff font", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/fonts/font.woff")), true);
+});
+
+test("isNonWebDocument returns true for woff2 font", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/fonts/font.woff2")), true);
+});
+
+test("isNonWebDocument returns true for svg image", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/icons/logo.svg")), true);
+});
+
+test("isNonWebDocument returns true for json data file", () => {
+  assert.equal(isNonWebDocument(new URL("https://api.example.com/data.json")), true);
+});
+
+test("isNonWebDocument returns false for .html extension", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/page.html")), false);
+});
+
+test("isNonWebDocument returns false for .htm extension", () => {
+  assert.equal(isNonWebDocument(new URL("https://example.com/page.htm")), false);
+});
+
+test("isNonWebDocument returns false for uppercase extension (.PDF)", () => {
+  // The implementation lowercases the extension, so .PDF should match
+  assert.equal(isNonWebDocument(new URL("https://example.com/REPORT.PDF")), true);
+});
