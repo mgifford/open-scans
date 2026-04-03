@@ -16,7 +16,10 @@ permissions:
   issues: write
   models: read
 
-jobs:
+concurrency:
+  group: scan-repository
+  cancel-in-progress: false
+
   process-scan-queue:
     runs-on: ubuntu-latest
 
