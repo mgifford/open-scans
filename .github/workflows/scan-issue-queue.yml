@@ -20,8 +20,7 @@ concurrency:
   group: scan-repository
   cancel-in-progress: false
 
-jobs:
-  scan-queue:
+  process-scan-queue:
     runs-on: ubuntu-latest
 
     steps:
