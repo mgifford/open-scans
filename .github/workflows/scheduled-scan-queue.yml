@@ -13,6 +13,9 @@ permissions:
   contents: write
   issues: write
   models: read
+
+jobs:
+  scan-timed-issues:
     runs-on: ubuntu-latest
 
     steps:
