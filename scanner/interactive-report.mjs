@@ -452,7 +452,8 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
                 ${ex.message ? `<div style="margin-bottom: 0.5rem; font-weight: 600;">${escapeHtml(ex.message)}</div>` : ''}
                 <div class="example-mode">
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
-                  ${ex.firstSeenAt ? `<span class="first-seen" title="Finding fingerprint: ${escapeHtml(ex.fingerprint || '')}">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
+                  ${ex.firstSeenAt ? `<span class="first-seen">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
+                   ${ex.fingerprint ? `<span class="bug-id-display" title="Stable unique identifier for this finding across scans">🔑 Bug ID: <code class="bug-id-code">${escapeHtml(ex.fingerprint)}</code></span>` : ''}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
@@ -924,6 +925,8 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
     .example-code { color: var(--code-color); }
     .example-mode { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
     .first-seen { font-size: 0.8em; color: var(--muted); font-style: italic; }
+    .bug-id-display { font-size: 0.8em; color: var(--muted); }
+    .bug-id-code { font-family: monospace; background: var(--code-bg); color: var(--code-color); padding: 0.1em 0.3em; border-radius: 3px; letter-spacing: 0.05em; user-select: all; }
 
     /* Priority table */
     .priority-section { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }

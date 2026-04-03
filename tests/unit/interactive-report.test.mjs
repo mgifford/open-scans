@@ -1430,3 +1430,108 @@ test("openDetailsByHash handles pageshow event for bfcache restoration", () => {
     "Should check persisted flag to detect bfcache page restoration"
   );
 });
+
+// ── Unique identifier (Bug ID / fingerprint) ─────────────────────────────────
+
+/** makeSummary variant with fingerprint data on examples */
+function makeSummaryWithFingerprint() {
+  return makeSummary({
+    enhanced: {
+      consolidatedFailures: [
+        {
+          rule: "color-contrast",
+          engine: "axe",
+          totalOccurrences: 2,
+          pages: new Map([["https://example.com/page1", 2]]),
+          metadata: {
+            severity: "Serious",
+            roles: ["Content"],
+            blocking: false,
+            description: "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
+          },
+          examples: [
+            {
+              url: "https://example.com/page1",
+              message: "Element has insufficient color contrast",
+              colorScheme: "light",
+              html: '<p class="low-contrast">Text</p>',
+              xpath: "/html/body/p[1]",
+              fingerprint: "abc123def456",
+              firstSeenAt: "2026-01-15T10:00:00.000Z",
+            },
+          ],
+        },
+      ],
+      roleStats: { Content: 2, Navigation: 0, Form: 0 },
+      severityStats: { Critical: 0, Serious: 2, Moderate: 0, Minor: 0 },
+    },
+  });
+}
+
+test("generateInteractiveHtml shows Bug ID visually when fingerprint is set", () => {
+  const html = generateInteractiveHtml(makeSummaryWithFingerprint());
+  assert.ok(
+    html.includes('<span class="bug-id-display"'),
+    "Should render bug-id-display span when fingerprint is present"
+  );
+  assert.ok(
+    html.includes("Bug ID:"),
+    "Should show 'Bug ID:' label"
+  );
+  assert.ok(
+    html.includes("abc123def456"),
+    "Should include the fingerprint value in the HTML"
+  );
+  assert.ok(
+    html.includes("bug-id-code"),
+    "Should use bug-id-code class for the code element"
+  );
+});
+
+test("generateInteractiveHtml omits Bug ID display when fingerprint is absent", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    !html.includes('<span class="bug-id-display"'),
+    "Should not render bug-id-display element when fingerprint is absent"
+  );
+});
+
+test("generateInteractiveHtml sets data-copy-fingerprint when fingerprint is present", () => {
+  const html = generateInteractiveHtml(makeSummaryWithFingerprint());
+  assert.ok(
+    html.includes('data-copy-fingerprint="abc123def456"'),
+    "Should set data-copy-fingerprint attribute to the fingerprint value"
+  );
+});
+
+test("generateInteractiveHtml buildFailureDetails includes Bug ID when fingerprint is present", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    html.includes("**Bug ID:**"),
+    "buildFailureDetails should include Bug ID field"
+  );
+});
+
+test("generateInteractiveHtml shows first-identified date when firstSeenAt is set", () => {
+  const html = generateInteractiveHtml(makeSummaryWithFingerprint());
+  assert.ok(
+    html.includes("first-seen"),
+    "Should render first-seen span when firstSeenAt is present"
+  );
+  assert.ok(
+    html.includes("First identified:"),
+    "Should show 'First identified:' label"
+  );
+  assert.ok(
+    html.includes("2026-01-15"),
+    "Should show the formatted first-seen date"
+  );
+});
+
+test("generateInteractiveHtml does not show first-identified date when firstSeenAt is absent", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    !html.includes("First identified:"),
+    "Should not render 'First identified:' label when firstSeenAt is absent"
+  );
+});
