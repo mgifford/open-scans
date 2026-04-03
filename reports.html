@@ -3,81 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('open-scans-theme');
-        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {}
-    })();
-  </script>
   <title>Scan Reports</title>
   <style>
-    /* ── Colour tokens ─────────────────────────────────────────────────── */
-    :root {
-      --color-text: #24292f;
-      --color-text-muted: #57606a;
-      --color-bg-outer: #f6f8fa;
-      --color-bg-container: #ffffff;
-      --color-border: #d0d7de;
-      --color-primary: #0969da;
-      --color-success: #1a7f37;
-      --color-success-bg: #dafbe1;
-      --color-danger: #cf222e;
-      --color-danger-bg: #ffebe9;
-      --color-warning: #9a6700;
-      --color-warning-bg: #fff8c5;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-text: #e6edf3;
-        --color-text-muted: #8b949e;
-        --color-bg-outer: #010409;
-        --color-bg-container: #0d1117;
-        --color-border: #30363d;
-        --color-primary: #58a6ff;
-        --color-success: #3fb950;
-        --color-success-bg: rgba(63, 185, 80, 0.12);
-        --color-danger: #ff7b72;
-        --color-danger-bg: rgba(255, 123, 114, 0.12);
-        --color-warning: #d29922;
-        --color-warning-bg: rgba(210, 153, 34, 0.12);
-      }
-    }
-
-    [data-theme="light"] {
-      --color-text: #24292f;
-      --color-text-muted: #57606a;
-      --color-bg-outer: #f6f8fa;
-      --color-bg-container: #ffffff;
-      --color-border: #d0d7de;
-      --color-primary: #0969da;
-      --color-success: #1a7f37;
-      --color-success-bg: #dafbe1;
-      --color-danger: #cf222e;
-      --color-danger-bg: #ffebe9;
-      --color-warning: #9a6700;
-      --color-warning-bg: #fff8c5;
-    }
-
-    [data-theme="dark"] {
-      --color-text: #e6edf3;
-      --color-text-muted: #8b949e;
-      --color-bg-outer: #010409;
-      --color-bg-container: #0d1117;
-      --color-border: #30363d;
-      --color-primary: #58a6ff;
-      --color-success: #3fb950;
-      --color-success-bg: rgba(63, 185, 80, 0.12);
-      --color-danger: #ff7b72;
-      --color-danger-bg: rgba(255, 123, 114, 0.12);
-      --color-warning: #d29922;
-      --color-warning-bg: rgba(210, 153, 34, 0.12);
-    }
-
-    /* ── Base reset ────────────────────────────────────────────────────── */
     * {
       margin: 0;
       padding: 0;
@@ -87,28 +14,28 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      color: var(--color-text);
-      background-color: var(--color-bg-outer);
+      color: #24292f;
+      background-color: #f6f8fa;
       padding: 2rem;
     }
     
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      background: var(--color-bg-container);
+      background: white;
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     }
     
     h1 {
-      color: var(--color-primary);
+      color: #0969da;
       margin-bottom: 0.5rem;
       font-size: 2rem;
     }
     
     .subtitle {
-      color: var(--color-text-muted);
+      color: #57606a;
       margin-bottom: 2rem;
     }
     
@@ -121,21 +48,21 @@
     th, td {
       padding: 0.75rem;
       text-align: left;
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid #d0d7de;
     }
     
     th {
-      background-color: var(--color-bg-outer);
+      background-color: #f6f8fa;
       font-weight: 600;
-      color: var(--color-text);
+      color: #24292f;
     }
     
     tr:hover {
-      background-color: var(--color-bg-outer);
+      background-color: #f6f8fa;
     }
     
     a {
-      color: var(--color-primary);
+      color: #0969da;
       text-decoration: none;
     }
     
@@ -152,28 +79,28 @@
     }
     
     .badge-success {
-      background-color: var(--color-success-bg);
-      color: var(--color-success);
+      background-color: #dafbe1;
+      color: #1a7f37;
     }
     
     .badge-danger {
-      background-color: var(--color-danger-bg);
-      color: var(--color-danger);
+      background-color: #ffebe9;
+      color: #cf222e;
     }
     
     .badge-warning {
-      background-color: var(--color-warning-bg);
-      color: var(--color-warning);
+      background-color: #fff8c5;
+      color: #9a6700;
     }
     
     .no-reports {
       text-align: center;
       padding: 3rem;
-      color: var(--color-text-muted);
+      color: #57606a;
     }
     
     .date {
-      color: var(--color-text-muted);
+      color: #57606a;
       font-size: 0.875rem;
     }
     
@@ -224,7 +151,7 @@
       
       tr {
         display: block;
-        border: 1px solid var(--color-border);
+        border: 1px solid #d0d7de;
         border-radius: 8px;
         margin-bottom: 1rem;
         padding: 0.25rem 0.5rem;
@@ -239,7 +166,7 @@
         align-items: flex-start;
         gap: 0.5rem;
         padding: 0.5rem 0.25rem;
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px solid #eaecef;
         font-size: 0.875rem;
       }
       
@@ -251,7 +178,7 @@
         content: attr(data-label);
         font-weight: 600;
         min-width: 6rem;
-        color: var(--color-text-muted);
+        color: #57606a;
         flex-shrink: 0;
         font-size: 0.8125rem;
       }
@@ -266,15 +193,13 @@
     }
     
     .nav {
-      display: flex;
-      align-items: center;
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid #d0d7de;
     }
     
     .nav a {
-      color: var(--color-primary);
+      color: #0969da;
       text-decoration: none;
       margin-right: 1.5rem;
     }
@@ -286,13 +211,13 @@
     footer {
       margin-top: 2rem;
       padding-top: 1.5rem;
-      border-top: 1px solid var(--color-border);
+      border-top: 1px solid #d0d7de;
       text-align: center;
-      color: var(--color-text-muted);
+      color: #57606a;
     }
     
     footer a {
-      color: var(--color-primary);
+      color: #0969da;
       text-decoration: none;
       font-weight: 600;
     }
@@ -305,7 +230,7 @@
       position: absolute;
       top: -3rem;
       left: 0;
-      background: var(--color-primary);
+      background: #0969da;
       color: white;
       padding: 0.5rem 1rem;
       text-decoration: none;
@@ -318,55 +243,12 @@
       top: 0;
     }
 
-    /* ── Theme toggle button ───────────────────────────────────────────── */
-    .theme-toggle {
-      margin-left: auto;
-      background: none;
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      color: var(--color-text-muted);
-      cursor: pointer;
-      padding: 0.375rem 0.5rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 400;
-      transition: color 0.2s, border-color 0.2s, background-color 0.2s;
-      line-height: 1;
-    }
-
-    .theme-toggle:hover {
-      color: var(--color-text);
-      border-color: var(--color-text-muted);
-      background-color: var(--color-bg-outer);
-    }
-
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    .icon-sun { display: none; }
-    .icon-moon { display: block; }
-
-    @media (prefers-color-scheme: dark) {
-      .icon-sun { display: block; }
-      .icon-moon { display: none; }
-    }
-
-    [data-theme="dark"] .icon-sun { display: block; }
-    [data-theme="dark"] .icon-moon { display: none; }
-    [data-theme="light"] .icon-sun { display: none; }
-    [data-theme="light"] .icon-moon { display: block; }
-
-    /* ── Sort / pagination ─────────────────────────────────────────────── */
     .sort-btn {
       background: none;
       border: none;
       font: inherit;
       font-weight: 600;
-      color: var(--color-text);
+      color: #24292f;
       cursor: pointer;
       padding: 0;
       display: inline-flex;
@@ -376,11 +258,11 @@
     }
     
     .sort-btn:hover {
-      color: var(--color-primary);
+      color: #0969da;
     }
     
     .sort-btn:focus-visible {
-      outline: 2px solid var(--color-primary);
+      outline: 2px solid #0969da;
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -395,7 +277,7 @@
     }
     
     .table-info {
-      color: var(--color-text-muted);
+      color: #57606a;
       font-size: 0.875rem;
       margin-top: 0.75rem;
     }
@@ -409,44 +291,44 @@
     }
     
     .page-info {
-      color: var(--color-text-muted);
+      color: #57606a;
       font-size: 0.875rem;
       margin-right: 0.5rem;
     }
     
     .page-btn {
       padding: 0.375rem 0.75rem;
-      border: 1px solid var(--color-border);
+      border: 1px solid #d0d7de;
       border-radius: 6px;
-      background: var(--color-bg-container);
-      color: var(--color-primary);
+      background: white;
+      color: #0969da;
       cursor: pointer;
       font-size: 0.875rem;
       line-height: 1.4;
     }
     
     .page-btn:hover {
-      background: var(--color-bg-outer);
+      background: #f3f4f6;
     }
     
     .page-btn:focus-visible {
-      outline: 2px solid var(--color-primary);
+      outline: 2px solid #0969da;
       outline-offset: 2px;
     }
     
     .page-btn-active {
-      background: var(--color-primary);
+      background: #0969da;
       color: white;
-      border-color: var(--color-primary);
+      border-color: #0969da;
     }
     
     .page-btn-active:hover {
-      opacity: 0.9;
+      background: #0860ca;
     }
     
     .page-ellipsis {
       padding: 0 0.25rem;
-      color: var(--color-text-muted);
+      color: #57606a;
     }
   </style>
 </head>
@@ -457,22 +339,6 @@
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Submit URLs</a>
         <a href="reports.html">View Reports</a>
-        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
       </nav>
     </header>
     
@@ -494,6 +360,25 @@
         </tr>
       </thead>
       <tbody>
+        
+        <tr data-issue="19" data-title="GitHub Pages accessibility check" data-date="2026-04-03T11:12:58.353Z" data-urls="3">
+          <td data-label="Issue"><a href="https://github.com/mgifford/open-scans/actions/runs/23944239052">#19</a></td>
+          <td data-label="Scan Title">GitHub Pages accessibility check</td>
+          <td class="date" data-label="Scanned At">4/3/2026, 11:12:58 AM</td>
+          <td data-label="URLs">3 accepted</td>
+          <td data-label="Results">
+            <span class="badge badge-success">4084 passed</span>
+            <span class="badge badge-danger">0 failed</span>
+            <span class="badge badge-warning">2 can't tell</span>
+          </td>
+          <td class="links" data-label="Reports">
+            <a href="reports/pages/2026-04-03T11-14-20-181Z/report.html">HTML</a>
+            <a href="reports/pages/2026-04-03T11-14-20-181Z/report.md">Markdown</a>
+            <a href="reports/pages/2026-04-03T11-14-20-181Z/report.csv">CSV</a>
+            <a href="reports/pages/2026-04-03T11-14-20-181Z/report-overlap.md">Overlap</a>
+            <a href="reports/pages/2026-04-03T11-14-20-181Z/report.json">JSON</a>
+          </td>
+        </tr>
         
         <tr data-issue="18" data-title="GitHub Pages accessibility check" data-date="2026-04-01T03:03:22.442Z" data-urls="3">
           <td data-label="Issue"><a href="https://github.com/mgifford/open-scans/actions/runs/23829843141">#18</a></td>
@@ -3596,28 +3481,6 @@
     updateSortIcons();
     renderPage();
   }());
-  </script>
-  <script>
-    (function () {
-      var toggle = document.getElementById('theme-toggle');
-      if (!toggle) return;
-
-      function getTheme() {
-        return document.documentElement.getAttribute('data-theme') || 'light';
-      }
-
-      function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        try { localStorage.setItem('open-scans-theme', theme); } catch (e) {}
-        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      }
-
-      applyTheme(getTheme());
-
-      toggle.addEventListener('click', function () {
-        applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
-      });
-    })();
   </script>
 </body>
 </html>
