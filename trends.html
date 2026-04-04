@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Trends – Open Scans</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #0969da;
+      --bg: #f6f8fa;
+      --container-bg: #fff;
+      --text: #24292f;
+      --muted: #57606a;
+      --border: #d0d7de;
+      --success: #1a7f37;
+      --danger: #cf222e;
+      --warning: #9a6700;
+      --surface: #f6f8fa;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #58a6ff;
+        --bg: #0d1117;
+        --container-bg: #161b22;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --border: #30363d;
+        --success: #3fb950;
+        --danger: #ff7b72;
+        --warning: #e3b341;
+        --surface: #21262d;
+      }
+    }
+    [data-theme="dark"] {
+      --primary: #58a6ff; --bg: #0d1117; --container-bg: #161b22; --text: #e6edf3;
+      --muted: #8b949e; --border: #30363d; --success: #3fb950; --danger: #ff7b72;
+      --warning: #e3b341; --surface: #21262d;
+    }
+    [data-theme="light"] {
+      --primary: #0969da; --bg: #f6f8fa; --container-bg: #fff; --text: #24292f;
+      --muted: #57606a; --border: #d0d7de; --success: #1a7f37; --danger: #cf222e;
+      --warning: #9a6700; --surface: #f6f8fa;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); padding: 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; background: var(--container-bg); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.12); padding: 2rem; }
+    .skip-link { position: absolute; top: -3rem; left: 0; background: var(--primary); color: #fff; padding: 0.5rem 1rem; text-decoration: none; font-weight: 600; z-index: 100; border-radius: 0 0 4px 4px; }
+    .skip-link:focus { top: 0; }
+    nav.site-nav { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    nav.site-nav a { color: var(--primary); text-decoration: none; }
+    nav.site-nav a:hover { text-decoration: underline; }
+    nav.site-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
+    nav.site-nav a[aria-current] { font-weight: 700; text-decoration: underline; }
+    .theme-toggle { margin-left: auto; background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); cursor: pointer; padding: 0.3rem 0.5rem; font-size: 1rem; }
+    .theme-toggle:focus-visible { outline: 2px solid var(--primary); }
+    h1 { color: var(--primary); font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--muted); margin-bottom: 1.5rem; }
+    .stats-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1.25rem; min-width: 120px; text-align: center; }
+    .stat-card .stat-value { font-size: 1.75rem; font-weight: 700; }
+    .stat-card .stat-label { font-size: 0.8rem; color: var(--muted); }
+    .improving .stat-value { color: var(--success); }
+    .worsening .stat-value { color: var(--danger); }
+    h2 { font-size: 1.2rem; margin: 2rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; color: var(--text); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--surface); font-weight: 600; white-space: nowrap; }
+    tr:hover { background: var(--surface); }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    td.sparkline-cell { min-width: 160px; }
+    td.rule-id { font-size: 0.8rem; word-break: break-all; }
+    .trend-cell.improving { color: var(--success); font-weight: 600; }
+    .trend-cell.worsening { color: var(--danger); font-weight: 600; }
+    .trend-cell.stable { color: var(--warning); font-weight: 600; }
+    td.neg { color: var(--success); font-weight: 600; }
+    td.pos { color: var(--danger); font-weight: 600; }
+    .spark-bar-baseline  { fill: var(--primary); }
+    .spark-bar-improving { fill: var(--success); }
+    .spark-bar-worsening { fill: var(--danger); }
+    .spark-bar-stable    { fill: var(--warning); }
+    .sparkline-none { color: var(--muted); font-size: 0.8rem; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; }
+    .no-data { color: var(--muted); padding: 2rem; text-align: center; }
+    footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.875rem; }
+    @media (max-width: 599px) { body { padding: 0.75rem; } .container { padding: 1rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="index.html">Submit URLs</a>
+      <a href="reports.html">All Reports</a>
+      <a href="trends.html" aria-current="page">Trends</a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+    </nav>
+
+    <main id="main-content">
+      <h1>Accessibility Trends</h1>
+      <p class="subtitle">Cross-issue trend analysis based on historical scan data. Issues improve and worsen over time — this page helps track that.</p>
+
+      <div class="stats-bar" aria-label="Summary statistics">
+        <div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Issues tracked</div></div>
+        <div class="stat-card improving"><div class="stat-value">0</div><div class="stat-label">📈 Improving</div></div>
+        <div class="stat-card worsening"><div class="stat-value">0</div><div class="stat-label">📉 Worsening</div></div>
+        <div class="stat-card"><div class="stat-value">0</div><div class="stat-label">➡️ Stable</div></div>
+        <div class="stat-card"><div class="stat-value">0</div><div class="stat-label">⏳ Insufficient data</div></div>
+      </div>
+
+      <h2>📋 Issue Trend Summary</h2>
+      <p class="no-data">No trend data available yet. Trends are computed after recurring scans accumulate at least 2 runs.</p>
+
+      <h2>🔵 Systemic Patterns Leaderboard</h2>
+      <p style="font-size:0.875rem;color:var(--muted);margin-bottom:0.75rem">Rules failing across the most pages, aggregated across all tracked issues.</p>
+      <p class="no-data">No systemic patterns found yet.</p>
+    </main>
+
+    <footer>
+      <p>Generated by <a href="https://github.com/mgifford/open-scans">open-scans</a> · <time datetime="2026-04-04T12:04:22.940Z">4/4/2026, 12:04:22 PM</time></p>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem('open-scans-theme'); } catch (e) {}
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      btn.textContent = next === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      try { localStorage.setItem('open-scans-theme', next); } catch (e) {}
+    });
+  }());
+  </script>
+</body>
+</html>
