@@ -525,6 +525,39 @@ export function computeFindingFingerprint(url, locator, ruleKey) {
   return createHash("sha256").update(`${url}|${locator}|${ruleKey}`).digest("hex").slice(0, 12);
 }
 
+/** Prefix used for human-readable A11Y identifiers (instance and pattern IDs). */
+export const A11Y_ID_PREFIX = "A11Y";
+
+/**
+ * Format a raw hex hash as a human-readable A11Y identifier.
+ * Result format: `A11Y-xxxxxxxx` (8 hex characters).
+ *
+ * @param {string} hexHash - Hex digest string (at least 8 characters)
+ * @returns {string}
+ */
+export function formatA11yId(hexHash) {
+  return `${A11Y_ID_PREFIX}-${hexHash.slice(0, 8)}`;
+}
+
+/**
+ * Compute a stable cross-page pattern ID for a finding.
+ * Unlike the finding fingerprint, this ID does NOT include the page URL, so
+ * the same component defect on multiple pages shares a single pattern ID.
+ *
+ * Format: `A11Y-xxxxxxxx` (prefix + 8-character hex SHA-256 prefix of
+ * locator|ruleKey|colorScheme).
+ *
+ * @param {string} locator     - Normalized XPath / CSS selector / HTML snippet
+ * @param {string} ruleKey     - Normalized rule key from normalizeRuleKey()
+ * @param {string} colorScheme - Colour mode ("light" or "dark")
+ * @returns {string}
+ */
+export function computePatternId(locator, ruleKey, colorScheme) {
+  return formatA11yId(
+    createHash("sha256").update(`${locator}|${ruleKey}|${colorScheme}`).digest("hex")
+  );
+}
+
 /**
  * Compute per-page WCAG-SC-level cross-engine overlap.
  *
@@ -635,6 +668,7 @@ export function annotateWithFingerprints(store, results, scanMeta) {
 
         failure.fingerprint = fp;
         failure.firstSeenAt = store[fp].firstSeenAt;
+        failure.patternId = computePatternId(locator, ruleKey, failure.colorScheme || "light");
       }
     }
   }
@@ -1805,7 +1839,8 @@ function buildEnhancedSummary(summary) {
             relatedPaths: failure.relatedPaths,
             colorScheme: failure.colorScheme,
             fingerprint: failure.fingerprint ?? null,
-            firstSeenAt: failure.firstSeenAt ?? null
+            firstSeenAt: failure.firstSeenAt ?? null,
+            patternId: failure.patternId ?? null
           });
         }
       }

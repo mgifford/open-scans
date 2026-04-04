@@ -147,6 +147,24 @@ function renderDisabilityIcons(disabilities) {
   }).join("");
 }
 
+/**
+ * Render the Bug ID display span for an example finding.
+ * Shows the Instance ID (A11Y- + first 8 hex chars of the raw fingerprint)
+ * and, when available, the Pattern ID (already formatted as A11Y-xxxxxxxx).
+ *
+ * @param {string} fingerprint - Raw 12-char hex fingerprint from the scan
+ * @param {string} [patternId] - Formatted A11Y-xxxxxxxx pattern ID
+ * @returns {string} HTML string, or empty string when no fingerprint is present
+ */
+function renderBugIdDisplay(fingerprint, patternId) {
+  if (!fingerprint) return '';
+  const instanceId = `A11Y-${escapeHtml(fingerprint.slice(0, 8))}`;
+  const patternPart = patternId
+    ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(patternId)}</code>`
+    : '';
+  return `<span class="bug-id-display" title="Instance ID: stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Instance ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
+}
+
 export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
@@ -439,6 +457,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                    data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}"
                    data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
                    data-copy-fingerprint="${escapeHtml(ex.fingerprint || '')}"
+                   data-copy-pattern-id="${escapeHtml(ex.patternId || '')}"
                    data-copy-pages-count="${f.pages.size}"
                    data-copy-occurrences="${f.totalOccurrences}"
                    data-copy-disabilities="${escapeHtml(disabilities.join(', '))}">
@@ -453,7 +472,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                 <div class="example-mode">
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
                   ${ex.firstSeenAt ? `<span class="first-seen">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
-                   ${ex.fingerprint ? `<span class="bug-id-display" title="Stable unique identifier for this finding across scans">🔑 Bug ID: <code class="bug-id-code">${escapeHtml(ex.fingerprint)}</code></span>` : ''}
+                   ${renderBugIdDisplay(ex.fingerprint, ex.patternId)}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
@@ -1666,6 +1685,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       const viewport = el.dataset.copyViewport || 'desktop';
       const severity = el.dataset.copySeverity || '';
       const fingerprint = el.dataset.copyFingerprint || '';
+      const patternId = el.dataset.copyPatternId || '';
       const pagesCount = el.dataset.copyPagesCount || '';
       const occurrences = el.dataset.copyOccurrences || '';
       const disabilities = el.dataset.copyDisabilities || '';
@@ -1701,7 +1721,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         \`## Accessibility Issue: \${title}\`,
         '',
       ];
-      if (fingerprint) metaParts.push(\`**Bug ID:** \\\`\${fingerprint}\\\`\`);
+      if (fingerprint) {
+        const instanceId = \`A11Y-\${fingerprint.slice(0, 8)}\`;
+        const bugIdValue = patternId
+          ? \`\\\`\${instanceId}\\\` (instance) / \\\`\${patternId}\\\` (pattern)\`
+          : \`\\\`\${instanceId}\\\`\`;
+        metaParts.push(\`**Bug ID:** \${bugIdValue}\`);
+      }
       metaParts.push(\`**URL:** \${pageUrl}\`);
       if (xpath) metaParts.push(\`**XPath:** \\\`\${xpath}\\\`\`);
       if (wcagCitation) metaParts.push(\`**WCAG SC:** \${wcagCitation}\`);

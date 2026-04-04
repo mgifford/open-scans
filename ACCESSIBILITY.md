@@ -173,12 +173,37 @@ npm run run:scan
 
 This project follows the [Accessibility Bug Reporting Best Practices](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/ACCESSIBILITY_BUG_REPORTING_BEST_PRACTICES.md) guide. The scan reports implement this guidance directly: the **"Copy failure details"** button on each finding generates a pre-formatted GitHub issue report.
 
+### Unique Issue Identifiers
+
+Every finding in a scan report carries two stable, human-readable identifiers that follow the `A11Y-xxxxxxxx` format (prefix + 8 hex characters):
+
+| Identifier | What it covers | Hash inputs |
+|------------|---------------|-------------|
+| **Instance ID** | A specific defect on a specific page | Page URL + element locator + rule ID |
+| **Pattern ID** | The same defect type across all pages | Element locator + rule ID + colour mode (no page URL) |
+
+- The **Instance ID** is stable across scans: the same element defect on the same URL will always produce the same ID, enabling "first identified" tracking over time.
+- The **Pattern ID** is stable across pages: if the same broken component appears on 20 pages, all 20 findings share one Pattern ID, making it easy to identify template-level regressions.
+
+Both identifiers appear in each finding card in the HTML report and are included in the text copied by the **"Copy failure details"** button.
+
+**Example:**
+
+```
+Instance ID: A11Y-xxxxxxxx  (this defect on https://example.com/checkout)
+Pattern ID:  A11Y-yyyyyyyy  (this defect type across all pages)
+```
+
+> Both IDs are computed automatically during scanning. Each `x` or `y` represents a hexadecimal character.
+
 ### Required Fields
 
 Every accessibility bug report must include:
 
 | Field | Description |
 |-------|-------------|
+| **Instance ID** | `A11Y-xxxxxxxx` — stable ID for this defect on this page |
+| **Pattern ID** | `A11Y-xxxxxxxx` — stable ID for this defect type across pages |
 | **Page URL** | Exact URL where the issue was found, including query string and fragment if relevant |
 | **XPath** | Shortest XPath that uniquely identifies the failing element |
 | **HTML Snippet** | Minimal HTML fragment demonstrating the problem |
@@ -207,7 +232,7 @@ When filing an accessibility bug, use this structure:
 ```markdown
 ## Accessibility Issue: [component] — [failure mode] ([WCAG SC])
 
-**Bug ID:** `[fingerprint]`
+**Bug ID:** `A11Y-xxxxxxxx` (instance) / `A11Y-xxxxxxxx` (pattern)
 **URL:** [full URL]
 **XPath:** `[shortest unique XPath]`
 **WCAG SC:** [SC number] — [SC name] (Level [A/AA/AAA])
