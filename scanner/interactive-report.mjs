@@ -147,7 +147,7 @@ function renderDisabilityIcons(disabilities) {
   }).join("");
 }
 
-export function generateInteractiveHtml(summary, remediationResult = null) {
+export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
@@ -542,6 +542,9 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
 
   // ── AI Remediation section ────────────────────────────────────────────────
   const remediationHtml = remediationResult ? renderRemediationSection(remediationResult, escapeHtml) : "";
+
+  // ── Trend section ─────────────────────────────────────────────────────────
+  const trendSectionHtml = trendData ? renderTrendSection(trendData, escapeHtml) : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1197,6 +1200,64 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
     [data-theme="dark"] .badge-best-practice { background: #2d1e00; color: #e3b341; border-color: #5a3d00; }
     [data-theme="dark"] .btn-copy:hover { background: #319b40; }
 
+    /* ── Trend / scan-history section ── */
+    .trend-section {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+    }
+    .trend-section h2 { font-size: 1.15rem; margin-bottom: 0.75rem; color: var(--text); }
+    .trend-overview { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .trend-delta {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.3rem 0.75rem; border-radius: 20px;
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .trend-delta--improving { background: #dafbe1; color: #1a7f37; }
+    .trend-delta--worsening { background: #ffebe9; color: #cf222e; }
+    .trend-delta--stable    { background: #fff8c5; color: #9a6700; }
+    [data-theme="dark"] .trend-delta--improving, @media (prefers-color-scheme: dark) { }
+    .trend-meta { font-size: 0.85rem; color: var(--muted); }
+    .trend-chart-wrap {
+      margin-bottom: 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .trend-chart-wrap svg { display: block; max-width: 100%; }
+    .trend-bar-label { font-size: 10px; fill: var(--muted); }
+    .trend-bar-value { font-size: 10px; fill: var(--text); font-weight: 600; }
+    .trend-bar-rect--improving { fill: #2da44e; }
+    .trend-bar-rect--worsening { fill: #cf222e; }
+    .trend-bar-rect--stable    { fill: #9a6700; }
+    .trend-bar-rect--baseline  { fill: var(--primary); }
+    details.trend-history-details { margin-bottom: 0.75rem; }
+    details.trend-history-details > summary {
+      cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--primary);
+      padding: 0.25rem 0; list-style: none;
+    }
+    details.trend-history-details > summary::before { content: "▶ "; font-size: 0.7rem; }
+    details.trend-history-details[open] > summary::before { content: "▼ "; }
+    .trend-history-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+    .trend-history-table th, .trend-history-table td {
+      padding: 0.4rem 0.6rem; text-align: right; border-bottom: 1px solid var(--border);
+    }
+    .trend-history-table th:first-child, .trend-history-table td:first-child { text-align: left; }
+    .trend-history-table thead th { background: var(--surface); font-weight: 600; }
+    .trend-change--positive { color: var(--critical); }
+    .trend-change--negative { color: var(--success); }
+    .systemic-patterns { margin-top: 0.75rem; }
+    .systemic-patterns h3 { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text); }
+    .systemic-patterns ul { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
+    .systemic-patterns li { padding: 0.25rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.5rem; align-items: baseline; }
+    .systemic-patterns li:last-child { border-bottom: none; }
+    .systemic-rule-id { font-family: ui-monospace, monospace; color: var(--code-color); }
+    .systemic-count { font-weight: 600; white-space: nowrap; }
+    .site-nav { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; flex-wrap: wrap; }
+    .site-nav a { color: var(--primary); text-decoration: none; }
+    .site-nav a:hover { text-decoration: underline; }
+
     @media print {
       body::before {
         content: "Please do not print this report. Use the interactive digital version for full details.";
@@ -1249,6 +1310,14 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
         </svg>
       </button>
     </header>
+
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="../../../index.html">Submit URLs</a>
+      <a href="../../../reports.html">All Reports</a>
+      <a href="../../../trends.html">Trends</a>
+    </nav>
+
+    ${trendSectionHtml}
 
     <section aria-labelledby="section-summary">
       <h2 id="section-summary" class="section-heading" tabindex="-1">
@@ -1804,6 +1873,109 @@ export function generateInteractiveHtml(summary, remediationResult = null) {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  function renderTrendSection(trend, esc) {
+    if (trend.error === "No scan history available") return "";
+
+    // Build chronological data points from baseline + diffs
+    const points = [];
+    if (trend.baselineTotals) {
+      points.push({ scannedAt: trend.baselineTotals.scannedAt, combined: trend.baselineTotals.combined, isBaseline: true });
+    }
+    for (const d of trend.diffs || []) {
+      points.push({ scannedAt: d.to.scannedAt, combined: d.to.totals.combined, trend: d.trend });
+    }
+
+    // SVG bar chart
+    const W = 480, H = 100, padL = 30, padR = 10, padT = 14, padB = 28;
+    const chartW = W - padL - padR;
+    const chartH = H - padT - padB;
+    const maxVal = Math.max(...points.map(p => p.combined), 1);
+    const barW = Math.max(8, Math.floor((chartW / points.length) * 0.6));
+    const barSpacing = chartW / points.length;
+    const bars = points.map((p, i) => {
+      const barH = Math.max(1, Math.round((p.combined / maxVal) * chartH));
+      const x = padL + i * barSpacing + (barSpacing - barW) / 2;
+      const y = padT + chartH - barH;
+      const cls = p.isBaseline ? "baseline" : (p.trend || "stable");
+      const dateStr = p.scannedAt ? new Date(p.scannedAt).toLocaleDateString("en-CA") : "";
+      return `<g role="listitem" aria-label="${dateStr}: ${p.combined} violations">
+        <rect class="trend-bar-rect--${esc(cls)}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${barH}" rx="2"/>
+        <text class="trend-bar-value" x="${(x + barW / 2).toFixed(1)}" y="${(y - 2).toFixed(1)}" text-anchor="middle">${p.combined}</text>
+        <text class="trend-bar-label" x="${(x + barW / 2).toFixed(1)}" y="${(padT + chartH + 14).toFixed(1)}" text-anchor="middle">${dateStr.slice(5)}</text>
+      </g>`;
+    }).join("");
+    const svgChart = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="list" aria-label="Violations per scan"
+         style="overflow: visible;" focusable="false">
+      ${bars}
+      <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + chartH}" stroke="var(--border)" stroke-width="1"/>
+      <line x1="${padL}" y1="${padT + chartH}" x2="${W - padR}" y2="${padT + chartH}" stroke="var(--border)" stroke-width="1"/>
+    </svg>`;
+
+    // Delta badge from latest diff
+    let deltaBadgeHtml = "";
+    if (trend.latestDiff) {
+      const ch = trend.latestDiff.change;
+      const cls = ch < 0 ? "improving" : ch > 0 ? "worsening" : "stable";
+      const icon = ch < 0 ? "▼" : ch > 0 ? "▲" : "=";
+      const label = ch === 0 ? "No change" : `${icon} ${Math.abs(ch)} violation${Math.abs(ch) !== 1 ? "s" : ""} ${ch < 0 ? "fewer" : "more"} than last scan`;
+      deltaBadgeHtml = `<span class="trend-delta trend-delta--${esc(cls)}" role="status" aria-live="polite">${esc(label)}</span>`;
+    }
+
+    // Scan history table
+    const historyRows = points.map((p, i) => {
+      const date = p.scannedAt ? new Date(p.scannedAt).toLocaleDateString("en-CA") : "Unknown";
+      if (i === 0) {
+        return `<tr><td>${esc(date)} <em>(baseline)</em></td><td>${p.combined}</td><td>—</td></tr>`;
+      }
+      const d = (trend.diffs || [])[i - 1];
+      const change = d ? d.change : 0;
+      const chStr = change === 0 ? "±0" : change > 0 ? `+${change}` : `${change}`;
+      const chCls = change < 0 ? "trend-change--negative" : change > 0 ? "trend-change--positive" : "";
+      return `<tr><td>${esc(date)}</td><td>${p.combined}</td><td class="${chCls}">${esc(chStr)}</td></tr>`;
+    }).join("");
+
+    // Systemic patterns
+    let systematicHtml = "";
+    if (trend.latestSystemicPatterns && trend.latestSystemicPatterns.length > 0) {
+      const items = trend.latestSystemicPatterns.slice(0, 8).map(pat => {
+        const display = pat.ruleId.replace(/^axe:/, "[axe] ").replace(/.*\/rules\//, "");
+        return `<li><span class="systemic-rule-id">${esc(display)}</span><span class="systemic-count">${pat.pageCount} page${pat.pageCount !== 1 ? "s" : ""}</span></li>`;
+      }).join("");
+      systematicHtml = `
+      <div class="systemic-patterns">
+        <h3>🔵 Systemic Patterns</h3>
+        <ul aria-label="Rules failing across many pages">${items}</ul>
+      </div>`;
+    }
+
+    const scansLabel = `${trend.scansAnalysed ?? points.length} scan${(trend.scansAnalysed ?? points.length) !== 1 ? "s" : ""} analysed`;
+    const trendLabel = trend.overallTrend === "improving"
+      ? `${trend.improvingCount} improved, ${trend.worseningCount} worsened`
+      : trend.overallTrend === "worsening"
+        ? `${trend.worseningCount} worsened, ${trend.improvingCount} improved`
+        : "stable overall";
+
+    return `
+    <section class="trend-section" aria-labelledby="trend-heading">
+      <h2 id="trend-heading">📊 Scan Trend History</h2>
+      <div class="trend-overview">
+        ${deltaBadgeHtml}
+        <span class="trend-meta">${esc(scansLabel)} · ${esc(trendLabel)}</span>
+      </div>
+      <div class="trend-chart-wrap" role="img" aria-label="Bar chart of combined violations across scans">
+        ${svgChart}
+      </div>
+      <details class="trend-history-details">
+        <summary>Scan history (${points.length} scans)</summary>
+        <table class="trend-history-table">
+          <thead><tr><th scope="col">Date</th><th scope="col">Combined violations</th><th scope="col">Change</th></tr></thead>
+          <tbody>${historyRows}</tbody>
+        </table>
+      </details>
+      ${systematicHtml}
+    </section>`;
   }
 
   function renderRemediationSection(remediation, esc) {

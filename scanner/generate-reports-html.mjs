@@ -2,6 +2,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { generateTrendsHtml, loadAllTrends } from './generate-trends-html.mjs';
 
 /**
  * Recursively find all report.json files in the reports directory
@@ -77,6 +78,147 @@ export function sortReportsByTime(reports) {
 }
 
 /**
+ * Escape HTML special characters
+ * @param {string} text
+ * @returns {string}
+ */
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, char => map[char]);
+}
+
+/**
+ * Get the ISO week string (YYYY-Www) for a given date.
+ * @param {Date} date
+ * @returns {string}
+ */
+function getISOWeekKey(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const day = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  return `${d.getUTCFullYear()}-W${String(weekNo).padStart(2, '0')}`;
+}
+
+/**
+ * Compute combined violation count for a report.
+ * @param {object} data
+ * @returns {number}
+ */
+function combinedViolations(data) {
+  return (data.alfaTotals?.failed ?? 0)
+    + (data.axeTotals?.failed ?? 0)
+    + (data.equalAccessTotals?.failed ?? 0)
+    + (data.qualwebTotals?.failed ?? 0)
+    + (data.accesslintTotals?.failed ?? 0);
+}
+
+/**
+ * Aggregate reports into weekly buckets, sorted oldest-first.
+ * @param {Array<{path: string, data: object}>} reports
+ * @returns {Array<{weekKey: string, label: string, violations: number, urlsScanned: number, reportCount: number}>}
+ */
+export function computeWeeklyStats(reports) {
+  /** @type {Map<string, {violations: number, urlsScanned: number, reportCount: number, firstDate: Date}>} */
+  const weeks = new Map();
+  for (const { data } of reports) {
+    if (!data.scannedAt) continue;
+    const date = new Date(data.scannedAt);
+    if (isNaN(date.getTime())) continue;
+    const key = getISOWeekKey(date);
+    const existing = weeks.get(key) || { violations: 0, urlsScanned: 0, reportCount: 0, firstDate: date };
+    weeks.set(key, {
+      violations: existing.violations + combinedViolations(data),
+      urlsScanned: existing.urlsScanned + (data.acceptedCount ?? 0),
+      reportCount: existing.reportCount + 1,
+      firstDate: date < existing.firstDate ? date : existing.firstDate,
+    });
+  }
+  return [...weeks.entries()]
+    .sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
+    .map(([weekKey, stats]) => ({
+      weekKey,
+      label: stats.firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      violations: stats.violations,
+      urlsScanned: stats.urlsScanned,
+      reportCount: stats.reportCount,
+    }));
+}
+
+/**
+ * Render an SVG bar chart for weekly violations (no JS dependencies).
+ * @param {Array<{weekKey: string, label: string, violations: number}>} weeks
+ * @returns {string} SVG element string
+ */
+export function renderWeeklySvg(weeks) {
+  if (weeks.length === 0) return '';
+  const W = 640, H = 140, padL = 40, padR = 16, padT = 16, padB = 36;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+  const maxVal = Math.max(...weeks.map(w => w.violations), 1);
+  const displayWeeks = weeks.slice(-16); // Last 16 weeks
+  const n = displayWeeks.length;
+  const barW = Math.max(6, Math.floor((chartW / n) * 0.65));
+  const spacing = chartW / n;
+
+  // Y-axis labels (3 ticks)
+  const yTicks = [0, Math.round(maxVal / 2), maxVal];
+  const yTickHtml = yTicks.map(v => {
+    const y = padT + chartH - Math.round((v / maxVal) * chartH);
+    return `<text x="${padL - 4}" y="${y + 4}" text-anchor="end" font-size="10" fill="#57606a">${v}</text>
+    <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#d0d7de" stroke-width="0.5" stroke-dasharray="2"/>`;
+  }).join('');
+
+  const bars = displayWeeks.map((w, i) => {
+    const bh = Math.max(1, Math.round((w.violations / maxVal) * chartH));
+    const x = padL + i * spacing + (spacing - barW) / 2;
+    const y = padT + chartH - bh;
+    return `<g role="listitem" aria-label="${escapeHtml(w.weekKey)}: ${w.violations} violations, ${w.reportCount} report(s)">
+      <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${bh}" rx="2" fill="#0969da" opacity="0.8"/>
+      <text x="${(x + barW / 2).toFixed(1)}" y="${(padT + chartH + 14).toFixed(1)}" text-anchor="middle" font-size="9" fill="#57606a" transform="rotate(-35,${(x + barW / 2).toFixed(1)},${(padT + chartH + 14).toFixed(1)})">${escapeHtml(w.label)}</text>
+    </g>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="list"
+      aria-label="Weekly violation totals bar chart" style="max-width:100%;display:block" focusable="false">
+    ${yTickHtml}
+    <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + chartH}" stroke="#d0d7de" stroke-width="1"/>
+    <line x1="${padL}" y1="${padT + chartH}" x2="${W - padR}" y2="${padT + chartH}" stroke="#d0d7de" stroke-width="1"/>
+    ${bars}
+  </svg>`;
+}
+
+/**
+ * Compute high-level stats for stats.json.
+ * @param {Array<{path: string, data: object}>} reports
+ * @returns {object}
+ */
+export function computeStats(reports) {
+  const totalScans = reports.length;
+  const totalUrlsScanned = reports.reduce((s, { data }) => s + (data.acceptedCount ?? 0), 0);
+  const issueNumbers = new Set(reports.map(({ data }) => data.issueNumber).filter(Boolean));
+  const mostRecentScan = reports.length > 0
+    ? reports.reduce((m, { data }) => (!m || data.scannedAt > m ? data.scannedAt : m), null)
+    : null;
+  const weeklyData = computeWeeklyStats(reports);
+  return {
+    totalScans,
+    totalUrlsScanned,
+    totalIssuesTracked: issueNumbers.size,
+    mostRecentScan,
+    weeklyData,
+    generatedAt: new Date().toISOString(),
+  };
+}
+
+/**
  * Generate HTML table rows for reports
  * @param {Array<{path: string, data: object}>} reports
  * @returns {string} HTML table rows
@@ -124,29 +266,53 @@ export function generateTableRows(reports) {
 }
 
 /**
- * Escape HTML special characters
- * @param {string} text
- * @returns {string}
- */
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-  return text.replace(/[&<>"']/g, char => map[char]);
-}
-
-/**
  * Generate the complete reports.html page
  * @param {Array<{path: string, data: object}>} reports
+ * @param {object} [statsData] - Optional pre-computed stats (for weekly chart)
  * @returns {string} Complete HTML document
  */
-export function generateReportsHtml(reports) {
+export function generateReportsHtml(reports, statsData = null) {
   const tableRows = generateTableRows(reports);
-  
+  const weeklyStats = statsData ? statsData.weeklyData : computeWeeklyStats(reports);
+  const weeklySvg = renderWeeklySvg(weeklyStats);
+  const lastWeek = weeklyStats.length > 0 ? weeklyStats[weeklyStats.length - 1] : null;
+  const prevWeek = weeklyStats.length > 1 ? weeklyStats[weeklyStats.length - 2] : null;
+  const weekChange = lastWeek && prevWeek ? lastWeek.violations - prevWeek.violations : null;
+  const weekChangeStr = weekChange === null ? '' : weekChange === 0 ? '±0' : weekChange > 0 ? `+${weekChange}` : `${weekChange}`;
+  const weekChangeCls = weekChange === null ? '' : weekChange < 0 ? 'badge-success' : weekChange > 0 ? 'badge-danger' : 'badge-warning';
+
+  const totalScans = statsData?.totalScans ?? reports.length;
+  const totalUrls = statsData?.totalUrlsScanned ?? reports.reduce((s, { data }) => s + (data.acceptedCount ?? 0), 0);
+  const issueCount = statsData?.totalIssuesTracked ?? new Set(reports.map(({ data }) => data.issueNumber).filter(Boolean)).size;
+
+  const summaryPanel = weeklySvg ? `
+    <section class="summary-panel" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Weekly Violation Totals</h2>
+      <div class="summary-stats" aria-label="Summary statistics">
+        <div class="summary-stat">
+          <span class="summary-stat-value">${totalScans}</span>
+          <span class="summary-stat-label">Total scans</span>
+        </div>
+        <div class="summary-stat">
+          <span class="summary-stat-value">${totalUrls.toLocaleString()}</span>
+          <span class="summary-stat-label">URLs scanned</span>
+        </div>
+        <div class="summary-stat">
+          <span class="summary-stat-value">${issueCount}</span>
+          <span class="summary-stat-label">Issues tracked</span>
+        </div>
+        ${lastWeek ? `<div class="summary-stat">
+          <span class="summary-stat-value">${lastWeek.violations.toLocaleString()}</span>
+          <span class="summary-stat-label">Violations this week
+            ${weekChangeStr ? `<span class="badge ${weekChangeCls}" style="font-size:0.75rem">${escapeHtml(weekChangeStr)}</span>` : ''}
+          </span>
+        </div>` : ''}
+      </div>
+      <div class="weekly-chart" role="img" aria-label="Bar chart of weekly accessibility violation totals">
+        ${weeklySvg}
+      </div>
+    </section>` : '';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -392,6 +558,61 @@ export function generateReportsHtml(reports) {
       top: 0;
     }
 
+    .summary-panel {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .summary-panel h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #24292f;
+    }
+
+    .summary-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .summary-stat-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0969da;
+    }
+
+    .summary-stat-label {
+      font-size: 0.8rem;
+      color: #57606a;
+    }
+
+    .weekly-chart {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .badge-success { background: #dafbe1; color: #1a7f37; }
+    .badge-danger  { background: #ffebe9; color: #cf222e; }
+    .badge-warning { background: #fff8c5; color: #9a6700; }
+
     .sort-btn {
       background: none;
       border: none;
@@ -488,13 +709,16 @@ export function generateReportsHtml(reports) {
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Submit URLs</a>
         <a href="reports.html">View Reports</a>
+        <a href="trends.html">Trends</a>
       </nav>
     </header>
     
     <main id="main-content">
     <h1>Scan Reports</h1>
     <p class="subtitle">Accessibility scan reports generated by GitHub Actions</p>
-    
+
+    ${summaryPanel}
+
     ${reports.length === 0 ? '<div class="no-reports">No reports available yet. Submit URLs to generate your first report.</div>' : `
     <div class="table-wrapper">
     <table>
@@ -673,24 +897,36 @@ export function generateReportsHtml(reports) {
 }
 
 /**
- * Main function to generate reports.html
+ * Main function to generate reports.html, stats.json, and trends.html
  */
 export function main() {
   const reportsDir = process.argv[2] || 'reports';
   const outputFile = process.argv[3] || 'reports.html';
-  
+
   console.log(`Scanning for reports in: ${reportsDir}`);
-  
+
   const reports = findAllReports(reportsDir);
   console.log(`Found ${reports.length} reports`);
-  
+
   const sortedReports = sortReportsByTime(reports);
   console.log(`Sorted reports by time (most recent first)`);
-  
-  const html = generateReportsHtml(sortedReports);
-  
+
+  const statsData = computeStats(reports);
+  const statsPath = outputFile.replace(/reports\.html$/, 'stats.json').replace(/^reports\.html$/, 'stats.json');
+  writeFileSync(statsPath, JSON.stringify(statsData, null, 2) + '\n', 'utf8');
+  console.log(`Generated ${statsPath}`);
+
+  const html = generateReportsHtml(sortedReports, statsData);
   writeFileSync(outputFile, html, 'utf8');
   console.log(`Generated ${outputFile} with ${sortedReports.length} reports`);
+
+  // Generate trends.html alongside reports.html
+  const trendsPath = outputFile.replace(/reports\.html$/, 'trends.html').replace(/^reports\.html$/, 'trends.html');
+  const trendItems = loadAllTrends(reportsDir);
+  console.log(`Found trends.json for ${trendItems.length} issue(s)`);
+  const trendsHtml = generateTrendsHtml(trendItems);
+  writeFileSync(trendsPath, trendsHtml, 'utf8');
+  console.log(`Generated ${trendsPath}`);
 }
 
 // Run main if this script is executed directly

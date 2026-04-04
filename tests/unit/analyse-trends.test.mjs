@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { mkdirSync, writeFileSync, rmSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -10,6 +10,7 @@ import {
   detectSystemicPatterns,
   analyseTrends,
   formatTrendComment,
+  saveTrendsJson,
 } from "../../scanner/analyse-trends.mjs";
 
 const tmpDir = fileURLToPath(new URL("../../.tmp/test-trends", import.meta.url));
@@ -368,5 +369,28 @@ test("loadScanHistory skips directories without report.json", () => {
     assert.equal(history.length, 1);
   } finally {
     rmSync(join(tmpDir, "issues", "issue-44"), { recursive: true, force: true });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// saveTrendsJson
+// ---------------------------------------------------------------------------
+
+test("saveTrendsJson writes trends.json to the issue directory", () => {
+  const issueDir = join(tmpDir, "issues", "issue-50");
+  try {
+    mkdirSync(issueDir, { recursive: true });
+    const analysis = analyseTrends([
+      makeReport({ scannedAt: "2026-01-01T00:00:00.000Z" }),
+      makeReport({ scannedAt: "2026-01-08T00:00:00.000Z", alfaTotals: { failed: 5 } }),
+    ]);
+    saveTrendsJson(issueDir, analysis);
+    const trendsPath = join(issueDir, "trends.json");
+    assert.ok(existsSync(trendsPath), "trends.json should exist");
+    const loaded = JSON.parse(readFileSync(trendsPath, "utf8"));
+    assert.equal(loaded.overallTrend, analysis.overallTrend);
+    assert.equal(loaded.scansAnalysed, 2);
+  } finally {
+    rmSync(issueDir, { recursive: true, force: true });
   }
 });

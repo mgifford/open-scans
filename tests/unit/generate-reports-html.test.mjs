@@ -8,7 +8,10 @@ import {
   findAllReports, 
   sortReportsByTime, 
   generateTableRows,
-  generateReportsHtml
+  generateReportsHtml,
+  computeWeeklyStats,
+  renderWeeklySvg,
+  computeStats,
 } from '../../scanner/generate-reports-html.mjs';
 
 describe('generate-reports-html', () => {
@@ -268,6 +271,72 @@ describe('generate-reports-html', () => {
       
       assert.ok(html.includes('No reports available yet'), 'Should show no reports message');
       assert.ok(!html.includes('<table>'), 'Should not include table when no reports');
+    });
+
+    it('should include Trends nav link', () => {
+      const html = generateReportsHtml([]);
+      assert.ok(html.includes('trends.html'), 'Should link to trends.html');
+    });
+  });
+
+  describe('computeWeeklyStats', () => {
+    it('should group reports by ISO week', () => {
+      const reports = [
+        { path: 'p1', data: { scannedAt: '2026-01-05T00:00:00.000Z', acceptedCount: 10, alfaTotals: { failed: 20 }, axeTotals: { failed: 5 } } },
+        { path: 'p2', data: { scannedAt: '2026-01-06T00:00:00.000Z', acceptedCount: 8, alfaTotals: { failed: 10 }, axeTotals: { failed: 2 } } },
+        { path: 'p3', data: { scannedAt: '2026-01-12T00:00:00.000Z', acceptedCount: 5, alfaTotals: { failed: 8 }, axeTotals: { failed: 1 } } },
+      ];
+      const weekly = computeWeeklyStats(reports);
+      // First two are same week, third is next week
+      assert.ok(weekly.length === 2, 'Should produce 2 week buckets');
+      assert.ok(weekly[0].violations === 37, 'First week should sum 20+5+10+2=37 violations');
+      assert.ok(weekly[0].reportCount === 2, 'First week should have 2 reports');
+      assert.ok(weekly[1].violations === 9, 'Second week: 8+1=9');
+    });
+
+    it('should return empty array for no reports', () => {
+      assert.deepEqual(computeWeeklyStats([]), []);
+    });
+
+    it('should skip reports without scannedAt', () => {
+      const reports = [
+        { path: 'p1', data: { acceptedCount: 5, alfaTotals: { failed: 10 } } },
+      ];
+      assert.deepEqual(computeWeeklyStats(reports), []);
+    });
+  });
+
+  describe('renderWeeklySvg', () => {
+    it('should return empty string for no data', () => {
+      assert.equal(renderWeeklySvg([]), '');
+    });
+
+    it('should produce an SVG element', () => {
+      const weeks = [
+        { weekKey: '2026-W01', label: 'Jan 5', violations: 100, urlsScanned: 10, reportCount: 1 },
+        { weekKey: '2026-W02', label: 'Jan 12', violations: 80, urlsScanned: 8, reportCount: 1 },
+      ];
+      const svg = renderWeeklySvg(weeks);
+      assert.ok(svg.includes('<svg'), 'Should produce SVG');
+      assert.ok(svg.includes('rect'), 'Should include bars');
+      assert.ok(svg.includes('Jan 5'), 'Should include week labels');
+    });
+  });
+
+  describe('computeStats', () => {
+    it('should compute totals correctly', () => {
+      const reports = [
+        { path: 'p1', data: { issueNumber: 1, scannedAt: '2026-01-05T00:00:00.000Z', acceptedCount: 10, alfaTotals: { failed: 5 }, axeTotals: { failed: 2 } } },
+        { path: 'p2', data: { issueNumber: 1, scannedAt: '2026-01-12T00:00:00.000Z', acceptedCount: 8, alfaTotals: { failed: 3 }, axeTotals: { failed: 1 } } },
+        { path: 'p3', data: { issueNumber: 2, scannedAt: '2026-01-05T00:00:00.000Z', acceptedCount: 5, alfaTotals: { failed: 10 }, axeTotals: { failed: 0 } } },
+      ];
+      const stats = computeStats(reports);
+      assert.equal(stats.totalScans, 3);
+      assert.equal(stats.totalUrlsScanned, 23);
+      assert.equal(stats.totalIssuesTracked, 2);
+      assert.ok(stats.mostRecentScan === '2026-01-12T00:00:00.000Z');
+      assert.ok(Array.isArray(stats.weeklyData));
+      assert.ok(typeof stats.generatedAt === 'string');
     });
   });
 });
