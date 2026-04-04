@@ -1,0 +1,1300 @@
+{
+  "issueNumber": 20,
+  "issueUrl": "https://github.com/mgifford/open-scans/actions/runs/23978335440",
+  "issueTitle": "SCAN: AXE GitHub Pages accessibility check",
+  "scanTitle": "GitHub Pages accessibility check",
+  "submittedBy": "github-actions[bot]",
+  "engines": [
+    "axe"
+  ],
+  "scannedAt": "2026-04-04T11:53:52.187Z",
+  "totalElapsedMs": 20030,
+  "totalSubmitted": 4,
+  "acceptedCount": 4,
+  "scannedCount": 4,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 2635,
+    "failed": 18,
+    "cantTell": 2,
+    "inapplicable": 324
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 2,
+  "reducedMotionUrlCount": 2,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/",
+      "finalUrl": "https://mgifford.github.io/open-scans/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Open Scans - Free Automated Accessibility Scanning",
+      "elapsedMs": 5125,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 384,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 98
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "skip-link"
+        ],
+        "failures": [],
+        "outcomeCount": 482,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": true,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/index.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/index.html",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Open Scans - Free Automated Accessibility Scanning",
+      "elapsedMs": 4639,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 384,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 98
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "skip-link"
+        ],
+        "failures": [],
+        "outcomeCount": 482,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": true,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/reports.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/reports.html",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Scan Reports",
+      "elapsedMs": 6011,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 1842,
+          "failed": 0,
+          "cantTell": 1,
+          "inapplicable": 54
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-conditional-attr",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "empty-table-header",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "scope-attr-valid",
+          "skip-link",
+          "table-duplicate-name",
+          "td-headers-attr",
+          "th-has-data-cells"
+        ],
+        "failures": [],
+        "outcomeCount": 1897,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/trends.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/trends.html",
+      "redirected": false,
+      "statusCode": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Page not found &middot; GitHub Pages",
+      "elapsedMs": 4060,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 25,
+          "failed": 18,
+          "cantTell": 1,
+          "inapplicable": 74
+        },
+        "failedRules": [
+          "color-contrast",
+          "html-has-lang",
+          "landmark-one-main",
+          "link-in-text-block",
+          "link-name",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "image-alt",
+          "image-redundant-alt",
+          "link-name",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(2) > strong",
+            "html": "<strong>File not found</strong>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "91bf6c0a1caf",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(3)",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "cfc4269cd0b9",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(4)",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "3f2a1392f2fd",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "code:nth-child(2)",
+            "html": "<code>http://example.com/</code>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f847e17de010",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "code:nth-child(3)",
+            "html": "<code>index.html</code>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "61e2ec8f3da1",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(5)",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a3f8e6c54865",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "a[href$=\"pages/\"]",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.52 (foreground color: #4183c4, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "20c9f2dc2d5c",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "color-contrast",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag143"
+            ],
+            "xpath": "p:nth-child(5) > strong",
+            "html": "<strong>GitHub Pages</strong>",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "4b04023a0cf4",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "html-has-lang",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag311"
+            ],
+            "xpath": "html",
+            "html": "<html>",
+            "message": "<html> element must have a lang attribute",
+            "fixSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "5a83bd8f4045",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html>",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "9b68255300d5",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "link-in-text-block",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag141"
+            ],
+            "xpath": "a[href$=\"pages/\"]",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.09:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4183c4, surrounding text: #797979)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "p:nth-child(5)"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "893fa6eb7ed4",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "link-name",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag244",
+              "wcag412"
+            ],
+            "xpath": ".logo-img-1x",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">",
+            "message": "Links must have discernible text",
+            "fixSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "07dbdc017cff",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "h1",
+            "html": "<h1>404</h1>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "7096f7d7ec3d",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(2)",
+            "html": "<p><strong>File not found</strong></p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ab0f5669a286",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(3)",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8471ea2b8a88",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(4)",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a8f83eab88e2",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "p:nth-child(5)",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "b232cb4bf59d",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "#suggestions",
+            "html": "<div id=\"suggestions\">\n        <a href=\"https://githubstatus.com\">GitHub Status</a> —\n        <a href=\"https://twitter.com/githubstatus\">@githubstatus</a>\n      </div>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "bd47db8a4670",
+            "firstSeenAt": "2026-04-04T11:53:52.187Z"
+          }
+        ],
+        "outcomeCount": 118,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 18
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "color-contrast",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "1.4.3"
+          ],
+          "conformanceLevel": "AA",
+          "description": "Ensures text and interactive elements have sufficient contrast ratio (4.5:1 for normal text, 3:1 for large text) against their background."
+        },
+        "wcag": {
+          "scs": [
+            "1.4.3"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 8,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<strong>File not found</strong>",
+            "xpath": "p:nth-child(2) > strong",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "xpath": "p:nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "xpath": "p:nth-child(4)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<code>http://example.com/</code>",
+            "xpath": "code:nth-child(2)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<code>index.html</code>",
+            "xpath": "code:nth-child(3)",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fixSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.85 (foreground color: #797979, background color: #f1f1f1, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1",
+            "relatedPaths": [
+              "body"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures all page content is contained within landmark regions. Content outside landmarks cannot be found by screen reader users navigating by landmarks."
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 6,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<h1>404</h1>",
+            "xpath": "h1",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p><strong>File not found</strong></p>",
+            "xpath": "p:nth-child(2)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p>\n        The site configured at this address does not\n        contain the requested file.\n      </p>",
+            "xpath": "p:nth-child(3)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p>\n        If this is your site, make sure that the filename case matches the URL\n        as well as any file permissions.<br>\n        For root URLs (like <code>http://example.com/</code>) you must provide an\n        <code>index.html</code> file.\n      </p>",
+            "xpath": "p:nth-child(4)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<p>\n        <a href=\"https://help.github.com/pages/\">Read the full documentation</a>\n        for more information about using <strong>GitHub Pages</strong>.\n      </p>",
+            "xpath": "p:nth-child(5)",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "html-has-lang",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "3.1.1"
+          ],
+          "conformanceLevel": "A",
+          "description": "Ensures the <html> element has a lang attribute. Screen readers use the language attribute to select the correct pronunciation engine."
+        },
+        "wcag": {
+          "scs": [
+            "3.1.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "<html> element must have a lang attribute",
+            "fixSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "landmark-one-main",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures the page has exactly one main landmark. Screen reader users rely on the main landmark to skip navigation and jump directly to page content."
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<html>",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "link-in-text-block",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [
+            "1.4.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<a href=\"https://help.github.com/pages/\">Read the full documentation</a>",
+            "xpath": "a[href$=\"pages/\"]",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.09:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4183c4, surrounding text: #797979)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "p:nth-child(5)"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      },
+      {
+        "rule": "link-name",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true,
+          "wcagCriteria": [
+            "2.4.4",
+            "4.1.2"
+          ],
+          "conformanceLevel": "A",
+          "description": "Ensures links have discernible text. Screen reader users often navigate pages by listing all links — links without text or with only 'click here' provide no context."
+        },
+        "wcag": {
+          "scs": [
+            "2.4.4",
+            "4.1.2"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">",
+            "xpath": ".logo-img-1x",
+            "message": "Links must have discernible text",
+            "fixSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 8,
+      "Visual Designer": 8,
+      "Content Author": 1,
+      "Front-End Developer": 9
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 10,
+      "Moderate": 8,
+      "Minor": 0
+    }
+  }
+}
