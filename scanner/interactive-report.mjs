@@ -1264,6 +1264,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .site-nav { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; flex-wrap: wrap; }
     .site-nav a { color: var(--primary); text-decoration: none; }
     .site-nav a:hover { text-decoration: underline; }
+    .site-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
 
     @media print {
       body::before {
@@ -1907,7 +1908,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       const y = padT + chartH - barH;
       const cls = p.isBaseline ? "baseline" : (p.trend || "stable");
       const dateStr = p.scannedAt ? new Date(p.scannedAt).toLocaleDateString("en-CA") : "";
-      return `<g role="listitem" aria-label="${dateStr}: ${p.combined} violations">
+      return `<g role="listitem" aria-label="${dateStr}: ${p.combined} violation${p.combined !== 1 ? "s" : ""}">
         <rect class="trend-bar-rect--${esc(cls)}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${barH}" rx="2"/>
         <text class="trend-bar-value" x="${(x + barW / 2).toFixed(1)}" y="${(y - 2).toFixed(1)}" text-anchor="middle">${p.combined}</text>
         <text class="trend-bar-label" x="${(x + barW / 2).toFixed(1)}" y="${(padT + chartH + 14).toFixed(1)}" text-anchor="middle">${dateStr.slice(5)}</text>

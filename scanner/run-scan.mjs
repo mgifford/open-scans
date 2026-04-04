@@ -3188,9 +3188,9 @@ async function main() {
     // outputDir is reports/issues/issue-N/TIMESTAMP — parent is the issue dir,
     // grandparent is reports/issues (the reportsDir expected by loadScanHistory).
     const issueDir = join(outputDir, "..");
-    const issueReportsDir = join(issueDir, "..");
+    const issuesDir = join(issueDir, "..");
     try {
-      const history = loadScanHistory(issueReportsDir, summary.issueNumber);
+      const history = loadScanHistory(issuesDir, summary.issueNumber);
       if (history.length >= 1) {
         trendData = analyseTrends(history);
         // Persist for client-side use and trends.html generation

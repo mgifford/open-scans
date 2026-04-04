@@ -775,13 +775,16 @@
           var barW = Math.max(6, Math.floor((chartW / weeks.length) * 0.65));
           var spacing = chartW / weeks.length;
 
+          // Read the active primary color from CSS custom properties so it respects dark mode
+          var primaryColor = (getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '').trim() || '#0969da';
+
           var bars = weeks.map(function (w, i) {
             var bh = Math.max(1, Math.round((w.violations / maxVal) * chartH));
             var x = (padL + i * spacing + (spacing - barW) / 2).toFixed(1);
             var y = (padT + chartH - bh).toFixed(1);
             var label = w.label || w.weekKey || '';
-            return '<g role="listitem" aria-label="' + label + ': ' + w.violations + ' violations">'
-              + '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + bh + '" rx="2" fill="#0969da" opacity="0.8"/>'
+            return '<g role="listitem" aria-label="' + label + ': ' + w.violations + ' violation' + (w.violations !== 1 ? 's' : '') + '">'
+              + '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + bh + '" rx="2" fill="' + primaryColor + '" opacity="0.8"/>'
               + '<text x="' + (parseFloat(x) + barW / 2).toFixed(1) + '" y="' + (padT + chartH + 14).toFixed(1) + '" text-anchor="middle" font-size="8" fill="#57606a">' + label + '</text>'
               + '</g>';
           }).join('');

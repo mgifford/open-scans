@@ -248,6 +248,7 @@ export function generateTrendsHtml(trendItems) {
     nav.site-nav { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     nav.site-nav a { color: var(--primary); text-decoration: none; }
     nav.site-nav a:hover { text-decoration: underline; }
+    nav.site-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
     nav.site-nav a[aria-current] { font-weight: 700; text-decoration: underline; }
     .theme-toggle { margin-left: auto; background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); cursor: pointer; padding: 0.3rem 0.5rem; font-size: 1rem; }
     .theme-toggle:focus-visible { outline: 2px solid var(--primary); }

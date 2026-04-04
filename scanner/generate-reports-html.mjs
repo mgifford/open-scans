@@ -181,7 +181,7 @@ export function renderWeeklySvg(weeks) {
     const x = padL + i * spacing + (spacing - barW) / 2;
     const y = padT + chartH - bh;
     return `<g role="listitem" aria-label="${escapeHtml(w.weekKey)}: ${w.violations} violations, ${w.reportCount} report(s)">
-      <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${bh}" rx="2" fill="#0969da" opacity="0.8"/>
+      <rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${bh}" rx="2" fill="var(--primary, #0969da)" opacity="0.8"/>
       <text x="${(x + barW / 2).toFixed(1)}" y="${(padT + chartH + 14).toFixed(1)}" text-anchor="middle" font-size="9" fill="#57606a" transform="rotate(-35,${(x + barW / 2).toFixed(1)},${(padT + chartH + 14).toFixed(1)})">${escapeHtml(w.label)}</text>
     </g>`;
   }).join('');

@@ -289,9 +289,9 @@ describe('generate-reports-html', () => {
       const weekly = computeWeeklyStats(reports);
       // First two are same week, third is next week
       assert.ok(weekly.length === 2, 'Should produce 2 week buckets');
-      assert.ok(weekly[0].violations === 37, 'First week should sum 20+5+10+2=37 violations');
-      assert.ok(weekly[0].reportCount === 2, 'First week should have 2 reports');
-      assert.ok(weekly[1].violations === 9, 'Second week: 8+1=9');
+      assert.equal(weekly[0].violations, 37, 'First week should sum 20+5+10+2=37 violations');
+      assert.equal(weekly[0].reportCount, 2, 'First week should have 2 reports');
+      assert.equal(weekly[1].violations, 9, 'Second week: 8+1=9');
     });
 
     it('should return empty array for no reports', () => {
