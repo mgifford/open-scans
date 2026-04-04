@@ -1218,7 +1218,14 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .trend-delta--improving { background: #dafbe1; color: #1a7f37; }
     .trend-delta--worsening { background: #ffebe9; color: #cf222e; }
     .trend-delta--stable    { background: #fff8c5; color: #9a6700; }
-    [data-theme="dark"] .trend-delta--improving, @media (prefers-color-scheme: dark) { }
+    @media (prefers-color-scheme: dark) {
+      .trend-delta--improving { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+      .trend-delta--worsening { background: rgba(255, 123, 114, 0.15); color: #ff7b72; }
+      .trend-delta--stable    { background: rgba(227, 179, 65, 0.15); color: #e3b341; }
+    }
+    [data-theme="dark"] .trend-delta--improving { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+    [data-theme="dark"] .trend-delta--worsening { background: rgba(255, 123, 114, 0.15); color: #ff7b72; }
+    [data-theme="dark"] .trend-delta--stable    { background: rgba(227, 179, 65, 0.15); color: #e3b341; }
     .trend-meta { font-size: 0.85rem; color: var(--muted); }
     .trend-chart-wrap {
       margin-bottom: 1rem;

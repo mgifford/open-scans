@@ -119,7 +119,7 @@ export function renderTrendSparkline(analysis, maxWidth = 300) {
     points.push(d.to.totals.combined);
   }
   if (points.length < 2) {
-    return `<span style="color:#57606a;font-size:0.8rem">${points.length === 1 ? `${points[0]} violations (1 scan)` : "No data"}</span>`;
+    return `<span class="sparkline-none">${points.length === 1 ? `${points[0]} violations (1 scan)` : "No data"}</span>`;
   }
 
   const W = maxWidth;
@@ -134,10 +134,9 @@ export function renderTrendSparkline(analysis, maxWidth = 300) {
     const bh = Math.max(1, Math.round((v / maxVal) * chartH));
     const x = padL + i * spacing + (spacing - barW) / 2;
     const y = padT + chartH - bh;
-    const isLast = i === points.length - 1;
     const prev = i > 0 ? points[i - 1] : v;
-    const fill = i === 0 ? "#0969da" : v < prev ? "#2da44e" : v > prev ? "#cf222e" : "#9a6700";
-    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${bh}" rx="1" fill="${fill}"${isLast ? ' stroke="#24292f" stroke-width="0.5"' : ""}/>`;
+    const cls = i === 0 ? "spark-bar-baseline" : v < prev ? "spark-bar-improving" : v > prev ? "spark-bar-worsening" : "spark-bar-stable";
+    return `<rect class="${cls}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${bh}" rx="1"/>`;
   }).join("");
   return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block" focusable="false" aria-hidden="true">${bars}</svg>`;
 }
@@ -273,6 +272,11 @@ export function generateTrendsHtml(trendItems) {
     .trend-cell.stable { color: var(--warning); font-weight: 600; }
     td.neg { color: var(--success); font-weight: 600; }
     td.pos { color: var(--danger); font-weight: 600; }
+    .spark-bar-baseline  { fill: var(--primary); }
+    .spark-bar-improving { fill: var(--success); }
+    .spark-bar-worsening { fill: var(--danger); }
+    .spark-bar-stable    { fill: var(--warning); }
+    .sparkline-none { color: var(--muted); font-size: 0.8rem; }
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; }
