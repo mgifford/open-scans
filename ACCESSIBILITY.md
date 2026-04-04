@@ -190,9 +190,11 @@ Both identifiers appear in each finding card in the HTML report and are included
 **Example:**
 
 ```
-Instance ID: A11Y-3f1b2c4d  (this defect on https://example.com/checkout)
-Pattern ID:  A11Y-f7e3a1b2  (this defect type across all pages)
+Instance ID: A11Y-xxxxxxxx  (this defect on https://example.com/checkout)
+Pattern ID:  A11Y-yyyyyyyy  (this defect type across all pages)
 ```
+
+> Both IDs are computed automatically during scanning. Each `x` or `y` represents a hexadecimal character.
 
 ### Required Fields
 

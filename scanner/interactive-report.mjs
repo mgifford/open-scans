@@ -147,6 +147,24 @@ function renderDisabilityIcons(disabilities) {
   }).join("");
 }
 
+/**
+ * Render the Bug ID display span for an example finding.
+ * Shows the Instance ID (A11Y- + first 8 hex chars of the raw fingerprint)
+ * and, when available, the Pattern ID (already formatted as A11Y-xxxxxxxx).
+ *
+ * @param {string} fingerprint - Raw 12-char hex fingerprint from the scan
+ * @param {string} [patternId] - Formatted A11Y-xxxxxxxx pattern ID
+ * @returns {string} HTML string, or empty string when no fingerprint is present
+ */
+function renderBugIdDisplay(fingerprint, patternId) {
+  if (!fingerprint) return '';
+  const instanceId = `A11Y-${escapeHtml(fingerprint.slice(0, 8))}`;
+  const patternPart = patternId
+    ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(patternId)}</code>`
+    : '';
+  return `<span class="bug-id-display" title="Instance ID: stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Instance ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
+}
+
 export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
@@ -454,7 +472,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                 <div class="example-mode">
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
                   ${ex.firstSeenAt ? `<span class="first-seen">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
-                   ${ex.fingerprint ? `<span class="bug-id-display" title="Instance ID: stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">🔑 Instance ID: <code class="bug-id-code">A11Y-${escapeHtml(ex.fingerprint.slice(0, 8))}</code>${ex.patternId ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(ex.patternId)}</code>` : ''}</span>` : ''}
+                   ${renderBugIdDisplay(ex.fingerprint, ex.patternId)}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
