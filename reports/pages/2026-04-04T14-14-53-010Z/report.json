@@ -1,0 +1,747 @@
+{
+  "issueNumber": 22,
+  "issueUrl": "https://github.com/mgifford/open-scans/actions/runs/23980574988",
+  "issueTitle": "SCAN: AXE GitHub Pages accessibility check",
+  "scanTitle": "GitHub Pages accessibility check",
+  "submittedBy": "github-actions[bot]",
+  "engines": [
+    "axe"
+  ],
+  "scannedAt": "2026-04-04T14:13:27.521Z",
+  "totalElapsedMs": 21707,
+  "totalSubmitted": 4,
+  "acceptedCount": 4,
+  "scannedCount": 4,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 3568,
+    "failed": 2,
+    "cantTell": 50,
+    "inapplicable": 357
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 3,
+  "reducedMotionUrlCount": 2,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/",
+      "finalUrl": "https://mgifford.github.io/open-scans/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Open Scans - Free Automated Accessibility Scanning",
+      "elapsedMs": 5519,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 672,
+          "failed": 0,
+          "cantTell": 18,
+          "inapplicable": 96
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "skip-link"
+        ],
+        "failures": [],
+        "outcomeCount": 786,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": true,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/index.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/index.html",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Open Scans - Free Automated Accessibility Scanning",
+      "elapsedMs": 5014,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 672,
+          "failed": 0,
+          "cantTell": 18,
+          "inapplicable": 96
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "form-field-multiple-labels",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "label",
+          "label-title-only",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "skip-link"
+        ],
+        "failures": [],
+        "outcomeCount": 786,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": true,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/reports.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/reports.html",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Scan Reports",
+      "elapsedMs": 6192,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 2008,
+          "failed": 0,
+          "cantTell": 12,
+          "inapplicable": 45
+        },
+        "failedRules": [],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "empty-table-header",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "role-img-alt",
+          "scope-attr-valid",
+          "skip-link",
+          "table-duplicate-name",
+          "td-headers-attr",
+          "th-has-data-cells"
+        ],
+        "failures": [],
+        "outcomeCount": 2065,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    },
+    {
+      "submittedUrl": "https://mgifford.github.io/open-scans/trends.html",
+      "finalUrl": "https://mgifford.github.io/open-scans/trends.html",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Accessibility Trends – Open Scans",
+      "elapsedMs": 4583,
+      "error": null,
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 216,
+          "failed": 2,
+          "cantTell": 2,
+          "inapplicable": 120
+        },
+        "failedRules": [
+          "link-in-text-block"
+        ],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-conditional-attr",
+          "aria-hidden-body",
+          "aria-prohibited-attr",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "region",
+          "skip-link"
+        ],
+        "failures": [
+          {
+            "rule": "link-in-text-block",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag141"
+            ],
+            "xpath": "p > a",
+            "html": "<a href=\"https://github.com/mgifford/open-scans\">open-scans</a>",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.23:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0969da, surrounding text: #57606a)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "footer > p"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f3c7fc170a94",
+            "firstSeenAt": "2026-04-04T14:13:27.521Z"
+          },
+          {
+            "rule": "link-in-text-block",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag141"
+            ],
+            "xpath": "p > a",
+            "html": "<a href=\"https://github.com/mgifford/open-scans\">open-scans</a>",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.23:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0969da, surrounding text: #57606a)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "footer > p"
+            ],
+            "colorScheme": "dark",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "1f6a96584e84",
+            "firstSeenAt": "2026-04-04T14:13:27.521Z"
+          }
+        ],
+        "outcomeCount": 340,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 2
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "link-in-text-block",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [
+            "1.4.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<a href=\"https://github.com/mgifford/open-scans\">open-scans</a>",
+            "xpath": "p > a",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.23:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0969da, surrounding text: #57606a)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "footer > p"
+            ],
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null
+          },
+          {
+            "url": "https://mgifford.github.io/open-scans/trends.html",
+            "html": "<a href=\"https://github.com/mgifford/open-scans\">open-scans</a>",
+            "xpath": "p > a",
+            "message": "Links must be distinguishable without relying on color",
+            "fixSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.23:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0969da, surrounding text: #57606a)\n  The link has no styling (such as underline) to distinguish it from the surrounding text",
+            "relatedPaths": [
+              "footer > p"
+            ],
+            "colorScheme": "dark",
+            "fingerprint": null,
+            "firstSeenAt": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 2
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 2,
+      "Minor": 0
+    }
+  }
+}
