@@ -1,0 +1,58 @@
+{
+  "totalScans": 159,
+  "totalUrlsScanned": 10843,
+  "totalIssuesTracked": 88,
+  "mostRecentScan": "2026-04-04T11:53:52.187Z",
+  "weeklyData": [
+    {
+      "weekKey": "2026-W08",
+      "label": "Feb 21",
+      "violations": 42912,
+      "urlsScanned": 514,
+      "reportCount": 9
+    },
+    {
+      "weekKey": "2026-W09",
+      "label": "Feb 23",
+      "violations": 375628,
+      "urlsScanned": 2982,
+      "reportCount": 28
+    },
+    {
+      "weekKey": "2026-W10",
+      "label": "Mar 2",
+      "violations": 204332,
+      "urlsScanned": 1104,
+      "reportCount": 18
+    },
+    {
+      "weekKey": "2026-W11",
+      "label": "Mar 9",
+      "violations": 268037,
+      "urlsScanned": 3344,
+      "reportCount": 50
+    },
+    {
+      "weekKey": "2026-W12",
+      "label": "Mar 16",
+      "violations": 126711,
+      "urlsScanned": 1901,
+      "reportCount": 30
+    },
+    {
+      "weekKey": "2026-W13",
+      "label": "Mar 23",
+      "violations": 33919,
+      "urlsScanned": 621,
+      "reportCount": 17
+    },
+    {
+      "weekKey": "2026-W14",
+      "label": "Mar 30",
+      "violations": 10382,
+      "urlsScanned": 377,
+      "reportCount": 7
+    }
+  ],
+  "generatedAt": "2026-04-04T12:04:22.923Z"
+}

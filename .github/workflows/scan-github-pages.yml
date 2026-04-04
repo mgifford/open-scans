@@ -142,7 +142,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           [ -d reports/pages ] && git add reports/pages || true
-          git add reports.html
+          git add reports.html trends.html stats.json
           if git diff --cached --quiet; then
             echo "No report changes to commit."
           else
@@ -159,13 +159,13 @@ jobs:
                 fi
               else
                 if git status | grep -q "rebase in progress"; then
-                  if git diff --name-only --diff-filter=U 2>/dev/null | grep -q "^reports\.html$"; then
-                    echo "Conflict in generated reports.html — resolving by regenerating..."
+                  if git diff --name-only --diff-filter=U 2>/dev/null | grep -qE "^(reports|trends)\.html$"; then
+                    echo "Conflict in generated HTML — resolving by regenerating..."
                     node scanner/generate-reports-html.mjs
-                    git add reports.html
+                    git add reports.html trends.html stats.json
                     if GIT_EDITOR=true git rebase --continue; then
                       if git push origin HEAD:main; then
-                        echo "Successfully pushed on attempt $attempt (after resolving reports.html conflict)"
+                        echo "Successfully pushed on attempt $attempt (after resolving generated file conflict)"
                         PUSH_SUCCESS=true
                         break
                       fi
