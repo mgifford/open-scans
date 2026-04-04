@@ -1261,11 +1261,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .systemic-patterns li:last-child { border-bottom: none; }
     .systemic-rule-id { font-family: ui-monospace, monospace; color: var(--code-color); }
     .systemic-count { font-weight: 600; white-space: nowrap; }
-    .site-nav { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; flex-wrap: wrap; }
-    .site-nav a { color: var(--primary); text-decoration: none; }
-    .site-nav a:hover { text-decoration: underline; }
-    .site-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 2px; }
-
     @media print {
       body::before {
         content: "Please do not print this report. Use the interactive digital version for full details.";
@@ -1318,12 +1313,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         </svg>
       </button>
     </header>
-
-    <nav class="site-nav" aria-label="Site navigation">
-      <a href="../../../index.html">Submit URLs</a>
-      <a href="../../../reports.html">All Reports</a>
-      <a href="../../../trends.html">Trends</a>
-    </nav>
 
     ${trendSectionHtml}
 

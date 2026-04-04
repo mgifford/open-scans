@@ -242,7 +242,7 @@ jobs:
                 spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
                 spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
                 spawnSync('git', ['add', reportDir]);
-                spawnSync('git', ['add', 'reports.html']);
+                spawnSync('git', ['add', 'reports.html', 'trends.html', 'stats.json']);
 
                 // Check if there are changes to commit
                 const statusResult = spawnSync('git', ['status', '--porcelain'], { encoding: 'utf8' });
@@ -276,7 +276,7 @@ jobs:
                         if (conflictCheck.stdout.trim().split('\n').includes('reports.html')) {
                           console.log('Conflict in generated reports.html — resolving by regenerating...');
                           spawnSync(process.execPath, ['scanner/generate-reports-html.mjs']);
-                          spawnSync('git', ['add', 'reports.html']);
+                          spawnSync('git', ['add', 'reports.html', 'trends.html', 'stats.json']);
                           const continueResult = spawnSync('git', ['rebase', '--continue'], { encoding: 'utf8', env: { ...process.env, GIT_EDITOR: 'true' } });
                           if (continueResult.status === 0) {
                             const pushResult = spawnSync('git', ['push', 'origin', `HEAD:${defaultBranch}`], { encoding: 'utf8' });

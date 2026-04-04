@@ -3192,10 +3192,14 @@ async function main() {
     try {
       const history = loadScanHistory(issuesDir, summary.issueNumber);
       if (history.length >= 1) {
-        trendData = analyseTrends(history);
-        // Persist for client-side use and trends.html generation
-        writeFileSync(join(issueDir, "trends.json"), JSON.stringify(trendData, null, 2) + "\n", "utf8");
+        // Always persist trends.json (used by trends.html) even for single scans
+        const trendAnalysis = analyseTrends(history);
+        writeFileSync(join(issueDir, "trends.json"), JSON.stringify(trendAnalysis, null, 2) + "\n", "utf8");
         console.error(`[trends] Computed trend analysis over ${history.length} scan(s) → ${join(issueDir, "trends.json")}`);
+        // Only surface the trend chart in the report when there are ≥2 scans to compare
+        if (history.length >= 2) {
+          trendData = trendAnalysis;
+        }
       }
     } catch (err) {
       console.error(`[trends] Warning: could not compute trend analysis: ${err.message}`);
