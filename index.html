@@ -45,6 +45,7 @@
       --color-btn-primary-bg: #1f883d;
       --color-btn-primary-hover-bg: #1a7f37;
       --color-btn-primary-disabled-bg: #94d3a2;
+      --color-surface: #f6f8fa;
     }
 
     /* System dark-mode preference */
@@ -67,6 +68,7 @@
         --color-btn-primary-bg: #238636;
         --color-btn-primary-hover-bg: #2ea043;
         --color-btn-primary-disabled-bg: rgba(46, 160, 67, 0.5);
+        --color-surface: #161b22;
       }
     }
 
@@ -89,6 +91,7 @@
       --color-btn-primary-bg: #1f883d;
       --color-btn-primary-hover-bg: #1a7f37;
       --color-btn-primary-disabled-bg: #94d3a2;
+      --color-surface: #f6f8fa;
     }
 
     [data-theme="dark"] {
@@ -109,6 +112,7 @@
       --color-btn-primary-bg: #238636;
       --color-btn-primary-hover-bg: #2ea043;
       --color-btn-primary-disabled-bg: rgba(46, 160, 67, 0.5);
+      --color-surface: #161b22;
     }
 
     /* ── Base reset ────────────────────────────────────────────────────── */
@@ -206,6 +210,117 @@
     [data-theme="dark"] .icon-moon { display: none; }
     [data-theme="light"] .icon-sun { display: none; }
     [data-theme="light"] .icon-moon { display: block; }
+
+    /* ── Project intro ─────────────────────────────────────────────────── */
+    .intro-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-section p {
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .how-it-works {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0;
+    }
+
+    .how-step {
+      flex: 1;
+      min-width: 160px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .how-step .step-num {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .how-step strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--color-text);
+    }
+
+    .intro-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      background: var(--color-surface);
+      transition: background-color 0.15s;
+    }
+
+    .btn-link:hover {
+      background: var(--color-border);
+      text-decoration: none;
+    }
+
+    /* ── Live stats bar ────────────────────────────────────────────────── */
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 100px;
+    }
+
+    .stat-item .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+
+    .stats-chart-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
     /* ── Form controls ─────────────────────────────────────────────────── */
     .form-group {
@@ -388,6 +503,14 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    .form-section-heading {
+      font-size: 1.4rem;
+      color: var(--color-text);
+      margin-bottom: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
     
     footer {
       margin-top: 2rem;
@@ -456,6 +579,7 @@
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Submit URLs</a>
         <a href="reports.html">View Reports</a>
+        <a href="trends.html">Trends</a>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="5"/>
@@ -476,46 +600,98 @@
     </header>
     
     <main id="main-content">
-    <h1>Submit URLs for Accessibility Scanning</h1>
-    <p class="subtitle">Enter up to 500 URLs to scan for accessibility issues using multiple WCAG 2.2 checking engines</p>
-    
-    <form id="scan-form">
-      <div class="form-group">
-        <label for="scan-title">Scan Title</label>
-        <p class="help-text">A descriptive name for this scan batch (e.g., "GSA.gov Homepage and Key Pages")</p>
-        <input type="text" id="scan-title" name="scan-title" required placeholder="My Accessibility Scan">
-      </div>
-      
-      <div class="form-group">
-        <label for="urls">URLs to Scan</label>
-        <p class="help-text">
-          Enter URLs one per line or comma-separated. Maximum 100 URLs.<br>
-          Only public HTTPS/HTTP URLs are accepted. Local, private, and internal URLs will be rejected.
-        </p>
-        <textarea 
-          id="urls" 
-          name="urls" 
-          required 
-          placeholder="https://example.com&#10;https://example.com/about&#10;https://example.com/contact"
-        ></textarea>
-      </div>
-      
-      <div class="preview" id="preview">
-        <h3>URL Preview</h3>
-        <div class="url-count" id="url-count"></div>
-        <div class="url-list" id="url-list"></div>
-      </div>
-      
-      <button type="submit" id="submit-button">Create Scan Request</button>
-      
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Creating scan request...</p>
-      </div>
-      
-      <div class="error-message" id="error-message"></div>
-      <div class="success-message" id="success-message"></div>
-    </form>
+
+      <!-- ── Project intro ──────────────────────────────────────────── -->
+      <section class="intro-section" aria-labelledby="intro-heading">
+        <h1 id="intro-heading">Open Scans</h1>
+        <p>A free, open-source tool that automatically checks websites for accessibility issues using multiple WCAG 2.2 scanning engines. No sign-up required.</p>
+
+        <div class="how-it-works" role="list" aria-label="How it works">
+          <div class="how-step" role="listitem">
+            <span class="step-num" aria-hidden="true">1</span>
+            <strong>Submit URLs</strong>
+            Enter up to 500 URLs below. A GitHub issue is created automatically.
+          </div>
+          <div class="how-step" role="listitem">
+            <span class="step-num" aria-hidden="true">2</span>
+            <strong>CI scans</strong>
+            GitHub Actions runs axe, ALFA, Equal Access, QualWeb, and AccessLint on every URL.
+          </div>
+          <div class="how-step" role="listitem">
+            <span class="step-num" aria-hidden="true">3</span>
+            <strong>Reports published</strong>
+            Interactive HTML reports are published to GitHub Pages within minutes.
+          </div>
+          <div class="how-step" role="listitem">
+            <span class="step-num" aria-hidden="true">4</span>
+            <strong>Track trends</strong>
+            Recurring scans show how accessibility improves (or worsens) over time.
+          </div>
+        </div>
+
+        <nav class="intro-links" aria-label="View results">
+          <a href="reports.html" class="btn-link">📄 View all reports</a>
+          <a href="trends.html" class="btn-link">📊 View trends</a>
+          <a href="https://github.com/mgifford/open-scans" class="btn-link" target="_blank" rel="noopener noreferrer">⭐ GitHub</a>
+        </nav>
+      </section>
+
+      <!-- ── Live stats ─────────────────────────────────────────────── -->
+      <section aria-labelledby="stats-heading" id="stats-section" hidden>
+        <h2 id="stats-heading" class="visually-hidden">Scan activity</h2>
+        <div class="stats-bar" id="stats-bar" aria-label="Scan activity statistics">
+          <div class="stat-item"><span class="stat-value" id="stat-total-scans">—</span><span class="stat-label">Total scans</span></div>
+          <div class="stat-item"><span class="stat-value" id="stat-total-urls">—</span><span class="stat-label">URLs scanned</span></div>
+          <div class="stat-item"><span class="stat-value" id="stat-issues">—</span><span class="stat-label">Issues tracked</span></div>
+          <div class="stat-item"><span class="stat-value" id="stat-last-scan">—</span><span class="stat-label">Most recent scan</span></div>
+          <div class="stats-chart-wrap" id="stats-chart" aria-label="Weekly violations chart"></div>
+        </div>
+      </section>
+      <style>.visually-hidden { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }</style>
+
+      <!-- ── Submission form ────────────────────────────────────────── -->
+      <section aria-labelledby="form-heading">
+        <h2 id="form-heading" class="form-section-heading">Submit a New Scan</h2>
+        <p class="subtitle">Enter up to 500 URLs to scan for accessibility issues using multiple WCAG 2.2 checking engines</p>
+
+        <form id="scan-form">
+          <div class="form-group">
+            <label for="scan-title">Scan Title</label>
+            <p class="help-text">A descriptive name for this scan batch (e.g., "GSA.gov Homepage and Key Pages")</p>
+            <input type="text" id="scan-title" name="scan-title" required placeholder="My Accessibility Scan">
+          </div>
+          
+          <div class="form-group">
+            <label for="urls">URLs to Scan</label>
+            <p class="help-text">
+              Enter URLs one per line or comma-separated. Maximum 100 URLs.<br>
+              Only public HTTPS/HTTP URLs are accepted. Local, private, and internal URLs will be rejected.
+            </p>
+            <textarea 
+              id="urls" 
+              name="urls" 
+              required 
+              placeholder="https://example.com&#10;https://example.com/about&#10;https://example.com/contact"
+            ></textarea>
+          </div>
+          
+          <div class="preview" id="preview">
+            <h3>URL Preview</h3>
+            <div class="url-count" id="url-count"></div>
+            <div class="url-list" id="url-list"></div>
+          </div>
+          
+          <button type="submit" id="submit-button">Create Scan Request</button>
+          
+          <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Creating scan request...</p>
+          </div>
+          
+          <div class="error-message" id="error-message"></div>
+          <div class="success-message" id="success-message"></div>
+        </form>
+      </section>
     </main>
     
     <footer>
@@ -560,6 +736,66 @@
         applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
       });
     })();
+  </script>
+  <script>
+    // Load stats.json and populate live stats bar + mini weekly chart
+    (function () {
+      fetch('./stats.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (stats) {
+          if (!stats) return;
+          var section = document.getElementById('stats-section');
+          if (section) section.removeAttribute('hidden');
+
+          function setText(id, val) {
+            var el = document.getElementById(id);
+            if (el) el.textContent = val;
+          }
+
+          setText('stat-total-scans', stats.totalScans != null ? stats.totalScans.toLocaleString() : '—');
+          setText('stat-total-urls', stats.totalUrlsScanned != null ? stats.totalUrlsScanned.toLocaleString() : '—');
+          setText('stat-issues', stats.totalIssuesTracked != null ? stats.totalIssuesTracked.toLocaleString() : '—');
+
+          if (stats.mostRecentScan) {
+            var d = new Date(stats.mostRecentScan);
+            setText('stat-last-scan', isNaN(d.getTime()) ? '—' : d.toLocaleDateString());
+          }
+
+          // Render mini weekly bar chart (SVG)
+          var weeks = (stats.weeklyData || []).slice(-12);
+          if (weeks.length < 2) return;
+          var chartEl = document.getElementById('stats-chart');
+          if (!chartEl) return;
+
+          var W = 480, H = 80, padL = 4, padR = 4, padT = 8, padB = 24;
+          var chartW = W - padL - padR;
+          var chartH = H - padT - padB;
+          var maxVal = Math.max.apply(null, weeks.map(function (w) { return w.violations; }));
+          if (maxVal < 1) maxVal = 1;
+          var barW = Math.max(6, Math.floor((chartW / weeks.length) * 0.65));
+          var spacing = chartW / weeks.length;
+
+          // Read the active primary color from CSS custom properties so it respects dark mode
+          var primaryColor = (getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '').trim() || '#0969da';
+
+          var bars = weeks.map(function (w, i) {
+            var bh = Math.max(1, Math.round((w.violations / maxVal) * chartH));
+            var x = (padL + i * spacing + (spacing - barW) / 2).toFixed(1);
+            var y = (padT + chartH - bh).toFixed(1);
+            var label = w.label || w.weekKey || '';
+            return '<g role="listitem" aria-label="' + label + ': ' + w.violations + ' violation' + (w.violations !== 1 ? 's' : '') + '">'
+              + '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + bh + '" rx="2" fill="' + primaryColor + '" opacity="0.8"/>'
+              + '<text x="' + (parseFloat(x) + barW / 2).toFixed(1) + '" y="' + (padT + chartH + 14).toFixed(1) + '" text-anchor="middle" font-size="8" fill="#57606a">' + label + '</text>'
+              + '</g>';
+          }).join('');
+
+          chartEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H
+            + '" role="list" aria-label="Weekly violations bar chart" style="display:block;max-width:100%" focusable="false">'
+            + '<line x1="' + padL + '" y1="' + (padT + chartH) + '" x2="' + (W - padR) + '" y2="' + (padT + chartH) + '" stroke="#d0d7de" stroke-width="1"/>'
+            + bars + '</svg>';
+        })
+        .catch(function () { /* stats.json not available, skip stats bar */ });
+    }());
   </script>
 </body>
 </html>

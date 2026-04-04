@@ -12,6 +12,8 @@ on:
       - 'reports/**'
       - 'index.html'
       - 'reports.html'
+      - 'trends.html'
+      - 'stats.json'
       - 'submit.js'
   workflow_dispatch:
 

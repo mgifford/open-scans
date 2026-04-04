@@ -11,6 +11,7 @@ import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from 
 import { generateInteractiveHtml } from "./interactive-report.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
+import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -3180,8 +3181,30 @@ async function main() {
   const overlapReport = buildOverlapReport(summary);
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
+
+  // ── Trend analysis (inline, based on historical reports now including this one) ──
+  let trendData = null;
+  if (summary.issueNumber) {
+    // outputDir is reports/issues/issue-N/TIMESTAMP — parent is the issue dir,
+    // grandparent is reports/issues (the reportsDir expected by loadScanHistory).
+    const issueDir = join(outputDir, "..");
+    const issuesDir = join(issueDir, "..");
+    try {
+      const history = loadScanHistory(issuesDir, summary.issueNumber);
+      if (history.length >= 1) {
+        trendData = analyseTrends(history);
+        // Persist for client-side use and trends.html generation
+        writeFileSync(join(issueDir, "trends.json"), JSON.stringify(trendData, null, 2) + "\n", "utf8");
+        console.error(`[trends] Computed trend analysis over ${history.length} scan(s) → ${join(issueDir, "trends.json")}`);
+      }
+    } catch (err) {
+      console.error(`[trends] Warning: could not compute trend analysis: ${err.message}`);
+    }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   writeFileSync(markdownPath, markdownContent, "utf8");
-  writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult), "utf8");
+  writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
   writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
   writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");

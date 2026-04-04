@@ -11,7 +11,7 @@
  * Usage: node scanner/analyse-trends.mjs <reports-dir> <issue-number>
  */
 
-import { readdirSync, readFileSync, existsSync } from "node:fs";
+import { readdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const DEFAULT_LIMIT = 5;
@@ -324,6 +324,19 @@ export function formatTrendComment(analysis, scanTitle = "") {
   return lines.join("\n");
 }
 
+/**
+ * Persist a trend analysis object to a trends.json file inside the issue
+ * directory so that client-side report pages and generate-trends-html.mjs
+ * can read it without making GitHub API calls.
+ *
+ * @param {string} issueDir - Directory for this issue (e.g. "reports/issues/issue-58")
+ * @param {object} analysis - Output of analyseTrends()
+ */
+export function saveTrendsJson(issueDir, analysis) {
+  const trendsPath = join(issueDir, "trends.json");
+  writeFileSync(trendsPath, JSON.stringify(analysis, null, 2) + "\n", "utf8");
+}
+
 async function main() {
   // Usage: node scanner/analyse-trends.mjs <reports-dir> <issue-number>
   const args = process.argv.slice(2);
@@ -340,6 +353,15 @@ async function main() {
   console.error(`Found ${history.length} scan report(s).`);
 
   const analysis = analyseTrends(history);
+
+  // Persist trends.json alongside the scan directories for this issue
+  const issueDir = join(reportsDir, `issue-${issueNumber}`);
+  try {
+    saveTrendsJson(issueDir, analysis);
+    console.error(`Saved trends.json → ${issueDir}/trends.json`);
+  } catch (err) {
+    console.error(`Warning: could not save trends.json: ${err.message}`);
+  }
 
   // Output JSON to stdout for workflow parsing
   console.log(JSON.stringify(analysis));
