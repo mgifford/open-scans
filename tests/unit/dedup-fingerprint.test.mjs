@@ -6,7 +6,10 @@ import { tmpdir } from "node:os";
 import {
   computeFindingFingerprint,
   loadFingerprintStore,
-  annotateWithFingerprints
+  annotateWithFingerprints,
+  computePatternId,
+  formatA11yId,
+  A11Y_ID_PREFIX
 } from "../../scanner/run-scan.mjs";
 
 const TMP = tmpdir();
@@ -128,6 +131,95 @@ test("annotateWithFingerprints skips duplicate findings", () => {
 
   assert.equal(Object.keys(store).length, 0, "duplicate findings should not be fingerprinted");
   assert.equal(failure.fingerprint, undefined, "duplicate findings should not have fingerprint attached");
+});
+
+// ── formatA11yId / A11Y_ID_PREFIX ──────────────────────────────────────────
+
+test("A11Y_ID_PREFIX is 'A11Y'", () => {
+  assert.equal(A11Y_ID_PREFIX, "A11Y");
+});
+
+test("formatA11yId produces A11Y-xxxxxxxx format", () => {
+  const id = formatA11yId("abcdef1234567890");
+  assert.match(id, /^A11Y-[0-9a-f]{8}$/);
+  assert.equal(id, "A11Y-abcdef12");
+});
+
+test("formatA11yId uses first 8 hex chars of input", () => {
+  const id = formatA11yId("ff00aabb99887766");
+  assert.equal(id, "A11Y-ff00aabb");
+});
+
+// ── computePatternId ───────────────────────────────────────────────────────
+
+test("computePatternId returns A11Y-xxxxxxxx format", () => {
+  const id = computePatternId("#main", "wcag:wcag143|light", "light");
+  assert.match(id, /^A11Y-[0-9a-f]{8}$/);
+});
+
+test("computePatternId is deterministic", () => {
+  const a = computePatternId("#main", "wcag:wcag143|light", "light");
+  const b = computePatternId("#main", "wcag:wcag143|light", "light");
+  assert.equal(a, b);
+});
+
+test("computePatternId differs for different locators", () => {
+  const a = computePatternId("#h1", "wcag:wcag143|light", "light");
+  const b = computePatternId("#h2", "wcag:wcag143|light", "light");
+  assert.notEqual(a, b);
+});
+
+test("computePatternId differs for different rule keys", () => {
+  const a = computePatternId("#main", "wcag:wcag111|light", "light");
+  const b = computePatternId("#main", "wcag:wcag143|light", "light");
+  assert.notEqual(a, b);
+});
+
+test("computePatternId differs for different colour modes", () => {
+  const a = computePatternId("#main", "wcag:wcag143|light", "light");
+  const b = computePatternId("#main", "wcag:wcag143|light", "dark");
+  assert.notEqual(a, b);
+});
+
+test("computePatternId is the same for same locator+rule across different URLs", () => {
+  // Pattern ID does not include the URL so the same defect on two pages shares an ID.
+  const a = computePatternId("#btn", "rule:button-name|light", "light");
+  const b = computePatternId("#btn", "rule:button-name|light", "light");
+  assert.equal(a, b);
+});
+
+test("annotateWithFingerprints attaches patternId to non-duplicate findings", () => {
+  const store = {};
+  const failure = { rule: "color-contrast", xpath: "#main", html: null, isDuplicate: false, colorScheme: "light" };
+  const results = [makeResult([failure])];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-03-01T00:00:00Z" });
+
+  assert.ok(failure.patternId, "patternId should be attached");
+  assert.match(failure.patternId, /^A11Y-[0-9a-f]{8}$/, "patternId should be in A11Y-xxxxxxxx format");
+});
+
+test("annotateWithFingerprints gives same patternId to same defect on different pages", () => {
+  const store = {};
+  const makePageResult = (url) => {
+    const noopScanner = { failures: [], counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 } };
+    const failure = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false, colorScheme: "light" };
+    return {
+      result: {
+        submittedUrl: url,
+        finalUrl: url,
+        axe: { failures: [failure], counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 } },
+        alfa: noopScanner, equalAccess: noopScanner, accesslint: noopScanner, qualweb: noopScanner
+      },
+      failure
+    };
+  };
+
+  const page1 = makePageResult("https://example.com/page1");
+  const page2 = makePageResult("https://example.com/page2");
+  annotateWithFingerprints(store, [page1.result, page2.result], { scannedAt: "2026-03-01T00:00:00Z" });
+
+  assert.notEqual(page1.failure.fingerprint, page2.failure.fingerprint, "instance IDs should differ across pages");
+  assert.equal(page1.failure.patternId, page2.failure.patternId, "pattern IDs should be identical across pages");
 });
 
 // ── normalizeRuleKey WCAG SC filtering ────────────────────────────────────

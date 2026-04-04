@@ -439,6 +439,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                    data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}"
                    data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
                    data-copy-fingerprint="${escapeHtml(ex.fingerprint || '')}"
+                   data-copy-pattern-id="${escapeHtml(ex.patternId || '')}"
                    data-copy-pages-count="${f.pages.size}"
                    data-copy-occurrences="${f.totalOccurrences}"
                    data-copy-disabilities="${escapeHtml(disabilities.join(', '))}">
@@ -453,7 +454,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                 <div class="example-mode">
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
                   ${ex.firstSeenAt ? `<span class="first-seen">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
-                   ${ex.fingerprint ? `<span class="bug-id-display" title="Stable unique identifier for this finding across scans">🔑 Bug ID: <code class="bug-id-code">${escapeHtml(ex.fingerprint)}</code></span>` : ''}
+                   ${ex.fingerprint ? `<span class="bug-id-display" title="Instance ID: stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">🔑 Instance ID: <code class="bug-id-code">A11Y-${escapeHtml(ex.fingerprint.slice(0, 8))}</code>${ex.patternId ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(ex.patternId)}</code>` : ''}</span>` : ''}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
@@ -1666,6 +1667,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       const viewport = el.dataset.copyViewport || 'desktop';
       const severity = el.dataset.copySeverity || '';
       const fingerprint = el.dataset.copyFingerprint || '';
+      const patternId = el.dataset.copyPatternId || '';
       const pagesCount = el.dataset.copyPagesCount || '';
       const occurrences = el.dataset.copyOccurrences || '';
       const disabilities = el.dataset.copyDisabilities || '';
@@ -1701,7 +1703,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         \`## Accessibility Issue: \${title}\`,
         '',
       ];
-      if (fingerprint) metaParts.push(\`**Bug ID:** \\\`\${fingerprint}\\\`\`);
+      if (fingerprint) {
+        const instanceId = \`A11Y-\${fingerprint.slice(0, 8)}\`;
+        const bugIdValue = patternId
+          ? \`\\\`\${instanceId}\\\` (instance) / \\\`\${patternId}\\\` (pattern)\`
+          : \`\\\`\${instanceId}\\\`\`;
+        metaParts.push(\`**Bug ID:** \${bugIdValue}\`);
+      }
       metaParts.push(\`**URL:** \${pageUrl}\`);
       if (xpath) metaParts.push(\`**XPath:** \\\`\${xpath}\\\`\`);
       if (wcagCitation) metaParts.push(\`**WCAG SC:** \${wcagCitation}\`);
