@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-05T02:36:54.332Z",
+  "issueNumber": 52,
+  "scanTitle": "Alberta",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 43,
+      "uniqueFailed": 43,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 1384,
+      "uniqueFailed": 1384,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 42,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 356
+    }
+  },
+  "duplicateFindingTotals": 1029,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}

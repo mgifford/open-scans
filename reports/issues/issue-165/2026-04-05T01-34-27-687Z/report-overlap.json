@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-04-05T01:33:29.179Z",
+  "issueNumber": 165,
+  "scanTitle": "CMS.gov Scan —",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "accesslint",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 9,
+      "uniqueFailed": 9,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4164,
+      "uniqueFailed": 4164,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 1633,
+      "uniqueFailed": 1136,
+      "duplicates": 497
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 279,
+      "uniqueFailed": 278,
+      "duplicates": 1
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 219,
+      "uniqueFailed": 219,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 9,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 795,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 1136,
+      "accesslint": 0,
+      "qualweb": 0
+    },
+    "accesslint": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 278,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "accesslint": 0,
+      "qualweb": 73
+    }
+  },
+  "duplicateFindingTotals": 4013,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
