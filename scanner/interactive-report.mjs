@@ -288,8 +288,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
           <thead>
             <tr>
               <th scope="col" aria-sort="none"><button class="priority-sort-btn" data-sort-col="page" aria-label="Sort by page">Page <span class="sort-icon" aria-hidden="true">↕</span></button></th>
-              ${SCANNERS.map(eng => `<th scope="col" aria-sort="${eng === 'axe' ? 'descending' : 'none'}"><button class="priority-sort-btn" data-sort-col="${eng.toLowerCase()}" aria-label="Sort by ${SCANNER_LABELS[eng]} Unique">${SCANNER_LABELS[eng]} Unique <span class="sort-icon" aria-hidden="true">${eng === 'axe' ? '↓' : '↕'}</span></button></th>`).join('')}
-              <th scope="col" aria-sort="none"><button class="priority-sort-btn" data-sort-col="total" aria-label="Sort by Total Unique">Total Unique <span class="sort-icon" aria-hidden="true">↕</span></button></th>
+              ${SCANNERS.map(eng => `<th scope="col"${eng === 'axe' ? ' class="axe-col-header"' : ''} aria-sort="${eng === 'axe' ? 'descending' : 'none'}"><button class="priority-sort-btn" data-sort-col="${eng.toLowerCase()}" aria-label="Sort by ${SCANNER_LABELS[eng]} unique count">${SCANNER_LABELS[eng]} <span class="sort-icon" aria-hidden="true">${eng === 'axe' ? '↓' : '↕'}</span></button></th>`).join('')}
+              <th scope="col" aria-sort="none"><button class="priority-sort-btn" data-sort-col="total" aria-label="Sort by total unique count">Total <span class="sort-icon" aria-hidden="true">↕</span></button></th>
             </tr>
           </thead>
           <tbody>
@@ -309,11 +309,11 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                 ${SCANNERS.map(eng => {
       const count = counts[eng];
       const overlap = getOverlap(r, eng);
-      if (count === 0) return `<td class="count-cell count-zero">0</td>`;
+      if (count === 0) return `<td class="count-cell count-zero${eng === 'axe' ? ' axe-col-cell' : ''}">0</td>`;
       const overlapHtml = overlap > 0
         ? ` <span class="overlap-badge" title="${overlap} finding(s) cover WCAG criteria also reported by axe">(+${overlap})</span>`
         : '';
-      return `<td class="count-cell">
+      return `<td class="count-cell${eng === 'axe' ? ' axe-col-cell' : ''}">
                     <button class="count-btn" 
                             data-page-url="${escapeHtml(filterUrl)}"
                             data-engine="${eng}"
@@ -967,6 +967,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .count-cell { text-align: right; }
     .count-zero { color: var(--muted); }
     .count-total { text-align: right; }
+    .priority-table thead th.axe-col-header { background: var(--primary); color: var(--badge-count-text); border-bottom-color: var(--primary); }
+    .priority-table thead th.axe-col-header .priority-sort-btn { color: var(--badge-count-text); font-weight: 700; font-size: 1em; }
+    .priority-table thead th.axe-col-header .priority-sort-btn:hover { color: var(--badge-count-text); opacity: 0.85; }
+    .axe-col-cell { background: color-mix(in srgb, var(--primary) 8%, transparent); font-weight: 700; }
     .overlap-badge {
       font-size: 0.8em;
       color: var(--muted);
