@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-07T15:36:57.691Z",
+  "issueNumber": 248,
+  "scanTitle": "MD Veterans Accessbility Scan",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 2,
+      "uniqueFailed": 2,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 276,
+      "uniqueFailed": 155,
+      "duplicates": 121
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 124
+    }
+  },
+  "duplicateFindingTotals": 121,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
