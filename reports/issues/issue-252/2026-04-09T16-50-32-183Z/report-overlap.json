@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-09T16:49:45.895Z",
+  "issueNumber": 252,
+  "scanTitle": "Accessibility scans, If.se, prioritized pages",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 48,
+      "uniqueFailed": 48,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 1479,
+      "uniqueFailed": 1363,
+      "duplicates": 116
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 48,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 1363
+    }
+  },
+  "duplicateFindingTotals": 116,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
