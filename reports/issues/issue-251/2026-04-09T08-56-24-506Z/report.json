@@ -1,0 +1,490 @@
+{
+  "issueNumber": 251,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/251",
+  "issueTitle": "SCAN: Listberg",
+  "scanTitle": "Listberg",
+  "submittedBy": "pemson-18",
+  "engines": [
+    "axe",
+    "alfa"
+  ],
+  "scannedAt": "2026-04-09T08:55:41.096Z",
+  "totalElapsedMs": 16954,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 7,
+    "failed": 4,
+    "cantTell": 0,
+    "inapplicable": 80
+  },
+  "axeTotals": {
+    "passed": 116,
+    "failed": 2,
+    "cantTell": 0,
+    "inapplicable": 128
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 1,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://listberg.com",
+      "finalUrl": "https://listberg.com/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Home | Listberg.com",
+      "elapsedMs": 16648,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 7,
+          "failed": 4,
+          "cantTell": 0,
+          "inapplicable": 80
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r87",
+          "https://alfa.siteimprove.com/rules/sia-r9",
+          "https://alfa.siteimprove.com/rules/sia-r96"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r110",
+          "https://alfa.siteimprove.com/rules/sia-r16",
+          "https://alfa.siteimprove.com/rules/sia-r21",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r70"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r59",
+            "xpath": null,
+            "html": null,
+            "message": "The document does not have a heading element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "58ca5df08606",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-7dcace7e"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r87",
+            "xpath": null,
+            "html": null,
+            "message": "The document has no tabbable descendants",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f34306de7f84",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-5d4f96b0"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r9",
+            "xpath": "/meta",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\" />",
+            "message": "The refresh or redirect is delayed",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a2b7044b4c5f",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-ba0bdfb1"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r96",
+            "xpath": "/meta",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\" />",
+            "message": "The refresh or redirect is delayed",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "da26a8b4ccb0",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-7ce8c03e"
+          }
+        ],
+        "outcomeCount": 91,
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 116,
+          "failed": 2,
+          "cantTell": 0,
+          "inapplicable": 128
+        },
+        "failedRules": [
+          "meta-refresh"
+        ],
+        "passedRules": [
+          "aria-allowed-role",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-required-attr",
+          "aria-roles",
+          "avoid-inline-spacing",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "page-has-heading-one",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "meta-refresh",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-refresh?application=playwright",
+            "impact": "critical",
+            "wcagSc": [
+              "wcag2a",
+              "wcag221"
+            ],
+            "xpath": "meta[http-equiv=\"refresh\"]",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\">",
+            "message": "Delayed refresh under 20 hours must not be used",
+            "fixSummary": "Fix any of the following:\n  <meta> tag forces timed refresh of page (less than 20 hours)",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f40add467d29",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-6b8a67f2"
+          },
+          {
+            "rule": "meta-refresh",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-refresh?application=playwright",
+            "impact": "critical",
+            "wcagSc": [
+              "wcag2a",
+              "wcag221"
+            ],
+            "xpath": "meta[http-equiv=\"refresh\"]",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\">",
+            "message": "Delayed refresh under 20 hours must not be used",
+            "fixSummary": "Fix any of the following:\n  <meta> tag forces timed refresh of page (less than 20 hours)",
+            "relatedPaths": null,
+            "colorScheme": "dark",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "03d44c0d427b",
+            "firstSeenAt": "2026-04-09T08:55:41.096Z",
+            "patternId": "A11Y-990698bd"
+          }
+        ],
+        "outcomeCount": 246,
+        "darkModeScanned": true,
+        "mediaQuerySupport": {
+          "darkMode": true,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 2
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "meta-refresh",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [
+            "2.2.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-refresh?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://listberg.com",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\">",
+            "xpath": "meta[http-equiv=\"refresh\"]",
+            "message": "Delayed refresh under 20 hours must not be used",
+            "fixSummary": "Fix any of the following:\n  <meta> tag forces timed refresh of page (less than 20 hours)",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          },
+          {
+            "url": "https://listberg.com",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\">",
+            "xpath": "meta[http-equiv=\"refresh\"]",
+            "message": "Delayed refresh under 20 hours must not be used",
+            "fixSummary": "Fix any of the following:\n  <meta> tag forces timed refresh of page (less than 20 hours)",
+            "relatedPaths": null,
+            "colorScheme": "dark",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r59",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [
+            "2.4.6"
+          ],
+          "conformanceLevel": "AA"
+        },
+        "wcag": {
+          "scs": [
+            "2.4.6"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://listberg.com",
+            "html": null,
+            "xpath": null,
+            "message": "The document does not have a heading element",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r87",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://listberg.com",
+            "html": null,
+            "xpath": null,
+            "message": "The document has no tabbable descendants",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r9",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://listberg.com",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\" />",
+            "xpath": "/meta",
+            "message": "The refresh or redirect is delayed",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r96",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://listberg.com",
+            "html": "<meta http-equiv=\"refresh\" content=\"360\" />",
+            "xpath": "/meta",
+            "message": "The refresh or redirect is delayed",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 1,
+      "Visual Designer": 0,
+      "Content Author": 1,
+      "Front-End Developer": 5
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 6,
+      "Minor": 0
+    }
+  }
+}

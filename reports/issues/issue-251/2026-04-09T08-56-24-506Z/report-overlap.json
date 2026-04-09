@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-09T08:55:41.114Z",
+  "issueNumber": 251,
+  "scanTitle": "Listberg",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 2,
+      "uniqueFailed": 2,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4,
+      "uniqueFailed": 4,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 2,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 4
+    }
+  },
+  "duplicateFindingTotals": 0,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
