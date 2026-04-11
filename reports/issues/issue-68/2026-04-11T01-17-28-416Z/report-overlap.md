@@ -1,0 +1,23 @@
+# Scanner Overlap Report: London
+
+- Generated at: 2026-04-11T01:16:39.401Z
+- Overlap entries: 0
+- Duplicate findings in later scanners: 155
+
+## Scanner Summary
+
+| Scanner | Failed | Unique Failed | Duplicates |
+|---|---:|---:|---:|
+| axe | 174 | 174 | 0 |
+| QualWeb | 418 | 418 | 0 |
+
+## Overlap Matrix (shared findings by scanner pair)
+
+| Scanner | axe | QualWeb |
+| ---: | ---: | ---: |
+| axe | 171 | 0 |
+| QualWeb | 0 | 262 |
+
+## Top Shared Findings
+
+No cross-scanner overlaps were detected.
