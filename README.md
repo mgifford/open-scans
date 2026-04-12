@@ -29,6 +29,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [Development](#development)
 - [Documentation](#documentation)
 - [Current Status](#current-status)
+- [Related Projects](#related-projects)
 - [AI Disclosure](#ai-disclosure)
 - [License](#license)
 
@@ -296,6 +297,19 @@ npm run run:analyse-trends    # Analyse trend data
 
 Planning artifacts and work packages are in `kitty-specs/001-issue-driven-accessibility-scanner/`.
 
+## Related Projects
+
+**[o-hat-scanner](https://github.com/mgifford/o-hat-scanner)** — A companion tool that may be a better fit if you want to embed scanning directly in your own repository's CI pipeline rather than use an issue-driven shared service. Key differences:
+
+- **Standalone HTML scanner**: Drop a single file into your site to scan it from the inside (same-origin).
+- **targets.yml scheduling**: Define sites, modes (`sitemap`, `crawl`, `list`, `discover`), and cron schedules in one file—no GitHub issues needed.
+- **Discovery mode**: Uses Bing SERP + navigation crawl to automatically identify a site's most important pages (useful when you lack a reliable sitemap).
+- **Lighter stack**: Primarily axe-core via Playwright; lower setup overhead for single-engine use.
+
+Choose **open-scans** when you need multi-engine comparison (axe, ALFA, IBM Equal Access, AccessLint, QualWeb), cross-engine WCAG overlap analysis, or a no-infrastructure scanning service anyone can trigger via a form.
+
+---
+
 ## AI Disclosure
 
 This section documents how AI tools have been used to build and run this project.
@@ -330,6 +344,7 @@ The frontend (GitHub Pages) is a static site. No AI inference runs server-side o
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Copilot prompt files for accessibility-first code generation — `.github/prompts/` files and AGENTS.md documentation | Development – March 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Unique identifier (Bug ID) visible display in HTML reports — fingerprint shown as `🔑 Bug ID:` badge in example items | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | README improvements — badges, Mermaid diagram, ToC, engine table, Development section, URL limit fix | Development – April 2026 |
+| GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added Related Projects section linking to o-hat-scanner with feature comparison | Development – April 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
