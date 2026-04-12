@@ -51,7 +51,7 @@ Open Scans is a **three-tier, serverless accessibility scanning platform** built
                               ▼
 ┌──────────────────────────────────────────────────────────────┐
 │  Scanner (Node.js 20+, ES Modules)                            │
-│  11 .mjs modules · 5 accessibility engines · Playwright       │
+│  13 .mjs modules · 5 accessibility engines · Playwright       │
 │  Outputs: JSON · Markdown · HTML · CSV · overlap reports      │
 └─────────────────────────────┬────────────────────────────────┘
                               │ git commit + push
@@ -184,6 +184,7 @@ Optional directives parsed from the body:
 - `Engine: alfa qualweb` – engine selection
 - `Page: 20` – crawl up to 20 URLs from the base URL
 - `TREND_ANALYSIS` – opt in to historical trend analysis
+- `REMEDIATE` (in issue title) – opt in to AI-powered remediation suggestions (requires `GITHUB_TOKEN`)
 
 ### 3.3 Issue Lifecycle
 
@@ -471,6 +472,73 @@ Provides human-readable descriptions for IBM Equal Access Checker rule IDs.
 **Function**: `getEqualAccessRuleName(ruleId)` – returns rule name or falls back to the ID.
 
 Covers 50+ IBM accessibility rules with WCAG criterion mappings.
+
+---
+
+### 5.11 `ai-remediation.mjs` – AI-Powered Remediation Suggestions (~250 lines)
+
+Generates before/after code fix suggestions for the most common accessibility violations using the **GitHub Models API** (OpenAI-compatible, `gpt-4o-mini`).
+
+**Activation**: triggered when the issue title contains the keyword `REMEDIATE` (case-insensitive).
+
+**Exported constants and functions**:
+
+| Export | Description |
+|---|---|
+| `AI_DISCLAIMER` | Standard disclaimer text prepended to all AI-generated output |
+| `generateRemediationSuggestions(failures, options)` | Calls GitHub Models API for top 10 violations; returns `{ suggestions, disclaimer, model }` |
+| `formatRemediationMarkdown(remediationResult)` | Formats suggestion list as a Markdown section for issue comments |
+
+**Design principles**:
+- Opt-in only (keyword-gated) to control API costs
+- Deduplicates by rule: one API call per unique violation type
+- Processes only the **top 10 violations** by total occurrence count
+- Gracefully degrades when `GITHUB_TOKEN` is unavailable or the API fails
+- Includes an AI disclaimer in all generated output
+
+**Suggestion schema** (per suggestion object):
+
+| Field | Description |
+|---|---|
+| `ruleKey` | `"{engine}:{ruleId}"` composite key |
+| `rule` | Rule identifier |
+| `engine` | Scanner engine name |
+| `ruleTitle` | Human-readable rule description |
+| `ruleUrl` | URL to rule documentation |
+| `wcag` | Associated WCAG success criteria |
+| `totalOccurrences` | Number of times violation appeared across scanned pages |
+| `pageCount` | Number of pages affected |
+| `suggestion` | AI-generated `{ before, after, explanation }` or `null` on API failure |
+
+---
+
+### 5.12 `generate-trends-html.mjs` – Trends Dashboard Generator (~400 lines)
+
+Generates `trends.html` — a static cross-issue accessibility trend dashboard. Called automatically by `generate-reports-html.mjs` after regenerating `reports.html`.
+
+**Exported functions**:
+
+| Function | Description |
+|---|---|
+| `loadAllTrends(reportsDir)` | Loads all `trends.json` files from `reports/issues/issue-*/` |
+| `aggregateSystemicPatterns(trendItems)` | Computes top 20 most widespread systemic rules across all issues |
+| `renderTrendSparkline(analysis, maxWidth)` | Returns an inline SVG bar chart for one issue's violation history |
+| `generateTrendsHtml(trendItems)` | Returns the complete `trends.html` document as a string |
+
+**`trends.html` page sections**:
+- **Summary header**: total issues tracked, counts of improving / stable / worsening / no-history
+- **Cross-issue trend table**: one row per issue with overall trend indicator, latest violation count, and inline SVG sparkline showing violation history
+- **Systemic patterns leaderboard**: top 20 rules appearing across the most issues and pages
+- Inline SVG bar charts (no external CDN or JS charting library)
+
+**Sparkline bar colours**:
+
+| CSS class | Meaning |
+|---|---|
+| `spark-bar-baseline` | First (baseline) data point |
+| `spark-bar-improving` | Count decreased from previous scan |
+| `spark-bar-worsening` | Count increased from previous scan |
+| `spark-bar-stable` | Count unchanged |
 
 ---
 
@@ -1041,6 +1109,16 @@ A static HTML page listing all completed scans in a table, regenerated after eve
 - Pass / Fail / Can't Tell (per engine)
 - Report links: HTML · Markdown · CSV · Overlap
 
+### 15.4 `trends.html` – Cross-Issue Trends Dashboard
+
+A static HTML page regenerated alongside `reports.html` by `generate-reports-html.mjs` (via `generate-trends-html.mjs`). Available at the "Trends" link in the reports navigation. Sections:
+
+- **Summary header**: total issues tracked, counts of Improving / Stable / Worsening / No History
+- **Cross-issue trend table**: one row per issue with overall trend indicator (`📈` / `➡️` / `📉`), latest violation count, and an inline SVG sparkline of historical violation counts
+- **Systemic patterns leaderboard**: top 20 rules appearing as systemic patterns (≥50% of pages) across the most issues and pages globally
+
+The page is fully self-contained — no CDN dependencies; SVG charts are rendered server-side.
+
 ---
 
 ## 16. Rule Metadata & Disability Mapping
@@ -1147,11 +1225,11 @@ Workflows use minimal required permissions:
 Node.js built-in test runner (`node:test`). No external test framework required.
 
 ```bash
-npm test                            # Run all 21 test modules
+npm test                            # Run all 23 test modules
 node --test tests/unit/parse-issue.test.mjs  # Run single module
 ```
 
-### 18.2 Test Coverage (21 modules)
+### 18.2 Test Coverage (23 modules)
 
 | Test File | Area Covered |
 |---|---|
@@ -1176,6 +1254,8 @@ node --test tests/unit/parse-issue.test.mjs  # Run single module
 | `alfa-rule-metadata.test.mjs` | ALFA rule URL → description mapping |
 | `equalaccess-rule-metadata.test.mjs` | IBM rule ID → description mapping |
 | `pages-intake.test.mjs` | GitHub Pages scan intake and processing |
+| `ai-remediation.test.mjs` | AI remediation suggestion generation and formatting |
+| `generate-trends-html.test.mjs` | Trends HTML dashboard generation and sparkline rendering |
 
 ### 18.3 Test Conventions
 
@@ -1208,7 +1288,7 @@ node --test tests/unit/parse-issue.test.mjs  # Run single module
 | Script | Command |
 |---|---|
 | `npm test` | `node --test tests/unit/*.test.mjs` |
-| `npm run lint` | `node --check` on all five scanner modules |
+| `npm run lint` | `node --check` on all scanner modules |
 | `npm run run:parse` | `node scanner/parse-issue.mjs` |
 | `npm run run:validate` | `node scanner/validate-targets.mjs` |
 | `npm run run:scan` | `node scanner/run-scan.mjs` |
@@ -1342,8 +1422,8 @@ User views results at reports.html
 | Non-web file extensions blocked | 40+ |
 | Private IPv4 ranges blocked | 6 |
 | Private IPv6 ranges blocked | 4 |
-| Scanner module count | 11 `.mjs` files |
-| Unit test modules | 21 |
+| Scanner module count | 13 `.mjs` files |
+| Unit test modules | 23 |
 | GitHub Actions workflows | 8 |
 | Report artifacts per scan | Up to 6 files |
 
