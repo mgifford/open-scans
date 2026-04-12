@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-12T02:05:21.725Z",
+  "issueNumber": 69,
+  "scanTitle": "Spain",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 936,
+      "uniqueFailed": 936,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 19615,
+      "uniqueFailed": 19615,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 928,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 2923
+    }
+  },
+  "duplicateFindingTotals": 16700,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
