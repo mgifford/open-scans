@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-13T01:20:44.932Z",
+  "issueNumber": 38,
+  "scanTitle": "LocalGov Drupal",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 309,
+      "uniqueFailed": 309,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4144,
+      "uniqueFailed": 4144,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 304,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 705
+    }
+  },
+  "duplicateFindingTotals": 3444,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
