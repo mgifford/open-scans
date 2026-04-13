@@ -299,9 +299,9 @@ Planning artifacts and work packages are in `kitty-specs/001-issue-driven-access
 
 ## Related Projects
 
-**[o-hat-scanner](https://github.com/mgifford/o-hat-scanner)** — A companion tool that may be a better fit if you want to embed scanning directly in your own repository's CI pipeline rather than use an issue-driven shared service. Key differences:
-**[Standalone HTML scanner](https://github.com/mgifford/o-hat-standalone)**: Drop a single file into your site to scan it from the inside (same-origin).
+**[o-hat-scanner](https://github.com/mgifford/o-hat-scanner)** — A companion tool that may be a better fit if you want to embed scanning directly in your own repository's CI pipeline rather than use an issue-driven shared service, or the **[Standalone HTML scanner](https://github.com/mgifford/o-hat-standalone)**: Drop a single file into your site to scan it from the inside (same-origin).
 
+Key differences:
 - **targets.yml scheduling**: Define sites, modes (`sitemap`, `crawl`, `list`, `discover`), and cron schedules in one file—no GitHub issues needed.
 - **Discovery mode**: Uses Bing SERP + navigation crawl to automatically identify a site's most important pages (useful when you lack a reliable sitemap).
 - **Lighter stack**: Primarily axe-core via Playwright; lower setup overhead for single-engine use.
