@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-14T01:06:43.380Z",
+  "issueNumber": 61,
+  "scanTitle": "Energy.gov",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 26,
+      "uniqueFailed": 26,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 658,
+      "uniqueFailed": 458,
+      "duplicates": 200
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 22,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 458
+    }
+  },
+  "duplicateFindingTotals": 204,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
