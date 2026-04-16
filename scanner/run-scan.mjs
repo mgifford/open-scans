@@ -3325,7 +3325,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   process.on('unhandledRejection', (reason, promise) => {
     const msg = reason instanceof Error ? reason.message : String(reason);
     // If it's a browser/page close error, log it as a warning but don't crash
-    if (msg.includes("Protocol error") || msg.includes("Connection closed") || msg.includes("detached") || msg.includes("Target closed")) {
+    if (msg.includes("Protocol error") || msg.includes("Connection closed") || msg.includes("detached") || msg.includes("Target closed") || msg.includes("Execution context was destroyed")) {
       console.error("Warning: Unhandled browser cleanup error (expected after timeouts):", msg);
     } else {
       // For other unhandled rejections, log and exit
