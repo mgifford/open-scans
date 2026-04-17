@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-17T17:40:40.009Z",
+  "issueNumber": 263,
+  "scanTitle": "https://www.cityofkingston.ca",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 257,
+      "uniqueFailed": 257,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 5122,
+      "uniqueFailed": 5122,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 233,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1391
+    }
+  },
+  "duplicateFindingTotals": 3755,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
