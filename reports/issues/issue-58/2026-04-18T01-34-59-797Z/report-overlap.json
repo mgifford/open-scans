@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-18T01:34:08.315Z",
+  "issueNumber": 58,
+  "scanTitle": "GOV.UK",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 202,
+      "uniqueFailed": 202,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 8632,
+      "uniqueFailed": 8632,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 202,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1599
+    }
+  },
+  "duplicateFindingTotals": 7033,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
