@@ -310,6 +310,23 @@ Choose **open-scans** when you need multi-engine comparison (axe, ALFA, IBM Equa
 
 ---
 
+**[Kilotest](https://github.com/jrpool/kilotest)** / **[Testaro](https://github.com/jrpool/testaro)** — An ensemble accessibility testing service that uses 11 tools in a distributed server-agent architecture. Kilotest inspired several aspects of open-scans' multi-engine approach. Academic papers from the Testaro/Kilotest project that provide useful background:
+
+- [How to run a thousand accessibility tests](https://medium.com/cvs-health-tech-blog/how-to-run-a-thousand-accessibility-tests-63692ad120c3) (CVS Health, 2022)
+- [Testaro: Efficient Ensemble Testing for Web Accessibility](https://arxiv.org/abs/2309.10167) (arXiv, 2023)
+- [Accessibility Metatesting: Comparing Nine Testing Tools](https://arxiv.org/abs/2304.07591) (arXiv, 2023)
+
+Key differences from open-scans:
+- **Server/agent model**: Kilotest runs a persistent server; open-scans uses GitHub Actions (zero infrastructure).
+- **11 tools vs. 5 engines**: Testaro integrates ASLint, Editoria11y, HTML CodeSniffer, Nu Html Checker, WallyAX, and WAVE in addition to the engines shared with open-scans.
+- **Device emulation**: Testaro can test with ~125 device profiles via Playwright (mobile, tablet, etc.).
+- **Job-based model**: Each Testaro job specifies a target URL plus a sequence of acts; open-scans uses GitHub issues as the job queue.
+- **API-key tools**: WAVE (WebAIM) and WallyAX require paid API keys; open-scans uses only free, open-source engines.
+
+Choose **Kilotest/Testaro** for a self-hosted, multi-agent, large-scale ensemble scan with device emulation. Choose **open-scans** for a zero-infrastructure, form-driven, GitHub-native scanning service.
+
+---
+
 ## AI Disclosure
 
 This section documents how AI tools have been used to build and run this project.
@@ -345,6 +362,7 @@ The frontend (GitHub Pages) is a static site. No AI inference runs server-side o
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Unique identifier (Bug ID) visible display in HTML reports — fingerprint shown as `🔑 Bug ID:` badge in example items | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | README improvements — badges, Mermaid diagram, ToC, engine table, Development section, URL limit fix | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added Related Projects section linking to o-hat-scanner with feature comparison | Development – April 2026 |
+| GitHub Copilot Coding Agent (claude-sonnet-4.6) | Researched kilotest/Testaro ensemble approach; added kilotest to Related Projects with academic paper references | Development – April 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

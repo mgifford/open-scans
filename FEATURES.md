@@ -1429,6 +1429,45 @@ User views results at reports.html
 
 ---
 
+## 22. Ensemble Testing Research & Kilotest Influence
+
+Open Scans is informed by research on accessibility ensemble testing published by the [Testaro](https://github.com/jrpool/testaro) / [Kilotest](https://github.com/jrpool/kilotest) project. Key papers:
+
+| Paper | Authors / Venue | Key insight |
+|---|---|---|
+| [How to run a thousand accessibility tests](https://medium.com/cvs-health-tech-blog/how-to-run-a-thousand-accessibility-tests-63692ad120c3) | CVS Health, 2022 | Ensemble approach reduces false negatives; each tool finds unique issues |
+| [Testaro: Efficient Ensemble Testing for Web Accessibility](https://arxiv.org/abs/2309.10167) | arXiv 2309.10167, 2023 | Architecture for combining ~11 tools into a single normalized job result |
+| [Accessibility Metatesting: Comparing Nine Testing Tools](https://arxiv.org/abs/2304.07591) | arXiv 2304.07591, 2023 | Quantifies per-tool false-positive and false-negative rates across WCAG criteria |
+
+### Testaro tools not yet in open-scans
+
+The Testaro engine supports 11 tools. Five are already covered by open-scans (axe, ALFA, IBM Equal Access, AccessLint, QualWeb); the following six are **not yet integrated**:
+
+| Tool | Maintainer | Notes |
+|---|---|---|
+| [ASLint](https://www.npmjs.com/package/@essentialaccessibility/aslint) | eSSENTIAL Accessibility | WCAG 2.x rule set; browser-injectable |
+| [Editoria11y](https://github.com/itmaybejj/editoria11y) | Princeton University | CMS content-authoring checks; less relevant for batch URL scans |
+| [HTML CodeSniffer](https://www.npmjs.com/package/html_codesniffer) | Squiz Labs | WCAG 2.x; browser-injectable (similar integration pattern to AccessLint) |
+| [Nu Html Checker](https://github.com/validator/validator) | W3C | HTML markup validity; Java-based (`vnu-jar`) |
+| [WallyAX](https://www.npmjs.com/package/@wally-ax/wax-dev) | Wally Solutions | Requires paid API key |
+| [WAVE](https://wave.webaim.org/api/) | WebAIM | Requires paid API key |
+
+> **Future work**: HTML CodeSniffer is the most natural next engine to add to open-scans—it is open-source, free, browser-injectable (like AccessLint), and tests WCAG 2.x Level A/AA/AAA. Nu Html Checker would add a complementary W3C markup-validity dimension that the current WCAG-focused engines do not cover.
+
+### Kilotest architectural differences
+
+| Dimension | Kilotest / Testaro | Open Scans |
+|---|---|---|
+| Infrastructure | Self-hosted server + distributed agents | GitHub Actions (zero infrastructure) |
+| Job queue | Persistent server polls agents | GitHub Issues as task queue |
+| Device emulation | ~125 Playwright device profiles | Desktop (Chromium) only |
+| Multi-browser | Chromium, WebKit, Firefox | Chromium (primary) |
+| Scheduling | Job `executionTimeStamp` field | Issue title prefix (`WEEKLY:`, `MONTHLY:`, etc.) |
+| Result format | Normalized `standard` result per tool | Engine-specific JSON + cross-engine overlap |
+| Scale | Designed for thousands of pages/day | Up to 500 URLs per scan |
+
+---
+
 ## Related Documentation
 
 | Document | Purpose |
