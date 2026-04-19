@@ -1,0 +1,861 @@
+{
+  "issueNumber": 265,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/265",
+  "issueTitle": "SCAN: Austin mobility services",
+  "scanTitle": "Austin mobility services",
+  "submittedBy": "danid123",
+  "engines": [
+    "axe",
+    "alfa"
+  ],
+  "scannedAt": "2026-04-19T21:21:38.861Z",
+  "totalElapsedMs": 10383,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 123,
+    "failed": 27,
+    "cantTell": 1,
+    "inapplicable": 61
+  },
+  "axeTotals": {
+    "passed": 97,
+    "failed": 4,
+    "cantTell": 0,
+    "inapplicable": 65
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 22,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+      "finalUrl": "https://atd.knack.com/mobility-services",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Knack",
+      "elapsedMs": 10012,
+      "error": null,
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 123,
+          "failed": 27,
+          "cantTell": 1,
+          "inapplicable": 61
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r47",
+          "https://alfa.siteimprove.com/rules/sia-r57",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r73"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r111",
+          "https://alfa.siteimprove.com/rules/sia-r113",
+          "https://alfa.siteimprove.com/rules/sia-r2",
+          "https://alfa.siteimprove.com/rules/sia-r3",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r41",
+          "https://alfa.siteimprove.com/rules/sia-r42",
+          "https://alfa.siteimprove.com/rules/sia-r5",
+          "https://alfa.siteimprove.com/rules/sia-r53",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r62",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r68",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r90"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"#my-applications\">Sign up / Log in</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "038cfb32deff",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-1a6c60d2"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+            "xpath": "/a",
+            "html": "<a href=\"https://www.austintexas.gov/page/privacy-policy\" target=\"_blank\">Privacy Policy</a>",
+            "message": "Target has insufficient size",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r47",
+            "xpath": "/meta",
+            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no\" />",
+            "message": "The `<meta>` element restricts the ability to zoom",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "e6d8fa8ca563",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-beaeed69"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a645ae242566",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-eaa01208"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+            "xpath": null,
+            "html": null,
+            "message": "The text is not included in a landmark region",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r61",
+            "xpath": null,
+            "html": null,
+            "message": "The document does not start with a level 1 heading",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d0e6e70da090",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-7f96594e"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p style=\"text-align: center;\">...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "b38e63a51f02",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-5cb620b6"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+            "xpath": "/p",
+            "html": "<p style=\"text-align: center;\">...</p>",
+            "message": "The line height of the paragraph is less than 1.5",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          }
+        ],
+        "outcomeCount": 212,
+        "duplicateFailedCount": 22,
+        "uniqueFailedCount": 5,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 97,
+          "failed": 4,
+          "cantTell": 0,
+          "inapplicable": 65
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "meta-viewport",
+          "page-has-heading-one",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "avoid-inline-spacing",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "landmark-banner-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-unique",
+          "link-in-text-block",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport-large",
+          "nested-interactive",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html lang=\"en\">",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a0831b7b7ab6",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-85b00be0"
+          },
+          {
+            "rule": "meta-viewport",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-viewport?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [
+              "wcag2aa",
+              "wcag144"
+            ],
+            "xpath": "meta[name=\"viewport\"]",
+            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no\">",
+            "message": "Zooming and scaling must not be disabled",
+            "fixSummary": "Fix any of the following:\n  user-scalable=no on <meta> tag disables zooming on mobile devices",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "bbf18eaf92f1",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-98527d57"
+          },
+          {
+            "rule": "page-has-heading-one",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html lang=\"en\">",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "416ca158d128",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-ee8d7590"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".kn-scenes",
+            "html": "<div class=\"kn-scenes kn-section\">",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f5ebbbb011a2",
+            "firstSeenAt": "2026-04-19T21:21:38.861Z",
+            "patternId": "A11Y-edc74e90"
+          }
+        ],
+        "outcomeCount": 166,
+        "darkModeScanned": false,
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 22
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "landmark-one-main",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures the page has exactly one main landmark. Screen reader users rely on the main landmark to skip navigation and jump directly to page content."
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<html lang=\"en\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "meta-viewport",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Critical",
+          "blocking": true,
+          "wcagCriteria": [
+            "1.4.4"
+          ],
+          "conformanceLevel": "AA",
+          "description": "Ensures viewport meta does not disable text scaling. Disabling user-scaling prevents people with low vision from enlarging text to a readable size."
+        },
+        "wcag": {
+          "scs": [
+            "1.4.4"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-viewport?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no\">",
+            "xpath": "meta[name=\"viewport\"]",
+            "message": "Zooming and scaling must not be disabled",
+            "fixSummary": "Fix any of the following:\n  user-scalable=no on <meta> tag disables zooming on mobile devices",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "page-has-heading-one",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<html lang=\"en\">",
+            "xpath": "html",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures all page content is contained within landmark regions. Content outside landmarks cannot be found by screen reader users navigating by landmarks."
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<div class=\"kn-scenes kn-section\">",
+            "xpath": ".kn-scenes",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r111",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "UX Designer",
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true,
+          "wcagCriteria": [
+            "2.5.8"
+          ],
+          "conformanceLevel": "AA"
+        },
+        "wcag": {
+          "scs": [
+            "2.5.8"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<a href=\"#my-applications\">Sign up / Log in</a>",
+            "xpath": "/a",
+            "message": "Target has insufficient size",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r47",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no\" />",
+            "xpath": "/meta",
+            "message": "The `<meta>` element restricts the ability to zoom",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r57",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": null,
+            "xpath": null,
+            "message": "The text is not included in a landmark region",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r61",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice"
+        },
+        "wcag": {
+          "scs": [],
+          "level": "best-practice"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": null,
+            "xpath": null,
+            "message": "The document does not start with a level 1 heading",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r73",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://atd.knack.com/mobility-services#chauffeur-permit/",
+            "html": "<p style=\"text-align: center;\">...</p>",
+            "xpath": "/p",
+            "message": "The line height of the paragraph is less than 1.5",
+            "fingerprint": null,
+            "firstSeenAt": null,
+            "patternId": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 5,
+      "Visual Designer": 1,
+      "Content Author": 1,
+      "Front-End Developer": 7
+    },
+    "severityStats": {
+      "Critical": 1,
+      "Serious": 1,
+      "Moderate": 7,
+      "Minor": 0
+    }
+  }
+}
