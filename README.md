@@ -299,6 +299,20 @@ Planning artifacts and work packages are in `kitty-specs/001-issue-driven-access
 
 ## Related Projects
 
+### Accessibility Tools Suite
+
+`open-scans` is part of a suite of complementary accessibility tools:
+
+| Tool | Description | Link |
+| :--- | :--- | :--- |
+| **Top Task Finder** | Identifies the top tasks users want to accomplish on a website — useful for prioritising which pages to scan first | [mgifford.github.io/top-task-finder](https://mgifford.github.io/top-task-finder) |
+| **Open Scans** | Multi-engine WCAG 2.2 accessibility scanner — the project you are in | [mgifford.github.io/open-scans](https://mgifford.github.io/open-scans) |
+| **Alt Text Scan** | Focused scanner for image alternative-text quality across a site | [mgifford.github.io/alt-text-scan](https://mgifford.github.io/alt-text-scan) |
+
+A shared navigation bar links all three tools together so users can move between them without losing context.
+
+### Other companion tools
+
 **[o-hat-scanner](https://github.com/mgifford/o-hat-scanner)** — A companion tool that may be a better fit if you want to embed scanning directly in your own repository's CI pipeline rather than use an issue-driven shared service, or the **[Standalone HTML scanner](https://github.com/mgifford/o-hat-standalone)**: Drop a single file into your site to scan it from the inside (same-origin).
 
 Key differences:
@@ -345,6 +359,7 @@ The frontend (GitHub Pages) is a static site. No AI inference runs server-side o
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Unique identifier (Bug ID) visible display in HTML reports — fingerprint shown as `🔑 Bug ID:` badge in example items | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | README improvements — badges, Mermaid diagram, ToC, engine table, Development section, URL limit fix | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added Related Projects section linking to o-hat-scanner with feature comparison | Development – April 2026 |
+| GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added accessibility tools suite navigation bar linking Top Task Finder, Open Scans, and Alt Text Scan across all pages; expanded Related Projects section | Development – April 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
