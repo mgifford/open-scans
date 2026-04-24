@@ -192,65 +192,12 @@
       }
     }
     
-    .skip-link {
-      position: absolute;
-      top: -3rem;
-      left: 0;
-      background: #0969da;
-      color: white;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      z-index: 100;
-      border-radius: 0 0 4px 4px;
-    }
-
-    .skip-link:focus {
-      top: 0;
-    }
-
-    /* ── Accessibility tools suite navigation ──────────────────────────── */
-    .suite-nav {
-      display: flex;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      padding: 0.5rem 0.75rem;
-      background: #f6f8fa;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      font-size: 0.875rem;
-    }
-
-    .suite-nav a {
-      color: #0969da;
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .suite-nav a:hover {
-      text-decoration: underline;
-    }
-
-    .suite-nav a[aria-current="page"] {
-      font-weight: 700;
-      color: #24292f;
-      background: #d0d7de;
-    }
-
-    .suite-nav a:focus-visible {
-      outline: 2px solid #0969da;
-      outline-offset: 2px;
-    }
-
     .nav {
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid #d0d7de;
     }
-
+    
     .nav a {
       color: #0969da;
       text-decoration: none;
@@ -444,11 +391,6 @@
   <div class="container">
     <header>
       <a class="skip-link" href="#main-content">Skip to main content</a>
-      <nav class="suite-nav" aria-label="Accessibility tools suite">
-        <a href="https://mgifford.github.io/top-task-finder">Top Task Finder</a>
-        <a href="https://mgifford.github.io/open-scans" aria-current="page">Open Scans</a>
-        <a href="https://mgifford.github.io/alt-text-scan">Alt Text Scan</a>
-      </nav>
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Submit URLs</a>
         <a href="reports.html">View Reports</a>
@@ -465,21 +407,21 @@
       <h2 id="summary-heading">Weekly Violation Totals</h2>
       <div class="summary-stats" aria-label="Summary statistics">
         <div class="summary-stat">
-          <span class="summary-stat-value">210</span>
+          <span class="summary-stat-value">211</span>
           <span class="summary-stat-label">Total scans</span>
         </div>
         <div class="summary-stat">
-          <span class="summary-stat-value">14,779</span>
+          <span class="summary-stat-value">14,786</span>
           <span class="summary-stat-label">URLs scanned</span>
         </div>
         <div class="summary-stat">
-          <span class="summary-stat-value">103</span>
+          <span class="summary-stat-value">104</span>
           <span class="summary-stat-label">Issues tracked</span>
         </div>
         <div class="summary-stat">
-          <span class="summary-stat-value">37,309</span>
+          <span class="summary-stat-value">37,311</span>
           <span class="summary-stat-label">Violations this week
-            <span class="badge badge-success" style="font-size:0.75rem">-70904</span>
+            <span class="badge badge-success" style="font-size:0.75rem">-70902</span>
           </span>
         </div>
       </div>
@@ -519,7 +461,7 @@
     </g><g role="listitem" aria-label="2026-W16: 108213 violations, 16 report(s)">
       <rect x="517.9" y="79.0" width="37" height="25" rx="2" fill="var(--primary, #0969da)" opacity="0.8"/>
       <text x="536.4" y="118.0" text-anchor="middle" font-size="9" fill="#57606a" transform="rotate(-35,536.4,118.0)">Apr 13</text>
-    </g><g role="listitem" aria-label="2026-W17: 37309 violations, 7 report(s)">
+    </g><g role="listitem" aria-label="2026-W17: 37311 violations, 8 report(s)">
       <rect x="576.3" y="95.0" width="37" height="9" rx="2" fill="var(--primary, #0969da)" opacity="0.8"/>
       <text x="594.8" y="118.0" text-anchor="middle" font-size="9" fill="#57606a" transform="rotate(-35,594.8,118.0)">Apr 20</text>
     </g>
@@ -541,6 +483,25 @@
         </tr>
       </thead>
       <tbody>
+        
+        <tr data-issue="23" data-title="GitHub Pages accessibility check" data-date="2026-04-24T18:28:50.862Z" data-urls="7">
+          <td data-label="Issue"><a href="https://github.com/mgifford/open-scans/actions/runs/24905422599">#23</a></td>
+          <td data-label="Scan Title">GitHub Pages accessibility check</td>
+          <td class="date" data-label="Scanned At">4/24/2026, 6:28:50 PM</td>
+          <td data-label="URLs">7 accepted</td>
+          <td data-label="Results">
+            <span class="badge badge-success">5161 passed</span>
+            <span class="badge badge-danger">2 failed</span>
+            <span class="badge badge-warning">89 can't tell</span>
+          </td>
+          <td class="links" data-label="Reports">
+            <a href="reports/pages/2026-04-24T18-30-16-238Z/report.html">HTML</a>
+            <a href="reports/pages/2026-04-24T18-30-16-238Z/report.md">Markdown</a>
+            <a href="reports/pages/2026-04-24T18-30-16-238Z/report.csv">CSV</a>
+            <a href="reports/pages/2026-04-24T18-30-16-238Z/report-overlap.md">Overlap</a>
+            <a href="reports/pages/2026-04-24T18-30-16-238Z/report.json">JSON</a>
+          </td>
+        </tr>
         
         <tr data-issue="64" data-title="France.fr" data-date="2026-04-24T01:34:04.081Z" data-urls="100">
           <td data-label="Issue"><a href="https://github.com/mgifford/open-scans/issues/64">#64</a></td>
