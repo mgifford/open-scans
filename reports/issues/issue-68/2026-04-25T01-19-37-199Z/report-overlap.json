@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-25T01:18:45.486Z",
+  "issueNumber": 68,
+  "scanTitle": "London",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 174,
+      "uniqueFailed": 174,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 7522,
+      "uniqueFailed": 7367,
+      "duplicates": 155
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 171,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 7361
+    }
+  },
+  "duplicateFindingTotals": 156,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
