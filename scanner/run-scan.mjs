@@ -660,10 +660,15 @@ export function annotateWithFingerprints(store, results, scanMeta) {
             lastSeenAt: now,
             issueNumber: scanMeta.issueNumber ?? null,
             scanTitle: scanMeta.scanTitle ?? null,
-            url: result.finalUrl
+            url: result.finalUrl,
+            ruleKey,
+            engine: scannerName
           };
         } else {
           store[fp].lastSeenAt = now;
+          // Backfill engine/ruleKey fields if missing from older store entries
+          if (!store[fp].engine) store[fp].engine = scannerName;
+          if (!store[fp].ruleKey) store[fp].ruleKey = ruleKey;
         }
 
         failure.fingerprint = fp;
@@ -1950,6 +1955,48 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   }
   lines.push("");
 
+  // ── Change tracking summary ────────────────────────────────────────────────
+  if (summary.changeTracking) {
+    const { newCount, resolvedCount, newIssues, resolvedIssues } = summary.changeTracking;
+    if (newCount > 0 || resolvedCount > 0) {
+      lines.push("## 🔄 Changes Since Last Scan");
+      lines.push("");
+      if (newCount > 0) {
+        lines.push(`- 🆕 **${newCount} new unique issue(s)** detected for the first time in this scan`);
+      }
+      if (resolvedCount > 0) {
+        lines.push(`- ✅ **${resolvedCount} previously-tracked issue(s)** not detected in this scan (potentially resolved)`);
+      }
+      lines.push("");
+
+      if (newIssues.length > 0) {
+        lines.push("### 🆕 New Issues");
+        lines.push("");
+        for (const issue of newIssues) {
+          const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
+          const rule = issue.ruleKey ? ` \`${issue.ruleKey}\`` : "";
+          const eng = issue.engine ? ` (${issue.engine})` : "";
+          lines.push(`- **${id}**${rule}${eng} — ${issue.url || "unknown URL"}`);
+        }
+        lines.push("");
+      }
+
+      if (resolvedIssues.length > 0) {
+        lines.push("### ✅ Potentially Resolved Issues");
+        lines.push("");
+        for (const issue of resolvedIssues) {
+          const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
+          const rule = issue.ruleKey ? ` \`${issue.ruleKey}\`` : "";
+          const eng = issue.engine ? ` (${issue.engine})` : "";
+          const seen = issue.lastSeenAt ? ` — last seen ${issue.lastSeenAt.slice(0, 10)}` : "";
+          lines.push(`- **${id}**${rule}${eng} — ${issue.url || "unknown URL"}${seen}`);
+        }
+        lines.push("");
+      }
+    }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // ACTION-ORIENTED SUMMARY: Pages with most errors
   lines.push("## 🎯 Pages with Most Errors");
   lines.push("");
@@ -3101,7 +3148,60 @@ async function main() {
   const scannedAt = new Date().toISOString();
   const totalElapsedTime = Date.now() - scanStartTime;
 
-  // Create initial summary for enhanced data aggregation
+  // ── Fingerprint tracking ──────────────────────────────────────────────────
+  // Load the shared fingerprint store (one file per GitHub issue) so we can
+  // show "First identified: …" dates for recurring findings.
+  // This MUST run before buildEnhancedSummary so that example fingerprints
+  // are populated when the HTML/markdown reports are generated.
+  mkdirSync(outputDir, { recursive: true });
+  const fingerprintStorePath = join(outputDir, "..", "fingerprints.json");
+  const fingerprintStore = loadFingerprintStore(fingerprintStorePath);
+
+  // Snapshot the fingerprint keys that existed BEFORE this scan so we can
+  // compute new-vs-resolved changes.
+  const prevFingerprintKeys = new Set(Object.keys(fingerprintStore));
+
+  annotateWithFingerprints(fingerprintStore, results, {
+    scannedAt,
+    issueNumber: request.issueNumber,
+    scanTitle: request.scanTitle || request.issueTitle
+  });
+
+  // Collect fingerprints seen in the current scan
+  const currFingerprintKeys = new Set();
+  for (const result of results) {
+    for (const scannerName of SCANNER_ORDER) {
+      for (const failure of result[scannerName]?.failures ?? []) {
+        if (failure.fingerprint) currFingerprintKeys.add(failure.fingerprint);
+      }
+    }
+  }
+
+  // Compute change-tracking statistics
+  const newFingerprintKeys = [...currFingerprintKeys].filter(fp => !prevFingerprintKeys.has(fp));
+  const resolvedFingerprintKeys = [...prevFingerprintKeys].filter(fp => !currFingerprintKeys.has(fp));
+  const changeTracking = {
+    newCount: newFingerprintKeys.length,
+    resolvedCount: resolvedFingerprintKeys.length,
+    newIssues: newFingerprintKeys.map(fp => {
+      const entry = fingerprintStore[fp];
+      return { fingerprint: fp, url: entry?.url ?? null, ruleKey: entry?.ruleKey ?? null, engine: entry?.engine ?? null };
+    }),
+    resolvedIssues: resolvedFingerprintKeys.map(fp => {
+      const entry = fingerprintStore[fp];
+      return { fingerprint: fp, url: entry?.url ?? null, ruleKey: entry?.ruleKey ?? null, engine: entry?.engine ?? null, lastSeenAt: entry?.lastSeenAt ?? null };
+    })
+  };
+
+  try {
+    writeFileSync(fingerprintStorePath, JSON.stringify(fingerprintStore, null, 2) + "\n", "utf8");
+  } catch (err) {
+    console.error(`Warning: could not save fingerprint store: ${err.message}`);
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // Build enhanced summary AFTER fingerprint annotation so that example
+  // objects carry fingerprint / firstSeenAt / patternId values.
   const initialSummary = {
     results
   };
@@ -3135,7 +3235,8 @@ async function main() {
     forcedColorsUrlCount,
     reducedTransparencyUrlCount,
     results,
-    enhanced: enhancedData
+    enhanced: enhancedData,
+    changeTracking
   };
 
   // Log warning if scan was incomplete
@@ -3155,7 +3256,6 @@ async function main() {
   console.error(`Total scan time: ${(totalElapsedTime / 1000).toFixed(1)}s`);
   console.error(`Successfully scanned: ${results.length}/${acceptedTargets.length} URLs`);
 
-  mkdirSync(outputDir, { recursive: true });
   const summaryPath = join(outputDir, "report.json");
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
@@ -3163,21 +3263,6 @@ async function main() {
   const overlapJsonPath = join(outputDir, "report-overlap.json");
   const overlapMarkdownPath = join(outputDir, "report-overlap.md");
 
-  // ── Fingerprint tracking ──────────────────────────────────────────────────
-  // Load the shared fingerprint store (one file per GitHub issue) so we can
-  // show "First identified: …" dates for recurring findings.
-  const fingerprintStorePath = join(outputDir, "..", "fingerprints.json");
-  const fingerprintStore = loadFingerprintStore(fingerprintStorePath);
-  annotateWithFingerprints(fingerprintStore, results, {
-    scannedAt,
-    issueNumber: summary.issueNumber,
-    scanTitle: summary.scanTitle
-  });
-  try {
-    writeFileSync(fingerprintStorePath, JSON.stringify(fingerprintStore, null, 2) + "\n", "utf8");
-  } catch (err) {
-    console.error(`Warning: could not save fingerprint store: ${err.message}`);
-  }
   // ─────────────────────────────────────────────────────────────────────────
 
   // ── AI Remediation Suggestions (opt-in via REMEDIATE keyword) ────────────

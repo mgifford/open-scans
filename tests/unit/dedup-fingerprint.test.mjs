@@ -272,3 +272,37 @@ test("fingerprints match for same SC regardless of level tag presence", () => {
     "axe and AccessLint failures for the same WCAG SCs on the same element should share a fingerprint"
   );
 });
+
+// ── Store ruleKey / engine enrichment ─────────────────────────────────────
+
+test("annotateWithFingerprints saves ruleKey and engine in new store entries", () => {
+  const store = {};
+  const failure = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-04-01T00:00:00Z" });
+
+  const entry = Object.values(store)[0];
+  assert.ok(entry.engine, "store entry should include engine");
+  assert.equal(entry.engine, "axe", "engine should be 'axe' for axe failures");
+  assert.ok(entry.ruleKey, "store entry should include ruleKey");
+});
+
+test("annotateWithFingerprints backfills engine for pre-existing store entries without engine", () => {
+  const failure = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+
+  // Get the fingerprint by running a first annotation
+  const tmpStore = {};
+  annotateWithFingerprints(tmpStore, results, { scannedAt: "2026-01-01T00:00:00Z" });
+  const fp = failure.fingerprint;
+
+  // Simulate an old store entry that has no engine/ruleKey fields
+  const oldStore = { [fp]: { firstSeenAt: "2026-01-01T00:00:00Z", lastSeenAt: "2026-01-01T00:00:00Z" } };
+
+  const failure2 = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results2 = [makeResult([failure2])];
+  annotateWithFingerprints(oldStore, results2, { scannedAt: "2026-04-01T00:00:00Z" });
+
+  assert.equal(oldStore[fp].engine, "axe", "engine should be backfilled");
+});
+

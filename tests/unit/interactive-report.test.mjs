@@ -1535,3 +1535,82 @@ test("generateInteractiveHtml does not show first-identified date when firstSeen
     "Should not render 'First identified:' label when firstSeenAt is absent"
   );
 });
+
+// ── Change tracking section ────────────────────────────────────────────────
+
+test("generateInteractiveHtml includes change tracking section when new issues exist", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    changeTracking: {
+      newCount: 3,
+      resolvedCount: 0,
+      newIssues: [
+        { fingerprint: "abc123def456", url: "https://example.com/page1", ruleKey: "axe:region", engine: "axe" }
+      ],
+      resolvedIssues: []
+    }
+  }));
+  assert.ok(
+    html.includes('id="change-tracking-heading"'),
+    "Should render change-tracking-section when newCount > 0"
+  );
+  assert.ok(
+    html.includes("New unique issue"),
+    "Should show new issues badge"
+  );
+  assert.ok(
+    html.includes("A11Y-abc123de"),
+    "Should include the A11Y ID for new issues"
+  );
+});
+
+test("generateInteractiveHtml includes change tracking section when resolved issues exist", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    changeTracking: {
+      newCount: 0,
+      resolvedCount: 2,
+      newIssues: [],
+      resolvedIssues: [
+        { fingerprint: "def456abc123", url: "https://example.com/page2", ruleKey: "axe:color-contrast", engine: "axe", lastSeenAt: "2026-04-20T00:00:00.000Z" }
+      ]
+    }
+  }));
+  assert.ok(
+    html.includes('id="change-tracking-heading"'),
+    "Should render change-tracking-section when resolvedCount > 0"
+  );
+  assert.ok(
+    html.includes("Potentially resolved"),
+    "Should show resolved issues badge"
+  );
+  assert.ok(
+    html.includes("A11Y-def456ab"),
+    "Should include the A11Y ID for resolved issues"
+  );
+  assert.ok(
+    html.includes("2026-04-20"),
+    "Should include the last-seen date for resolved issues"
+  );
+});
+
+test("generateInteractiveHtml omits change tracking section when no changes", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    changeTracking: {
+      newCount: 0,
+      resolvedCount: 0,
+      newIssues: [],
+      resolvedIssues: []
+    }
+  }));
+  assert.ok(
+    !html.includes('id="change-tracking-heading"'),
+    "Should not render change-tracking-section element when no changes"
+  );
+});
+
+test("generateInteractiveHtml omits change tracking section when changeTracking is absent", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  assert.ok(
+    !html.includes('id="change-tracking-heading"'),
+    "Should not render change-tracking-section element when changeTracking is undefined"
+  );
+});
