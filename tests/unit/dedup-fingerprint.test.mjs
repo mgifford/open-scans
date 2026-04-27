@@ -9,7 +9,9 @@ import {
   annotateWithFingerprints,
   computePatternId,
   formatA11yId,
-  A11Y_ID_PREFIX
+  A11Y_ID_PREFIX,
+  collectFingerprintsFromResults,
+  computeChangeTracking
 } from "../../scanner/run-scan.mjs";
 
 const TMP = tmpdir();
@@ -271,4 +273,112 @@ test("fingerprints match for same SC regardless of level tag presence", () => {
     accesslintFailure.fingerprint,
     "axe and AccessLint failures for the same WCAG SCs on the same element should share a fingerprint"
   );
+});
+
+// ── Store ruleKey / engine enrichment ─────────────────────────────────────
+
+test("annotateWithFingerprints saves ruleKey and engine in new store entries", () => {
+  const store = {};
+  const failure = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-04-01T00:00:00Z" });
+
+  const entry = Object.values(store)[0];
+  assert.ok(entry.engine, "store entry should include engine");
+  assert.equal(entry.engine, "axe", "engine should be 'axe' for axe failures");
+  assert.ok(entry.ruleKey, "store entry should include ruleKey");
+});
+
+test("annotateWithFingerprints backfills engine for pre-existing store entries without engine", () => {
+  const failure = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+
+  // Get the fingerprint by running a first annotation
+  const tmpStore = {};
+  annotateWithFingerprints(tmpStore, results, { scannedAt: "2026-01-01T00:00:00Z" });
+  const fp = failure.fingerprint;
+
+  // Simulate an old store entry that has no engine/ruleKey fields
+  const oldStore = { [fp]: { firstSeenAt: "2026-01-01T00:00:00Z", lastSeenAt: "2026-01-01T00:00:00Z" } };
+
+  const failure2 = { rule: "image-alt", xpath: "img.logo", html: null, isDuplicate: false };
+  const results2 = [makeResult([failure2])];
+  annotateWithFingerprints(oldStore, results2, { scannedAt: "2026-04-01T00:00:00Z" });
+
+  assert.equal(oldStore[fp].engine, "axe", "engine should be backfilled");
+});
+
+
+// ── collectFingerprintsFromResults ─────────────────────────────────────────
+
+test("collectFingerprintsFromResults returns empty set when no failures have fingerprints", () => {
+  const failure = { rule: "color-contrast", xpath: "#main", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+  const keys = collectFingerprintsFromResults(results);
+  assert.equal(keys.size, 0, "no fingerprints should be collected before annotation");
+});
+
+test("collectFingerprintsFromResults returns set of annotated fingerprints", () => {
+  const store = {};
+  const failure = { rule: "color-contrast", xpath: "#main", html: null, isDuplicate: false };
+  const results = [makeResult([failure])];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-04-01T00:00:00Z" });
+
+  const keys = collectFingerprintsFromResults(results);
+  assert.equal(keys.size, 1, "should find one fingerprint");
+  assert.ok(keys.has(failure.fingerprint), "should include the failure's fingerprint");
+});
+
+// ── computeChangeTracking ──────────────────────────────────────────────────
+
+test("computeChangeTracking reports new issues correctly", () => {
+  const prevKeys = new Set(["old1", "old2"]);
+  const currKeys = new Set(["old1", "new1"]);
+  const store = {
+    new1: { url: "https://example.com/", ruleKey: "axe:region", engine: "axe", lastSeenAt: "2026-04-01T00:00:00Z" }
+  };
+  const result = computeChangeTracking(prevKeys, currKeys, store);
+
+  assert.equal(result.newCount, 1, "should report one new issue");
+  assert.equal(result.resolvedCount, 1, "should report one resolved issue (old2 not in curr)");
+  assert.equal(result.newIssues[0].fingerprint, "new1");
+  assert.equal(result.newIssues[0].engine, "axe");
+});
+
+test("computeChangeTracking reports resolved issues correctly", () => {
+  const prevKeys = new Set(["fp1", "fp2"]);
+  const currKeys = new Set(["fp1"]);
+  const store = {
+    fp2: { url: "https://example.com/page2", ruleKey: "axe:image-alt", engine: "axe", lastSeenAt: "2026-03-01T00:00:00Z" }
+  };
+  const result = computeChangeTracking(prevKeys, currKeys, store);
+
+  assert.equal(result.newCount, 0);
+  assert.equal(result.resolvedCount, 1);
+  assert.equal(result.resolvedIssues[0].fingerprint, "fp2");
+  assert.equal(result.resolvedIssues[0].lastSeenAt, "2026-03-01T00:00:00Z");
+});
+
+test("computeChangeTracking returns zero counts when nothing changed", () => {
+  const prevKeys = new Set(["fp1"]);
+  const currKeys = new Set(["fp1"]);
+  const store = { fp1: { url: "https://example.com/", ruleKey: "axe:region", engine: "axe" } };
+  const result = computeChangeTracking(prevKeys, currKeys, store);
+
+  assert.equal(result.newCount, 0);
+  assert.equal(result.resolvedCount, 0);
+  assert.deepEqual(result.newIssues, []);
+  assert.deepEqual(result.resolvedIssues, []);
+});
+
+test("computeChangeTracking handles missing store entries gracefully", () => {
+  const prevKeys = new Set(["fp1"]);
+  const currKeys = new Set(["fp2"]);
+  const store = {}; // no entries
+
+  const result = computeChangeTracking(prevKeys, currKeys, store);
+  assert.equal(result.newCount, 1);
+  assert.equal(result.resolvedCount, 1);
+  assert.equal(result.newIssues[0].url, null);
+  assert.equal(result.resolvedIssues[0].engine, null);
 });

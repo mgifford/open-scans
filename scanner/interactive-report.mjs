@@ -3,6 +3,20 @@ import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
 
 /**
+ * Escape a string for safe inclusion in HTML.
+ * @param {string|null|undefined} text
+ * @returns {string}
+ */
+function escapeHtml(text) {
+  return String(text ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
  * Format WCAG criteria for display in HTML reports.
  * @param {{ scs: string[], level: string|null }} wcag
  * @returns {string} HTML string
@@ -162,7 +176,7 @@ function renderBugIdDisplay(fingerprint, patternId) {
   const patternPart = patternId
     ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(patternId)}</code>`
     : '';
-  return `<span class="bug-id-display" title="Instance ID: stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Instance ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
+  return `<span class="bug-id-display" title="Bug ID (Instance): stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Bug ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
 }
 
 export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
@@ -564,6 +578,12 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
   // ── Trend section ─────────────────────────────────────────────────────────
   const trendSectionHtml = trendData ? renderTrendSection(trendData, escapeHtml) : "";
+
+  // ── Change tracking section ────────────────────────────────────────────────
+  const changeTracking = summary.changeTracking;
+  const changeTrackingHtml = (changeTracking && (changeTracking.newCount > 0 || changeTracking.resolvedCount > 0))
+    ? renderChangeTrackingSection(changeTracking, escapeHtml)
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1284,6 +1304,39 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .systemic-patterns li:last-child { border-bottom: none; }
     .systemic-rule-id { font-family: ui-monospace, monospace; color: var(--code-color); }
     .systemic-count { font-weight: 600; white-space: nowrap; }
+    /* ── Change tracking section ── */
+    .change-tracking-section {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+    }
+    .change-tracking-section h2 { font-size: 1.15rem; margin-bottom: 0.75rem; color: var(--text); }
+    .change-tracking-summary { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .change-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.9rem; border-radius: 20px; font-weight: 600;
+    }
+    .change-badge-new { background: #ffebe9; color: #cf222e; }
+    .change-badge-resolved { background: #dafbe1; color: #1a7f37; }
+    @media (prefers-color-scheme: dark) {
+      .change-badge-new { background: rgba(255, 123, 114, 0.15); color: #ff7b72; }
+      .change-badge-resolved { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+    }
+    [data-theme="dark"] .change-badge-new { background: rgba(255, 123, 114, 0.15); color: #ff7b72; }
+    [data-theme="dark"] .change-badge-resolved { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+    .change-count { font-size: 1.3rem; line-height: 1; }
+    .change-details { margin-top: 0.75rem; }
+    .change-details > summary {
+      cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--primary);
+      padding: 0.25rem 0; list-style: none;
+    }
+    .change-details > summary::before { content: "▶ "; font-size: 0.7rem; }
+    .change-details[open] > summary::before { content: "▼ "; }
+    .change-details-note { font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0; }
+    .change-list { list-style: disc; padding-left: 1.5rem; font-size: 0.85rem; margin: 0.5rem 0; }
+    .change-list li { padding: 0.2rem 0; }
     @media print {
       body::before {
         content: "Please do not print this report. Use the interactive digital version for full details.";
@@ -1338,6 +1391,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     </header>
 
     ${trendSectionHtml}
+
+    ${changeTrackingHtml}
 
     <section aria-labelledby="section-summary">
       <h2 id="section-summary" class="section-heading" tabindex="-1">
@@ -1893,13 +1948,73 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 </body>
 </html>`;
 
-  function escapeHtml(text) {
-    return String(text ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+
+  function renderChangeTrackingSection(changeTracking, esc) {
+    const { newCount, resolvedCount, newIssues = [], resolvedIssues = [] } = changeTracking;
+    const parts = [];
+    parts.push(`
+    <section class="change-tracking-section" aria-labelledby="change-tracking-heading">
+      <h2 id="change-tracking-heading">🔄 Changes Since Last Scan</h2>
+      <div class="change-tracking-summary">`);
+
+    if (newCount > 0) {
+      parts.push(`
+        <div class="change-badge change-badge-new" role="status" aria-label="${newCount} new unique issues detected">
+          <span class="change-count">${newCount}</span>
+          <span class="change-label">New unique issue${newCount !== 1 ? 's' : ''}</span>
+        </div>`);
+    }
+    if (resolvedCount > 0) {
+      parts.push(`
+        <div class="change-badge change-badge-resolved" role="status" aria-label="${resolvedCount} previously-tracked issues not detected">
+          <span class="change-count">${resolvedCount}</span>
+          <span class="change-label">Potentially resolved issue${resolvedCount !== 1 ? 's' : ''}</span>
+        </div>`);
+    }
+    parts.push(`
+      </div>`);
+
+    if (newIssues.length > 0) {
+      parts.push(`
+      <details class="change-details">
+        <summary>🆕 New Issues (${newIssues.length})</summary>
+        <ul class="change-list" aria-label="New issues detected in this scan">`);
+      for (const issue of newIssues) {
+        const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
+        const rule = issue.ruleKey ? ` <code>${esc(issue.ruleKey)}</code>` : '';
+        const eng = issue.engine ? ` (${esc(issue.engine)})` : '';
+        const url = issue.url ? `<a href="${esc(issue.url)}" target="_blank" rel="noopener">${esc(issue.url)}</a>` : 'unknown URL';
+        parts.push(`
+          <li><strong><code>${esc(id)}</code></strong>${rule}${eng} — ${url}</li>`);
+      }
+      parts.push(`
+        </ul>
+      </details>`);
+    }
+
+    if (resolvedIssues.length > 0) {
+      parts.push(`
+      <details class="change-details">
+        <summary>✅ Potentially Resolved Issues (${resolvedIssues.length})</summary>
+        <p class="change-details-note">These issues were previously tracked but were not detected in this scan.</p>
+        <ul class="change-list" aria-label="Previously tracked issues not detected in this scan">`);
+      for (const issue of resolvedIssues) {
+        const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
+        const rule = issue.ruleKey ? ` <code>${esc(issue.ruleKey)}</code>` : '';
+        const eng = issue.engine ? ` (${esc(issue.engine)})` : '';
+        const url = issue.url ? `<a href="${esc(issue.url)}" target="_blank" rel="noopener">${esc(issue.url)}</a>` : 'unknown URL';
+        const seen = issue.lastSeenAt ? ` — last seen ${esc(issue.lastSeenAt.slice(0, 10))}` : '';
+        parts.push(`
+          <li><strong><code>${esc(id)}</code></strong>${rule}${eng} — ${url}${seen}</li>`);
+      }
+      parts.push(`
+        </ul>
+      </details>`);
+    }
+
+    parts.push(`
+    </section>`);
+    return parts.join("");
   }
 
   function renderTrendSection(trend, esc) {
