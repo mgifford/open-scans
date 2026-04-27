@@ -4,7 +4,8 @@
 #   https://github.com/githubnext/agentics/blob/main/docs/daily-accessibility-review.md
 #
 # Key differences from the GitHubNext workflow:
-#   - Triggered MANUALLY only (not daily) — the repository owner chose this.
+#   - Runs on a schedule: Monday evenings at 18:00 UTC (not daily).
+#     Can also be triggered manually via workflow_dispatch at any time.
 #   - Reviews SOURCE FILES rather than a live running server, so no Playwright
 #     browser automation is needed. This makes it fast and dependency-free.
 #   - Uses the same GitHub Models API already used by ai-remediation.mjs.
@@ -21,9 +22,12 @@
 #   issues: write   — create findings issue
 #   models: read    — GitHub Models API
 
-name: AI Accessibility Review (on demand)
+name: AI Accessibility Review (weekly)
 
 on:
+  schedule:
+    # Every Monday at 18:00 UTC (evening)
+    - cron: '0 18 * * 1'
   workflow_dispatch:
     inputs:
       files:
@@ -59,9 +63,13 @@ jobs:
       - name: Run AI source-code review
         id: review
         run: |
-          # Split the files input into arguments for the script
-          # shellcheck disable=SC2086
-          node scanner/review-source.mjs "${{ inputs.files }}" > .tmp-review.json
+          # Use the files input when provided (manual dispatch), otherwise fall
+          # back to the default list (scheduled run has no inputs).
+          FILES="${{ inputs.files }}"
+          if [ -z "$FILES" ]; then
+            FILES="index.html reports.html trends.html submit.js"
+          fi
+          node scanner/review-source.mjs "$FILES" > .tmp-review.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -201,20 +201,22 @@ Engine keywords work with timed scans too (e.g., `WEEKLY: AXE Monday scan`).
 2. Select the appropriate workflow:
    - **"Scan All Open SCAN Issues"** — for pending `SCAN:` issues
    - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** — for recurring timed issues due today
-   - **"AI Accessibility Review (on demand)"** — for an AI-powered WCAG 2.2 source-code review (see below)
+   - **"AI Accessibility Review (weekly)"** — for an AI-powered WCAG 2.2 source-code review (see below)
 3. Click "Run workflow"
 
-### 4. AI Accessibility Review (on demand)
+### 4. AI Accessibility Review (weekly)
 
-The **AI Accessibility Review** workflow (`ai-accessibility-review.yml`) is an on-demand workflow inspired by [GitHubNext's daily-accessibility-review](https://github.com/githubnext/agentics/blob/main/docs/daily-accessibility-review.md). It uses the GitHub Models API to review the project's own HTML and JavaScript source files for WCAG 2.2 Level AA accessibility issues, then creates a GitHub issue documenting any findings.
+The **AI Accessibility Review** workflow (`ai-accessibility-review.yml`) is inspired by [GitHubNext's daily-accessibility-review](https://github.com/githubnext/agentics/blob/main/docs/daily-accessibility-review.md). It uses the GitHub Models API to review the project's own HTML and JavaScript source files for WCAG 2.2 Level AA accessibility issues, then creates a GitHub issue documenting any findings.
+
+**Schedule:** Runs automatically every **Monday at 18:00 UTC** (evening). Can also be triggered manually at any time via the Actions tab.
 
 **What it does differently from runtime scanning:**
 - Reviews *source code* rather than the rendered live site — catches structural and semantic issues that runtime scanners can miss
 - Provides natural-language WCAG 2.2 criterion mapping and actionable remediation guidance
 - Complements (does not replace) the existing axe-core runtime scan in `scan-github-pages.yml`
 
-**How to run it:**
-1. Go to [Actions → AI Accessibility Review (on demand)](https://github.com/mgifford/open-scans/actions/workflows/ai-accessibility-review.yml)
+**How to run it manually:**
+1. Go to [Actions → AI Accessibility Review (weekly)](https://github.com/mgifford/open-scans/actions/workflows/ai-accessibility-review.yml)
 2. Click **Run workflow**
 3. Optionally specify custom files to review (defaults to `index.html reports.html trends.html submit.js`)
 4. A GitHub issue will be created with the AI review findings
