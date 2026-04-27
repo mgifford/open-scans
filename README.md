@@ -201,7 +201,27 @@ Engine keywords work with timed scans too (e.g., `WEEKLY: AXE Monday scan`).
 2. Select the appropriate workflow:
    - **"Scan All Open SCAN Issues"** — for pending `SCAN:` issues
    - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** — for recurring timed issues due today
+   - **"AI Accessibility Review (weekly)"** — for an AI-powered WCAG 2.2 source-code review (see below)
 3. Click "Run workflow"
+
+### 4. AI Accessibility Review (weekly)
+
+The **AI Accessibility Review** workflow (`ai-accessibility-review.yml`) is inspired by [GitHubNext's daily-accessibility-review](https://github.com/githubnext/agentics/blob/main/docs/daily-accessibility-review.md). It uses the GitHub Models API to review the project's own HTML and JavaScript source files for WCAG 2.2 Level AA accessibility issues, then creates a GitHub issue documenting any findings.
+
+**Schedule:** Runs automatically every **Monday at 18:00 UTC** (evening). Can also be triggered manually at any time via the Actions tab.
+
+**What it does differently from runtime scanning:**
+- Reviews *source code* rather than the rendered live site — catches structural and semantic issues that runtime scanners can miss
+- Provides natural-language WCAG 2.2 criterion mapping and actionable remediation guidance
+- Complements (does not replace) the existing axe-core runtime scan in `scan-github-pages.yml`
+
+**How to run it manually:**
+1. Go to [Actions → AI Accessibility Review (weekly)](https://github.com/mgifford/open-scans/actions/workflows/ai-accessibility-review.yml)
+2. Click **Run workflow**
+3. Optionally specify custom files to review (defaults to `index.html reports.html trends.html submit.js`)
+4. A GitHub issue will be created with the AI review findings
+
+This workflow requires no secrets beyond the built-in `GITHUB_TOKEN` (which has `models:read` scope in GitHub Actions).
 
 ## Security & Privacy
 
@@ -339,9 +359,7 @@ Development of `open-scans` has used AI coding assistants for:
 
 ### Is any AI used when running the program?
 
-**No.** The scanner is a deterministic Node.js tool that runs established open-source accessibility engines (axe-core, Siteimprove ALFA, IBM Equal Access Checker, AccessLint, QualWeb). No LLM or generative AI is invoked at scan time.
-
-The frontend (GitHub Pages) is a static site. No AI inference runs server-side or client-side during normal use.
+**Optionally, yes.** The `REMEDIATE` keyword in scan issues and the on-demand **AI Accessibility Review** workflow both call the GitHub Models API (gpt-4o-mini) to generate natural-language findings and fix suggestions. These features are entirely opt-in — regular scans and the review workflow only call the API when you explicitly trigger them. The standard scanner is a deterministic Node.js tool that runs established open-source accessibility engines (axe-core, Siteimprove ALFA, IBM Equal Access Checker, AccessLint, QualWeb); no LLM is invoked during normal operation.
 
 ### Is browser-based AI enabled?
 
@@ -360,6 +378,7 @@ The frontend (GitHub Pages) is a static site. No AI inference runs server-side o
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | README improvements — badges, Mermaid diagram, ToC, engine table, Development section, URL limit fix | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added Related Projects section linking to o-hat-scanner with feature comparison | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added accessibility tools suite navigation bar linking Top Task Finder, Open Scans, and Alt Text Scan across all pages; expanded Related Projects section | Development – April 2026 |
+| GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added AI Accessibility Review workflow (`ai-accessibility-review.yml`) and `scanner/review-source.mjs` — on-demand WCAG 2.2 source-code review using GitHub Models API, inspired by GitHubNext daily-accessibility-review | Development – April 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

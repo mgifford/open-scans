@@ -1,0 +1,124 @@
+# AI-powered source-code accessibility review.
+#
+# Adapts the GitHubNext daily-accessibility-review concept for this project:
+#   https://github.com/githubnext/agentics/blob/main/docs/daily-accessibility-review.md
+#
+# Key differences from the GitHubNext workflow:
+#   - Runs on a schedule: Monday evenings at 18:00 UTC (not daily).
+#     Can also be triggered manually via workflow_dispatch at any time.
+#   - Reviews SOURCE FILES rather than a live running server, so no Playwright
+#     browser automation is needed. This makes it fast and dependency-free.
+#   - Uses the same GitHub Models API already used by ai-remediation.mjs.
+#   - Creates a GitHub issue documenting any WCAG 2.2 findings.
+#
+# What this adds over the existing scan-github-pages.yml:
+#   - Static source-code review catches structural/semantic issues that runtime
+#     scanners can miss: ARIA misuse in templates, missing landmark roles,
+#     keyboard navigation patterns, form error handling, etc.
+#   - AI analysis provides natural-language context and WCAG criterion mapping.
+#
+# Permissions:
+#   contents: read  — checkout only
+#   issues: write   — create findings issue
+#   models: read    — GitHub Models API
+
+name: AI Accessibility Review (weekly)
+
+on:
+  schedule:
+    # Every Monday at 18:00 UTC (evening)
+    - cron: '0 18 * * 1'
+  workflow_dispatch:
+    inputs:
+      files:
+        description: >
+          Space-separated list of source files to review (relative to repo root).
+          Defaults to: index.html reports.html trends.html submit.js
+        required: false
+        default: "index.html reports.html trends.html submit.js"
+
+permissions:
+  contents: read
+  issues: write
+  models: read
+
+jobs:
+  review:
+    name: Review source files for WCAG 2.2 issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      # No npm ci needed — review-source.mjs has no third-party dependencies.
+
+      - name: Run AI source-code review
+        id: review
+        run: |
+          # Use the files input when provided (manual dispatch), otherwise fall
+          # back to the default list (scheduled run has no inputs).
+          FILES="${{ inputs.files }}"
+          if [ -z "$FILES" ]; then
+            FILES="index.html reports.html trends.html submit.js"
+          fi
+          node scanner/review-source.mjs "$FILES" > .tmp-review.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create issue with review findings
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { readFileSync } = require('fs');
+
+            let result;
+            try {
+              result = JSON.parse(readFileSync('.tmp-review.json', 'utf8'));
+            } catch (err) {
+              core.setFailed(`Failed to parse review output: ${err.message}`);
+              return;
+            }
+
+            if (result.skipped) {
+              console.log(`Review was skipped: ${result.reason}`);
+              core.summary.addRaw(`## ⚠️ AI Accessibility Review skipped\n\n${result.reason}`);
+              await core.summary.write();
+              return;
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const statusEmoji = result.hasFindings ? '⚠️' : '✅';
+            const statusText = result.hasFindings ? 'issues found' : 'no issues found';
+            const title = `${statusEmoji} AI Accessibility Review (${today}): WCAG 2.2 source scan — ${statusText}`;
+
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              labels: ['accessibility'],
+              body: result.issueBody,
+            });
+
+            console.log(`Issue created: ${issue.data.html_url}`);
+
+            // Also write a workflow step summary
+            const summary = [
+              `## AI Accessibility Review complete`,
+              ``,
+              `**Status:** ${statusEmoji} ${statusText}`,
+              `**Files reviewed:** ${result.filesReviewed.join(', ')}`,
+              `**Model:** ${result.model}`,
+              ``,
+              `[View full findings in issue #${issue.data.number}](${issue.data.html_url})`,
+            ].join('\n');
+
+            core.summary.addRaw(summary);
+            await core.summary.write();
