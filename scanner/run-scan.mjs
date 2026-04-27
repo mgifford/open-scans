@@ -679,6 +679,50 @@ export function annotateWithFingerprints(store, results, scanMeta) {
   }
 }
 
+/**
+ * Collect the set of all fingerprints present in a set of scan results.
+ *
+ * @param {object[]} results - Array of per-URL scan result objects
+ * @returns {Set<string>} Set of fingerprint strings
+ */
+export function collectFingerprintsFromResults(results) {
+  const keys = new Set();
+  for (const result of results) {
+    for (const scannerName of SCANNER_ORDER) {
+      for (const failure of result[scannerName]?.failures ?? []) {
+        if (failure.fingerprint) keys.add(failure.fingerprint);
+      }
+    }
+  }
+  return keys;
+}
+
+/**
+ * Build a change-tracking summary by comparing the fingerprint keys that
+ * existed before a scan with those found in the current scan results.
+ *
+ * @param {Set<string>} prevKeys  - Fingerprint keys from the store before this scan
+ * @param {Set<string>} currKeys  - Fingerprint keys collected from current scan results
+ * @param {object}      store     - Updated fingerprint store (used to look up metadata)
+ * @returns {{ newCount, resolvedCount, newIssues, resolvedIssues }}
+ */
+export function computeChangeTracking(prevKeys, currKeys, store) {
+  const toEntry = (fp, includeLastSeen) => {
+    const entry = store[fp];
+    const base = { fingerprint: fp, url: entry?.url ?? null, ruleKey: entry?.ruleKey ?? null, engine: entry?.engine ?? null };
+    return includeLastSeen ? { ...base, lastSeenAt: entry?.lastSeenAt ?? null } : base;
+  };
+
+  const newFps = [...currKeys].filter(fp => !prevKeys.has(fp));
+  const resolvedFps = [...prevKeys].filter(fp => !currKeys.has(fp));
+  return {
+    newCount: newFps.length,
+    resolvedCount: resolvedFps.length,
+    newIssues: newFps.map(fp => toEntry(fp, false)),
+    resolvedIssues: resolvedFps.map(fp => toEntry(fp, true))
+  };
+}
+
 async function runAlfaAudit(url) {
   const args = [
     alfaCliPath,
@@ -3168,30 +3212,10 @@ async function main() {
   });
 
   // Collect fingerprints seen in the current scan
-  const currFingerprintKeys = new Set();
-  for (const result of results) {
-    for (const scannerName of SCANNER_ORDER) {
-      for (const failure of result[scannerName]?.failures ?? []) {
-        if (failure.fingerprint) currFingerprintKeys.add(failure.fingerprint);
-      }
-    }
-  }
+  const currFingerprintKeys = collectFingerprintsFromResults(results);
 
   // Compute change-tracking statistics
-  const newFingerprintKeys = [...currFingerprintKeys].filter(fp => !prevFingerprintKeys.has(fp));
-  const resolvedFingerprintKeys = [...prevFingerprintKeys].filter(fp => !currFingerprintKeys.has(fp));
-  const changeTracking = {
-    newCount: newFingerprintKeys.length,
-    resolvedCount: resolvedFingerprintKeys.length,
-    newIssues: newFingerprintKeys.map(fp => {
-      const entry = fingerprintStore[fp];
-      return { fingerprint: fp, url: entry?.url ?? null, ruleKey: entry?.ruleKey ?? null, engine: entry?.engine ?? null };
-    }),
-    resolvedIssues: resolvedFingerprintKeys.map(fp => {
-      const entry = fingerprintStore[fp];
-      return { fingerprint: fp, url: entry?.url ?? null, ruleKey: entry?.ruleKey ?? null, engine: entry?.engine ?? null, lastSeenAt: entry?.lastSeenAt ?? null };
-    })
-  };
+  const changeTracking = computeChangeTracking(prevFingerprintKeys, currFingerprintKeys, fingerprintStore);
 
   try {
     writeFileSync(fingerprintStorePath, JSON.stringify(fingerprintStore, null, 2) + "\n", "utf8");
