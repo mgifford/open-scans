@@ -97,7 +97,7 @@ function readSourceFile(filePath) {
     const raw = readFileSync(filePath, "utf8");
     const truncated = raw.length > MAX_CHARS_PER_FILE;
     const content = truncated
-      ? raw.slice(0, MAX_CHARS_PER_FILE) + "\n... [content truncated at 8 000 characters]"
+      ? raw.slice(0, MAX_CHARS_PER_FILE) + "\n... [content truncated at 8000 characters]"
       : raw;
     console.error(
       `[review-source] Read ${filePath} (${raw.length} chars${truncated ? ", truncated" : ""})`
@@ -305,10 +305,15 @@ export async function reviewSource(
 
 // Run as a CLI script when executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
+  const rawArgs = process.argv.slice(2);
+  // Support both: multiple args ("file1.html" "file2.html") and a single
+  // space-separated arg ("file1.html file2.html") produced by shell quoting.
   const filePaths =
-    process.argv.slice(2).length > 0
-      ? process.argv.slice(2)
-      : DEFAULT_FILES;
+    rawArgs.length === 0
+      ? DEFAULT_FILES
+      : rawArgs.length === 1 && rawArgs[0].includes(" ")
+        ? rawArgs[0].split(/\s+/).filter(Boolean)
+        : rawArgs;
 
   reviewSource(filePaths, {
     token: process.env.GITHUB_TOKEN,

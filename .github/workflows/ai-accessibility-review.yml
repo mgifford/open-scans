@@ -61,7 +61,7 @@ jobs:
         run: |
           # Split the files input into arguments for the script
           # shellcheck disable=SC2086
-          node scanner/review-source.mjs ${{ inputs.files }} > .tmp-review.json
+          node scanner/review-source.mjs "${{ inputs.files }}" > .tmp-review.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
