@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-01T01:40:44.663Z",
+  "issueNumber": 64,
+  "scanTitle": "France.fr",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 526,
+      "uniqueFailed": 526,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 29923,
+      "uniqueFailed": 24544,
+      "duplicates": 5379
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 500,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 24185
+    }
+  },
+  "duplicateFindingTotals": 5404,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
