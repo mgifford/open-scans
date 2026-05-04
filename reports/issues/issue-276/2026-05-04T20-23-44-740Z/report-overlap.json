@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-04T20:22:59.030Z",
+  "issueNumber": 276,
+  "scanTitle": "Preserve Chunk 2 May 4th",
+  "scannersInUse": [
+    "axe",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 25,
+      "uniqueFailed": 25,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 1957,
+      "uniqueFailed": 1957,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 25,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "qualweb": 304
+    }
+  },
+  "duplicateFindingTotals": 1653,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
