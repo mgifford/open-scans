@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-05T06:05:58.997Z",
+  "issueNumber": 280,
+  "scanTitle": "Belgium municipalities (BE-VOV)",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1069,
+      "uniqueFailed": 1069,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 4111,
+      "uniqueFailed": 3030,
+      "duplicates": 1081
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1057,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 3030
+    }
+  },
+  "duplicateFindingTotals": 1093,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
