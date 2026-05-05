@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-05T06:27:44.298Z",
+  "issueNumber": 281,
+  "scanTitle": "Belgium municipalities (BE-VWV)",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 875,
+      "uniqueFailed": 875,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4709,
+      "uniqueFailed": 4709,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 875,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 974
+    }
+  },
+  "duplicateFindingTotals": 3735,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
