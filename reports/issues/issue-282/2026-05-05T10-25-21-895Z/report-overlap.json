@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-05T10:24:37.445Z",
+  "issueNumber": 282,
+  "scanTitle": "Belgium municipalities (BE-VBR)",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1016,
+      "uniqueFailed": 1016,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 3364,
+      "uniqueFailed": 2568,
+      "duplicates": 796
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1004,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 2568
+    }
+  },
+  "duplicateFindingTotals": 808,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
