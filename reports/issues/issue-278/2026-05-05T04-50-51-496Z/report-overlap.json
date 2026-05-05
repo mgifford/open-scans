@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-05T04:50:03.885Z",
+  "issueNumber": 278,
+  "scanTitle": "Belgium municipalities (BE-VAN)",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1068,
+      "uniqueFailed": 1068,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 5292,
+      "uniqueFailed": 5292,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1065,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 999
+    }
+  },
+  "duplicateFindingTotals": 4296,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
