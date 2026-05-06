@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-06T03:45:37.706Z",
+  "issueNumber": 283,
+  "scanTitle": "Belgium municipalities (BE-WHT)",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1946,
+      "uniqueFailed": 1946,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 7100,
+      "uniqueFailed": 4978,
+      "duplicates": 2122
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1937,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 4978
+    }
+  },
+  "duplicateFindingTotals": 2131,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
