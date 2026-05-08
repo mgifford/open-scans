@@ -754,14 +754,15 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     }
     a {
       color: var(--link);
-      text-decoration-thickness: from-font;
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
       text-underline-offset: 0.15em;
     }
     a:visited {
       color: var(--link-visited);
     }
     a:hover {
-      text-decoration: underline;
+      text-decoration-thickness: 0.12em;
     }
     a:focus-visible {
       outline: 2px solid var(--primary);
