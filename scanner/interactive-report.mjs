@@ -595,6 +595,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     /* ── Color tokens ── */
     :root {
       --primary: #0969da;
+      --link: #0550ae;
+      --link-visited: #6f42c1;
       --bg: #f6f8fa;
       --container-bg: #ffffff;
       --text: #24292f;
@@ -623,6 +625,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     @media (prefers-color-scheme: dark) {
       :root {
         --primary: #58a6ff;
+        --link: #79c0ff;
+        --link-visited: #d2a8ff;
         --bg: #0d1117;
         --container-bg: #161b22;
         --text: #e6edf3;
@@ -651,6 +655,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     /* ── Manual theme overrides via data-theme attribute ── */
     [data-theme="light"] {
       --primary: #0969da;
+      --link: #0550ae;
+      --link-visited: #6f42c1;
       --bg: #f6f8fa;
       --container-bg: #ffffff;
       --text: #24292f;
@@ -677,6 +683,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
     [data-theme="dark"] {
       --primary: #58a6ff;
+      --link: #79c0ff;
+      --link-visited: #d2a8ff;
       --bg: #0d1117;
       --container-bg: #161b22;
       --text: #e6edf3;
@@ -744,6 +752,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       background-color: var(--bg);
       padding: 2rem;
     }
+    a { color: var(--link); text-decoration-thickness: from-font; text-underline-offset: 0.15em; }
+    a:visited { color: var(--link-visited); }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 3px; }
 
     .container {
       max-width: 1200px;

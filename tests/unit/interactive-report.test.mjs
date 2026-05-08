@@ -149,6 +149,14 @@ test("generateInteractiveHtml includes CSS custom properties for both light and 
     html.includes('[data-theme="light"]'),
     "Should include manual light theme override"
   );
+  assert.ok(
+    html.includes("--link: #0550ae;") && html.includes("--link: #79c0ff;"),
+    "Should define accessible link color tokens for light and dark themes"
+  );
+  assert.ok(
+    html.includes("--link-visited: #6f42c1;") && html.includes("--link-visited: #d2a8ff;"),
+    "Should define accessible visited-link color tokens for light and dark themes"
+  );
 });
 
 test("generateInteractiveHtml includes theme toggle button", () => {
