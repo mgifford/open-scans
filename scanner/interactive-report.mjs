@@ -752,10 +752,22 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       background-color: var(--bg);
       padding: 2rem;
     }
-    a { color: var(--link); text-decoration-thickness: from-font; text-underline-offset: 0.15em; }
-    a:visited { color: var(--link-visited); }
-    a:hover { text-decoration: underline; }
-    a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 3px; }
+    a {
+      color: var(--link);
+      text-decoration-thickness: from-font;
+      text-underline-offset: 0.15em;
+    }
+    a:visited {
+      color: var(--link-visited);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
 
     .container {
       max-width: 1200px;
