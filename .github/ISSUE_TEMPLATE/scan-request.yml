@@ -54,3 +54,51 @@ body:
         **Supported engines:** axe-core · Siteimprove ALFA · IBM Equal Access Checker · AccessLint · QualWeb
 
         Once this issue is saved the scan starts automatically. Results will be posted as a comment on this issue and published to [GitHub Pages](https://mgifford.github.io/open-scans/reports.html).
+
+  - type: dropdown
+    id: viewport
+    attributes:
+      label: Viewport
+      description: >
+        Choose the screen size to emulate. For a custom size, select the custom option
+        and then edit the issue body after saving to replace the viewport value with
+        `Viewport: WIDTHxHEIGHT`.
+      options:
+        - Default (1280×800 desktop)
+        - Tablet portrait (768×1024)
+        - Tablet landscape (1024×768)
+        - Mobile portrait (390×844)
+        - Mobile landscape (844×390)
+        - Custom (WxH)
+      default: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: color-scheme
+    attributes:
+      label: Color scheme
+      description: Choose whether to scan light mode, dark mode, or both.
+      options:
+        - Auto-detect (run both if page supports dark mode)
+        - Light only
+        - Dark only
+        - Both
+      default: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: >
+        Choose the browser for Playwright-based scans. Chromium remains the default,
+        while Firefox and WebKit enable broader coverage.
+      options:
+        - Chromium (default)
+        - Firefox
+        - WebKit (Safari-like)
+      default: 0
+    validations:
+      required: false

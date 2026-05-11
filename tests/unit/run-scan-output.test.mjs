@@ -68,6 +68,7 @@ test("run-scan.mjs outputs valid JSON to stdout", () => {
       assert.equal(typeof parsedOutput.issueNumber, "number", "Output should have 'issueNumber' field");
       assert.equal(typeof parsedOutput.scanTitle, "string", "Output should have 'scanTitle' field");
       assert.equal(typeof parsedOutput.acceptedCount, "number", "Output should have 'acceptedCount' field");
+      assert.equal(parsedOutput.scanContext.browser, "chromium", "Output should include normalized scan context");
     }
 
     // Verify progress messages are in stderr, not stdout

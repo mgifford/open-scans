@@ -340,7 +340,7 @@
       margin-bottom: 0.5rem;
     }
     
-    textarea, input[type="text"] {
+    textarea, input[type="text"], input[type="number"], select {
       width: 100%;
       padding: 0.75rem;
       border: 1px solid var(--color-border);
@@ -357,10 +357,23 @@
       resize: vertical;
     }
     
-    textarea:focus, input[type="text"]:focus {
+    textarea:focus, input[type="text"]:focus, input[type="number"]:focus, select:focus {
       outline: none;
       border-color: var(--color-primary);
       box-shadow: 0 0 0 3px var(--color-focus-ring);
+    }
+
+    .scan-context-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .custom-viewport-fields {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1rem;
     }
     
     .preview {
@@ -714,6 +727,50 @@
               required 
               placeholder="https://example.com&#10;https://example.com/about&#10;https://example.com/contact"
             ></textarea>
+          </div>
+
+          <div class="form-group">
+            <h3>Scan Context</h3>
+            <p class="help-text">Choose a viewport, colour mode, and browser so the scan can be reproduced later.</p>
+            <div class="scan-context-grid">
+              <div>
+                <label for="scan-viewport">Viewport</label>
+                <select id="scan-viewport" name="scan-viewport">
+                  <option value="desktop">Default desktop (1280×800)</option>
+                  <option value="tablet-portrait">Tablet portrait (768×1024)</option>
+                  <option value="tablet-landscape">Tablet landscape (1024×768)</option>
+                  <option value="mobile-portrait">Mobile portrait (390×844)</option>
+                  <option value="mobile-landscape">Mobile landscape (844×390)</option>
+                  <option value="custom">Custom (WxH)</option>
+                </select>
+              </div>
+              <div>
+                <label for="scan-color-scheme">Color scheme</label>
+                <select id="scan-color-scheme" name="scan-color-scheme">
+                  <option value="both">Auto-detect / both</option>
+                  <option value="light">Light only</option>
+                  <option value="dark">Dark only</option>
+                </select>
+              </div>
+              <div>
+                <label for="scan-browser">Browser</label>
+                <select id="scan-browser" name="scan-browser">
+                  <option value="chromium">Chromium (default)</option>
+                  <option value="firefox">Firefox</option>
+                  <option value="webkit">WebKit (Safari-like)</option>
+                </select>
+              </div>
+            </div>
+            <div class="custom-viewport-fields" id="custom-viewport-fields" hidden>
+              <div>
+                <label for="scan-viewport-width">Custom viewport width</label>
+                <input type="number" id="scan-viewport-width" name="scan-viewport-width" min="1" inputmode="numeric" placeholder="390">
+              </div>
+              <div>
+                <label for="scan-viewport-height">Custom viewport height</label>
+                <input type="number" id="scan-viewport-height" name="scan-viewport-height" min="1" inputmode="numeric" placeholder="844">
+              </div>
+            </div>
           </div>
           
           <div class="preview" id="preview">

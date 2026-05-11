@@ -140,6 +140,12 @@ describe('generate-reports-html', () => {
             scanTitle: 'GSA.gov',
             scannedAt: '2026-02-21T16:37:55.764Z',
             acceptedCount: 13,
+            scanContext: {
+              viewport: { width: 390, height: 844 },
+              viewportPreset: 'mobile-portrait',
+              colorScheme: 'dark',
+              browser: 'firefox'
+            },
             alfaTotals: { passed: 23694, failed: 1698, cantTell: 125 },
             axeTotals: { passed: 0, failed: 0, cantTell: 0 }
           }
@@ -154,6 +160,7 @@ describe('generate-reports-html', () => {
       assert.ok(html.includes('23694 passed'), 'Should include passed count');
       assert.ok(html.includes('1698 failed'), 'Should include failed count');
       assert.ok(html.includes('125 can\'t tell'), 'Should include can\'t tell count');
+      assert.ok(html.includes('Mobile Portrait (390×844) · dark · firefox'), 'Should include the scan context summary');
       assert.ok(html.includes('/report.md'), 'Should include markdown link');
       assert.ok(html.includes('/report.csv'), 'Should include CSV link');
       assert.ok(html.includes('/report-overlap.md'), 'Should include overlap report link');

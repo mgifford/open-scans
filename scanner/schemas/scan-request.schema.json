@@ -54,6 +54,29 @@
       "minimum": 0,
       "maximum": 300
     },
+    "viewport": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["width", "height"],
+      "additionalProperties": false
+    },
+    "colorScheme": {
+      "type": "string",
+      "enum": ["light", "dark", "both"]
+    },
+    "browser": {
+      "type": "string",
+      "enum": ["chromium", "firefox", "webkit"]
+    },
     "requestedUrls": {
       "type": "array",
       "minItems": 1,

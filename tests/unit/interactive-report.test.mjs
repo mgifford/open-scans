@@ -14,6 +14,12 @@ function makeSummary(overrides = {}) {
     acceptedCount: 2,
     scannedCount: 2,
     darkModeUrlCount: 1,
+    scanContext: {
+      viewport: { width: 1280, height: 800 },
+      viewportPreset: "desktop",
+      colorScheme: "both",
+      browser: "chromium"
+    },
     results: [],
     enhanced: {
       consolidatedFailures: [
@@ -177,6 +183,34 @@ test("generateInteractiveHtml includes theme toggle button", () => {
     html.includes('class="theme-icon moon-icon"'),
     "Toggle should include a moon icon for switching to dark mode"
   );
+});
+
+test("generateInteractiveHtml shows the top-level scan context summary", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    scanContext: {
+      viewport: { width: 390, height: 844 },
+      viewportPreset: "mobile-portrait",
+      colorScheme: "dark",
+      browser: "firefox"
+    }
+  }));
+  assert.ok(html.includes("<strong>Viewport:</strong> Mobile Portrait (390×844)"));
+  assert.ok(html.includes("<strong>Color scheme:</strong> dark"));
+  assert.ok(html.includes("<strong>Browser:</strong> firefox"));
+});
+
+test("generateInteractiveHtml includes a replicate-this-scan section", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    scanContext: {
+      viewport: { width: 390, height: 844 },
+      viewportPreset: "mobile-portrait",
+      colorScheme: "dark",
+      browser: "firefox"
+    }
+  }));
+  assert.ok(html.includes('id="section-replication"'));
+  assert.ok(html.includes("VIEWPORT:mobile-portrait COLORSCHEME:dark BROWSER:firefox"));
+  assert.ok(html.includes("### Scan context"));
 });
 
 test("generateInteractiveHtml includes JavaScript for theme persistence", () => {

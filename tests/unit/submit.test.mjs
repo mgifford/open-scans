@@ -6,6 +6,7 @@ import {
   validateUrl,
   validateUrls,
   formatIssueBody,
+  formatScanContextSection,
   createGitHubIssue,
   applyGitHubUrlLimit
 } from '../../submit.js';
@@ -105,6 +106,31 @@ test('formatIssueBody creates proper markdown format', () => {
   assert.match(body, /# URLs/);
   assert.match(body, /https:\/\/example\.com/);
   assert.match(body, /https:\/\/example\.org/);
+});
+
+test('formatScanContextSection stores the selected scan context', () => {
+  const section = formatScanContextSection({
+    viewport: 'mobile-portrait',
+    colorScheme: 'dark',
+    browser: 'firefox'
+  });
+
+  assert.match(section, /Viewport: mobile-portrait/);
+  assert.match(section, /ColorScheme: dark/);
+  assert.match(section, /Browser: firefox/);
+});
+
+test('formatIssueBody includes scan context details', () => {
+  const body = formatIssueBody('Test Scan', ['https://example.com'], {
+    viewport: 'tablet-landscape',
+    colorScheme: 'light',
+    browser: 'webkit'
+  });
+
+  assert.match(body, /### Scan context/);
+  assert.match(body, /Viewport: tablet-landscape/);
+  assert.match(body, /ColorScheme: light/);
+  assert.match(body, /Browser: webkit/);
 });
 
 /**
@@ -214,6 +240,20 @@ test('createGitHubIssue handles prefix without space "scan:MyTitle"', withMocked
   
   // Should normalize to "SCAN: MyTitle"
   assert.strictEqual(titleParam, 'SCAN: MyTitle');
+}));
+
+test('createGitHubIssue includes scan context in the encoded body', withMockedLocation(async () => {
+  const githubUrl = await createGitHubIssue('Contextual scan', ['https://example.com'], {
+    viewport: '390x844',
+    colorScheme: 'dark',
+    browser: 'firefox'
+  });
+
+  const urlObj = new URL(githubUrl);
+  const bodyParam = urlObj.searchParams.get('body');
+  assert.match(bodyParam, /Viewport: 390x844/);
+  assert.match(bodyParam, /ColorScheme: dark/);
+  assert.match(bodyParam, /Browser: firefox/);
 }));
 
 test('applyGitHubUrlLimit returns all URLs when they fit within the limit', () => {

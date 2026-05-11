@@ -3,6 +3,7 @@
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { generateTrendsHtml, loadAllTrends } from './generate-trends-html.mjs';
+import { buildScanContext, formatViewportSummary } from '../scan-context.js';
 
 /**
  * Recursively find all report.json files in the reports directory
@@ -91,6 +92,11 @@ function escapeHtml(text) {
     "'": '&#039;'
   };
   return text.replace(/[&<>"']/g, char => map[char]);
+}
+
+function formatReportScanContext(scanContext) {
+  const context = buildScanContext(scanContext);
+  return `${formatViewportSummary(context)} · ${context.colorScheme} · ${context.browser}`;
 }
 
 /**
@@ -226,6 +232,7 @@ export function computeStats(reports) {
 export function generateTableRows(reports) {
   return reports.map(({ path, data }) => {
     const scannedDate = new Date(data.scannedAt);
+    const scanContextSummary = formatReportScanContext(data.scanContext);
     const formattedDate = scannedDate.toLocaleString('en-US', {
       year: 'numeric',
       month: 'numeric',
@@ -246,7 +253,7 @@ export function generateTableRows(reports) {
     return `
         <tr data-issue="${data.issueNumber}" data-title="${escapeHtml(data.scanTitle)}" data-date="${escapeHtml(data.scannedAt)}" data-urls="${data.acceptedCount}">
           <td data-label="Issue"><a href="${data.issueUrl}">#${data.issueNumber}</a></td>
-          <td data-label="Scan Title">${escapeHtml(data.scanTitle)}</td>
+          <td data-label="Scan Title">${escapeHtml(data.scanTitle)}<div class="scan-context">${escapeHtml(scanContextSummary)}</div></td>
           <td class="date" data-label="Scanned At">${formattedDate}</td>
           <td data-label="URLs">${data.acceptedCount} accepted</td>
           <td data-label="Results">
@@ -370,6 +377,12 @@ export function generateReportsHtml(reports, statsData = null) {
       background-color: #f6f8fa;
       font-weight: 600;
       color: #24292f;
+    }
+
+    .scan-context {
+      margin-top: 0.35rem;
+      color: #57606a;
+      font-size: 0.875rem;
     }
     
     tr:hover {
