@@ -289,6 +289,7 @@ npm run lint
 ```
 
 Tests live in `tests/unit/*.test.mjs` and use the Node.js built-in test runner.
+Generic Playwright accessibility tests are included in `tests/unit/playwright-accessibility.test.mjs` and auto-skip when Chromium is unavailable.
 
 ### Running Individual Scanner Modules
 
@@ -380,6 +381,7 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added accessibility tools suite navigation bar linking Top Task Finder, Open Scans, and Alt Text Scan across all pages; expanded Related Projects section | Development – April 2026 |
 | GitHub Copilot Coding Agent (claude-sonnet-4.6) | Added AI Accessibility Review workflow (`ai-accessibility-review.yml`) and `scanner/review-source.mjs` — on-demand WCAG 2.2 source-code review using GitHub Models API, inspired by GitHubNext daily-accessibility-review | Development – April 2026 |
 | GitHub Copilot Task Agent (GPT-5-class) | Improved dark-mode report link contrast by adding dedicated link tokens/styles in `scanner/interactive-report.mjs`; updated unit tests | Development – May 2026 |
+| GitHub Copilot Coding Agent (GPT-5-class) | Added generic Playwright accessibility tests using `@axe-core/playwright` for image-alt and button-name rule coverage | Development – May 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
