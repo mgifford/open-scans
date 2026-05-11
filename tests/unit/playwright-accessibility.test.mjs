@@ -25,11 +25,14 @@ async function analyzeHtmlWithAxeRule(t, html, ruleId) {
     return null;
   }
 
+  let context;
   try {
-    const page = await browser.newPage();
+    context = await browser.newContext();
+    const page = await context.newPage();
     await page.setContent(html, { waitUntil: "domcontentloaded" });
     return await new AxeBuilder({ page }).withRules([ruleId]).analyze();
   } finally {
+    if (context) await context.close();
     await browser.close();
   }
 }
