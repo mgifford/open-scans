@@ -42,7 +42,9 @@ test("generic Playwright accessibility test finds missing image alt text", async
   );
 
   if (!result) return;
-  assert.ok(result.violations.some((violation) => violation.id === "image-alt"));
+  const imageAltViolation = result.violations.find((violation) => violation.id === "image-alt");
+  assert.ok(imageAltViolation);
+  assert.ok(imageAltViolation.nodes.some((node) => node.target?.includes("img")));
 });
 
 test("generic Playwright accessibility test passes image-alt when alt text is present", async (t) => {
@@ -54,4 +56,30 @@ test("generic Playwright accessibility test passes image-alt when alt text is pr
 
   if (!result) return;
   assert.equal(result.violations.length, 0);
+  assert.ok(result.passes.some((pass) => pass.id === "image-alt"));
+});
+
+test("generic Playwright accessibility test finds unnamed button controls", async (t) => {
+  const result = await runAxeForRule(
+    t,
+    "<!doctype html><html lang='en'><body><button><svg aria-hidden='true'></svg></button></body></html>",
+    "button-name"
+  );
+
+  if (!result) return;
+  const buttonNameViolation = result.violations.find((violation) => violation.id === "button-name");
+  assert.ok(buttonNameViolation);
+  assert.ok(buttonNameViolation.nodes.some((node) => node.target?.includes("button")));
+});
+
+test("generic Playwright accessibility test passes button-name when aria-label is present", async (t) => {
+  const result = await runAxeForRule(
+    t,
+    "<!doctype html><html lang='en'><body><button aria-label='Open menu'><svg aria-hidden='true'></svg></button></body></html>",
+    "button-name"
+  );
+
+  if (!result) return;
+  assert.equal(result.violations.length, 0);
+  assert.ok(result.passes.some((pass) => pass.id === "button-name"));
 });
