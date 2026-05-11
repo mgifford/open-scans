@@ -35,6 +35,9 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Run Playwright accessibility unit tests
+        run: npm run test:playwright
+
       - name: Load open issues
         run: |
           mkdir -p .tmp

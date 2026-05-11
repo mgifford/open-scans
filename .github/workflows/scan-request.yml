@@ -35,6 +35,9 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Run Playwright accessibility unit tests
+        run: npm run test:playwright
+
       # Timeout configuration (optional, defaults shown):
       # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
       # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
