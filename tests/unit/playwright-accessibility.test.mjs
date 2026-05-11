@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-async function runAxeForRule(t, html, ruleId) {
+async function analyzeHtmlWithAxeRule(t, html, ruleId) {
   let chromium;
   let AxeBuilder;
 
@@ -35,7 +35,7 @@ async function runAxeForRule(t, html, ruleId) {
 }
 
 test("generic Playwright accessibility test finds missing image alt text", async (t) => {
-  const result = await runAxeForRule(
+  const result = await analyzeHtmlWithAxeRule(
     t,
     "<!doctype html><html lang='en'><body><img src='logo.png'></body></html>",
     "image-alt"
@@ -48,7 +48,7 @@ test("generic Playwright accessibility test finds missing image alt text", async
 });
 
 test("generic Playwright accessibility test passes image-alt when alt text is present", async (t) => {
-  const result = await runAxeForRule(
+  const result = await analyzeHtmlWithAxeRule(
     t,
     "<!doctype html><html lang='en'><body><img src='logo.png' alt='Company logo'></body></html>",
     "image-alt"
@@ -60,7 +60,7 @@ test("generic Playwright accessibility test passes image-alt when alt text is pr
 });
 
 test("generic Playwright accessibility test finds unnamed button controls", async (t) => {
-  const result = await runAxeForRule(
+  const result = await analyzeHtmlWithAxeRule(
     t,
     "<!doctype html><html lang='en'><body><button><svg aria-hidden='true'></svg></button></body></html>",
     "button-name"
@@ -73,7 +73,7 @@ test("generic Playwright accessibility test finds unnamed button controls", asyn
 });
 
 test("generic Playwright accessibility test passes button-name when aria-label is present", async (t) => {
-  const result = await runAxeForRule(
+  const result = await analyzeHtmlWithAxeRule(
     t,
     "<!doctype html><html lang='en'><body><button aria-label='Open menu'><svg aria-hidden='true'></svg></button></body></html>",
     "button-name"
