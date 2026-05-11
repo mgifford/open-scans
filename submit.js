@@ -3,7 +3,7 @@
  * Parses URLs, validates them, and creates GitHub issues for scanning
  */
 
-import { buildScanContext, formatViewportToken } from "./scan-context.js";
+import { buildScanContext, formatViewportToken, VIEWPORT_SIZE_RE } from "./scan-context.js";
 
 // Regex to match any case variation of "scan:" prefix with zero or more spaces
 // Intentionally uses \s* to handle spaces, tabs, and other whitespace that users might accidentally include
@@ -163,9 +163,13 @@ export function validateUrls(urls) {
 
 export function formatScanContextSection(options = {}) {
   const scanContext = buildScanContext(options);
+  const rawViewport = typeof options?.viewport === "string" ? options.viewport.trim() : "";
+  const viewportToken = VIEWPORT_SIZE_RE.test(rawViewport)
+    ? rawViewport.toLowerCase().replace(/\s*[×]\s*/g, "x").replace(/\s+/g, "")
+    : formatViewportToken(scanContext);
   return `### Scan context
 
-Viewport: ${formatViewportToken(scanContext)}
+Viewport: ${viewportToken}
 ColorScheme: ${scanContext.colorScheme}
 Browser: ${scanContext.browser}
 `;

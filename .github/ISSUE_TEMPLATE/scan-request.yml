@@ -83,7 +83,6 @@ body:
         - Auto-detect (run both if page supports dark mode)
         - Light only
         - Dark only
-        - Both
       default: 0
     validations:
       required: false

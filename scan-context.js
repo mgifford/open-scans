@@ -9,10 +9,20 @@ export const VIEWPORT_PRESETS = Object.freeze({
 export const DEFAULT_VIEWPORT_PRESET = "desktop";
 export const DEFAULT_COLOR_SCHEME = "both";
 export const DEFAULT_BROWSER = "chromium";
+export const VIEWPORT_SIZE_RE = /^(\d{2,5})\s*[x×]\s*(\d{2,5})$/i;
 
 const VIEWPORT_ALIASES = Object.freeze({
   mobile: "mobile-portrait",
   tablet: "tablet-portrait"
+});
+
+const VIEWPORT_LABEL_ALIASES = Object.freeze({
+  "default (1280×800 desktop)": DEFAULT_VIEWPORT_PRESET,
+  "default desktop (1280×800)": DEFAULT_VIEWPORT_PRESET,
+  "tablet portrait (768×1024)": "tablet-portrait",
+  "tablet landscape (1024×768)": "tablet-landscape",
+  "mobile portrait (390×844)": "mobile-portrait",
+  "mobile landscape (844×390)": "mobile-landscape"
 });
 
 const COLOR_SCHEME_ALIASES = Object.freeze({
@@ -52,12 +62,18 @@ export function normalizeViewportPresetName(value) {
   const normalized = normalizeText(value);
   if (!normalized) return null;
   if (normalized.startsWith("default")) return DEFAULT_VIEWPORT_PRESET;
+  if (VIEWPORT_LABEL_ALIASES[normalized]) return VIEWPORT_LABEL_ALIASES[normalized];
   const alias = VIEWPORT_ALIASES[normalized];
   if (alias) return alias;
   if (VIEWPORT_PRESETS[normalized]) return normalized;
-  const descriptiveMatch = normalized.match(/(desktop|tablet portrait|tablet landscape|mobile portrait|mobile landscape)/);
-  if (!descriptiveMatch) return null;
-  return descriptiveMatch[1].replace(/\s+/g, "-");
+  const dashed = normalized.replace(/\s+/g, "-");
+  if (VIEWPORT_PRESETS[dashed]) return dashed;
+  for (const [label, preset] of Object.entries(VIEWPORT_LABEL_ALIASES)) {
+    if (normalized.includes(label.split(" (")[0])) {
+      return preset;
+    }
+  }
+  return null;
 }
 
 export function parseViewportSpec(value) {
@@ -77,7 +93,7 @@ export function parseViewportSpec(value) {
   const normalized = normalizeText(value);
   if (!normalized) return null;
 
-  const sizeMatch = normalized.match(/^(\d{2,5})\s*[x×]\s*(\d{2,5})$/i);
+  const sizeMatch = normalized.match(VIEWPORT_SIZE_RE);
   if (sizeMatch) {
     const width = Number.parseInt(sizeMatch[1], 10);
     const height = Number.parseInt(sizeMatch[2], 10);

@@ -927,11 +927,19 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
     }
 
     // Launch browser with timeout
-    const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
-    const browser = await browserType.launch({
-      headless: true,
-      timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
-    });
+    let browser;
+    try {
+      const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      browser = await browserType.launch({
+        headless: true,
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+      });
+    } catch (error) {
+      return {
+        ...base,
+        error: `Playwright browser '${scanContext.browser}' could not be launched: ${error instanceof Error ? error.message : String(error)}`
+      };
+    }
 
     try {
       const context = await browser.newContext({
@@ -1071,11 +1079,19 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
       };
     }
 
-    const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
-    const browser = await browserType.launch({
-      headless: true,
-      timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
-    });
+    let browser;
+    try {
+      const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      browser = await browserType.launch({
+        headless: true,
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+      });
+    } catch (error) {
+      return {
+        ...base,
+        error: `Playwright browser '${scanContext.browser}' could not be launched: ${error instanceof Error ? error.message : String(error)}`
+      };
+    }
 
     try {
       const context = await browser.newContext({
