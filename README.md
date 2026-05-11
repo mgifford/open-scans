@@ -387,6 +387,7 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Task Agent (GPT-5-class) | Improved dark-mode report link contrast by adding dedicated link tokens/styles in `scanner/interactive-report.mjs`; updated unit tests | Development – May 2026 |
 | GitHub Copilot Coding Agent (GPT-5-class) | Added generic Playwright accessibility tests using `@axe-core/playwright` for image-alt and button-name rule coverage | Development – May 2026 |
 | GitHub Copilot Task Agent (GPT-5-class) | Added dedicated Playwright test command (`npm run test:playwright`) and made scan workflows run Playwright accessibility tests before scans | Development – May 2026 |
+| GitHub Copilot Task Agent (GPT-5-class) | Added reproducible scan context support for viewport, color scheme, and browser selection across parsing, reports, workflows, and the web submission form | Development – May 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

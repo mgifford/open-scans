@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import { parseScanIssue } from "./parse-issue.mjs";
+import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
@@ -79,6 +80,24 @@ const TIMEOUTS = {
   // analytics polling or WebSockets), the scan proceeds after this timeout.
   NETWORK_IDLE_TIMEOUT: parseInt(process.env.NETWORK_IDLE_TIMEOUT_MS || "10000", 10)
 };
+
+function getPlaywrightBrowserType(pw, browserName = "chromium") {
+  const browserType = pw?.[browserName] ?? pw?.chromium;
+  if (!browserType?.launch) {
+    throw new Error(`Playwright browser '${browserName}' is not available`);
+  }
+  return browserType;
+}
+
+function getRequestedColorScheme(scanContext) {
+  return scanContext?.colorScheme === "dark" ? "dark" : "light";
+}
+
+function getModesToRun(scanContext, darkSupported) {
+  if (scanContext?.colorScheme === "dark") return ["dark"];
+  if (scanContext?.colorScheme === "light") return ["light"];
+  return darkSupported ? ["light", "dark"] : ["light"];
+}
 
 // Lazy-load Playwright and axe-core to avoid errors when not installed
 let playwright = null;
@@ -894,7 +913,7 @@ export async function detectMediaQuerySupport(page) {
   return support;
 }
 
-export async function runAxeAudit(url, pageLoadDelayMs = 2000) {
+export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext()) {
   const base = createScannerBaseError(null);
 
   try {
@@ -908,13 +927,25 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000) {
     }
 
     // Launch browser with timeout
-    const browser = await pw.chromium.launch({
-      headless: true,
-      timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
-    });
+    let browser;
+    try {
+      const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      browser = await browserType.launch({
+        headless: true,
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+      });
+    } catch (error) {
+      return {
+        ...base,
+        error: `Playwright browser '${scanContext.browser}' could not be launched: ${error instanceof Error ? error.message : String(error)}`
+      };
+    }
 
     try {
-      const context = await browser.newContext();
+      const context = await browser.newContext({
+        viewport: scanContext.viewport,
+        colorScheme: getRequestedColorScheme(scanContext)
+      });
       const page = await context.newPage();
 
       // Navigate to URL with timeout.
@@ -939,10 +970,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000) {
 
       const mediaQuerySupport = await detectMediaQuerySupport(page);
       const darkSupported = mediaQuerySupport.darkMode;
-      const modesToRun = ["light"];
-      if (darkSupported) {
-        modesToRun.push("dark");
-      }
+      const modesToRun = getModesToRun(scanContext, darkSupported);
 
       const allResults = {
         failedRules: new Set(),
@@ -1022,7 +1050,9 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000) {
         passedRules: [...allResults.passedRules].sort(),
         failures: allResults.failures,
         outcomeCount: allResults.counts.passed + allResults.counts.failed + allResults.counts.cantTell + allResults.counts.inapplicable,
-        darkModeScanned: darkSupported,
+        darkModeScanned: modesToRun.includes("dark"),
+        requestedColorScheme: scanContext.colorScheme,
+        scanContext,
         mediaQuerySupport
       };
     } catch (error) {
@@ -1037,7 +1067,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000) {
   }
 }
 
-async function runAccessLintAudit(url, pageLoadDelayMs = 2000) {
+async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext()) {
   const base = createScannerBaseError(null);
 
   try {
@@ -1049,13 +1079,25 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000) {
       };
     }
 
-    const browser = await pw.chromium.launch({
-      headless: true,
-      timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
-    });
+    let browser;
+    try {
+      const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      browser = await browserType.launch({
+        headless: true,
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+      });
+    } catch (error) {
+      return {
+        ...base,
+        error: `Playwright browser '${scanContext.browser}' could not be launched: ${error instanceof Error ? error.message : String(error)}`
+      };
+    }
 
     try {
-      const context = await browser.newContext();
+      const context = await browser.newContext({
+        viewport: scanContext.viewport,
+        colorScheme: getRequestedColorScheme(scanContext)
+      });
       const page = await context.newPage();
       // "load" waits for window.onload (all scripts and sub-resources loaded),
       // more thorough than "domcontentloaded" for JS-rendered pages.
@@ -1075,53 +1117,67 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000) {
 
       await page.addScriptTag({ path: accessLintIifePath });
 
-      const audit = await page.evaluate(() => {
-        const runner = globalThis.AccessLint;
-        if (!runner || typeof runner.runAudit !== "function") {
-          return { violations: [], ruleCount: 0 };
+      const mediaQuerySupport = await detectMediaQuerySupport(page);
+      const modesToRun = getModesToRun(scanContext, mediaQuerySupport.darkMode);
+      const allResults = {
+        counts: {
+          passed: 0,
+          failed: 0,
+          cantTell: 0,
+          inapplicable: 0
+        },
+        failedRules: new Set(),
+        failures: [],
+        outcomeCount: 0
+      };
+
+      for (const mode of modesToRun) {
+        await page.emulateMedia({ colorScheme: mode });
+        await page.waitForTimeout(500);
+
+        const audit = await page.evaluate(() => {
+          const runner = globalThis.AccessLint;
+          if (!runner || typeof runner.runAudit !== "function") {
+            return { violations: [], ruleCount: 0 };
+          }
+          return runner.runAudit(document);
+        });
+
+        const violations = Array.isArray(audit?.violations) ? audit.violations : [];
+        const ruleCount = Number(audit?.ruleCount ?? 0);
+        allResults.counts.passed += Math.max(ruleCount - violations.length, 0);
+        allResults.counts.failed += violations.length;
+        allResults.outcomeCount += ruleCount || violations.length;
+
+        for (const violation of violations) {
+          const rule = String(violation?.ruleId ?? "unknown-rule");
+          allResults.failedRules.add(rule);
+          const ruleInfo = getRuleMetadata("axe", rule);
+          const wcagSc = ruleInfo.wcagCriteria.map(sc => `wcag${sc.replace(/\./g, "")}`);
+          allResults.failures.push({
+            rule,
+            wcagSc: wcagSc.length > 0 ? wcagSc : undefined,
+            xpath: violation?.selector ?? null,
+            selector: violation?.selector ?? null,
+            html: violation?.html ?? null,
+            impact: violation?.impact ?? null,
+            message: violation?.message ?? null,
+            colorScheme: mode
+          });
         }
-        return runner.runAudit(document);
-      });
+      }
 
       await browser.close();
-
-      const violations = Array.isArray(audit?.violations) ? audit.violations : [];
-      const ruleCount = Number(audit?.ruleCount ?? 0);
-      const failedRules = new Set();
-      const failures = [];
-
-      for (const violation of violations) {
-        const rule = String(violation?.ruleId ?? "unknown-rule");
-        failedRules.add(rule);
-        // Enrich with WCAG SC tags from rule metadata so cross-engine deduplication works.
-        // AccessLint uses the same rule IDs as axe-core, so the axe lookup is correct.
-        const ruleInfo = getRuleMetadata("axe", rule);
-        const wcagSc = ruleInfo.wcagCriteria.map(sc => `wcag${sc.replace(/\./g, "")}`);
-        failures.push({
-          rule,
-          wcagSc: wcagSc.length > 0 ? wcagSc : undefined,
-          xpath: violation?.selector ?? null,
-          selector: violation?.selector ?? null,
-          html: violation?.html ?? null,
-          impact: violation?.impact ?? null,
-          message: violation?.message ?? null
-        });
-      }
 
       return {
         executed: true,
         error: null,
-        counts: {
-          passed: Math.max(ruleCount - violations.length, 0),
-          failed: violations.length,
-          cantTell: 0,
-          inapplicable: 0
-        },
-        failedRules: [...failedRules].sort(),
+        counts: allResults.counts,
+        failedRules: [...allResults.failedRules].sort(),
         passedRules: [],
-        failures,
-        outcomeCount: ruleCount || violations.length,
-        uniqueFailedCount: violations.length,
+        failures: allResults.failures,
+        outcomeCount: allResults.outcomeCount,
+        uniqueFailedCount: allResults.failures.length,
         duplicateFailedCount: 0
       };
     } catch (error) {
@@ -1365,8 +1421,9 @@ function extractHtmlTitle(html) {
   return match ? match[1].trim() : null;
 }
 
-async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
+async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, rawScanContext = {}) {
   const started = Date.now();
+  const scanContext = buildScanContext(rawScanContext);
   const heartbeat = setInterval(() => {
     const elapsedSec = Math.floor((Date.now() - started) / 1000);
     console.error(`[heartbeat] Scanning ${target.submittedUrl} (${elapsedSec}s elapsed)`);
@@ -1421,7 +1478,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
       const axe = browserSkipReason
         ? createScannerBaseError(browserSkipReason)
         : scannersToRun.runAxe
-          ? await runAxeAudit(finalUrl, pageLoadDelayMs)
+          ? await runAxeAudit(finalUrl, pageLoadDelayMs, scanContext)
           : createScannerBaseError("Skipped (not requested)");
       const alfa = scannersToRun.runAlfa
         ? await runAlfaAudit(finalUrl)
@@ -1434,7 +1491,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
       const accesslint = browserSkipReason
         ? createScannerBaseError(browserSkipReason)
         : scannersToRun.runAccesslint
-          ? await runAccessLintAudit(finalUrl, pageLoadDelayMs)
+          ? await runAccessLintAudit(finalUrl, pageLoadDelayMs, scanContext)
           : createScannerBaseError("Skipped (not requested)");
       const qualweb = browserSkipReason
         ? createScannerBaseError(browserSkipReason)
@@ -1452,6 +1509,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
         pageTitle,
         elapsedMs: Date.now() - started,
         error: null,
+        scanContext,
         alfa,
         axe,
         equalAccess,
@@ -1477,6 +1535,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
         pageTitle: null,
         elapsedMs: Date.now() - started,
         error: error instanceof Error ? error.message : String(error),
+        scanContext,
         alfa: baseErrorResult,
         axe: baseErrorResult,
         equalAccess: baseErrorResult,
@@ -1504,6 +1563,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000) {
       pageTitle: null,
       elapsedMs: Date.now() - started,
       error: timeoutError instanceof Error ? timeoutError.message : String(timeoutError),
+      scanContext,
       alfa: baseErrorResult,
       axe: baseErrorResult,
       equalAccess: baseErrorResult,
@@ -1526,6 +1586,11 @@ function toCsv(summary) {
   const header = [
     "issue_number",
     "scan_title",
+    "scan_browser",
+    "scan_color_scheme",
+    "scan_viewport_preset",
+    "scan_viewport_width",
+    "scan_viewport_height",
     "submitted_url",
     "final_url",
     "http_status",
@@ -1590,9 +1655,15 @@ function toCsv(summary) {
     const equalAccess = result.equalAccess;
     const accesslint = result.accesslint;
     const qualweb = result.qualweb;
+    const scanContext = buildScanContext(result.scanContext || summary.scanContext);
     return [
       summary.issueNumber,
       summary.scanTitle,
+      scanContext.browser,
+      scanContext.colorScheme,
+      scanContext.viewportPreset,
+      scanContext.viewport.width,
+      scanContext.viewport.height,
       result.submittedUrl,
       result.finalUrl,
       result.statusCode ?? "",
@@ -1879,6 +1950,7 @@ function buildEnhancedSummary(summary) {
 
         // Keep up to 5 examples
         if (entry.examples.length < 5) {
+          const exampleScanContext = buildScanContext(result.scanContext);
           entry.examples.push({
             url: result.submittedUrl,
             html: failure.html,
@@ -1887,6 +1959,8 @@ function buildEnhancedSummary(summary) {
             fixSummary: failure.fixSummary,
             relatedPaths: failure.relatedPaths,
             colorScheme: failure.colorScheme,
+            viewport: formatViewportToken(exampleScanContext),
+            browser: exampleScanContext.browser,
             fingerprint: failure.fingerprint ?? null,
             firstSeenAt: failure.firstSeenAt ?? null,
             patternId: failure.patternId ?? null
@@ -3018,9 +3092,21 @@ async function main() {
   if (remediateMode) {
     console.error("[ai-remediation] REMEDIATE keyword detected — AI suggestions will be generated after scan");
   }
+  const scanContext = buildScanContext({
+    viewport: request.viewport,
+    colorScheme: request.colorScheme,
+    browser: request.browser
+  });
+  request.viewport = scanContext.viewport;
+  request.colorScheme = scanContext.colorScheme;
+  request.browser = scanContext.browser;
   // Convert pageLoadDelay from seconds (as stored in request) to milliseconds
   const pageLoadDelayMs = (request.pageLoadDelay ?? 2) * 1000;
   console.error(`Page load delay: ${pageLoadDelayMs}ms`);
+  console.error(`Scan context: ${formatViewportSummary(scanContext)} | ${scanContext.colorScheme} | ${scanContext.browser}`);
+  if (scanContext.browser !== "chromium" && (engines.includes("all") || engines.some((engine) => ["alfa", "equalaccess", "qualweb"].includes(engine)))) {
+    console.error(`[scan-context] Browser '${scanContext.browser}' applies to Playwright-based scans. ALFA, Equal Access, and QualWeb keep their existing browser stacks.`);
+  }
 
   // When crawl mode is detected (issue title is a URL with no body URLs),
   // discover URLs via sitemap.xml or page crawl before scanning.
@@ -3064,7 +3150,7 @@ async function main() {
       break;
     }
 
-    const result = await scanOneUrl(target, engines, pageLoadDelayMs);
+    const result = await scanOneUrl(target, engines, pageLoadDelayMs, scanContext);
     results.push(result);
 
     // Log progress to help with debugging (stderr to not interfere with JSON output)
@@ -3238,6 +3324,7 @@ async function main() {
     scanTitle: request.scanTitle || request.issueTitle,
     submittedBy: request.submittedBy,
     engines,
+    scanContext,
     scannedAt,
     totalElapsedMs: totalElapsedTime,
     totalSubmitted: request.requestedUrls.length,
@@ -3366,6 +3453,7 @@ async function main() {
     skippedDueToTimeout: summary.skippedDueToTimeout,
     skippedDueToErrAborted: summary.skippedDueToErrAborted,
     rejectedCount: summary.rejectedCount,
+    scanContext,
     scannedAt,
     totalElapsedMs: totalElapsedTime,
     alfaTotals,

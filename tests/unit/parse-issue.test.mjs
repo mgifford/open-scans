@@ -12,6 +12,9 @@ test("parseScanIssue parses valid issue payload", () => {
   assert.equal(result.value.issueNumber, 42);
   assert.equal(result.value.submittedBy, "octocat");
   assert.equal(result.value.requestedUrls.length, 3);
+  assert.deepEqual(result.value.viewport, { width: 1280, height: 800 });
+  assert.equal(result.value.colorScheme, "both");
+  assert.equal(result.value.browser, "chromium");
   assert.ok(result.value.requestId.startsWith("42-"));
 });
 
@@ -190,6 +193,26 @@ test("parseScanIssue defaults to axe plus a random engine when none specified", 
   assert.deepEqual(result.value.engines, result.engines);
 });
 
+test("parseScanIssue extracts viewport, color scheme, and browser from title", () => {
+  const payload = {
+    issue: {
+      number: 106,
+      html_url: "https://github.com/example/repo/issues/106",
+      title: "SCAN: VIEWPORT:mobile COLORSCHEME:dark BROWSER:firefox Mobile audit",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.value.viewport, { width: 390, height: 844 });
+  assert.equal(result.value.colorScheme, "dark");
+  assert.equal(result.value.browser, "firefox");
+  assert.equal(result.value.scanTitle, "Mobile audit");
+});
+
 test("parseScanIssue recognizes ALL keyword", () => {
   const payload = {
     issue: {
@@ -361,6 +384,70 @@ test("parseScanIssue reads specific engine from 'Accessibility engines' section 
   assert.deepEqual(result.engines, ["axe"]);
 });
 
+test("parseScanIssue reads scan context from manual 'Scan context' section", () => {
+  const body = `### URLs
+
+https://example.com
+
+### Scan context
+
+Viewport: 1024x768
+ColorScheme: dark
+Browser: webkit
+`;
+  const payload = {
+    issue: {
+      number: 114,
+      html_url: "https://github.com/example/repo/issues/114",
+      title: "SCAN: Context section test",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.value.viewport, { width: 1024, height: 768 });
+  assert.equal(result.value.colorScheme, "dark");
+  assert.equal(result.value.browser, "webkit");
+});
+
+test("parseScanIssue reads scan context from issue form dropdown sections", () => {
+  const body = `### URLs
+
+https://example.com
+
+### Viewport
+
+Mobile landscape (844×390)
+
+### Color scheme
+
+Dark only
+
+### Browser
+
+Firefox
+`;
+  const payload = {
+    issue: {
+      number: 115,
+      html_url: "https://github.com/example/repo/issues/115",
+      title: "SCAN: Issue form context test",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.value.viewport, { width: 844, height: 390 });
+  assert.equal(result.value.colorScheme, "dark");
+  assert.equal(result.value.browser, "firefox");
+});
+
 test("parseScanIssue uses default when 'Accessibility engines' section has 'Default' option", () => {
   // The default dropdown option should not override engine selection — fall back to default engines
   const body = "### URLs\n\nhttps://example.com\n\n### Accessibility engines\n\nDefault (axe + one random engine)\n";
@@ -379,6 +466,22 @@ test("parseScanIssue uses default when 'Accessibility engines' section has 'Defa
   assert.equal(result.ok, true);
   assert.equal(result.engines[0], "axe", "should use default engines when form shows default option");
   assert.equal(result.engines.length, 2, "default should be axe + one random engine");
+});
+
+test("validateScanRequest accepts scan context fields", () => {
+  const validation = validateScanRequest({
+    requestId: "test-request",
+    issueNumber: 150,
+    issueUrl: "https://github.com/example/repo/issues/150",
+    submittedBy: "octocat",
+    submittedAt: "2026-02-20T20:00:00Z",
+    requestedUrls: ["https://example.com"],
+    viewport: { width: 1280, height: 800 },
+    colorScheme: "both",
+    browser: "chromium"
+  });
+
+  assert.equal(validation.ok, true);
 });
 
 test("parseScanIssue defaults to 2 second page load delay when TIME not specified", () => {

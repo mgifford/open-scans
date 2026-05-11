@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { randomUUID } from "node:crypto";
+import { buildScanContext, normalizeBrowser, normalizeColorScheme } from "../scan-context.js";
 
 const schemaPath = new URL("./schemas/scan-request.schema.json", import.meta.url);
 const scanRequestSchema = JSON.parse(readFileSync(schemaPath, "utf8"));
@@ -124,6 +125,29 @@ function extractSection(body, sectionName) {
   return match ? match[1].trim() : "";
 }
 
+function extractNamedValue(text, label) {
+  if (!text) return null;
+  const match = text.match(new RegExp(`(?:^|\\n)${label}:\\s*(.+)$`, "im"));
+  return match?.[1]?.trim() || null;
+}
+
+function extractBodyScanContext(body) {
+  if (!body) return {};
+  const scanContextSection = extractSection(body, "Scan context");
+  const source = scanContextSection || body;
+  const viewport = extractNamedValue(source, "Viewport") || extractSection(body, "Viewport");
+  const colorScheme = extractNamedValue(source, "ColorScheme")
+    || extractNamedValue(source, "Color scheme")
+    || extractSection(body, "Color scheme")
+    || extractSection(body, "ColorScheme");
+  const browser = extractNamedValue(source, "Browser") || extractSection(body, "Browser");
+  return {
+    ...(viewport ? { viewport } : {}),
+    ...(colorScheme ? { colorScheme } : {}),
+    ...(browser ? { browser } : {})
+  };
+}
+
 /**
  * Parse a page/URL count from a text like "Page: 50" or "Pages: 20".
  * Used when the issue body specifies how many URLs to discover via crawling.
@@ -151,7 +175,10 @@ function extractScanTitle(issueTitle) {
       isRunnableIssue: false,
       triggerType: "none",
       scanTitle: "",
-      engines: ["all"]
+      engines: ["all"],
+      viewport: null,
+      colorScheme: null,
+      browser: null
     };
   }
 
@@ -192,6 +219,27 @@ function extractScanTitle(issueTitle) {
     pageLoadDelay = Math.min(Math.max(requestedSeconds, 0), 300);
     scanTitle = scanTitle.replace(/\bTIME:\d+\b/i, "").trim();
   }
+
+  let viewport = null;
+  const viewportMatch = scanTitle.match(/\bVIEWPORT:\s*([a-z-]+|\d+\s*[x×]\s*\d+)\b/i);
+  if (viewportMatch) {
+    viewport = viewportMatch[1].trim();
+    scanTitle = scanTitle.replace(/\bVIEWPORT:\s*([a-z-]+|\d+\s*[x×]\s*\d+)\b/i, "").trim();
+  }
+
+  let colorScheme = null;
+  const colorSchemeMatch = scanTitle.match(/\bCOLORSCHEME:\s*(light|dark|both)\b/i);
+  if (colorSchemeMatch) {
+    colorScheme = colorSchemeMatch[1].trim();
+    scanTitle = scanTitle.replace(/\bCOLORSCHEME:\s*(light|dark|both)\b/i, "").trim();
+  }
+
+  let browser = null;
+  const browserMatch = scanTitle.match(/\bBROWSER:\s*(chromium|firefox|webkit)\b/i);
+  if (browserMatch) {
+    browser = browserMatch[1].trim();
+    scanTitle = scanTitle.replace(/\bBROWSER:\s*(chromium|firefox|webkit)\b/i, "").trim();
+  }
   
   // Clean up extra whitespace
   scanTitle = scanTitle.replace(/\s+/g, " ").trim();
@@ -207,7 +255,10 @@ function extractScanTitle(issueTitle) {
     scanTitle,
     engines,
     pageLoadDelay,
-    remediate
+    remediate,
+    viewport,
+    colorScheme,
+    browser
   };
 }
 
@@ -287,6 +338,12 @@ export function parseScanIssue(issueEvent) {
   const bodyEngines = extractBodyEngines(body);
   const titleEngines = titleInfo.engines;
   const engines = bodyEngines ?? (titleEngines.length > 0 ? titleEngines : getDefaultEngines());
+  const bodyScanContext = extractBodyScanContext(body);
+  const scanContext = buildScanContext({
+    viewport: bodyScanContext.viewport ?? titleInfo.viewport,
+    colorScheme: bodyScanContext.colorScheme ?? titleInfo.colorScheme,
+    browser: bodyScanContext.browser ?? titleInfo.browser
+  });
 
   const requestId = `${issue.number}-${randomUUID()}`;
   const request = {
@@ -300,7 +357,10 @@ export function parseScanIssue(issueEvent) {
     scanTitle: titleInfo.scanTitle,
     requestedUrls: finalRequestedUrls,
     engines,
-    pageLoadDelay: titleInfo.pageLoadDelay ?? 2
+    pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
+    viewport: scanContext.viewport,
+    colorScheme: scanContext.colorScheme,
+    browser: scanContext.browser
   };
 
   const validation = validateScanRequest(request);
@@ -315,6 +375,10 @@ export function parseScanIssue(issueEvent) {
     engines,
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
     remediate: titleInfo.remediate ?? false,
+    viewport: scanContext.viewport,
+    colorScheme: scanContext.colorScheme,
+    browser: scanContext.browser,
+    scanContext,
     needsCrawl,
     crawlBaseUrl,
     crawlPageCount
@@ -359,6 +423,22 @@ export function validateScanRequest(candidate) {
         errors.push(`requestedUrls[${index}] is not a valid http/https URL`);
       }
     });
+  }
+
+  if (candidate.viewport !== undefined) {
+    const width = Number(candidate.viewport?.width);
+    const height = Number(candidate.viewport?.height);
+    if (!Number.isInteger(width) || width < 1 || !Number.isInteger(height) || height < 1) {
+      errors.push("viewport must include integer width and height >= 1");
+    }
+  }
+
+  if (candidate.colorScheme !== undefined && !normalizeColorScheme(candidate.colorScheme)) {
+    errors.push("colorScheme must be one of: light, dark, both");
+  }
+
+  if (candidate.browser !== undefined && !normalizeBrowser(candidate.browser)) {
+    errors.push("browser must be one of: chromium, firefox, webkit");
   }
 
   const knownKeys = new Set(Object.keys(scanRequestSchema.properties));

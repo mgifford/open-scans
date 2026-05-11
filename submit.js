@@ -3,6 +3,8 @@
  * Parses URLs, validates them, and creates GitHub issues for scanning
  */
 
+import { buildScanContext, formatViewportToken, VIEWPORT_SIZE_RE } from "./scan-context.js";
+
 // Regex to match any case variation of "scan:" prefix with zero or more spaces
 // Intentionally uses \s* to handle spaces, tabs, and other whitespace that users might accidentally include
 const SCAN_PREFIX_REGEX = /^scan:\s*/i;
@@ -159,11 +161,27 @@ export function validateUrls(urls) {
   return { accepted, rejected };
 }
 
+export function formatScanContextSection(options = {}) {
+  const scanContext = buildScanContext(options);
+  const rawViewport = typeof options?.viewport === "string" ? options.viewport.trim() : "";
+  const viewportToken = VIEWPORT_SIZE_RE.test(rawViewport)
+    ? rawViewport.toLowerCase().replace(/\s*[×]\s*/g, "x").replace(/\s+/g, "")
+    : formatViewportToken(scanContext);
+  return `### Scan context
+
+Viewport: ${viewportToken}
+ColorScheme: ${scanContext.colorScheme}
+Browser: ${scanContext.browser}
+`;
+}
+
 // Format issue body for GitHub issue creation
-export function formatIssueBody(scanTitle, urls) {
+export function formatIssueBody(scanTitle, urls, options = {}) {
   return `# URLs
 
 ${urls.join("\n")}
+
+${formatScanContextSection(options)}
 `;
 }
 
@@ -186,13 +204,14 @@ function getGitHubRepoInfo() {
 // Returns { fitting, tooLong } where tooLong items have { url, reason }.
 // URLs are accepted greedily in order; once adding the next URL would exceed
 // MAX_GITHUB_URL_LENGTH, it and all remaining URLs go into tooLong.
-export function applyGitHubUrlLimit(accepted, owner, repo, scanTitle) {
+export function applyGitHubUrlLimit(accepted, owner, repo, scanTitle, options = {}) {
   const issueTitle = `SCAN: ${scanTitle.replace(SCAN_PREFIX_REGEX, "")}`;
   const encodedTitle = encodeURIComponent(issueTitle);
   const baseUrl = `https://github.com/${owner}/${repo}/issues/new?title=${encodedTitle}&body=`;
   const bodyPrefix = encodeURIComponent("# URLs\n\n");
+  const bodySuffix = encodeURIComponent(`\n${formatScanContextSection(options)}`);
 
-  let currentLength = baseUrl.length + bodyPrefix.length;
+  let currentLength = baseUrl.length + bodyPrefix.length + bodySuffix.length;
   const fitting = [];
   const tooLong = [];
 
@@ -210,7 +229,7 @@ export function applyGitHubUrlLimit(accepted, owner, repo, scanTitle) {
 }
 
 // Create GitHub issue via authenticated API call
-export async function createGitHubIssue(scanTitle, urls) {
+export async function createGitHubIssue(scanTitle, urls, options = {}) {
   const repoInfo = getGitHubRepoInfo();
   if (!repoInfo) {
     throw new Error("Could not determine GitHub repository from URL");
@@ -224,7 +243,7 @@ export async function createGitHubIssue(scanTitle, urls) {
   // Prepend "SCAN: " and normalize any existing prefix (case-insensitive)
   // replace() returns the original string if pattern doesn't match
   const issueTitle = `SCAN: ${scanTitle.replace(SCAN_PREFIX_REGEX, "")}`;
-  const issueBody = formatIssueBody(scanTitle, urls);
+  const issueBody = formatIssueBody(scanTitle, urls, options);
 
   // Encode the issue title and body for URL
   const encodedTitle = encodeURIComponent(issueTitle);
@@ -247,6 +266,41 @@ function initForm() {
   const loadingDiv = document.getElementById("loading");
   const errorDiv = document.getElementById("error-message");
   const successDiv = document.getElementById("success-message");
+  const viewportSelect = document.getElementById("scan-viewport");
+  const viewportWidthInput = document.getElementById("scan-viewport-width");
+  const viewportHeightInput = document.getElementById("scan-viewport-height");
+  const customViewportFields = document.getElementById("custom-viewport-fields");
+  const colorSchemeSelect = document.getElementById("scan-color-scheme");
+  const browserSelect = document.getElementById("scan-browser");
+
+  function getScanOptions() {
+    const viewport = viewportSelect?.value === "custom"
+      ? `${viewportWidthInput?.value || ""}x${viewportHeightInput?.value || ""}`
+      : viewportSelect?.value;
+    return {
+      viewport,
+      colorScheme: colorSchemeSelect?.value,
+      browser: browserSelect?.value
+    };
+  }
+
+  function updateViewportInputs() {
+    const isCustom = viewportSelect?.value === "custom";
+    if (customViewportFields) {
+      customViewportFields.hidden = !isCustom;
+    }
+    if (viewportWidthInput) {
+      viewportWidthInput.required = isCustom;
+      if (!isCustom) viewportWidthInput.value = "";
+    }
+    if (viewportHeightInput) {
+      viewportHeightInput.required = isCustom;
+      if (!isCustom) viewportHeightInput.value = "";
+    }
+  }
+
+  updateViewportInputs();
+  viewportSelect?.addEventListener("change", updateViewportInputs);
 
   // Update preview on input
   urlsTextarea.addEventListener("input", () => {
@@ -267,7 +321,7 @@ function initForm() {
     let accepted = validUrls;
     let urlsTooLong = [];
     if (repoInfo) {
-      const result = applyGitHubUrlLimit(validUrls, repoInfo.owner, repoInfo.repo, scanTitle);
+        const result = applyGitHubUrlLimit(validUrls, repoInfo.owner, repoInfo.repo, scanTitle, getScanOptions());
       accepted = result.fitting;
       urlsTooLong = result.tooLong;
     }
@@ -344,8 +398,8 @@ function initForm() {
 
     // Apply GitHub URL length limit so the generated URL doesn't exceed GitHub's limit
     const repoInfo = getGitHubRepoInfo();
-    const accepted = (repoInfo && validUrls.length > 0)
-      ? applyGitHubUrlLimit(validUrls, repoInfo.owner, repoInfo.repo, scanTitle).fitting
+      const accepted = (repoInfo && validUrls.length > 0)
+      ? applyGitHubUrlLimit(validUrls, repoInfo.owner, repoInfo.repo, scanTitle, getScanOptions()).fitting
       : validUrls;
 
     // Validate
@@ -367,7 +421,7 @@ function initForm() {
 
     try {
       // Create GitHub issue URL
-      const githubUrl = await createGitHubIssue(scanTitle, accepted);
+      const githubUrl = await createGitHubIssue(scanTitle, accepted, getScanOptions());
       
       // Show success message with redirect info
       successDiv.innerHTML = `

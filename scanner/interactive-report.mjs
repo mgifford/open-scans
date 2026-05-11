@@ -1,6 +1,7 @@
 import { ROLES, SEVERITY, wcagScUrl, getDisabilitiesFromScs, getFpsData } from "./rule-metadata.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
+import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 
 /**
  * Escape a string for safe inclusion in HTML.
@@ -179,8 +180,47 @@ function renderBugIdDisplay(fingerprint, patternId) {
   return `<span class="bug-id-display" title="Bug ID (Instance): stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Bug ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
 }
 
+function renderScanContextSummary(scanContext) {
+  const context = buildScanContext(scanContext);
+  return `
+    <span><strong>Viewport:</strong> ${escapeHtml(formatViewportSummary(context))}</span>
+    <span><strong>Color scheme:</strong> ${escapeHtml(context.colorScheme)}</span>
+    <span><strong>Browser:</strong> ${escapeHtml(context.browser)}</span>
+  `;
+}
+
+function renderReplicationBlock(scanContext) {
+  const context = buildScanContext(scanContext);
+  const viewportToken = formatViewportToken(context);
+  return `<section class="replication-section" aria-labelledby="section-replication">
+      <h2 id="section-replication" class="section-heading" tabindex="-1">
+        Replicate this scan
+        <a href="#section-replication" class="anchor-link" aria-label="Link to Replicate this scan section">
+          <span aria-hidden="true">#</span>
+        </a>
+      </h2>
+      <p>Reuse this scan context to reproduce the same viewport, color mode, and browser selection.</p>
+      <div class="replication-grid">
+        <div>
+          <h3>Title keywords</h3>
+          <div class="example-code">VIEWPORT:${escapeHtml(viewportToken)} COLORSCHEME:${escapeHtml(context.colorScheme)} BROWSER:${escapeHtml(context.browser)}</div>
+        </div>
+        <div>
+          <h3>Issue body section</h3>
+          <div class="example-code">### Scan context
+
+Viewport: ${escapeHtml(viewportToken)}
+ColorScheme: ${escapeHtml(context.colorScheme)}
+Browser: ${escapeHtml(context.browser)}</div>
+        </div>
+      </div>
+      ${context.browser !== "chromium" ? `<p class="scan-context-note">Browser selection currently applies to Playwright-based scans. ALFA, Equal Access, and QualWeb keep their existing browser implementations.</p>` : ""}
+    </section>`;
+}
+
 export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
+  const scanContext = buildScanContext(summary.scanContext);
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
   const rolesList = Object.values(ROLES);
@@ -463,13 +503,14 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                    data-copy-engine="${escapeHtml(f.engine)}"
                    data-copy-wcag-scs="${escapeHtml(JSON.stringify(wcag.scs || []))}"
                    data-copy-wcag-level="${escapeHtml(wcagLevel)}"
-                   data-copy-page-url="${escapeHtml(ex.url || '')}"
-                   data-copy-html="${escapeHtml(ex.html || '')}"
-                   data-copy-xpath="${escapeHtml(ex.xpath || '')}"
-                   data-copy-message="${escapeHtml(ex.message || '')}"
-                   data-copy-color-scheme="${escapeHtml(ex.colorScheme || 'light')}"
-                   data-copy-viewport="${escapeHtml(ex.viewport || 'desktop')}"
-                   data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
+                    data-copy-page-url="${escapeHtml(ex.url || '')}"
+                    data-copy-html="${escapeHtml(ex.html || '')}"
+                    data-copy-xpath="${escapeHtml(ex.xpath || '')}"
+                    data-copy-message="${escapeHtml(ex.message || '')}"
+                    data-copy-color-scheme="${escapeHtml(ex.colorScheme || 'light')}"
+                    data-copy-viewport="${escapeHtml(ex.viewport || formatViewportToken(scanContext))}"
+                    data-copy-browser="${escapeHtml(ex.browser || scanContext.browser)}"
+                    data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
                    data-copy-fingerprint="${escapeHtml(ex.fingerprint || '')}"
                    data-copy-pattern-id="${escapeHtml(ex.patternId || '')}"
                    data-copy-pages-count="${f.pages.size}"
@@ -791,6 +832,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .header-content { flex: 1; min-width: 0; }
     h1 { color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem; }
     .meta { color: var(--muted); font-size: 0.9rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .scan-context-summary {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.25rem;
+    }
 
     /* ── Theme toggle button ── */
     #theme-toggle {
@@ -992,6 +1040,17 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .example-code { color: var(--code-color); }
     .example-mode { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
     .first-seen { font-size: 0.8em; color: var(--muted); font-style: italic; }
+    .replication-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 1rem;
+    }
+    .scan-context-note {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
     .bug-id-display { font-size: 0.8em; color: var(--muted); }
     .bug-id-code { font-family: monospace; background: var(--code-bg); color: var(--code-color); padding: 0.1em 0.3em; border-radius: 3px; letter-spacing: 0.05em; user-select: all; }
 
@@ -1392,6 +1451,9 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
           <span><strong>Date:</strong> ${new Date(scannedAt).toLocaleString()}</span>
           <span><strong>Duration:</strong> ${(totalElapsedMs / 60000).toFixed(1)}m</span>
           <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
+          <div class="scan-context-summary">
+            ${renderScanContextSummary(scanContext)}
+          </div>
           ${scannedCount > 0 ? (() => {
             const items = [];
             if ((darkModeUrlCount ?? 0) > 0) items.push(`<span title="prefers-color-scheme: dark"><strong>🌙 Dark Mode:</strong> ${darkModeUrlCount} / ${scannedCount} URLs</span>`);
@@ -1418,6 +1480,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     ${trendSectionHtml}
 
     ${changeTrackingHtml}
+
+    ${renderReplicationBlock(scanContext)}
 
     <section aria-labelledby="section-summary">
       <h2 id="section-summary" class="section-heading" tabindex="-1">
@@ -1767,6 +1831,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       const message = el.dataset.copyMessage || '';
       const colorScheme = el.dataset.copyColorScheme || 'light';
       const viewport = el.dataset.copyViewport || 'desktop';
+      const browser = el.dataset.copyBrowser || 'chromium';
       const severity = el.dataset.copySeverity || '';
       const fingerprint = el.dataset.copyFingerprint || '';
       const patternId = el.dataset.copyPatternId || '';
@@ -1865,7 +1930,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         '',
         '| Item | Value |',
         '|------|-------|',
-        \`| Browser | \${getEnvironment()} |\`,
+        \`| Browser | \${browser} |\`,
+        \`| Browser environment | \${getEnvironment()} |\`,
         \`| Testing tool | \${engineLabel} |\`,
         '',
       ].join('\\n');
