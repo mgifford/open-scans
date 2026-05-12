@@ -27,6 +27,7 @@
 19. [Configuration Files](#19-configuration-files)
 20. [Data Flow](#20-data-flow)
 21. [Capacity & Limits](#21-capacity--limits)
+22. [Definition of Done](#22-definition-of-done)
 
 ---
 
@@ -512,7 +513,34 @@ Generates before/after code fix suggestions for the most common accessibility vi
 
 ---
 
-### 5.12 `generate-trends-html.mjs` – Trends Dashboard Generator (~400 lines)
+### 5.12 `review-source.mjs` – AI Source-Code Accessibility Reviewer (~200 lines)
+
+Reads HTML and JavaScript source files from the repository and uses the **GitHub Models API** (`gpt-4o-mini`) to review them for WCAG 2.2 accessibility issues. Unlike runtime scanning, this catches structural and semantic issues that browser-based tools can miss (ARIA misuse in templates, missing landmark roles, keyboard navigation patterns, form error handling).
+
+**Activation**: run by `ai-accessibility-review.yml` on a weekly schedule (Monday 18:00 UTC) or manually via `workflow_dispatch`.
+
+**Design**:
+- No third-party npm dependencies — uses only Node.js built-ins and the GitHub Models REST endpoint
+- Gracefully degrades when `GITHUB_TOKEN` or the API is unavailable (`skipped: true` in output)
+- Limits each file to 8,000 characters before sending to the API to stay within context window limits
+- stdout: JSON only; stderr: progress and diagnostic messages
+
+**Output JSON schema**:
+
+| Field | Description |
+|---|---|
+| `hasFindings` | `true` if the review identified any accessibility issues |
+| `reviewText` | Markdown review body suitable for a GitHub issue |
+| `issueBody` | Full formatted issue body including disclaimer |
+| `filesReviewed` | Array of file paths successfully read |
+| `model` | Model identifier used for the review |
+| `skipped` | `true` if API was unavailable; `reason` field explains why |
+
+**Default files reviewed**: `index.html`, `reports.html`, `trends.html`, `submit.js`
+
+---
+
+### 5.13 `generate-trends-html.mjs` – Trends Dashboard Generator (~400 lines)
 
 Generates `trends.html` — a static cross-issue accessibility trend dashboard. Called automatically by `generate-reports-html.mjs` after regenerating `reports.html`.
 
@@ -1062,6 +1090,19 @@ Verifies each branch has no unique commits relative to `main` before deleting.
 
 ---
 
+### 14.9 `ai-accessibility-review.yml` – Weekly AI Source-Code Review
+
+| Property | Value |
+|---|---|
+| Trigger | Schedule: every Monday 18:00 UTC; `workflow_dispatch` (with optional `files` input) |
+| Purpose | AI-powered WCAG 2.2 source-code review of HTML/JS front-end files |
+
+Runs `scanner/review-source.mjs` against the project's own frontend source files (`index.html`, `reports.html`, `trends.html`, `submit.js` by default). Creates a GitHub issue with findings labelled `accessibility`. Complements the runtime `scan-github-pages.yml` scan by catching structural and semantic issues (ARIA misuse, missing landmarks, form error handling) that browser-based tools can miss.
+
+See [§5.12](#512-review-sourcemjs--ai-source-code-accessibility-reviewer-200-lines) for implementation details.
+
+---
+
 ## 15. Frontend Application
 
 ### 15.1 `index.html` – URL Submission Form
@@ -1422,10 +1463,73 @@ User views results at reports.html
 | Non-web file extensions blocked | 40+ |
 | Private IPv4 ranges blocked | 6 |
 | Private IPv6 ranges blocked | 4 |
-| Scanner module count | 13 `.mjs` files |
+| Scanner module count | 14 `.mjs` files |
 | Unit test modules | 23 |
-| GitHub Actions workflows | 8 |
+| GitHub Actions workflows | 9 |
 | Report artifacts per scan | Up to 6 files |
+
+---
+
+## 22. Definition of Done
+
+A scan request, a code change, or a feature increment is considered **done** when all of the following conditions are met.
+
+> **How to use this checklist**: copy the relevant sections into a GitHub issue or PR description to track completion of a specific task. Not every condition applies to every change — use judgment to select the ones relevant to your scope.
+
+### 22.1 Functional Completeness
+
+- [ ] The issue-driven workflow runs end-to-end: form submission → GitHub issue → Actions scan → published reports
+- [ ] All selected engines complete (or fail gracefully with a recorded error) for every accepted URL
+- [ ] Output files are written to `reports/issues/issue-{N}/{timestamp}/` and committed to `main`
+- [ ] `reports.html` and `trends.html` are regenerated and reflect the new scan results
+- [ ] A results comment is posted on the GitHub issue with counts and report links
+- [ ] The issue is closed after a successful one-time scan, or left open with a results comment for recurring issues
+
+### 22.2 Quality Gates
+
+- [ ] All unit tests pass: `npm test` exits with code 0 (currently 23 test modules)
+- [ ] Linter passes: `npm run lint` exits with code 0 (syntax check on all `.mjs` files)
+- [ ] No regressions in existing test coverage — no tests removed or skipped without justification
+- [ ] New scanner functionality is accompanied by at least one unit test covering the happy path and one edge/error case
+
+### 22.3 Security
+
+- [ ] All user-supplied URLs pass both client-side (`submit.js`) and server-side (`validate-targets.mjs`) validation before any network access
+- [ ] Private IP ranges (IPv4 and IPv6) and non-web file extensions are blocked
+- [ ] All external process calls use `spawnSync`/`spawn` with argument arrays — no `execSync` with template strings
+- [ ] Workflow permissions follow least privilege (`issues: write`, `contents: write` only where needed)
+- [ ] No secrets, credentials, or tokens are committed or logged to stdout/stderr
+
+### 22.4 Accessibility (of the Tool Itself)
+
+- [ ] All HTML pages (`index.html`, `reports.html`, `trends.html`) target WCAG 2.2 Level AA
+- [ ] Semantic HTML with ARIA landmarks; keyboard navigable; focus indicators visible
+- [ ] Color contrast meets WCAG 1.4.3 (AA) in both light and dark mode
+- [ ] The weekly AI source-code review (`ai-accessibility-review.yml`) finds no new critical or serious issues
+- [ ] Runtime self-scan (`scan-github-pages.yml`) finds no new axe violations on the live GitHub Pages site
+
+### 22.5 Documentation
+
+- [ ] `README.md` reflects any user-facing behavior changes (new engine options, form fields, schedule prefixes)
+- [ ] `FEATURES.md` reflects any new scanner modules, workflows, or report formats added
+- [ ] `AGENTS.md` and `.github/copilot-instructions.md` are updated if coding conventions change
+- [ ] `TIMEOUT-CONFIG.md` is updated if new environment variables or timeout layers are added
+- [ ] `SUSTAINABILITY.md` AI disclosure table is updated if a new AI model or tool was used
+
+### 22.6 Operational Readiness
+
+- [ ] GitHub Pages deployment (`deploy-pages.yml`) completes successfully after any push touching front-end files or reports
+- [ ] Scan workflow concurrency group (`scan-repository`) is preserved — no race conditions introduced
+- [ ] Git push retry logic handles concurrent scans without data loss (up to 3 retries with rebase)
+- [ ] Partial scan results are written and committed when the total-scan timeout is reached — no silent data loss
+- [ ] Issue body is updated with crawled URLs when crawl mode is used
+
+### 22.7 Sustainability
+
+- [ ] No new third-party npm dependencies are added without documented justification in the PR
+- [ ] Any known transitive vulnerabilities in new dependencies are assessed and documented (cf. §17.5)
+- [ ] AI-generated content is clearly labelled with the `AI_DISCLAIMER` constant or equivalent
+- [ ] PR description includes sustainability impact assessment: `improves` / `neutral` / `regresses`
 
 ---
 
