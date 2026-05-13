@@ -1472,64 +1472,54 @@ User views results at reports.html
 
 ## 22. Definition of Done
 
-A scan request, a code change, or a feature increment is considered **done** when all of the following conditions are met.
+A single accessibility scan report is considered **done** when all of the following conditions are met.
 
-> **How to use this checklist**: copy the relevant sections into a GitHub issue or PR description to track completion of a specific task. Not every condition applies to every change — use judgment to select the ones relevant to your scope.
+> **How to use this checklist**: copy the relevant sections into a GitHub issue, acceptance note, or PR description when reviewing one completed scan run. Use it to verify the report artifact itself (HTML/JSON/Markdown/CSV), not every possible project-wide release criterion.
 
-### 22.1 Functional Completeness
+### 22.1 Content Completeness
 
-- [ ] The issue-driven workflow runs end-to-end: form submission → GitHub issue → Actions scan → published reports
-- [ ] All selected engines complete (or fail gracefully with a recorded error) for every accepted URL
-- [ ] Output files are written to `reports/issues/issue-{N}/{timestamp}/` and committed to `main`
-- [ ] `reports.html` and `trends.html` are regenerated and reflect the new scan results
-- [ ] A results comment is posted on the GitHub issue with counts and report links
-- [ ] The issue is closed after a successful one-time scan, or left open with a results comment for recurring issues
+- [ ] Every submitted URL has either a scan result or a documented failure reason (for example timeout, network error, blocked private IP range, or unsupported target)
+- [ ] Each finding includes a rule identifier, WCAG success criteria, WCAG level, severity, affected element locator, and a human-readable description
+- [ ] Findings are annotated with historical fingerprint metadata: `firstSeen`, `seenCount`, `isNew`, and `isRecurring`
+- [ ] All selected engines appear in the report output; engine failures are recorded with error details instead of being silently omitted
+- [ ] Cross-engine overlap analysis is included whenever more than one engine ran
 
-### 22.2 Quality Gates
+### 22.2 Format & Artifacts
 
-- [ ] All unit tests pass: `npm test` exits with code 0 (currently 23 test modules)
-- [ ] Linter passes: `npm run lint` exits with code 0 (syntax check on all `.mjs` files)
-- [ ] No regressions in existing test coverage — no tests removed or skipped without justification
-- [ ] New scanner functionality is accompanied by at least one unit test covering the happy path and one edge/error case
+- [ ] `report.json` is generated as machine-readable output in `reports/issues/issue-{N}/{timestamp}/`
+- [ ] `report.md` and `report.csv` are generated alongside `report.json`
+- [ ] An interactive HTML report is generated and linked from a stable GitHub Pages URL
+- [ ] `reports.html` and `trends.html` are regenerated to include the new scan run
 
-### 22.3 Security
+### 22.3 Accessibility of the Report Itself
 
-- [ ] All user-supplied URLs pass both client-side (`submit.js`) and server-side (`validate-targets.mjs`) validation before any network access
-- [ ] Private IP ranges (IPv4 and IPv6) and non-web file extensions are blocked
-- [ ] All external process calls use `spawnSync`/`spawn` with argument arrays — no `execSync` with template strings
-- [ ] Workflow permissions follow least privilege (`issues: write`, `contents: write` only where needed)
-- [ ] No secrets, credentials, or tokens are committed or logged to stdout/stderr
+- [ ] The report HTML targets WCAG 2.2 Level AA with semantic structure and ARIA landmarks where needed
+- [ ] Every interactive control is keyboard reachable with a visible focus indicator
+- [ ] Text and UI colours meet WCAG 1.4.3 contrast requirements in both light and dark mode
+- [ ] Expandable sections use `<details>`/`<summary>` or an equivalent accessible disclosure pattern that exposes state to assistive technology
+- [ ] The report passes its own axe-core self-scan with no new critical or serious violations
 
-### 22.4 Accessibility (of the Tool Itself)
+### 22.4 Data Integrity
 
-- [ ] All HTML pages (`index.html`, `reports.html`, `trends.html`) target WCAG 2.2 Level AA
-- [ ] Semantic HTML with ARIA landmarks; keyboard navigable; focus indicators visible
-- [ ] Color contrast meets WCAG 1.4.3 (AA) in both light and dark mode
-- [ ] The weekly AI source-code review (`ai-accessibility-review.yml`) finds no new critical or serious issues
-- [ ] Runtime self-scan (`scan-github-pages.yml`) finds no new axe violations on the live GitHub Pages site
+- [ ] Fingerprints remain stable for the same URL + rule + locator combination across repeated scans
+- [ ] Trend data in `stats.json` is updated with the new run's counts
+- [ ] Duplicate findings from the same engine for the same element are not emitted
 
-### 22.5 Documentation
+### 22.5 Issue Lifecycle
 
-- [ ] `README.md` reflects any user-facing behavior changes (new engine options, form fields, schedule prefixes)
-- [ ] `FEATURES.md` reflects any new scanner modules, workflows, or report formats added
-- [ ] `AGENTS.md` and `.github/copilot-instructions.md` are updated if coding conventions change
-- [ ] `TIMEOUT-CONFIG.md` is updated if new environment variables or timeout layers are added
-- [ ] `SUSTAINABILITY.md` AI disclosure table is updated if a new AI model or tool was used
+- [ ] A results comment is posted on the triggering issue with violation counts per engine, pass/fail status per URL, and a link to the published report
+- [ ] One-time `SCAN:` issues are closed after a successful run
+- [ ] Recurring issues remain open and receive an appended results comment
 
-### 22.6 Operational Readiness
+### 22.6 Security & Privacy
 
-- [ ] GitHub Pages deployment (`deploy-pages.yml`) completes successfully after any push touching front-end files or reports
-- [ ] Scan workflow concurrency group (`scan-repository`) is preserved — no race conditions introduced
-- [ ] Git push retry logic handles concurrent scans without data loss (up to 3 retries with rebase)
-- [ ] Partial scan results are written and committed when the total-scan timeout is reached — no silent data loss
-- [ ] Issue body is updated with crawled URLs when crawl mode is used
+- [ ] User-supplied values rendered into report HTML are escaped before output
+- [ ] Internal network addresses, credentials, and tokens are excluded from report artifacts and logs
 
-### 22.7 Sustainability
+### 22.7 Operational Readiness
 
-- [ ] No new third-party npm dependencies are added without documented justification in the PR
-- [ ] Any known transitive vulnerabilities in new dependencies are assessed and documented (cf. §17.5)
-- [ ] AI-generated content is clearly labelled with the `AI_DISCLAIMER` constant or equivalent
-- [ ] PR description includes sustainability impact assessment: `improves` / `neutral` / `regresses`
+- [ ] Generated report artifacts are committed to `main` and GitHub Pages deployment completes successfully
+- [ ] The scan respects the configured total timeout, and partial results are committed if the timeout is reached
 
 ---
 
