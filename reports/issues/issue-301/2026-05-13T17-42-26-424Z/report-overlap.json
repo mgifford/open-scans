@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-13T17:41:45.492Z",
+  "issueNumber": 301,
+  "scanTitle": "Preserve final rescan chunk 2",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 3,
+      "uniqueFailed": 3,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4892,
+      "uniqueFailed": 4892,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 3,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 1709
+    }
+  },
+  "duplicateFindingTotals": 3183,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
