@@ -131,6 +131,10 @@ jobs:
             cp .scan-output/fix-suggestions.json "${{ steps.meta.outputs.report_dir }}/fix-suggestions.json"
           fi
 
+      - name: Regenerate trends.json for this issue
+        run: |
+          node scanner/analyse-trends.mjs reports/issues "${{ github.event.issue.number }}" > /dev/null
+
       - name: Regenerate reports.html
         run: node scanner/generate-reports-html.mjs
 
@@ -138,7 +142,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${{ steps.meta.outputs.report_dir }}" reports.html trends.html stats.json
+          git add "${{ steps.meta.outputs.report_dir }}" "reports/issues/issue-${{ github.event.issue.number }}/trends.json" reports.html trends.html stats.json
           if git diff --cached --quiet; then
             echo "No report changes to commit."
           else

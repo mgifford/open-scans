@@ -230,6 +230,15 @@ jobs:
                 fs.copyFileSync(`${scanOutputDir}/report.html`, htmlPath);
                 fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
 
+                const trendResult = spawnSync(
+                  process.execPath,
+                  ['scanner/analyse-trends.mjs', 'reports/issues', String(issueNumber)],
+                  { encoding: 'utf8' }
+                );
+                if (trendResult.status !== 0) {
+                  console.warn(`Failed to regenerate trends.json for issue #${issueNumber}: ${trendResult.stderr}`);
+                }
+
                 // Clean up temporary files
                 fs.rmSync(eventPath, { force: true });
                 fs.rmSync(scanOutputDir, { recursive: true, force: true });
@@ -245,6 +254,7 @@ jobs:
                 spawnSync('git', ['config', 'user.name', 'github-actions[bot]']);
                 spawnSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com']);
                 spawnSync('git', ['add', reportDir]);
+                spawnSync('git', ['add', `reports/issues/issue-${issueNumber}/trends.json`]);
                 spawnSync('git', ['add', 'reports.html', 'trends.html', 'stats.json']);
 
                 // Check if there are changes to commit

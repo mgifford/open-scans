@@ -177,8 +177,9 @@ jobs:
             mkdir -p .scan-output
             node scanner/run-scan.mjs .tmp/issue-event.json .scan-output > .scan-output/meta.json
 
-            node --input-type=module <<'NODE'
+          node --input-type=module <<'NODE'
             import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+            import { analyseTrends, loadScanHistory, saveTrendsJson } from './scanner/analyse-trends.mjs';
 
             const issue = JSON.parse(readFileSync('.tmp/issue-row.json', 'utf8'));
             const meta = JSON.parse(readFileSync('.scan-output/meta.json', 'utf8'));
@@ -207,6 +208,12 @@ jobs:
             if (existsSync('.scan-output/fix-suggestions.json')) {
               copyFileSync('.scan-output/fix-suggestions.json', `${reportDir}/fix-suggestions.json`);
             }
+
+            const reportsDir = 'reports/issues';
+            const issueDir = `${reportsDir}/issue-${issue.number}`;
+            const history = loadScanHistory(reportsDir, issue.number);
+            const trendAnalysis = analyseTrends(history);
+            saveTrendsJson(issueDir, trendAnalysis);
 
             appendFileSync('.tmp/scheduled-results.ndjson', JSON.stringify({
               issueNumber: issue.number,
