@@ -1,0 +1,413 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-19T02:08:44.990Z",
+        "totals": {
+          "alfa": 19750,
+          "axe": 934,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 20684,
+          "scannedAt": "2026-04-19T02:08:44.990Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-26T02:01:29.672Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 0,
+          "qualweb": 2363,
+          "accesslint": 0,
+          "combined": 3297,
+          "scannedAt": "2026-04-26T02:01:29.672Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -17387,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -19750,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 2363,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-26T02:01:29.672Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 0,
+          "qualweb": 2363,
+          "accesslint": 0,
+          "combined": 3297,
+          "scannedAt": "2026-04-26T02:01:29.672Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-03T02:07:02.221Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 8414,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 9348,
+          "scannedAt": "2026-05-03T02:07:02.221Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 6051,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 8414,
+        "qualweb": -2363,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-03T02:07:02.221Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 8414,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 9348,
+          "scannedAt": "2026-05-03T02:07:02.221Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-10T02:16:53.002Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 0,
+          "qualweb": 2363,
+          "accesslint": 0,
+          "combined": 3297,
+          "scannedAt": "2026-05-10T02:16:53.002Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -6051,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": -8414,
+        "qualweb": 2363,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-10T02:16:53.002Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 934,
+          "equalAccess": 0,
+          "qualweb": 2363,
+          "accesslint": 0,
+          "combined": 3297,
+          "scannedAt": "2026-05-10T02:16:53.002Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-17T01:58:41.088Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 928,
+          "equalAccess": 8356,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 9284,
+          "scannedAt": "2026-05-17T01:58:41.088Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 5987,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -6,
+        "equalAccess": 8356,
+        "qualweb": -2363,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-10T02:16:53.002Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 934,
+        "equalAccess": 0,
+        "qualweb": 2363,
+        "accesslint": 0,
+        "combined": 3297,
+        "scannedAt": "2026-05-10T02:16:53.002Z",
+        "scannedCount": 100
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-17T01:58:41.088Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 928,
+        "equalAccess": 8356,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 9284,
+        "scannedAt": "2026-05-17T01:58:41.088Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 5987,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 0,
+      "axe": -6,
+      "equalAccess": 8356,
+      "qualweb": -2363,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 2,
+  "worseningCount": 2,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 928,
+    "equalAccess": 8356,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 9284,
+    "scannedAt": "2026-05-17T01:58:41.088Z",
+    "scannedCount": 100
+  },
+  "baselineTotals": {
+    "alfa": 19750,
+    "axe": 934,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 20684,
+    "scannedAt": "2026-04-19T02:08:44.990Z",
+    "scannedCount": 100
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:label-title-only",
+      "pageCount": 99,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/numeros-urgencia",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/numeros-urgencia",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 89,
+      "pages": [
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/numeros-urgencia",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/numeros-urgencia",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/numeros-urgencia",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/consumidores/conexion-servicios/telecomunicaciones"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 60,
+      "pages": [
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/estancia-TSE",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/consumidores/conexion-servicios/telecomunicaciones",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/permiso-conduccion/validez-canje-reconocimiento",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/empresas/empleados/seguridad-social/alta-empresario",
+        "https://administracion.gob.es/pag_Home/eu/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/seguro-obligatorio/accidente-que-hacer"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 21,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/permiso-conduccion/validez-canje-reconocimiento",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/compraventa",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/documentos/pasaportes-perdidos",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/empresas/inicio-gestion-cierre/registro-cambio-cierre/sector-farmaceutico",
+        "https://administracion.gob.es/pag_Home/gl/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:listitem",
+      "pageCount": 21,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/permiso-conduccion/validez-canje-reconocimiento",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/compraventa",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/documentos/pasaportes-perdidos",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/empresas/inicio-gestion-cierre/registro-cambio-cierre/sector-farmaceutico",
+        "https://administracion.gob.es/pag_Home/gl/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-parent",
+      "pageCount": 17,
+      "pages": [
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/asistencia-sanitaria/centros-atencion-sociosanitaria",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/permiso-conduccion/validez-canje-reconocimiento",
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/vehiculos/compraventa",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/documentos/pasaportes-perdidos",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/empresas/inicio-gestion-cierre/registro-cambio-cierre/sector-farmaceutico",
+        "https://administracion.gob.es/pag_Home/eu/Tu-espacio-europeo/derechos-obligaciones/empresas/inicio-gestion-cierre/derechos/patentes-marcas/servicios-oepm",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/empresas/productos/gestion-residuos",
+        "https://administracion.gob.es/pag_Home/eu/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/residencia/elecciones/europeas"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 6,
+      "pages": [
+        "https://administracion.gob.es/pag_Home/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/pasajeros/combinados-vinculados",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/transporte-animales",
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/familia/pareja/matrimonio",
+        "https://administracion.gob.es/pag_Home/ca/Tu-espacio-europeo/derechos-obligaciones/empresas/inicio-gestion-cierre/derechos/dominios-es",
+        "https://administracion.gob.es/pag_Home/en/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/trabajo-jubilacion/condiciones-trabajo/contratos-salario",
+        "https://administracion.gob.es/pag_Home/eu/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/transporte-animales"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-input-field-name",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-toggle-field-name",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:nested-interactive",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:presentation-role-conflict",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/",
+        "https://administracion.gob.es/pag_Home",
+        "https://administracion.gob.es/pag_Home/gl/index.html",
+        "https://administracion.gob.es/pag_Home/va/index.html"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-complementary-is-top-level",
+      "pageCount": 4,
+      "pages": [
+        "https://administracion.gob.es/pag_Home/gl/Tu-espacio-europeo/derechos-obligaciones/ciudadanos/viajes/pasajeros/tren-autobus",
+        "https://administracion.gob.es/pag_Home/avisoLegal.html",
+        "https://administracion.gob.es/pag_Home/Tramites/Relacionarte-electronicamente.html",
+        "https://administracion.gob.es/pag_Home/ayudas/gestionSuscripciones.html"
+      ]
+    }
+  ]
+}

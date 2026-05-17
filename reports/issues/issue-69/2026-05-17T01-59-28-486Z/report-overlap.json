@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-17T01:58:41.280Z",
+  "issueNumber": 69,
+  "scanTitle": "Spain MOBILE",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 928,
+      "uniqueFailed": 928,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 8356,
+      "uniqueFailed": 7519,
+      "duplicates": 837
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 920,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 7519
+    }
+  },
+  "duplicateFindingTotals": 845,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}

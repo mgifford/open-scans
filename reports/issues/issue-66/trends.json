@@ -1,0 +1,231 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-19T02:38:15.008Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 200,
+          "accesslint": 0,
+          "combined": 400,
+          "scannedAt": "2026-04-19T02:38:15.008Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-26T02:28:37.870Z",
+        "totals": {
+          "alfa": 200,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 400,
+          "scannedAt": "2026-04-26T02:28:37.870Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 200,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": -200,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-26T02:28:37.870Z",
+        "totals": {
+          "alfa": 200,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 400,
+          "scannedAt": "2026-04-26T02:28:37.870Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-03T02:32:08.249Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 700,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 900,
+          "scannedAt": "2026-05-03T02:32:08.249Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 500,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": -200,
+        "axe": 0,
+        "equalAccess": 700,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-03T02:32:08.249Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 700,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 900,
+          "scannedAt": "2026-05-03T02:32:08.249Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-10T02:46:51.477Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 200,
+          "accesslint": 0,
+          "combined": 400,
+          "scannedAt": "2026-05-10T02:46:51.477Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -500,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": -700,
+        "qualweb": 200,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-10T02:46:51.477Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 200,
+          "accesslint": 0,
+          "combined": 400,
+          "scannedAt": "2026-05-10T02:46:51.477Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-17T02:43:53.190Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 200,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 200,
+          "scannedAt": "2026-05-17T02:43:53.190Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -200,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": -200,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-10T02:46:51.477Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 200,
+        "equalAccess": 0,
+        "qualweb": 200,
+        "accesslint": 0,
+        "combined": 400,
+        "scannedAt": "2026-05-10T02:46:51.477Z",
+        "scannedCount": 100
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-17T02:43:53.190Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 200,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 200,
+        "scannedAt": "2026-05-17T02:43:53.190Z",
+        "scannedCount": 100
+      }
+    },
+    "change": -200,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": 0,
+      "axe": 0,
+      "equalAccess": 0,
+      "qualweb": -200,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 2,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 200,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 200,
+    "scannedAt": "2026-05-17T02:43:53.190Z",
+    "scannedCount": 100
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 200,
+    "equalAccess": 0,
+    "qualweb": 200,
+    "accesslint": 0,
+    "combined": 400,
+    "scannedAt": "2026-04-19T02:38:15.008Z",
+    "scannedCount": 100
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:meta-refresh",
+      "pageCount": 100,
+      "pages": [
+        "https://government.se/",
+        "https://government.se/reports/",
+        "https://government.se/government-policy/social-services/",
+        "https://government.se/government-policy/swedens-support-to-ukraine/",
+        "https://government.se/articles/2026/02/four-years-of-war-support-to-ukraine-remains-governments-foremost-foreign-policy-priority/",
+        "https://government.se/press-releases/2026/02/government-proposes-swedish-loan-guarantee-to-world-bank-to-enable-sek-2.5-billion-in-new-budget-support-to-ukraine",
+        "https://government.se/press-releases/2026/02/new-large-support-package-to-ukraine-focused-on-air-defence/",
+        "https://government.se/press-releases/2026/02/sek-230-million-in-humanitarian-support-to-ukraine/",
+        "https://government.se/about-the-website/",
+        "https://government.se/contact-information/"
+      ]
+    }
+  ]
+}

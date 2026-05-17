@@ -1,0 +1,362 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-19T02:46:10.535Z",
+        "totals": {
+          "alfa": 2195,
+          "axe": 109,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2304,
+          "scannedAt": "2026-04-19T02:46:10.535Z",
+          "scannedCount": 59
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-26T02:31:51.989Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 68,
+          "equalAccess": 1035,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1103,
+          "scannedAt": "2026-04-26T02:31:51.989Z",
+          "scannedCount": 59
+        }
+      },
+      "change": -1201,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -2195,
+        "axe": -41,
+        "equalAccess": 1035,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-26T02:31:51.989Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 68,
+          "equalAccess": 1035,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1103,
+          "scannedAt": "2026-04-26T02:31:51.989Z",
+          "scannedCount": 59
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-03T02:38:14.005Z",
+        "totals": {
+          "alfa": 1845,
+          "axe": 94,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1939,
+          "scannedAt": "2026-05-03T02:38:14.005Z",
+          "scannedCount": 59
+        }
+      },
+      "change": 836,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 1845,
+        "axe": 26,
+        "equalAccess": -1035,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-03T02:38:14.005Z",
+        "totals": {
+          "alfa": 1845,
+          "axe": 94,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1939,
+          "scannedAt": "2026-05-03T02:38:14.005Z",
+          "scannedCount": 59
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-10T02:53:22.251Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 90,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 122,
+          "combined": 212,
+          "scannedAt": "2026-05-10T02:53:22.251Z",
+          "scannedCount": 59
+        }
+      },
+      "change": -1727,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -1845,
+        "axe": -4,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 122
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-10T02:53:22.251Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 90,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 122,
+          "combined": 212,
+          "scannedAt": "2026-05-10T02:53:22.251Z",
+          "scannedCount": 59
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-17T02:50:48.213Z",
+        "totals": {
+          "alfa": 1992,
+          "axe": 64,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2056,
+          "scannedAt": "2026-05-17T02:50:48.213Z",
+          "scannedCount": 59
+        }
+      },
+      "change": 1844,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 1992,
+        "axe": -26,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": -122
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-10T02:53:22.251Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 90,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 122,
+        "combined": 212,
+        "scannedAt": "2026-05-10T02:53:22.251Z",
+        "scannedCount": 59
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-17T02:50:48.213Z",
+      "totals": {
+        "alfa": 1992,
+        "axe": 64,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 2056,
+        "scannedAt": "2026-05-17T02:50:48.213Z",
+        "scannedCount": 59
+      }
+    },
+    "change": 1844,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 1992,
+      "axe": -26,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": -122
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 2,
+  "worseningCount": 2,
+  "latestTotals": {
+    "alfa": 1992,
+    "axe": 64,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 2056,
+    "scannedAt": "2026-05-17T02:50:48.213Z",
+    "scannedCount": 59
+  },
+  "baselineTotals": {
+    "alfa": 2195,
+    "axe": 109,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 2304,
+    "scannedAt": "2026-04-19T02:46:10.535Z",
+    "scannedCount": 59
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 35,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=95735120C00EF-B4D2-523E-653AFC3B7691D90A",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 35,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=95735120C00EF-B4D2-523E-653AFC3B7691D90A",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 35,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=95735120C00EF-B4D2-523E-653AFC3B7691D90A",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r83",
+      "pageCount": 35,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=95735120C00EF-B4D2-523E-653AFC3B7691D90A",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 32,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/budget"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 32,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/budget"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r3",
+      "pageCount": 31,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/budget",
+        "https://www.alberta.ca/business-and-economic-development"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 31,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/vehicle-registration-renewal",
+        "https://www.alberta.ca/family-and-social-supports-topic",
+        "https://www.alberta.ca/about-government",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/ahcip",
+        "https://www.alberta.ca/aish",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/budget",
+        "https://www.alberta.ca/business-and-economic-development"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 4,
+      "pages": [
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=95735120C00EF-B4D2-523E-653AFC3B7691D90A",
+        "https://www.alberta.ca/release.cfm?xID=956393BF7AAE1-FC58-0121-F6ACBF2A8BCD7A5B",
+        "https://www.alberta.ca/release.cfm?xID=9564141722588-FFA6-400D-B388DB636D18FB65"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.alberta.ca/budget",
+        "https://www.alberta.ca/news",
+        "https://www.alberta.ca/release.cfm?xID=9564141722588-FFA6-400D-B388DB636D18FB65"
+      ]
+    }
+  ]
+}

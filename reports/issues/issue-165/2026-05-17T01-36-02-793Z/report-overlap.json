@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-17T01:35:04.494Z",
+  "issueNumber": 165,
+  "scanTitle": "CMS.gov Scan — FIREFOX",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 8,
+      "uniqueFailed": 8,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4167,
+      "uniqueFailed": 4167,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 8,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 797
+    }
+  },
+  "duplicateFindingTotals": 3370,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}

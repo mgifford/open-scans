@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-05-17T02:43:53.288Z",
+  "issueNumber": 66,
+  "scanTitle": "Sweden's Government",
+  "scannersInUse": [
+    "axe"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 200,
+      "uniqueFailed": 200,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 200
+    }
+  },
+  "duplicateFindingTotals": 0,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
