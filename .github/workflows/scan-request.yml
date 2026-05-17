@@ -38,6 +38,9 @@ jobs:
       - name: Run Playwright accessibility unit tests
         run: npm run test:playwright
 
+      - name: Run BDD acceptance tests
+        run: npm run test:bdd
+
       # Timeout configuration (optional, defaults shown):
       # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
       # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)

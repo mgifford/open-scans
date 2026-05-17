@@ -1,0 +1,48 @@
+name: BDD Acceptance Tests
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "submit.js"
+      - "scan-context.js"
+      - ".github/workflows/scan-request.yml"
+      - "tests/bdd/**"
+      - "package.json"
+      - "package-lock.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "submit.js"
+      - "scan-context.js"
+      - ".github/workflows/scan-request.yml"
+      - "tests/bdd/**"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bdd-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run BDD acceptance tests
+        run: npm run test:bdd
