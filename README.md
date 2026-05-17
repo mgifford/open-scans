@@ -287,12 +287,17 @@ npm test
 # Run only Playwright accessibility unit tests
 npm run test:playwright
 
+# Run behavior-driven acceptance tests (Cucumber + Playwright)
+npm run test:bdd
+
 # Lint all scanner modules (syntax check)
 npm run lint
 ```
 
 Tests live in `tests/unit/*.test.mjs` and use the Node.js built-in test runner.
 Generic Playwright accessibility tests are included in `tests/unit/playwright-accessibility.test.mjs` and auto-skip when Chromium is unavailable.
+BDD acceptance tests are in `tests/bdd/features/*.feature` with step definitions in `tests/bdd/steps/*.mjs`.
+Use `BDD-TRACEABILITY.md` to map acceptance scenarios back to `FEATURES.md` and existing unit coverage.
 Scan workflows install Chromium and run `npm run test:playwright` before executing website scans.
 
 ### Running Individual Scanner Modules
@@ -390,6 +395,7 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Task Agent (GPT-5-class) | Added dedicated Playwright test command (`npm run test:playwright`) and made scan workflows run Playwright accessibility tests before scans | Development – May 2026 |
 | GitHub Copilot Task Agent (GPT-5-class) | Added reproducible scan context support for viewport, color scheme, and browser selection across parsing, reports, workflows, and the web submission form | Development – May 2026 |
 | GitHub Copilot Task Agent (GPT-5-class) | Fixed workflow trend persistence so issue scans regenerate and commit `reports/issues/issue-*/trends.json` for trends pages | Development – May 2026 |
+| GitHub Copilot Task Agent (GPT-5-class) | Added focused BDD acceptance layer (Gherkin + Cucumber + Playwright), traceability map, and dedicated CI quality gate workflow | Development – May 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
