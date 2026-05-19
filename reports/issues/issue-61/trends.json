@@ -1,0 +1,224 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-21T01:08:19.981Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 47,
+          "equalAccess": 0,
+          "qualweb": 431,
+          "accesslint": 0,
+          "combined": 478,
+          "scannedAt": "2026-04-21T01:08:19.981Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-28T01:14:15.083Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 52,
+          "equalAccess": 0,
+          "qualweb": 395,
+          "accesslint": 0,
+          "combined": 447,
+          "scannedAt": "2026-04-28T01:14:15.083Z",
+          "scannedCount": 69
+        }
+      },
+      "change": -31,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 5,
+        "equalAccess": 0,
+        "qualweb": -36,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-28T01:14:15.083Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 52,
+          "equalAccess": 0,
+          "qualweb": 395,
+          "accesslint": 0,
+          "combined": 447,
+          "scannedAt": "2026-04-28T01:14:15.083Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-05T01:08:15.148Z",
+        "totals": {
+          "alfa": 871,
+          "axe": 24,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 895,
+          "scannedAt": "2026-05-05T01:08:15.148Z",
+          "scannedCount": 69
+        }
+      },
+      "change": 448,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 871,
+        "axe": -28,
+        "equalAccess": 0,
+        "qualweb": -395,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-05T01:08:15.148Z",
+        "totals": {
+          "alfa": 871,
+          "axe": 24,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 895,
+          "scannedAt": "2026-05-05T01:08:15.148Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-12T01:13:28.935Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 68,
+          "equalAccess": 706,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 774,
+          "scannedAt": "2026-05-12T01:13:28.935Z",
+          "scannedCount": 69
+        }
+      },
+      "change": -121,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -871,
+        "axe": 44,
+        "equalAccess": 706,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-12T01:13:28.935Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 68,
+          "equalAccess": 706,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 774,
+          "scannedAt": "2026-05-12T01:13:28.935Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-19T01:21:59.146Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 17,
+          "equalAccess": 664,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 681,
+          "scannedAt": "2026-05-19T01:21:59.146Z",
+          "scannedCount": 69
+        }
+      },
+      "change": -93,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -51,
+        "equalAccess": -42,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-12T01:13:28.935Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 68,
+        "equalAccess": 706,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 774,
+        "scannedAt": "2026-05-12T01:13:28.935Z",
+        "scannedCount": 69
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-19T01:21:59.146Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 17,
+        "equalAccess": 664,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 681,
+        "scannedAt": "2026-05-19T01:21:59.146Z",
+        "scannedCount": 69
+      }
+    },
+    "change": -93,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": 0,
+      "axe": -51,
+      "equalAccess": -42,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 3,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 17,
+    "equalAccess": 664,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 681,
+    "scannedAt": "2026-05-19T01:21:59.146Z",
+    "scannedCount": 69
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 47,
+    "equalAccess": 0,
+    "qualweb": 431,
+    "accesslint": 0,
+    "combined": 478,
+    "scannedAt": "2026-04-21T01:08:19.981Z",
+    "scannedCount": 69
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://www.energy.gov/articles/energy-department-approves-export-expansion-corpus-christi-lng",
+        "https://www.energy.gov/cmei/femp/federal-energy-management-program-funding-opportunities",
+        "https://www.energy.gov/topics/cybersecurity"
+      ]
+    }
+  ]
+}
