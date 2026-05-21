@@ -1,0 +1,300 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-23T01:17:27.685Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1572,
+          "equalAccess": 0,
+          "qualweb": 3866,
+          "accesslint": 0,
+          "combined": 5438,
+          "scannedAt": "2026-04-23T01:17:27.685Z",
+          "scannedCount": 86
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-30T01:21:27.641Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1572,
+          "equalAccess": 2741,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4313,
+          "scannedAt": "2026-04-30T01:21:27.641Z",
+          "scannedCount": 86
+        }
+      },
+      "change": -1125,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 2741,
+        "qualweb": -3866,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-30T01:21:27.641Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1572,
+          "equalAccess": 2741,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4313,
+          "scannedAt": "2026-04-30T01:21:27.641Z",
+          "scannedCount": 86
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-07T01:21:05.265Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1572,
+          "equalAccess": 2741,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4313,
+          "scannedAt": "2026-05-07T01:21:05.265Z",
+          "scannedCount": 86
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-07T01:21:05.265Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1572,
+          "equalAccess": 2741,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4313,
+          "scannedAt": "2026-05-07T01:21:05.265Z",
+          "scannedCount": 86
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-14T01:32:11.768Z",
+        "totals": {
+          "alfa": 7770,
+          "axe": 1567,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 9337,
+          "scannedAt": "2026-05-14T01:32:11.768Z",
+          "scannedCount": 86
+        }
+      },
+      "change": 5024,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 7770,
+        "axe": -5,
+        "equalAccess": -2741,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-14T01:32:11.768Z",
+        "totals": {
+          "alfa": 7770,
+          "axe": 1567,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 9337,
+          "scannedAt": "2026-05-14T01:32:11.768Z",
+          "scannedCount": 86
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-21T01:36:54.916Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1565,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 474,
+          "combined": 2039,
+          "scannedAt": "2026-05-21T01:36:54.916Z",
+          "scannedCount": 86
+        }
+      },
+      "change": -7298,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -7770,
+        "axe": -2,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 474
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-14T01:32:11.768Z",
+      "totals": {
+        "alfa": 7770,
+        "axe": 1567,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 9337,
+        "scannedAt": "2026-05-14T01:32:11.768Z",
+        "scannedCount": 86
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-21T01:36:54.916Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 1565,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 474,
+        "combined": 2039,
+        "scannedAt": "2026-05-21T01:36:54.916Z",
+        "scannedCount": 86
+      }
+    },
+    "change": -7298,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -7770,
+      "axe": -2,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 474
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 2,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 1565,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 474,
+    "combined": 2039,
+    "scannedAt": "2026-05-21T01:36:54.916Z",
+    "scannedCount": 86
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 1572,
+    "equalAccess": 0,
+    "qualweb": 3866,
+    "accesslint": 0,
+    "combined": 5438,
+    "scannedAt": "2026-04-23T01:17:27.685Z",
+    "scannedCount": 86
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 86,
+      "pages": [
+        "https://wa.gov/",
+        "https://wa.gov/accessibility-in-washington/workplace-accessibility/support-employees-with-disabilities-in-the-workplace",
+        "https://wa.gov/accessibility-in-washington/accessibility-basics",
+        "https://wa.gov/accessibility-in-washington/accessibility-laws",
+        "https://wa.gov/accessibility-in-washington/accessibility-resources",
+        "https://wa.gov/accessibility-in-washington/education-recreation",
+        "https://wa.gov/accessibility-in-washington/health-safety-for-people-with-disabilities",
+        "https://wa.gov/accessibility-in-washington/transportation-and-personal-mobility",
+        "https://wa.gov/accessibility-in-washington/workplace-accessibility",
+        "https://wa.gov/people-with-disabilities/accessibility-policy"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 55,
+      "pages": [
+        "https://wa.gov/people-with-disabilities/accessibility-policy",
+        "https://wa.gov/people-with-disabilities/accessibility-wa-state-law-and-policy",
+        "https://wa.gov/people-with-disabilities/electronic-and-data-accessibility",
+        "https://wa.gov/people-with-disabilities/blindness-related-tools-and-services",
+        "https://wa.gov/error",
+        "https://wa.gov/get-help",
+        "https://wa.gov/privacy-notice",
+        "https://wa.gov/test",
+        "https://wa.gov/use-our-logo",
+        "https://wa.gov/washingtons-it-strategic-plan"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 22,
+      "pages": [
+        "https://wa.gov/report-suspected-fraud",
+        "https://wa.gov/how-to-guides/get-help-finding-food",
+        "https://wa.gov/how-to-guides/secureaccess-washington-saw-login-state-services",
+        "https://wa.gov/businesses",
+        "https://wa.gov/education",
+        "https://wa.gov/families",
+        "https://wa.gov/health-and-safety",
+        "https://wa.gov/recreation",
+        "https://wa.gov/seniors",
+        "https://wa.gov/travel"
+      ]
+    },
+    {
+      "ruleId": "axe:label-title-only",
+      "pageCount": 12,
+      "pages": [
+        "https://wa.gov/",
+        "https://wa.gov/node",
+        "https://wa.gov/ar/node",
+        "https://wa.gov/es/node",
+        "https://wa.gov/hi/node",
+        "https://wa.gov/ja/node",
+        "https://wa.gov/ko/node",
+        "https://wa.gov/ru/node",
+        "https://wa.gov/uk/node",
+        "https://wa.gov/vi/node"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 5,
+      "pages": [
+        "https://wa.gov/businesses",
+        "https://wa.gov/families",
+        "https://wa.gov/seniors",
+        "https://wa.gov/visitors",
+        "https://wa.gov/people-with-disabilities"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://wa.gov/accessibility-in-washington/accessibility-basics/disability-etiquette-for-respecting-people-with-disabilities",
+        "https://wa.gov/get-help",
+        "https://wa.gov/work/professional-licenses",
+        "https://wa.gov/how-to-guides"
+      ]
+    }
+  ]
+}
