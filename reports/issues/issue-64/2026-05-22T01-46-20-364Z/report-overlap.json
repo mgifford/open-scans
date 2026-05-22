@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-22T01:45:40.689Z",
+  "issueNumber": 64,
+  "scanTitle": "France.fr LIGHTMODE",
+  "scannersInUse": [
+    "axe",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 523,
+      "uniqueFailed": 523,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 2209,
+      "uniqueFailed": 2209,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 497,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "qualweb": 240
+    }
+  },
+  "duplicateFindingTotals": 1990,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
