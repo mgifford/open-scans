@@ -276,7 +276,7 @@ The `puppeteerArgs` configuration is critical for running in GitHub Actions wher
 ### Prerequisites
 
 - **Node.js** >= 24 (see `.nvmrc` for the pinned version)
-- **uv** for Python dependency management (used by `.kittify/scripts`)
+- **uv** for Python dependency management (used by `.kittify/scripts`, install: https://docs.astral.sh/uv/getting-started/installation/)
 - Install dependencies: `npm ci`
 - Install Python tooling: `uv sync`
 
