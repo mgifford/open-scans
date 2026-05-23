@@ -316,6 +316,7 @@ npm run run:analyse-trends    # Analyse trend data
 
 - **[ACCESSIBILITY.md](./ACCESSIBILITY.md)** — Accessibility standards, WCAG 2.2 AA requirements, and development best practices
 - **[AGENTS.md](./AGENTS.md)** — AI agent instructions for Copilot, Cursor, Claude, and other coding assistants
+- **[SBOM.md](./SBOM.md)** — Software bill of materials with dependency versions, licenses, and update process
 - **[SUSTAINABILITY.md](./SUSTAINABILITY.md)** — Digital sustainability policy
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
