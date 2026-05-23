@@ -1,0 +1,11 @@
+[project]
+name = "open-scans-python-tools"
+version = "0.1.0"
+description = "Python tooling for Spec Kitty helper scripts in open-scans."
+requires-python = ">=3.11"
+dependencies = [
+  "spec-kitty-cli",
+]
+
+[tool.uv]
+package = false
