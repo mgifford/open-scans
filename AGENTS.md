@@ -24,6 +24,16 @@ This repository welcomes multiple AI coding agents and tools. This document prov
 4. **Node Version**: >= 20 (see package.json engines)
 5. **Stdout/Stderr**: Scanner modules MUST output structured data (JSON) to stdout and progress/diagnostic messages to stderr. Workflows parse stdout as JSON - any non-JSON output breaks parsing. See `.github/copilot-instructions.md` for detailed examples.
 
+### Security Best Practices (Public Data)
+
+Even though this project scans public URLs and publishes public reports, treat all code and workflow changes with security hygiene:
+
+1. **Least privilege in workflows**: Keep GitHub Actions permissions minimal and job-scoped.
+2. **Dependency accountability**: Keep dependency versions and licenses reviewed in [`SBOM.md`](./SBOM.md); update it when software changes.
+3. **Input validation first**: Preserve strict URL validation (localhost/private ranges blocked) for both client and scanner paths.
+4. **No secret leakage**: Never log tokens or environment secrets; avoid committing sensitive runtime artifacts.
+5. **Safe process execution**: Continue using argument-array process spawning patterns to reduce injection risk.
+
 ### Testing & Quality
 
 ```bash
