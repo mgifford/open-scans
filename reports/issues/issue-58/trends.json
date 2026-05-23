@@ -1,0 +1,231 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-25T01:31:21.921Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 1861,
+          "accesslint": 0,
+          "combined": 2063,
+          "scannedAt": "2026-04-25T01:31:21.921Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-02T01:38:25.295Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 202,
+          "scannedAt": "2026-05-02T01:38:25.295Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -1861,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": -1861,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-02T01:38:25.295Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 202,
+          "scannedAt": "2026-05-02T01:38:25.295Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-09T01:43:26.478Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 1823,
+          "accesslint": 0,
+          "combined": 2025,
+          "scannedAt": "2026-05-09T01:43:26.478Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 1823,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 1823,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-09T01:43:26.478Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 1823,
+          "accesslint": 0,
+          "combined": 2025,
+          "scannedAt": "2026-05-09T01:43:26.478Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-16T01:45:35.345Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 1260,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1462,
+          "scannedAt": "2026-05-16T01:45:35.345Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -563,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 1260,
+        "qualweb": -1823,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-16T01:45:35.345Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 1260,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1462,
+          "scannedAt": "2026-05-16T01:45:35.345Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-23T01:49:19.805Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 202,
+          "equalAccess": 0,
+          "qualweb": 1823,
+          "accesslint": 0,
+          "combined": 2025,
+          "scannedAt": "2026-05-23T01:49:19.805Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 563,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": -1260,
+        "qualweb": 1823,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-16T01:45:35.345Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 202,
+        "equalAccess": 1260,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 1462,
+        "scannedAt": "2026-05-16T01:45:35.345Z",
+        "scannedCount": 100
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-23T01:49:19.805Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 202,
+        "equalAccess": 0,
+        "qualweb": 1823,
+        "accesslint": 0,
+        "combined": 2025,
+        "scannedAt": "2026-05-23T01:49:19.805Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 563,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 0,
+      "axe": 0,
+      "equalAccess": -1260,
+      "qualweb": 1823,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 2,
+  "worseningCount": 2,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 202,
+    "equalAccess": 0,
+    "qualweb": 1823,
+    "accesslint": 0,
+    "combined": 2025,
+    "scannedAt": "2026-05-23T01:49:19.805Z",
+    "scannedCount": 100
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 202,
+    "equalAccess": 0,
+    "qualweb": 1861,
+    "accesslint": 0,
+    "combined": 2063,
+    "scannedAt": "2026-04-25T01:31:21.921Z",
+    "scannedCount": 100
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 100,
+      "pages": [
+        "https://www.gov.uk/service-manual/helping-people-to-use-your-service/getting-an-accessibility-audit",
+        "https://www.gov.uk/service-manual/helping-people-to-use-your-service/testing-for-accessibility",
+        "https://www.gov.uk/find-hmrc-contacts/online-debit-and-credit-card-payment-support",
+        "https://www.gov.uk/find-hmrc-contacts/technical-support-with-vat-online-services",
+        "https://www.gov.uk/find-licences/domiciliary-support-service-registration-wales",
+        "https://www.gov.uk/find-licences/support-services-providing-day-care-to-adults-registration-scotland",
+        "https://www.gov.uk/government/news/help-find-new-ways-to-ease-global-disruption-apply-for-funding",
+        "https://www.gov.uk/government/news/new-find-a-job-service-to-support-thousands-of-jobseekers-into-work",
+        "https://www.gov.uk/government/news/publication-of-dwp-research-report-707-employment-and-support-allowance-findings-from-a-face-to-face-survey-of-customers",
+        "https://www.gov.uk/government/news/publication-of-dwp-research-report-745-employment-and-support-allowance-findings-from-a-follow-up-survey-of-customers"
+      ]
+    }
+  ]
+}

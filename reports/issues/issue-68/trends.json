@@ -1,0 +1,286 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-04-25T01:18:45.347Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 174,
+          "equalAccess": 7522,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7696,
+          "scannedAt": "2026-04-25T01:18:45.347Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-02T01:23:54.669Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 7521,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7696,
+          "scannedAt": "2026-05-02T01:23:54.669Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 1,
+        "equalAccess": -1,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-02T01:23:54.669Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 7521,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7696,
+          "scannedAt": "2026-05-02T01:23:54.669Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-09T01:30:54.430Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 0,
+          "qualweb": 419,
+          "accesslint": 0,
+          "combined": 594,
+          "scannedAt": "2026-05-09T01:30:54.430Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -7102,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": -7521,
+        "qualweb": 419,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-09T01:30:54.430Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 0,
+          "qualweb": 419,
+          "accesslint": 0,
+          "combined": 594,
+          "scannedAt": "2026-05-09T01:30:54.430Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-16T01:35:16.115Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 470,
+          "combined": 645,
+          "scannedAt": "2026-05-16T01:35:16.115Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 51,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": -419,
+        "accesslint": 470
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-16T01:35:16.115Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 175,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 470,
+          "combined": 645,
+          "scannedAt": "2026-05-16T01:35:16.115Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-23T01:36:56.810Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 183,
+          "equalAccess": 0,
+          "qualweb": 401,
+          "accesslint": 0,
+          "combined": 584,
+          "scannedAt": "2026-05-23T01:36:56.810Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -61,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 8,
+        "equalAccess": 0,
+        "qualweb": 401,
+        "accesslint": -470
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-16T01:35:16.115Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 175,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 470,
+        "combined": 645,
+        "scannedAt": "2026-05-16T01:35:16.115Z",
+        "scannedCount": 100
+      }
+    },
+    "to": {
+      "scannedAt": "2026-05-23T01:36:56.810Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 183,
+        "equalAccess": 0,
+        "qualweb": 401,
+        "accesslint": 0,
+        "combined": 584,
+        "scannedAt": "2026-05-23T01:36:56.810Z",
+        "scannedCount": 100
+      }
+    },
+    "change": -61,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": 0,
+      "axe": 8,
+      "equalAccess": 0,
+      "qualweb": 401,
+      "accesslint": -470
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 2,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 183,
+    "equalAccess": 0,
+    "qualweb": 401,
+    "accesslint": 0,
+    "combined": 584,
+    "scannedAt": "2026-05-23T01:36:56.810Z",
+    "scannedCount": 100
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 174,
+    "equalAccess": 7522,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 7696,
+    "scannedAt": "2026-04-25T01:18:45.347Z",
+    "scannedCount": 100
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:svg-img-alt",
+      "pageCount": 67,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/warmer-homes-faqs/i-received-support-under-first-phase-warmer-homes-can-i-re-apply-phase-warmer-homes",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/what-affordable-home-and-how-can-i-find-one",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-refresh",
+      "pageCount": 24,
+      "pages": [
+        "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
+        "https://london.gov.uk/programmes-strategies/accessibility",
+        "https://london.gov.uk/programmes-strategies/accessibility-statement-talk-london",
+        "https://london.gov.uk/programmes-strategies/arts-and-culture/space-culture/help-resources-and-guidance/finding-building-or-land",
+        "https://www.london.gov.uk/programmes-strategies/jobs-and-skills/find-adult-learning-providers-near-me",
+        "https://www.london.gov.uk/programmes-strategies/education-and-youth/schools-success/schools-success-mapped",
+        "https://www.london.gov.uk/programmes-strategies/volunteering/search/",
+        "https://london.gov.uk/programmes-strategies/accessibility/accessible-comms-policy",
+        "https://london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
+        "https://london.gov.uk/programmes-strategies/communities-and-social-justice/help-cost-living/income-and-budgeting/debt-help/where-find-debt-advice"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 9,
+      "pages": [
+        "https://www.london.gov.uk/media-centre",
+        "https://www.london.gov.uk/events/77-memorial-service-2023",
+        "https://www.london.gov.uk/events/77-memorial-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2023",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2025",
+        "https://www.london.gov.uk/events/remembrance-day-service-2023",
+        "https://www.london.gov.uk/events/remembrance-day-service-2024",
+        "https://www.london.gov.uk/events/remembrance-service-2025"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 7,
+      "pages": [
+        "https://www.london.gov.uk/warmer-homes-faqs/i-received-support-under-first-phase-warmer-homes-can-i-re-apply-phase-warmer-homes",
+        "https://www.london.gov.uk/what-affordable-home-and-how-can-i-find-one",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/warmer-homes-faqs/where-can-i-find-out-more-about-different-kinds-improvements",
+        "https://www.london.gov.uk/could-you-please-confirm-if-we-need-apply-map-quality-mark-construction-provision-if-it-already",
+        "https://www.london.gov.uk/covid-19-resources-and-services-your-language",
+        "https://www.london.gov.uk/city-hall-blog/digital-service-standard-local-government"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 5,
+      "pages": [
+        "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2FOldOakParkRoyal%2F",
+        "https://homes.london.gov.uk/",
+        "https://www.gov.uk/settled-status-eu-citizens-families/applying-for-settled-status",
+        "https://consultations.tfl.gov.uk/buses/436-452",
+        "https://www.london.gov.uk/user/login?destination=/programmes-and-strategies/environment-and-climate-change/energy/renew-0/contact-renew"
+      ]
+    }
+  ]
+}

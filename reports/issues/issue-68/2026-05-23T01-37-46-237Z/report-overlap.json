@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-23T01:36:56.837Z",
+  "issueNumber": 68,
+  "scanTitle": "London DARKMODE",
+  "scannersInUse": [
+    "axe",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 183,
+      "uniqueFailed": 183,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 401,
+      "uniqueFailed": 401,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 180,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "qualweb": 260
+    }
+  },
+  "duplicateFindingTotals": 140,
+  "overlapEntryCount": 0,
+  "overlapEntries": []
+}
