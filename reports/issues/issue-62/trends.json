@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-22T01:23:23.519Z",
-        "totals": {
-          "alfa": 14535,
-          "axe": 2768,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 17303,
-          "scannedAt": "2026-04-22T01:23:23.519Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-04-29T01:36:13.151Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2764,
-          "equalAccess": 17971,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 20735,
-          "scannedAt": "2026-04-29T01:36:13.151Z",
-          "scannedCount": 100
-        }
-      },
-      "change": 3432,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": -14535,
-        "axe": -4,
-        "equalAccess": 17971,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-04-29T01:36:13.151Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-20T01:40:21.335Z",
+        "totals": {
+          "alfa": 14360,
+          "axe": 2751,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 17111,
+          "scannedAt": "2026-05-20T01:40:21.335Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-27T01:39:54.804Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2748,
+          "equalAccess": 0,
+          "qualweb": 5158,
+          "accesslint": 0,
+          "combined": 7906,
+          "scannedAt": "2026-05-27T01:39:54.804Z",
+          "scannedCount": 100
+        }
+      },
+      "change": -9205,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -14360,
+        "axe": -3,
+        "equalAccess": 0,
+        "qualweb": 5158,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-13T01:39:02.870Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2750,
-        "equalAccess": 18001,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 20751,
-        "scannedAt": "2026-05-13T01:39:02.870Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-20T01:40:21.335Z",
       "totals": {
         "alfa": 14360,
@@ -177,88 +164,53 @@
         "scannedCount": 100
       }
     },
-    "change": -3640,
+    "to": {
+      "scannedAt": "2026-05-27T01:39:54.804Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2748,
+        "equalAccess": 0,
+        "qualweb": 5158,
+        "accesslint": 0,
+        "combined": 7906,
+        "scannedAt": "2026-05-27T01:39:54.804Z",
+        "scannedCount": 100
+      }
+    },
+    "change": -9205,
     "trend": "improving",
     "perScanner": {
-      "alfa": 14360,
-      "axe": 1,
-      "equalAccess": -18001,
-      "qualweb": 0,
+      "alfa": -14360,
+      "axe": -3,
+      "equalAccess": 0,
+      "qualweb": 5158,
       "accesslint": 0
     }
   },
   "overallTrend": "improving",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "improvingCount": 3,
+  "worseningCount": 1,
   "latestTotals": {
-    "alfa": 14360,
-    "axe": 2751,
+    "alfa": 0,
+    "axe": 2748,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 5158,
     "accesslint": 0,
-    "combined": 17111,
-    "scannedAt": "2026-05-20T01:40:21.335Z",
+    "combined": 7906,
+    "scannedAt": "2026-05-27T01:39:54.804Z",
     "scannedCount": 100
   },
   "baselineTotals": {
-    "alfa": 14535,
-    "axe": 2768,
-    "equalAccess": 0,
+    "alfa": 0,
+    "axe": 2764,
+    "equalAccess": 17971,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 17303,
-    "scannedAt": "2026-04-22T01:23:23.519Z",
+    "combined": 20735,
+    "scannedAt": "2026-04-29T01:36:13.151Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 99,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/canelons",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/diada-nacional-de-catalunya-2022",
-        "https://www.barcelona.cat/ca/implicat"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
-      "pageCount": 99,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/canelons",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/diada-nacional-de-catalunya-2022",
-        "https://www.barcelona.cat/ca/implicat"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 99,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/canelons",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/diada-nacional-de-catalunya-2022",
-        "https://www.barcelona.cat/ca/implicat"
-      ]
-    },
     {
       "ruleId": "axe:landmark-no-duplicate-banner",
       "pageCount": 99,
@@ -308,38 +260,6 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
-      "pageCount": 98,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/canelons",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/diada-nacional-de-catalunya-2022",
-        "https://www.barcelona.cat/ca/implicat"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
-      "pageCount": 88,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/implicat",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/ca/treball-i-empresa"
-      ]
-    },
-    {
       "ruleId": "axe:image-alt",
       "pageCount": 88,
       "pages": [
@@ -353,86 +273,6 @@
         "https://www.barcelona.cat/ca/implicat",
         "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
         "https://www.barcelona.cat/ca/treball-i-empresa"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r85",
-      "pageCount": 79,
-      "pages": [
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/implicat",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/ca/treball-i-empresa",
-        "https://www.barcelona.cat/ca/viure-a-bcn",
-        "https://www.barcelona.cat/en/discoverbcn",
-        "https://www.barcelona.cat/en/getinvolved"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r83",
-      "pageCount": 74,
-      "pages": [
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/find-out-about-montjuic-park-council",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/ca/viure-a-bcn",
-        "https://www.barcelona.cat/en/discoverbcn",
-        "https://www.barcelona.cat/en/living-in-bcn",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn",
-        "https://www.barcelona.cat/es/conocebcn"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
-      "pageCount": 39,
-      "pages": [
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/ca/viure-a-bcn",
-        "https://www.barcelona.cat/en/discoverbcn",
-        "https://www.barcelona.cat/en/living-in-bcn",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn",
-        "https://www.barcelona.cat/es/conocebcn",
-        "https://www.barcelona.cat/es/que-hacer-en-bcn",
-        "https://www.barcelona.cat/es/vivir-en-bcn",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
-      "pageCount": 27,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/coneixbcn",
-        "https://www.barcelona.cat/ca/implicat",
-        "https://www.barcelona.cat/ca/prova-video",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/ca/treball-i-empresa"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
-      "pageCount": 24,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/accessibility",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/ca/implicat",
-        "https://www.barcelona.cat/ca/treball-i-empresa",
-        "https://www.barcelona.cat/en/getinvolved",
-        "https://www.barcelona.cat/es/implicate",
-        "https://www.barcelona.cat/es/trabajo-y-empresa",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/news"
       ]
     },
     {
@@ -484,38 +324,8 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
-      "pageCount": 10,
-      "pages": [
-        "https://www.barcelona.cat/ca/implicat",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/en/getinvolved",
-        "https://www.barcelona.cat/en/pagina-exemple-mapa-sant-jordi",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn",
-        "https://www.barcelona.cat/es/implicate",
-        "https://www.barcelona.cat/es/que-hacer-en-bcn",
-        "https://www.barcelona.cat/en/discoverbcn/pics",
-        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/cultura"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r13",
-      "pageCount": 8,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/en/pagina-exemple-mapa-sant-jordi",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio",
-        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
-        "https://www.barcelona.cat/capdesetmana/ca",
-        "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
-      ]
-    },
-    {
       "ruleId": "axe:frame-title",
-      "pageCount": 8,
+      "pageCount": 7,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
@@ -523,60 +333,19 @@
         "https://www.barcelona.cat/en/pagina-exemple-mapa-sant-jordi",
         "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio",
         "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
-        "https://www.barcelona.cat/capdesetmana/ca",
         "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
-      "pageCount": 5,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio",
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/cultura"
       ]
     },
     {
       "ruleId": "axe:aria-prohibited-attr",
-      "pageCount": 5,
+      "pageCount": 6,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es",
+        "https://www.barcelona.cat/es/conocebcn/la-ciutadella-del-conocimiento",
         "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
         "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
-      "pageCount": 4,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
-      "pageCount": 4,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
-      "pageCount": 4,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio"
       ]
     },
     {
@@ -586,7 +355,7 @@
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/que-hacer-en-bcn/fuente-magica/horarios-de-la-fuente-magica"
+        "https://www.barcelona.cat/es/conocebcn/la-ciutadella-del-conocimiento"
       ]
     },
     {
@@ -600,16 +369,6 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r72",
-      "pageCount": 4,
-      "pages": [
-        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn",
-        "https://www.barcelona.cat/es/que-hacer-en-bcn",
-        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio"
-      ]
-    },
-    {
       "ruleId": "axe:listitem",
       "pageCount": 4,
       "pages": [
@@ -617,24 +376,6 @@
         "https://www.barcelona.cat/en/what-to-do-in-bcn",
         "https://www.barcelona.cat/es/que-hacer-en-bcn",
         "https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain/choreographies-magic-fountain"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
-      "pageCount": 3,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
-      "pageCount": 3,
-      "pages": [
-        "https://www.barcelona.cat/ca",
-        "https://www.barcelona.cat/en",
-        "https://www.barcelona.cat/es"
       ]
     },
     {
