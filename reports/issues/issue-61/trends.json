@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-28T01:14:15.083Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 52,
-          "equalAccess": 0,
-          "qualweb": 395,
-          "accesslint": 0,
-          "combined": 447,
-          "scannedAt": "2026-04-28T01:14:15.083Z",
-          "scannedCount": 69
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-05T01:08:15.148Z",
-        "totals": {
-          "alfa": 871,
-          "axe": 24,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 895,
-          "scannedAt": "2026-05-05T01:08:15.148Z",
-          "scannedCount": 69
-        }
-      },
-      "change": 448,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 871,
-        "axe": -28,
-        "equalAccess": 0,
-        "qualweb": -395,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-05T01:08:15.148Z",
         "totals": {
           "alfa": 871,
@@ -148,23 +111,47 @@
         "qualweb": 429,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-26T01:20:12.999Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 18,
+          "equalAccess": 0,
+          "qualweb": 429,
+          "accesslint": 0,
+          "combined": 447,
+          "scannedAt": "2026-05-26T01:20:12.999Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-04T20:12:09.326Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 22,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 203,
+          "combined": 225,
+          "scannedAt": "2026-06-04T20:12:09.326Z",
+          "scannedCount": 69
+        }
+      },
+      "change": -222,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 4,
+        "equalAccess": 0,
+        "qualweb": -429,
+        "accesslint": 203
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-19T01:21:59.146Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 17,
-        "equalAccess": 664,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 681,
-        "scannedAt": "2026-05-19T01:21:59.146Z",
-        "scannedCount": 69
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-26T01:20:12.999Z",
       "totals": {
         "alfa": 0,
@@ -177,67 +164,64 @@
         "scannedCount": 69
       }
     },
-    "change": -234,
+    "to": {
+      "scannedAt": "2026-06-04T20:12:09.326Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 22,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 203,
+        "combined": 225,
+        "scannedAt": "2026-06-04T20:12:09.326Z",
+        "scannedCount": 69
+      }
+    },
+    "change": -222,
     "trend": "improving",
     "perScanner": {
       "alfa": 0,
-      "axe": 1,
-      "equalAccess": -664,
-      "qualweb": 429,
-      "accesslint": 0
+      "axe": 4,
+      "equalAccess": 0,
+      "qualweb": -429,
+      "accesslint": 203
     }
   },
   "overallTrend": "improving",
-  "improvingCount": 3,
-  "worseningCount": 1,
+  "improvingCount": 4,
+  "worseningCount": 0,
   "latestTotals": {
     "alfa": 0,
-    "axe": 18,
+    "axe": 22,
     "equalAccess": 0,
-    "qualweb": 429,
-    "accesslint": 0,
-    "combined": 447,
-    "scannedAt": "2026-05-26T01:20:12.999Z",
+    "qualweb": 0,
+    "accesslint": 203,
+    "combined": 225,
+    "scannedAt": "2026-06-04T20:12:09.326Z",
     "scannedCount": 69
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 52,
+    "alfa": 871,
+    "axe": 24,
     "equalAccess": 0,
-    "qualweb": 395,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 447,
-    "scannedAt": "2026-04-28T01:14:15.083Z",
+    "combined": 895,
+    "scannedAt": "2026-05-05T01:08:15.148Z",
     "scannedCount": 69
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 5,
+      "pageCount": 7,
       "pages": [
-        "https://www.energy.gov/apprenticeships-workforce-development",
         "https://www.energy.gov/budget-performance",
-        "https://www.energy.gov/articles/energy-department-approves-export-expansion-corpus-christi-lng",
-        "https://www.energy.gov/indianenergy/current-funding-and-technical-assistance-opportunities",
-        "https://www.energy.gov/cio/articles/vulnerability-disclosure-policy"
-      ]
-    },
-    {
-      "ruleId": "axe:aria-prohibited-attr",
-      "pageCount": 3,
-      "pages": [
-        "https://www.energy.gov/",
-        "https://www.energy.gov/state-american-energy-promises-made-promises-kept",
-        "https://www.energy.gov/topics/advancing-innovation-technology-transitions-and-early-investments"
-      ]
-    },
-    {
-      "ruleId": "axe:button-name",
-      "pageCount": 3,
-      "pages": [
-        "https://www.energy.gov/",
-        "https://www.energy.gov/state-american-energy-promises-made-promises-kept",
-        "https://www.energy.gov/topics/advancing-innovation-technology-transitions-and-early-investments"
+        "https://www.energy.gov/undersecretaryforscience/genesis-mission/genesis-mission",
+        "https://www.energy.gov/open-government",
+        "https://www.energy.gov/articles/energy-department-announces-1715-million-expand-us-geothermal-energy",
+        "https://www.energy.gov/articles/energy-department-announces-largest-loan-department-history-delivering-over-7-billion",
+        "https://www.energy.gov/articles/fact-sheet-energy-department-lowering-electricity-costs-georgia-and-alabama",
+        "https://www.energy.gov/indianenergy/current-funding-and-technical-assistance-opportunities"
       ]
     }
   ]
