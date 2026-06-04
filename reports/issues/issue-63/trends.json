@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-23T01:17:27.685Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 1572,
-          "equalAccess": 0,
-          "qualweb": 3866,
-          "accesslint": 0,
-          "combined": 5438,
-          "scannedAt": "2026-04-23T01:17:27.685Z",
-          "scannedCount": 86
-        }
-      },
-      "to": {
-        "scannedAt": "2026-04-30T01:21:27.641Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 1572,
-          "equalAccess": 2741,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 4313,
-          "scannedAt": "2026-04-30T01:21:27.641Z",
-          "scannedCount": 86
-        }
-      },
-      "change": -1125,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 2741,
-        "qualweb": -3866,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-04-30T01:21:27.641Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 474
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-21T01:36:54.916Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1565,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 474,
+          "combined": 2039,
+          "scannedAt": "2026-05-21T01:36:54.916Z",
+          "scannedCount": 86
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-04T19:19:57.558Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1565,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1565,
+          "scannedAt": "2026-06-04T19:19:57.558Z",
+          "scannedCount": 86
+        }
+      },
+      "change": -474,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": -474
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-14T01:32:11.768Z",
-      "totals": {
-        "alfa": 7770,
-        "axe": 1567,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 9337,
-        "scannedAt": "2026-05-14T01:32:11.768Z",
-        "scannedCount": 86
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-21T01:36:54.916Z",
       "totals": {
         "alfa": 0,
@@ -177,14 +164,27 @@
         "scannedCount": 86
       }
     },
-    "change": -7298,
+    "to": {
+      "scannedAt": "2026-06-04T19:19:57.558Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 1565,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 1565,
+        "scannedAt": "2026-06-04T19:19:57.558Z",
+        "scannedCount": 86
+      }
+    },
+    "change": -474,
     "trend": "improving",
     "perScanner": {
-      "alfa": -7770,
-      "axe": -2,
+      "alfa": 0,
+      "axe": 0,
       "equalAccess": 0,
       "qualweb": 0,
-      "accesslint": 474
+      "accesslint": -474
     }
   },
   "overallTrend": "improving",
@@ -195,25 +195,25 @@
     "axe": 1565,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 474,
-    "combined": 2039,
-    "scannedAt": "2026-05-21T01:36:54.916Z",
+    "accesslint": 0,
+    "combined": 1565,
+    "scannedAt": "2026-06-04T19:19:57.558Z",
     "scannedCount": 86
   },
   "baselineTotals": {
     "alfa": 0,
     "axe": 1572,
-    "equalAccess": 0,
-    "qualweb": 3866,
+    "equalAccess": 2741,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 5438,
-    "scannedAt": "2026-04-23T01:17:27.685Z",
+    "combined": 4313,
+    "scannedAt": "2026-04-30T01:21:27.641Z",
     "scannedCount": 86
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:image-alt",
-      "pageCount": 86,
+      "pageCount": 84,
       "pages": [
         "https://wa.gov/",
         "https://wa.gov/accessibility-in-washington/workplace-accessibility/support-employees-with-disabilities-in-the-workplace",
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 55,
+      "pageCount": 54,
       "pages": [
         "https://wa.gov/people-with-disabilities/accessibility-policy",
         "https://wa.gov/people-with-disabilities/accessibility-wa-state-law-and-policy",
@@ -261,18 +261,18 @@
     },
     {
       "ruleId": "axe:label-title-only",
-      "pageCount": 12,
+      "pageCount": 11,
       "pages": [
         "https://wa.gov/",
-        "https://wa.gov/node",
-        "https://wa.gov/ar/node",
-        "https://wa.gov/es/node",
-        "https://wa.gov/hi/node",
-        "https://wa.gov/ja/node",
-        "https://wa.gov/ko/node",
-        "https://wa.gov/ru/node",
-        "https://wa.gov/uk/node",
-        "https://wa.gov/vi/node"
+        "https://wa.gov/ar",
+        "https://wa.gov/es",
+        "https://wa.gov/hi",
+        "https://wa.gov/ja",
+        "https://wa.gov/ko",
+        "https://wa.gov/ru",
+        "https://wa.gov/uk",
+        "https://wa.gov/vi",
+        "https://wa.gov/zh-hant"
       ]
     },
     {
