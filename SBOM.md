@@ -30,7 +30,7 @@ This document tracks primary software components used by `open-scans`, including
 | `@siteimprove/alfa-formatter-earl` | `^0.81.3` | `0.81.3` | MIT |
 | `@siteimprove/alfa-formatter-json` | `^0.81.3` | `0.81.3` | MIT |
 | `accessibility-checker` | `^4.0.12` | `4.0.12` | Apache-2.0 |
-| `playwright` | `^1.58.2` | `1.58.2` | Apache-2.0 |
+| `playwright` | `^1.60.0` | `1.60.0` | Apache-2.0 |
 
 ## Python dependencies
 
