@@ -155,38 +155,38 @@ test("formatA11yId uses first 8 hex chars of input", () => {
 // ── computePatternId ───────────────────────────────────────────────────────
 
 test("computePatternId returns A11Y-xxxxxxxx format", () => {
-  const id = computePatternId("#main", "wcag:wcag143|light", "light");
+  const id = computePatternId("#main", "wcag:wcag143|light");
   assert.match(id, /^A11Y-[0-9a-f]{8}$/);
 });
 
 test("computePatternId is deterministic", () => {
-  const a = computePatternId("#main", "wcag:wcag143|light", "light");
-  const b = computePatternId("#main", "wcag:wcag143|light", "light");
+  const a = computePatternId("#main", "wcag:wcag143|light");
+  const b = computePatternId("#main", "wcag:wcag143|light");
   assert.equal(a, b);
 });
 
 test("computePatternId differs for different locators", () => {
-  const a = computePatternId("#h1", "wcag:wcag143|light", "light");
-  const b = computePatternId("#h2", "wcag:wcag143|light", "light");
+  const a = computePatternId("#h1", "wcag:wcag143|light");
+  const b = computePatternId("#h2", "wcag:wcag143|light");
   assert.notEqual(a, b);
 });
 
 test("computePatternId differs for different rule keys", () => {
-  const a = computePatternId("#main", "wcag:wcag111|light", "light");
-  const b = computePatternId("#main", "wcag:wcag143|light", "light");
+  const a = computePatternId("#main", "wcag:wcag111|light");
+  const b = computePatternId("#main", "wcag:wcag143|light");
   assert.notEqual(a, b);
 });
 
-test("computePatternId differs for different colour modes", () => {
-  const a = computePatternId("#main", "wcag:wcag143|light", "light");
-  const b = computePatternId("#main", "wcag:wcag143|light", "dark");
-  assert.notEqual(a, b);
+test("computePatternId ignores colour mode", () => {
+  const a = computePatternId("#main", "wcag:wcag143|light");
+  const b = computePatternId("#main", "wcag:wcag143|light");
+  assert.equal(a, b);
 });
 
 test("computePatternId is the same for same locator+rule across different URLs", () => {
   // Pattern ID does not include the URL so the same defect on two pages shares an ID.
-  const a = computePatternId("#btn", "rule:button-name|light", "light");
-  const b = computePatternId("#btn", "rule:button-name|light", "light");
+  const a = computePatternId("#btn", "rule:button-name|light");
+  const b = computePatternId("#btn", "rule:button-name|light");
   assert.equal(a, b);
 });
 

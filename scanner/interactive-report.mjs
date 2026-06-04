@@ -163,9 +163,9 @@ function renderDisabilityIcons(disabilities) {
 }
 
 /**
- * Render the Bug ID display span for an example finding.
- * Shows the Instance ID (A11Y- + first 8 hex chars of the raw fingerprint)
- * and, when available, the Pattern ID (already formatted as A11Y-xxxxxxxx).
+ * Render the visible identifier for an example finding.
+ * Shows the cross-page pattern ID when available, while keeping the page-specific
+ * instance ID in the title for drill-down and copy flows.
  *
  * @param {string} fingerprint - Raw 12-char hex fingerprint from the scan
  * @param {string} [patternId] - Formatted A11Y-xxxxxxxx pattern ID
@@ -174,10 +174,11 @@ function renderDisabilityIcons(disabilities) {
 function renderBugIdDisplay(fingerprint, patternId) {
   if (!fingerprint) return '';
   const instanceId = `A11Y-${escapeHtml(fingerprint.slice(0, 8))}`;
-  const patternPart = patternId
-    ? ` | Pattern ID: <code class="bug-id-code">${escapeHtml(patternId)}</code>`
-    : '';
-  return `<span class="bug-id-display" title="Bug ID (Instance): stable identifier for this finding on this page (A11Y-prefix + 8-hex). Pattern ID: cross-page identifier for the same defect type (no page URL).">\u{1F511} Bug ID: <code class="bug-id-code">${instanceId}</code>${patternPart}</span>`;
+  const visibleId = patternId ? escapeHtml(patternId) : instanceId;
+  const title = patternId
+    ? `Pattern ID: cross-page identifier for the same defect type (no page URL). Instance ID: ${instanceId} is page-specific.`
+    : `Instance ID: page-specific identifier for this finding (A11Y-prefix + 8-hex).`;
+  return `<span class="bug-id-display" title="${escapeHtml(title)}">\u{1F511} Pattern ID: <code class="bug-id-code">${visibleId}</code></span>`;
 }
 
 function renderScanContextSummary(scanContext) {
@@ -1889,10 +1890,12 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       ];
       if (fingerprint) {
         const instanceId = \`A11Y-\${fingerprint.slice(0, 8)}\`;
+        const patternValue = patternId || instanceId;
+        const tick = String.fromCharCode(96);
         const bugIdValue = patternId
-          ? \`\\\`\${instanceId}\\\` (instance) / \\\`\${patternId}\\\` (pattern)\`
-          : \`\\\`\${instanceId}\\\`\`;
-        metaParts.push(\`**Bug ID:** \${bugIdValue}\`);
+          ? tick + patternValue + tick + ' (pattern, instance ' + tick + instanceId + tick + ')'
+          : tick + patternValue + tick;
+        metaParts.push('**Pattern ID:** ' + bugIdValue);
       }
       metaParts.push(\`**URL:** \${pageUrl}\`);
       if (xpath) metaParts.push(\`**XPath:** \\\`\${xpath}\\\`\`);

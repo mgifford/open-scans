@@ -1477,7 +1477,7 @@ test("openDetailsByHash handles pageshow event for bfcache restoration", () => {
   );
 });
 
-// ── Unique identifier (Bug ID / fingerprint) ─────────────────────────────────
+// ── Unique identifier (Pattern ID / fingerprint) ─────────────────────────────
 
 /** makeSummary variant with fingerprint data on examples */
 function makeSummaryWithFingerprint() {
@@ -1503,6 +1503,7 @@ function makeSummaryWithFingerprint() {
               html: '<p class="low-contrast">Text</p>',
               xpath: "/html/body/p[1]",
               fingerprint: "abc123def456",
+              patternId: "A11Y-feedcafe",
               firstSeenAt: "2026-01-15T10:00:00.000Z",
             },
           ],
@@ -1514,19 +1515,19 @@ function makeSummaryWithFingerprint() {
   });
 }
 
-test("generateInteractiveHtml shows Bug ID visually when fingerprint is set", () => {
+test("generateInteractiveHtml shows Pattern ID visually when fingerprint is set", () => {
   const html = generateInteractiveHtml(makeSummaryWithFingerprint());
   assert.ok(
     html.includes('<span class="bug-id-display"'),
     "Should render bug-id-display span when fingerprint is present"
   );
   assert.ok(
-    html.includes("Bug ID:"),
-    "Should show 'Bug ID:' label"
+    html.includes("Pattern ID:"),
+    "Should show 'Pattern ID:' label"
   );
   assert.ok(
-    html.includes("abc123def456"),
-    "Should include the fingerprint value in the HTML"
+    html.includes("A11Y-feedcafe"),
+    "Should include the pattern identifier value in the HTML"
   );
   assert.ok(
     html.includes("bug-id-code"),
@@ -1534,7 +1535,7 @@ test("generateInteractiveHtml shows Bug ID visually when fingerprint is set", ()
   );
 });
 
-test("generateInteractiveHtml omits Bug ID display when fingerprint is absent", () => {
+test("generateInteractiveHtml omits Pattern ID display when fingerprint is absent", () => {
   const html = generateInteractiveHtml(makeSummary());
   assert.ok(
     !html.includes('<span class="bug-id-display"'),
@@ -1550,11 +1551,11 @@ test("generateInteractiveHtml sets data-copy-fingerprint when fingerprint is pre
   );
 });
 
-test("generateInteractiveHtml buildFailureDetails includes Bug ID when fingerprint is present", () => {
-  const html = generateInteractiveHtml(makeSummary());
+test("generateInteractiveHtml buildFailureDetails includes Pattern ID when fingerprint is present", () => {
+  const html = generateInteractiveHtml(makeSummaryWithFingerprint());
   assert.ok(
-    html.includes("**Bug ID:**"),
-    "buildFailureDetails should include Bug ID field"
+    html.includes("**Pattern ID:**"),
+    "buildFailureDetails should include Pattern ID field"
   );
 });
 

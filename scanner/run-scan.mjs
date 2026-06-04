@@ -564,16 +564,15 @@ export function formatA11yId(hexHash) {
  * the same component defect on multiple pages shares a single pattern ID.
  *
  * Format: `A11Y-xxxxxxxx` (prefix + 8-character hex SHA-256 prefix of
- * locator|ruleKey|colorScheme).
+ * locator|ruleKey).
  *
  * @param {string} locator     - Normalized XPath / CSS selector / HTML snippet
  * @param {string} ruleKey     - Normalized rule key from normalizeRuleKey()
- * @param {string} colorScheme - Colour mode ("light" or "dark")
  * @returns {string}
  */
-export function computePatternId(locator, ruleKey, colorScheme) {
+export function computePatternId(locator, ruleKey) {
   return formatA11yId(
-    createHash("sha256").update(`${locator}|${ruleKey}|${colorScheme}`).digest("hex")
+    createHash("sha256").update(`${locator}|${ruleKey}`).digest("hex")
   );
 }
 
@@ -692,7 +691,7 @@ export function annotateWithFingerprints(store, results, scanMeta) {
 
         failure.fingerprint = fp;
         failure.firstSeenAt = store[fp].firstSeenAt;
-        failure.patternId = computePatternId(locator, ruleKey, failure.colorScheme || "light");
+        failure.patternId = computePatternId(locator, ruleKey);
       }
     }
   }
