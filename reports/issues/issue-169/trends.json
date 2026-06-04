@@ -1,0 +1,316 @@
+{
+  "scansAnalysed": 4,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-03-16T17:26:14.532Z",
+        "totals": {
+          "alfa": 5639,
+          "axe": 263,
+          "equalAccess": 1221,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7123,
+          "scannedAt": "2026-03-16T17:26:14.532Z",
+          "scannedCount": 123
+        }
+      },
+      "to": {
+        "scannedAt": "2026-03-19T16:54:20.073Z",
+        "totals": {
+          "alfa": 4466,
+          "axe": 215,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4681,
+          "scannedAt": "2026-03-19T16:54:20.073Z",
+          "scannedCount": 123
+        }
+      },
+      "change": -2442,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -1173,
+        "axe": -48,
+        "equalAccess": -1221,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-03-19T16:54:20.073Z",
+        "totals": {
+          "alfa": 4466,
+          "axe": 215,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4681,
+          "scannedAt": "2026-03-19T16:54:20.073Z",
+          "scannedCount": 123
+        }
+      },
+      "to": {
+        "scannedAt": "2026-05-12T01:13:36.462Z",
+        "totals": {
+          "alfa": 5039,
+          "axe": 699,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 5738,
+          "scannedAt": "2026-05-12T01:13:36.462Z",
+          "scannedCount": 149
+        }
+      },
+      "change": 1057,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 573,
+        "axe": 484,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-12T01:13:36.462Z",
+        "totals": {
+          "alfa": 5039,
+          "axe": 699,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 5738,
+          "scannedAt": "2026-05-12T01:13:36.462Z",
+          "scannedCount": 149
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-04T18:34:08.422Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 547,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 547,
+          "scannedAt": "2026-06-04T18:34:08.422Z",
+          "scannedCount": 149
+        }
+      },
+      "change": -5191,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -5039,
+        "axe": -152,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-12T01:13:36.462Z",
+      "totals": {
+        "alfa": 5039,
+        "axe": 699,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 5738,
+        "scannedAt": "2026-05-12T01:13:36.462Z",
+        "scannedCount": 149
+      }
+    },
+    "to": {
+      "scannedAt": "2026-06-04T18:34:08.422Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 547,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 547,
+        "scannedAt": "2026-06-04T18:34:08.422Z",
+        "scannedCount": 149
+      }
+    },
+    "change": -5191,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -5039,
+      "axe": -152,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 2,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 547,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 547,
+    "scannedAt": "2026-06-04T18:34:08.422Z",
+    "scannedCount": 149
+  },
+  "baselineTotals": {
+    "alfa": 5639,
+    "axe": 263,
+    "equalAccess": 1221,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 7123,
+    "scannedAt": "2026-03-16T17:26:14.532Z",
+    "scannedCount": 123
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 120,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/funding",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/news",
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
+        "https://www.nsf.gov/sitemap",
+        "https://www.nsf.gov/digital/strategy",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/updates-on-priorities"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-complementary-is-top-level",
+      "pageCount": 86,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/about/governance",
+        "https://www.nsf.gov/about/career-opportunities",
+        "https://www.nsf.gov/about/contact",
+        "https://www.nsf.gov/about/foia/",
+        "https://www.nsf.gov/funding/award-search",
+        "https://www.nsf.gov/funding/how-to-apply"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 13,
+      "pages": [
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
+        "https://www.nsf.gov/updates-on-priorities",
+        "https://www.nsf.gov/funding/opportunities/search-tips",
+        "https://www.nsf.gov/policies/research-performance-progress-reports",
+        "https://www.nsf.gov/about/congress/wastebooks",
+        "https://www.nsf.gov/about/budget/fy2026",
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/about/about-nsf-by-the-numbers/codebook",
+        "https://www.nsf.gov/science-matters/nsf-101-agency-accessibility-resources"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 10,
+      "pages": [
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
+        "https://www.nsf.gov/funding/opportunities",
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/events",
+        "https://www.nsf.gov/staff",
+        "https://oig.nsf.gov/home/",
+        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-attr",
+      "pageCount": 7,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 6,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://www.nsf.gov/research-security",
+        "https://oig.nsf.gov/home/",
+        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:list",
+      "pageCount": 5,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "axe:role-img-alt",
+      "pageCount": 5,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 3,
+      "pages": [
+        "https://www.nsf.gov/funding/opportunities",
+        "https://www.nsf.gov/events",
+        "https://www.nsf.gov/staff"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 3,
+      "pages": [
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 3,
+      "pages": [
+        "https://www.nsf.gov/research-security",
+        "https://oig.nsf.gov/home/",
+        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+      ]
+    }
+  ]
+}
