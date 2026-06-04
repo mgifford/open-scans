@@ -25,11 +25,11 @@ This document tracks primary software components used by `open-scans`, including
 | `@axe-core/playwright` | `^4.11.1` | `4.11.1` | MPL-2.0 |
 | `@cucumber/cucumber` | `^12.9.0` | `12.9.0` | MIT |
 | `@qualweb/act-rules` | `^0.7.6` | `0.7.6` | ISC |
-| `@qualweb/core` | `^0.8.7` | `0.8.7` | ISC |
+| `@qualweb/core` | `0.8.1` | `0.8.1` | ISC |
 | `@siteimprove/alfa-cli` | `^0.81.3` | `0.81.3` | MIT |
 | `@siteimprove/alfa-formatter-earl` | `^0.81.3` | `0.81.3` | MIT |
 | `@siteimprove/alfa-formatter-json` | `^0.81.3` | `0.81.3` | MIT |
-| `accessibility-checker` | `^4.0.12` | `4.0.12` | Apache-2.0 |
+| `accessibility-checker` | `^4.0.26` | `4.0.26` | Apache-2.0 |
 | `playwright` | `^1.60.0` | `1.60.0` | Apache-2.0 |
 
 ## Python dependencies
