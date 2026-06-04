@@ -448,6 +448,38 @@ Firefox
   assert.equal(result.value.browser, "firefox");
 });
 
+test("parseScanIssue resolves the random browser option from issue form dropdown sections", () => {
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+
+  try {
+    const body = `### URLs
+
+https://example.com
+
+### Browser
+
+Random browser (one per scan)
+`;
+    const payload = {
+      issue: {
+        number: 116,
+        html_url: "https://github.com/example/repo/issues/116",
+        title: "SCAN: Issue form random browser test",
+        created_at: "2026-02-20T20:00:00Z",
+        user: { login: "octocat" },
+        body
+      }
+    };
+
+    const result = parseScanIssue(payload);
+    assert.equal(result.ok, true);
+    assert.equal(result.value.browser, "chromium");
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
 test("parseScanIssue uses default when 'Accessibility engines' section has 'Default' option", () => {
   // The default dropdown option should not override engine selection — fall back to default engines
   const body = "### URLs\n\nhttps://example.com\n\n### Accessibility engines\n\nDefault (axe + one random engine)\n";

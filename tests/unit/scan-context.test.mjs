@@ -39,6 +39,18 @@ test("buildScanContext fills in default scan context", () => {
   assert.equal(scanContext.browser, DEFAULT_BROWSER);
 });
 
+test("buildScanContext resolves a random browser choice", () => {
+  const originalRandom = Math.random;
+  Math.random = () => 0.9;
+
+  try {
+    const scanContext = buildScanContext({ browser: "random" });
+    assert.equal(scanContext.browser, "webkit");
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
 test("formatViewportToken returns a custom size token when no preset matches", () => {
   const token = formatViewportToken({
     viewport: { width: 1111, height: 777 },

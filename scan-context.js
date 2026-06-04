@@ -10,6 +10,7 @@ export const DEFAULT_VIEWPORT_PRESET = "desktop";
 export const DEFAULT_COLOR_SCHEME = "both";
 export const DEFAULT_BROWSER = "chromium";
 export const VIEWPORT_SIZE_RE = /^(\d{2,5})\s*[x×]\s*(\d{2,5})$/i;
+export const BROWSER_CHOICES = Object.freeze(["chromium", "firefox", "webkit"]);
 
 const VIEWPORT_ALIASES = Object.freeze({
   mobile: "mobile-portrait",
@@ -33,6 +34,9 @@ const COLOR_SCHEME_ALIASES = Object.freeze({
 
 const BROWSER_ALIASES = Object.freeze({
   "chromium (default)": "chromium",
+  "random browser (one per scan)": "random",
+  "random browser": "random",
+  "random (one per scan)": "random",
   "webkit (safari-like)": "webkit"
 });
 
@@ -123,7 +127,25 @@ export function normalizeColorScheme(value) {
 export function normalizeBrowser(value) {
   const normalized = normalizeText(value);
   if (!normalized) return null;
-  return BROWSER_ALIASES[normalized] || (["chromium", "firefox", "webkit"].includes(normalized) ? normalized : null);
+  return BROWSER_ALIASES[normalized] || (BROWSER_CHOICES.includes(normalized) ? normalized : null);
+}
+
+export function pickRandomBrowser() {
+  const index = Math.floor(Math.random() * BROWSER_CHOICES.length);
+  return BROWSER_CHOICES[index];
+}
+
+export function resolveBrowserChoice(value) {
+  const normalized = normalizeText(value);
+  if (!normalized) return null;
+  if (normalized === "random") {
+    return pickRandomBrowser();
+  }
+  const browser = normalizeBrowser(normalized);
+  if (browser === "random") {
+    return pickRandomBrowser();
+  }
+  return browser;
 }
 
 export function buildScanContext(raw = {}) {
@@ -139,7 +161,7 @@ export function buildScanContext(raw = {}) {
     },
     viewportPreset: viewport.preset,
     colorScheme: normalizeColorScheme(raw.colorScheme) || DEFAULT_COLOR_SCHEME,
-    browser: normalizeBrowser(raw.browser) || DEFAULT_BROWSER
+    browser: resolveBrowserChoice(raw.browser) || DEFAULT_BROWSER
   };
 }
 

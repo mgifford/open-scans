@@ -92,10 +92,11 @@ body:
     attributes:
       label: Browser
       description: >
-        Choose the browser for Playwright-based scans. Chromium remains the default,
-        while Firefox and WebKit enable broader coverage.
+        Choose the browser for Playwright-based scans. Random browser picks one of
+        Chromium, Firefox, or WebKit for this scan while still allowing explicit overrides.
       options:
-        - Chromium (default)
+        - Random browser (one per scan)
+        - Chromium
         - Firefox
         - WebKit (Safari-like)
       default: 0

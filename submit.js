@@ -3,7 +3,7 @@
  * Parses URLs, validates them, and creates GitHub issues for scanning
  */
 
-import { buildScanContext, formatViewportToken, VIEWPORT_SIZE_RE } from "./scan-context.js";
+import { buildScanContext, formatViewportToken, resolveBrowserChoice, VIEWPORT_SIZE_RE, DEFAULT_BROWSER } from "./scan-context.js";
 
 // Regex to match any case variation of "scan:" prefix with zero or more spaces
 // Intentionally uses \s* to handle spaces, tabs, and other whitespace that users might accidentally include
@@ -272,6 +272,21 @@ function initForm() {
   const customViewportFields = document.getElementById("custom-viewport-fields");
   const colorSchemeSelect = document.getElementById("scan-color-scheme");
   const browserSelect = document.getElementById("scan-browser");
+  let resolvedBrowser = null;
+
+  function getBrowserChoice() {
+    const browser = browserSelect?.value || DEFAULT_BROWSER;
+    if (browser !== "random") {
+      resolvedBrowser = browser;
+      return browser;
+    }
+
+    if (!resolvedBrowser) {
+      resolvedBrowser = resolveBrowserChoice(browser) || DEFAULT_BROWSER;
+    }
+
+    return resolvedBrowser;
+  }
 
   function getScanOptions() {
     const viewport = viewportSelect?.value === "custom"
@@ -280,7 +295,7 @@ function initForm() {
     return {
       viewport,
       colorScheme: colorSchemeSelect?.value,
-      browser: browserSelect?.value
+      browser: getBrowserChoice()
     };
   }
 
@@ -301,6 +316,9 @@ function initForm() {
 
   updateViewportInputs();
   viewportSelect?.addEventListener("change", updateViewportInputs);
+  browserSelect?.addEventListener("change", () => {
+    resolvedBrowser = browserSelect?.value === "random" ? null : browserSelect?.value;
+  });
 
   // Update preview on input
   urlsTextarea.addEventListener("input", () => {

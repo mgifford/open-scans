@@ -133,6 +133,23 @@ test('formatIssueBody includes scan context details', () => {
   assert.match(body, /Browser: webkit/);
 });
 
+test('formatIssueBody resolves a random browser once per scan context', () => {
+  const originalRandom = Math.random;
+  Math.random = () => 0.5;
+
+  try {
+    const body = formatIssueBody('Random browser test', ['https://example.com'], {
+      viewport: 'desktop',
+      colorScheme: 'both',
+      browser: 'random'
+    });
+
+    assert.match(body, /Browser: firefox/);
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
 /**
  * Helper function to mock global.window.location for GitHub issue tests
  * Sets up a GitHub Pages-style location object required by createGitHubIssue
