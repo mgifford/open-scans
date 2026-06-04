@@ -922,8 +922,10 @@ test("issues overview card shows By Version breakdown for A and AA issues", () =
   assert.ok(html.includes("WCAG 2.2 (1)"), "Issues card should show WCAG 2.2 count of 1");
 });
 
-test("issues overview card shows By Category breakdown", () => {
+test("issues overview card shows engines used and clearer finding types", () => {
   const summary = makeSummary({
+    engines: ["alfa", "axe"],
+    axeTotals: { cantTell: 2 },
     enhanced: {
       consolidatedFailures: [
         {
@@ -960,11 +962,13 @@ test("issues overview card shows By Category breakdown", () => {
   });
   const html = generateInteractiveHtml(summary);
 
-  assert.ok(html.includes("By Category:"), "Issues card should show 'By Category:' heading");
-  assert.ok(html.includes("axe-strict (5)"), "Issues card should show axe-strict count of 5");
-  assert.ok(html.includes("Best Practice (3)"), "Issues card should show Best Practice count of 3");
-  assert.ok(html.includes("Others (2)"), "Issues card should show Others count of 2");
-  assert.ok(!html.includes("Other unique errors"), "Issues card should not use old 'Other unique errors' text");
+  assert.ok(html.includes("Engines used:"), "Issues card should show an engines-used line");
+  assert.ok(html.includes("ALFA, AXE"), "Issues card should list both requested engines");
+  assert.ok(html.includes("By Finding Type:"), "Issues card should use the new finding-type heading");
+  assert.ok(html.includes("Known errors (7)"), "Issues card should show the known error count");
+  assert.ok(html.includes("Best practices (3)"), "Issues card should show the best-practice count");
+  assert.ok(html.includes("Manual testing needed:"), "Issues card should show the manual-testing line");
+  assert.ok(html.includes("2 axe incomplete findings"), "Issues card should show the incomplete axe count");
 });
 
 test("issues overview card shows total count with engine and rule counts", () => {

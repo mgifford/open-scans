@@ -382,6 +382,7 @@ Development of `open-scans` has used AI coding assistants for:
 
 | Model / tool | Purpose | When used |
 | :--- | :--- | :--- |
+| GitHub Copilot Coding Agent (GPT-5.4 mini) | Report taxonomy updates, ALFA visibility debugging, and unit test adjustments | Development – June 2026 |
 | GitHub Copilot (GPT-4-class via OpenAI Codex) | Code generation, CI workflow authoring, documentation drafting | Throughout development |
 | GitHub Copilot Chat (GPT-4-class) | Code review, debugging, policy drafting, iterative PR feedback | Throughout development |
 | GitHub Copilot Coding Agent (Claude Sonnet 4.5) | Automated PR implementation — AI disclosure instruction in AGENTS.md, AI Disclosure section in README.md | Development – March 2026 |

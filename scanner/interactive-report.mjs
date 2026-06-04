@@ -228,12 +228,36 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
   // Calculate total issues once
   const totalIssues = consolidatedFailures.reduce((acc, f) => acc + f.totalOccurrences, 0);
+  const ENGINE_DISPLAY_NAMES = {
+    axe: "AXE",
+    alfa: "ALFA",
+    equalaccess: "Equal Access",
+    accesslint: "AccessLint",
+    qualweb: "QualWeb"
+  };
+  const requestedEngines = Array.isArray(summary.engines) ? summary.engines : [];
+  const enginesDisplay = requestedEngines.length > 0
+    ? (requestedEngines.includes("all")
+      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)"
+      : requestedEngines.map((engine) => ENGINE_DISPLAY_NAMES[engine.toLowerCase()] || engine.toUpperCase()).join(", "))
+    : "Unknown";
+  let knownErrorCount = 0;
+  let bestPracticeCount = 0;
+  for (const failure of consolidatedFailures) {
+    const count = failure.totalOccurrences;
+    const wcag = getRuleWcag(failure);
+    if (wcag.level === "best-practice") {
+      bestPracticeCount += count;
+    } else {
+      knownErrorCount += count;
+    }
+  }
+  const manualTestingCount = summary.axeTotals?.cantTell ?? 0;
 
   // Calculate detailed issue breakdown statistics for the header summary
   const engineCount = new Set(consolidatedFailures.map(f => f.engine)).size;
   let levelA = 0, levelAA = 0, levelAAA = 0;
   let version20 = 0, version21 = 0, version22 = 0;
-  let axeStrict = 0, bestPractice = 0, otherUnique = 0;
   for (const f of consolidatedFailures) {
     const wcag = getRuleWcag(f);
     const wcagLevel = wcag.level || "";
@@ -249,16 +273,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       else if (ver === "2.1") version21 += count;
       else if (ver === "2.2") version22 += count;
     }
-    // By confidence/engine category
-    if (wcagLevel === "best-practice") {
-      bestPractice += count;
-    } else if (f.engine === "axe") {
-      // axe-strict: axe violations mapped to WCAG SCs (high-confidence, no false positives)
-      axeStrict += count;
-    } else {
-      // Other unique errors: non-axe engine violations
-      otherUnique += count;
-    }
   }
 
   // Build filtered issue breakdown display strings (hide zero-value entries)
@@ -271,11 +285,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     `WCAG 2.0 (${version20})`,
     ...(version21 > 0 ? [`WCAG 2.1 (${version21})`] : []),
     ...(version22 > 0 ? [`WCAG 2.2 (${version22})`] : []),
-  ];
-  const byCategoryParts = [
-    ...(axeStrict > 0 ? [`axe-strict (${axeStrict})`] : []),
-    ...(bestPractice > 0 ? [`Best Practice (${bestPractice})`] : []),
-    ...(otherUnique > 0 ? [`Others (${otherUnique})`] : []),
   ];
 
   // Build priority table data (top 10 pages by total unique errors)
@@ -1503,8 +1512,16 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
               ${byVersionParts.join(', ')}
             </li>
             <li>
-              <strong>By Category:</strong>
-              ${byCategoryParts.join(' &amp; ')}
+              <strong>Engines used:</strong>
+              ${escapeHtml(enginesDisplay)}
+            </li>
+            <li>
+              <strong>By Finding Type:</strong>
+              Known errors (${knownErrorCount}) &amp; Best practices (${bestPracticeCount})
+            </li>
+            <li>
+              <strong>Manual testing needed:</strong>
+              ${manualTestingCount} axe incomplete finding${manualTestingCount === 1 ? '' : 's'}
             </li>
             <li>
               <strong>Total: <span class="stat-inline" aria-label="${totalIssues} total issues">${totalIssues}</span></strong>

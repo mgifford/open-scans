@@ -1922,6 +1922,9 @@ function buildEnhancedSummary(summary) {
           const wcagTagsForEntry = engine === "axe" && Array.isArray(failure.wcagSc)
             ? formatWcagFromTags(failure.wcagSc)
             : { scs: metadata.wcagCriteria || [], level: metadata.conformanceLevel || null };
+          if (metadata.conformanceLevel === "best-practice") {
+            wcagTagsForEntry.level = "best-practice";
+          }
 
           consolidatedFailures.set(key, {
             rule: ruleId,
