@@ -1,0 +1,1081 @@
+issue_number,scan_title,scan_browser,scan_color_scheme,scan_viewport_preset,scan_viewport_width,scan_viewport_height,submitted_url,final_url,http_status,fetch_ok,redirected,elapsed_ms,alfa_executed,alfa_passed,alfa_failed,alfa_cant_tell,alfa_inapplicable,alfa_failed_rules,alfa_error,axe_executed,axe_passed,axe_failed,axe_cant_tell,axe_inapplicable,axe_failed_rules,axe_error,equal_access_executed,equal_access_passed,equal_access_failed,equal_access_failed_unique,equal_access_failed_duplicates,equal_access_cant_tell,equal_access_inapplicable,equal_access_failed_rules,equal_access_error,accesslint_executed,accesslint_passed,accesslint_failed,accesslint_failed_unique,accesslint_failed_duplicates,accesslint_cant_tell,accesslint_inapplicable,accesslint_failed_rules,accesslint_error,qualweb_executed,qualweb_passed,qualweb_failed,qualweb_cant_tell,qualweb_inapplicable,qualweb_failed_rules,qualweb_error,duplicate_findings,fetch_error,page_title
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/findsupportgov,https://www.cms.gov/digital-service/findsupportgov,200,true,true,10879,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1065,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Findsupport.gov | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/,https://www.cms.gov/,200,true,true,8000,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1327,0,26,40,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Home - Centers for Medicare &amp; Medicaid Services | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/digital-accessibility,https://www.cms.gov/digital-service/digital-accessibility,200,true,true,9668,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,886,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Digital Accessibility | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings,https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings,200,true,true,7646,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1207,1,8,38,valid-lang,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Improper Payment Findings | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results,https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results,200,true,true,7640,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1096,0,14,42,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Error Rate Findings and Results | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results,https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results,200,true,true,10419,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1059,0,14,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Error Rate Findings and Results | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports,https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports,200,true,true,8582,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1502,0,25,41,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,PERM Error Rate Findings and Reports | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2,https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2,200,true,true,967,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance,https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance,200,true,true,1115,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag,200,true,true,1322,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag,200,true,true,954,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings,https://www.cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings,200,true,true,1013,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag,200,true,true,982,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings,https://www.cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings,200,true,true,1175,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag,200,true,true,934,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag,200,true,true,984,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag,200,true,true,1032,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2024/cjr-py6-ar-findings-aag,https://www.cms.gov/priorities/innovation/data-and-reports/2024/cjr-py6-ar-findings-aag,200,true,true,930,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/priorities/innovation/data-and-reports/2024/vbid-preview-eval-findings-2020-2023,https://www.cms.gov/priorities/innovation/data-and-reports/2024/vbid-preview-eval-findings-2020-2023,200,true,true,984,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/contact/speaking-engagement-request-form,https://www.cms.gov/about-cms/contact/speaking-engagement-request-form,200,true,true,19529,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1936,0,38,39,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,CMS Speaking Engagement Request Form | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/contact/speech-meeting-requests,https://www.cms.gov/about-cms/contact/speech-meeting-requests,200,true,true,9564,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,867,1,6,44,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Speech &amp; Meeting Requests | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports,https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports,200,true,true,9999,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1045,0,7,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,PERM Error Rate Findings &amp; Reports | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/affordable-care-act/content-requirements-plan-finder,https://www.cms.gov/marketplace/about/affordable-care-act/content-requirements-plan-finder,200,true,true,7776,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,953,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Content Requirements for Plan Finder | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/resources/data/healthcaregov-plan-finder-data,https://www.cms.gov/marketplace/resources/data/healthcaregov-plan-finder-data,200,true,true,8412,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1946,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Health Plan Finder Data | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/open-door-forums/long-term-services-supports,https://www.cms.gov/training-education/open-door-forums/long-term-services-supports,200,true,true,7507,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,893,0,12,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Long-Term Services and Supports Open Door Forum | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/web-policies-important-links/accessibility-compliance,https://www.cms.gov/about-cms/web-policies-important-links/accessibility-compliance,200,true,true,7320,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,867,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,CMS.gov Accessibility and Compliance with Section 508 | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/web-policies-important-links/accessibility-nondiscrimination-disabilities-notice,https://www.cms.gov/about-cms/web-policies-important-links/accessibility-nondiscrimination-disabilities-notice,200,true,true,9450,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1159,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,"CMS Nondiscrimination, Accessibility, and Complaint Information | CMS"
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/procedurecmsaccessibilityvalidationpdfpdf,https://www.cms.gov/files/document/procedurecmsaccessibilityvalidationpdfpdf,200,true,true,954,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/medicaid-coordination/about/state-payment-premiums,https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums,200,true,true,7652,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1140,1,6,42,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,State Payment of Medicare Premiums | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/payment/medicare-advantage-rates-statistics/ratebooks-supporting-data,https://www.cms.gov/medicare/payment/medicare-advantage-rates-statistics/ratebooks-supporting-data,200,true,true,8049,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1258,0,7,38,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Ratebooks &amp; Supporting Data | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/quality/snf-quality-reporting-program/help,https://www.cms.gov/medicare/quality/snf-quality-reporting-program/help,200,true,true,10321,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1298,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Skilled Nursing Facility (SNF) Quality Reporting Program (QRP) Help | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/cms-information-technology/section-508-and-cms/accessibility-cmsgov,https://www.cms.gov/data-research/cms-information-technology/section-508-and-cms/accessibility-cmsgov,200,true,true,10161,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,979,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Accessibility of CMS.gov | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/medical-review-education/ncd-240-9-faq,https://www.cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/medical-review-education/ncd-240-9-faq,200,true,true,10399,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1094,0,7,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,NCD 240.9 FAQ | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/payment/fee-for-service-providers/shared-savings-program-ssp-acos/about,https://www.cms.gov/medicare/payment/fee-for-service-providers/shared-savings-program-ssp-acos/about,200,true,true,8078,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1161,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,About the Program | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2012_mlr_calculator_and_formula_toolxlsm.xlsm,https://www.cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2012_mlr_calculator_and_formula_toolxlsm.xlsm,200,true,true,1273,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2013_mlr_formula_tool_20140513.xlsm,https://www.cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2013_mlr_formula_tool_20140513.xlsm,200,true,true,1048,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2013-mlr-formula-tool_20140324.xlsm,https://www.cms.gov/cciio/resources/forms-reports-and-other-resources/downloads/2013-mlr-formula-tool_20140324.xlsm,200,true,true,1070,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.ms-excel.sheet.macroenabled.12),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/medicare-fee-service-recovery-audit-program/resources,https://www.cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/medicare-fee-service-recovery-audit-program/resources,200,true,true,10124,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1095,0,25,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Resources | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service,https://www.cms.gov/digital-service,200,true,true,7127,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,954,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Digital Service at CMS | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2011-program-audit-findings-and-best-practicespdf,https://www.cms.gov/files/document/2011-program-audit-findings-and-best-practicespdf,200,true,true,1040,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2013-plan-finder-training-scenariospdf,https://www.cms.gov/files/document/2013-plan-finder-training-scenariospdf,200,true,true,946,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2014-medicare-plan-finder-tip-sheet-1014pdf,https://www.cms.gov/files/document/2014-medicare-plan-finder-tip-sheet-1014pdf,200,true,true,978,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2015medicareplanfinderwrksht-508pdf,https://www.cms.gov/files/document/2015medicareplanfinderwrksht-508pdf,200,true,true,1119,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2016-medicare-plan-finder-worksheet508pdf,https://www.cms.gov/files/document/2016-medicare-plan-finder-worksheet508pdf,200,true,true,1027,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/2017-medicare-plan-finder-worksheetpdf,https://www.cms.gov/files/document/2017-medicare-plan-finder-worksheetpdf,200,true,true,948,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/hios-plan-finder-user-manual-08-2014pdf,https://www.cms.gov/files/document/hios-plan-finder-user-manual-08-2014pdf,200,true,true,987,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/hios-plan-finder-user-manual-08192013pdf,https://www.cms.gov/files/document/hios-plan-finder-user-manual-08192013pdf,200,true,true,970,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/hpms-memo-best-practices-and-common-findings-2012-program-auditspdf,https://www.cms.gov/files/document/hpms-memo-best-practices-and-common-findings-2012-program-auditspdf,200,true,true,962,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/lmpdsummaryoffindingspdf,https://www.cms.gov/files/document/lmpdsummaryoffindingspdf,200,true,true,1288,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/navigating-medicare-plan-findersept-2017508finalpptx,https://www.cms.gov/files/document/navigating-medicare-plan-findersept-2017508finalpptx,200,true,true,905,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.openxmlformats-officedocument.presentationml.presentation),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.openxmlformats-officedocument.presentationml.presentation),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/vnd.openxmlformats-officedocument.presentationml.presentation),false,0,0,0,0,,Skipped (non-HTML content type: application/vnd.openxmlformats-officedocument.presentationml.presentation),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/planfinderissuerusermanual032013pdf,https://www.cms.gov/files/document/planfinderissuerusermanual032013pdf,200,true,true,950,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/planfinderpressreleasepdf,https://www.cms.gov/files/document/planfinderpressreleasepdf,200,true,true,1079,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/files/document/questions-and-answers-plan-finder-data-entrypdf,https://www.cms.gov/files/document/questions-and-answers-plan-finder-data-entrypdf,200,true,true,1046,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/employers-unions,https://www.cms.gov/training-education/find-provider-type/employers-unions,200,true,true,8003,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1348,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Employer community | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/facilities,https://www.cms.gov/training-education/find-provider-type/facilities,200,true,true,7141,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1009,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Facilities | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/health-drug-plans,https://www.cms.gov/training-education/find-provider-type/health-drug-plans,200,true,true,7472,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,876,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Health &amp; drug plans | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/physicians-other-health-professionals,https://www.cms.gov/training-education/find-provider-type/physicians-other-health-professionals,200,true,true,6875,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1037,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Physicians &amp; other health professionals | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/learn/find-resources,https://www.cms.gov/training-education/learn/find-resources,200,true,true,6848,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,899,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Find resources | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/learn/find-tools-to-help-you-help-others,https://www.cms.gov/training-education/learn/find-tools-to-help-you-help-others,200,true,true,7310,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,961,0,6,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Find tools to help you help others | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/988,https://www.cms.gov/digital-service/988,200,true,true,7086,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1020,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,988 Suicide and Crisis Lifeline | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/artificial-intelligence-demo-days,https://www.cms.gov/digital-service/artificial-intelligence-demo-days,200,true,true,11223,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,829,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Artificial Intelligence Demo Days | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/medical-bill-rights,https://www.cms.gov/digital-service/medical-bill-rights,200,true,true,15413,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1080,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Medical Bill Rights | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/open-source-program-office,https://www.cms.gov/digital-service/open-source-program-office,200,true,true,8018,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1076,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Open Source Program Office | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/transparency,https://www.cms.gov/digital-service/transparency,200,true,true,7465,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,869,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Transparency | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/digital-service/usability-research,https://www.cms.gov/digital-service/usability-research,200,true,true,10294,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1073,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Usability Research at the Digital Service at CMS | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/physician-fee-schedule/search/overview,https://www.cms.gov/medicare/physician-fee-schedule/search/overview,200,true,true,7773,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1318,1,5,43,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,PFS Look-up Tool Overview | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/outreach-and-education/reach-out/find-tools-to-help-you-help-others/open-enrollment-outreach-and-media-materials,https://www.cms.gov/outreach-and-education/reach-out/find-tools-to-help-you-help-others/open-enrollment-outreach-and-media-materials,200,true,true,7494,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,948,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Medicare Open Enrollment Period outreach &amp; media materials | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/employers-unions/contact-us,https://www.cms.gov/training-education/find-provider-type/employers-unions/contact-us,200,true,true,7830,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,948,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Contact Us | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/employers-unions/publications-share-employees,https://www.cms.gov/training-education/find-provider-type/employers-unions/publications-share-employees,200,true,true,7695,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1041,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Publications to share with employees | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/employers-unions/top-five-medicare-enrollment,https://www.cms.gov/training-education/find-provider-type/employers-unions/top-five-medicare-enrollment,200,true,true,8316,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1294,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,5 things you need to know about signing up for Medicare | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/find-provider-type/employers-unions/web-resources-help-employees,https://www.cms.gov/training-education/find-provider-type/employers-unions/web-resources-help-employees,200,true,true,6973,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1034,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Web resources to help employees | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/training-education/learn/find-tools-to-help-you-help-others/guidelines-for-effective-writing,https://www.cms.gov/training-education/learn/find-tools-to-help-you-help-others/guidelines-for-effective-writing,200,true,true,7679,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1564,0,6,40,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Guidelines for effective writing | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/what-we-do/nursing-homes/patients-caregivers/finding-nursing-home,https://www.cms.gov/about-cms/what-we-do/nursing-homes/patients-caregivers/finding-nursing-home,200,true,true,6772,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,997,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Finding a Nursing Home | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/cms-data/payment-data,https://www.cms.gov/data-research/cms-data/payment-data,200,true,true,7185,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,929,0,6,42,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Payment for Data | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/data-research/computer-data-systems/minimum-data-sets-3.0-public-reports,https://www.cms.gov/data-research/computer-data-systems/minimum-data-sets-3.0-public-reports,200,true,true,7194,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,823,0,6,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Minimum Data Set 3.0 Public Reports | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/health-tech-ecosystem/early-adopters/payers,https://www.cms.gov/health-tech-ecosystem/early-adopters/payers,200,true,true,7713,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1147,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Payers | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/help-support,https://www.cms.gov/help-support,200,true,true,6822,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,965,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Help &amp; Support | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/appeals-grievances/fee-for-service,https://www.cms.gov/medicare/appeals-grievances/fee-for-service,200,true,true,7686,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1160,0,10,42,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Original Medicare (Fee-for-service) Appeals | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/audits-compliance/part-a-cost-report,https://www.cms.gov/medicare/audits-compliance/part-a-cost-report,200,true,true,6951,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,959,1,6,44,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Part A Cost Report Audit &amp; Reimbursement | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/coding-billing/place-of-service-codes,https://www.cms.gov/medicare/coding-billing/place-of-service-codes,200,true,true,6901,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,894,0,6,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Place of Service Codes | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/coding-billing/provider-customer-service-program,https://www.cms.gov/medicare/coding-billing/provider-customer-service-program,200,true,true,6670,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1031,0,7,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Provider Customer Service Program | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare/coding-billing/therapy-services,https://www.cms.gov/medicare/coding-billing/therapy-services,200,true,true,6978,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1167,0,14,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Therapy Services | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/nosurprises/policies-and-resources/reports,https://www.cms.gov/nosurprises/policies-and-resources/reports,200,true,true,10431,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1033,0,5,41,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Independent dispute resolution reports | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/contact/cms,https://www.cms.gov/about-cms/contact/cms,200,true,true,12158,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,986,0,15,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Contact CMS | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/contact/database,https://www.cms.gov/about-cms/contact/database,200,true,true,12504,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1367,0,9,37,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Contacts Database | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/contact/newsroom,https://www.cms.gov/about-cms/contact/newsroom,200,true,true,6898,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,784,0,1,47,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Newsroom Homepage | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/information-systems/privacy/privacy-act-1974-and-privacy-act-requests,https://www.cms.gov/about-cms/information-systems/privacy/privacy-act-1974-and-privacy-act-requests,200,true,true,9600,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1010,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Privacy Act of 1974 and Privacy Act Requests | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/about-cms/who-we-are/leadership/digital-service-cms,https://www.cms.gov/about-cms/who-we-are/leadership/digital-service-cms,200,true,true,10131,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,861,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Digital Service at CMS | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs,https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs,200,true,true,9351,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1090,2,6,43,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Managed Fee-for-Service (MFFS) Model | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicaid-chip/medicare-coordination/integrity-institute/reports,https://www.cms.gov/medicaid-chip/medicare-coordination/integrity-institute/reports,200,true,true,7598,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1024,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Medicaid Integrity Institute Reports | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicare-medicaid-coordination/fraud-prevention/fraudabuseforprofs/focused-program-integrity-review-reports-state-or-territory,https://www.cms.gov/medicare-medicaid-coordination/fraud-prevention/fraudabuseforprofs/focused-program-integrity-review-reports-state-or-territory,200,true,true,19544,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1478,0,7,38,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Focused Program Integrity Reviews by State or Territory | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/affordable-care-act,https://www.cms.gov/marketplace/about/affordable-care-act,200,true,true,6913,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,945,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Consumer Support and Information | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/exchange-coverage-maps,https://www.cms.gov/marketplace/about/exchange-coverage-maps,200,true,true,7947,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,995,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Health Insurance Exchange Coverage Maps | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/health-insurance-marketplace-quality-initiatives,https://www.cms.gov/marketplace/about/health-insurance-marketplace-quality-initiatives,200,true,true,8503,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1187,1,6,41,empty-heading,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Health Insurance Marketplace Quality Initiatives | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/oversight,https://www.cms.gov/marketplace/about/oversight,200,true,true,6565,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,954,0,5,42,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Consumer Information and Insurance Oversight | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/about/overview-exchanges,https://www.cms.gov/marketplace/about/overview-exchanges,200,true,true,7393,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,926,0,6,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Health Insurance Marketplaces | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/marketplace/agents-brokers/help-on-demand,https://www.cms.gov/marketplace/agents-brokers/help-on-demand,200,true,true,6414,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,885,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Help On Demand for Agents and Brokers | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicaid-chip/community-engagement-support/eligibility-made-easy,https://www.cms.gov/medicaid-chip/community-engagement-support/eligibility-made-easy,200,true,true,7480,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1171,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Eligibility made easy | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/medicaid-chip/medicare-coordination/integrity-institute/contact,https://www.cms.gov/medicaid-chip/medicare-coordination/integrity-institute/contact,200,true,true,6482,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,928,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Contact the Medicaid Integrity Institute | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://cms.gov/research-statistics-data-and-systems/monitoring-programs/cert/downloads/fy_2004shortreportpdf,https://www.cms.gov/research-statistics-data-and-systems/monitoring-programs/cert/downloads/fy_2004shortreportpdf,200,true,true,1210,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,0,0,,Skipped (non-HTML content type: application/pdf),false,0,0,0,0,,Skipped (non-HTML content type: application/pdf),0,,
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/medicare/quality/quality-improvement-organizations,https://www.cms.gov/medicare/quality/quality-improvement-organizations,200,true,false,7523,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1142,1,10,43,heading-order,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Quality Improvement Programs | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/medicare/payment/prospective-payment-systems/inpatient-rehabilitation/pai,https://www.cms.gov/medicare/payment/prospective-payment-systems/inpatient-rehabilitation/pai,200,true,false,7510,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1379,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,IRF-PAI | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/digital-service/digital-accessibility,https://www.cms.gov/digital-service/digital-accessibility,200,true,false,10405,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,900,0,5,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Digital Accessibility | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/about-cms/what-we-do/emergency-response,https://www.cms.gov/about-cms/what-we-do/emergency-response,200,true,false,8107,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1053,1,6,43,page-has-heading-one,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,CMS]
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/training-education/learn/find-tools-to-help-you-help-others,https://www.cms.gov/training-education/learn/find-tools-to-help-you-help-others,200,true,false,7591,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,961,0,6,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Find tools to help you help others | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/training-education/learn/find-resources,https://www.cms.gov/training-education/learn/find-resources,200,true,false,7525,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,913,0,5,44,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,Find resources | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/about-cms/web-policies-important-links/accessibility-compliance,https://www.cms.gov/about-cms/web-policies-important-links/accessibility-compliance,200,true,false,10044,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,867,0,6,43,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,CMS.gov Accessibility and Compliance with Section 508 | CMS
+308,CMS.gov —,chromium,both,desktop,1280,800,https://www.cms.gov/about-cms/contact/speaking-engagement-request-form,https://www.cms.gov/about-cms/contact/speaking-engagement-request-form,200,true,false,19158,false,0,0,0,0,,"Error: Could not find Chrome (ver. 145.0.7632.77). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:298:27)
+    at ChromeLauncher.computeLaunchArguments (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:86:24)
+    at async ChromeLauncher.launch (file:///home/runner/work/open-scans/open-scans/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:49:28)
+    at async Scraper.of (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-scraper/dist/scraper.js:29:28)
+    at async Module.run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/scrape/run.js:94:21)
+    at async run (file:///home/runner/work/open-scans/open-scans/node_modules/@siteimprove/alfa-cli/bin/alfa/command/audit/run.js:31:24)",true,1949,0,38,39,,,false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,0,0,,Skipped (not requested),false,0,0,0,0,,Skipped (not requested),0,,CMS Speaking Engagement Request Form | CMS

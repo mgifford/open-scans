@@ -1,0 +1,28 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 10,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 10,
+    "scannedAt": "2026-06-04T17:45:57.035Z",
+    "scannedCount": 108
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
+        "https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums",
+        "https://www.cms.gov/medicare/physician-fee-schedule/search/overview",
+        "https://www.cms.gov/medicare/audits-compliance/part-a-cost-report",
+        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs",
+        "https://www.cms.gov/medicare/quality/quality-improvement-organizations"
+      ]
+    }
+  ]
+}
