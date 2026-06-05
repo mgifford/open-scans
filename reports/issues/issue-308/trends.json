@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-06-04T17:45:57.035Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 10,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 10,
+          "scannedAt": "2026-06-04T17:45:57.035Z",
+          "scannedCount": 108
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-05T14:07:00.220Z",
+        "totals": {
+          "alfa": 4591,
+          "axe": 10,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4601,
+          "scannedAt": "2026-06-05T14:07:00.220Z",
+          "scannedCount": 108
+        }
+      },
+      "change": 4591,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 4591,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-06-04T17:45:57.035Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 10,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 10,
+        "scannedAt": "2026-06-04T17:45:57.035Z",
+        "scannedCount": 108
+      }
+    },
+    "to": {
+      "scannedAt": "2026-06-05T14:07:00.220Z",
+      "totals": {
+        "alfa": 4591,
+        "axe": 10,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 4601,
+        "scannedAt": "2026-06-05T14:07:00.220Z",
+        "scannedCount": 108
+      }
+    },
+    "change": 4591,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 4591,
+      "axe": 0,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
+    "alfa": 4591,
+    "axe": 10,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 4601,
+    "scannedAt": "2026-06-05T14:07:00.220Z",
+    "scannedCount": 108
+  },
+  "baselineTotals": {
     "alfa": 0,
     "axe": 10,
     "equalAccess": 0,
@@ -13,12 +101,135 @@
   },
   "latestSystemicPatterns": [
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 72,
+      "pages": [
+        "https://www.cms.gov/digital-service/findsupportgov",
+        "https://www.cms.gov/",
+        "https://www.cms.gov/digital-service/digital-accessibility",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
+        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
+        "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 72,
+      "pages": [
+        "https://www.cms.gov/digital-service/findsupportgov",
+        "https://www.cms.gov/",
+        "https://www.cms.gov/digital-service/digital-accessibility",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
+        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
+        "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 72,
+      "pages": [
+        "https://www.cms.gov/digital-service/findsupportgov",
+        "https://www.cms.gov/",
+        "https://www.cms.gov/digital-service/digital-accessibility",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
+        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
+        "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r1",
+      "pageCount": 27,
+      "pages": [
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
+      "pageCount": 27,
+      "pages": [
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
+      "pageCount": 27,
+      "pages": [
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 27,
+      "pages": [
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/bpci-yr2-annual-report-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cjr-py4-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2021/cpc-plus-third-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/bpci-adv-ar3-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2022/cpc-plus-fourth-annual-report-findings",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/bpci-adv-ar4-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-findings-aag",
+        "https://www.cms.gov/priorities/innovation/data-and-reports/2023/cjr-py5-ar-transf-findings-aag"
+      ]
+    },
+    {
       "ruleId": "axe:heading-order",
       "pageCount": 6,
       "pages": [
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
         "https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums",
         "https://www.cms.gov/medicare/physician-fee-schedule/search/overview",
+        "https://www.cms.gov/medicare/audits-compliance/part-a-cost-report",
+        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs",
+        "https://www.cms.gov/medicare/quality/quality-improvement-organizations"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 5,
+      "pages": [
+        "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
+        "https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums",
         "https://www.cms.gov/medicare/audits-compliance/part-a-cost-report",
         "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs",
         "https://www.cms.gov/medicare/quality/quality-improvement-organizations"
