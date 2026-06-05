@@ -10,6 +10,7 @@ import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
+import { collectActConsensusOverlaps } from "./act-mapping.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
@@ -1817,6 +1818,8 @@ function buildOverlapReport(summary) {
     .sort((a, b) => b.scanners.length - a.scanners.length)
     .slice(0, 100);
 
+  const actConsensus = collectActConsensusOverlaps(summary.results);
+
   return {
     generatedAt: new Date().toISOString(),
     issueNumber: summary.issueNumber,
@@ -1826,7 +1829,9 @@ function buildOverlapReport(summary) {
     matrix,
     duplicateFindingTotals: summary.duplicateFindingTotals ?? 0,
     overlapEntryCount: overlapEntries.length,
-    overlapEntries
+    overlapEntries,
+    actConsensusEntryCount: actConsensus.overlapEntryCount,
+    actConsensusEntries: actConsensus.overlapEntries
   };
 }
 
@@ -1881,6 +1886,32 @@ function toOverlapMarkdown(overlap) {
       lines.push("");
     }
   }
+
+  lines.push("## ACT Consensus Overlaps (axe + ALFA)");
+  lines.push("");
+  lines.push("These findings map to the same ACT rule in both axe and ALFA on the same page and locator, so they are strong dedupe candidates.");
+  lines.push("");
+  if ((overlap.actConsensusEntries || []).length === 0) {
+    lines.push("No axe + ALFA ACT consensus overlaps were detected.");
+  } else {
+    lines.push("| ACT Rule | URL | Scanners | Locator | Rule IDs | Occurrences | Example |");
+    lines.push("|---|---|---|---|---|---:|---|");
+    for (const entry of overlap.actConsensusEntries.slice(0, 25)) {
+      const scanners = entry.scanners.join(", ");
+      const ruleIds = Object.entries(entry.scannerRules)
+        .map(([scanner, rules]) => `${scanner}: ${rules.join(", ")}`)
+        .join(" | ");
+      const example = entry.examples[0]
+        ? `${entry.examples[0].scanner}: ${entry.examples[0].rule}`
+        : "-";
+      lines.push(`| ${entry.actRuleId} | ${escapeMarkdown(entry.url)} | ${scanners} | ${escapeMarkdown(entry.locator)} | ${escapeMarkdown(ruleIds)} | ${entry.occurrences} | ${escapeMarkdown(example)} |`);
+    }
+    if (overlap.actConsensusEntries.length > 25) {
+      lines.push("");
+      lines.push(`*...and ${overlap.actConsensusEntries.length - 25} more ACT consensus overlap(s)*`);
+    }
+  }
+  lines.push("");
 
   return `${lines.join("\n")}\n`;
 }

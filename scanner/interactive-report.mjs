@@ -1,5 +1,6 @@
 import { ROLES, SEVERITY, wcagScUrl, getDisabilitiesFromScs, getFpsData } from "./rule-metadata.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
+import { getActRuleIds } from "./act-mapping.mjs";
 import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
 import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 
@@ -97,6 +98,80 @@ function getWcagVersionFromScs(scs) {
  */
 function getRuleWcag(f) {
   return f.wcag || { scs: f.metadata?.wcagCriteria || [], level: f.metadata?.conformanceLevel || null };
+}
+
+function normalizePageCounts(pages) {
+  if (pages instanceof Map) return pages;
+  if (Array.isArray(pages)) return new Map(pages);
+  if (pages && typeof pages === "object") return new Map(Object.entries(pages));
+  return new Map();
+}
+
+function normalizeFindingLocator(locator) {
+  return String(locator ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function getRuleDisplayId(failure) {
+  if (failure.engine === "alfa") {
+    return formatAlfaRule(failure.rule).id;
+  }
+  if (failure.engine === "equalAccess") {
+    return failure.ruleTitle || getEqualAccessRuleName(failure.rule) || failure.rule;
+  }
+  return failure.rule;
+}
+
+function getRuleSlug(failure) {
+  return slugify(`${failure.engine}-${getRuleDisplayId(failure)}`);
+}
+
+export function getPriorityTableUniqueTotal(result, activeScanners) {
+  const hasDetailedFailures = activeScanners.some((eng) => Array.isArray(result?.[eng]?.failures) && result[eng].failures.length > 0);
+
+  if (!hasDetailedFailures) {
+    return activeScanners.reduce((total, eng) => (
+      total + Number(result?.[eng]?.uniqueFailedCount ?? result?.[eng]?.counts?.failed ?? 0)
+    ), 0);
+  }
+
+  const uniqueKeys = new Set();
+
+  for (const eng of activeScanners) {
+    const scanner = result?.[eng];
+    if (!scanner) continue;
+
+    const failures = Array.isArray(scanner.failures) ? scanner.failures : [];
+
+    if (failures.length === 0) {
+      const fallbackCount = Number(scanner.uniqueFailedCount ?? scanner.counts?.failed ?? 0);
+      for (let index = 0; index < fallbackCount; index += 1) {
+        uniqueKeys.add(`fallback:${eng}:${index}`);
+      }
+      continue;
+    }
+
+    for (const failure of failures) {
+      if (failure.isDuplicate) continue;
+
+      const locator = normalizeFindingLocator(failure.xpath || failure.selector || failure.html);
+      const ruleId = String(failure.rule ?? "").trim().toLowerCase() || "unknown";
+      const actRuleIds = getActRuleIds(eng, failure.rule);
+
+      if (actRuleIds.length > 0) {
+        for (const actRuleId of actRuleIds) {
+          uniqueKeys.add(`act:${actRuleId}|${locator}`);
+        }
+        continue;
+      }
+
+      uniqueKeys.add(`rule:${eng}:${ruleId}|${locator}`);
+    }
+  }
+
+  return uniqueKeys.size;
 }
 
 /**
@@ -329,11 +404,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   const pagesByErrorCount = [...(results || [])]
     .map(r => {
       const counts = {};
-      let total = 0;
       for (const eng of SCANNERS) {
         counts[eng] = getUnique(r, eng);
-        total += counts[eng];
       }
+      const total = getPriorityTableUniqueTotal(r, SCANNERS);
       return { result: r, counts, total };
     })
     .filter(p => p.total > 0)
@@ -346,7 +420,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     <section class="priority-section" aria-labelledby="priority-heading">
       <h2 id="priority-heading">🎯 Pages with Most Errors</h2>
       <p>Focus your efforts on these pages to make the biggest impact. Click any error count to filter the rule list below.
-         Numbers in parentheses (+N) indicate findings that cover WCAG criteria already reported by axe.</p>
+         Total counts unique findings across the active scanners, and numbers in parentheses (+N) still show findings that cover WCAG criteria already reported by axe.</p>
       <div class="table-wrapper" role="region" aria-label="Pages with most errors" tabindex="0">
         <table class="priority-table" aria-label="Pages sorted by total unique accessibility errors">
           <thead>
@@ -411,6 +485,61 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     accesslint: 'AccessLint', qualweb: 'QualWeb'
   };
 
+  const actAlignmentIndex = new Map();
+  for (const failure of consolidatedFailures) {
+    const actRuleIds = getActRuleIds(failure.engine, failure.rule);
+    failure.actRuleIds = actRuleIds;
+    for (const actRuleId of actRuleIds) {
+      if (!actAlignmentIndex.has(actRuleId)) {
+        actAlignmentIndex.set(actRuleId, []);
+      }
+      actAlignmentIndex.get(actRuleId).push(failure);
+    }
+  }
+
+  function renderActAlignment(failure, ruleSlug) {
+    const actRuleIds = failure.actRuleIds || [];
+    if (actRuleIds.length === 0) return "";
+
+    const sortedAlignedFailures = (actRuleId) => {
+      const aligned = (actAlignmentIndex.get(actRuleId) || [])
+        .filter(other => other.engine !== failure.engine || other.rule !== failure.rule)
+        .sort((a, b) => {
+          const engineDiff = ENGINE_ORDER.indexOf(a.engine) - ENGINE_ORDER.indexOf(b.engine);
+          if (engineDiff !== 0) return engineDiff;
+          return getRuleDisplayId(a).localeCompare(getRuleDisplayId(b));
+        });
+
+      if (aligned.length === 0) {
+        return `<p class="act-alignment-empty">No other scanned engines matched this ACT rule in the current report.</p>`;
+      }
+
+      return `<div class="act-alignment-links">
+        ${aligned.map(other => `
+          <a class="act-alignment-chip" href="#rule-${getRuleSlug(other)}">
+            ${escapeHtml(ENGINE_ACCORDION_LABELS[other.engine] || other.engine)}: ${escapeHtml(getRuleDisplayId(other))}
+          </a>
+        `).join('')}
+      </div>`;
+    };
+
+    return `
+      <section class="act-alignment-section" aria-labelledby="act-alignment-${ruleSlug}">
+        <h4 id="act-alignment-${ruleSlug}">ACT alignment</h4>
+        <ul class="act-alignment-list">
+          ${actRuleIds.map(actRuleId => `
+            <li class="act-alignment-item">
+              <div class="act-alignment-header">
+                <span class="badge badge-act">ACT ${escapeHtml(actRuleId)}</span>
+                <a class="act-rule-link" href="https://www.w3.org/WAI/standards-guidelines/act/rules/${actRuleId}/" target="_blank" rel="noopener">Open ACT rule</a>
+              </div>
+              ${sortedAlignedFailures(actRuleId)}
+            </li>
+          `).join('')}
+        </ul>
+      </section>`;
+  }
+
   function makeRuleCard(f) {
     let ruleInfo;
     if (f.engine === 'alfa') {
@@ -424,7 +553,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     const displayId = ruleInfo.id;
     const displayDesc = ruleInfo.description || "";
     const rolesData = JSON.stringify(f.metadata.roles);
-    const pageUrlsData = JSON.stringify([...f.pages.keys()]);
+    const pageCounts = normalizePageCounts(f.pages);
+    const pageUrlsData = JSON.stringify([...pageCounts.keys()]);
     const ruleSlug = slugify(f.engine + "-" + displayId);
     // Use stored wcag info (set during buildEnhancedSummary), falling back to metadata
     const wcag = getRuleWcag(f);
@@ -453,6 +583,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
           </ul>
         </section>`
       : '';
+    const actAlignmentHtml = renderActAlignment(f, ruleSlug);
 
     return `
       <details class="rule-card"
@@ -480,7 +611,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
             </span>
           </div>
           <div class="pages-affected">
-            ${f.pages.size} pages affected
+            ${pageCounts.size} pages affected
           </div>
         </summary>
         <div class="rule-content">
@@ -496,13 +627,14 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
             <div>
               <h4>Affected Pages</h4>
               <ul style="max-height: 150px; overflow-y: auto; font-size: 0.85rem;">
-                ${Array.from(f.pages.entries()).map(([url, count]) => `
+                ${Array.from(pageCounts.entries()).map(([url, count]) => `
                   <li><a href="${url}" target="_blank">${url}</a> (${count} occurrences)</li>
                 `).join('')}
               </ul>
             </div>
           </div>
           ${fpsHtml}
+          ${actAlignmentHtml}
           <h4>Examples</h4>
           <div class="example-list">
             ${f.examples.map((ex, i) => `
@@ -523,7 +655,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                     data-copy-severity="${escapeHtml(f.metadata.severity || '')}"
                    data-copy-fingerprint="${escapeHtml(ex.fingerprint || '')}"
                    data-copy-pattern-id="${escapeHtml(ex.patternId || '')}"
-                   data-copy-pages-count="${f.pages.size}"
+                   data-copy-pages-count="${pageCounts.size}"
                    data-copy-occurrences="${f.totalOccurrences}"
                    data-copy-disabilities="${escapeHtml(disabilities.join(', '))}">
                 <div class="example-meta">
@@ -978,6 +1110,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .badge-severity { background: var(--bar-bg); color: var(--text); }
     .badge-count { background: var(--primary); color: var(--badge-count-text); }
     .badge-engine { background: #e8f4fd; color: #0969da; border: 1px solid #b6d9fb; }
+    .badge-act { background: #ecfeff; color: #155e75; border: 1px solid #67e8f9; }
     .badge-light { background: var(--container-bg); border: 1px solid var(--border); color: var(--text); }
     .badge-dark { background: var(--badge-dark-bg); color: var(--badge-dark-text); }
     .badge-wcag { font-size: 0.7rem; }
@@ -1023,6 +1156,17 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
     .rule-content { padding: 1.5rem; border-top: 1px solid var(--border); }
     .rule-details { margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .act-alignment-section { margin: 1.25rem 0 1.5rem; }
+    .act-alignment-section h4 { margin-bottom: 0.75rem; }
+    .act-alignment-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+    .act-alignment-item { padding: 0.85rem 0.95rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
+    .act-alignment-header { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.65rem; }
+    .act-rule-link { color: var(--link); text-decoration: none; font-size: 0.85rem; }
+    .act-rule-link:hover { text-decoration: underline; }
+    .act-alignment-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .act-alignment-chip { display: inline-flex; align-items: center; padding: 0.2rem 0.55rem; border-radius: 999px; border: 1px solid var(--border); background: var(--container-bg); color: var(--text); text-decoration: none; font-size: 0.78rem; }
+    .act-alignment-chip:hover { text-decoration: underline; }
+    .act-alignment-empty { margin: 0; color: var(--muted); font-size: 0.85rem; }
 
     /* Functional Performance Specifications section */
     .fps-section { margin-bottom: 1.5rem; }
@@ -1324,6 +1468,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     /* ── Dark mode overrides for badge and button components with light-only colors ── */
     @media (prefers-color-scheme: dark) {
       .badge-engine { background: #0d2340; color: #79c0ff; border-color: #1e3a5f; }
+      .badge-act { background: #0f172a; color: #67e8f9; border-color: #155e75; }
       .badge-level-a { background: #0a2818; color: #3fb950; border-color: #1c5e38; }
       .badge-level-aa { background: #0d2340; color: #58a6ff; border-color: #1e3a5f; }
       .badge-level-aaa { background: #1c1040; color: #d2a8ff; border-color: #403070; }
@@ -1331,6 +1476,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       .btn-copy:hover { background: #319b40; }
     }
     [data-theme="dark"] .badge-engine { background: #0d2340; color: #79c0ff; border-color: #1e3a5f; }
+    [data-theme="dark"] .badge-act { background: #0f172a; color: #67e8f9; border-color: #155e75; }
     [data-theme="dark"] .badge-level-a { background: #0a2818; color: #3fb950; border-color: #1c5e38; }
     [data-theme="dark"] .badge-level-aa { background: #0d2340; color: #58a6ff; border-color: #1e3a5f; }
     [data-theme="dark"] .badge-level-aaa { background: #1c1040; color: #d2a8ff; border-color: #403070; }

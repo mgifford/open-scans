@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateInteractiveHtml } from "../../scanner/interactive-report.mjs";
+import { generateInteractiveHtml, getPriorityTableUniqueTotal } from "../../scanner/interactive-report.mjs";
 
 /** Minimal summary fixture for testing the HTML report */
 function makeSummary(overrides = {}) {
@@ -64,6 +64,85 @@ test("generateInteractiveHtml produces a valid HTML document", () => {
   assert.ok(html.startsWith("<!DOCTYPE html>"), "Should start with doctype");
   assert.ok(html.includes('<html lang="en">'), "Should have lang attribute");
   assert.ok(html.includes("</html>"), "Should close html tag");
+});
+
+test("getPriorityTableUniqueTotal dedupes ACT-aligned axe and ALFA findings", () => {
+  const total = getPriorityTableUniqueTotal(
+    {
+      axe: {
+        failures: [
+          { rule: "image-alt", xpath: "/html/body/img[1]", html: "<img src=\"cat.jpg\">" }
+        ]
+      },
+      alfa: {
+        failures: [
+          { rule: "https://alfa.siteimprove.com/rules/sia-r2", xpath: "/html/body/img[1]", html: "<img src=\"cat.jpg\">" }
+        ]
+      }
+    },
+    ["axe", "alfa"]
+  );
+
+  assert.equal(total, 1, "ACT-aligned axe and ALFA findings should count once");
+});
+
+test("generateInteractiveHtml shows ACT alignment for shared rules", () => {
+  const html = generateInteractiveHtml(makeSummary({
+    results: [],
+    enhanced: {
+      consolidatedFailures: [
+        {
+          rule: "image-alt",
+          engine: "axe",
+          totalOccurrences: 2,
+          pages: new Map([["https://example.com/page", 2]]),
+          metadata: {
+            severity: "Serious",
+            roles: ["Content"],
+            blocking: false,
+            description: "Images must have alternative text"
+          },
+          examples: [
+            {
+              url: "https://example.com/page",
+              message: "Image missing alt text",
+              colorScheme: "light",
+              html: '<img src="cat.jpg">',
+              xpath: "/html/body/img[1]"
+            }
+          ]
+        },
+        {
+          rule: "https://alfa.siteimprove.com/rules/sia-r2",
+          engine: "alfa",
+          totalOccurrences: 1,
+          pages: new Map([["https://example.com/page", 1]]),
+          metadata: {
+            severity: "Serious",
+            roles: ["Content"],
+            blocking: false,
+            description: "Images must have alternative text"
+          },
+          examples: [
+            {
+              url: "https://example.com/page",
+              message: "Image missing alt text",
+              colorScheme: "light",
+              html: '<img src="cat.jpg">',
+              xpath: "/html/body/img[1]"
+            }
+          ]
+        }
+      ],
+      roleStats: { Content: 3 },
+      severityStats: { Critical: 0, Serious: 3, Moderate: 0, Minor: 0 }
+    }
+  }));
+
+  assert.ok(html.includes("ACT alignment"), "Report should include an ACT alignment section");
+  assert.ok(html.includes("ACT 23a2a8"), "Report should surface the shared ACT rule id");
+  assert.ok(html.includes("axe: image-alt"), "Report should list the axe rule in the ACT alignment block");
+  assert.ok(html.includes("ALFA: SIA-R2"), "Report should list the ALFA rule in the ACT alignment block");
 });
 
 // ── Anchor links ──────────────────────────────────────────────────────────────

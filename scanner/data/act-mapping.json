@@ -1,0 +1,678 @@
+{
+  "generatedAt": "2026-06-01T13:32:19.648Z",
+  "sourceUrls": {
+    "axe": "https://raw.githubusercontent.com/dequelabs/act-reports-axe/main/reports/axe-core-mapping.json",
+    "alfa": "https://raw.githubusercontent.com/act-rules/act-rules-implementation-alfa/refs/heads/master/report.json",
+    "equalAccessRulesets": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+    "equalAccessScUrls": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/sc-urls.json",
+    "qualwebReadme": "https://github.com/qualweb/act-rules",
+    "qualwebSchema": "https://github.com/qualweb/act-rules/blob/master/act-rules.schema.json"
+  },
+  "byActRuleId": {
+    "047fe0": {
+      "axe": [
+        "bypass"
+      ],
+      "alfa": []
+    },
+    "09o5cg": {
+      "axe": [
+        "color-contrast-enhanced",
+        "color-contrast"
+      ],
+      "alfa": []
+    },
+    "0ssw9k": {
+      "axe": [
+        "scrollable-region-focusable"
+      ],
+      "alfa": []
+    },
+    "23a2a8": {
+      "axe": [
+        "image-alt",
+        "role-img-alt"
+      ],
+      "alfa": [
+        "sia-r2"
+      ]
+    },
+    "24afc2": {
+      "axe": [
+        "avoid-inline-spacing"
+      ],
+      "alfa": [
+        "sia-r91"
+      ]
+    },
+    "2779a5": {
+      "axe": [
+        "document-title"
+      ],
+      "alfa": [
+        "sia-r1"
+      ]
+    },
+    "2eb176": {
+      "axe": [
+        "audio-caption"
+      ],
+      "alfa": []
+    },
+    "2ee8b8": {
+      "axe": [
+        "label-content-name-mismatch"
+      ],
+      "alfa": [
+        "sia-r14"
+      ]
+    },
+    "307n5z": {
+      "axe": [
+        "nested-interactive"
+      ],
+      "alfa": []
+    },
+    "3e12e1": {
+      "axe": [
+        "bypass"
+      ],
+      "alfa": []
+    },
+    "3ea0c8": {
+      "axe": [],
+      "alfa": [
+        "sia-r3"
+      ]
+    },
+    "46ca7f": {
+      "axe": [
+        "presentation-role-conflict"
+      ],
+      "alfa": [
+        "sia-r86"
+      ]
+    },
+    "4b1c6c": {
+      "axe": [
+        "frame-title-unique"
+      ],
+      "alfa": [
+        "sia-r15"
+      ]
+    },
+    "4e8ab6": {
+      "axe": [
+        "aria-required-attr"
+      ],
+      "alfa": [
+        "sia-r16"
+      ]
+    },
+    "59796f": {
+      "axe": [
+        "input-image-alt"
+      ],
+      "alfa": [
+        "sia-r28"
+      ]
+    },
+    "5b7ae0": {
+      "axe": [],
+      "alfa": [
+        "sia-r6"
+      ]
+    },
+    "5c01ea": {
+      "axe": [
+        "aria-allowed-attr",
+        "aria-prohibited-attr"
+      ],
+      "alfa": [
+        "sia-r18"
+      ]
+    },
+    "5f99a7": {
+      "axe": [
+        "aria-valid-attr"
+      ],
+      "alfa": [
+        "sia-r20"
+      ]
+    },
+    "674b10": {
+      "axe": [
+        "aria-roles"
+      ],
+      "alfa": [
+        "sia-r21"
+      ]
+    },
+    "6a7281": {
+      "axe": [
+        "aria-valid-attr-value"
+      ],
+      "alfa": [
+        "sia-r19"
+      ]
+    },
+    "6cfa84": {
+      "axe": [
+        "aria-hidden-focus"
+      ],
+      "alfa": [
+        "sia-r17"
+      ]
+    },
+    "73f2c2": {
+      "axe": [
+        "autocomplete-valid"
+      ],
+      "alfa": [
+        "sia-r10"
+      ]
+    },
+    "78fd32": {
+      "axe": [
+        "avoid-inline-spacing"
+      ],
+      "alfa": [
+        "sia-r93"
+      ]
+    },
+    "7d6734": {
+      "axe": [
+        "svg-img-alt"
+      ],
+      "alfa": [
+        "sia-r43"
+      ]
+    },
+    "80f0bf": {
+      "axe": [
+        "no-autoplay-audio"
+      ],
+      "alfa": []
+    },
+    "8fc3b6": {
+      "axe": [
+        "object-alt"
+      ],
+      "alfa": [
+        "sia-r63"
+      ]
+    },
+    "97a4e1": {
+      "axe": [
+        "button-name",
+        "aria-command-name"
+      ],
+      "alfa": [
+        "sia-r12"
+      ]
+    },
+    "9e45ec": {
+      "axe": [
+        "avoid-inline-spacing"
+      ],
+      "alfa": [
+        "sia-r92"
+      ]
+    },
+    "a25f45": {
+      "axe": [
+        "td-headers-attr"
+      ],
+      "alfa": [
+        "sia-r45"
+      ]
+    },
+    "afb423": {
+      "axe": [
+        "audio-caption"
+      ],
+      "alfa": []
+    },
+    "afw4f7": {
+      "axe": [
+        "color-contrast"
+      ],
+      "alfa": []
+    },
+    "akn7bn": {
+      "axe": [
+        "frame-focusable-content"
+      ],
+      "alfa": []
+    },
+    "b20e66": {
+      "axe": [
+        "identical-links-same-purpose"
+      ],
+      "alfa": [
+        "sia-r41"
+      ]
+    },
+    "b33eff": {
+      "axe": [
+        "css-orientation-lock"
+      ],
+      "alfa": [
+        "sia-r44"
+      ]
+    },
+    "b40fd1": {
+      "axe": [
+        "bypass"
+      ],
+      "alfa": []
+    },
+    "b4f0c3": {
+      "axe": [
+        "meta-viewport"
+      ],
+      "alfa": [
+        "sia-r47"
+      ]
+    },
+    "b5c3f8": {
+      "axe": [
+        "html-has-lang"
+      ],
+      "alfa": [
+        "sia-r4"
+      ]
+    },
+    "bc4a75": {
+      "axe": [
+        "aria-required-children"
+      ],
+      "alfa": [
+        "sia-r68"
+      ]
+    },
+    "bc659a": {
+      "axe": [
+        "meta-refresh"
+      ],
+      "alfa": [
+        "sia-r9"
+      ]
+    },
+    "bf051a": {
+      "axe": [
+        "html-lang-valid"
+      ],
+      "alfa": [
+        "sia-r5"
+      ]
+    },
+    "bisz58": {
+      "axe": [
+        "meta-refresh-no-exceptions",
+        "meta-refresh"
+      ],
+      "alfa": []
+    },
+    "c487ae": {
+      "axe": [
+        "link-name",
+        "area-alt"
+      ],
+      "alfa": [
+        "sia-r11"
+      ]
+    },
+    "cae760": {
+      "axe": [
+        "frame-title"
+      ],
+      "alfa": [
+        "sia-r13"
+      ]
+    },
+    "cf77f2": {
+      "axe": [
+        "bypass"
+      ],
+      "alfa": []
+    },
+    "d0f69e": {
+      "axe": [
+        "th-has-data-cells"
+      ],
+      "alfa": [
+        "sia-r46"
+      ]
+    },
+    "de46e4": {
+      "axe": [
+        "valid-lang"
+      ],
+      "alfa": [
+        "sia-r7"
+      ]
+    },
+    "e086e5": {
+      "axe": [
+        "label",
+        "aria-input-field-name",
+        "select-name"
+      ],
+      "alfa": [
+        "sia-r8"
+      ]
+    },
+    "eac66b": {
+      "axe": [
+        "video-caption"
+      ],
+      "alfa": []
+    },
+    "fd3a94": {
+      "axe": [],
+      "alfa": [
+        "sia-r81"
+      ]
+    },
+    "ff89c9": {
+      "axe": [
+        "aria-required-parent",
+        "aria-required-children"
+      ],
+      "alfa": [
+        "sia-r42"
+      ]
+    },
+    "ffd0e9": {
+      "axe": [
+        "empty-heading"
+      ],
+      "alfa": [
+        "sia-r64"
+      ]
+    },
+    "m6b1q3": {
+      "axe": [
+        "button-name"
+      ],
+      "alfa": []
+    },
+    "ye5d6e": {
+      "axe": [
+        "bypass"
+      ],
+      "alfa": []
+    }
+  },
+  "axeRuleToActIds": {
+    "autocomplete-valid": [
+      "73f2c2"
+    ],
+    "button-name": [
+      "97a4e1",
+      "m6b1q3"
+    ],
+    "aria-command-name": [
+      "97a4e1"
+    ],
+    "valid-lang": [
+      "de46e4"
+    ],
+    "presentation-role-conflict": [
+      "46ca7f"
+    ],
+    "label": [
+      "e086e5"
+    ],
+    "aria-input-field-name": [
+      "e086e5"
+    ],
+    "select-name": [
+      "e086e5"
+    ],
+    "html-lang-valid": [
+      "bf051a"
+    ],
+    "document-title": [
+      "2779a5"
+    ],
+    "input-image-alt": [
+      "59796f"
+    ],
+    "image-alt": [
+      "23a2a8"
+    ],
+    "role-img-alt": [
+      "23a2a8"
+    ],
+    "avoid-inline-spacing": [
+      "24afc2",
+      "78fd32",
+      "9e45ec"
+    ],
+    "link-name": [
+      "c487ae"
+    ],
+    "area-alt": [
+      "c487ae"
+    ],
+    "svg-img-alt": [
+      "7d6734"
+    ],
+    "nested-interactive": [
+      "307n5z"
+    ],
+    "td-headers-attr": [
+      "a25f45"
+    ],
+    "aria-hidden-focus": [
+      "6cfa84"
+    ],
+    "meta-refresh": [
+      "bc659a",
+      "bisz58"
+    ],
+    "meta-viewport": [
+      "b4f0c3"
+    ],
+    "object-alt": [
+      "8fc3b6"
+    ],
+    "html-has-lang": [
+      "b5c3f8"
+    ],
+    "frame-focusable-content": [
+      "akn7bn"
+    ],
+    "scrollable-region-focusable": [
+      "0ssw9k"
+    ],
+    "color-contrast": [
+      "afw4f7",
+      "09o5cg"
+    ],
+    "color-contrast-enhanced": [
+      "09o5cg"
+    ],
+    "aria-valid-attr": [
+      "5f99a7"
+    ],
+    "aria-required-parent": [
+      "ff89c9"
+    ],
+    "aria-required-children": [
+      "ff89c9",
+      "bc4a75"
+    ],
+    "aria-allowed-attr": [
+      "5c01ea"
+    ],
+    "aria-prohibited-attr": [
+      "5c01ea"
+    ],
+    "aria-valid-attr-value": [
+      "6a7281"
+    ],
+    "audio-caption": [
+      "afb423",
+      "2eb176"
+    ],
+    "no-autoplay-audio": [
+      "80f0bf"
+    ],
+    "bypass": [
+      "3e12e1",
+      "cf77f2",
+      "047fe0",
+      "ye5d6e",
+      "b40fd1"
+    ],
+    "css-orientation-lock": [
+      "b33eff"
+    ],
+    "empty-heading": [
+      "ffd0e9"
+    ],
+    "frame-title-unique": [
+      "4b1c6c"
+    ],
+    "frame-title": [
+      "cae760"
+    ],
+    "identical-links-same-purpose": [
+      "b20e66"
+    ],
+    "meta-refresh-no-exceptions": [
+      "bisz58"
+    ],
+    "aria-roles": [
+      "674b10"
+    ],
+    "aria-required-attr": [
+      "4e8ab6"
+    ],
+    "th-has-data-cells": [
+      "d0f69e"
+    ],
+    "video-caption": [
+      "eac66b"
+    ],
+    "label-content-name-mismatch": [
+      "2ee8b8"
+    ]
+  },
+  "alfaRuleToActIds": {
+    "sia-r1": [
+      "2779a5"
+    ],
+    "sia-r2": [
+      "23a2a8"
+    ],
+    "sia-r3": [
+      "3ea0c8"
+    ],
+    "sia-r4": [
+      "b5c3f8"
+    ],
+    "sia-r5": [
+      "bf051a"
+    ],
+    "sia-r6": [
+      "5b7ae0"
+    ],
+    "sia-r7": [
+      "de46e4"
+    ],
+    "sia-r8": [
+      "e086e5"
+    ],
+    "sia-r10": [
+      "73f2c2"
+    ],
+    "sia-r11": [
+      "c487ae"
+    ],
+    "sia-r12": [
+      "97a4e1"
+    ],
+    "sia-r13": [
+      "cae760"
+    ],
+    "sia-r14": [
+      "2ee8b8"
+    ],
+    "sia-r15": [
+      "4b1c6c"
+    ],
+    "sia-r16": [
+      "4e8ab6"
+    ],
+    "sia-r17": [
+      "6cfa84"
+    ],
+    "sia-r18": [
+      "5c01ea"
+    ],
+    "sia-r19": [
+      "6a7281"
+    ],
+    "sia-r20": [
+      "5f99a7"
+    ],
+    "sia-r21": [
+      "674b10"
+    ],
+    "sia-r28": [
+      "59796f"
+    ],
+    "sia-r41": [
+      "b20e66"
+    ],
+    "sia-r42": [
+      "ff89c9"
+    ],
+    "sia-r43": [
+      "7d6734"
+    ],
+    "sia-r44": [
+      "b33eff"
+    ],
+    "sia-r45": [
+      "a25f45"
+    ],
+    "sia-r46": [
+      "d0f69e"
+    ],
+    "sia-r47": [
+      "b4f0c3"
+    ],
+    "sia-r63": [
+      "8fc3b6"
+    ],
+    "sia-r64": [
+      "ffd0e9"
+    ],
+    "sia-r68": [
+      "bc4a75"
+    ],
+    "sia-r81": [
+      "fd3a94"
+    ],
+    "sia-r86": [
+      "46ca7f"
+    ],
+    "sia-r91": [
+      "24afc2"
+    ],
+    "sia-r92": [
+      "9e45ec"
+    ],
+    "sia-r93": [
+      "78fd32"
+    ],
+    "sia-r9": [
+      "bc659a"
+    ]
+  }
+}
