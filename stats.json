@@ -1,8 +1,8 @@
 {
-  "totalScans": 294,
-  "totalUrlsScanned": 21477,
+  "totalScans": 295,
+  "totalUrlsScanned": 21484,
   "totalIssuesTracked": 124,
-  "mostRecentScan": "2026-06-05T16:02:04.451Z",
+  "mostRecentScan": "2026-06-05T16:08:00.724Z",
   "weeklyData": [
     {
       "weekKey": "2026-W08",
@@ -112,10 +112,10 @@
     {
       "weekKey": "2026-W23",
       "label": "Jun 4",
-      "violations": 16401,
-      "urlsScanned": 851,
-      "reportCount": 10
+      "violations": 16403,
+      "urlsScanned": 858,
+      "reportCount": 11
     }
   ],
-  "generatedAt": "2026-06-05T16:02:54.756Z"
+  "generatedAt": "2026-06-05T16:09:30.456Z"
 }
