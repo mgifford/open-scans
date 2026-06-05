@@ -32,8 +32,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Persist event payload
+        run: |
+          mkdir -p .tmp
+          cat > .tmp/issue-event.json <<'EOF'
+          ${{ toJson(github.event) }}
+          EOF
+
+      - name: Install Chromium for Playwright tests
+        run: npx playwright install --with-deps chromium
 
       - name: Configure Puppeteer browser path for ALFA
         run: |
@@ -50,6 +57,16 @@ jobs:
       - name: Run BDD acceptance tests
         run: npm run test:bdd
 
+      - name: Resolve scan browser
+        id: browser
+        run: |
+          browser="$(node scanner/resolve-browser.mjs .tmp/issue-event.json)"
+          echo "browser=$browser" >> "$GITHUB_OUTPUT"
+
+      - name: Install scan browser
+        if: steps.browser.outputs.browser != 'chromium'
+        run: npx playwright install --with-deps ${{ steps.browser.outputs.browser }}
+
       # Timeout configuration (optional, defaults shown):
       # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
       # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
@@ -60,13 +77,6 @@ jobs:
       # - PLAYWRIGHT_LAUNCH_TIMEOUT_MS: Playwright browser launch timeout (default: 30000ms = 30s)
       #
       # To customize timeouts, add them to the "Run issue scan" step's env section
-
-      - name: Persist event payload
-        run: |
-          mkdir -p .tmp
-          cat > .tmp/issue-event.json <<'EOF'
-          ${{ toJson(github.event) }}
-          EOF
 
       - name: Run issue scan
         run: |

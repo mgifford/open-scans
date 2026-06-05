@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Install Chromium for Playwright tests
+        run: npx playwright install --with-deps chromium
 
       - name: Configure Puppeteer browser path for ALFA
         run: |
@@ -59,6 +59,20 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
+          import { spawnSync } from 'node:child_process';
+
+          const resolveBrowserFromIssue = (issue) => {
+            const title = String(issue?.title || '');
+            const body = String(issue?.body || '');
+            const bodyMatch = body.match(/(?:^|\n)Browser:\s*(chromium|firefox|webkit|random)\s*$/im);
+            const titleMatch = title.match(/\bBROWSER:\s*(chromium|firefox|webkit|random)\b/i);
+            let browser = (bodyMatch?.[1] || titleMatch?.[1] || 'chromium').toLowerCase();
+            if (browser === 'random') {
+              const browsers = ['chromium', 'firefox', 'webkit'];
+              browser = browsers[Math.floor(Math.random() * browsers.length)];
+            }
+            return browser;
+          };
 
           const now = new Date();
           const day = now.getUTCDay();
@@ -129,6 +143,8 @@ jobs:
             });
           }
 
+          const installedBrowsers = new Set(['chromium']);
+
           writeFileSync('.tmp/due-issues.json', JSON.stringify(due, null, 2) + '\n', 'utf8');
           writeFileSync('.tmp/due-issues.ndjson', due.map((item) => JSON.stringify(item)).join('\n') + (due.length ? '\n' : ''), 'utf8');
 
@@ -178,6 +194,19 @@ jobs:
                 body: issue.body ?? ''
               }
             };
+
+            const browser = resolveBrowserFromIssue(event.issue);
+            if (!installedBrowsers.has(browser)) {
+              const install = spawnSync(
+                'npx',
+                ['playwright', 'install', '--with-deps', browser],
+                { stdio: 'inherit', env: process.env }
+              );
+              if (install.status !== 0) {
+                throw new Error(`Failed to install Playwright browser '${browser}' for issue #${issue.number}`);
+              }
+              installedBrowsers.add(browser);
+            }
 
             writeFileSync('.tmp/issue-event.json', JSON.stringify(event), 'utf8');
           NODE
