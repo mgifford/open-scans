@@ -82,6 +82,8 @@ const TIMEOUTS = {
   NETWORK_IDLE_TIMEOUT: parseInt(process.env.NETWORK_IDLE_TIMEOUT_MS || "10000", 10)
 };
 
+const PAGE_LOAD_DELAY_CAP_MS = parseInt(process.env.PAGE_LOAD_DELAY_MAX_MS || "10000", 10);
+
 function getPlaywrightBrowserType(pw, browserName = "chromium") {
   const browserType = pw?.[browserName] ?? pw?.chromium;
   if (!browserType?.launch) {
@@ -98,6 +100,22 @@ function getModesToRun(scanContext, darkSupported) {
   if (scanContext?.colorScheme === "dark") return ["dark"];
   if (scanContext?.colorScheme === "light") return ["light"];
   return darkSupported ? ["light", "dark"] : ["light"];
+}
+
+export function computeAdaptivePageLoadDelayMs(recentPageNavigationMs, fallbackMs) {
+  const recent = recentPageNavigationMs
+    .filter((value) => Number.isFinite(value) && value > 0)
+    .slice(-10);
+
+  if (recent.length === 0) {
+    return fallbackMs;
+  }
+
+  const average = recent.reduce((sum, value) => sum + value, 0) / recent.length;
+  return Math.min(
+    PAGE_LOAD_DELAY_CAP_MS,
+    Math.max(fallbackMs, Math.round(average + 1000))
+  );
 }
 
 // Lazy-load Playwright and axe-core to avoid errors when not installed
@@ -940,6 +958,14 @@ export async function detectMediaQuerySupport(page) {
 
 export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext(), htmlSnapshot = null) {
   const base = createScannerBaseError(null);
+  const timings = {
+    navigationMs: 0,
+    settleDelayMs: 0,
+    auditMs: 0,
+    totalMs: 0,
+    loadedFromSnapshot: false
+  };
+  const started = Date.now();
 
   try {
     const { playwright: pw, axePlaywright: axe } = await loadAxeDependencies();
@@ -973,6 +999,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
       });
       const page = await context.newPage();
       let loadedFromSnapshot = false;
+      const navigationStarted = Date.now();
 
       // Navigate to URL with timeout.
       // "load" waits for the window.onload event (all scripts and sub-resources have loaded),
@@ -1006,6 +1033,10 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         await page.waitForTimeout(pageLoadDelayMs);
       }
 
+      timings.navigationMs = Date.now() - navigationStarted;
+      timings.settleDelayMs = pageLoadDelayMs;
+      timings.loadedFromSnapshot = loadedFromSnapshot;
+
       const mediaQuerySupport = await detectMediaQuerySupport(page);
       const darkSupported = mediaQuerySupport.darkMode;
       const modesToRun = getModesToRun(scanContext, darkSupported);
@@ -1016,6 +1047,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
         failures: []
       };
+      const auditStarted = Date.now();
 
       for (const mode of modesToRun) {
         await page.emulateMedia({ colorScheme: mode });
@@ -1078,6 +1110,9 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         }
       }
 
+      timings.auditMs = Date.now() - auditStarted;
+      timings.totalMs = Date.now() - started;
+
       await browser.close();
 
       return {
@@ -1092,7 +1127,8 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         requestedColorScheme: scanContext.colorScheme,
         scanContext,
         mediaQuerySupport,
-        snapshotFallbackUsed: loadedFromSnapshot
+        snapshotFallbackUsed: loadedFromSnapshot,
+        timings
       };
     } catch (error) {
       await browser.close();
@@ -1108,6 +1144,13 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
 
 async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext()) {
   const base = createScannerBaseError(null);
+  const timings = {
+    navigationMs: 0,
+    settleDelayMs: 0,
+    auditMs: 0,
+    totalMs: 0
+  };
+  const started = Date.now();
 
   try {
     const { playwright: pw } = await loadAxeDependencies();
@@ -1138,6 +1181,7 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         colorScheme: getRequestedColorScheme(scanContext)
       });
       const page = await context.newPage();
+      const navigationStarted = Date.now();
       // "load" waits for window.onload (all scripts and sub-resources loaded),
       // more thorough than "domcontentloaded" for JS-rendered pages.
       await page.goto(url, {
@@ -1154,6 +1198,9 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         await page.waitForTimeout(pageLoadDelayMs);
       }
 
+      timings.navigationMs = Date.now() - navigationStarted;
+      timings.settleDelayMs = pageLoadDelayMs;
+
       await page.addScriptTag({ path: accessLintIifePath });
 
       const mediaQuerySupport = await detectMediaQuerySupport(page);
@@ -1169,6 +1216,7 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         failures: [],
         outcomeCount: 0
       };
+      const auditStarted = Date.now();
 
       for (const mode of modesToRun) {
         await page.emulateMedia({ colorScheme: mode });
@@ -1206,6 +1254,9 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         }
       }
 
+        timings.auditMs = Date.now() - auditStarted;
+        timings.totalMs = Date.now() - started;
+
       await browser.close();
 
       return {
@@ -1217,7 +1268,8 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         failures: allResults.failures,
         outcomeCount: allResults.outcomeCount,
         uniqueFailedCount: allResults.failures.length,
-        duplicateFailedCount: 0
+        duplicateFailedCount: 0,
+        timings
       };
     } catch (error) {
       await browser.close();
@@ -1481,6 +1533,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
   // Wrap the actual scan logic in a race against the timeout
   const scanPromise = (async () => {
     try {
+      const fetchStarted = Date.now();
       const response = await fetch(target.normalizedUrl, {
         redirect: "follow",
         headers: {
@@ -1489,7 +1542,8 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         signal: createTimeoutSignal(TIMEOUTS.FETCH_TIMEOUT)
       });
 
-      const elapsedMs = Date.now() - started;
+      const fetchMs = Date.now() - fetchStarted;
+
       const finalUrl = response.url;
       const contentType = response.headers.get("content-type") || "";
       let pageTitle = null;
@@ -1538,6 +1592,11 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
           ? await runQualWebAudit(finalUrl)
           : createScannerBaseError("Skipped (not requested)");
 
+        const pageNavigationMs = Math.max(
+          axe.timings?.navigationMs ?? 0,
+          accesslint.timings?.navigationMs ?? 0
+        );
+
       const result = {
         submittedUrl: target.submittedUrl,
         finalUrl,
@@ -1554,7 +1613,17 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         equalAccess,
         accesslint,
         qualweb,
-        duplicateFindingCount: 0
+        duplicateFindingCount: 0,
+        timings: {
+          fetchMs,
+          pageNavigationMs,
+          pageLoadDelayMs,
+          totalMs: Date.now() - started,
+          scannerMs: {
+            axe: axe.timings?.totalMs ?? null,
+            accesslint: accesslint.timings?.totalMs ?? null
+          }
+        }
       };
 
       addDuplicateMetadata(result);
@@ -1580,7 +1649,17 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         equalAccess: baseErrorResult,
         accesslint: baseErrorResult,
         qualweb: baseErrorResult,
-        duplicateFindingCount: 0
+        duplicateFindingCount: 0,
+        timings: {
+          fetchMs: Date.now() - started,
+          pageNavigationMs: 0,
+          pageLoadDelayMs,
+          totalMs: Date.now() - started,
+          scannerMs: {
+            axe: null,
+            accesslint: null
+          }
+        }
       };
     }
   })();
@@ -1608,7 +1687,17 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
       equalAccess: baseErrorResult,
       accesslint: baseErrorResult,
       qualweb: baseErrorResult,
-      duplicateFindingCount: 0
+      duplicateFindingCount: 0,
+      timings: {
+        fetchMs: null,
+        pageNavigationMs: 0,
+        pageLoadDelayMs,
+        totalMs: Date.now() - started,
+        scannerMs: {
+          axe: null,
+          accesslint: null
+        }
+      }
     };
   } finally {
     clearInterval(heartbeat);
@@ -3210,6 +3299,7 @@ async function main() {
   let skippedDueToTimeout = 0;
   let skippedDueToErrAborted = 0;
   let consecutiveErrAbortedCount = 0;
+  const recentPageNavigationMs = [];
 
   for (const target of acceptedTargets) {
     const elapsedTime = Date.now() - scanStartTime;
@@ -3222,8 +3312,22 @@ async function main() {
       break;
     }
 
-    const result = await scanOneUrl(target, engines, pageLoadDelayMs, scanContext);
+    const adaptivePageLoadDelayMs = computeAdaptivePageLoadDelayMs(recentPageNavigationMs, pageLoadDelayMs);
+    const delayNote = recentPageNavigationMs.length > 0
+      ? ` (adaptive from last ${recentPageNavigationMs.length} pages, cap ${PAGE_LOAD_DELAY_CAP_MS}ms)`
+      : " (baseline)";
+    console.error(`Page load delay: ${adaptivePageLoadDelayMs}ms${delayNote}`);
+
+    const result = await scanOneUrl(target, engines, adaptivePageLoadDelayMs, scanContext);
     results.push(result);
+
+    const observedPageNavigationMs = result.timings?.pageNavigationMs;
+    if (Number.isFinite(observedPageNavigationMs) && observedPageNavigationMs > 0) {
+      recentPageNavigationMs.push(observedPageNavigationMs);
+      if (recentPageNavigationMs.length > 10) {
+        recentPageNavigationMs.shift();
+      }
+    }
 
     // Log progress to help with debugging (stderr to not interfere with JSON output)
     const progress = `[${results.length}/${acceptedTargets.length}]`;
@@ -3231,6 +3335,29 @@ async function main() {
       console.error(`${progress} Error scanning ${target.submittedUrl}: ${result.error}`);
     } else {
       console.error(`${progress} Scanned ${target.submittedUrl} in ${result.elapsedMs}ms`);
+    }
+
+    if (result.timings) {
+      const scannerTimingParts = [];
+      if (result.timings.fetchMs !== null) {
+        scannerTimingParts.push(`fetch=${result.timings.fetchMs}ms`);
+      }
+      if (result.timings.pageNavigationMs) {
+        scannerTimingParts.push(`page=${result.timings.pageNavigationMs}ms`);
+      }
+      if (result.timings.pageLoadDelayMs !== undefined) {
+        scannerTimingParts.push(`settle=${result.timings.pageLoadDelayMs}ms`);
+      }
+      const axeTimingMs = result.timings.scannerMs?.axe;
+      const accesslintTimingMs = result.timings.scannerMs?.accesslint;
+      if (axeTimingMs !== null && axeTimingMs !== undefined) {
+        scannerTimingParts.push(`axe=${axeTimingMs}ms`);
+      }
+      if (accesslintTimingMs !== null && accesslintTimingMs !== undefined) {
+        scannerTimingParts.push(`accesslint=${accesslintTimingMs}ms`);
+      }
+      scannerTimingParts.push(`total=${result.timings.totalMs ?? result.elapsedMs}ms`);
+      console.error(`${progress} Timing: ${scannerTimingParts.join(", ")}`);
     }
 
     // Track consecutive net::ERR_ABORTED errors across scanner results.
