@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-24T01:34:04.081Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 523,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 2562,
-          "combined": 3085,
-          "scannedAt": "2026-04-24T01:34:04.081Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-01T01:40:44.270Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 526,
-          "equalAccess": 29923,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 30449,
-          "scannedAt": "2026-05-01T01:40:44.270Z",
-          "scannedCount": 100
-        }
-      },
-      "change": 27364,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 3,
-        "equalAccess": 29923,
-        "qualweb": 0,
-        "accesslint": -2562
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-01T01:40:44.270Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 2209,
         "accesslint": -2468
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-22T01:45:40.639Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 523,
+          "equalAccess": 0,
+          "qualweb": 2209,
+          "accesslint": 0,
+          "combined": 2732,
+          "scannedAt": "2026-05-22T01:45:40.639Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-05T01:50:25.823Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 521,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2561,
+          "combined": 3082,
+          "scannedAt": "2026-06-05T01:50:25.823Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 350,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -2,
+        "equalAccess": 0,
+        "qualweb": -2209,
+        "accesslint": 2561
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-15T01:42:24.887Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 505,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 2468,
-        "combined": 2973,
-        "scannedAt": "2026-05-15T01:42:24.887Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-22T01:45:40.639Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 100
       }
     },
-    "change": -241,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-06-05T01:50:25.823Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 521,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 2561,
+        "combined": 3082,
+        "scannedAt": "2026-06-05T01:50:25.823Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 350,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": 18,
+      "axe": -2,
       "equalAccess": 0,
-      "qualweb": 2209,
-      "accesslint": -2468
+      "qualweb": -2209,
+      "accesslint": 2561
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 3,
   "worseningCount": 1,
   "latestTotals": {
     "alfa": 0,
-    "axe": 523,
+    "axe": 521,
     "equalAccess": 0,
-    "qualweb": 2209,
-    "accesslint": 0,
-    "combined": 2732,
-    "scannedAt": "2026-05-22T01:45:40.639Z",
+    "qualweb": 0,
+    "accesslint": 2561,
+    "combined": 3082,
+    "scannedAt": "2026-06-05T01:50:25.823Z",
     "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 523,
-    "equalAccess": 0,
+    "axe": 526,
+    "equalAccess": 29923,
     "qualweb": 0,
-    "accesslint": 2562,
-    "combined": 3085,
-    "scannedAt": "2026-04-24T01:34:04.081Z",
+    "accesslint": 0,
+    "combined": 30449,
+    "scannedAt": "2026-05-01T01:40:44.270Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 30,
+      "pageCount": 29,
       "pages": [
         "https://www.france.fr/ar/article/palace-6-things-you-can-only-find-at-the-plaza-athenee/",
         "https://www.france.fr/da/artikel/de-parisiske-konditorer-der-genopfinder-kagen/",
@@ -277,7 +277,7 @@
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 12,
+      "pageCount": 13,
       "pages": [
         "https://www.france.fr/en/article/shopping-nice-four-leads-finding-everything-your-heart-desires/",
         "https://www.france.fr/fr/itineraire/parcours-gourmand-pays-basque/",
