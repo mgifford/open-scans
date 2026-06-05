@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 2,
+  "scansAnalysed": 3,
   "diffs": [
     {
       "from": {
@@ -37,23 +37,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-06-05T14:07:00.220Z",
+        "totals": {
+          "alfa": 4591,
+          "axe": 10,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4601,
+          "scannedAt": "2026-06-05T14:07:00.220Z",
+          "scannedCount": 108
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-05T16:02:04.451Z",
+        "totals": {
+          "alfa": 4591,
+          "axe": 10,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4601,
+          "scannedAt": "2026-06-05T16:02:04.451Z",
+          "scannedCount": 108
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-06-04T17:45:57.035Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 10,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 10,
-        "scannedAt": "2026-06-04T17:45:57.035Z",
-        "scannedCount": 108
-      }
-    },
-    "to": {
       "scannedAt": "2026-06-05T14:07:00.220Z",
       "totals": {
         "alfa": 4591,
@@ -66,17 +90,30 @@
         "scannedCount": 108
       }
     },
-    "change": 4591,
-    "trend": "worsening",
+    "to": {
+      "scannedAt": "2026-06-05T16:02:04.451Z",
+      "totals": {
+        "alfa": 4591,
+        "axe": 10,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 4601,
+        "scannedAt": "2026-06-05T16:02:04.451Z",
+        "scannedCount": 108
+      }
+    },
+    "change": 0,
+    "trend": "stable",
     "perScanner": {
-      "alfa": 4591,
+      "alfa": 0,
       "axe": 0,
       "equalAccess": 0,
       "qualweb": 0,
       "accesslint": 0
     }
   },
-  "overallTrend": "worsening",
+  "overallTrend": "stable",
   "improvingCount": 0,
   "worseningCount": 1,
   "latestTotals": {
@@ -86,7 +123,7 @@
     "qualweb": 0,
     "accesslint": 0,
     "combined": 4601,
-    "scannedAt": "2026-06-05T14:07:00.220Z",
+    "scannedAt": "2026-06-05T16:02:04.451Z",
     "scannedCount": 108
   },
   "baselineTotals": {
