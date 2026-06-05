@@ -41,6 +41,15 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Configure Puppeteer browser path for ALFA
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          import { chromium } from 'playwright';
+
+          appendFileSync(process.env.GITHUB_ENV, `PUPPETEER_EXECUTABLE_PATH=${chromium.executablePath()}\n`, 'utf8');
+          NODE
+
       - name: Run Playwright accessibility unit tests
         run: npm run test:playwright
 
