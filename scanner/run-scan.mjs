@@ -452,6 +452,31 @@ function normalizeFindingLocator(value) {
   return text ? text.replace(/\s+/g, " ").toLowerCase() : "(no-locator)";
 }
 
+function escapeHtmlAttribute(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;");
+}
+
+function injectBaseHref(html, baseUrl) {
+  if (!html) return html;
+  if (/<base\b/i.test(html)) return html;
+
+  const baseTag = `<base href="${escapeHtmlAttribute(baseUrl)}">`;
+  if (/<head\b[^>]*>/i.test(html)) {
+    return html.replace(/<head\b([^>]*)>/i, `<head$1>${baseTag}`);
+  }
+
+  return `${baseTag}\n${html}`;
+}
+
+function isDownloadNavigationAbort(error) {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return message.includes("Download is starting")
+    || message.includes("net::ERR_ABORTED")
+    || message.includes("ERR_ABORTED");
+}
+
 /** Matches WCAG SC number tags (3+ digits) such as wcag143, wcag1411. Excludes level tags like wcag2aa. */
 const WCAG_SC_TAG_RE = /^wcag\d{3,}$/;
 
@@ -913,7 +938,7 @@ export async function detectMediaQuerySupport(page) {
   return support;
 }
 
-export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext()) {
+export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext(), htmlSnapshot = null) {
   const base = createScannerBaseError(null);
 
   try {
@@ -947,14 +972,27 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         colorScheme: getRequestedColorScheme(scanContext)
       });
       const page = await context.newPage();
+      let loadedFromSnapshot = false;
 
       // Navigate to URL with timeout.
       // "load" waits for the window.onload event (all scripts and sub-resources have loaded),
       // which is more thorough than "domcontentloaded" for JS-rendered pages.
-      await page.goto(url, {
-        waitUntil: "load",
-        timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT
-      });
+      try {
+        await page.goto(url, {
+          waitUntil: "load",
+          timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT
+        });
+      } catch (error) {
+        if (!htmlSnapshot || !isDownloadNavigationAbort(error)) {
+          throw error;
+        }
+
+        loadedFromSnapshot = true;
+        await page.setContent(injectBaseHref(htmlSnapshot, url), {
+          waitUntil: "load",
+          timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT
+        });
+      }
 
       // Best-effort wait for network to become fully idle after the load event.
       // This handles JS-heavy pages that continue modifying the DOM via async requests.
@@ -1053,7 +1091,8 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         darkModeScanned: modesToRun.includes("dark"),
         requestedColorScheme: scanContext.colorScheme,
         scanContext,
-        mediaQuerySupport
+        mediaQuerySupport,
+        snapshotFallbackUsed: loadedFromSnapshot
       };
     } catch (error) {
       await browser.close();
@@ -2151,7 +2190,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   // ACTION-ORIENTED SUMMARY: Pages with most errors
   lines.push("## 🎯 Pages with Most Errors");
   lines.push("");
-  lines.push("Focus your efforts on these pages to make the biggest impact (combined scanner unique failures):");
+  lines.push("Focus your efforts on these pages to make the biggest impact. Scanner columns show raw failures; the Total column remains unique across the active scanners.");
   lines.push("");
 
   // Determine which engine columns to show based on which engines were run
@@ -2164,31 +2203,31 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   const PRIORITY_COLUMNS = [
     {
       key: "axe",
-      label: "axe Unique",
-      getValue: r => r.axe?.uniqueFailedCount ?? r.axe?.counts?.failed ?? 0,
+      label: "axe Errors",
+      getValue: r => r.axe?.counts?.failed ?? 0,
       getOverlap: () => 0
     },
     {
       key: "alfa",
-      label: "ALFA Unique",
-      getValue: r => r.alfa?.uniqueFailedCount ?? r.alfa?.counts?.failed ?? 0,
+      label: "ALFA Errors",
+      getValue: r => r.alfa?.counts?.failed ?? 0,
       getOverlap: r => r.alfa?.crossEngineOverlapCount ?? 0
     },
     {
       key: "equalaccess",
-      label: "Equal Access Unique",
-      getValue: r => r.equalAccess?.uniqueFailedCount ?? r.equalAccess?.counts?.failed ?? 0,
+      label: "Equal Access Errors",
+      getValue: r => r.equalAccess?.counts?.failed ?? 0,
       getOverlap: r => r.equalAccess?.crossEngineOverlapCount ?? 0
     },
     {
       key: "accesslint",
-      label: "AccessLint Unique",
-      getValue: r => r.accesslint?.uniqueFailedCount ?? r.accesslint?.counts?.failed ?? 0,
+      label: "AccessLint Errors",
+      getValue: r => r.accesslint?.counts?.failed ?? 0,
       getOverlap: r => r.accesslint?.crossEngineOverlapCount ?? 0
     },
     {
       key: "qualweb",
-      label: "QualWeb",
+      label: "QualWeb Errors",
       getValue: r => r.qualweb?.counts?.failed ?? 0,
       getOverlap: r => r.qualweb?.crossEngineOverlapCount ?? 0
     },
@@ -2445,16 +2484,16 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push("");
   lines.push("Complete scan results for all tested pages:");
   lines.push("");
-  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | axe Unique | ALFA Unique | Equal Access Unique | AccessLint Unique | Duplicates | Notes |");
+  lines.push("| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | axe Errors | ALFA Errors | Equal Access Errors | AccessLint Errors | Duplicates | Notes |");
   lines.push("|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|");
   for (const result of summary.results) {
     const status = result.ok ? "OK" : "FAIL";
     const httpCode = result.statusCode ?? "-";
     const redirected = result.redirected ? "yes" : "no";
-    const axeUnique = result.axe.uniqueFailedCount ?? result.axe.counts.failed;
-    const alfaUnique = result.alfa.uniqueFailedCount ?? result.alfa.counts.failed;
-    const equalAccessUnique = result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
-    const accesslintUnique = result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
+    const axeUnique = result.axe.counts.failed;
+    const alfaUnique = result.alfa.counts.failed;
+    const equalAccessUnique = result.equalAccess?.counts?.failed ?? 0;
+    const accesslintUnique = result.accesslint?.counts?.failed ?? 0;
     const duplicates = result.duplicateFindingCount ?? 0;
     const notes = result.error || result.alfa.error || result.axe.error || result.equalAccess?.error || result.accesslint?.error || result.pageTitle || "";
     lines.push(`| ${escapeMarkdown(result.submittedUrl)} | ${escapeMarkdown(result.finalUrl)} | ${status} | ${httpCode} | ${redirected} | ${result.elapsedMs} | ${axeUnique} | ${alfaUnique} | ${equalAccessUnique} | ${accesslintUnique} | ${duplicates} | ${escapeMarkdown(notes)} |`);

@@ -157,6 +157,61 @@ test("Enhanced report format includes priority sections", () => {
   assert.ok(report.includes("[View Rule](https://alfa.siteimprove.com/rules/sia-r111)"), "Report should include ALFA rule documentation link");
 });
 
+test("Priority table uses raw scanner failure counts", () => {
+  const summary = {
+    issueNumber: 10,
+    issueUrl: "https://github.com/example/repo/issues/10",
+    scanTitle: "Raw Count Test",
+    submittedBy: "testuser",
+    scannedAt: "2026-02-21T00:00:00.000Z",
+    totalSubmitted: 1,
+    acceptedCount: 1,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: { passed: 0, failed: 9, cantTell: 0, inapplicable: 0 },
+    axeTotals: { passed: 0, failed: 7, cantTell: 0, inapplicable: 0 },
+    results: [
+      {
+        submittedUrl: "https://example.com/raw-counts",
+        finalUrl: "https://example.com/raw-counts",
+        redirected: false,
+        statusCode: 200,
+        ok: true,
+        contentType: "text/html",
+        pageTitle: "Raw Counts Page",
+        elapsedMs: 100,
+        error: null,
+        alfa: {
+          executed: true,
+          error: null,
+          counts: { passed: 0, failed: 9, cantTell: 0, inapplicable: 0 },
+          failedRules: ["https://alfa.siteimprove.com/rules/sia-r111"],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 9
+        },
+        axe: {
+          executed: true,
+          error: null,
+          counts: { passed: 0, failed: 7, cantTell: 0, inapplicable: 0 },
+          failedRules: ["color-contrast"],
+          passedRules: [],
+          failures: [],
+          outcomeCount: 7
+        }
+      }
+    ]
+  };
+
+  const report = toMarkdownReport(summary);
+
+  assert.ok(report.includes("axe Errors"), "Priority table should label axe as raw errors");
+  assert.ok(report.includes("ALFA Errors"), "Priority table should label ALFA as raw errors");
+  assert.ok(report.includes("| [View Page](https://example.com/raw-counts) | 7 | 9 | 0 | 0 | 0 | **16** |"),
+    "Priority table should show raw axe/ALFA counts with a unique total");
+  assert.ok(report.includes("Raw Counts Page"), "Priority table should include the page title");
+});
+
 test("Enhanced report handles case with no errors", () => {
   const summaryNoErrors = {
     issueNumber: 2,
@@ -848,7 +903,7 @@ test("formatFirstSeenDate formats ISO date as YYYY-MM-DD", () => {
 
 test("formatFirstSeenDate produces correct year-month-day for known date", () => {
   // Use local-time-independent assertion: check that all three date parts are present
-  const result = formatFirstSeenDate("2026-01-01T00:00:00.000Z");
+  const result = formatFirstSeenDate("2026-06-15T12:00:00.000Z");
   assert.ok(result.includes("2026"), `Expected year 2026 in "${result}"`);
 });
 
