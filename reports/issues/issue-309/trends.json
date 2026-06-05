@@ -1,0 +1,128 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 116,
+    "axe": 87,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 203,
+    "scannedAt": "2026-06-05T15:40:22.948Z",
+    "scannedCount": 30
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r70",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 29,
+      "pages": [
+        "https://www.virginia.gov/services/",
+        "https://www.virginia.gov/state-government/",
+        "https://www.virginia.gov/local-government/",
+        "https://www.virginia.gov/agencies/",
+        "https://www.virginia.gov/contact/",
+        "https://www.virginia.gov/privacy-policy/",
+        "https://www.virginia.gov/translation-disclaimer/",
+        "https://www.virginia.gov/services/business/",
+        "https://www.virginia.gov/services/economy/",
+        "https://www.virginia.gov/services/education/"
+      ]
+    }
+  ]
+}
