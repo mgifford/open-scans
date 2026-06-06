@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-01T01:40:44.270Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 526,
-          "equalAccess": 29923,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 30449,
-          "scannedAt": "2026-05-01T01:40:44.270Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-08T01:37:16.479Z",
-        "totals": {
-          "alfa": 11198,
-          "axe": 502,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 11700,
-          "scannedAt": "2026-05-08T01:37:16.479Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -18749,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 11198,
-        "axe": -24,
-        "equalAccess": -29923,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-08T01:37:16.479Z",
         "totals": {
           "alfa": 11198,
@@ -148,23 +111,47 @@
         "qualweb": -2209,
         "accesslint": 2561
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-06-05T01:50:25.823Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 521,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2561,
+          "combined": 3082,
+          "scannedAt": "2026-06-05T01:50:25.823Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-06-06T01:44:00.952Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 371,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2117,
+          "combined": 2488,
+          "scannedAt": "2026-06-06T01:44:00.952Z",
+          "scannedCount": 86
+        }
+      },
+      "change": -594,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -150,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": -444
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-22T01:45:40.639Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 523,
-        "equalAccess": 0,
-        "qualweb": 2209,
-        "accesslint": 0,
-        "combined": 2732,
-        "scannedAt": "2026-05-22T01:45:40.639Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-06-05T01:50:25.823Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 100
       }
     },
-    "change": 350,
-    "trend": "worsening",
+    "to": {
+      "scannedAt": "2026-06-06T01:44:00.952Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 371,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 2117,
+        "combined": 2488,
+        "scannedAt": "2026-06-06T01:44:00.952Z",
+        "scannedCount": 86
+      }
+    },
+    "change": -594,
+    "trend": "improving",
     "perScanner": {
       "alfa": 0,
-      "axe": -2,
+      "axe": -150,
       "equalAccess": 0,
-      "qualweb": -2209,
-      "accesslint": 2561
+      "qualweb": 0,
+      "accesslint": -444
     }
   },
-  "overallTrend": "worsening",
+  "overallTrend": "improving",
   "improvingCount": 3,
   "worseningCount": 1,
   "latestTotals": {
     "alfa": 0,
-    "axe": 521,
+    "axe": 371,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 2561,
-    "combined": 3082,
-    "scannedAt": "2026-06-05T01:50:25.823Z",
-    "scannedCount": 100
+    "accesslint": 2117,
+    "combined": 2488,
+    "scannedAt": "2026-06-06T01:44:00.952Z",
+    "scannedCount": 86
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 526,
-    "equalAccess": 29923,
+    "alfa": 11198,
+    "axe": 502,
+    "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 30449,
-    "scannedAt": "2026-05-01T01:40:44.270Z",
+    "combined": 11700,
+    "scannedAt": "2026-05-08T01:37:16.479Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:image-alt",
-      "pageCount": 33,
+      "pageCount": 29,
       "pages": [
         "https://www.france.fr/ar/article/palace-6-things-you-can-only-find-at-the-plaza-athenee/",
         "https://www.france.fr/da/artikel/de-parisiske-konditorer-der-genopfinder-kagen/",
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 29,
+      "pageCount": 28,
       "pages": [
         "https://www.france.fr/ar/article/palace-6-things-you-can-only-find-at-the-plaza-athenee/",
         "https://www.france.fr/da/artikel/de-parisiske-konditorer-der-genopfinder-kagen/",
@@ -261,23 +261,23 @@
     },
     {
       "ruleId": "axe:link-in-text-block",
-      "pageCount": 14,
+      "pageCount": 13,
       "pages": [
         "https://www.france.fr/da/artikel/genfind-roen-8-oplevelser-i-den-franske-natur/",
         "https://www.france.fr/en/article/5-minutes-to-find-out-everything-you-ever-wanted-to-know-about-burgundy/",
         "https://www.france.fr/ar/article/balade-de-chateau-en-chateau-au-pays-basque/",
-        "https://www.france.fr/ar/article/cote-dazur-plus-beaux-villages-arriere-pays-nicois/",
         "https://www.france.fr/ar/article/service-d%c3%a9taxe-GL/",
         "https://www.france.fr/cs/clanek/co-delat-v-pays-de-la-loire/",
         "https://www.france.fr/da/artikel/4-udflugter-i-naturen-i-regionen-pays-de-la-loire/",
         "https://www.france.fr/da/artikel/Bordd%c3%a6kning-service-Lorraine-krystalglas/",
         "https://www.france.fr/fr/destination/biarritz-pays-basque/",
-        "https://www.france.fr/fr/destination/pays-de-la-loire/"
+        "https://www.france.fr/fr/destination/pays-de-la-loire/",
+        "https://www.france.fr/fr/itineraire/parcours-gourmand-pays-basque/"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 13,
+      "pageCount": 9,
       "pages": [
         "https://www.france.fr/en/article/shopping-nice-four-leads-finding-everything-your-heart-desires/",
         "https://www.france.fr/fr/itineraire/parcours-gourmand-pays-basque/",
@@ -287,40 +287,16 @@
         "https://www.france.fr/de/archiv/",
         "https://www.france.fr/en/archives/",
         "https://www.france.fr/es/archivos/",
-        "https://www.france.fr/es/info-practica/",
-        "https://www.france.fr/fr/archives/"
+        "https://www.france.fr/es/info-practica/"
       ]
     },
     {
       "ruleId": "axe:empty-heading",
-      "pageCount": 6,
+      "pageCount": 3,
       "pages": [
         "https://www.france.fr/pt/artigo/dois-reporteres-brasileiros-farao-a-cobertura-dos-gay-games-em-paris-fique/",
         "https://www.france.fr/cs/mapa/",
-        "https://www.france.fr/de/karte/",
-        "https://www.france.fr/es/mapa/",
-        "https://www.france.fr/fr/carte/",
-        "https://www.france.fr/it/cartina/"
-      ]
-    },
-    {
-      "ruleId": "axe:button-name",
-      "pageCount": 5,
-      "pages": [
-        "https://www.france.fr/cs/mapa/",
-        "https://www.france.fr/de/karte/",
-        "https://www.france.fr/es/mapa/",
-        "https://www.france.fr/fr/carte/",
-        "https://www.france.fr/it/cartina/"
-      ]
-    },
-    {
-      "ruleId": "axe:frame-title",
-      "pageCount": 3,
-      "pages": [
-        "https://www.france.fr/da/artikel/Find-ro-naturen-hvorfor-ikke-%c3%a5bne-dine-chakraer-Alperne-Frankrig/",
-        "https://www.france.fr/de/artikel/das-beruhmteste-herz-der-welt-befindet-sich-in-neukaledonien/",
-        "https://www.france.fr/ar/article/cote-dazur-plus-beaux-villages-arriere-pays-nicois/"
+        "https://www.france.fr/de/karte/"
       ]
     }
   ]
