@@ -1,0 +1,144 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 5214,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 4329,
+    "combined": 9543,
+    "scannedAt": "2026-06-12T16:10:30.663Z",
+    "scannedCount": 99
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 99,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/practical/services/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/faq/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 99,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/practical/services/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/faq/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 99,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/practical/services/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/faq/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 99,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/practical/services/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/faq/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 59,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/schedule/track/lightning_talks/",
+        "https://fosdem.org/2026/schedule/speaker/giuditta_parolini/",
+        "https://fosdem.org/2026/schedule/speaker/ron_evans/",
+        "https://fosdem.org/2026/schedule/speaker/thibault_raffaillac/",
+        "https://fosdem.org/2026/schedule/speaker/lumi/",
+        "https://fosdem.org/2026/schedule/speaker/mahendra_paipuri/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 53,
+      "pages": [
+        "https://fosdem.org/2026/practical/accessibility/",
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/track/search/",
+        "https://fosdem.org/2026/contact/",
+        "https://fosdem.org/2026/practical/services/",
+        "https://fosdem.org/2026/about/",
+        "https://fosdem.org/2026/faq/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 39,
+      "pages": [
+        "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/event/7PAYWS-oneai_an_open-source_framework_for_managing_ai_models_at_scale/",
+        "https://fosdem.org/2026/schedule/event/AUFR8F-who-pays-your-bills/",
+        "https://fosdem.org/2026/schedule/event/E7WQQX-webnn_and_webllm_on_risc-v_closing_the_ai_acceleration_gap_with_rvv_and_tenstorr/",
+        "https://fosdem.org/2026/schedule/event/XHZVPF-inxpect-profiling/",
+        "https://fosdem.org/2026/schedule/event/TYX3FF-accessible_software_performance/",
+        "https://fosdem.org/2026/schedule/event/WNLJ3C-private-vc-funding-commercial-open-source-flywheel/",
+        "https://fosdem.org/2026/schedule/event/GSNU89-teleportal/",
+        "https://fosdem.org/2026/schedule/event/QKNMJN-package-management-in-the-hands-of-users/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 11,
+      "pages": [
+        "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
+        "https://fosdem.org/2026/schedule/event/QKNMJN-package-management-in-the-hands-of-users/",
+        "https://fosdem.org/2026/schedule/event/VGXWNS-taming_the_llm_zoo_with_docker_model_runner_inference_with_oci_artifacts_llama_c/",
+        "https://fosdem.org/2026/schedule/event/HCQRVT-designing_attestations_ui_the_security_and_safety_of_oss_package_supply_chain/",
+        "https://fosdem.org/2026/schedule/event/KCWFBD-openflexure_education/",
+        "https://fosdem.org/2026/schedule/event/ARECWV-max2771_broadband_sdr_impact_of_low_bit_resolution_and_application_to_passive_ra/",
+        "https://fosdem.org/2026/schedule/event/WSKHHU-sucrela_open_source_usb_3_0_logic_analyzer_based_on_fpga/",
+        "https://fosdem.org/2026/schedule/event/T9ACNE-iroh_p2p_connections/",
+        "https://fosdem.org/2026/schedule/event/QZHWK9-open_food_facts_getting_together_to_reduce_health_and_environmental_impacts_of_c/",
+        "https://fosdem.org/2026/schedule/event/9GLCAE-the_saga_of_official_binary_packages_for_gentoo_linux/"
+      ]
+    }
+  ]
+}
