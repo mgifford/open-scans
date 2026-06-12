@@ -25,6 +25,7 @@
     "@cucumber/cucumber": "^12.9.0",
     "@qualweb/act-rules": "^0.7.6",
     "@qualweb/core": "0.8.1",
+    "@qualweb/qw-page": "0.3.1",
     "@siteimprove/alfa-cli": "^0.81.3",
     "@siteimprove/alfa-formatter-earl": "^0.81.3",
     "@siteimprove/alfa-formatter-json": "^0.81.3",
