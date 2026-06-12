@@ -1,0 +1,161 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 902,
+    "axe": 133,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1035,
+    "scannedAt": "2026-06-12T17:52:19.560Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 5,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact",
+        "https://www.navigantcorp.com/vission-and-mission"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 5,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact",
+        "https://www.navigantcorp.com/vission-and-mission"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 5,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact",
+        "https://www.navigantcorp.com/vission-and-mission"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 5,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact",
+        "https://www.navigantcorp.com/vission-and-mission"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 5,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact",
+        "https://www.navigantcorp.com/vission-and-mission"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "pageCount": 4,
+      "pages": [
+        "https://www.navigantcorp.com/ipo-rights-and-buyback",
+        "https://www.navigantcorp.com/",
+        "https://www.navigantcorp.com/index",
+        "https://www.navigantcorp.com/investor-contact"
+      ]
+    }
+  ]
+}
