@@ -1,0 +1,132 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 143,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 155,
+    "combined": 298,
+    "scannedAt": "2026-06-30T13:24:24.272Z",
+    "scannedCount": 10
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 10,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/collections/all",
+        "https://preservefoodservice.com/pages/about-preserve",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/pages/faqs",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 4,
+      "pages": [
+        "https://preservefoodservice.com/pages/cutlery",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/contact-us"
+      ]
+    }
+  ]
+}
