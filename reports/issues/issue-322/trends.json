@@ -1,0 +1,176 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 265,
+    "axe": 44,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 309,
+    "scannedAt": "2026-06-30T13:30:55.629Z",
+    "scannedCount": 4
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r8",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    }
+  ]
+}
