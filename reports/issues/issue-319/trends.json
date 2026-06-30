@@ -1,0 +1,86 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 44,
+    "equalAccess": 108,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 152,
+    "scannedAt": "2026-06-30T12:28:28.818Z",
+    "scannedCount": 4
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 4,
+      "pages": [
+        "https://www.preservewholesale.com/",
+        "https://www.preservewholesale.com/collections/all",
+        "https://www.preservewholesale.com/pages/faqs",
+        "https://www.preservewholesale.com/pages/contact"
+      ]
+    }
+  ]
+}
