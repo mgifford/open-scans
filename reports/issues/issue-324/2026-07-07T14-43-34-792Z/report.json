@@ -1,0 +1,1124 @@
+{
+  "issueNumber": 324,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/324",
+  "issueTitle": "SCAN: Testing Alberta Sites",
+  "scanTitle": "Testing Alberta Sites",
+  "submittedBy": "OGBaldoran",
+  "engines": [
+    "axe",
+    "accesslint"
+  ],
+  "scanContext": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "chromium"
+  },
+  "scannedAt": "2026-07-07T14:42:48.915Z",
+  "totalElapsedMs": 14580,
+  "totalSubmitted": 2,
+  "acceptedCount": 2,
+  "scannedCount": 2,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 540,
+    "failed": 9,
+    "cantTell": 0,
+    "inapplicable": 54
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 86,
+    "failed": 6,
+    "uniqueFailed": 6,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://alberta.ca",
+      "finalUrl": "https://alberta.ca/",
+      "redirected": false,
+      "statusCode": null,
+      "ok": false,
+      "contentType": null,
+      "pageTitle": null,
+      "elapsedMs": 325,
+      "error": "fetch failed",
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "Skipped because initial URL fetch failed",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": false,
+        "error": "Skipped because initial URL fetch failed",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped because initial URL fetch failed",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped because initial URL fetch failed",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped because initial URL fetch failed",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "duplicateFindingCount": 0,
+      "timings": {
+        "fetchMs": 325,
+        "pageNavigationMs": 0,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 325,
+        "scannerMs": {
+          "axe": null,
+          "accesslint": null
+        }
+      }
+    },
+    {
+      "submittedUrl": "https://adsp.alberta.ca/",
+      "finalUrl": "https://adsp.alberta.ca/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html",
+      "pageTitle": "Alberta Digital Service Platform",
+      "elapsedMs": 14242,
+      "error": null,
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 540,
+          "failed": 9,
+          "cantTell": 0,
+          "inapplicable": 54
+        },
+        "failedRules": [
+          "empty-heading",
+          "heading-order",
+          "role-img-alt"
+        ],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "bypass",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "landmark-banner-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "page-has-heading-one",
+          "presentation-role-conflict",
+          "region",
+          "role-img-alt",
+          "scrollable-region-focusable"
+        ],
+        "failures": [
+          {
+            "rule": "empty-heading",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/empty-heading?application=playwright",
+            "impact": "minor",
+            "wcagSc": [],
+            "xpath": [
+              "goa-hero-banner",
+              "h1"
+            ],
+            "html": "<h1 class=\"svelte-1bs44ou\"></h1>",
+            "message": "Headings should not be empty",
+            "fixSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "4309d920b6b9",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-408851ce"
+          },
+          {
+            "rule": "heading-order",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".iiGkvd[md=\"3\"][hspacing=\"0.5\"]:nth-child(1) > div > h4",
+            "html": "<h4>Tenants</h4>",
+            "message": "Heading levels should only increase by one",
+            "fixSummary": "Fix any of the following:\n  Heading order invalid",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "a7cb271fe874",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-451cbed4"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-iGOTzy > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d52c837bfe73",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-607b0a79"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-fPzTCD > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "7ff99ef919d2",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3da7abc3"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-dKvMaA > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ea6785e82cec",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3ccb6974"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-TgMdF > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "01f61b331c03",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-ced52b66"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-hWXAay > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "36bde3eba18c",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-d67d20aa"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-ffIA-dD > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "6a2b5e927749",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-ee1fa917"
+          },
+          {
+            "rule": "role-img-alt",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+            "impact": "serious",
+            "wcagSc": [
+              "wcag2a",
+              "wcag111"
+            ],
+            "xpath": [
+              ".sc-ixWoYU > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "9939ce27216e",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-b7877c3a"
+          }
+        ],
+        "outcomeCount": 603,
+        "darkModeScanned": false,
+        "requestedColorScheme": "both",
+        "scanContext": {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "viewportPreset": "desktop",
+          "colorScheme": "both",
+          "browser": "chromium"
+        },
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "snapshotFallbackUsed": false,
+        "timings": {
+          "navigationMs": 5361,
+          "settleDelayMs": 2000,
+          "auditMs": 1533,
+          "totalMs": 7934,
+          "loadedFromSnapshot": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 9
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 86,
+          "failed": 6,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "distinguishable/color-contrast",
+          "labels-and-names/label-content-mismatch",
+          "landmarks/no-duplicate-banner",
+          "navigable/heading-order"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "div:nth-of-type(2) > h1",
+            "selector": "div:nth-of-type(2) > h1",
+            "html": "<h1 class=\"sc-ilhmMk bYmnWz\">The Alberta Digital Service Platform (ADSP)</h1>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 1:1 (required 3:1).",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "95ae39d7d451",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-e8caf98a"
+          },
+          {
+            "rule": "distinguishable/color-contrast",
+            "xpath": "goa-hero-banner > div > div > div:nth-of-type(2) > p:nth-of-type(1)",
+            "selector": "goa-hero-banner > div > div > div:nth-of-type(2) > p:nth-of-type(1)",
+            "html": "<p>Enabling your team to add, configure, and manage a range of services that can integrate with your products.</p>",
+            "impact": "serious",
+            "message": "Insufficient color contrast ratio of 1:1 (required 4.5:1).",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "2bb976baf6ec",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-8c03f189"
+          },
+          {
+            "rule": "navigable/heading-order",
+            "xpath": "div:nth-of-type(1) > h3:nth-of-type(1)",
+            "selector": "div:nth-of-type(1) > h3:nth-of-type(1)",
+            "html": "<h3>Please rotate your device</h3>",
+            "impact": "moderate",
+            "message": "Heading level 3 skipped from level 1. Use h2 instead.",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "0f25cc29b788",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-a6324295"
+          },
+          {
+            "rule": "navigable/heading-order",
+            "xpath": "div:nth-of-type(1) > div > h4",
+            "selector": "div:nth-of-type(1) > div > h4",
+            "html": "<h4>Tenants</h4>",
+            "impact": "moderate",
+            "message": "Heading level 4 skipped from level 2. Use h3 instead.",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "56184596d9ab",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-fa1d9399"
+          },
+          {
+            "rule": "landmarks/no-duplicate-banner",
+            "xpath": "div:nth-of-type(2) > div > header",
+            "selector": "div:nth-of-type(2) > div > header",
+            "html": "<header><div class=\"goa-header goa-official-site-header\"><div><span class=\"service-level service-level--live\">live</span></div><div class=\"site-text\">An official site of the <a href=\"https://www.alber...",
+            "impact": "moderate",
+            "message": "Page has multiple banner landmarks.",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "459edf566b9b",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3a3c68ea"
+          },
+          {
+            "rule": "labels-and-names/label-content-mismatch",
+            "xpath": "#root > div > div:nth-of-type(1) > header > div:nth-of-type(2) > a[href=\"/\"]",
+            "selector": "#root > div > div:nth-of-type(1) > header > div:nth-of-type(2) > a[href=\"/\"]",
+            "html": "<a href=\"/\" aria-label=\"/\" class=\"microsite-link\"><span class=\"image-desktop-tablet\"></span><span class=\"image-mobile\"></span><span class=\"name\">Alberta Digital Service Platform</span></a>",
+            "impact": "serious",
+            "message": "Accessible name \"/\" does not contain visible text \"Alberta Digital Service Platform\".",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8be09dce4f2c",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-2660bd34"
+          }
+        ],
+        "outcomeCount": 92,
+        "uniqueFailedCount": 6,
+        "duplicateFailedCount": 0,
+        "timings": {
+          "navigationMs": 4515,
+          "settleDelayMs": 2000,
+          "auditMs": 570,
+          "totalMs": 5776
+        },
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "duplicateFindingCount": 0,
+      "timings": {
+        "fetchMs": 437,
+        "pageNavigationMs": 5361,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 14242,
+        "scannerMs": {
+          "axe": 7934,
+          "accesslint": 5776
+        }
+      }
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "role-img-alt",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [
+            "1.1.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 7,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "xpath": [
+              ".sc-iGOTzy > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "d52c837bfe73",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-607b0a79"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "xpath": [
+              ".sc-fPzTCD > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "7ff99ef919d2",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3da7abc3"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "xpath": [
+              ".sc-dKvMaA > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "ea6785e82cec",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3ccb6974"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "xpath": [
+              ".sc-TgMdF > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "01f61b331c03",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-ced52b66"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<div role=\"img\" aria-label=\"\" aria-controls=\"\" aria-expanded=\"true\" class=\"goa-icon goa-icon--medium svelte-1wzvott\" data-testid=\"\" data-type=\"create\" title=\"\" style=\"\n    \n    ;\n    --opacity: 1;\n  \">",
+            "xpath": [
+              ".sc-hWXAay > goa-icon",
+              ".goa-icon.goa-icon--medium[aria-label=\"\"]"
+            ],
+            "message": "[role=\"img\"] elements must have alternative text",
+            "fixSummary": "Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "36bde3eba18c",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-d67d20aa"
+          }
+        ]
+      },
+      {
+        "rule": "distinguishable/color-contrast",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<h1 class=\"sc-ilhmMk bYmnWz\">The Alberta Digital Service Platform (ADSP)</h1>",
+            "xpath": "div:nth-of-type(2) > h1",
+            "message": "Insufficient color contrast ratio of 1:1 (required 3:1).",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "95ae39d7d451",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-e8caf98a"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<p>Enabling your team to add, configure, and manage a range of services that can integrate with your products.</p>",
+            "xpath": "goa-hero-banner > div > div > div:nth-of-type(2) > p:nth-of-type(1)",
+            "message": "Insufficient color contrast ratio of 1:1 (required 4.5:1).",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "2bb976baf6ec",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-8c03f189"
+          }
+        ]
+      },
+      {
+        "rule": "navigable/heading-order",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<h3>Please rotate your device</h3>",
+            "xpath": "div:nth-of-type(1) > h3:nth-of-type(1)",
+            "message": "Heading level 3 skipped from level 1. Use h2 instead.",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "0f25cc29b788",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-a6324295"
+          },
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<h4>Tenants</h4>",
+            "xpath": "div:nth-of-type(1) > div > h4",
+            "message": "Heading level 4 skipped from level 2. Use h3 instead.",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "56184596d9ab",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-fa1d9399"
+          }
+        ]
+      },
+      {
+        "rule": "empty-heading",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/empty-heading?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<h1 class=\"svelte-1bs44ou\"></h1>",
+            "xpath": [
+              "goa-hero-banner",
+              "h1"
+            ],
+            "message": "Headings should not be empty",
+            "fixSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "4309d920b6b9",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-408851ce"
+          }
+        ]
+      },
+      {
+        "rule": "heading-order",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures heading levels are not skipped (e.g. h1→h3). Inconsistent heading hierarchy makes page structure difficult to navigate for screen reader users."
+        },
+        "wcag": {
+          "scs": [],
+          "level": "best-practice"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<h4>Tenants</h4>",
+            "xpath": ".iiGkvd[md=\"3\"][hspacing=\"0.5\"]:nth-child(1) > div > h4",
+            "message": "Heading levels should only increase by one",
+            "fixSummary": "Fix any of the following:\n  Heading order invalid",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "a7cb271fe874",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-451cbed4"
+          }
+        ]
+      },
+      {
+        "rule": "landmarks/no-duplicate-banner",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<header><div class=\"goa-header goa-official-site-header\"><div><span class=\"service-level service-level--live\">live</span></div><div class=\"site-text\">An official site of the <a href=\"https://www.alber...",
+            "xpath": "div:nth-of-type(2) > div > header",
+            "message": "Page has multiple banner landmarks.",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "459edf566b9b",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-3a3c68ea"
+          }
+        ]
+      },
+      {
+        "rule": "labels-and-names/label-content-mismatch",
+        "engine": "accesslint",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://adsp.alberta.ca/",
+            "html": "<a href=\"/\" aria-label=\"/\" class=\"microsite-link\"><span class=\"image-desktop-tablet\"></span><span class=\"image-mobile\"></span><span class=\"name\">Alberta Digital Service Platform</span></a>",
+            "xpath": "#root > div > div:nth-of-type(1) > header > div:nth-of-type(2) > a[href=\"/\"]",
+            "message": "Accessible name \"/\" does not contain visible text \"Alberta Digital Service Platform\".",
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "8be09dce4f2c",
+            "firstSeenAt": "2026-07-07T14:42:48.915Z",
+            "patternId": "A11Y-2660bd34"
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 1,
+      "Visual Designer": 0,
+      "Content Author": 1,
+      "Front-End Developer": 14
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 15,
+      "Minor": 0
+    }
+  },
+  "changeTracking": {
+    "newCount": 15,
+    "resolvedCount": 0,
+    "newIssues": [
+      {
+        "fingerprint": "4309d920b6b9",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:empty-heading|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "a7cb271fe874",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:heading-order|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "d52c837bfe73",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "7ff99ef919d2",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "ea6785e82cec",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "01f61b331c03",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "36bde3eba18c",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "6a2b5e927749",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "9939ce27216e",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "wcag:wcag111|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "95ae39d7d451",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:distinguishable/color-contrast|light",
+        "engine": "accesslint"
+      },
+      {
+        "fingerprint": "2bb976baf6ec",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:distinguishable/color-contrast|light",
+        "engine": "accesslint"
+      },
+      {
+        "fingerprint": "0f25cc29b788",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:navigable/heading-order|light",
+        "engine": "accesslint"
+      },
+      {
+        "fingerprint": "56184596d9ab",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:navigable/heading-order|light",
+        "engine": "accesslint"
+      },
+      {
+        "fingerprint": "459edf566b9b",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:landmarks/no-duplicate-banner|light",
+        "engine": "accesslint"
+      },
+      {
+        "fingerprint": "8be09dce4f2c",
+        "url": "https://adsp.alberta.ca/",
+        "ruleKey": "rule:labels-and-names/label-content-mismatch|light",
+        "engine": "accesslint"
+      }
+    ],
+    "resolvedIssues": []
+  }
+}
