@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-09T10:05:26.935Z",
+  "issueNumber": 325,
+  "scanTitle": "CC Coeur de Garonne",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 1801,
+      "uniqueFailed": 1801,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4329,
+      "uniqueFailed": 4329,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 1801,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 383
+    }
+  },
+  "duplicateFindingTotals": 3946,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}

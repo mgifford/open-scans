@@ -1,0 +1,279 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 4329,
+    "axe": 1801,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 6130,
+    "scannedAt": "2026-07-09T10:05:26.852Z",
+    "scannedCount": 23
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 23,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 23,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 23,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 23,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 23,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 22,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 22,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 22,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 22,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 17,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/plan-du-site/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
+        "https://www.cc-coeurdegaronne.fr/petite-enfance/",
+        "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 6,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
+        "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 6,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/aide-a-domicile/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/petite-enfance/",
+        "https://www.cc-coeurdegaronne.fr/inscriptions/",
+        "https://www.cc-coeurdegaronne.fr/numerique/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 5,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/rendez-vous-test/",
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 5,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/carte-interactive",
+        "https://www.cc-coeurdegaronne.fr/inscriptions/",
+        "https://www.cc-coeurdegaronne.fr/rendez-vous-test/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 5,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/carte-interactive",
+        "https://www.cc-coeurdegaronne.fr/inscriptions/",
+        "https://www.cc-coeurdegaronne.fr/rendez-vous-test/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
+      "pageCount": 4,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
+        "https://www.cc-coeurdegaronne.fr/carte-interactive"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r3",
+      "pageCount": 3,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/contact/",
+        "https://www.cc-coeurdegaronne.fr/nos-politiques/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 3,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/cias/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
+      ]
+    },
+    {
+      "ruleId": "axe:skip-link",
+      "pageCount": 3,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
+        "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/"
+      ]
+    }
+  ]
+}
