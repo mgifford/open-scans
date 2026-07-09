@@ -1,0 +1,96 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 95,
+    "equalAccess": 703,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 798,
+    "scannedAt": "2026-07-09T16:25:10.238Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:document-title",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/preserve-every-day-bowls-100-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-medium-weight-soup-spoon-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/round-food-storage-lid-small-and-large-60-count"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/preserve-every-day-bowls-100-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-medium-weight-soup-spoon-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/round-food-storage-lid-small-and-large-60-count"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/preserve-every-day-bowls-100-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-medium-weight-soup-spoon-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/round-food-storage-lid-small-and-large-60-count"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/preserve-every-day-bowls-100-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-medium-weight-soup-spoon-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/round-food-storage-lid-small-and-large-60-count"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/preserve-every-day-bowls-100-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-medium-weight-soup-spoon-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/dispenser",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/round-food-storage-lid-small-and-large-60-count"
+      ]
+    }
+  ]
+}
