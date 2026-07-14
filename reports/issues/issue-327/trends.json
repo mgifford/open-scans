@@ -1,0 +1,254 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 285,
+    "equalAccess": 926,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1211,
+    "scannedAt": "2026-07-14T14:06:00.952Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 19,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/pages/gimme-5-take-back-recycling",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 13,
+      "pages": [
+        "https://preservefoodservice.com/",
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-input-field-name",
+      "pageCount": 12,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/compostable-straws-800-count"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-toggle-field-name",
+      "pageCount": 12,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-bulk-1000-ct",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-fork-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/recycled-plastic-medium-weight-knife-individually-wrapped-500-units",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/sandwich-food-storage-lid-60-count",
+        "https://preservefoodservice.com/products/compostable-straws-800-count"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 7,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/compostable-straws-800-count",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 7,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/compostable-straws-800-count",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-valid-attr-value",
+      "pageCount": 7,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/compostable-straws-800-count",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1"
+      ]
+    },
+    {
+      "ruleId": "axe:presentation-role-conflict",
+      "pageCount": 7,
+      "pages": [
+        "https://preservefoodservice.com/products/round-food-storage-container-large-60-count",
+        "https://preservefoodservice.com/products/preserve%C2%AE-2-go-reusable-to-go-container",
+        "https://preservefoodservice.com/products/compostable-cutlery",
+        "https://preservefoodservice.com/products/home-compostable-pha-straws-jumbo-standard-2800-count",
+        "https://preservefoodservice.com/products/heavy-duty-cutlery-fork",
+        "https://preservefoodservice.com/products/compostable-straws-800-count",
+        "https://preservefoodservice.com/products/cutlery-dispenser-1"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 4,
+      "pages": [
+        "https://preservefoodservice.com/pages/preserve2go",
+        "https://preservefoodservice.com/pages/reusable-tableware",
+        "https://preservefoodservice.com/pages/contact-us",
+        "https://preservefoodservice.com/pages/dispenser-support"
+      ]
+    }
+  ]
+}
