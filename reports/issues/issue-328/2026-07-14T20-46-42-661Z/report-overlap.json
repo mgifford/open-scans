@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-14T20:46:07.072Z",
+  "issueNumber": 328,
+  "scanTitle": "Preserve Food Svc. Site",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 246,
+      "uniqueFailed": 246,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 885,
+      "uniqueFailed": 875,
+      "duplicates": 10
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 232,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 875
+    }
+  },
+  "duplicateFindingTotals": 24,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
