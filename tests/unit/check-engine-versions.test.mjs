@@ -39,3 +39,8 @@ test("ENGINE_PACKAGES lists all accessibility scanning engines used by run-scan.
   assert.ok(ENGINE_PACKAGES.includes("@accesslint/core"));
   assert.ok(ENGINE_PACKAGES.includes("@qualweb/core"));
 });
+
+test("package.json declares @qualweb/util required by @qualweb/core at runtime", () => {
+  const range = getDeclaredRange("@qualweb/util");
+  assert.ok(range, "Expected @qualweb/util in package.json dependencies");
+});
