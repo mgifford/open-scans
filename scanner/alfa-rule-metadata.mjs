@@ -1,111 +1,115 @@
 /**
  * ALFA rule metadata mapping
- * 
+ *
  * This file provides human-readable descriptions for ALFA accessibility rules.
  * Descriptions are based on WCAG success criteria and best practices.
- * 
+ *
  * Note: Descriptions are manually curated as the Alfa rule metadata doesn't
  * always include user-friendly descriptions in the package.
+ *
+ * Verified against @siteimprove/alfa-rules 0.111.0 (installed) and the
+ * published rule descriptions at https://alfa.siteimprove.com/rules on 2026-07-25.
  */
 
 export const alfaRuleMetadata = {
   // Common rules seen in reports
   "https://alfa.siteimprove.com/rules/sia-r111": {
-    name: "Target size (enhanced)",
+    name: "Target Size (enhanced)",
     description: "Interactive elements have a sufficient target size",
-    wcagCriteria: ["2.5.8"],
-    conformanceLevel: "AA"
+    wcagCriteria: ["2.5.5"],
+    conformanceLevel: "AAA"
   },
   "https://alfa.siteimprove.com/rules/sia-r56": {
-    name: "Landmarks are unique",
-    description: "Landmarks with the same role are distinguishable",
-    wcagCriteria: ["1.3.6"],
-    conformanceLevel: "AAA"
+    name: "Landmarks of same type have a unique accessible name",
+    description: "Landmarks with the same role are distinguishable by their accessible name",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r57": {
-    name: "Landmark has non-repeated content",
-    description: "Landmarks don't repeat the same content",
-    wcagCriteria: ["1.3.6"],
-    conformanceLevel: "AAA"
+    name: "Perceivable text content is included in a landmark",
+    description: "Visible text content on the page is contained within a landmark region",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r66": {
-    name: "Contrast (enhanced)",
+    name: "Text has enhanced contrast",
     description: "Text has enhanced contrast with its background",
     wcagCriteria: ["1.4.6"],
     conformanceLevel: "AAA"
   },
   "https://alfa.siteimprove.com/rules/sia-r78": {
-    name: "Headings have content between them",
-    description: "Headings of same level have text content between them",
-    wcagCriteria: ["1.3.1"],
-    conformanceLevel: "A"
+    name: "Headings of same level have text content between them",
+    description: "Headings of the same level are not immediately adjacent without intervening content",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r18": {
-    name: "ARIA states match semantics",
-    description: "ARIA states are consistent with element semantics",
-    wcagCriteria: ["4.1.2"],
-    conformanceLevel: "A"
+    name: "aria-* states and properties are allowed",
+    description: "ARIA states and properties are allowed for the element on which they are specified",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
-  
+
   // Additional common ALFA rules
   "https://alfa.siteimprove.com/rules/sia-r1": {
-    name: "Unique id attributes",
-    description: "id attributes are unique within the document",
-    wcagCriteria: ["4.1.1"],
-    conformanceLevel: "A"
-  },
-  "https://alfa.siteimprove.com/rules/sia-r2": {
-    name: "lang attribute",
-    description: "HTML elements have a valid lang attribute",
-    wcagCriteria: ["3.1.1"],
-    conformanceLevel: "A"
-  },
-  "https://alfa.siteimprove.com/rules/sia-r3": {
-    name: "lang attribute valid",
-    description: "lang attribute has a valid language code",
-    wcagCriteria: ["3.1.1"],
-    conformanceLevel: "A"
-  },
-  "https://alfa.siteimprove.com/rules/sia-r4": {
-    name: "Page title",
-    description: "Page has a descriptive title",
+    name: "Documents have a <title> element",
+    description: "The document has a non-empty <title> element",
     wcagCriteria: ["2.4.2"],
     conformanceLevel: "A"
   },
+  "https://alfa.siteimprove.com/rules/sia-r2": {
+    name: "Images have an accessible name",
+    description: "Images have an accessible name or are marked as decorative",
+    wcagCriteria: ["1.1.1"],
+    conformanceLevel: "A"
+  },
+  "https://alfa.siteimprove.com/rules/sia-r3": {
+    name: "id attributes have a unique value (deprecated)",
+    description: "id attributes are unique within the document. Deprecated by Siteimprove in favor of newer rules.",
+    wcagCriteria: ["4.1.1"],
+    conformanceLevel: "A",
+    deprecated: true
+  },
+  "https://alfa.siteimprove.com/rules/sia-r4": {
+    name: "<html> document elements have a lang attribute",
+    description: "The html element has a non-empty lang attribute",
+    wcagCriteria: ["3.1.1"],
+    conformanceLevel: "A"
+  },
   "https://alfa.siteimprove.com/rules/sia-r5": {
-    name: "HTML lang attribute",
-    description: "html element has a lang attribute",
+    name: "<html> document elements have a valid lang attribute",
+    description: "The html element's lang attribute has a valid language code",
     wcagCriteria: ["3.1.1"],
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r7": {
-    name: "lang attribute has valid primary language subtag",
-    description: "lang attributes within the html element have a valid primary language subtag",
-    wcagCriteria: ["3.1.1"],
+    name: "lang attributes within the <body> element have a valid value",
+    description: "lang attributes on descendants of the body element have a valid primary language subtag",
+    wcagCriteria: ["3.1.2"],
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r8": {
-    name: "Form elements labeled",
-    description: "Form elements have accessible labels",
-    wcagCriteria: ["1.3.1", "4.1.2"],
+    name: "Form fields have an accessible name",
+    description: "Form fields have an accessible name",
+    wcagCriteria: ["4.1.2"],
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r11": {
-    name: "Button has accessible name",
+    name: "Links have an accessible name",
+    description: "Link elements have an accessible name",
+    wcagCriteria: ["2.4.4", "2.4.9", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "https://alfa.siteimprove.com/rules/sia-r12": {
+    name: "Buttons have an accessible name",
     description: "Button elements have an accessible name",
     wcagCriteria: ["4.1.2"],
     conformanceLevel: "A"
   },
-  "https://alfa.siteimprove.com/rules/sia-r12": {
-    name: "Link has accessible name",
-    description: "Links have an accessible name",
-    wcagCriteria: ["2.4.4", "4.1.2"],
-    conformanceLevel: "A"
-  },
   "https://alfa.siteimprove.com/rules/sia-r14": {
-    name: "Image has accessible name",
-    description: "Images have an accessible name or are decorative",
-    wcagCriteria: ["1.1.1"],
+    name: "Visible labels are included in accessible names",
+    description: "The visible label text of an element is included in its accessible name",
+    wcagCriteria: ["2.5.3"],
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r42": {
@@ -115,98 +119,99 @@ export const alfaRuleMetadata = {
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r53": {
-    name: "Heading hierarchy",
-    description: "Headings follow a logical hierarchy",
+    name: "Headings are structured",
+    description: "Headings do not skip heading levels in the document outline",
     wcagCriteria: [],
     conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r59": {
     name: "Documents have headings",
     description: "Document has at least one heading to identify its main content",
-    wcagCriteria: ["2.4.6"],
-    conformanceLevel: "AA"
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r61": {
-    name: "Document starts with heading",
-    description: "Documents start with a level 1 heading",
+    name: "Documents start with a level 1 heading",
+    description: "The first heading in the document is a level 1 heading",
     wcagCriteria: [],
     conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r64": {
-    name: "Heading has accessible name",
-    description: "Heading has non-empty accessible name",
-    wcagCriteria: [],
-    conformanceLevel: "best-practice"
+    name: "Heading has non-empty accessible name",
+    description: "Heading elements have a non-empty accessible name",
+    wcagCriteria: ["1.3.1"],
+    conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r71": {
-    name: "Text is not justified",
-    description: "Paragraphs of text are not justified",
-    wcagCriteria: [],
-    conformanceLevel: "best-practice"
+    name: "Paragraphs of text are not justified",
+    description: "Paragraphs of text are not fully justified",
+    wcagCriteria: ["1.4.8"],
+    conformanceLevel: "AAA"
   },
   "https://alfa.siteimprove.com/rules/sia-r85": {
-    name: "Text is not all italics",
-    description: "Paragraphs of text are not all italics",
+    name: "Paragraphs of text are not all italics",
+    description: "Paragraphs of text are not entirely italicized",
     wcagCriteria: [],
     conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r62": {
-    name: "Links are distinguishable",
-    description: "Links are visually distinguishable from surrounding text",
+    name: "Links in blocks of text are distinguishable",
+    description: "Links within blocks of text are visually distinguishable from surrounding text",
     wcagCriteria: ["1.4.1"],
     conformanceLevel: "A"
   },
   "https://alfa.siteimprove.com/rules/sia-r65": {
-    name: "Table headers",
-    description: "Tables have appropriate headers",
+    name: "Element in sequential focus order has visible focus",
+    description: "Elements that receive keyboard focus display a visible focus indicator",
+    wcagCriteria: ["2.4.7"],
+    conformanceLevel: "AA"
+  },
+  "https://alfa.siteimprove.com/rules/sia-r68": {
+    name: "Elements with a role have required children",
+    description: "Elements with an explicit ARIA role have the required owned/child elements",
     wcagCriteria: ["1.3.1"],
     conformanceLevel: "A"
   },
-  "https://alfa.siteimprove.com/rules/sia-r68": {
-    name: "Accessible name matches visible text",
-    description: "Accessible name contains the visible label text",
-    wcagCriteria: ["2.5.3"],
-    conformanceLevel: "A"
-  },
   "https://alfa.siteimprove.com/rules/sia-r69": {
-    name: "Contrast (minimum)",
+    name: "Text has minimum contrast",
     description: "Text has sufficient contrast with its background",
-    wcagCriteria: ["1.4.3"],
+    wcagCriteria: ["1.4.3", "1.4.6"],
     conformanceLevel: "AA"
   },
   "https://alfa.siteimprove.com/rules/sia-r73": {
-    name: "Text spacing",
-    description: "Text spacing can be adjusted without loss of content",
-    wcagCriteria: ["1.4.12"],
-    conformanceLevel: "AA"
+    name: "Paragraphs of text have sufficient line height",
+    description: "Paragraphs of text have a line height that is not too small",
+    wcagCriteria: ["1.4.8"],
+    conformanceLevel: "AAA"
   },
   "https://alfa.siteimprove.com/rules/sia-r80": {
-    name: "Text alternatives for ASCII art",
-    description: "ASCII art has a text alternative",
-    wcagCriteria: ["1.1.1"],
-    conformanceLevel: "A"
+    name: "Paragraphs of text do not have line heights defined in absolute units",
+    description: "Line heights of paragraphs of text are not defined using absolute units",
+    wcagCriteria: ["1.4.8"],
+    conformanceLevel: "AAA"
   },
   "https://alfa.siteimprove.com/rules/sia-r83": {
-    name: "Text resize",
-    description: "Text can be resized to 200% without loss of content",
+    name: "Text nodes are not clipped when text is resized (deprecated)",
+    description: "Text can be resized to 200% without loss of content. Deprecated by Siteimprove: based on a too-strict interpretation of WCAG 1.4.4 that has since been clarified.",
     wcagCriteria: ["1.4.4"],
-    conformanceLevel: "AA"
+    conformanceLevel: "AA",
+    deprecated: true
   },
   "https://alfa.siteimprove.com/rules/sia-r86": {
-    name: "Bypass blocks",
-    description: "Page has a mechanism to bypass repeated blocks of content",
-    wcagCriteria: ["2.4.1"],
-    conformanceLevel: "A"
+    name: "Elements that are marked as decorative are not exposed to assistive technologies",
+    description: "Elements marked as decorative (e.g. via alt=\"\" or role=\"presentation\") are not exposed in the accessibility tree",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r87": {
-    name: "Skip link",
-    description: "First focusable element is a skip link",
-    wcagCriteria: ["2.4.1"],
-    conformanceLevel: "A"
+    name: "First focusable element is link to main content",
+    description: "The first focusable element on the page is a skip link to the main content",
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
   "https://alfa.siteimprove.com/rules/sia-r90": {
-    name: "Iframe has accessible name",
-    description: "iframe elements have an accessible name",
+    name: "Element with presentational children has no focusable content",
+    description: "Elements whose children are presentational do not contain focusable content",
     wcagCriteria: ["4.1.2"],
     conformanceLevel: "A"
   }
@@ -239,7 +244,7 @@ export function extractAlfaRuleId(ruleUrl) {
 export function formatAlfaRule(ruleUrl) {
   const id = extractAlfaRuleId(ruleUrl) || "Unknown Rule";
   const metadata = getAlfaRuleMetadata(ruleUrl);
-  
+
   return {
     id,
     name: metadata?.name || null,

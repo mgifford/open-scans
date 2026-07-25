@@ -33,10 +33,10 @@ test("extractAlfaRuleId returns null for invalid URL", () => {
 
 test("getAlfaRuleMetadata returns metadata for known rules", () => {
   const metadata = getAlfaRuleMetadata("https://alfa.siteimprove.com/rules/sia-r78");
-  
+
   assert.ok(metadata !== null, "Should return metadata for known rule");
-  assert.strictEqual(metadata.name, "Headings have content between them");
-  assert.strictEqual(metadata.description, "Headings of same level have text content between them");
+  assert.strictEqual(metadata.name, "Headings of same level have text content between them");
+  assert.strictEqual(metadata.description, "Headings of the same level are not immediately adjacent without intervening content");
 });
 
 test("getAlfaRuleMetadata returns null for unknown rules", () => {
@@ -47,10 +47,10 @@ test("getAlfaRuleMetadata returns null for unknown rules", () => {
 
 test("formatAlfaRule formats known rule with full metadata", () => {
   const formatted = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r78");
-  
+
   assert.strictEqual(formatted.id, "SIA-R78");
-  assert.strictEqual(formatted.name, "Headings have content between them");
-  assert.strictEqual(formatted.description, "Headings of same level have text content between them");
+  assert.strictEqual(formatted.name, "Headings of same level have text content between them");
+  assert.strictEqual(formatted.description, "Headings of the same level are not immediately adjacent without intervening content");
   assert.strictEqual(formatted.url, "https://alfa.siteimprove.com/rules/sia-r78");
 });
 
@@ -68,22 +68,22 @@ test("formatAlfaRule handles common rules correctly", () => {
     {
       url: "https://alfa.siteimprove.com/rules/sia-r111",
       expectedId: "SIA-R111",
-      expectedName: "Target size (enhanced)"
+      expectedName: "Target Size (enhanced)"
     },
     {
       url: "https://alfa.siteimprove.com/rules/sia-r56",
       expectedId: "SIA-R56",
-      expectedName: "Landmarks are unique"
+      expectedName: "Landmarks of same type have a unique accessible name"
     },
     {
       url: "https://alfa.siteimprove.com/rules/sia-r57",
       expectedId: "SIA-R57",
-      expectedName: "Landmark has non-repeated content"
+      expectedName: "Perceivable text content is included in a landmark"
     },
     {
       url: "https://alfa.siteimprove.com/rules/sia-r66",
       expectedId: "SIA-R66",
-      expectedName: "Contrast (enhanced)"
+      expectedName: "Text has enhanced contrast"
     }
   ];
   
@@ -100,26 +100,14 @@ test("formatAlfaRule handles best-practice rules that were previously missing", 
     {
       url: "https://alfa.siteimprove.com/rules/sia-r61",
       expectedId: "SIA-R61",
-      expectedName: "Document starts with heading",
-      expectedDescription: "Documents start with a level 1 heading"
-    },
-    {
-      url: "https://alfa.siteimprove.com/rules/sia-r64",
-      expectedId: "SIA-R64",
-      expectedName: "Heading has accessible name",
-      expectedDescription: "Heading has non-empty accessible name"
-    },
-    {
-      url: "https://alfa.siteimprove.com/rules/sia-r71",
-      expectedId: "SIA-R71",
-      expectedName: "Text is not justified",
-      expectedDescription: "Paragraphs of text are not justified"
+      expectedName: "Documents start with a level 1 heading",
+      expectedDescription: "The first heading in the document is a level 1 heading"
     },
     {
       url: "https://alfa.siteimprove.com/rules/sia-r85",
       expectedId: "SIA-R85",
-      expectedName: "Text is not all italics",
-      expectedDescription: "Paragraphs of text are not all italics"
+      expectedName: "Paragraphs of text are not all italics",
+      expectedDescription: "Paragraphs of text are not entirely italicized"
     }
   ];
 
@@ -133,10 +121,22 @@ test("formatAlfaRule handles best-practice rules that were previously missing", 
   }
 });
 
+test("formatAlfaRule handles SIA-R64 and SIA-R71, which map to real WCAG criteria (not best-practice)", () => {
+  const r64 = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r64");
+  assert.strictEqual(r64.name, "Heading has non-empty accessible name");
+  assert.deepStrictEqual(r64.wcagCriteria, ["1.3.1"]);
+  assert.strictEqual(r64.conformanceLevel, "A");
+
+  const r71 = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r71");
+  assert.strictEqual(r71.name, "Paragraphs of text are not justified");
+  assert.deepStrictEqual(r71.wcagCriteria, ["1.4.8"]);
+  assert.strictEqual(r71.conformanceLevel, "AAA");
+});
+
 test("formatAlfaRule handles SIA-R7, SIA-R42, and SIA-R59 rules from problem report", () => {
   const r7 = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r7");
   assert.strictEqual(r7.id, "SIA-R7");
-  assert.strictEqual(r7.name, "lang attribute has valid primary language subtag");
+  assert.strictEqual(r7.name, "lang attributes within the <body> element have a valid value");
   assert.ok(r7.description !== null);
 
   const r42 = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r42");

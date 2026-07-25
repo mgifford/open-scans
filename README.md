@@ -402,6 +402,7 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Task Agent (GPT-5-class) | Added focused BDD acceptance layer (Gherkin + Cucumber + Playwright), traceability map, and dedicated CI quality gate workflow | Development – May 2026 |
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Upgraded Playwright to 1.60.0 to avoid the browser installer hang on recent Node.js releases | Development – June 2026 |
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Diagnosed failing `run-scan-request` workflow and fixed QualWeb runtime module resolution by adding `@qualweb/qw-page` dependency | Development – June 2026 |
+| Claude Code (claude-sonnet-5) | Verified manually curated ALFA rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`) against the installed `@siteimprove/alfa-rules` package and the published rule descriptions at alfa.siteimprove.com/rules; corrected name/WCAG-criteria/conformance-level drift affecting 24 of 29 curated rules and fixed a duplicate object key; upgraded `@siteimprove/alfa-cli`/`alfa-formatter-earl`/`alfa-formatter-json` from 0.81.3 to 0.84.2 | Development – July 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
