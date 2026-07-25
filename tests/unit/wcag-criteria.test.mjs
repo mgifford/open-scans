@@ -136,13 +136,13 @@ test("getRuleMetadata default mapping has empty wcagCriteria", () => {
 
 test("formatAlfaRule includes wcagCriteria and conformanceLevel", () => {
   const result = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r14");
-  assert.deepEqual(result.wcagCriteria, ["1.1.1"]);
+  assert.deepEqual(result.wcagCriteria, ["2.5.3"]);
   assert.strictEqual(result.conformanceLevel, "A");
 });
 
 test("formatAlfaRule includes AA level for contrast minimum", () => {
   const result = formatAlfaRule("https://alfa.siteimprove.com/rules/sia-r69");
-  assert.deepEqual(result.wcagCriteria, ["1.4.3"]);
+  assert.deepEqual(result.wcagCriteria, ["1.4.3", "1.4.6"]);
   assert.strictEqual(result.conformanceLevel, "AA");
 });
 

@@ -1,0 +1,125 @@
+# Monthly accessibility engine version check.
+#
+# Compares the installed version of each accessibility scanning engine
+# dependency (ALFA, axe-core, IBM Equal Access, AccessLint, QualWeb) against
+# the latest version published to npm, and opens a GitHub issue listing any
+# that are behind. This project's manually curated rule metadata
+# (scanner/alfa-rule-metadata.mjs, scanner/rule-metadata.mjs,
+# scanner/equalaccess-rule-metadata.mjs) can drift out of sync with an
+# engine's actual rule set as new versions ship, so catching outdated engines
+# early is also a prompt to re-verify that metadata.
+#
+# Schedule: 1st of every month at 09:00 UTC. Can also be triggered manually.
+#
+# Permissions:
+#   contents: read — checkout only
+#   issues: write  — create/update the tracking issue
+
+name: Accessibility Engine Version Check (monthly)
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-versions:
+    name: Check accessibility engine versions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Check engine versions
+        id: check
+        run: node scanner/check-engine-versions.mjs > .tmp-engine-versions.json
+
+      - name: Create or update tracking issue
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { readFileSync } = require('fs');
+            const result = JSON.parse(readFileSync('.tmp-engine-versions.json', 'utf8'));
+
+            const today = new Date().toISOString().slice(0, 10);
+            const title = 'Accessibility engine version check';
+
+            if (result.outdated.length === 0) {
+              console.log('All accessibility engines are up to date.');
+              core.summary.addRaw(`## ✅ All accessibility engines are up to date (checked ${today})`);
+              await core.summary.write();
+              return;
+            }
+
+            const rows = result.outdated
+              .map(e => `| \`${e.name}\` | ${e.installed} | ${e.latest} |`)
+              .join('\n');
+
+            const errorRows = result.errors.length
+              ? '\n\n**Errors while checking:**\n' +
+                result.errors.map(e => `- \`${e.name}\`: ${e.error}`).join('\n')
+              : '';
+
+            const body = [
+              `Automated check on ${today} found ${result.outdated.length} accessibility scanning ` +
+                `engine dependenc${result.outdated.length === 1 ? 'y' : 'ies'} behind the latest npm release.`,
+              '',
+              '| Package | Installed | Latest |',
+              '| :--- | :--- | :--- |',
+              rows,
+              errorRows,
+              '',
+              '**Before upgrading:**',
+              '- Check the release notes for rule additions, removals, or renumbering.',
+              '- Re-verify manually curated rule metadata against the new version ' +
+                '(`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`, ' +
+                '`scanner/equalaccess-rule-metadata.mjs`) — see the ALFA SIA-R65/SIA-R83 ' +
+                'audit for the kind of drift that can accumulate.',
+              '- Run `npm test` and `npm run test:playwright` after upgrading.',
+              '',
+              '_This issue is generated monthly by `.github/workflows/engine-version-check.yml`. ' +
+                'Closing it is fine — a new one will be opened next month if engines are still outdated._',
+            ].join('\n');
+
+            // Avoid opening duplicate issues if last month's is still open.
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'dependencies',
+            });
+            const openTracking = existing.data.find(i => i.title === title);
+
+            if (openTracking) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: openTracking.number,
+                body,
+              });
+              console.log(`Updated existing issue #${openTracking.number}`);
+            } else {
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                labels: ['dependencies', 'accessibility'],
+                body,
+              });
+              console.log(`Issue created: ${issue.data.html_url}`);
+            }
+
+            core.summary.addRaw(`## ⚠️ ${result.outdated.length} accessibility engine(s) outdated\n\n${rows}`);
+            await core.summary.write();

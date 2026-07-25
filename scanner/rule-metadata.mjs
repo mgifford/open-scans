@@ -661,60 +661,61 @@ export const ruleMapping = {
   },
 
   // --- ALFA (SIA) rules ---
-  "alfa:sia-r1": { // Unique IDs
-    roles: [ROLES.DEV],
-    severity: SEVERITY.MINOR,
-    blocking: false,
-    wcagCriteria: ["4.1.1"],
-    conformanceLevel: "A"
-  },
-  "alfa:sia-r2": { // lang attribute
-    roles: [ROLES.DEV],
-    severity: SEVERITY.SERIOUS,
-    blocking: false,
-    wcagCriteria: ["3.1.1"],
-    conformanceLevel: "A"
-  },
-  "alfa:sia-r7": { // lang attribute has valid primary language subtag
-    roles: [ROLES.DEV, ROLES.CONTENT],
-    severity: SEVERITY.SERIOUS,
-    blocking: false,
-    wcagCriteria: ["3.1.1"],
-    conformanceLevel: "A"
-  },
-  "alfa:sia-r4": { // Page title
+  // Verified against @siteimprove/alfa-rules 0.111.0 and https://alfa.siteimprove.com/rules on 2026-07-25.
+  "alfa:sia-r1": { // Documents have a <title> element
     roles: [ROLES.CONTENT, ROLES.UX],
     severity: SEVERITY.SERIOUS,
     blocking: false,
     wcagCriteria: ["2.4.2"],
     conformanceLevel: "A"
   },
-  "alfa:sia-r8": { // Form elements labeled
+  "alfa:sia-r2": { // Images have an accessible name
+    roles: [ROLES.CONTENT],
+    severity: SEVERITY.CRITICAL,
+    blocking: true,
+    wcagCriteria: ["1.1.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r7": { // lang attributes within the <body> element have a valid value
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["3.1.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r4": { // <html> document elements have a lang attribute
+    roles: [ROLES.DEV],
+    severity: SEVERITY.SERIOUS,
+    blocking: false,
+    wcagCriteria: ["3.1.1"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r8": { // Form fields have an accessible name
     roles: [ROLES.DEV, ROLES.UX],
     severity: SEVERITY.CRITICAL,
     blocking: true,
-    wcagCriteria: ["1.3.1", "4.1.2"],
+    wcagCriteria: ["4.1.2"],
     conformanceLevel: "A"
   },
-  "alfa:sia-r11": { // Button has accessible name
+  "alfa:sia-r11": { // Links have an accessible name
+    roles: [ROLES.CONTENT, ROLES.UX],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["2.4.4", "2.4.9", "4.1.2"],
+    conformanceLevel: "A"
+  },
+  "alfa:sia-r12": { // Buttons have an accessible name
     roles: [ROLES.DEV, ROLES.CONTENT],
     severity: SEVERITY.CRITICAL,
     blocking: true,
     wcagCriteria: ["4.1.2"],
     conformanceLevel: "A"
   },
-  "alfa:sia-r12": { // Link has accessible name
+  "alfa:sia-r14": { // Visible labels are included in accessible names
     roles: [ROLES.CONTENT, ROLES.UX],
     severity: SEVERITY.SERIOUS,
     blocking: true,
-    wcagCriteria: ["2.4.4", "4.1.2"],
-    conformanceLevel: "A"
-  },
-  "alfa:sia-r14": { // Image has accessible name
-    roles: [ROLES.CONTENT],
-    severity: SEVERITY.CRITICAL,
-    blocking: true,
-    wcagCriteria: ["1.1.1"],
+    wcagCriteria: ["2.5.3"],
     conformanceLevel: "A"
   },
   "alfa:sia-r42": { // Elements with a role have required parent
@@ -724,7 +725,7 @@ export const ruleMapping = {
     wcagCriteria: ["1.3.1"],
     conformanceLevel: "A"
   },
-  "alfa:sia-r53": { // Heading hierarchy
+  "alfa:sia-r53": { // Headings are structured
     roles: [ROLES.CONTENT, ROLES.UX],
     severity: SEVERITY.MODERATE,
     blocking: false,
@@ -735,64 +736,64 @@ export const ruleMapping = {
     roles: [ROLES.CONTENT, ROLES.UX],
     severity: SEVERITY.MODERATE,
     blocking: false,
-    wcagCriteria: ["2.4.6"],
-    conformanceLevel: "AA"
+    wcagCriteria: [],
+    conformanceLevel: "best-practice"
   },
-  "alfa:sia-r61": { // Documents start with heading
+  "alfa:sia-r61": { // Documents start with a level 1 heading
     roles: [ROLES.CONTENT, ROLES.UX],
     severity: SEVERITY.MODERATE,
     blocking: false,
     wcagCriteria: [],
     conformanceLevel: "best-practice"
   },
-  "alfa:sia-r64": { // Heading has accessible name
+  "alfa:sia-r64": { // Heading has non-empty accessible name
     roles: [ROLES.CONTENT, ROLES.DEV],
     severity: SEVERITY.MODERATE,
     blocking: false,
-    wcagCriteria: [],
-    conformanceLevel: "best-practice"
+    wcagCriteria: ["1.3.1"],
+    conformanceLevel: "A"
   },
-  "alfa:sia-r71": { // Text is not justified
+  "alfa:sia-r71": { // Paragraphs of text are not justified
+    roles: [ROLES.VISUAL, ROLES.CONTENT],
+    severity: SEVERITY.MODERATE,
+    blocking: false,
+    wcagCriteria: ["1.4.8"],
+    conformanceLevel: "AAA"
+  },
+  "alfa:sia-r85": { // Paragraphs of text are not all italics
     roles: [ROLES.VISUAL, ROLES.CONTENT],
     severity: SEVERITY.MODERATE,
     blocking: false,
     wcagCriteria: [],
     conformanceLevel: "best-practice"
   },
-  "alfa:sia-r85": { // Text is not all italics
-    roles: [ROLES.VISUAL, ROLES.CONTENT],
-    severity: SEVERITY.MODERATE,
-    blocking: false,
-    wcagCriteria: [],
-    conformanceLevel: "best-practice"
-  },
-  "alfa:sia-r62": { // Links are distinguishable
+  "alfa:sia-r62": { // Links in blocks of text are distinguishable
     roles: [ROLES.VISUAL, ROLES.UX],
     severity: SEVERITY.SERIOUS,
     blocking: false,
     wcagCriteria: ["1.4.1"],
     conformanceLevel: "A"
   },
-  "alfa:sia-r66": { // Contrast (enhanced)
+  "alfa:sia-r66": { // Text has enhanced contrast
     roles: [ROLES.VISUAL],
     severity: SEVERITY.MODERATE,
     blocking: false,
     wcagCriteria: ["1.4.6"],
     conformanceLevel: "AAA"
   },
-  "alfa:sia-r69": { // Contrast (minimum)
+  "alfa:sia-r69": { // Text has minimum contrast
     roles: [ROLES.VISUAL],
     severity: SEVERITY.SERIOUS,
     blocking: false,
-    wcagCriteria: ["1.4.3"],
+    wcagCriteria: ["1.4.3", "1.4.6"],
     conformanceLevel: "AA"
   },
-  "alfa:sia-r111": { // Target size
+  "alfa:sia-r111": { // Target Size (enhanced)
     roles: [ROLES.UX, ROLES.VISUAL],
     severity: SEVERITY.SERIOUS,
     blocking: true,
-    wcagCriteria: ["2.5.8"],
-    conformanceLevel: "AA"
+    wcagCriteria: ["2.5.5"],
+    conformanceLevel: "AAA"
   }
 };
 

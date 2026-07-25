@@ -7,17 +7,27 @@
     "test": "node --test tests/unit/*.test.mjs",
     "test:playwright": "node --test tests/unit/playwright-accessibility.test.mjs",
     "test:bdd": "cucumber-js --import tests/bdd/steps/**/*.mjs tests/bdd/features/**/*.feature",
-    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs",
+    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs && node --check scanner/check-engine-versions.mjs",
     "run:parse": "node scanner/parse-issue.mjs",
     "run:validate": "node scanner/validate-targets.mjs",
     "run:scan": "node scanner/run-scan.mjs",
     "run:generate-reports": "node scanner/generate-reports-html.mjs",
     "run:generate-trends": "node scanner/generate-trends-html.mjs",
     "run:analyse-trends": "node scanner/analyse-trends.mjs",
-    "run:review": "node scanner/review-source.mjs"
+    "run:review": "node scanner/review-source.mjs",
+    "run:check-engines": "node scanner/check-engine-versions.mjs"
   },
   "engines": {
     "node": ">=24"
+  },
+  "overrides": {
+    "js-yaml": "^4.3.0",
+    "@qualweb/core": {
+      "brace-expansion": "^1.1.16"
+    },
+    "@cucumber/cucumber": {
+      "brace-expansion": "^5.0.8"
+    }
   },
   "dependencies": {
     "@accesslint/core": "^0.8.7",
@@ -26,9 +36,9 @@
     "@qualweb/act-rules": "^0.7.6",
     "@qualweb/core": "0.8.1",
     "@qualweb/qw-page": "0.3.1",
-    "@siteimprove/alfa-cli": "^0.81.3",
-    "@siteimprove/alfa-formatter-earl": "^0.81.3",
-    "@siteimprove/alfa-formatter-json": "^0.81.3",
+    "@siteimprove/alfa-cli": "^0.84.2",
+    "@siteimprove/alfa-formatter-earl": "^0.84.2",
+    "@siteimprove/alfa-formatter-json": "^0.84.2",
     "accessibility-checker": "^4.0.26",
     "playwright": "^1.60.0"
   },

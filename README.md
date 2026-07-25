@@ -223,6 +223,19 @@ The **AI Accessibility Review** workflow (`ai-accessibility-review.yml`) is insp
 
 This workflow requires no secrets beyond the built-in `GITHUB_TOKEN` (which has `models:read` scope in GitHub Actions).
 
+### 5. Accessibility Engine Version Check (monthly)
+
+The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`) compares the installed version of each scanning engine dependency (ALFA, axe-core, IBM Equal Access, AccessLint, QualWeb) against the latest release on npm and opens or updates a tracking issue when any are behind.
+
+**Why this exists:** manually curated rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`, `scanner/equalaccess-rule-metadata.mjs`) maps opaque rule IDs to human-readable names and WCAG criteria. That mapping can silently drift out of sync as an engine ships new rule numbering or reclassifies a rule's WCAG mapping — this happened with ALFA's SIA-R65 and SIA-R83 rules. A monthly nudge to check for engine updates is also a prompt to re-verify the metadata against the new version.
+
+**Schedule:** Runs automatically on the **1st of every month at 09:00 UTC**. Can also be triggered manually via the Actions tab.
+
+**How to run it manually:**
+1. Go to [Actions → Accessibility Engine Version Check (monthly)](https://github.com/mgifford/open-scans/actions/workflows/engine-version-check.yml)
+2. Click **Run workflow**
+3. If any engines are outdated, a tracking issue is created (or the existing one updated) listing installed vs. latest versions
+
 ## Security & Privacy
 
 - **Only public URLs are scanned** — the form blocks localhost, private IP ranges, and link-local addresses
@@ -255,6 +268,7 @@ This workflow requires no secrets beyond the built-in `GITHUB_TOKEN` (which has 
 - **scanner/run-scan.mjs**: Executes accessibility scans with selected engines and generates reports
 - **scanner/generate-reports-html.mjs**: Builds the reports dashboard
 - **scanner/analyse-trends.mjs**: Tracks accessibility metrics over time
+- **scanner/check-engine-versions.mjs**: Compares installed vs. latest npm versions for each scanning engine dependency
 
 See [scanner/README.md](./scanner/README.md) for detailed scanner documentation.
 
@@ -402,7 +416,8 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Task Agent (GPT-5-class) | Added focused BDD acceptance layer (Gherkin + Cucumber + Playwright), traceability map, and dedicated CI quality gate workflow | Development – May 2026 |
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Upgraded Playwright to 1.60.0 to avoid the browser installer hang on recent Node.js releases | Development – June 2026 |
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Diagnosed failing `run-scan-request` workflow and fixed QualWeb runtime module resolution by adding `@qualweb/qw-page` dependency | Development – June 2026 |
-| GitHub Copilot Task Agent (Claude Sonnet 5) | Fixed scan request parsing to filter out non-URL candidate lines (like duplicate `# URLs` headers) inside the URLs section of issue bodies | Development – July 2026 |
+| Claude Code (claude-sonnet-5) | Verified manually curated ALFA rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`) against the installed `@siteimprove/alfa-rules` package and the published rule descriptions at alfa.siteimprove.com/rules; corrected name/WCAG-criteria/conformance-level drift affecting 24 of 29 curated rules and fixed a duplicate object key; upgraded `@siteimprove/alfa-cli`/`alfa-formatter-earl`/`alfa-formatter-json` from 0.81.3 to 0.84.2; added `scanner/check-engine-versions.mjs` and the monthly `engine-version-check.yml` workflow to catch future engine drift across all five scanning engines | Development – July 2026 |
+| Claude Code (claude-sonnet-5) | Completed a pre-existing, uncommitted `analyzeDuplicateTitles`/`normalizeTitle` implementation found unwired in `scanner/run-scan.mjs`: added it to the scan summary and to `toMarkdownReport()` as a "Duplicate Page Titles" (WCAG 2.4.2) report section, fixed a JSDoc return-type mismatch, and added unit test coverage | Development – July 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
