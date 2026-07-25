@@ -20,6 +20,7 @@
     "node": ">=24"
   },
   "overrides": {
+    "js-yaml": "^4.3.0",
     "@qualweb/core": {
       "brace-expansion": "^1.1.16"
     },
