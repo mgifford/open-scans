@@ -1512,6 +1512,76 @@ function extractHtmlTitle(html) {
   return match ? match[1].trim() : null;
 }
 
+/**
+ * Normalize title for duplicate detection
+ * - Unicode normalization
+ * - Trim leading/trailing whitespace  
+ * - Collapse repeated internal whitespace
+ * @param {string|null|undefined} title - Raw title value
+ * @returns {string} Normalized title for comparison
+ */
+export function normalizeTitle(title) {
+  if (!title) return "";
+  // Unicode NFC normalization for consistency
+  let normalized = title.normalize('NFC');
+  // Trim and collapse whitespace
+  normalized = normalized.trim().replace(/\s+/g, " ");
+  return normalized;
+}
+
+/**
+ * Analyze page titles across all results for duplicates
+ * @param {object[]} results - Array of scan results
+ * @returns {Array<{title: string, originalTitle: string, urls: string[], finalUrls: string[], count: number}>} Duplicate title groups, each covering 2+ distinct final URLs
+ */
+export function analyzeDuplicateTitles(results) {
+  const titleGroups = new Map();
+  const duplicates = [];
+
+  for (const result of results) {
+    const title = result.pageTitle || "";
+    if (!title) continue;
+
+    const normalizedTitle = normalizeTitle(title);
+    if (!normalizedTitle) continue;
+
+    const key = normalizedTitle;
+    if (!titleGroups.has(key)) {
+      titleGroups.set(key, {
+        title: normalizedTitle,
+        originalTitle: title,
+        urls: [],
+        finalUrls: new Set()
+      });
+    }
+
+    const group = titleGroups.get(key);
+    group.urls.push(result.submittedUrl);
+    if (result.finalUrl) {
+      group.finalUrls.add(result.finalUrl);
+    }
+  }
+
+  // Filter to groups with 2+ distinct URLs
+  for (const group of titleGroups.values()) {
+    if (group.finalUrls.size >= 2) {
+      duplicates.push({
+        title: group.title,
+        originalTitle: group.originalTitle,
+        urls: group.urls,
+        finalUrls: Array.from(group.finalUrls),
+        count: group.finalUrls.size
+      });
+    }
+  }
+
+  return duplicates.sort((a, b) => {
+    // Sort by duplicate count (desc), then by title (asc)
+    if (b.count !== a.count) return b.count - a.count;
+    return a.title.localeCompare(b.title);
+  });
+}
+
 async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, rawScanContext = {}) {
   const started = Date.now();
   const scanContext = buildScanContext(rawScanContext);
@@ -2273,6 +2343,22 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         lines.push("");
       }
     }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // ── Duplicate page titles (WCAG 2.4.2) ──────────────────────────────────
+  if (summary.duplicateTitles && summary.duplicateTitles.length > 0) {
+    lines.push("## 📝 Duplicate Page Titles");
+    lines.push("");
+    lines.push("Pages should have a descriptive, unique `<title>` so users can tell them apart in browser tabs, history, and bookmarks ([WCAG 2.4.2](https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html)).");
+    lines.push("");
+    for (const group of summary.duplicateTitles) {
+      lines.push(`- **"${group.originalTitle}"** — ${group.count} pages:`);
+      for (const url of group.finalUrls) {
+        lines.push(`  - ${url}`);
+      }
+    }
+    lines.push("");
   }
   // ─────────────────────────────────────────────────────────────────────────
 
@@ -3515,6 +3601,7 @@ async function main() {
     results
   };
   const enhancedData = buildEnhancedSummary(initialSummary);
+  const duplicateTitles = analyzeDuplicateTitles(results);
 
   const summary = {
     issueNumber: request.issueNumber,
@@ -3544,6 +3631,7 @@ async function main() {
     highContrastUrlCount,
     forcedColorsUrlCount,
     reducedTransparencyUrlCount,
+    duplicateTitles,
     results,
     enhanced: enhancedData,
     changeTracking

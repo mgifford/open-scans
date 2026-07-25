@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { escapeMarkdown, extractRuleId, formatFirstSeenDate, toMarkdownReport, markdownToHtml } from "../../scanner/run-scan.mjs";
+import { escapeMarkdown, extractRuleId, formatFirstSeenDate, toMarkdownReport, markdownToHtml, normalizeTitle, analyzeDuplicateTitles } from "../../scanner/run-scan.mjs";
 
 test("Enhanced report format includes priority sections", () => {
   // Test data matching the structure from run-scan.mjs
@@ -911,4 +911,114 @@ test("formatFirstSeenDate produces different results for different dates", () =>
   const a = formatFirstSeenDate("2026-01-01T00:00:00.000Z");
   const b = formatFirstSeenDate("2026-12-31T00:00:00.000Z");
   assert.notEqual(a, b);
+});
+
+// ── normalizeTitle ─────────────────────────────────────────────────────────
+
+test("normalizeTitle trims and collapses internal whitespace", () => {
+  assert.strictEqual(normalizeTitle("  Home   Page  "), "Home Page");
+});
+
+test("normalizeTitle returns empty string for null/undefined/empty input", () => {
+  assert.strictEqual(normalizeTitle(null), "");
+  assert.strictEqual(normalizeTitle(undefined), "");
+  assert.strictEqual(normalizeTitle(""), "");
+});
+
+test("normalizeTitle applies Unicode NFC normalization", () => {
+  const decomposed = "Café"; // "Café" as e + combining acute accent
+  const precomposed = "Café";
+  assert.strictEqual(normalizeTitle(decomposed), normalizeTitle(precomposed));
+});
+
+// ── analyzeDuplicateTitles ─────────────────────────────────────────────────
+
+test("analyzeDuplicateTitles groups pages sharing the same normalized title", () => {
+  const results = [
+    { submittedUrl: "https://example.com/a", finalUrl: "https://example.com/a", pageTitle: "Home" },
+    { submittedUrl: "https://example.com/b", finalUrl: "https://example.com/b", pageTitle: "  Home  " },
+    { submittedUrl: "https://example.com/c", finalUrl: "https://example.com/c", pageTitle: "Contact Us" }
+  ];
+  const duplicates = analyzeDuplicateTitles(results);
+  assert.strictEqual(duplicates.length, 1);
+  assert.strictEqual(duplicates[0].title, "Home");
+  assert.strictEqual(duplicates[0].count, 2);
+  assert.deepEqual(duplicates[0].finalUrls.sort(), ["https://example.com/a", "https://example.com/b"]);
+});
+
+test("analyzeDuplicateTitles ignores titles that only appear once", () => {
+  const results = [
+    { submittedUrl: "https://example.com/a", finalUrl: "https://example.com/a", pageTitle: "Unique Page" }
+  ];
+  assert.deepEqual(analyzeDuplicateTitles(results), []);
+});
+
+test("analyzeDuplicateTitles ignores results with no page title", () => {
+  const results = [
+    { submittedUrl: "https://example.com/a", finalUrl: "https://example.com/a", pageTitle: null },
+    { submittedUrl: "https://example.com/b", finalUrl: "https://example.com/b", pageTitle: "" }
+  ];
+  assert.deepEqual(analyzeDuplicateTitles(results), []);
+});
+
+test("analyzeDuplicateTitles counts distinct final URLs, not raw result count", () => {
+  const results = [
+    { submittedUrl: "https://example.com/a", finalUrl: "https://example.com/a", pageTitle: "Home" },
+    { submittedUrl: "https://example.com/a-trailing-slash", finalUrl: "https://example.com/a", pageTitle: "Home" }
+  ];
+  // Both rows resolve to the same finalUrl, so this is not a real duplicate-title case.
+  assert.deepEqual(analyzeDuplicateTitles(results), []);
+});
+
+test("toMarkdownReport includes a Duplicate Page Titles section when duplicates exist", () => {
+  const summary = {
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    scanTitle: "Test Site",
+    submittedBy: "testuser",
+    scannedAt: "2026-02-21T00:00:00.000Z",
+    totalSubmitted: 2,
+    acceptedCount: 2,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+    axeTotals: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+    results: [],
+    duplicateTitles: [
+      {
+        title: "Home",
+        originalTitle: "Home",
+        urls: ["https://example.com/a", "https://example.com/b"],
+        finalUrls: ["https://example.com/a", "https://example.com/b"],
+        count: 2
+      }
+    ]
+  };
+
+  const markdown = toMarkdownReport(summary);
+  assert.ok(markdown.includes("## 📝 Duplicate Page Titles"));
+  assert.ok(markdown.includes('"Home"'));
+  assert.ok(markdown.includes("https://example.com/a"));
+  assert.ok(markdown.includes("https://example.com/b"));
+});
+
+test("toMarkdownReport omits the Duplicate Page Titles section when there are none", () => {
+  const summary = {
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    scanTitle: "Test Site",
+    submittedBy: "testuser",
+    scannedAt: "2026-02-21T00:00:00.000Z",
+    totalSubmitted: 1,
+    acceptedCount: 1,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+    axeTotals: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 },
+    results: [],
+    duplicateTitles: []
+  };
+
+  const markdown = toMarkdownReport(summary);
+  assert.ok(!markdown.includes("Duplicate Page Titles"));
 });
