@@ -27,6 +27,7 @@ open-scans is an issue-driven accessibility scanning tool that uses GitHub Pages
 - **Frontend (index.html, reports.html)**: Tested with automated tools, keyboard navigation verified
 - **Generated Reports**: Semantic HTML structure, keyboard accessible, proper heading hierarchy
 - **Scan Results**: Machine-readable formats (JSON, CSV) and human-readable formats (Markdown, HTML)
+- **Behavior-Based Testing**: Native Playwright reflow-risk check, duplicate title analysis, cross-engine focus comparison
 
 ---
 
@@ -51,6 +52,16 @@ All scans run in GitHub Actions workflows:
 - **scan-issue-queue.yml**: Daily scheduled scans + manual trigger
 - **scheduled-scan-queue.yml**: Timed issues (WEEKLY:, MONTHLY:, etc.)
 
+### Behavior-Based Testing (Native Playwright Integration)
+
+This project supplements static engine scanning with native Playwright-based behavioral testing for critical WCAG compliance checks:
+
+- **Reflow-Risk Check** (WCAG 1.4.10) - Native Playwright test at 320px viewport to verify content reflows remain contained, implemented in `scanner/reflow-risk.mjs`
+- **Duplicate Page Titles** (WCAG 2.4.2) - Cross-page title analysis that normalizes and groups pages with duplicate descriptive titles, implemented in `scanner/run-scan.mjs`
+- **Cross-Engine Focus Analysis** - Automated comparison of focus-visible capabilities across all 5 accessibility engines to ensure consistent focus indicator coverage
+
+These behavioral checks provide runtime verification of WCAG criteria that static scanning engines may miss, including dynamic layout changes and cross-engine focus management consistency.
+
 ### Automated Guardrails
 
 ✅ **What is automated:**
@@ -62,7 +73,7 @@ All scans run in GitHub Actions workflows:
 
 ❌ **What requires manual testing:**
 - Screen reader compatibility
-- Focus management in complex interactions
+- Complex interaction focus management
 - Meaningful content descriptions
 - Logical reading order
 
@@ -296,6 +307,8 @@ This project follows guidance from established accessibility authorities:
 - [IBM Equal Access Checker](https://www.ibm.com/able/toolkit/tools/) - IBM's WCAG checker
 - [QualWeb](https://qualweb.di.fc.ul.pt/) - University of Lisbon WCAG/ACT evaluator
 - [Playwright](https://playwright.dev/) - Cross-browser testing framework
+- [ReflowAudit](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) - CWAC's native Playwright-based reflow testing methodology
+- [CWAC Repository](https://github.com/w3c/cwac) - Central Web Accessibility Checker
 
 ### Community Resources
 For a comprehensive list of vetted accessibility resources and bug reporting guidance, see:
