@@ -1,0 +1,195 @@
+{
+    "results": [
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_highcontrast_visible",
+            "value": [
+                "VIOLATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_highcontrast_visible.html#%7B%22message%22%3A%22Confirm%20Windows%20high%20contrast%20mode%20is%20supported%20when%20using%20CSS%20to%20include%2C%20position%20or%20alter%20non-decorative%20content%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22style_highcontrast_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "skip_main_exists",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 160,
+                "top": 90,
+                "height": 115,
+                "width": 480
+            },
+            "snippet": "<body>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/skip_main_exists.html#%7B%22message%22%3A%22The%20page%20does%20not%20provide%20a%20way%20to%20quickly%20navigate%20to%20the%20main%20content%20(ARIA%20%5C%22main%5C%22%20landmark%20or%20a%20skip%20link)%22%2C%22snippet%22%3A%22%3Cbody%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22skip_main_exists%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_content_in_landmark",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/h1[1]",
+                "aria": "/document[1]/heading[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Content is not within a landmark element",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 160,
+                "top": 90,
+                "height": 28,
+                "width": 480
+            },
+            "snippet": "<h1>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_content_in_landmark.html#%7B%22message%22%3A%22Content%20is%20not%20within%20a%20landmark%20element%22%2C%22snippet%22%3A%22%3Ch1%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_content_in_landmark%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_content_in_landmark",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/p[2]/a[1]",
+                "aria": "/document[1]/paragraph[2]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Content is not within a landmark element",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 160,
+                "top": 187,
+                "height": 18,
+                "width": 82
+            },
+            "snippet": "<a href=\"https://iana.org/domains/example\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_content_in_landmark.html#%7B%22message%22%3A%22Content%20is%20not%20within%20a%20landmark%20element%22%2C%22snippet%22%3A%22%3Ca%20href%3D%5C%22https%3A%2F%2Fiana.org%2Fdomains%2Fexample%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_content_in_landmark%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        }
+    ],
+    "numExecuted": 53,
+    "ruleTime": 5,
+    "nls": {
+        "aria_content_in_landmark": {
+            "0": "All content must reside within an element with a landmark role",
+            "Fail_1": "Content is not within a landmark element"
+        },
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_highcontrast_visible": {
+            "0": "Windows high contrast mode must be supported when using CSS to include, position or alter non-decorative content",
+            "Manual_1": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+        },
+        "skip_main_exists": {
+            "0": "Pages must provide a way to skip directly to the main content",
+            "Fail_1": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 4,
+            "elementsViolation": 3,
+            "elementsViolationReview": 4,
+            "violation": 3,
+            "potentialviolation": 1,
+            "recommendation": 0,
+            "potentialrecommendation": 0,
+            "manual": 1,
+            "pass": 48
+        },
+        "scanTime": 20,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "potentialrecommendation",
+            "manual"
+        ],
+        "startScan": 1785001906437,
+        "URL": "https://example.com/"
+    },
+    "scanID": "0b9be03d-fb76-46bb-a26d-b830ab023a3b",
+    "toolID": "accessibility-checker-v4.0.26",
+    "label": "scan-1785001905399"
+}
