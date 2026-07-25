@@ -7,14 +7,15 @@
     "test": "node --test tests/unit/*.test.mjs",
     "test:playwright": "node --test tests/unit/playwright-accessibility.test.mjs",
     "test:bdd": "cucumber-js --import tests/bdd/steps/**/*.mjs tests/bdd/features/**/*.feature",
-    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs",
+    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs && node --check scanner/check-engine-versions.mjs",
     "run:parse": "node scanner/parse-issue.mjs",
     "run:validate": "node scanner/validate-targets.mjs",
     "run:scan": "node scanner/run-scan.mjs",
     "run:generate-reports": "node scanner/generate-reports-html.mjs",
     "run:generate-trends": "node scanner/generate-trends-html.mjs",
     "run:analyse-trends": "node scanner/analyse-trends.mjs",
-    "run:review": "node scanner/review-source.mjs"
+    "run:review": "node scanner/review-source.mjs",
+    "run:check-engines": "node scanner/check-engine-versions.mjs"
   },
   "engines": {
     "node": ">=24"
