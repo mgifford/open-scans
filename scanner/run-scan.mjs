@@ -680,7 +680,7 @@ export function computePatternId(locator, ruleKey) {
  *
  * @param {object} result - Single per-URL scan result
  */
-function computeCrossEngineWcagOverlap(result) {
+export function computeCrossEngineWcagOverlap(result) {
   // Collect all SC-number WCAG tags from unique axe findings on this page.
   const axeWcagScs = new Set();
   for (const failure of result.axe?.failures ?? []) {
