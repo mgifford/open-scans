@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-26T02:31:51.989Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 68,
-          "equalAccess": 1035,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 1103,
-          "scannedAt": "2026-04-26T02:31:51.989Z",
-          "scannedCount": 59
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-03T02:38:14.005Z",
-        "totals": {
-          "alfa": 1845,
-          "axe": 94,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 1939,
-          "scannedAt": "2026-05-03T02:38:14.005Z",
-          "scannedCount": 59
-        }
-      },
-      "change": 836,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 1845,
-        "axe": 26,
-        "equalAccess": -1035,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-03T02:38:14.005Z",
         "totals": {
           "alfa": 1845,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-24T02:34:09.524Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 66,
+          "equalAccess": 859,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 925,
+          "scannedAt": "2026-05-24T02:34:09.524Z",
+          "scannedCount": 59
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-26T20:04:48.486Z",
+        "totals": {
+          "alfa": 1287,
+          "axe": 48,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1335,
+          "scannedAt": "2026-07-26T20:04:48.486Z",
+          "scannedCount": 59
+        }
+      },
+      "change": 410,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 1287,
+        "axe": -18,
+        "equalAccess": -859,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-17T02:50:48.213Z",
-      "totals": {
-        "alfa": 1992,
-        "axe": 64,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 2056,
-        "scannedAt": "2026-05-17T02:50:48.213Z",
-        "scannedCount": 59
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-24T02:34:09.524Z",
       "totals": {
         "alfa": 0,
@@ -177,63 +164,140 @@
         "scannedCount": 59
       }
     },
-    "change": -1131,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-07-26T20:04:48.486Z",
+      "totals": {
+        "alfa": 1287,
+        "axe": 48,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 1335,
+        "scannedAt": "2026-07-26T20:04:48.486Z",
+        "scannedCount": 59
+      }
+    },
+    "change": 410,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -1992,
-      "axe": 2,
-      "equalAccess": 859,
+      "alfa": 1287,
+      "axe": -18,
+      "equalAccess": -859,
       "qualweb": 0,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 2,
   "worseningCount": 2,
   "latestTotals": {
-    "alfa": 0,
-    "axe": 66,
-    "equalAccess": 859,
+    "alfa": 1287,
+    "axe": 48,
+    "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 925,
-    "scannedAt": "2026-05-24T02:34:09.524Z",
+    "combined": 1335,
+    "scannedAt": "2026-07-26T20:04:48.486Z",
     "scannedCount": 59
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 68,
-    "equalAccess": 1035,
+    "alfa": 1845,
+    "axe": 94,
+    "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 1103,
-    "scannedAt": "2026-04-26T02:31:51.989Z",
+    "combined": 1939,
+    "scannedAt": "2026-05-03T02:38:14.005Z",
     "scannedCount": 59
   },
   "latestSystemicPatterns": [
     {
-      "ruleId": "axe:landmark-unique",
-      "pageCount": 31,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 26,
       "pages": [
-        "https://www.alberta.ca/",
-        "https://www.alberta.ca/find-a-job",
+        "https://www.alberta.ca/accessibility",
         "https://www.alberta.ca/all-services",
         "https://www.alberta.ca/canada-post-service-interruption",
-        "https://www.alberta.ca/vehicle-registration-renewal",
-        "https://www.alberta.ca/family-and-social-supports-topic",
-        "https://www.alberta.ca/about-government",
-        "https://www.alberta.ca/acute-care-action-plan",
-        "https://www.alberta.ca/ahcip",
-        "https://www.alberta.ca/alberta-advantage-immigration-program"
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/alberta-advantage-immigration-program",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/business-and-economic-development",
+        "https://www.alberta.ca/disclaimer",
+        "https://www.alberta.ca/employment-topic"
       ]
     },
     {
-      "ruleId": "axe:color-contrast",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 26,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/all-services",
+        "https://www.alberta.ca/canada-post-service-interruption",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/alberta-advantage-immigration-program",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/business-and-economic-development",
+        "https://www.alberta.ca/disclaimer",
+        "https://www.alberta.ca/employment-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 26,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/all-services",
+        "https://www.alberta.ca/canada-post-service-interruption",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/alberta-advantage-immigration-program",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/business-and-economic-development",
+        "https://www.alberta.ca/disclaimer",
+        "https://www.alberta.ca/employment-topic"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 24,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/all-services",
+        "https://www.alberta.ca/canada-post-service-interruption",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/alberta-advantage-immigration-program",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/business-and-economic-development",
+        "https://www.alberta.ca/disclaimer",
+        "https://www.alberta.ca/employment-topic"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 24,
+      "pages": [
+        "https://www.alberta.ca/accessibility",
+        "https://www.alberta.ca/all-services",
+        "https://www.alberta.ca/canada-post-service-interruption",
+        "https://www.alberta.ca/agriculture",
+        "https://www.alberta.ca/alberta-advantage-immigration-program",
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/birth-adoption-death-marriage-and-divorce-topic",
+        "https://www.alberta.ca/business-and-economic-development",
+        "https://www.alberta.ca/disclaimer",
+        "https://www.alberta.ca/employment-topic"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
       "pageCount": 3,
       "pages": [
-        "https://www.alberta.ca/alberta-advantage-immigration-program",
-        "https://www.alberta.ca/cut-red-tape",
-        "https://www.alberta.ca/west-coast-oil-pipeline"
+        "https://www.alberta.ca/release.cfm?xID=9573410ED1AD8-DE7F-DF66-A798654D0700135F",
+        "https://www.alberta.ca/release.cfm?xID=956393BF7AAE1-FC58-0121-F6ACBF2A8BCD7A5B",
+        "https://www.alberta.ca/release.cfm?xID=956403CB2A273-BB32-5FB1-CF2920F98FFC9B8A"
       ]
     }
   ]
