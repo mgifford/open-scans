@@ -5,3 +5,14 @@ actionlint
 nohup.out
 .venv/
 venv/
+
+# Spec Kitty: charter bundle derived files (auto-added by `charter generate`)
+.kittify/charter/directives.yaml
+.kittify/charter/governance.yaml
+.kittify/charter/metadata.yaml
+
+# Spec Kitty: worktrees and scratch state
+.worktrees/
+.kittify/cache/
+.kittify/tmp/
+.kittify/encoding-provenance/

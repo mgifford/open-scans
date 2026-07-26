@@ -1,0 +1,57 @@
+schema_version: "1.0.0"
+mission: "software-dev"
+profile: "minimal"
+answers:
+  project_intent: >
+    Open Scans is an issue-driven accessibility scanner. Users file a GitHub
+    issue listing target URLs (with a SCAN:, WEEKLY:, MONTHLY:, QUARTERLY:, or
+    weekday prefix), and GitHub Actions workflows run a multi-engine scan
+    (axe, ALFA, EqualAccess, AccessLint, QualWeb, Semantica11y) against those
+    URLs, then post results back as an issue comment and publish reports to
+    GitHub Pages. The system is built around recurring/scheduled scans as
+    well as one-off requests, with report generation, trend analysis, and
+    AI-assisted remediation suggestions layered on top of the raw scan output.
+  languages_frameworks: >
+    Node.js (>=24) with ES modules ("type": "module"). Scanner logic lives
+    under scanner/*.mjs. Playwright drives browser-based scans; @axe-core,
+    @siteimprove/alfa-cli, @qualweb, and AccessLint are the underlying
+    accessibility engines. GitHub Actions (YAML workflows in
+    .github/workflows/) orchestrate everything — there is no separate
+    application server; workflows ARE the runtime.
+  testing_requirements: >
+    node --test for unit tests (tests/unit/*.test.mjs), a dedicated Playwright
+    accessibility test suite (test:playwright), and Cucumber BDD acceptance
+    tests (test:bdd, tests/bdd/features + steps). No enforced minimum coverage
+    percentage; TDD is not mandatory but tests are expected for scanner logic
+    changes and workflow-affecting bug fixes.
+  quality_gates: >
+    npm run lint runs `node --check` syntax validation across all scanner
+    entry-point scripts before tests. GitHub Dependabot monitors dependency
+    vulnerabilities; the package.json "overrides" block is the established
+    pattern for pinning transitive deps to patched versions when a direct
+    upgrade isn't available. No enforced pre-commit hooks currently.
+  review_policy: >
+    Single-maintainer repository (mgifford). No formal multi-approver PR gate
+    is enforced today; changes to scheduled/recurring scan workflows (cron
+    jobs) warrant extra care since bugs there fail silently until someone
+    notices missing scan output.
+  performance_targets: >
+    No hard CLI timeout requirement, but scan workflows are long-running
+    (can process dozens to hundreds of URLs per scheduled issue) and run
+    under GitHub Actions' job time limits. Scanner code should avoid adding
+    per-URL overhead that would meaningfully extend total scan wall-clock
+    time.
+  deployment_constraints: >
+    All deployment is via GitHub Actions (no separate hosting/deploy step
+    beyond GitHub Pages for reports). Main branch is deployed continuously —
+    every merge to main can immediately affect the next scheduled workflow
+    run. Do not change scanner runtime behavior as a side effect of
+    unrelated governance/scaffolding changes.
+selected_paradigms: []
+selected_directives: []
+available_tools:
+  - "spec-kitty"
+  - "git"
+  - "gh"
+  - "playwright"
+  - "node"

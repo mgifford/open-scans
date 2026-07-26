@@ -1,0 +1,21 @@
+schema_version: 1.0.0
+generated_at: '2026-07-26T19:20:34Z'
+mission: software-dev
+template_set: software-dev-default
+languages:
+- javascript
+references:
+- id: USER:PROJECT_PROFILE
+  kind: user_profile
+  title: User Project Profile
+  summary: Project-specific interview answers captured for charter compilation.
+  source_path: .kittify/charter/interview/answers.yaml
+  local_path: _LIBRARY/user-project-profile.md
+- id: TEMPLATE_SET:software-dev-default
+  kind: template_set
+  title: software-dev-default
+  summary: Build high-quality software with structured workflows and test-driven
+    development
+  source_path: 
+    /Users/mgifford/.local/pipx/venvs/spec-kitty-cli/lib/python3.13/site-packages/doctrine/missions/software-dev/mission.yaml
+  local_path: _LIBRARY/template-set-software-dev-default.md
