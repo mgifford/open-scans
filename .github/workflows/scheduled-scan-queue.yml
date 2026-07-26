@@ -59,20 +59,6 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
-          import { spawnSync } from 'node:child_process';
-
-          const resolveBrowserFromIssue = (issue) => {
-            const title = String(issue?.title || '');
-            const body = String(issue?.body || '');
-            const bodyMatch = body.match(/(?:^|\n)Browser:\s*(chromium|firefox|webkit|random)\s*$/im);
-            const titleMatch = title.match(/\bBROWSER:\s*(chromium|firefox|webkit|random)\b/i);
-            let browser = (bodyMatch?.[1] || titleMatch?.[1] || 'chromium').toLowerCase();
-            if (browser === 'random') {
-              const browsers = ['chromium', 'firefox', 'webkit'];
-              browser = browsers[Math.floor(Math.random() * browsers.length)];
-            }
-            return browser;
-          };
 
           const now = new Date();
           const day = now.getUTCDay();
@@ -143,8 +129,6 @@ jobs:
             });
           }
 
-          const installedBrowsers = new Set(['chromium']);
-
           writeFileSync('.tmp/due-issues.json', JSON.stringify(due, null, 2) + '\n', 'utf8');
           writeFileSync('.tmp/due-issues.ndjson', due.map((item) => JSON.stringify(item)).join('\n') + (due.length ? '\n' : ''), 'utf8');
 
@@ -174,6 +158,9 @@ jobs:
           set -euo pipefail
           : > .tmp/scheduled-results.ndjson
 
+          : > .tmp/installed-browsers.txt
+          echo "chromium" >> .tmp/installed-browsers.txt
+
           while IFS= read -r issue_json; do
             [ -z "$issue_json" ] && continue
             printf '%s\n' "$issue_json" > .tmp/issue-row.json
@@ -195,21 +182,14 @@ jobs:
               }
             };
 
-            const browser = resolveBrowserFromIssue(event.issue);
-            if (!installedBrowsers.has(browser)) {
-              const install = spawnSync(
-                'npx',
-                ['playwright', 'install', '--with-deps', browser],
-                { stdio: 'inherit', env: process.env }
-              );
-              if (install.status !== 0) {
-                throw new Error(`Failed to install Playwright browser '${browser}' for issue #${issue.number}`);
-              }
-              installedBrowsers.add(browser);
-            }
-
             writeFileSync('.tmp/issue-event.json', JSON.stringify(event), 'utf8');
           NODE
+
+            browser="$(node scanner/resolve-browser.mjs .tmp/issue-event.json)"
+            if ! grep -qxF "$browser" .tmp/installed-browsers.txt; then
+              npx playwright install --with-deps "$browser"
+              echo "$browser" >> .tmp/installed-browsers.txt
+            fi
 
             rm -rf .scan-output
             mkdir -p .scan-output
