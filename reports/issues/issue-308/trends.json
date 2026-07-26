@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-06-04T17:45:57.035Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 10,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 10,
-          "scannedAt": "2026-06-04T17:45:57.035Z",
-          "scannedCount": 108
-        }
-      },
-      "to": {
-        "scannedAt": "2026-06-05T14:07:00.220Z",
-        "totals": {
-          "alfa": 4591,
-          "axe": 10,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 4601,
-          "scannedAt": "2026-06-05T14:07:00.220Z",
-          "scannedCount": 108
-        }
-      },
-      "change": 4591,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 4591,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-06-05T14:07:00.220Z",
         "totals": {
           "alfa": 4591,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-06-05T18:28:18.229Z",
+        "totals": {
+          "alfa": 4591,
+          "axe": 10,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4601,
+          "scannedAt": "2026-06-05T18:28:18.229Z",
+          "scannedCount": 108
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-26T01:47:36.239Z",
+        "totals": {
+          "alfa": 3780,
+          "axe": 8,
+          "equalAccess": 1427,
+          "qualweb": 194,
+          "accesslint": 247,
+          "combined": 5656,
+          "scannedAt": "2026-07-26T01:47:36.239Z",
+          "scannedCount": 92
+        }
+      },
+      "change": 1055,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": -811,
+        "axe": -2,
+        "equalAccess": 1427,
+        "qualweb": 194,
+        "accesslint": 247
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-06-05T16:50:11.042Z",
-      "totals": {
-        "alfa": 4591,
-        "axe": 10,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 4601,
-        "scannedAt": "2026-06-05T16:50:11.042Z",
-        "scannedCount": 108
-      }
-    },
-    "to": {
       "scannedAt": "2026-06-05T18:28:18.229Z",
       "totals": {
         "alfa": 4591,
@@ -177,43 +164,56 @@
         "scannedCount": 108
       }
     },
-    "change": 0,
-    "trend": "stable",
+    "to": {
+      "scannedAt": "2026-07-26T01:47:36.239Z",
+      "totals": {
+        "alfa": 3780,
+        "axe": 8,
+        "equalAccess": 1427,
+        "qualweb": 194,
+        "accesslint": 247,
+        "combined": 5656,
+        "scannedAt": "2026-07-26T01:47:36.239Z",
+        "scannedCount": 92
+      }
+    },
+    "change": 1055,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": 0,
-      "axe": 0,
-      "equalAccess": 0,
-      "qualweb": 0,
-      "accesslint": 0
+      "alfa": -811,
+      "axe": -2,
+      "equalAccess": 1427,
+      "qualweb": 194,
+      "accesslint": 247
     }
   },
-  "overallTrend": "stable",
+  "overallTrend": "worsening",
   "improvingCount": 0,
   "worseningCount": 1,
   "latestTotals": {
+    "alfa": 3780,
+    "axe": 8,
+    "equalAccess": 1427,
+    "qualweb": 194,
+    "accesslint": 247,
+    "combined": 5656,
+    "scannedAt": "2026-07-26T01:47:36.239Z",
+    "scannedCount": 92
+  },
+  "baselineTotals": {
     "alfa": 4591,
     "axe": 10,
     "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
     "combined": 4601,
-    "scannedAt": "2026-06-05T18:28:18.229Z",
-    "scannedCount": 108
-  },
-  "baselineTotals": {
-    "alfa": 0,
-    "axe": 10,
-    "equalAccess": 0,
-    "qualweb": 0,
-    "accesslint": 0,
-    "combined": 10,
-    "scannedAt": "2026-06-04T17:45:57.035Z",
+    "scannedAt": "2026-06-05T14:07:00.220Z",
     "scannedCount": 108
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 72,
+      "pageCount": 61,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
@@ -222,14 +222,14 @@
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
-        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
-        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports",
+        "https://www.cms.gov/marketplace/about/affordable-care-act/content-requirements-plan-finder"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
-      "pageCount": 72,
+      "pageCount": 61,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
@@ -238,14 +238,14 @@
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
-        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
-        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports",
+        "https://www.cms.gov/marketplace/about/affordable-care-act/content-requirements-plan-finder"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 72,
+      "pageCount": 61,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
@@ -254,14 +254,14 @@
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-c-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/medicare-part-d-ipm/error-rate-findings-results",
         "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/perm-error-rate-findings-and-reports",
-        "https://www.cms.gov/about-cms/contact/speaking-engagement-request-form",
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
-        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports"
+        "https://www.cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/payment-error-rate-measurement-perm/archive/perm-error-rate-findings-reports",
+        "https://www.cms.gov/marketplace/about/affordable-care-act/content-requirements-plan-finder"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r1",
-      "pageCount": 27,
+      "pageCount": 26,
       "pages": [
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
@@ -277,7 +277,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
-      "pageCount": 27,
+      "pageCount": 26,
       "pages": [
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
@@ -293,7 +293,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
-      "pageCount": 27,
+      "pageCount": 26,
       "pages": [
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
@@ -309,7 +309,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
-      "pageCount": 27,
+      "pageCount": 26,
       "pages": [
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/cpc-evaluation-findings-annual-report-2",
         "https://www.cms.gov/priorities/innovation/data-and-reports/2020/ocm-annual-report-2-findings-glance",
@@ -325,25 +325,23 @@
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 6,
+      "pageCount": 5,
       "pages": [
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
         "https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums",
         "https://www.cms.gov/medicare/physician-fee-schedule/search/overview",
         "https://www.cms.gov/medicare/audits-compliance/part-a-cost-report",
-        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs",
-        "https://www.cms.gov/medicare/quality/quality-improvement-organizations"
+        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
-      "pageCount": 5,
+      "pageCount": 4,
       "pages": [
         "https://www.cms.gov/about-cms/contact/speech-meeting-requests",
         "https://www.cms.gov/medicare/medicaid-coordination/about/state-payment-premiums",
         "https://www.cms.gov/medicare/audits-compliance/part-a-cost-report",
-        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs",
-        "https://www.cms.gov/medicare/quality/quality-improvement-organizations"
+        "https://www.cms.gov/medicaid-chip/medicare-coordination/financial-alignment/managed-fee-for-service-model-mffs"
       ]
     }
   ]

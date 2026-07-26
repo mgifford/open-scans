@@ -302,7 +302,7 @@ export function parseScanIssue(issueEvent) {
   const requestedUrls = [];
   for (const raw of urlsSectionCandidates) {
     const url = unwrapGoogleUrl(raw);
-    if (!seen.has(url)) {
+    if (validateUriLike(url) && !seen.has(url)) {
       seen.add(url);
       requestedUrls.push(url);
     }

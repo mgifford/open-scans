@@ -1039,6 +1039,44 @@ test("parseScanIssue extracts URLs from Markdown bullet lists with asterisk and 
   assert.ok(result.value.requestedUrls.includes("https://example.com/dash"), "should include dash-prefixed URL");
 });
 
+test("parseScanIssue filters out non-URL strings like markdown headers within the URLs section", () => {
+  // Simulates an issue body where non-URL noise (like duplicate headers)
+  // is pasted inside the URLs section (as seen in issue #320).
+  const body = [
+    "### URLs",
+    "",
+    "# URLs",
+    "",
+    "https://www.preservewholesale.com/",
+    "https://www.preservewholesale.com/collections/all",
+    "",
+    "### Scan context",
+    "",
+    "Viewport: desktop",
+    "ColorScheme: both",
+    "Browser: firefox"
+  ].join("\n");
+
+  const payload = {
+    issue: {
+      number: 320,
+      html_url: "https://github.com/mgifford/open-scans/issues/320",
+      title: "SCAN: https://www.preservewholesale.com/",
+      created_at: "2026-06-30T13:12:48Z",
+      user: { login: "dcj-preserve" },
+      body
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true, `should succeed but got errors: ${result.errors}`);
+  assert.equal(result.value.requestedUrls.length, 2, "should extract only the 2 valid URLs and filter out '# URLs'");
+  assert.deepEqual(result.value.requestedUrls, [
+    "https://www.preservewholesale.com/",
+    "https://www.preservewholesale.com/collections/all"
+  ]);
+});
+
 // ── REMEDIATE keyword ─────────────────────────────────────────────────────────
 
 test("parseScanIssue detects REMEDIATE keyword in title", () => {
