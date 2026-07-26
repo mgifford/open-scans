@@ -1662,6 +1662,34 @@ test("generateInteractiveHtml does not show first-identified date when firstSeen
   );
 });
 
+// ── Corroboration badge ────────────────────────────────────────────────────
+
+function makeSummaryWithCorroboration() {
+  const summary = makeSummaryWithFingerprint();
+  summary.enhanced.consolidatedFailures[0].examples[0].corroboratedBy = ["semantica11y"];
+  return summary;
+}
+
+test("generateInteractiveHtml shows corroboration badge when corroboratedBy is set", () => {
+  const html = generateInteractiveHtml(makeSummaryWithCorroboration());
+  assert.ok(
+    html.includes('<span class="corroboration-badge"'),
+    "Should render corroboration-badge span when corroboratedBy is present"
+  );
+  assert.ok(
+    html.includes("Corroborated by Semantica11y"),
+    "Should show the corroborating tool's display label"
+  );
+});
+
+test("generateInteractiveHtml omits corroboration badge when corroboratedBy is absent", () => {
+  const html = generateInteractiveHtml(makeSummaryWithFingerprint());
+  assert.ok(
+    !html.includes('<span class="corroboration-badge"'),
+    "Should not render corroboration-badge span when corroboratedBy is absent"
+  );
+});
+
 // ── Change tracking section ────────────────────────────────────────────────
 
 test("generateInteractiveHtml includes change tracking section when new issues exist", () => {

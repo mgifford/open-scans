@@ -530,6 +530,29 @@ export function formatFirstSeenDate(isoDate) {
   return new Date(isoDate).toLocaleDateString("en-CA");
 }
 
+const CORROBORATION_SCANNER_LABELS = {
+  axe: "axe",
+  alfa: "ALFA",
+  equalAccess: "Equal Access",
+  accesslint: "AccessLint",
+  qualweb: "QualWeb",
+  semantica11y: "Semantica11y"
+};
+
+/**
+ * Format a `corroboratedBy` array (set by computeLocatorCorroboration) as a
+ * markdown line calling out that independent tools flagged the same element.
+ * Returns null when there's nothing to corroborate.
+ *
+ * @param {string[]|undefined} corroboratedBy
+ * @returns {string|null}
+ */
+function formatCorroborationLine(corroboratedBy) {
+  if (!corroboratedBy || corroboratedBy.length === 0) return null;
+  const labels = corroboratedBy.map((name) => CORROBORATION_SCANNER_LABELS[name] || name);
+  return `- ⚠️ **Corroborated by ${labels.join(", ")}** — flagged on the same element by ${labels.length + 1} independent tools, a stronger signal that this is a real issue rather than a false positive.`;
+}
+
 function normalizeRuleKey(failure) {
   // Only keep WCAG SC number tags (e.g. wcag143, wcag1411) — strip level tags like wcag2a, wcag21aa.
   // SC tags have 3+ digits after "wcag"; level tags end with letters.
@@ -692,6 +715,50 @@ function computeCrossEngineWcagOverlap(result) {
 }
 
 /**
+ * Flag findings that land on the exact same normalized locator on the same
+ * page as a finding from a *different* tool — regardless of whether the two
+ * tools share a formal ACT rule ID or WCAG SC. Two independent tests flagging
+ * the same piece of code is a stronger signal than either alone (per
+ * ACCESSIBILITY.md's "correlation key" guidance), and unlike the ACT
+ * Consensus report (axe+ALFA only) this covers every rule-based engine plus
+ * Semantica11y, which has no ACT mapping of its own.
+ *
+ * Sets `corroboratedBy` (array of other scanner names on the same locator) on
+ * each non-duplicate failure/issue. reflowRisk is page-level with no element
+ * locator, so it cannot participate and is not touched here.
+ *
+ * @param {object} result - Single per-URL scan result
+ */
+export function computeLocatorCorroboration(result) {
+  const byLocator = new Map();
+
+  for (const scannerName of SCANNER_ORDER) {
+    for (const failure of result[scannerName]?.failures ?? []) {
+      if (failure.isDuplicate) continue;
+      const locator = normalizeFindingLocator(failure.xpath || failure.selector || failure.html);
+      if (locator === "(no-locator)") continue;
+      if (!byLocator.has(locator)) byLocator.set(locator, []);
+      byLocator.get(locator).push({ scanner: scannerName, ref: failure });
+    }
+  }
+
+  for (const issue of result.semantica11y?.issues ?? []) {
+    const locator = normalizeFindingLocator(issue.element);
+    if (locator === "(no-locator)" || locator === "document") continue;
+    if (!byLocator.has(locator)) byLocator.set(locator, []);
+    byLocator.get(locator).push({ scanner: "semantica11y", ref: issue });
+  }
+
+  for (const entries of byLocator.values()) {
+    const scannersAtLocator = [...new Set(entries.map((e) => e.scanner))];
+    if (scannersAtLocator.length < 2) continue;
+    for (const { scanner, ref } of entries) {
+      ref.corroboratedBy = scannersAtLocator.filter((name) => name !== scanner);
+    }
+  }
+}
+
+/**
  * Load a fingerprint store from a JSON file.
  * Returns an empty object if the file does not exist or cannot be parsed.
  *
@@ -721,6 +788,31 @@ export function loadFingerprintStore(storePath) {
  * @param {object[]} results  - Array of per-URL scan result objects
  * @param {object}   scanMeta - { scannedAt, issueNumber, scanTitle }
  */
+function fingerprintOne(store, now, url, locator, ruleKey, scannerName, scanMeta, target) {
+  const fp = computeFindingFingerprint(url, locator, ruleKey);
+
+  if (!store[fp]) {
+    store[fp] = {
+      firstSeenAt: now,
+      lastSeenAt: now,
+      issueNumber: scanMeta.issueNumber ?? null,
+      scanTitle: scanMeta.scanTitle ?? null,
+      url,
+      ruleKey,
+      engine: scannerName
+    };
+  } else {
+    store[fp].lastSeenAt = now;
+    // Backfill engine/ruleKey fields if missing from older store entries
+    if (!store[fp].engine) store[fp].engine = scannerName;
+    if (!store[fp].ruleKey) store[fp].ruleKey = ruleKey;
+  }
+
+  target.fingerprint = fp;
+  target.firstSeenAt = store[fp].firstSeenAt;
+  target.patternId = computePatternId(locator, ruleKey);
+}
+
 export function annotateWithFingerprints(store, results, scanMeta) {
   const now = scanMeta.scannedAt || new Date().toISOString();
 
@@ -736,29 +828,25 @@ export function annotateWithFingerprints(store, results, scanMeta) {
           failure.xpath || failure.selector || failure.html
         );
         const ruleKey = normalizeRuleKey(failure);
-        const fp = computeFindingFingerprint(result.finalUrl, locator, ruleKey);
-
-        if (!store[fp]) {
-          store[fp] = {
-            firstSeenAt: now,
-            lastSeenAt: now,
-            issueNumber: scanMeta.issueNumber ?? null,
-            scanTitle: scanMeta.scanTitle ?? null,
-            url: result.finalUrl,
-            ruleKey,
-            engine: scannerName
-          };
-        } else {
-          store[fp].lastSeenAt = now;
-          // Backfill engine/ruleKey fields if missing from older store entries
-          if (!store[fp].engine) store[fp].engine = scannerName;
-          if (!store[fp].ruleKey) store[fp].ruleKey = ruleKey;
-        }
-
-        failure.fingerprint = fp;
-        failure.firstSeenAt = store[fp].firstSeenAt;
-        failure.patternId = computePatternId(locator, ruleKey);
+        fingerprintOne(store, now, result.finalUrl, locator, ruleKey, scannerName, scanMeta, failure);
       }
+    }
+
+    // Semantica11y issues aren't in SCANNER_ORDER (different shape: `issues`,
+    // not `failures`), but get the same fingerprint/pattern ID treatment so
+    // they participate in change tracking and cross-signal corroboration.
+    for (const issue of result.semantica11y?.issues ?? []) {
+      const locator = normalizeFindingLocator(issue.element);
+      const ruleKey = normalizeRuleKey(issue);
+      fingerprintOne(store, now, result.finalUrl, locator, ruleKey, "semantica11y", scanMeta, issue);
+    }
+
+    // reflowRisk is a single page-level indicator (no element locator), so it
+    // gets a fingerprint keyed on the URL and a fixed rule key rather than a
+    // per-element locator — this only lets it participate in firstSeenAt/
+    // lastSeenAt change tracking, not locator-based corroboration.
+    if (result.reflowRisk?.executed && result.reflowRisk.result !== "passed") {
+      fingerprintOne(store, now, result.finalUrl, "(page-level)", "rule:reflow-risk|light", "reflowRisk", scanMeta, result.reflowRisk);
     }
   }
 }
@@ -777,6 +865,10 @@ export function collectFingerprintsFromResults(results) {
         if (failure.fingerprint) keys.add(failure.fingerprint);
       }
     }
+    for (const issue of result.semantica11y?.issues ?? []) {
+      if (issue.fingerprint) keys.add(issue.fingerprint);
+    }
+    if (result.reflowRisk?.fingerprint) keys.add(result.reflowRisk.fingerprint);
   }
   return keys;
 }
@@ -1803,6 +1895,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
 
       addDuplicateMetadata(result);
       computeCrossEngineWcagOverlap(result);
+      computeLocatorCorroboration(result);
       return result;
     } catch (error) {
       // Handle errors from fetch or audits
@@ -2303,7 +2396,8 @@ function buildEnhancedSummary(summary) {
             browser: exampleScanContext.browser,
             fingerprint: failure.fingerprint ?? null,
             firstSeenAt: failure.firstSeenAt ?? null,
-            patternId: failure.patternId ?? null
+            patternId: failure.patternId ?? null,
+            corroboratedBy: failure.corroboratedBy ?? null
           });
         }
       }
@@ -2594,11 +2688,13 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   );
 
   if (semantica11yFlagged.length > 0) {
-    lines.push("| Page | Errors | Warnings | Suggestions | Page Title |");
-    lines.push("|---|---|---|---|---|");
+    lines.push("| Page | Errors | Warnings | Suggestions | Corroborated | Page Title |");
+    lines.push("|---|---|---|---|---|---|");
     for (const result of semantica11yFlagged) {
       const s = result.semantica11y.summary;
-      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${s.errors} | ${s.warnings} | ${s.suggestions} | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+      const corroboratedCount = result.semantica11y.issues.filter((issue) => issue.corroboratedBy?.length > 0).length;
+      const corroboratedCell = corroboratedCount > 0 ? `⚠️ ${corroboratedCount}` : "-";
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${s.errors} | ${s.warnings} | ${s.suggestions} | ${corroboratedCell} | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
     }
   } else {
     lines.push("✅ No semantic HTML/ARIA errors or warnings detected on any scanned page!");
@@ -2903,6 +2999,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
           const dateStr = formatFirstSeenDate(failure.firstSeenAt);
           lines.push(`- First identified: ${dateStr}`);
         }
+        const corroborationLine = formatCorroborationLine(failure.corroboratedBy);
+        if (corroborationLine) {
+          lines.push(corroborationLine);
+        }
         if (failure.message) {
           lines.push(`- Message: ${escapeMarkdown(failure.message)}`);
         }
@@ -2967,6 +3067,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         if (failure.firstSeenAt) {
           const dateStr = formatFirstSeenDate(failure.firstSeenAt);
           lines.push(`- First identified: ${dateStr}`);
+        }
+        const corroborationLine = formatCorroborationLine(failure.corroboratedBy);
+        if (corroborationLine) {
+          lines.push(corroborationLine);
         }
         if (failure.message) {
           lines.push(`- Message: ${escapeMarkdown(failure.message)}`);

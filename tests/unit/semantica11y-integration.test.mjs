@@ -130,4 +130,44 @@ describe("Semantica11y report integration", () => {
     const summary = buildSummary([skipped]);
     assert.doesNotThrow(() => toMarkdownReport(summary));
   });
+
+  it("markdown report shows a Corroborated count when a Semantica11y issue was flagged by another engine", () => {
+    const flagged = buildResult({
+      finalUrl: "https://example.com/corroborated",
+      pageTitle: "Corroborated finding",
+      semantica11y: {
+        executed: true,
+        summary: { total: 1, errors: 1, warnings: 0, suggestions: 0 },
+        issues: [
+          {
+            severity: "error",
+            rule: "image-alt",
+            element: "<img>",
+            message: "Image is missing an alt attribute",
+            corroboratedBy: ["axe"]
+          }
+        ],
+        error: null
+      }
+    });
+    const summary = buildSummary([flagged]);
+    const markdown = toMarkdownReport(summary);
+    assert.match(markdown, /\| \[View Page\]\(https:\/\/example\.com\/corroborated\) \| 1 \| 0 \| 0 \| ⚠️ 1 \|/);
+  });
+
+  it("markdown report shows '-' in the Corroborated column when nothing was corroborated", () => {
+    const flagged = buildResult({
+      semantica11y: {
+        executed: true,
+        summary: { total: 1, errors: 1, warnings: 0, suggestions: 0 },
+        issues: [
+          { severity: "error", rule: "image-alt", element: "<img>", message: "Image is missing an alt attribute" }
+        ],
+        error: null
+      }
+    });
+    const summary = buildSummary([flagged]);
+    const markdown = toMarkdownReport(summary);
+    assert.match(markdown, /\| \[View Page\]\(https:\/\/example\.com\) \| 1 \| 0 \| 0 \| - \|/);
+  });
 });

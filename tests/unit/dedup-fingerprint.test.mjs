@@ -382,3 +382,57 @@ test("computeChangeTracking handles missing store entries gracefully", () => {
   assert.equal(result.newIssues[0].url, null);
   assert.equal(result.resolvedIssues[0].engine, null);
 });
+
+// ── annotateWithFingerprints: semantica11y and reflowRisk ──────────────────
+
+function makeResultWithExtras({ semantica11yIssues = [], reflowRisk = null } = {}) {
+  const result = makeResult([]);
+  result.semantica11y = { executed: true, summary: { total: semantica11yIssues.length, errors: 0, warnings: 0, suggestions: 0 }, issues: semantica11yIssues, error: null };
+  if (reflowRisk) {
+    result.reflowRisk = reflowRisk;
+  }
+  return result;
+}
+
+test("annotateWithFingerprints attaches fingerprint and patternId to semantica11y issues", () => {
+  const store = {};
+  const issue = { severity: "error", rule: "image-alt", element: "<img>", message: "Image is missing an alt attribute" };
+  const results = [makeResultWithExtras({ semantica11yIssues: [issue] })];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-05-01T00:00:00Z" });
+
+  assert.ok(issue.fingerprint, "semantica11y issue should get a fingerprint");
+  assert.match(issue.fingerprint, /^[0-9a-f]{12}$/);
+  assert.ok(issue.patternId.startsWith(A11Y_ID_PREFIX));
+  assert.equal(store[issue.fingerprint].engine, "semantica11y");
+});
+
+test("annotateWithFingerprints gives reflowRisk a fingerprint when it did not pass", () => {
+  const store = {};
+  const reflowRisk = { executed: true, result: "failed", description: "overflow", overflowAmountPx: 42, error: null };
+  const results = [makeResultWithExtras({ reflowRisk })];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-05-01T00:00:00Z" });
+
+  assert.ok(reflowRisk.fingerprint, "reflowRisk should get a fingerprint when flagged");
+  assert.equal(store[reflowRisk.fingerprint].engine, "reflowRisk");
+});
+
+test("annotateWithFingerprints does not fingerprint a passing reflowRisk", () => {
+  const store = {};
+  const reflowRisk = { executed: true, result: "passed", description: "no overflow", overflowAmountPx: 0, error: null };
+  const results = [makeResultWithExtras({ reflowRisk })];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-05-01T00:00:00Z" });
+
+  assert.equal(reflowRisk.fingerprint, undefined, "a passing reflowRisk should not be fingerprinted");
+});
+
+test("collectFingerprintsFromResults includes semantica11y and reflowRisk fingerprints", () => {
+  const store = {};
+  const issue = { severity: "error", rule: "image-alt", element: "<img>", message: "Image is missing an alt attribute" };
+  const reflowRisk = { executed: true, result: "failed", description: "overflow", overflowAmountPx: 42, error: null };
+  const results = [makeResultWithExtras({ semantica11yIssues: [issue], reflowRisk })];
+  annotateWithFingerprints(store, results, { scannedAt: "2026-05-01T00:00:00Z" });
+
+  const keys = collectFingerprintsFromResults(results);
+  assert.ok(keys.has(issue.fingerprint));
+  assert.ok(keys.has(reflowRisk.fingerprint));
+});

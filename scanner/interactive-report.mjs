@@ -256,6 +256,24 @@ function renderBugIdDisplay(fingerprint, patternId) {
   return `<span class="bug-id-display" title="${escapeHtml(title)}">\u{1F511} Pattern ID: <code class="bug-id-code">${visibleId}</code></span>`;
 }
 
+const CORROBORATION_ENGINE_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb', semantica11y: 'Semantica11y' };
+
+/**
+ * Render a badge when this finding was flagged by another independent tool on
+ * the same element (set by computeLocatorCorroboration in run-scan.mjs). This
+ * is not restricted to ACT-mapped engines — the value is "two different
+ * tests on the same code", not a shared formal rule ID.
+ *
+ * @param {string[]} [corroboratedBy] - Other scanner names sharing this finding's locator
+ * @returns {string} HTML string, or empty string when there's nothing to corroborate
+ */
+function renderCorroborationBadge(corroboratedBy) {
+  if (!corroboratedBy || corroboratedBy.length === 0) return '';
+  const labels = corroboratedBy.map((name) => CORROBORATION_ENGINE_LABELS[name] || name);
+  const title = `Flagged on the same element by ${labels.join(', ')} — independent agreement is a stronger signal against false positives.`;
+  return `<span class="corroboration-badge" title="${escapeHtml(title)}">\u{26A0}\u{FE0F} Corroborated by ${escapeHtml(labels.join(', '))}</span>`;
+}
+
 function renderScanContextSummary(scanContext) {
   const context = buildScanContext(scanContext);
   return `
@@ -711,6 +729,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
                   <strong>Mode:</strong> <span class="badge ${ex.colorScheme === 'dark' ? 'badge-dark' : 'badge-light'}">${ex.colorScheme || 'light'}</span>
                   ${ex.firstSeenAt ? `<span class="first-seen">🕑 First identified: ${escapeHtml(formatFirstSeenDate(ex.firstSeenAt))}</span>` : ''}
                    ${renderBugIdDisplay(ex.fingerprint, ex.patternId)}
+                   ${renderCorroborationBadge(ex.corroboratedBy)}
                 </div>
                 ${ex.html ? `<div class="example-code">${escapeHtml(ex.html)}</div>` : ''}
                 ${ex.xpath ? `<div class="example-xpath">XPath: ${escapeHtml(ex.xpath)}</div>` : ''}
@@ -1250,6 +1269,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     }
     .bug-id-display { font-size: 0.8em; color: var(--muted); }
     .bug-id-code { font-family: monospace; background: var(--code-bg); color: var(--code-color); padding: 0.1em 0.3em; border-radius: 3px; letter-spacing: 0.05em; user-select: all; }
+    .corroboration-badge { font-size: 0.8em; font-weight: 600; padding: 0.1em 0.5em; border: 1px solid var(--border); border-radius: 3px; }
 
     /* Priority table */
     .priority-section { margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
