@@ -1,0 +1,297 @@
+{
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-05-05T04:50:03.813Z",
+        "totals": {
+          "alfa": 5292,
+          "axe": 1068,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 6360,
+          "scannedAt": "2026-05-05T04:50:03.813Z",
+          "scannedCount": 68
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-26T22:25:17.956Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1087,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 1326,
+          "combined": 2413,
+          "scannedAt": "2026-07-26T22:25:17.956Z",
+          "scannedCount": 67
+        }
+      },
+      "change": -3947,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -5292,
+        "axe": 19,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 1326
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-05-05T04:50:03.813Z",
+      "totals": {
+        "alfa": 5292,
+        "axe": 1068,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 6360,
+        "scannedAt": "2026-05-05T04:50:03.813Z",
+        "scannedCount": 68
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-26T22:25:17.956Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 1087,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 1326,
+        "combined": 2413,
+        "scannedAt": "2026-07-26T22:25:17.956Z",
+        "scannedCount": 67
+      }
+    },
+    "change": -3947,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -5292,
+      "axe": 19,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 1326
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 0,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 1087,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 1326,
+    "combined": 2413,
+    "scannedAt": "2026-07-26T22:25:17.956Z",
+    "scannedCount": 67
+  },
+  "baselineTotals": {
+    "alfa": 5292,
+    "axe": 1068,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 6360,
+    "scannedAt": "2026-05-05T04:50:03.813Z",
+    "scannedCount": 68
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 64,
+      "pages": [
+        "https://www.aartselaar.be/",
+        "https://www.antwerpen.be/",
+        "https://www.baarle-hertog.be/",
+        "https://www.balen.be/",
+        "https://www.beerse.be/",
+        "https://www.berlaar.be/",
+        "https://www.gemeentebkz.be/",
+        "https://www.boechout.be/",
+        "https://www.bonheiden.be/",
+        "https://www.boom.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 42,
+      "pages": [
+        "https://www.aartselaar.be/",
+        "https://www.baarle-hertog.be/",
+        "https://www.balen.be/",
+        "https://www.berlaar.be/",
+        "https://www.gemeentebkz.be/",
+        "https://www.bonheiden.be/",
+        "https://www.boom.be/",
+        "https://www.bornem.be/",
+        "https://www.brasschaat.be/",
+        "https://www.dessel.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 23,
+      "pages": [
+        "https://www.aartselaar.be/",
+        "https://www.antwerpen.be/",
+        "https://www.beerse.be/",
+        "https://www.berlaar.be/",
+        "https://www.boechout.be/",
+        "https://www.bonheiden.be/",
+        "https://www.essen.be/",
+        "https://www.herenthout.be/",
+        "https://www.hove.be/",
+        "https://www.laakdal.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:label-title-only",
+      "pageCount": 13,
+      "pages": [
+        "https://www.balen.be/",
+        "https://www.bonheiden.be/",
+        "https://www.dessel.be/",
+        "https://www.duffel.be/",
+        "https://www.geel.be/",
+        "https://www.grobbendonk.be/",
+        "https://www.kapellen.be/",
+        "https://www.kontich.be/",
+        "https://www.malle.be/",
+        "https://www.meerhout.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 8,
+      "pages": [
+        "https://www.antwerpen.be/",
+        "https://www.berlaar.be/",
+        "https://www.brasschaat.be/",
+        "https://www.geel.be/",
+        "https://www.mechelen.be/",
+        "https://www.puurs-sint-amands.be/",
+        "https://www.schelle.be/",
+        "https://www.willebroek.be/nl"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 7,
+      "pages": [
+        "https://arendonk.be/",
+        "https://www.grobbendonk.be/",
+        "https://www.herentals.be/",
+        "https://www.hoogstraten.be/",
+        "https://www.retie.be/",
+        "https://www.schilde.be/",
+        "https://www.wuustwezel.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 7,
+      "pages": [
+        "https://www.hove.be/",
+        "https://kalmthout.be/",
+        "https://www.mortsel.be/",
+        "https://www.schilde.be/",
+        "https://www.westerlo.be/",
+        "https://www.wijnegem.be/",
+        "https://www.wommelgem.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 6,
+      "pages": [
+        "https://www.berlaar.be/",
+        "https://www.brasschaat.be/",
+        "https://www.grobbendonk.be/",
+        "https://kalmthout.be/",
+        "https://www.lier.be/",
+        "https://www.malle.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 5,
+      "pages": [
+        "https://www.herentals.be/",
+        "https://kalmthout.be/",
+        "https://www.mechelen.be/",
+        "https://www.schoten.be/",
+        "https://www.willebroek.be/nl"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-hidden-focus",
+      "pageCount": 4,
+      "pages": [
+        "https://www.aartselaar.be/",
+        "https://www.lille.be/",
+        "https://www.retie.be/",
+        "https://www.wommelgem.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-redundant-alt",
+      "pageCount": 4,
+      "pages": [
+        "https://www.dessel.be/",
+        "https://www.schilde.be/",
+        "https://www.westerlo.be/",
+        "https://www.zandhoven.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:scrollable-region-focusable",
+      "pageCount": 4,
+      "pages": [
+        "https://www.hove.be/",
+        "https://www.mortsel.be/",
+        "https://www.wijnegem.be/",
+        "https://www.wommelgem.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-complementary-is-top-level",
+      "pageCount": 3,
+      "pages": [
+        "https://www.antwerpen.be/",
+        "https://www.hulshout.be/nl",
+        "https://www.rijkevorsel.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 3,
+      "pages": [
+        "https://www.berlaar.be/",
+        "https://kalmthout.be/",
+        "https://www.schelle.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 3,
+      "pages": [
+        "https://www.brasschaat.be/",
+        "https://www.mechelen.be/",
+        "https://www.puurs-sint-amands.be/"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 3,
+      "pages": [
+        "https://www.puurs-sint-amands.be/",
+        "https://www.schelle.be/",
+        "https://www.wuustwezel.be/"
+      ]
+    }
+  ]
+}
