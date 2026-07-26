@@ -478,6 +478,47 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     </section>
   ` : '';
 
+  // Reflow risk (WCAG 1.4.10): a page-level indicator, not a rule-based
+  // engine, so it gets its own section rather than a priority-table column.
+  const reflowFlagged = (results || []).filter(
+    (r) => r.reflowRisk?.executed && (r.reflowRisk.result === 'failed' || r.reflowRisk.result === 'potential')
+  );
+  const reflowSectionHtml = `
+    <section class="reflow-section" aria-labelledby="reflow-heading">
+      <h2 id="reflow-heading">🧭 Reflow Risk (WCAG 1.4.10)</h2>
+      <p>Page-level indicator: resizes to 320 CSS pixels wide and checks for horizontal overflow. This is a risk indicator, not a conformance verdict —
+        see <a href="https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/BEHAVIORAL_ACCESSIBILITY_AUTOMATION.md" target="_blank" rel="noopener">Behavioral Accessibility Automation</a>
+        for what it can and cannot detect.</p>
+      ${reflowFlagged.length > 0 ? `
+      <div class="table-wrapper" role="region" aria-label="Pages with reflow risk" tabindex="0">
+        <table class="reflow-table">
+          <thead>
+            <tr>
+              <th scope="col">Page</th>
+              <th scope="col">Result</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${reflowFlagged.map((r) => {
+    const displayUrl = r.finalUrl || r.submittedUrl;
+    const pageTitle = r.pageTitle || displayUrl;
+    const rr = r.reflowRisk;
+    const badgeClass = rr.result === 'failed' ? 'badge-reflow-failed' : 'badge-reflow-potential';
+    return `
+            <tr>
+              <td><a href="${escapeHtml(displayUrl)}" target="_blank" rel="noopener" title="${escapeHtml(displayUrl)}">${escapeHtml(pageTitle)}</a></td>
+              <td><span class="badge ${badgeClass}">${escapeHtml(rr.result)}</span></td>
+              <td>${escapeHtml(rr.description || '')}</td>
+            </tr>`;
+  }).join('')}
+          </tbody>
+        </table>
+      </div>
+      ` : `<p>✅ No horizontal overflow detected at 320px width on any scanned page!</p>`}
+    </section>
+  `;
+
   // Engine order and labels for accordion sections
   const ENGINE_ORDER = ['alfa', 'axe', 'equalAccess', 'accesslint', 'qualweb'];
   const ENGINE_ACCORDION_LABELS = {
@@ -1118,6 +1159,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .badge-level-aa { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
     .badge-level-aaa { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
     .badge-best-practice { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .badge-reflow-failed { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .badge-reflow-potential { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
     .wcag-inline { display: inline-flex; align-items: center; gap: 0.25rem; }
     .wcag-sc-link { color: var(--link); font-size: 0.8rem; text-decoration: none; }
     .wcag-sc-link:hover { text-decoration: underline; }
@@ -1722,6 +1765,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       </h2>
 
       ${priorityTableHtml}
+
+      ${reflowSectionHtml}
 
       ${filterControlsHtml}
 

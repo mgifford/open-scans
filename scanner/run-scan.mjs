@@ -14,6 +14,7 @@ import { collectActConsensusOverlaps } from "./act-mapping.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
+import { runReflowRisk } from "./reflow-risk.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -462,6 +463,19 @@ function createScannerBaseError(errorMessage = null) {
     outcomeCount: 0,
     uniqueFailedCount: 0,
     duplicateFailedCount: 0
+  };
+}
+
+// Reflow risk (WCAG 1.4.10) is a single page-level indicator, not a rule-based
+// engine, so it does not share axe/alfa/etc.'s counts/failedRules shape.
+function createReflowRiskBaseError(errorMessage = null) {
+  return {
+    executed: false,
+    result: null,
+    description: null,
+    overflowAmountPx: null,
+    helpUrl: "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+    error: errorMessage
   };
 }
 
@@ -1142,6 +1156,72 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
   }
 }
 
+// Reflow risk (WCAG 1.4.10): resizes to 320 CSS px and checks for horizontal
+// overflow. See scanner/reflow-risk.mjs for the check itself and
+// examples/BEHAVIORAL_ACCESSIBILITY_AUTOMATION.md (mgifford/ACCESSIBILITY.md)
+// for why this is an indicator, not a conformance verdict.
+async function runReflowRiskAudit(url, scanContext = buildScanContext()) {
+  const base = createReflowRiskBaseError(null);
+
+  try {
+    const { playwright: pw } = await loadAxeDependencies();
+
+    if (!pw) {
+      return { ...base, error: "Playwright not available" };
+    }
+
+    let browser;
+    try {
+      const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      browser = await browserType.launch({
+        headless: true,
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+      });
+    } catch (error) {
+      return {
+        ...base,
+        error: `Playwright browser '${scanContext.browser}' could not be launched: ${error instanceof Error ? error.message : String(error)}`
+      };
+    }
+
+    try {
+      const page = await browser.newPage();
+      try {
+        await page.goto(url, {
+          waitUntil: "load",
+          timeout: TIMEOUTS.BROWSER_NAV_TIMEOUT
+        });
+      } catch (error) {
+        await browser.close();
+        return { ...base, error: error instanceof Error ? error.message : String(error) };
+      }
+
+      const check = await runReflowRisk(page, TIMEOUTS.BROWSER_NAV_TIMEOUT, {
+        waitForNetworkIdleMs: TIMEOUTS.NETWORK_IDLE_TIMEOUT
+      });
+      await browser.close();
+
+      if (!check) {
+        return { ...base, error: "Reflow risk check did not return a result" };
+      }
+
+      return {
+        executed: true,
+        result: check.result,
+        description: check.description,
+        overflowAmountPx: check.measurements?.overflowAmountPx ?? null,
+        helpUrl: check.helpUrl,
+        error: null
+      };
+    } catch (error) {
+      await browser.close();
+      throw error;
+    }
+  } catch (error) {
+    return { ...base, error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
 async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = buildScanContext()) {
   const base = createScannerBaseError(null);
   const timings = {
@@ -1661,6 +1741,11 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         : scannersToRun.runQualWeb
           ? await runQualWebAudit(finalUrl)
           : createScannerBaseError("Skipped (not requested)");
+      // Reflow risk always runs for HTML content — it's a lightweight
+      // indicator, not an opt-in rule engine (see determineScannersToRun).
+      const reflowRisk = browserSkipReason
+        ? createReflowRiskBaseError(browserSkipReason)
+        : await runReflowRiskAudit(finalUrl, scanContext);
 
         const pageNavigationMs = Math.max(
           axe.timings?.navigationMs ?? 0,
@@ -1683,6 +1768,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         equalAccess,
         accesslint,
         qualweb,
+        reflowRisk,
         duplicateFindingCount: 0,
         timings: {
           fetchMs,
@@ -1719,6 +1805,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         equalAccess: baseErrorResult,
         accesslint: baseErrorResult,
         qualweb: baseErrorResult,
+        reflowRisk: createReflowRiskBaseError(error instanceof Error ? error.message : String(error)),
         duplicateFindingCount: 0,
         timings: {
           fetchMs: Date.now() - started,
@@ -1757,6 +1844,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
       equalAccess: baseErrorResult,
       accesslint: baseErrorResult,
       qualweb: baseErrorResult,
+      reflowRisk: createReflowRiskBaseError("URL scan timeout exceeded"),
       duplicateFindingCount: 0,
       timings: {
         fetchMs: null,
@@ -2299,6 +2387,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.qualwebTotals) {
     lines.push(`- QualWeb outcomes: ${summary.qualwebTotals.passed} passed, ${summary.qualwebTotals.failed} failed, ${summary.qualwebTotals.cantTell} cantTell, ${summary.qualwebTotals.inapplicable} inapplicable`);
   }
+  if (summary.reflowRiskTotals) {
+    const r = summary.reflowRiskTotals;
+    lines.push(`- Reflow risk outcomes (WCAG 1.4.10, indicator only — not a conformance verdict): ${r.failed} failed, ${r.potential} potential, ${r.passed} passed, ${r.cantTell} cantTell, ${r.notExecuted} not executed`);
+  }
   if (summary.duplicateFindingTotals !== undefined) {
     lines.push(`- Duplicate findings caught by later scanners: ${summary.duplicateFindingTotals}`);
   }
@@ -2435,6 +2527,29 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     }
   } else {
     lines.push("✅ No pages with accessibility errors detected!");
+  }
+  lines.push("");
+
+  // Reflow risk (WCAG 1.4.10): a page-level indicator, not a rule-based
+  // engine, so it gets its own section rather than a PRIORITY_COLUMNS entry.
+  lines.push("## 🧭 Reflow Risk (WCAG 1.4.10)");
+  lines.push("");
+  lines.push("Page-level indicator: resizes to 320 CSS pixels wide and checks for horizontal overflow. This is a risk indicator, not a conformance verdict — see [Behavioral Accessibility Automation](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/BEHAVIORAL_ACCESSIBILITY_AUTOMATION.md) for what it can and cannot detect.");
+  lines.push("");
+
+  const reflowFlagged = summary.results.filter(
+    (r) => r.reflowRisk?.executed && (r.reflowRisk.result === "failed" || r.reflowRisk.result === "potential")
+  );
+
+  if (reflowFlagged.length > 0) {
+    lines.push("| Page | Result | Details | Page Title |");
+    lines.push("|---|---|---|---|");
+    for (const result of reflowFlagged) {
+      const rr = result.reflowRisk;
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${rr.result} | ${escapeMarkdown(rr.description || "")} | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+    }
+  } else {
+    lines.push("✅ No horizontal overflow detected at 320px width on any scanned page!");
   }
   lines.push("");
 
@@ -3502,6 +3617,17 @@ async function main() {
     inapplicable: 0
   };
 
+  // Reflow risk is a single indicator per URL (not rule counts), so its totals
+  // are verdict counts across scanned URLs rather than passed/failed/cantTell
+  // finding counts.
+  const reflowRiskTotals = {
+    failed: 0,
+    potential: 0,
+    passed: 0,
+    cantTell: 0,
+    notExecuted: 0
+  };
+
   let duplicateFindingTotals = 0;
   let darkModeUrlCount = 0;
   let reducedMotionUrlCount = 0;
@@ -3556,6 +3682,18 @@ async function main() {
     qualwebTotals.failed += result.qualweb?.counts?.failed ?? 0;
     qualwebTotals.cantTell += result.qualweb?.counts?.cantTell ?? 0;
     qualwebTotals.inapplicable += result.qualweb?.counts?.inapplicable ?? 0;
+
+    if (!result.reflowRisk?.executed) {
+      reflowRiskTotals.notExecuted++;
+    } else if (result.reflowRisk.result === "failed") {
+      reflowRiskTotals.failed++;
+    } else if (result.reflowRisk.result === "potential") {
+      reflowRiskTotals.potential++;
+    } else if (result.reflowRisk.result === "passed") {
+      reflowRiskTotals.passed++;
+    } else {
+      reflowRiskTotals.cantTell++;
+    }
 
     duplicateFindingTotals += result.duplicateFindingCount ?? 0;
   }
@@ -3625,6 +3763,7 @@ async function main() {
     equalAccessTotals,
     accesslintTotals,
     qualwebTotals,
+    reflowRiskTotals,
     duplicateFindingTotals,
     darkModeUrlCount,
     reducedMotionUrlCount,
