@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-06-12T16:10:30.663Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 5214,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 4329,
+          "combined": 9543,
+          "scannedAt": "2026-06-12T16:10:30.663Z",
+          "scannedCount": 99
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-26T21:37:49.907Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 4886,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 4052,
+          "combined": 8938,
+          "scannedAt": "2026-07-26T21:37:49.907Z",
+          "scannedCount": 93
+        }
+      },
+      "change": -605,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -328,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": -277
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-06-12T16:10:30.663Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 5214,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 4329,
+        "combined": 9543,
+        "scannedAt": "2026-06-12T16:10:30.663Z",
+        "scannedCount": 99
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-26T21:37:49.907Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 4886,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 4052,
+        "combined": 8938,
+        "scannedAt": "2026-07-26T21:37:49.907Z",
+        "scannedCount": 93
+      }
+    },
+    "change": -605,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": 0,
+      "axe": -328,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": -277
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 0,
   "latestTotals": {
+    "alfa": 0,
+    "axe": 4886,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 4052,
+    "combined": 8938,
+    "scannedAt": "2026-07-26T21:37:49.907Z",
+    "scannedCount": 93
+  },
+  "baselineTotals": {
     "alfa": 0,
     "axe": 5214,
     "equalAccess": 0,
@@ -14,7 +102,7 @@
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 99,
+      "pageCount": 93,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
@@ -30,7 +118,7 @@
     },
     {
       "ruleId": "axe:label",
-      "pageCount": 99,
+      "pageCount": 93,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
@@ -46,7 +134,7 @@
     },
     {
       "ruleId": "axe:landmark-one-main",
-      "pageCount": 99,
+      "pageCount": 93,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
@@ -62,7 +150,7 @@
     },
     {
       "ruleId": "axe:region",
-      "pageCount": 99,
+      "pageCount": 93,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
@@ -78,7 +166,7 @@
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 59,
+      "pageCount": 57,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/track/search/",
@@ -94,7 +182,7 @@
     },
     {
       "ruleId": "axe:link-in-text-block",
-      "pageCount": 53,
+      "pageCount": 49,
       "pages": [
         "https://fosdem.org/2026/practical/accessibility/",
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
@@ -110,7 +198,7 @@
     },
     {
       "ruleId": "axe:empty-heading",
-      "pageCount": 39,
+      "pageCount": 35,
       "pages": [
         "https://fosdem.org/2026/schedule/event/ANGFQX-our_freedoms_depend_on_accessibility/",
         "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
@@ -126,7 +214,7 @@
     },
     {
       "ruleId": "axe:image-alt",
-      "pageCount": 11,
+      "pageCount": 10,
       "pages": [
         "https://fosdem.org/2026/schedule/event/D9RRZC-otp-finds-a-way/",
         "https://fosdem.org/2026/schedule/event/QKNMJN-package-management-in-the-hands-of-users/",
