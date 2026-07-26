@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-07-09T10:05:26.852Z",
+        "totals": {
+          "alfa": 4329,
+          "axe": 1801,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 6130,
+          "scannedAt": "2026-07-09T10:05:26.852Z",
+          "scannedCount": 23
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-26T00:58:45.972Z",
+        "totals": {
+          "alfa": 4451,
+          "axe": 1818,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 6269,
+          "scannedAt": "2026-07-26T00:58:45.972Z",
+          "scannedCount": 23
+        }
+      },
+      "change": 139,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 122,
+        "axe": 17,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-07-09T10:05:26.852Z",
+      "totals": {
+        "alfa": 4329,
+        "axe": 1801,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 6130,
+        "scannedAt": "2026-07-09T10:05:26.852Z",
+        "scannedCount": 23
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-26T00:58:45.972Z",
+      "totals": {
+        "alfa": 4451,
+        "axe": 1818,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 6269,
+        "scannedAt": "2026-07-26T00:58:45.972Z",
+        "scannedCount": 23
+      }
+    },
+    "change": 139,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 122,
+      "axe": 17,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
+    "alfa": 4451,
+    "axe": 1818,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 6269,
+    "scannedAt": "2026-07-26T00:58:45.972Z",
+    "scannedCount": 23
+  },
+  "baselineTotals": {
     "alfa": 4329,
     "axe": 1801,
     "equalAccess": 0,
@@ -174,14 +262,27 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
-      "pageCount": 6,
+      "pageCount": 7,
       "pages": [
         "https://www.cc-coeurdegaronne.fr/",
         "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
         "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
         "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)",
         "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
-        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/"
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 6,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/",
+        "https://www.cc-coeurdegaronne.fr/france-services/",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/rendez-vous-test/",
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
       ]
     },
     {
@@ -197,13 +298,13 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
       "pageCount": 5,
       "pages": [
         "https://www.cc-coeurdegaronne.fr/",
-        "https://www.cc-coeurdegaronne.fr/france-services/",
-        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
-        "https://www.cc-coeurdegaronne.fr/rendez-vous-test/",
+        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
+        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
         "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/"
       ]
     },
@@ -230,13 +331,13 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
+      "ruleId": "axe:skip-link",
       "pageCount": 4,
       "pages": [
-        "https://www.cc-coeurdegaronne.fr/",
-        "https://www.cc-coeurdegaronne.fr/actualites/",
+        "https://www.cc-coeurdegaronne.fr/poste/conseiller-france-services-en-alternance/",
         "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
-        "https://www.cc-coeurdegaronne.fr/carte-interactive"
+        "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)",
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/"
       ]
     },
     {
@@ -249,15 +350,6 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r3",
-      "pageCount": 3,
-      "pages": [
-        "https://www.cc-coeurdegaronne.fr/offres-demploi/",
-        "https://www.cc-coeurdegaronne.fr/contact/",
-        "https://www.cc-coeurdegaronne.fr/nos-politiques/"
-      ]
-    },
-    {
       "ruleId": "axe:landmark-unique",
       "pageCount": 3,
       "pages": [
@@ -267,12 +359,21 @@
       ]
     },
     {
-      "ruleId": "axe:skip-link",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r62",
       "pageCount": 3,
       "pages": [
-        "https://www.cc-coeurdegaronne.fr/fort-temps-dattente-a-la-decheterie-de-rieumes/",
-        "https://www.cc-coeurdegaronne.fr/?s=canicule%20(et%20fonctionnalit%C3%A9%20de%20recherche)",
-        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/"
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 3,
+      "pages": [
+        "https://www.cc-coeurdegaronne.fr/kiosque/coeur-de-garonne-info-n23/",
+        "https://www.cc-coeurdegaronne.fr/presentation-territoire/communes/",
+        "https://www.cc-coeurdegaronne.fr/rapport-dactivite/"
       ]
     }
   ]
