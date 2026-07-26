@@ -15,6 +15,7 @@ import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
 import { runReflowRisk } from "./reflow-risk.mjs";
+import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11y-audit.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -52,6 +53,13 @@ export function determineScannersToRun(engines) {
 // Maximum number of net::ERR_ABORTED errors (per-URL) before stopping the scan early.
 // Configurable via ERR_ABORTED_THRESHOLD env var. Default is 5.
 const ERR_ABORTED_THRESHOLD = parseInt(process.env.ERR_ABORTED_THRESHOLD || "5", 10);
+
+// URL count above which a scan gets a soft warning suggesting it be split into
+// multiple issues. Does not reject or truncate anything — six engines now run
+// per URL (axe, alfa, equalAccess, accesslint, qualweb, semantica11y), so large
+// lists are the main way a scan approaches TOTAL_SCAN_TIMEOUT_MS.
+// Configurable via LARGE_SCAN_URL_WARNING_THRESHOLD env var. Default is 150.
+const LARGE_SCAN_URL_WARNING_THRESHOLD = parseInt(process.env.LARGE_SCAN_URL_WARNING_THRESHOLD || "150", 10);
 
 // Timeout configuration (in milliseconds)
 // These can be adjusted via environment variables for flexibility
@@ -1127,6 +1135,10 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
       timings.auditMs = Date.now() - auditStarted;
       timings.totalMs = Date.now() - started;
 
+      // Captured for Semantica11y (runs against this HTML with no browser
+      // of its own — see runSemantica11yAudit below).
+      const renderedHtml = await page.content().catch(() => null);
+
       await browser.close();
 
       return {
@@ -1136,6 +1148,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
         failedRules: [...allResults.failedRules].sort(),
         passedRules: [...allResults.passedRules].sort(),
         failures: allResults.failures,
+        renderedHtml,
         outcomeCount: allResults.counts.passed + allResults.counts.failed + allResults.counts.cantTell + allResults.counts.inapplicable,
         darkModeScanned: modesToRun.includes("dark"),
         requestedColorScheme: scanContext.colorScheme,
@@ -1746,6 +1759,11 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
       const reflowRisk = browserSkipReason
         ? createReflowRiskBaseError(browserSkipReason)
         : await runReflowRiskAudit(finalUrl, scanContext);
+      // Semantica11y always runs for HTML content too — it reuses the HTML
+      // axe already rendered, so it costs no extra browser launch.
+      const semantica11y = browserSkipReason
+        ? createSemantica11yBaseError(browserSkipReason)
+        : await runSemantica11yAudit(axe.renderedHtml ?? null, finalUrl);
 
         const pageNavigationMs = Math.max(
           axe.timings?.navigationMs ?? 0,
@@ -1769,6 +1787,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         accesslint,
         qualweb,
         reflowRisk,
+        semantica11y,
         duplicateFindingCount: 0,
         timings: {
           fetchMs,
@@ -1806,6 +1825,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         accesslint: baseErrorResult,
         qualweb: baseErrorResult,
         reflowRisk: createReflowRiskBaseError(error instanceof Error ? error.message : String(error)),
+        semantica11y: createSemantica11yBaseError(error instanceof Error ? error.message : String(error)),
         duplicateFindingCount: 0,
         timings: {
           fetchMs: Date.now() - started,
@@ -1845,6 +1865,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
       accesslint: baseErrorResult,
       qualweb: baseErrorResult,
       reflowRisk: createReflowRiskBaseError("URL scan timeout exceeded"),
+      semantica11y: createSemantica11yBaseError("URL scan timeout exceeded"),
       duplicateFindingCount: 0,
       timings: {
         fetchMs: null,
@@ -2324,6 +2345,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push(`- Total URLs submitted: ${summary.totalSubmitted}`);
   lines.push(`- Accepted public URLs: ${summary.acceptedCount}`);
 
+  if (summary.acceptedCount > LARGE_SCAN_URL_WARNING_THRESHOLD) {
+    lines.push(`- ⚠️ **Large scan: ${summary.acceptedCount} URLs exceeds the recommended ${LARGE_SCAN_URL_WARNING_THRESHOLD}-URL guideline.** Six engines run per URL; consider splitting into multiple issues to reduce the risk of hitting the total scan timeout.`);
+  }
+
   // Add scanned count if different from accepted
   if (summary.scannedCount !== undefined && summary.scannedCount !== summary.acceptedCount) {
     lines.push(`- **URLs scanned: ${summary.scannedCount}**`);
@@ -2390,6 +2415,10 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.reflowRiskTotals) {
     const r = summary.reflowRiskTotals;
     lines.push(`- Reflow risk outcomes (WCAG 1.4.10, indicator only — not a conformance verdict): ${r.failed} failed, ${r.potential} potential, ${r.passed} passed, ${r.cantTell} cantTell, ${r.notExecuted} not executed`);
+  }
+  if (summary.semantica11yTotals) {
+    const s = summary.semantica11yTotals;
+    lines.push(`- Semantica11y outcomes (semantic HTML/ARIA suggestions, kept separate from WCAG violation counts): ${s.errors} errors, ${s.warnings} warnings, ${s.suggestions} suggestions, ${s.notExecuted} not executed`);
   }
   if (summary.duplicateFindingTotals !== undefined) {
     lines.push(`- Duplicate findings caught by later scanners: ${summary.duplicateFindingTotals}`);
@@ -2550,6 +2579,29 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     }
   } else {
     lines.push("✅ No horizontal overflow detected at 320px width on any scanned page!");
+  }
+  lines.push("");
+
+  // Semantica11y: semantic HTML/ARIA suggestions, kept as its own section
+  // rather than folded into WCAG violation counts (per project directive).
+  lines.push("## 🏷️ Semantic HTML & ARIA (Semantica11y)");
+  lines.push("");
+  lines.push("Checks for non-semantic HTML and ARIA usage with suggestions for semantic improvements. These are suggestions, not WCAG conformance failures — see [semantica11y](https://npm.im/semantica11y) for the rule set.");
+  lines.push("");
+
+  const semantica11yFlagged = summary.results.filter(
+    (r) => r.semantica11y?.executed && (r.semantica11y.summary?.errors > 0 || r.semantica11y.summary?.warnings > 0)
+  );
+
+  if (semantica11yFlagged.length > 0) {
+    lines.push("| Page | Errors | Warnings | Suggestions | Page Title |");
+    lines.push("|---|---|---|---|---|");
+    for (const result of semantica11yFlagged) {
+      const s = result.semantica11y.summary;
+      lines.push(`| [View Page](${escapeMarkdown(result.finalUrl)}) | ${s.errors} | ${s.warnings} | ${s.suggestions} | ${escapeMarkdown(result.pageTitle || result.finalUrl)} |`);
+    }
+  } else {
+    lines.push("✅ No semantic HTML/ARIA errors or warnings detected on any scanned page!");
   }
   lines.push("");
 
@@ -3496,6 +3548,11 @@ async function main() {
   const validation = validateTargets(request.requestedUrls);
   const acceptedTargets = validation.accepted;
 
+  if (acceptedTargets.length > LARGE_SCAN_URL_WARNING_THRESHOLD) {
+    console.warn(`WARNING: Large scan (${acceptedTargets.length} URLs exceeds the recommended ${LARGE_SCAN_URL_WARNING_THRESHOLD}-URL guideline).`);
+    console.warn(`Tip: Consider splitting into multiple scan issues (100-150 URLs each) to reduce the risk of hitting the total scan timeout.`);
+  }
+
   const results = [];
   let skippedDueToTimeout = 0;
   let skippedDueToErrAborted = 0;
@@ -3628,6 +3685,16 @@ async function main() {
     notExecuted: 0
   };
 
+  // Semantica11y reports severity-tagged issues (error/warning/suggestion),
+  // not pass/fail rule counts, so totals are issue counts by severity —
+  // kept separate from WCAG violation counts (axe/alfa/etc.'s counts.failed).
+  const semantica11yTotals = {
+    errors: 0,
+    warnings: 0,
+    suggestions: 0,
+    notExecuted: 0
+  };
+
   let duplicateFindingTotals = 0;
   let darkModeUrlCount = 0;
   let reducedMotionUrlCount = 0;
@@ -3693,6 +3760,14 @@ async function main() {
       reflowRiskTotals.passed++;
     } else {
       reflowRiskTotals.cantTell++;
+    }
+
+    if (!result.semantica11y?.executed) {
+      semantica11yTotals.notExecuted++;
+    } else {
+      semantica11yTotals.errors += result.semantica11y.summary?.errors ?? 0;
+      semantica11yTotals.warnings += result.semantica11y.summary?.warnings ?? 0;
+      semantica11yTotals.suggestions += result.semantica11y.summary?.suggestions ?? 0;
     }
 
     duplicateFindingTotals += result.duplicateFindingCount ?? 0;
@@ -3764,6 +3839,7 @@ async function main() {
     accesslintTotals,
     qualwebTotals,
     reflowRiskTotals,
+    semantica11yTotals,
     duplicateFindingTotals,
     darkModeUrlCount,
     reducedMotionUrlCount,

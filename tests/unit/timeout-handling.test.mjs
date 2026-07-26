@@ -138,3 +138,57 @@ test("toMarkdownReport handles legacy summary format without new fields", async 
   assert.ok(report.includes("Accepted public URLs: 5"), "Report should show accepted count");
   assert.ok(!report.includes("skipped due to timeout"), "Report should not mention timeouts for legacy format");
 });
+
+test("toMarkdownReport warns when accepted URL count exceeds the large-scan guideline", async () => {
+  const { toMarkdownReport } = await import("../../scanner/run-scan.mjs");
+
+  const summaryLarge = {
+    issueNumber: 126,
+    issueUrl: "https://github.com/org/repo/issues/126",
+    issueTitle: "SCAN: Large scan",
+    scanTitle: "Large scan",
+    submittedBy: "testuser",
+    scannedAt: "2026-02-25T10:00:00Z",
+    totalElapsedMs: 600000,
+    totalSubmitted: 200,
+    acceptedCount: 200,
+    scannedCount: 200,
+    skippedDueToTimeout: 0,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: { passed: 100, failed: 10, cantTell: 5, inapplicable: 20 },
+    axeTotals: { passed: 95, failed: 8, cantTell: 3, inapplicable: 15 },
+    results: []
+  };
+
+  const report = toMarkdownReport(summaryLarge, "4.11");
+
+  assert.ok(report.includes("Large scan: 200 URLs exceeds"), "Report should warn about large scans");
+});
+
+test("toMarkdownReport does not warn when accepted URL count is under the large-scan guideline", async () => {
+  const { toMarkdownReport } = await import("../../scanner/run-scan.mjs");
+
+  const summarySmall = {
+    issueNumber: 127,
+    issueUrl: "https://github.com/org/repo/issues/127",
+    issueTitle: "SCAN: Small scan",
+    scanTitle: "Small scan",
+    submittedBy: "testuser",
+    scannedAt: "2026-02-25T10:00:00Z",
+    totalElapsedMs: 60000,
+    totalSubmitted: 10,
+    acceptedCount: 10,
+    scannedCount: 10,
+    skippedDueToTimeout: 0,
+    rejectedCount: 0,
+    rejected: [],
+    alfaTotals: { passed: 100, failed: 10, cantTell: 5, inapplicable: 20 },
+    axeTotals: { passed: 95, failed: 8, cantTell: 3, inapplicable: 15 },
+    results: []
+  };
+
+  const report = toMarkdownReport(summarySmall, "4.11");
+
+  assert.ok(!report.includes("exceeds the recommended"), "Report should not warn for small scans");
+});

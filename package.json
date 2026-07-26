@@ -41,7 +41,8 @@
     "@siteimprove/alfa-formatter-earl": "^0.84.2",
     "@siteimprove/alfa-formatter-json": "^0.84.2",
     "accessibility-checker": "^4.0.26",
-    "playwright": "^1.60.0"
+    "playwright": "^1.60.0",
+    "semantica11y": "^1.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"
