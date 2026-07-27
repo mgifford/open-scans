@@ -1,0 +1,225 @@
+{
+  "scansAnalysed": 5,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-02-21T13:02:18.058Z",
+        "totals": {
+          "alfa": 1698,
+          "axe": 0,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1698,
+          "scannedAt": "2026-02-21T13:02:18.058Z",
+          "scannedCount": 0
+        }
+      },
+      "to": {
+        "scannedAt": "2026-02-21T16:37:55.678Z",
+        "totals": {
+          "alfa": 1698,
+          "axe": 0,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1698,
+          "scannedAt": "2026-02-21T16:37:55.678Z",
+          "scannedCount": 0
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-02-21T16:37:55.678Z",
+        "totals": {
+          "alfa": 1698,
+          "axe": 0,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1698,
+          "scannedAt": "2026-02-21T16:37:55.678Z",
+          "scannedCount": 0
+        }
+      },
+      "to": {
+        "scannedAt": "2026-02-21T22:06:20.167Z",
+        "totals": {
+          "alfa": 1698,
+          "axe": 32,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1730,
+          "scannedAt": "2026-02-21T22:06:20.167Z",
+          "scannedCount": 0
+        }
+      },
+      "change": 32,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 32,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-02-21T22:06:20.167Z",
+        "totals": {
+          "alfa": 1698,
+          "axe": 32,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1730,
+          "scannedAt": "2026-02-21T22:06:20.167Z",
+          "scannedCount": 0
+        }
+      },
+      "to": {
+        "scannedAt": "2026-03-03T01:33:54.057Z",
+        "totals": {
+          "alfa": 8395,
+          "axe": 327,
+          "equalAccess": 1837,
+          "qualweb": 3339,
+          "accesslint": 1123,
+          "combined": 15021,
+          "scannedAt": "2026-03-03T01:33:54.057Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 13291,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 6697,
+        "axe": 295,
+        "equalAccess": 1837,
+        "qualweb": 3339,
+        "accesslint": 1123
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-03-03T01:33:54.057Z",
+        "totals": {
+          "alfa": 8395,
+          "axe": 327,
+          "equalAccess": 1837,
+          "qualweb": 3339,
+          "accesslint": 1123,
+          "combined": 15021,
+          "scannedAt": "2026-03-03T01:33:54.057Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-27T13:34:50.757Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 30,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 1395,
+          "combined": 1425,
+          "scannedAt": "2026-07-27T13:34:50.757Z",
+          "scannedCount": 82
+        }
+      },
+      "change": -13596,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -8395,
+        "axe": -297,
+        "equalAccess": -1837,
+        "qualweb": -3339,
+        "accesslint": 272
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-03-03T01:33:54.057Z",
+      "totals": {
+        "alfa": 8395,
+        "axe": 327,
+        "equalAccess": 1837,
+        "qualweb": 3339,
+        "accesslint": 1123,
+        "combined": 15021,
+        "scannedAt": "2026-03-03T01:33:54.057Z",
+        "scannedCount": 100
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-27T13:34:50.757Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 30,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 1395,
+        "combined": 1425,
+        "scannedAt": "2026-07-27T13:34:50.757Z",
+        "scannedCount": 82
+      }
+    },
+    "change": -13596,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -8395,
+      "axe": -297,
+      "equalAccess": -1837,
+      "qualweb": -3339,
+      "accesslint": 272
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 2,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 30,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 1395,
+    "combined": 1425,
+    "scannedAt": "2026-07-27T13:34:50.757Z",
+    "scannedCount": 82
+  },
+  "baselineTotals": {
+    "alfa": 1698,
+    "axe": 0,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1698,
+    "scannedAt": "2026-02-21T13:02:18.058Z",
+    "scannedCount": 0
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://www.gsa.gov/blog/2023/11/28/gsa-smartpay-which-supports-federal-purchases-and-reinvests-in-mission-celebrates-25-years",
+        "https://www.gsa.gov/blog/2021/07/20/accessibility-starts-with-us",
+        "https://www.gsa.gov/blog/2023/10/25/promoting-accessibility-and-inclusion-during-national-disability-employment-awareness-month",
+        "https://www.gsa.gov/blog/2023/12/15/no-two-screens-look-the-same-sharpening-digital-accessibility-through-inclusivity"
+      ]
+    }
+  ]
+}
