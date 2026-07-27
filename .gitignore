@@ -5,6 +5,7 @@ actionlint
 nohup.out
 .venv/
 venv/
+.aider*
 
 # Spec Kitty: charter bundle derived files (auto-added by `charter generate`)
 .kittify/charter/directives.yaml
