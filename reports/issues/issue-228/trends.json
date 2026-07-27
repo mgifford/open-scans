@@ -1,0 +1,287 @@
+{
+  "scansAnalysed": 3,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-03-30T23:41:31.789Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 392,
+          "equalAccess": 0,
+          "qualweb": 2631,
+          "accesslint": 0,
+          "combined": 3023,
+          "scannedAt": "2026-03-30T23:41:31.789Z",
+          "scannedCount": 81
+        }
+      },
+      "to": {
+        "scannedAt": "2026-04-17T17:17:14.035Z",
+        "totals": {
+          "alfa": 6636,
+          "axe": 411,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7047,
+          "scannedAt": "2026-04-17T17:17:14.035Z",
+          "scannedCount": 81
+        }
+      },
+      "change": 4024,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 6636,
+        "axe": 19,
+        "equalAccess": 0,
+        "qualweb": -2631,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-04-17T17:17:14.035Z",
+        "totals": {
+          "alfa": 6636,
+          "axe": 411,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7047,
+          "scannedAt": "2026-04-17T17:17:14.035Z",
+          "scannedCount": 81
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-27T02:38:33.005Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 363,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 439,
+          "combined": 802,
+          "scannedAt": "2026-07-27T02:38:33.005Z",
+          "scannedCount": 74
+        }
+      },
+      "change": -6245,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -6636,
+        "axe": -48,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 439
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-04-17T17:17:14.035Z",
+      "totals": {
+        "alfa": 6636,
+        "axe": 411,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 7047,
+        "scannedAt": "2026-04-17T17:17:14.035Z",
+        "scannedCount": 81
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-27T02:38:33.005Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 363,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 439,
+        "combined": 802,
+        "scannedAt": "2026-07-27T02:38:33.005Z",
+        "scannedCount": 74
+      }
+    },
+    "change": -6245,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -6636,
+      "axe": -48,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 439
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 363,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 439,
+    "combined": 802,
+    "scannedAt": "2026-07-27T02:38:33.005Z",
+    "scannedCount": 74
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 392,
+    "equalAccess": 0,
+    "qualweb": 2631,
+    "accesslint": 0,
+    "combined": 3023,
+    "scannedAt": "2026-03-30T23:41:31.789Z",
+    "scannedCount": 81
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 57,
+      "pages": [
+        "https://www.oregon.gov/ODVA/Connect/Pages/Public-Records-Request.aspx",
+        "https://www.oregon.gov/ODVA/Services/Pages/County-Veteran-Services-Offices.aspx",
+        "https://www.oregon.gov/odva/Services/Pages/default.aspx",
+        "https://www.oregon.gov/treasury/about-treasury/Pages/Invoice-Payments.aspx",
+        "https://www.oregon.gov/treasury/public-financial-services/pages/default.aspx",
+        "https://www.oregon.gov/oha/HSD/OHP/pages/Apply.aspx",
+        "https://www.oregon.gov/boli/Pages/index.aspx",
+        "https://www.oregon.gov/treasury/Pages/index.aspx",
+        "https://www.oregon.gov/osp/amberalert/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/default.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-dialog-name",
+      "pageCount": 40,
+      "pages": [
+        "https://www.oregon.gov/ODVA/Connect/Pages/Public-Records-Request.aspx",
+        "https://www.oregon.gov/ODVA/Services/Pages/County-Veteran-Services-Offices.aspx",
+        "https://www.oregon.gov/odva/Services/Pages/default.aspx",
+        "https://www.oregon.gov/treasury/about-treasury/Pages/Invoice-Payments.aspx",
+        "https://www.oregon.gov/treasury/public-financial-services/pages/default.aspx",
+        "https://www.oregon.gov/treasury/Pages/index.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/Family.aspx",
+        "https://www.oregon.gov/odva/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Connect/Pages/Publications.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 31,
+      "pages": [
+        "https://www.oregon.gov/ODVA/Connect/Pages/Public-Records-Request.aspx",
+        "https://www.oregon.gov/ODVA/Services/Pages/County-Veteran-Services-Offices.aspx",
+        "https://www.oregon.gov/odva/Services/Pages/default.aspx",
+        "https://www.oregon.gov/oha/HSD/OHP/pages/Apply.aspx",
+        "https://www.oregon.gov/boli/Pages/index.aspx",
+        "https://www.oregon.gov/osp/amberalert/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/Family.aspx",
+        "https://www.oregon.gov/odva/Pages/default.aspx",
+        "https://www.oregon.gov/ODOT/DMV/pages/realidtraveler.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 24,
+      "pages": [
+        "https://www.oregon.gov/pages/supported-browsers.aspx",
+        "https://www.oregon.gov/ODVA/Connect/Pages/Public-Records-Request.aspx",
+        "https://www.oregon.gov/ODVA/Services/Pages/County-Veteran-Services-Offices.aspx",
+        "https://www.oregon.gov/odva/Services/Pages/default.aspx",
+        "https://www.oregon.gov/oha/HSD/OHP/pages/Apply.aspx",
+        "https://www.oregon.gov/boli/Pages/index.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/default.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/Family.aspx",
+        "https://www.oregon.gov/odva/Pages/default.aspx",
+        "https://www.oregon.gov/odhs/Pages/default.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 22,
+      "pages": [
+        "https://www.oregon.gov/pages/services.aspx",
+        "https://www.oregon.gov/Pages/services.aspx",
+        "https://www.oregon.gov/pages/help.aspx",
+        "https://www.oregon.gov/treasury/about-treasury/Pages/Invoice-Payments.aspx",
+        "https://www.oregon.gov/osp/amberalert/Pages/default.aspx",
+        "https://www.oregon.gov/pages/agencies.aspx",
+        "https://www.oregon.gov/Pages/agencies.aspx",
+        "https://www.oregon.gov/ODOT/DMV/pages/realidtraveler.aspx",
+        "https://www.oregon.gov/osmb/boater-info/pages/boater-education-cards.aspx",
+        "https://www.oregon.gov/treasury/about-treasury/Pages/Budget.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:list",
+      "pageCount": 4,
+      "pages": [
+        "https://www.oregon.gov/ODVA/Connect/Pages/Public-Records-Request.aspx",
+        "https://www.oregon.gov/osp/amberalert/Pages/default.aspx",
+        "https://www.oregon.gov/odot/dmv/pages/driverid/idget.aspx",
+        "https://www.oregon.gov/odot/dmv/pages/driverid/licenseget.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 4,
+      "pages": [
+        "https://www.oregon.gov/ODVA/Services/Pages/County-Veteran-Services-Offices.aspx",
+        "https://www.oregon.gov/odva/Resources/Pages/Family.aspx",
+        "https://www.oregon.gov/odva/Connect/Pages/Careers-At-ODVA.aspx",
+        "https://www.oregon.gov/ODVA/Connect/Pages/Careers-At-ODVA.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 4,
+      "pages": [
+        "https://www.oregon.gov/ODOT/DMV/pages/realidtraveler.aspx",
+        "https://www.oregon.gov/oha/ph/Pages/index.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Sustainable-Investing-governance.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Climate-Positive-Investing.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-valid-attr-value",
+      "pageCount": 3,
+      "pages": [
+        "https://www.oregon.gov/boli/Pages/index.aspx",
+        "https://www.oregon.gov/gov/Pages/index.aspx",
+        "https://www.oregon.gov/boli/civil-rights/pages/default.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 3,
+      "pages": [
+        "https://apps.oregon.gov/oregon-newsroom/or/posts",
+        "https://www.oregon.gov/odhs/Pages/default.aspx",
+        "https://www.oregon.gov/dsl/lands/pages/state-lands.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 3,
+      "pages": [
+        "https://www.oregon.gov/ODOT/DMV/pages/realidtraveler.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Sustainable-Investing-governance.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Climate-Positive-Investing.aspx"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Sustainable-Investing-governance.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Climate-Positive-Investing.aspx",
+        "https://www.oregon.gov/treasury/invested-for-oregon/Pages/Individual-Account-Program.aspx"
+      ]
+    }
+  ]
+}
