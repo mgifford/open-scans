@@ -207,6 +207,17 @@ Pattern ID:  A11Y-yyyyyyyy  (this defect type across all pages)
 
 > Both IDs are computed automatically during scanning. Each `x` or `y` represents a hexadecimal character.
 
+### Cross-project fingerprints (dual-write)
+
+Alongside the legacy Instance ID and Pattern ID above, each finding also carries a versioned, cross-project fingerprint from the canonical [ACCESSIBILITY.md fingerprint profiles](https://mgifford.github.io/ACCESSIBILITY.md/examples/fingerprints/README.html): `a11yPatternFingerprint` / `a11yPatternDisplayId` and `a11yOccurrenceFingerprint` / `a11yOccurrenceDisplayId`. This project's implementation lives in [`scanner/fingerprint-core.mjs`](./scanner/fingerprint-core.mjs); this document does not restate that algorithm.
+
+This is additive, not a replacement — the legacy `A11Y-xxxxxxxx` Instance ID and Pattern ID continue to be generated exactly as before. The new fingerprint corrects two gaps documented in [ACCESSIBILITY_MIGRATION_PROFILES.md](https://mgifford.github.io/ACCESSIBILITY.md/examples/migrations/ACCESSIBILITY_MIGRATION_PROFILES.html):
+
+- **Target scope**: the legacy Pattern ID has no notion of which site was scanned, so two unrelated sites with a coincidentally identical locator and rule would share the same legacy Pattern ID. The new pattern fingerprint is scoped to the scanned site's own origin (`scope_type: "site-origin"`), so this can no longer happen.
+- **Colour mode**: the legacy Pattern ID folds colour mode into its rule key. The new pattern fingerprint excludes colour mode from identity by default; a project that wants to track colour mode as part of pattern identity does so through an explicit, named state, not by baking it into every rule key unconditionally.
+
+A short `A11Y-PAT-`/`A11Y-OCC-` display ID is never authoritative on its own — always compare the full 64-character fingerprint for automated deduplication.
+
 ### Required Fields
 
 Every accessibility bug report must include:

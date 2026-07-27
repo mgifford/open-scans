@@ -824,7 +824,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
   // ── Change tracking section ────────────────────────────────────────────────
   const changeTracking = summary.changeTracking;
-  const changeTrackingHtml = (changeTracking && (changeTracking.newCount > 0 || changeTracking.resolvedCount > 0))
+  const changeTrackingHtml = (changeTracking && (changeTracking.newCount > 0 || changeTracking.notObservedCount > 0))
     ? renderChangeTrackingSection(changeTracking, escapeHtml)
     : "";
 
@@ -2272,7 +2272,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
 
   function renderChangeTrackingSection(changeTracking, esc) {
-    const { newCount, resolvedCount, newIssues = [], resolvedIssues = [] } = changeTracking;
+    const { newCount, notObservedCount, newIssues = [], notObservedIssues = [] } = changeTracking;
     const parts = [];
     parts.push(`
     <section class="change-tracking-section" aria-labelledby="change-tracking-heading">
@@ -2286,11 +2286,11 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
           <span class="change-label">New unique issue${newCount !== 1 ? 's' : ''}</span>
         </div>`);
     }
-    if (resolvedCount > 0) {
+    if (notObservedCount > 0) {
       parts.push(`
-        <div class="change-badge change-badge-resolved" role="status" aria-label="${resolvedCount} previously-tracked issues not detected">
-          <span class="change-count">${resolvedCount}</span>
-          <span class="change-label">Potentially resolved issue${resolvedCount !== 1 ? 's' : ''}</span>
+        <div class="change-badge change-badge-resolved" role="status" aria-label="${notObservedCount} previously-tracked issues not detected">
+          <span class="change-count">${notObservedCount}</span>
+          <span class="change-label">Not observed issue${notObservedCount !== 1 ? 's' : ''}</span>
         </div>`);
     }
     parts.push(`
@@ -2314,13 +2314,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       </details>`);
     }
 
-    if (resolvedIssues.length > 0) {
+    if (notObservedIssues.length > 0) {
       parts.push(`
       <details class="change-details">
-        <summary>✅ Potentially Resolved Issues (${resolvedIssues.length})</summary>
-        <p class="change-details-note">These issues were previously tracked but were not detected in this scan.</p>
+        <summary>✅ Not Observed in This Scan (${notObservedIssues.length})</summary>
+        <p class="change-details-note">These issues were previously tracked but were not detected in this scan. Absence is not proof of resolution — the page may not have loaded, the rule may not have run, or the element may have moved. Retest and verify before closing the tracked issue.</p>
         <ul class="change-list" aria-label="Previously tracked issues not detected in this scan">`);
-      for (const issue of resolvedIssues) {
+      for (const issue of notObservedIssues) {
         const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
         const rule = issue.ruleKey ? ` <code>${esc(issue.ruleKey)}</code>` : '';
         const eng = issue.engine ? ` (${esc(issue.engine)})` : '';

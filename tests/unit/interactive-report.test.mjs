@@ -1696,11 +1696,11 @@ test("generateInteractiveHtml includes change tracking section when new issues e
   const html = generateInteractiveHtml(makeSummary({
     changeTracking: {
       newCount: 3,
-      resolvedCount: 0,
+      notObservedCount: 0,
       newIssues: [
         { fingerprint: "abc123def456", url: "https://example.com/page1", ruleKey: "axe:region", engine: "axe" }
       ],
-      resolvedIssues: []
+      notObservedIssues: []
     }
   }));
   assert.ok(
@@ -1717,32 +1717,32 @@ test("generateInteractiveHtml includes change tracking section when new issues e
   );
 });
 
-test("generateInteractiveHtml includes change tracking section when resolved issues exist", () => {
+test("generateInteractiveHtml includes change tracking section when not-observed issues exist", () => {
   const html = generateInteractiveHtml(makeSummary({
     changeTracking: {
       newCount: 0,
-      resolvedCount: 2,
+      notObservedCount: 2,
       newIssues: [],
-      resolvedIssues: [
+      notObservedIssues: [
         { fingerprint: "def456abc123", url: "https://example.com/page2", ruleKey: "axe:color-contrast", engine: "axe", lastSeenAt: "2026-04-20T00:00:00.000Z" }
       ]
     }
   }));
   assert.ok(
     html.includes('id="change-tracking-heading"'),
-    "Should render change-tracking-section when resolvedCount > 0"
+    "Should render change-tracking-section when notObservedCount > 0"
   );
   assert.ok(
-    html.includes("Potentially resolved"),
-    "Should show resolved issues badge"
+    html.includes("Not observed"),
+    "Should show not-observed issues badge"
   );
   assert.ok(
     html.includes("A11Y-def456ab"),
-    "Should include the A11Y ID for resolved issues"
+    "Should include the A11Y ID for not-observed issues"
   );
   assert.ok(
     html.includes("2026-04-20"),
-    "Should include the last-seen date for resolved issues"
+    "Should include the last-seen date for not-observed issues"
   );
 });
 
@@ -1750,9 +1750,9 @@ test("generateInteractiveHtml omits change tracking section when no changes", ()
   const html = generateInteractiveHtml(makeSummary({
     changeTracking: {
       newCount: 0,
-      resolvedCount: 0,
+      notObservedCount: 0,
       newIssues: [],
-      resolvedIssues: []
+      notObservedIssues: []
     }
   }));
   assert.ok(
