@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-07-25T15:28:04.078Z",
+        "totals": {
+          "alfa": 5624,
+          "axe": 783,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 6407,
+          "scannedAt": "2026-07-25T15:28:04.078Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-27T12:47:08.882Z",
+        "totals": {
+          "alfa": 4384,
+          "axe": 519,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 4903,
+          "scannedAt": "2026-07-27T12:47:08.882Z",
+          "scannedCount": 20
+        }
+      },
+      "change": -1504,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -1240,
+        "axe": -264,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-07-25T15:28:04.078Z",
+      "totals": {
+        "alfa": 5624,
+        "axe": 783,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 6407,
+        "scannedAt": "2026-07-25T15:28:04.078Z",
+        "scannedCount": 20
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-27T12:47:08.882Z",
+      "totals": {
+        "alfa": 4384,
+        "axe": 519,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 4903,
+        "scannedAt": "2026-07-27T12:47:08.882Z",
+        "scannedCount": 20
+      }
+    },
+    "change": -1504,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -1240,
+      "axe": -264,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 0,
   "latestTotals": {
+    "alfa": 4384,
+    "axe": 519,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 4903,
+    "scannedAt": "2026-07-27T12:47:08.882Z",
+    "scannedCount": 20
+  },
+  "baselineTotals": {
     "alfa": 5624,
     "axe": 783,
     "equalAccess": 0,
@@ -13,51 +101,35 @@
   },
   "latestSystemicPatterns": [
     {
-      "ruleId": "axe:color-contrast",
-      "pageCount": 19,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html"
-      ]
-    },
-    {
       "ruleId": "axe:label",
-      "pageCount": 19,
+      "pageCount": 20,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html"
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html"
       ]
     },
     {
       "ruleId": "axe:region",
-      "pageCount": 19,
+      "pageCount": 20,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html"
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html"
       ]
     },
     {
@@ -65,15 +137,47 @@
       "pageCount": 18,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/1449-sf30-builder/",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html"
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
+        "https://kthq.org/clause-matrix.html"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 18,
+      "pages": [
+        "https://kthq.org/",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
+        "https://kthq.org/clause-matrix.html"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 18,
+      "pages": [
+        "https://kthq.org/",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
+        "https://kthq.org/clause-matrix.html"
       ]
     },
     {
@@ -81,15 +185,15 @@
       "pageCount": 18,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/1449-sf30-builder/",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html"
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
+        "https://kthq.org/clause-matrix.html"
       ]
     },
     {
@@ -97,195 +201,162 @@
       "pageCount": 18,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/1449-sf30-builder/",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
-      "pageCount": 17,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html",
-        "https://kthq.org/requirements-package-101.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
-      "pageCount": 17,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html",
-        "https://kthq.org/requirements-package-101.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
-      "pageCount": 17,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html",
-        "https://kthq.org/requirements-package-101.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r8",
-      "pageCount": 17,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html",
-        "https://kthq.org/requirements-package-101.html"
-      ]
-    },
-    {
-      "ruleId": "axe:landmark-unique",
-      "pageCount": 17,
-      "pages": [
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
-      "pageCount": 15,
-      "pages": [
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html",
-        "https://kthq.org/requirements-package-101.html",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
         "https://kthq.org/clause-matrix.html"
       ]
     },
     {
-      "ruleId": "axe:landmark-one-main",
-      "pageCount": 14,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r8",
+      "pageCount": 18,
       "pages": [
         "https://kthq.org/",
-        "https://kthq.org/tools.html",
-        "https://kthq.org/unit-deployment-manager.html",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/country-contracting-dossier.html",
+        "https://kthq.org/clause-matrix.html"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 18,
+      "pages": [
+        "https://kthq.org/",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/clause-matrix.html",
+        "https://kthq.org/manual-1449-builder.html"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 18,
+      "pages": [
+        "https://kthq.org/",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/manual-1449-builder.html"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 18,
+      "pages": [
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/clause-matrix.html",
+        "https://kthq.org/manual-1449-builder.html"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 16,
+      "pages": [
+        "https://kthq.org/",
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/clause-matrix.html",
         "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/market-research.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/far-part12-restricting-competition.html",
-        "https://kthq.org/federal-register-archive.html"
+        "https://kthq.org/cure-notices.html"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 16,
+      "pages": [
+        "https://kthq.org/statements-of-objectives.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/set-asides.html",
+        "https://kthq.org/ai-usage.html",
+        "https://kthq.org/government-purchase-cards.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
+        "https://kthq.org/clause-matrix.html",
+        "https://kthq.org/manual-1449-builder.html",
+        "https://kthq.org/cure-notices.html"
       ]
     },
     {
       "ruleId": "axe:page-has-heading-one",
-      "pageCount": 5,
+      "pageCount": 7,
       "pages": [
-        "https://kthq.org/unit-deployment-manager.html",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/gao-archive.html",
         "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/cost-price-analysis.html",
-        "https://kthq.org/conducting-negotiations.html",
-        "https://kthq.org/federal-register-archive.html"
+        "https://kthq.org/cure-notices.html",
+        "https://kthq.org/evaluating-labor-standards.html"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
-      "pageCount": 4,
+      "pageCount": 5,
       "pages": [
-        "https://kthq.org/unit-deployment-manager.html",
-        "https://kthq.org/1449-sf30-builder/",
+        "https://kthq.org/manual-contracts-deployed.html",
+        "https://kthq.org/manual-mod-builder.html",
+        "https://kthq.org/gao-archive.html",
         "https://kthq.org/manual-1449-builder.html",
-        "https://kthq.org/federal-register-archive.html"
+        "https://kthq.org/cure-notices.html"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 3,
+      "pages": [
+        "https://kthq.org/material-submittals.html",
+        "https://kthq.org/cure-notices.html",
+        "https://kthq.org/evaluating-labor-standards.html"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
-      "pageCount": 4,
+      "pageCount": 3,
       "pages": [
-        "https://kthq.org/requirements-package-101.html",
         "https://kthq.org/clause-matrix.html",
-        "https://kthq.org/videos.html",
-        "https://kthq.org/wawf-invoicing.html"
+        "https://kthq.org/why-behind-the-buy.html",
+        "https://kthq.org/industry.html"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 4,
+      "pageCount": 3,
       "pages": [
-        "https://kthq.org/requirements-package-101.html",
         "https://kthq.org/clause-matrix.html",
-        "https://kthq.org/videos.html",
-        "https://kthq.org/wawf-invoicing.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 3,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/1449-sf30-builder/",
-        "https://kthq.org/federal-register.html"
-      ]
-    },
-    {
-      "ruleId": "axe:landmark-complementary-is-top-level",
-      "pageCount": 3,
-      "pages": [
-        "https://kthq.org/",
-        "https://kthq.org/asbca.html",
-        "https://kthq.org/federal-register.html"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r85",
-      "pageCount": 3,
-      "pages": [
-        "https://kthq.org/asbca-archive.html",
-        "https://kthq.org/videos.html",
-        "https://kthq.org/wawf-invoicing.html"
+        "https://kthq.org/why-behind-the-buy.html",
+        "https://kthq.org/industry.html"
       ]
     }
   ]

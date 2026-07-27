@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-27T12:47:09.018Z",
+  "issueNumber": 331,
+  "scanTitle": "https://kthq.org",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 519,
+      "uniqueFailed": 519,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 4384,
+      "uniqueFailed": 4384,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 519,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 324
+    }
+  },
+  "duplicateFindingTotals": 4060,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
