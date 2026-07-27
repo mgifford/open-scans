@@ -1,0 +1,154 @@
+{
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-03-25T18:20:49.508Z",
+        "totals": {
+          "alfa": 40,
+          "axe": 0,
+          "equalAccess": 27,
+          "qualweb": 15,
+          "accesslint": 0,
+          "combined": 82,
+          "scannedAt": "2026-03-25T18:20:49.508Z",
+          "scannedCount": 1
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-27T02:52:26.350Z",
+        "totals": {
+          "alfa": 1534,
+          "axe": 6,
+          "equalAccess": 296,
+          "qualweb": 573,
+          "accesslint": 0,
+          "combined": 2409,
+          "scannedAt": "2026-07-27T02:52:26.350Z",
+          "scannedCount": 20
+        }
+      },
+      "change": 2327,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 1494,
+        "axe": 6,
+        "equalAccess": 269,
+        "qualweb": 558,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-03-25T18:20:49.508Z",
+      "totals": {
+        "alfa": 40,
+        "axe": 0,
+        "equalAccess": 27,
+        "qualweb": 15,
+        "accesslint": 0,
+        "combined": 82,
+        "scannedAt": "2026-03-25T18:20:49.508Z",
+        "scannedCount": 1
+      }
+    },
+    "to": {
+      "scannedAt": "2026-07-27T02:52:26.350Z",
+      "totals": {
+        "alfa": 1534,
+        "axe": 6,
+        "equalAccess": 296,
+        "qualweb": 573,
+        "accesslint": 0,
+        "combined": 2409,
+        "scannedAt": "2026-07-27T02:52:26.350Z",
+        "scannedCount": 20
+      }
+    },
+    "change": 2327,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 1494,
+      "axe": 6,
+      "equalAccess": 269,
+      "qualweb": 558,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
+  "latestTotals": {
+    "alfa": 1534,
+    "axe": 6,
+    "equalAccess": 296,
+    "qualweb": 573,
+    "accesslint": 0,
+    "combined": 2409,
+    "scannedAt": "2026-07-27T02:52:26.350Z",
+    "scannedCount": 20
+  },
+  "baselineTotals": {
+    "alfa": 40,
+    "axe": 0,
+    "equalAccess": 27,
+    "qualweb": 15,
+    "accesslint": 0,
+    "combined": 82,
+    "scannedAt": "2026-03-25T18:20:49.508Z",
+    "scannedCount": 1
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 20,
+      "pages": [
+        "https://www.maryland.gov/",
+        "https://www.maryland.gov/benefits/housing-and-property",
+        "https://www.maryland.gov/services/taxes/individual-taxes",
+        "https://www.maryland.gov/terms-use",
+        "https://www.maryland.gov/your-government/state-government",
+        "https://www.maryland.gov/benefits/health-and-medical",
+        "https://www.maryland.gov/benefits/families-and-children",
+        "https://www.maryland.gov/accessibility-policy",
+        "https://www.maryland.gov/benefits/older-adults",
+        "https://www.maryland.gov/benefits/financial-assistance"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 20,
+      "pages": [
+        "https://www.maryland.gov/",
+        "https://www.maryland.gov/benefits/housing-and-property",
+        "https://www.maryland.gov/services/taxes/individual-taxes",
+        "https://www.maryland.gov/terms-use",
+        "https://www.maryland.gov/your-government/state-government",
+        "https://www.maryland.gov/benefits/health-and-medical",
+        "https://www.maryland.gov/benefits/families-and-children",
+        "https://www.maryland.gov/accessibility-policy",
+        "https://www.maryland.gov/benefits/older-adults",
+        "https://www.maryland.gov/benefits/financial-assistance"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.maryland.gov/benefits/families-and-children",
+        "https://www.maryland.gov/services/education",
+        "https://www.maryland.gov/benefits/food-and-nutrition"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 3,
+      "pages": [
+        "https://www.maryland.gov/benefits/families-and-children",
+        "https://www.maryland.gov/services/education",
+        "https://www.maryland.gov/benefits/food-and-nutrition"
+      ]
+    }
+  ]
+}
