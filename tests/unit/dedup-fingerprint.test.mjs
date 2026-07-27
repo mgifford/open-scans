@@ -340,12 +340,12 @@ test("computeChangeTracking reports new issues correctly", () => {
   const result = computeChangeTracking(prevKeys, currKeys, store);
 
   assert.equal(result.newCount, 1, "should report one new issue");
-  assert.equal(result.resolvedCount, 1, "should report one resolved issue (old2 not in curr)");
+  assert.equal(result.notObservedCount, 1, "should report one not-observed issue (old2 not in curr)");
   assert.equal(result.newIssues[0].fingerprint, "new1");
   assert.equal(result.newIssues[0].engine, "axe");
 });
 
-test("computeChangeTracking reports resolved issues correctly", () => {
+test("computeChangeTracking reports not-observed issues correctly", () => {
   const prevKeys = new Set(["fp1", "fp2"]);
   const currKeys = new Set(["fp1"]);
   const store = {
@@ -354,9 +354,9 @@ test("computeChangeTracking reports resolved issues correctly", () => {
   const result = computeChangeTracking(prevKeys, currKeys, store);
 
   assert.equal(result.newCount, 0);
-  assert.equal(result.resolvedCount, 1);
-  assert.equal(result.resolvedIssues[0].fingerprint, "fp2");
-  assert.equal(result.resolvedIssues[0].lastSeenAt, "2026-03-01T00:00:00Z");
+  assert.equal(result.notObservedCount, 1);
+  assert.equal(result.notObservedIssues[0].fingerprint, "fp2");
+  assert.equal(result.notObservedIssues[0].lastSeenAt, "2026-03-01T00:00:00Z");
 });
 
 test("computeChangeTracking returns zero counts when nothing changed", () => {
@@ -366,9 +366,9 @@ test("computeChangeTracking returns zero counts when nothing changed", () => {
   const result = computeChangeTracking(prevKeys, currKeys, store);
 
   assert.equal(result.newCount, 0);
-  assert.equal(result.resolvedCount, 0);
+  assert.equal(result.notObservedCount, 0);
   assert.deepEqual(result.newIssues, []);
-  assert.deepEqual(result.resolvedIssues, []);
+  assert.deepEqual(result.notObservedIssues, []);
 });
 
 test("computeChangeTracking handles missing store entries gracefully", () => {
@@ -378,9 +378,9 @@ test("computeChangeTracking handles missing store entries gracefully", () => {
 
   const result = computeChangeTracking(prevKeys, currKeys, store);
   assert.equal(result.newCount, 1);
-  assert.equal(result.resolvedCount, 1);
+  assert.equal(result.notObservedCount, 1);
   assert.equal(result.newIssues[0].url, null);
-  assert.equal(result.resolvedIssues[0].engine, null);
+  assert.equal(result.notObservedIssues[0].engine, null);
 });
 
 // ── annotateWithFingerprints: semantica11y and reflowRisk ──────────────────

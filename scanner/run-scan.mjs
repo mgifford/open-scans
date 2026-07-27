@@ -16,6 +16,7 @@ import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
 import { runReflowRisk } from "./reflow-risk.mjs";
 import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11y-audit.mjs";
+import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -788,6 +789,15 @@ export function loadFingerprintStore(storePath) {
  * @param {object[]} results  - Array of per-URL scan result objects
  * @param {object}   scanMeta - { scannedAt, issueNumber, scanTitle }
  */
+/** Returns the origin ("https://example.gov") of a URL, or null if url is not a valid absolute URL. */
+function safeOrigin(url) {
+  try {
+    return new URL(url).origin;
+  } catch {
+    return null;
+  }
+}
+
 function fingerprintOne(store, now, url, locator, ruleKey, scannerName, scanMeta, target) {
   const fp = computeFindingFingerprint(url, locator, ruleKey);
 
@@ -811,6 +821,26 @@ function fingerprintOne(store, now, url, locator, ruleKey, scannerName, scanMeta
   target.fingerprint = fp;
   target.firstSeenAt = store[fp].firstSeenAt;
   target.patternId = computePatternId(locator, ruleKey);
+
+  // Dual-write: the versioned, cross-project a11y/pattern/v1 /
+  // a11y/occurrence/v1 fingerprints alongside the legacy fingerprint/
+  // patternId above. See
+  // https://mgifford.github.io/ACCESSIBILITY.md/examples/fingerprints/README.html
+  // and ACCESSIBILITY_MIGRATION_PROFILES.md for why these use the scanned
+  // site's own origin as target scope rather than the open-scans
+  // repository — unlike the legacy patternId, this fixes the case where
+  // two unrelated scanned sites share a coincidental locator+rule match.
+  const siteOrigin = safeOrigin(url);
+  const ruleId = String(target.actRuleId ?? target.rule ?? "unknown").trim().toLowerCase();
+  const engineNamespace = scannerName;
+  if (siteOrigin) {
+    const a11yPattern = computeA11yPatternFingerprint(siteOrigin, engineNamespace, ruleId, locator);
+    const a11yOccurrence = computeA11yOccurrenceFingerprint(a11yPattern.fingerprint, url, null);
+    target.a11yPatternFingerprint = a11yPattern.fingerprint;
+    target.a11yPatternDisplayId = a11yPattern.displayId;
+    target.a11yOccurrenceFingerprint = a11yOccurrence.fingerprint;
+    target.a11yOccurrenceDisplayId = a11yOccurrence.displayId;
+  }
 }
 
 export function annotateWithFingerprints(store, results, scanMeta) {
@@ -877,10 +907,16 @@ export function collectFingerprintsFromResults(results) {
  * Build a change-tracking summary by comparing the fingerprint keys that
  * existed before a scan with those found in the current scan results.
  *
+ * A fingerprint absent from the current scan is reported as "not observed",
+ * not "resolved": absence from one scan does not by itself prove the
+ * underlying barrier was fixed (the page could have failed to load, a rule
+ * could have been disabled, or the element could have moved). See
+ * https://mgifford.github.io/ACCESSIBILITY.md/examples/ACCESSIBILITY_FINDING_TRACKING.html#resolved.
+ *
  * @param {Set<string>} prevKeys  - Fingerprint keys from the store before this scan
  * @param {Set<string>} currKeys  - Fingerprint keys collected from current scan results
  * @param {object}      store     - Updated fingerprint store (used to look up metadata)
- * @returns {{ newCount, resolvedCount, newIssues, resolvedIssues }}
+ * @returns {{ newCount, notObservedCount, newIssues, notObservedIssues }}
  */
 export function computeChangeTracking(prevKeys, currKeys, store) {
   const toEntry = (fp, includeLastSeen) => {
@@ -890,12 +926,12 @@ export function computeChangeTracking(prevKeys, currKeys, store) {
   };
 
   const newFps = [...currKeys].filter(fp => !prevKeys.has(fp));
-  const resolvedFps = [...prevKeys].filter(fp => !currKeys.has(fp));
+  const notObservedFps = [...prevKeys].filter(fp => !currKeys.has(fp));
   return {
     newCount: newFps.length,
-    resolvedCount: resolvedFps.length,
+    notObservedCount: notObservedFps.length,
     newIssues: newFps.map(fp => toEntry(fp, false)),
-    resolvedIssues: resolvedFps.map(fp => toEntry(fp, true))
+    notObservedIssues: notObservedFps.map(fp => toEntry(fp, true))
   };
 }
 
@@ -2521,15 +2557,15 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
 
   // ── Change tracking summary ────────────────────────────────────────────────
   if (summary.changeTracking) {
-    const { newCount, resolvedCount, newIssues, resolvedIssues } = summary.changeTracking;
-    if (newCount > 0 || resolvedCount > 0) {
+    const { newCount, notObservedCount, newIssues, notObservedIssues } = summary.changeTracking;
+    if (newCount > 0 || notObservedCount > 0) {
       lines.push("## 🔄 Changes Since Last Scan");
       lines.push("");
       if (newCount > 0) {
         lines.push(`- 🆕 **${newCount} new unique issue(s)** detected for the first time in this scan`);
       }
-      if (resolvedCount > 0) {
-        lines.push(`- ✅ **${resolvedCount} previously-tracked issue(s)** not detected in this scan (potentially resolved)`);
+      if (notObservedCount > 0) {
+        lines.push(`- ✅ **${notObservedCount} previously-tracked issue(s)** not detected in this scan (not necessarily resolved — see below)`);
       }
       lines.push("");
 
@@ -2545,10 +2581,12 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
         lines.push("");
       }
 
-      if (resolvedIssues.length > 0) {
-        lines.push("### ✅ Potentially Resolved Issues");
+      if (notObservedIssues.length > 0) {
+        lines.push("### ✅ Not Observed in This Scan");
         lines.push("");
-        for (const issue of resolvedIssues) {
+        lines.push("_Absence from this scan is not proof of resolution — the page may not have loaded, the rule may not have run, or the element may have moved. Retest and verify before closing the tracked issue._");
+        lines.push("");
+        for (const issue of notObservedIssues) {
           const id = `A11Y-${issue.fingerprint.slice(0, 8)}`;
           const rule = issue.ruleKey ? ` \`${issue.ruleKey}\`` : "";
           const eng = issue.engine ? ` (${issue.engine})` : "";
