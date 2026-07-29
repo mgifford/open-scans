@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-04-29T01:36:13.151Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2764,
-          "equalAccess": 17971,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 20735,
-          "scannedAt": "2026-04-29T01:36:13.151Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-06T01:31:24.011Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2775,
-          "equalAccess": 18091,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 20866,
-          "scannedAt": "2026-05-06T01:31:24.011Z",
-          "scannedCount": 100
-        }
-      },
-      "change": 131,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 11,
-        "equalAccess": 120,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-06T01:31:24.011Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 5158,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-05-27T01:39:54.804Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2748,
+          "equalAccess": 0,
+          "qualweb": 5158,
+          "accesslint": 0,
+          "combined": 7906,
+          "scannedAt": "2026-05-27T01:39:54.804Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-29T01:34:19.019Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2744,
+          "equalAccess": 18299,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 21043,
+          "scannedAt": "2026-07-29T01:34:19.019Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 13137,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -4,
+        "equalAccess": 18299,
+        "qualweb": -5158,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-20T01:40:21.335Z",
-      "totals": {
-        "alfa": 14360,
-        "axe": 2751,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 17111,
-        "scannedAt": "2026-05-20T01:40:21.335Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-05-27T01:39:54.804Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 100
       }
     },
-    "change": -9205,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-07-29T01:34:19.019Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2744,
+        "equalAccess": 18299,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 21043,
+        "scannedAt": "2026-07-29T01:34:19.019Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 13137,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -14360,
-      "axe": -3,
-      "equalAccess": 0,
-      "qualweb": 5158,
+      "alfa": 0,
+      "axe": -4,
+      "equalAccess": 18299,
+      "qualweb": -5158,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 3,
   "worseningCount": 1,
   "latestTotals": {
     "alfa": 0,
-    "axe": 2748,
-    "equalAccess": 0,
-    "qualweb": 5158,
+    "axe": 2744,
+    "equalAccess": 18299,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 7906,
-    "scannedAt": "2026-05-27T01:39:54.804Z",
+    "combined": 21043,
+    "scannedAt": "2026-07-29T01:34:19.019Z",
     "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 2764,
-    "equalAccess": 17971,
+    "axe": 2775,
+    "equalAccess": 18091,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 20735,
-    "scannedAt": "2026-04-29T01:36:13.151Z",
+    "combined": 20866,
+    "scannedAt": "2026-05-06T01:31:24.011Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
@@ -350,12 +350,13 @@
     },
     {
       "ruleId": "axe:button-name",
-      "pageCount": 4,
+      "pageCount": 5,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es",
-        "https://www.barcelona.cat/es/conocebcn/la-ciutadella-del-conocimiento"
+        "https://www.barcelona.cat/es/conocebcn/la-ciutadella-del-conocimiento",
+        "https://www.barcelona.cat/es/que-hacer-en-bcn/fuente-magica/horarios-de-la-fuente-magica"
       ]
     },
     {
