@@ -1,0 +1,64 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 100,
+    "equalAccess": 60,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 160,
+    "scannedAt": "2026-07-31T14:14:39.190Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 20,
+      "pages": [
+        "https://www.iom.int/",
+        "https://www.iom.int/community-stabilization",
+        "https://www.iom.int/unlocking-potential-youth-respond-new-challenges-and-opportunities-migration",
+        "https://www.iom.int/fr/journee-internationale-de-la-femme-2025",
+        "https://www.iom.int/fr/covid-19-documents-dinformation",
+        "https://www.iom.int/fr/paix-et-relevement",
+        "https://www.iom.int/fr/why-iom-matters/statelessness-shelter",
+        "https://www.iom.int/fr/journee-internationale-des-migrants-2023",
+        "https://www.iom.int/safe-dignified-return-stranded-migrants-yemen",
+        "https://www.iom.int/consciously-made-ukraine-svidomo-made"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 20,
+      "pages": [
+        "https://www.iom.int/",
+        "https://www.iom.int/community-stabilization",
+        "https://www.iom.int/unlocking-potential-youth-respond-new-challenges-and-opportunities-migration",
+        "https://www.iom.int/fr/journee-internationale-de-la-femme-2025",
+        "https://www.iom.int/fr/covid-19-documents-dinformation",
+        "https://www.iom.int/fr/paix-et-relevement",
+        "https://www.iom.int/fr/why-iom-matters/statelessness-shelter",
+        "https://www.iom.int/fr/journee-internationale-des-migrants-2023",
+        "https://www.iom.int/safe-dignified-return-stranded-migrants-yemen",
+        "https://www.iom.int/consciously-made-ukraine-svidomo-made"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 20,
+      "pages": [
+        "https://www.iom.int/",
+        "https://www.iom.int/community-stabilization",
+        "https://www.iom.int/unlocking-potential-youth-respond-new-challenges-and-opportunities-migration",
+        "https://www.iom.int/fr/journee-internationale-de-la-femme-2025",
+        "https://www.iom.int/fr/covid-19-documents-dinformation",
+        "https://www.iom.int/fr/paix-et-relevement",
+        "https://www.iom.int/fr/why-iom-matters/statelessness-shelter",
+        "https://www.iom.int/fr/journee-internationale-des-migrants-2023",
+        "https://www.iom.int/safe-dignified-return-stranded-migrants-yemen",
+        "https://www.iom.int/consciously-made-ukraine-svidomo-made"
+      ]
+    }
+  ]
+}
