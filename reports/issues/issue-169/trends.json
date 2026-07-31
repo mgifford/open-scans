@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 4,
+  "scansAnalysed": 5,
   "diffs": [
     {
       "from": {
@@ -111,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-06-04T18:34:08.422Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 547,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 547,
+          "scannedAt": "2026-06-04T18:34:08.422Z",
+          "scannedCount": 149
+        }
+      },
+      "to": {
+        "scannedAt": "2026-07-31T19:29:30.861Z",
+        "totals": {
+          "alfa": 6311,
+          "axe": 446,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 6757,
+          "scannedAt": "2026-07-31T19:29:30.861Z",
+          "scannedCount": 115
+        }
+      },
+      "change": 6210,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 6311,
+        "axe": -101,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-05-12T01:13:36.462Z",
-      "totals": {
-        "alfa": 5039,
-        "axe": 699,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 5738,
-        "scannedAt": "2026-05-12T01:13:36.462Z",
-        "scannedCount": 149
-      }
-    },
-    "to": {
       "scannedAt": "2026-06-04T18:34:08.422Z",
       "totals": {
         "alfa": 0,
@@ -140,28 +164,41 @@
         "scannedCount": 149
       }
     },
-    "change": -5191,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-07-31T19:29:30.861Z",
+      "totals": {
+        "alfa": 6311,
+        "axe": 446,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 6757,
+        "scannedAt": "2026-07-31T19:29:30.861Z",
+        "scannedCount": 115
+      }
+    },
+    "change": 6210,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -5039,
-      "axe": -152,
+      "alfa": 6311,
+      "axe": -101,
       "equalAccess": 0,
       "qualweb": 0,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 2,
-  "worseningCount": 1,
+  "worseningCount": 2,
   "latestTotals": {
-    "alfa": 0,
-    "axe": 547,
+    "alfa": 6311,
+    "axe": 446,
     "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 547,
-    "scannedAt": "2026-06-04T18:34:08.422Z",
-    "scannedCount": 149
+    "combined": 6757,
+    "scannedAt": "2026-07-31T19:29:30.861Z",
+    "scannedCount": 115
   },
   "baselineTotals": {
     "alfa": 5639,
@@ -175,8 +212,24 @@
   },
   "latestSystemicPatterns": [
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 107,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/funding",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/news",
+        "https://www.nsf.gov/sitemap",
+        "https://www.nsf.gov/digital/strategy",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/updates-on-priorities",
+        "https://www.nsf.gov/about/governance"
+      ]
+    },
+    {
       "ruleId": "axe:region",
-      "pageCount": 120,
+      "pageCount": 84,
       "pages": [
         "https://www.nsf.gov/",
         "https://www.nsf.gov/funding",
@@ -191,8 +244,56 @@
       ]
     },
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 80,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/funding",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/news",
+        "https://www.nsf.gov/sitemap",
+        "https://www.nsf.gov/digital/strategy",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/updates-on-priorities",
+        "https://www.nsf.gov/about/governance"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 80,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/funding",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/news",
+        "https://www.nsf.gov/sitemap",
+        "https://www.nsf.gov/digital/strategy",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/updates-on-priorities",
+        "https://www.nsf.gov/about/governance"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 79,
+      "pages": [
+        "https://www.nsf.gov/",
+        "https://www.nsf.gov/funding",
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/news",
+        "https://www.nsf.gov/sitemap",
+        "https://www.nsf.gov/digital/strategy",
+        "https://www.nsf.gov/about/history/big-ideas",
+        "https://www.nsf.gov/about/research-areas",
+        "https://www.nsf.gov/updates-on-priorities",
+        "https://www.nsf.gov/about/governance"
+      ]
+    },
+    {
       "ruleId": "axe:landmark-complementary-is-top-level",
-      "pageCount": 86,
+      "pageCount": 58,
       "pages": [
         "https://www.nsf.gov/",
         "https://www.nsf.gov/about",
@@ -200,31 +301,61 @@
         "https://www.nsf.gov/about/research-areas",
         "https://www.nsf.gov/about/governance",
         "https://www.nsf.gov/about/career-opportunities",
-        "https://www.nsf.gov/about/contact",
-        "https://www.nsf.gov/about/foia/",
-        "https://www.nsf.gov/funding/award-search",
-        "https://www.nsf.gov/funding/how-to-apply"
+        "https://www.nsf.gov/funding/how-to-apply",
+        "https://www.nsf.gov/funding/preparing-proposals",
+        "https://www.nsf.gov/funding/submission-methods",
+        "https://www.nsf.gov/funding/graduate-students"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 13,
+      "pages": [
+        "https://www.nsf.gov/funding/opportunities/search-tips",
+        "https://www.nsf.gov/bfa/dias/policy/rppr",
+        "https://www.nsf.gov/about/congress/wastebooks",
+        "https://www.nsf.gov/about/budget/fy2026",
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 13,
+      "pages": [
+        "https://www.nsf.gov/funding/opportunities/search-tips",
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/reports/statistics/update-us-business-innovation-findings-2011-survey/nsf16-308",
+        "https://www.nsf.gov/news/scientists-find-water-billions-light-years-away"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 13,
+      "pageCount": 8,
       "pages": [
         "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
-        "https://www.nsf.gov/updates-on-priorities",
         "https://www.nsf.gov/funding/opportunities/search-tips",
-        "https://www.nsf.gov/policies/research-performance-progress-reports",
-        "https://www.nsf.gov/about/congress/wastebooks",
         "https://www.nsf.gov/about/budget/fy2026",
         "https://ncses.nsf.gov/",
         "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
         "https://www.nsf.gov/about/about-nsf-by-the-numbers/codebook",
-        "https://www.nsf.gov/science-matters/nsf-101-agency-accessibility-resources"
+        "https://www.nsf.gov/science-matters/nsf-101-agency-accessibility-resources",
+        "https://oig.nsf.gov/home/"
       ]
     },
     {
       "ruleId": "axe:landmark-one-main",
-      "pageCount": 10,
+      "pageCount": 8,
       "pages": [
         "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
         "https://www.nsf.gov/funding/opportunities",
@@ -232,10 +363,60 @@
         "https://ncses.nsf.gov/accessibility",
         "https://ncses.nsf.gov/surveys",
         "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
-        "https://www.nsf.gov/events",
         "https://www.nsf.gov/staff",
-        "https://oig.nsf.gov/home/",
-        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+        "https://oig.nsf.gov/home/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 7,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r16",
+      "pageCount": 7,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
+      "pageCount": 7,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "pageCount": 7,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/pubs/nsb20257/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
       ]
     },
     {
@@ -252,15 +433,70 @@
       ]
     },
     {
-      "ruleId": "axe:page-has-heading-one",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
       "pageCount": 6,
+      "pages": [
+        "https://www.nsf.gov/about/performance/strategic-plan",
+        "https://www.nsf.gov/about/budget/fy2026",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/news/scientists-find-water-billions-light-years-away",
+        "https://www.nsf.gov/science-matters/nsf-101-agency-accessibility-resources",
+        "https://www.nsf.gov/tip/latest"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 5,
+      "pages": [
+        "https://www.nsf.gov/about",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/sbe",
+        "https://www.nsf.gov/focus-areas/ai",
+        "https://www.nsf.gov/focus-areas/quantum"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
+      "pageCount": 5,
+      "pages": [
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
+        "https://www.nsf.gov/funding/opportunities",
+        "https://www.nsf.gov/staff",
+        "https://oig.nsf.gov/home/",
+        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 5,
+      "pages": [
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
+        "https://www.nsf.gov/funding/opportunities",
+        "https://www.nsf.gov/staff",
+        "https://oig.nsf.gov/home/",
+        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 5,
       "pages": [
         "https://ncses.nsf.gov/",
         "https://ncses.nsf.gov/accessibility",
-        "https://ncses.nsf.gov/indicators",
-        "https://www.nsf.gov/research-security",
-        "https://oig.nsf.gov/home/",
-        "https://oig.nsf.gov/home/group/contact/page/contact-us"
+        "https://ncses.nsf.gov/data-tools",
+        "https://ncses.nsf.gov/surveys",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 5,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/interest-areas/government-science-engineering-funding",
+        "https://www.nsf.gov/about/about-nsf-by-the-numbers/codebook",
+        "https://www.nsf.gov/sbe",
+        "https://www.nsf.gov/about/meetings/help"
       ]
     },
     {
@@ -286,12 +522,60 @@
       ]
     },
     {
-      "ruleId": "axe:html-has-lang",
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 4,
+      "pages": [
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/sbe",
+        "https://www.nsf.gov/focus-areas/ai",
+        "https://www.nsf.gov/focus-areas/quantum"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 4,
+      "pages": [
+        "https://www.nsf.gov/about",
+        "https://www.nsf.gov/sbe",
+        "https://www.nsf.gov/focus-areas/ai",
+        "https://www.nsf.gov/focus-areas/quantum"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 4,
+      "pages": [
+        "https://ncses.nsf.gov/",
+        "https://ncses.nsf.gov/accessibility",
+        "https://ncses.nsf.gov/indicators",
+        "https://oig.nsf.gov/home/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r1",
       "pageCount": 3,
       "pages": [
+        "https://search.nsf.gov/search?query=&affiliate=nsf&search=",
         "https://www.nsf.gov/funding/opportunities",
-        "https://www.nsf.gov/events",
         "https://www.nsf.gov/staff"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r64",
+      "pageCount": 3,
+      "pages": [
+        "https://www.nsf.gov/about/budget/fy2026",
+        "https://www.nsf.gov/about/about-nsf-by-the-numbers/codebook",
+        "https://www.nsf.gov/sbe"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 3,
+      "pages": [
+        "https://www.nsf.gov/about/budget/fy2026",
+        "https://www.nsf.gov/about/about-nsf-by-the-numbers/codebook",
+        "https://www.nsf.gov/sbe"
       ]
     },
     {
@@ -301,15 +585,6 @@
         "https://ncses.nsf.gov/accessibility",
         "https://ncses.nsf.gov/data-tools",
         "https://ncses.nsf.gov/surveys"
-      ]
-    },
-    {
-      "ruleId": "axe:color-contrast",
-      "pageCount": 3,
-      "pages": [
-        "https://www.nsf.gov/research-security",
-        "https://oig.nsf.gov/home/",
-        "https://oig.nsf.gov/home/group/contact/page/contact-us"
       ]
     }
   ]
