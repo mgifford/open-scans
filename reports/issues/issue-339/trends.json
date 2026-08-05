@@ -1,0 +1,363 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 1119,
+    "axe": 219,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1338,
+    "scannedAt": "2026-08-05T15:15:42.356Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 19,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r47",
+      "pageCount": 19,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 19,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 12,
+      "pages": [
+        "https://www.wfp.org/search",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar",
+        "https://www.wfp.org/countries/myanmar",
+        "https://www.wfp.org/news/wfp-resumes-food-distributions-ethiopias-dawa-zone",
+        "https://www.wfp.org/support-us/stories/south-sudan",
+        "https://www.wfp.org/emergencies/nigeria-emergency",
+        "https://www.wfp.org/countries/libya"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 12,
+      "pages": [
+        "https://www.wfp.org/search",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar",
+        "https://www.wfp.org/countries/myanmar",
+        "https://www.wfp.org/news/wfp-resumes-food-distributions-ethiopias-dawa-zone",
+        "https://www.wfp.org/support-us/stories/south-sudan",
+        "https://www.wfp.org/emergencies/nigeria-emergency",
+        "https://www.wfp.org/countries/libya",
+        "https://www.wfp.org/countries/democratic-peoples-republic-korea"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 12,
+      "pages": [
+        "https://www.wfp.org/search",
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar",
+        "https://www.wfp.org/countries/myanmar",
+        "https://www.wfp.org/news/wfp-resumes-food-distributions-ethiopias-dawa-zone",
+        "https://www.wfp.org/support-us/stories/south-sudan",
+        "https://www.wfp.org/emergencies/nigeria-emergency",
+        "https://www.wfp.org/countries/libya",
+        "https://www.wfp.org/countries/democratic-peoples-republic-korea"
+      ]
+    },
+    {
+      "ruleId": "axe:document-title",
+      "pageCount": 11,
+      "pages": [
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar",
+        "https://www.wfp.org/countries/myanmar",
+        "https://www.wfp.org/news/wfp-resumes-food-distributions-ethiopias-dawa-zone",
+        "https://www.wfp.org/support-us/stories/south-sudan",
+        "https://www.wfp.org/emergencies/nigeria-emergency",
+        "https://www.wfp.org/countries/libya",
+        "https://www.wfp.org/countries/democratic-peoples-republic-korea",
+        "https://www.wfp.org/news/statement-world-food-programme-executive-director-david-beasley-welcoming-election-new"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 11,
+      "pages": [
+        "https://www.wfp.org/emergencies/drc-emergency",
+        "https://www.wfp.org/countries/china",
+        "https://www.wfp.org/news/funding-crunch-deprives-120000-children-school-meals-drought-ridden-southern-madagascar",
+        "https://www.wfp.org/countries/myanmar",
+        "https://www.wfp.org/news/wfp-resumes-food-distributions-ethiopias-dawa-zone",
+        "https://www.wfp.org/support-us/stories/south-sudan",
+        "https://www.wfp.org/emergencies/nigeria-emergency",
+        "https://www.wfp.org/countries/libya",
+        "https://www.wfp.org/countries/democratic-peoples-republic-korea",
+        "https://www.wfp.org/news/statement-world-food-programme-executive-director-david-beasley-welcoming-election-new"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 8,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/news/conflict-driven-hunger-worsens",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 8,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r17",
+      "pageCount": 7,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/news/conflict-driven-hunger-worsens",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 7,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/news/conflict-driven-hunger-worsens",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/search",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/eu2021",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-hidden-focus",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-banner-is-top-level",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-contentinfo-is-top-level",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-contentinfo",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/senegal",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r72",
+      "pageCount": 4,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/colombia",
+        "https://www.wfp.org/countries/yemen",
+        "https://www.wfp.org/countries/philippines"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
+      "pageCount": 3,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.wfp.org/countries/yemen"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 3,
+      "pages": [
+        "https://www.wfp.org/eu",
+        "https://www.wfp.org/search",
+        "https://www.wfp.org/eu2021"
+      ]
+    }
+  ]
+}
