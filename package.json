@@ -30,17 +30,17 @@
     }
   },
   "dependencies": {
-    "@accesslint/core": "^0.8.7",
-    "@axe-core/playwright": "^4.11.1",
+    "@accesslint/core": "^0.17.0",
+    "@axe-core/playwright": "^4.12.1",
     "@cucumber/cucumber": "^12.9.0",
-    "@qualweb/act-rules": "^0.7.6",
-    "@qualweb/core": "0.8.1",
-    "@qualweb/qw-page": "0.3.1",
+    "@qualweb/act-rules": "^0.8.5",
+    "@qualweb/core": "0.9.5",
+    "@qualweb/qw-page": "0.3.8",
     "@qualweb/util": "^0.7.4",
     "@siteimprove/alfa-cli": "^0.84.2",
     "@siteimprove/alfa-formatter-earl": "^0.84.2",
     "@siteimprove/alfa-formatter-json": "^0.84.2",
-    "accessibility-checker": "^4.0.26",
+    "accessibility-checker": "^4.0.30",
     "playwright": "^1.60.0",
     "semantica11y": "^1.0.1"
   },
