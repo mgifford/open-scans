@@ -1,0 +1,128 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 539,
+    "axe": 86,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 625,
+    "scannedAt": "2026-08-05T14:44:23.881Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 20,
+      "pages": [
+        "https://www.unopensource.org/",
+        "https://www.unopensource.org/product/standard-ticket",
+        "https://www.unopensource.org/event/industry-spotlight-open-source-in-the-automotive-industry",
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/speaker/naveen-varshan",
+        "https://www.unopensource.org/event/making-dpi-work-for-children-from-country-experience-to-implementer-tactics",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 19,
+      "pages": [
+        "https://www.unopensource.org/",
+        "https://www.unopensource.org/product/standard-ticket",
+        "https://www.unopensource.org/event/industry-spotlight-open-source-in-the-automotive-industry",
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/speaker/naveen-varshan",
+        "https://www.unopensource.org/event/making-dpi-work-for-children-from-country-experience-to-implementer-tactics",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 18,
+      "pages": [
+        "https://www.unopensource.org/product/standard-ticket",
+        "https://www.unopensource.org/event/industry-spotlight-open-source-in-the-automotive-industry",
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/speaker/naveen-varshan",
+        "https://www.unopensource.org/event/making-dpi-work-for-children-from-country-experience-to-implementer-tactics",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa",
+        "https://www.unopensource.org/speaker/yann-lecun"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 17,
+      "pages": [
+        "https://www.unopensource.org/",
+        "https://www.unopensource.org/product/standard-ticket",
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/event/making-dpi-work-for-children-from-country-experience-to-implementer-tactics",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa",
+        "https://www.unopensource.org/speaker/yann-lecun",
+        "https://www.unopensource.org/speaker/hon-amb-audrey-marks"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 16,
+      "pages": [
+        "https://www.unopensource.org/",
+        "https://www.unopensource.org/product/standard-ticket",
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/event/making-dpi-work-for-children-from-country-experience-to-implementer-tactics",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa",
+        "https://www.unopensource.org/speaker/yann-lecun",
+        "https://www.unopensource.org/speaker/hon-amb-audrey-marks"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 15,
+      "pages": [
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/speaker/naveen-varshan",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa",
+        "https://www.unopensource.org/speaker/yann-lecun",
+        "https://www.unopensource.org/speaker/hon-amb-audrey-marks",
+        "https://www.unopensource.org/speaker/frederik-blachetta",
+        "https://www.unopensource.org/speaker/kush-r-varshney"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 15,
+      "pages": [
+        "https://www.unopensource.org/speaker/cv-madhukar",
+        "https://www.unopensource.org/speaker/verena-kontschieder",
+        "https://www.unopensource.org/speaker/kanono-ramashamole",
+        "https://www.unopensource.org/speaker/joanne-parker",
+        "https://www.unopensource.org/speaker/naveen-varshan",
+        "https://www.unopensource.org/speaker/ahunna-eziakonwa",
+        "https://www.unopensource.org/speaker/yann-lecun",
+        "https://www.unopensource.org/speaker/hon-amb-audrey-marks",
+        "https://www.unopensource.org/speaker/frederik-blachetta",
+        "https://www.unopensource.org/speaker/kush-r-varshney"
+      ]
+    }
+  ]
+}
