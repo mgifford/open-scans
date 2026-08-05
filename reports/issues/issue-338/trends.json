@@ -1,0 +1,116 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 168,
+    "equalAccess": 0,
+    "qualweb": 359,
+    "accesslint": 0,
+    "combined": 527,
+    "scannedAt": "2026-08-05T14:36:17.124Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 19,
+      "pages": [
+        "https://www.who.int/",
+        "https://www.who.int/publications",
+        "https://www.who.int/countries/country-presence/reports/2025/country-offices",
+        "https://www.who.int/about/accountability/results",
+        "https://www.who.int/news-room/fact-sheets/detail/herpes-simplex-virus",
+        "https://www.who.int/health-topics",
+        "https://www.who.int/news-room/fact-sheets",
+        "https://www.emro.who.int/index.html",
+        "https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026",
+        "https://data.who.int/dashboards/covid19/cases?n=c"
+      ]
+    },
+    {
+      "ruleId": "axe:label-title-only",
+      "pageCount": 17,
+      "pages": [
+        "https://www.who.int/",
+        "https://www.who.int/publications",
+        "https://www.who.int/countries/country-presence/reports/2025/country-offices",
+        "https://www.who.int/about/accountability/results",
+        "https://www.who.int/news-room/fact-sheets/detail/herpes-simplex-virus",
+        "https://www.who.int/health-topics",
+        "https://www.who.int/news-room/fact-sheets",
+        "https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.who.int/about/structure"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://data.who.int/dashboards/global-progress/triple-billion",
+        "https://www.who.int/about/accountability/results",
+        "https://data.who.int/dashboards/covid19/cases?n=c",
+        "https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)",
+        "https://www.who.int/about/cybersecurity",
+        "https://www.who.int/standards/classifications"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 5,
+      "pages": [
+        "https://data.who.int/dashboards/global-progress/triple-billion",
+        "https://www.emro.who.int/index.html",
+        "https://www.who.int/about/structure",
+        "https://www.who.int/southeastasia",
+        "https://www.who.int/health-topics/hiv-aids"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://data.who.int/dashboards/global-progress/triple-billion",
+        "https://data.who.int/dashboards/covid19/cases?n=c",
+        "https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 3,
+      "pages": [
+        "https://data.who.int/dashboards/global-progress/triple-billion",
+        "https://data.who.int/dashboards/covid19/cases?n=c",
+        "https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://data.who.int/dashboards/global-progress/triple-billion",
+        "https://data.who.int/dashboards/covid19/cases?n=c",
+        "https://www.who.int/data/data-collection-tools/civil-registration-and-vital-statistics-(crvs)"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 3,
+      "pages": [
+        "https://www.who.int/countries/country-presence/reports/2025/country-offices",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.who.int/health-topics/hiv-aids"
+      ]
+    },
+    {
+      "ruleId": "axe:role-img-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.who.int/health-topics/hiv-aids",
+        "https://www.who.int/countries/country-office-strengthening"
+      ]
+    }
+  ]
+}

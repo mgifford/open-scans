@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-05T14:36:17.261Z",
+  "issueNumber": 338,
+  "scanTitle": "https://www.who.int",
+  "scannersInUse": [
+    "axe",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 168,
+      "uniqueFailed": 168,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 359,
+      "uniqueFailed": 359,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 164,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "qualweb": 41
+    }
+  },
+  "duplicateFindingTotals": 322,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
