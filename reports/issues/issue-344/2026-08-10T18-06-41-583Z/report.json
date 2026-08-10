@@ -1,0 +1,356 @@
+{
+  "issueNumber": 344,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/344",
+  "issueTitle": "SCAN: Nig Websites",
+  "scanTitle": "Nig Websites",
+  "submittedBy": "dennissidi",
+  "engines": [
+    "axe",
+    "accesslint"
+  ],
+  "scanContext": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "webkit"
+  },
+  "scannedAt": "2026-08-10T18:06:28.384Z",
+  "totalElapsedMs": 120013,
+  "totalSubmitted": 2,
+  "acceptedCount": 2,
+  "scannedCount": 2,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "reflowRiskTotals": {
+    "failed": 0,
+    "potential": 0,
+    "passed": 0,
+    "cantTell": 0,
+    "notExecuted": 2
+  },
+  "semantica11yTotals": {
+    "errors": 0,
+    "warnings": 0,
+    "suggestions": 0,
+    "notExecuted": 2
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "duplicateTitles": [],
+  "results": [
+    {
+      "submittedUrl": "https://ohcsf.gov.ng",
+      "finalUrl": "https://ohcsf.gov.ng/",
+      "redirected": false,
+      "statusCode": null,
+      "ok": false,
+      "contentType": null,
+      "pageTitle": null,
+      "elapsedMs": 60002,
+      "error": "URL scan exceeded 60s timeout",
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "webkit"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "reflowRisk": {
+        "executed": false,
+        "result": null,
+        "description": null,
+        "overflowAmountPx": null,
+        "helpUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+        "error": "URL scan timeout exceeded"
+      },
+      "semantica11y": {
+        "executed": false,
+        "summary": null,
+        "issues": [],
+        "error": "URL scan timeout exceeded"
+      },
+      "duplicateFindingCount": 0,
+      "timings": {
+        "fetchMs": null,
+        "pageNavigationMs": 0,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 60002,
+        "scannerMs": {
+          "axe": null,
+          "accesslint": null
+        }
+      }
+    },
+    {
+      "submittedUrl": "https://osgf.gov.ng",
+      "finalUrl": "https://osgf.gov.ng/",
+      "redirected": false,
+      "statusCode": null,
+      "ok": false,
+      "contentType": null,
+      "pageTitle": null,
+      "elapsedMs": 60001,
+      "error": "URL scan exceeded 60s timeout",
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "webkit"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "axe": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "URL scan timeout exceeded",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "reflowRisk": {
+        "executed": false,
+        "result": null,
+        "description": null,
+        "overflowAmountPx": null,
+        "helpUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+        "error": "URL scan timeout exceeded"
+      },
+      "semantica11y": {
+        "executed": false,
+        "summary": null,
+        "issues": [],
+        "error": "URL scan timeout exceeded"
+      },
+      "duplicateFindingCount": 0,
+      "timings": {
+        "fetchMs": null,
+        "pageNavigationMs": 0,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 60001,
+        "scannerMs": {
+          "axe": null,
+          "accesslint": null
+        }
+      }
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [],
+    "roleStats": {
+      "UX Designer": 0,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 0
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 0,
+      "Minor": 0
+    }
+  },
+  "changeTracking": {
+    "newCount": 0,
+    "notObservedCount": 0,
+    "newIssues": [],
+    "notObservedIssues": []
+  }
+}
