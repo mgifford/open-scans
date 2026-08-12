@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-13T01:39:02.870Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2750,
-          "equalAccess": 18001,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 20751,
-          "scannedAt": "2026-05-13T01:39:02.870Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-20T01:40:21.335Z",
-        "totals": {
-          "alfa": 14360,
-          "axe": 2751,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 17111,
-          "scannedAt": "2026-05-20T01:40:21.335Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -3640,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 14360,
-        "axe": 1,
-        "equalAccess": -18001,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-20T01:40:21.335Z",
         "totals": {
           "alfa": 14360,
@@ -148,23 +111,47 @@
         "qualweb": 4558,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-05T01:28:09.587Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2786,
+          "equalAccess": 0,
+          "qualweb": 4558,
+          "accesslint": 0,
+          "combined": 7344,
+          "scannedAt": "2026-08-05T01:28:09.587Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-12T03:23:50.030Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2785,
+          "equalAccess": 18142,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 20927,
+          "scannedAt": "2026-08-12T03:23:50.030Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 13583,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -1,
+        "equalAccess": 18142,
+        "qualweb": -4558,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-07-29T01:34:19.019Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2744,
-        "equalAccess": 18299,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 21043,
-        "scannedAt": "2026-07-29T01:34:19.019Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-05T01:28:09.587Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 100
       }
     },
-    "change": -13699,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-08-12T03:23:50.030Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2785,
+        "equalAccess": 18142,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 20927,
+        "scannedAt": "2026-08-12T03:23:50.030Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 13583,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": 42,
-      "equalAccess": -18299,
-      "qualweb": 4558,
+      "axe": -1,
+      "equalAccess": 18142,
+      "qualweb": -4558,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 3,
-  "worseningCount": 1,
+  "overallTrend": "worsening",
+  "improvingCount": 2,
+  "worseningCount": 2,
   "latestTotals": {
     "alfa": 0,
-    "axe": 2786,
-    "equalAccess": 0,
-    "qualweb": 4558,
+    "axe": 2785,
+    "equalAccess": 18142,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 7344,
-    "scannedAt": "2026-08-05T01:28:09.587Z",
+    "combined": 20927,
+    "scannedAt": "2026-08-12T03:23:50.030Z",
     "scannedCount": 100
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 2750,
-    "equalAccess": 18001,
+    "alfa": 14360,
+    "axe": 2751,
+    "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 20751,
-    "scannedAt": "2026-05-13T01:39:02.870Z",
+    "combined": 17111,
+    "scannedAt": "2026-05-20T01:40:21.335Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
