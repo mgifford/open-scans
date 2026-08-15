@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-17T02:43:53.190Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 200,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 200,
-          "scannedAt": "2026-05-17T02:43:53.190Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-24T02:29:26.439Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 200,
-          "equalAccess": 0,
-          "qualweb": 200,
-          "accesslint": 0,
-          "combined": 400,
-          "scannedAt": "2026-05-24T02:29:26.439Z",
-          "scannedCount": 100
-        }
-      },
-      "change": 200,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": 200,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-24T02:29:26.439Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-09T03:13:45.994Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 100,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 100,
+          "scannedAt": "2026-08-09T03:13:45.994Z",
+          "scannedCount": 50
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-15T22:21:36.587Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 146,
+          "equalAccess": 0,
+          "qualweb": 146,
+          "accesslint": 0,
+          "combined": 292,
+          "scannedAt": "2026-08-15T22:21:36.587Z",
+          "scannedCount": 73
+        }
+      },
+      "change": 192,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 46,
+        "equalAccess": 0,
+        "qualweb": 146,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-02T01:42:58.310Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 156,
-        "equalAccess": 546,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 702,
-        "scannedAt": "2026-08-02T01:42:58.310Z",
-        "scannedCount": 78
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-09T03:13:45.994Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 50
       }
     },
-    "change": -602,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-08-15T22:21:36.587Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 146,
+        "equalAccess": 0,
+        "qualweb": 146,
+        "accesslint": 0,
+        "combined": 292,
+        "scannedAt": "2026-08-15T22:21:36.587Z",
+        "scannedCount": 73
+      }
+    },
+    "change": 192,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -56,
-      "equalAccess": -546,
-      "qualweb": 0,
+      "axe": 46,
+      "equalAccess": 0,
+      "qualweb": 146,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 2,
   "worseningCount": 2,
   "latestTotals": {
     "alfa": 0,
-    "axe": 100,
+    "axe": 146,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 146,
     "accesslint": 0,
-    "combined": 100,
-    "scannedAt": "2026-08-09T03:13:45.994Z",
-    "scannedCount": 50
+    "combined": 292,
+    "scannedAt": "2026-08-15T22:21:36.587Z",
+    "scannedCount": 73
   },
   "baselineTotals": {
     "alfa": 0,
     "axe": 200,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 200,
     "accesslint": 0,
-    "combined": 200,
-    "scannedAt": "2026-05-17T02:43:53.190Z",
+    "combined": 400,
+    "scannedAt": "2026-05-24T02:29:26.439Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:meta-refresh",
-      "pageCount": 50,
+      "pageCount": 73,
       "pages": [
         "https://government.se/",
         "https://government.se/reports/",
