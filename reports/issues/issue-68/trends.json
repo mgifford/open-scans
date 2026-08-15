@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-09T01:30:54.430Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 175,
-          "equalAccess": 0,
-          "qualweb": 419,
-          "accesslint": 0,
-          "combined": 594,
-          "scannedAt": "2026-05-09T01:30:54.430Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-16T01:35:16.115Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 175,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 470,
-          "combined": 645,
-          "scannedAt": "2026-05-16T01:35:16.115Z",
-          "scannedCount": 100
-        }
-      },
-      "change": 51,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": -419,
-        "accesslint": 470
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-16T01:35:16.115Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 246
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-08T03:05:59.586Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 133,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 246,
+          "combined": 379,
+          "scannedAt": "2026-08-08T03:05:59.586Z",
+          "scannedCount": 69
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-15T02:34:07.010Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 173,
+          "equalAccess": 0,
+          "qualweb": 483,
+          "accesslint": 0,
+          "combined": 656,
+          "scannedAt": "2026-08-15T02:34:07.010Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 277,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 40,
+        "equalAccess": 0,
+        "qualweb": 483,
+        "accesslint": -246
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-01T01:38:19.809Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 172,
-        "equalAccess": 7054,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 7226,
-        "scannedAt": "2026-08-01T01:38:19.809Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-08T03:05:59.586Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 69
       }
     },
-    "change": -6847,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-08-15T02:34:07.010Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 173,
+        "equalAccess": 0,
+        "qualweb": 483,
+        "accesslint": 0,
+        "combined": 656,
+        "scannedAt": "2026-08-15T02:34:07.010Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 277,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -39,
-      "equalAccess": -7054,
-      "qualweb": 0,
-      "accesslint": 246
+      "axe": 40,
+      "equalAccess": 0,
+      "qualweb": 483,
+      "accesslint": -246
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 2,
   "worseningCount": 2,
   "latestTotals": {
     "alfa": 0,
-    "axe": 133,
+    "axe": 173,
     "equalAccess": 0,
-    "qualweb": 0,
-    "accesslint": 246,
-    "combined": 379,
-    "scannedAt": "2026-08-08T03:05:59.586Z",
-    "scannedCount": 69
+    "qualweb": 483,
+    "accesslint": 0,
+    "combined": 656,
+    "scannedAt": "2026-08-15T02:34:07.010Z",
+    "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
     "axe": 175,
     "equalAccess": 0,
-    "qualweb": 419,
-    "accesslint": 0,
-    "combined": 594,
-    "scannedAt": "2026-05-09T01:30:54.430Z",
+    "qualweb": 0,
+    "accesslint": 470,
+    "combined": 645,
+    "scannedAt": "2026-05-16T01:35:16.115Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:svg-img-alt",
-      "pageCount": 34,
+      "pageCount": 65,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
@@ -232,7 +232,7 @@
       "pageCount": 24,
       "pages": [
         "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
-        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warmer-homes",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
         "https://london.gov.uk/programmes-strategies/accessibility",
         "https://london.gov.uk/programmes-strategies/accessibility-statement-talk-london",
         "https://london.gov.uk/programmes-strategies/arts-and-culture/space-culture/help-resources-and-guidance/finding-building-or-land",
@@ -241,6 +241,22 @@
         "https://www.london.gov.uk/programmes-strategies/volunteering/search/",
         "https://london.gov.uk/programmes-strategies/accessibility/accessible-comms-policy",
         "https://london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 10,
+      "pages": [
+        "https://www.london.gov.uk/media-centre",
+        "https://data.london.gov.uk/dataset/lfb-financial-and-performance-reporting-201920-e7xqq",
+        "https://www.london.gov.uk/events/77-memorial-service-2023",
+        "https://www.london.gov.uk/events/77-memorial-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2023",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2025",
+        "https://www.london.gov.uk/events/remembrance-day-service-2023",
+        "https://www.london.gov.uk/events/remembrance-day-service-2024",
+        "https://www.london.gov.uk/events/remembrance-service-2025"
       ]
     },
     {
@@ -257,12 +273,13 @@
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 4,
+      "pageCount": 5,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
         "https://www.london.gov.uk/could-you-please-confirm-if-we-need-apply-map-quality-mark-construction-provision-if-it-already",
-        "https://www.london.gov.uk/covid-19-resources-and-services-your-language"
+        "https://www.london.gov.uk/covid-19-resources-and-services-your-language",
+        "https://www.london.gov.uk/city-hall-blog/digital-service-standard-local-government"
       ]
     }
   ]
