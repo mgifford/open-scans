@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-20T01:40:21.335Z",
-        "totals": {
-          "alfa": 14360,
-          "axe": 2751,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 17111,
-          "scannedAt": "2026-05-20T01:40:21.335Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-27T01:39:54.804Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2748,
-          "equalAccess": 0,
-          "qualweb": 5158,
-          "accesslint": 0,
-          "combined": 7906,
-          "scannedAt": "2026-05-27T01:39:54.804Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -9205,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": -14360,
-        "axe": -3,
-        "equalAccess": 0,
-        "qualweb": 5158,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-27T01:39:54.804Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": -4558,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-12T03:23:50.030Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2785,
+          "equalAccess": 18142,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 20927,
+          "scannedAt": "2026-08-12T03:23:50.030Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-19T02:33:57.138Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2785,
+          "equalAccess": 18199,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 20984,
+          "scannedAt": "2026-08-19T02:33:57.138Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 57,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 57,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-05T01:28:09.587Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2786,
-        "equalAccess": 0,
-        "qualweb": 4558,
-        "accesslint": 0,
-        "combined": 7344,
-        "scannedAt": "2026-08-05T01:28:09.587Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-12T03:23:50.030Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 100
       }
     },
-    "change": 13583,
+    "to": {
+      "scannedAt": "2026-08-19T02:33:57.138Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2785,
+        "equalAccess": 18199,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 20984,
+        "scannedAt": "2026-08-19T02:33:57.138Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 57,
     "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -1,
-      "equalAccess": 18142,
-      "qualweb": -4558,
+      "axe": 0,
+      "equalAccess": 57,
+      "qualweb": 0,
       "accesslint": 0
     }
   },
   "overallTrend": "worsening",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
     "axe": 2785,
-    "equalAccess": 18142,
+    "equalAccess": 18199,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 20927,
-    "scannedAt": "2026-08-12T03:23:50.030Z",
+    "combined": 20984,
+    "scannedAt": "2026-08-19T02:33:57.138Z",
     "scannedCount": 100
   },
   "baselineTotals": {
-    "alfa": 14360,
-    "axe": 2751,
+    "alfa": 0,
+    "axe": 2748,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 5158,
     "accesslint": 0,
-    "combined": 17111,
-    "scannedAt": "2026-05-20T01:40:21.335Z",
+    "combined": 7906,
+    "scannedAt": "2026-05-27T01:39:54.804Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
