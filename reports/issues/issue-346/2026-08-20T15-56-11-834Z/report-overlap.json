@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-20T15:55:33.543Z",
+  "issueNumber": 346,
+  "scanTitle": "https://studentaffairs.charlotte.edu/",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 44,
+      "uniqueFailed": 44,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 1010,
+      "uniqueFailed": 1010,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 44,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 181
+    }
+  },
+  "duplicateFindingTotals": 829,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 1010,
+    "axe": 44,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1054,
+    "scannedAt": "2026-08-20T15:55:33.483Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 20,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/stephanie-rewitzer",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/student-spotlights/matthew-mcgrew",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/randy-barnhill",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/about-us/vice-chancellors-office-staff/joe-rick-mba",
+        "https://studentaffairs.charlotte.edu/about-us/senior-leadership-team/casey-tullos-edd",
+        "https://studentaffairs.charlotte.edu/gold-rush-ushers-new-academic-year",
+        "https://studentaffairs.charlotte.edu/tullos-named-student-affairs-associate-vice-chancellor-housing-and-residence-life"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 20,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/stephanie-rewitzer",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/student-spotlights/matthew-mcgrew",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/randy-barnhill",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/about-us/vice-chancellors-office-staff/joe-rick-mba",
+        "https://studentaffairs.charlotte.edu/about-us/senior-leadership-team/casey-tullos-edd",
+        "https://studentaffairs.charlotte.edu/gold-rush-ushers-new-academic-year",
+        "https://studentaffairs.charlotte.edu/tullos-named-student-affairs-associate-vice-chancellor-housing-and-residence-life"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 20,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/stephanie-rewitzer",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/student-spotlights/matthew-mcgrew",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/randy-barnhill",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/about-us/vice-chancellors-office-staff/joe-rick-mba",
+        "https://studentaffairs.charlotte.edu/about-us/senior-leadership-team/casey-tullos-edd",
+        "https://studentaffairs.charlotte.edu/gold-rush-ushers-new-academic-year",
+        "https://studentaffairs.charlotte.edu/tullos-named-student-affairs-associate-vice-chancellor-housing-and-residence-life"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-main-is-top-level",
+      "pageCount": 20,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/stephanie-rewitzer",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/student-spotlights/matthew-mcgrew",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/randy-barnhill",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/about-us/vice-chancellors-office-staff/joe-rick-mba",
+        "https://studentaffairs.charlotte.edu/about-us/senior-leadership-team/casey-tullos-edd",
+        "https://studentaffairs.charlotte.edu/gold-rush-ushers-new-academic-year",
+        "https://studentaffairs.charlotte.edu/tullos-named-student-affairs-associate-vice-chancellor-housing-and-residence-life"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-main",
+      "pageCount": 20,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/stephanie-rewitzer",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/student-spotlights/matthew-mcgrew",
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights/randy-barnhill",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/about-us/vice-chancellors-office-staff/joe-rick-mba",
+        "https://studentaffairs.charlotte.edu/about-us/senior-leadership-team/casey-tullos-edd",
+        "https://studentaffairs.charlotte.edu/gold-rush-ushers-new-academic-year",
+        "https://studentaffairs.charlotte.edu/tullos-named-student-affairs-associate-vice-chancellor-housing-and-residence-life"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 4,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/kamryn-latino",
+        "https://studentaffairs.charlotte.edu/fight-hunger-unc-charlotte-during-homelessness-and-hunger-awareness-week"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://studentaffairs.charlotte.edu/about-us/spotlights/staff-spotlights",
+        "https://studentaffairs.charlotte.edu/cox-earns-trio-national-awards-climate-change-videos",
+        "https://studentaffairs.charlotte.edu/kamryn-latino",
+        "https://studentaffairs.charlotte.edu/fight-hunger-unc-charlotte-during-homelessness-and-hunger-awareness-week"
+      ]
+    }
+  ]
+}
