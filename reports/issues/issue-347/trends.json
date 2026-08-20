@@ -1,0 +1,15 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 34,
+    "equalAccess": 0,
+    "qualweb": 19,
+    "accesslint": 0,
+    "combined": 53,
+    "scannedAt": "2026-08-20T17:07:27.574Z",
+    "scannedCount": 2
+  },
+  "latestSystemicPatterns": []
+}
