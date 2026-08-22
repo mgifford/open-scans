@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-05-16T01:35:16.115Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 175,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 470,
-          "combined": 645,
-          "scannedAt": "2026-05-16T01:35:16.115Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-05-23T01:36:56.810Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 183,
-          "equalAccess": 0,
-          "qualweb": 401,
-          "accesslint": 0,
-          "combined": 584,
-          "scannedAt": "2026-05-23T01:36:56.810Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -61,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 8,
-        "equalAccess": 0,
-        "qualweb": 401,
-        "accesslint": -470
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-05-23T01:36:56.810Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 483,
         "accesslint": -246
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-15T02:34:07.010Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 173,
+          "equalAccess": 0,
+          "qualweb": 483,
+          "accesslint": 0,
+          "combined": 656,
+          "scannedAt": "2026-08-15T02:34:07.010Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-22T02:34:47.947Z",
+        "totals": {
+          "alfa": 2021,
+          "axe": 170,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2191,
+          "scannedAt": "2026-08-22T02:34:47.947Z",
+          "scannedCount": 98
+        }
+      },
+      "change": 1535,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 2021,
+        "axe": -3,
+        "equalAccess": 0,
+        "qualweb": -483,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-08T03:05:59.586Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 133,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 246,
-        "combined": 379,
-        "scannedAt": "2026-08-08T03:05:59.586Z",
-        "scannedCount": 69
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-15T02:34:07.010Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,72 @@
         "scannedCount": 100
       }
     },
-    "change": 277,
+    "to": {
+      "scannedAt": "2026-08-22T02:34:47.947Z",
+      "totals": {
+        "alfa": 2021,
+        "axe": 170,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 2191,
+        "scannedAt": "2026-08-22T02:34:47.947Z",
+        "scannedCount": 98
+      }
+    },
+    "change": 1535,
     "trend": "worsening",
     "perScanner": {
-      "alfa": 0,
-      "axe": 40,
+      "alfa": 2021,
+      "axe": -3,
       "equalAccess": 0,
-      "qualweb": 483,
-      "accesslint": -246
+      "qualweb": -483,
+      "accesslint": 0
     }
   },
   "overallTrend": "worsening",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
-    "alfa": 0,
-    "axe": 173,
+    "alfa": 2021,
+    "axe": 170,
     "equalAccess": 0,
-    "qualweb": 483,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 656,
-    "scannedAt": "2026-08-15T02:34:07.010Z",
-    "scannedCount": 100
+    "combined": 2191,
+    "scannedAt": "2026-08-22T02:34:47.947Z",
+    "scannedCount": 98
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 175,
+    "axe": 183,
     "equalAccess": 0,
-    "qualweb": 0,
-    "accesslint": 470,
-    "combined": 645,
-    "scannedAt": "2026-05-16T01:35:16.115Z",
+    "qualweb": 401,
+    "accesslint": 0,
+    "combined": 584,
+    "scannedAt": "2026-05-23T01:36:56.810Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
     {
-      "ruleId": "axe:svg-img-alt",
-      "pageCount": 65,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 69,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.facebook.com/OldOakParkRoyal/",
+        "https://homes.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 68,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
@@ -225,6 +241,118 @@
         "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
         "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
         "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 67,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.facebook.com/OldOakParkRoyal/",
+        "https://homes.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 66,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://homes.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 65,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://homes.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
+        "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r43",
+      "pageCount": 63,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
+        "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
+      ]
+    },
+    {
+      "ruleId": "axe:svg-img-alt",
+      "pageCount": 63,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
+        "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r9",
+      "pageCount": 24,
+      "pages": [
+        "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
+        "https://london.gov.uk/programmes-strategies/accessibility",
+        "https://london.gov.uk/programmes-strategies/accessibility-statement-talk-london",
+        "https://london.gov.uk/programmes-strategies/arts-and-culture/space-culture/help-resources-and-guidance/finding-building-or-land",
+        "https://www.london.gov.uk/programmes-strategies/jobs-and-skills/find-adult-learning-providers-near-me",
+        "https://www.london.gov.uk/programmes-strategies/education-and-youth/schools-success/schools-success-mapped",
+        "https://www.london.gov.uk/programmes-strategies/volunteering/search/",
+        "https://london.gov.uk/programmes-strategies/accessibility/accessible-comms-policy",
+        "https://london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r96",
+      "pageCount": 24,
+      "pages": [
+        "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
+        "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
+        "https://london.gov.uk/programmes-strategies/accessibility",
+        "https://london.gov.uk/programmes-strategies/accessibility-statement-talk-london",
+        "https://london.gov.uk/programmes-strategies/arts-and-culture/space-culture/help-resources-and-guidance/finding-building-or-land",
+        "https://www.london.gov.uk/programmes-strategies/jobs-and-skills/find-adult-learning-providers-near-me",
+        "https://www.london.gov.uk/programmes-strategies/education-and-youth/schools-success/schools-success-mapped",
+        "https://www.london.gov.uk/programmes-strategies/volunteering/search/",
+        "https://london.gov.uk/programmes-strategies/accessibility/accessible-comms-policy",
+        "https://london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services"
       ]
     },
     {
@@ -241,6 +369,22 @@
         "https://www.london.gov.uk/programmes-strategies/volunteering/search/",
         "https://london.gov.uk/programmes-strategies/accessibility/accessible-comms-policy",
         "https://london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 10,
+      "pages": [
+        "https://www.london.gov.uk/media-centre",
+        "https://data.london.gov.uk/dataset/lfb-financial-and-performance-reporting-201920-e7xqq",
+        "https://www.london.gov.uk/events/77-memorial-service-2023",
+        "https://www.london.gov.uk/events/77-memorial-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2023",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2024",
+        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2025",
+        "https://www.london.gov.uk/events/remembrance-day-service-2023",
+        "https://www.london.gov.uk/events/remembrance-day-service-2024",
+        "https://www.london.gov.uk/events/remembrance-service-2025"
       ]
     },
     {
@@ -272,14 +416,42 @@
       ]
     },
     {
-      "ruleId": "axe:heading-order",
-      "pageCount": 5,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 4,
       "pages": [
-        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://data.london.gov.uk/dataset/lfb-financial-and-performance-reporting-201920-e7xqq",
+        "https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-publications/london-stalling-reducing-traffic-congestion",
+        "https://www.london.gov.uk/city-hall-blog/how-register-covid-summer-food-fund"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 4,
+      "pages": [
         "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
         "https://www.london.gov.uk/could-you-please-confirm-if-we-need-apply-map-quality-mark-construction-provision-if-it-already",
         "https://www.london.gov.uk/covid-19-resources-and-services-your-language",
         "https://www.london.gov.uk/city-hall-blog/digital-service-standard-local-government"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/could-you-please-confirm-if-we-need-apply-map-quality-mark-construction-provision-if-it-already",
+        "https://www.london.gov.uk/covid-19-resources-and-services-your-language",
+        "https://www.london.gov.uk/city-hall-blog/digital-service-standard-local-government"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r86",
+      "pageCount": 3,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
+        "https://www.london.gov.uk/user/login?destination=/programmes-and-strategies/environment-and-climate-change/energy/renew-0/contact-renew"
       ]
     }
   ]
