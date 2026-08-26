@@ -1,0 +1,348 @@
+{
+  "scansAnalysed": 4,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-03-17T16:18:20.871Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 12,
+          "equalAccess": 1756,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1768,
+          "scannedAt": "2026-03-17T16:18:20.871Z",
+          "scannedCount": 45
+        }
+      },
+      "to": {
+        "scannedAt": "2026-03-23T14:34:12.028Z",
+        "totals": {
+          "alfa": 3067,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3079,
+          "scannedAt": "2026-03-23T14:34:12.028Z",
+          "scannedCount": 45
+        }
+      },
+      "change": 1311,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 3067,
+        "axe": 0,
+        "equalAccess": -1756,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-03-23T14:34:12.028Z",
+        "totals": {
+          "alfa": 3067,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3079,
+          "scannedAt": "2026-03-23T14:34:12.028Z",
+          "scannedCount": 45
+        }
+      },
+      "to": {
+        "scannedAt": "2026-03-27T10:40:14.946Z",
+        "totals": {
+          "alfa": 3068,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3080,
+          "scannedAt": "2026-03-27T10:40:14.946Z",
+          "scannedCount": 45
+        }
+      },
+      "change": 1,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 1,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-03-27T10:40:14.946Z",
+        "totals": {
+          "alfa": 3068,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3080,
+          "scannedAt": "2026-03-27T10:40:14.946Z",
+          "scannedCount": 45
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-26T19:16:09.980Z",
+        "totals": {
+          "alfa": 3057,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3069,
+          "scannedAt": "2026-08-26T19:16:09.980Z",
+          "scannedCount": 45
+        }
+      },
+      "change": -11,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -11,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-03-27T10:40:14.946Z",
+      "totals": {
+        "alfa": 3068,
+        "axe": 12,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 3080,
+        "scannedAt": "2026-03-27T10:40:14.946Z",
+        "scannedCount": 45
+      }
+    },
+    "to": {
+      "scannedAt": "2026-08-26T19:16:09.980Z",
+      "totals": {
+        "alfa": 3057,
+        "axe": 12,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 3069,
+        "scannedAt": "2026-08-26T19:16:09.980Z",
+        "scannedCount": 45
+      }
+    },
+    "change": -11,
+    "trend": "improving",
+    "perScanner": {
+      "alfa": -11,
+      "axe": 0,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "improving",
+  "improvingCount": 1,
+  "worseningCount": 2,
+  "latestTotals": {
+    "alfa": 3057,
+    "axe": 12,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 3069,
+    "scannedAt": "2026-08-26T19:16:09.980Z",
+    "scannedCount": 45
+  },
+  "baselineTotals": {
+    "alfa": 0,
+    "axe": 12,
+    "equalAccess": 1756,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1768,
+    "scannedAt": "2026-03-17T16:18:20.871Z",
+    "scannedCount": 45
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 45,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/press/2022-04-21-civicactions-announces-Ryerson-partnership-digital-accessibility/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/services2/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/press/2024-01-16-CivicActions-Announces-Impact-Report/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 45,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/press/2022-04-21-civicactions-announces-Ryerson-partnership-digital-accessibility/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/services2/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/press/2024-01-16-CivicActions-Announces-Impact-Report/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 45,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/press/2022-04-21-civicactions-announces-Ryerson-partnership-digital-accessibility/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/services2/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/press/2024-01-16-CivicActions-Announces-Impact-Report/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 45,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/press/2022-04-21-civicactions-announces-Ryerson-partnership-digital-accessibility/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/services2/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/press/2024-01-16-CivicActions-Announces-Impact-Report/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r17",
+      "pageCount": 43,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/press/2022-04-21-civicactions-announces-Ryerson-partnership-digital-accessibility/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/services2/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/press/2024-01-16-CivicActions-Announces-Impact-Report/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
+      "pageCount": 30,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/",
+        "https://civicactions.com/careers/",
+        "https://civicactions.com/case-studies/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "pageCount": 30,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/accessibility-statement/",
+        "https://civicactions.com/services/",
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/contact/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/services/ditap/register/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/",
+        "https://civicactions.com/careers/",
+        "https://civicactions.com/case-studies/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r72",
+      "pageCount": 14,
+      "pages": [
+        "https://civicactions.com/case-studies/cms-web-experience-services/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/",
+        "https://civicactions.com/careers/",
+        "https://civicactions.com/case-studies/cms-design-challenge-mvp/",
+        "https://civicactions.com/case-studies/cybergeek/",
+        "https://civicactions.com/case-studies/dept-of-education-system-lifecycle-development-management/",
+        "https://civicactions.com/case-studies/Drupal-10/",
+        "https://civicactions.com/case-studies/fcc-website-modernization/",
+        "https://civicactions.com/case-studies/georgia-workforce-open-data/",
+        "https://civicactions.com/case-studies/nsf-website-redesign/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 5,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/careers/",
+        "https://civicactions.com/case-studies/",
+        "https://civicactions.com/contracting/",
+        "https://civicactions.com/sustainability/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 5,
+      "pages": [
+        "https://civicactions.com/services/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/",
+        "https://civicactions.com/case-studies/cms-design-challenge-mvp/",
+        "https://civicactions.com/case-studies/nyc-metro-transit-digital-clocks/",
+        "https://civicactions.com/case-studies/va-cms-modernization/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 5,
+      "pages": [
+        "https://civicactions.com/services/",
+        "https://civicactions.com/case-studies/globalnet-platform-support/",
+        "https://civicactions.com/case-studies/cms-design-challenge-mvp/",
+        "https://civicactions.com/case-studies/nyc-metro-transit-digital-clocks/",
+        "https://civicactions.com/case-studies/va-cms-modernization/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://civicactions.com/services/ditap/register/",
+        "https://civicactions.com/feedback/",
+        "https://civicactions.com/privacy/"
+      ]
+    }
+  ]
+}
