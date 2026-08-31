@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-07-27T01:27:04.362Z",
-        "totals": {
-          "alfa": 3277,
-          "axe": 330,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 3607,
-          "scannedAt": "2026-07-27T01:27:04.362Z",
-          "scannedCount": 70
-        }
-      },
-      "to": {
-        "scannedAt": "2026-08-03T01:23:54.554Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 310,
-          "equalAccess": 0,
-          "qualweb": 834,
-          "accesslint": 0,
-          "combined": 1144,
-          "scannedAt": "2026-08-03T01:23:54.554Z",
-          "scannedCount": 70
-        }
-      },
-      "change": -2463,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": -3277,
-        "axe": -20,
-        "equalAccess": 0,
-        "qualweb": 834,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-08-03T01:23:54.554Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 63,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-24T02:26:22.666Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 302,
+          "equalAccess": 0,
+          "qualweb": 1014,
+          "accesslint": 0,
+          "combined": 1316,
+          "scannedAt": "2026-08-24T02:26:22.666Z",
+          "scannedCount": 70
+        }
+      },
+      "to": {
+        "scannedAt": "2026-08-31T05:56:45.518Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 327,
+          "equalAccess": 2886,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3213,
+          "scannedAt": "2026-08-31T05:56:45.518Z",
+          "scannedCount": 70
+        }
+      },
+      "change": 1897,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 25,
+        "equalAccess": 2886,
+        "qualweb": -1014,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-17T02:24:48.455Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 312,
-        "equalAccess": 0,
-        "qualweb": 951,
-        "accesslint": 0,
-        "combined": 1263,
-        "scannedAt": "2026-08-17T02:24:48.455Z",
-        "scannedCount": 70
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-24T02:26:22.666Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 70
       }
     },
-    "change": 53,
+    "to": {
+      "scannedAt": "2026-08-31T05:56:45.518Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 327,
+        "equalAccess": 2886,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 3213,
+        "scannedAt": "2026-08-31T05:56:45.518Z",
+        "scannedCount": 70
+      }
+    },
+    "change": 1897,
     "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -10,
-      "equalAccess": 0,
-      "qualweb": 63,
+      "axe": 25,
+      "equalAccess": 2886,
+      "qualweb": -1014,
       "accesslint": 0
     }
   },
   "overallTrend": "worsening",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
-    "axe": 302,
-    "equalAccess": 0,
-    "qualweb": 1014,
+    "axe": 327,
+    "equalAccess": 2886,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 1316,
-    "scannedAt": "2026-08-24T02:26:22.666Z",
+    "combined": 3213,
+    "scannedAt": "2026-08-31T05:56:45.518Z",
     "scannedCount": 70
   },
   "baselineTotals": {
-    "alfa": 3277,
-    "axe": 330,
+    "alfa": 0,
+    "axe": 310,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 834,
     "accesslint": 0,
-    "combined": 3607,
-    "scannedAt": "2026-07-27T01:27:04.362Z",
+    "combined": 1144,
+    "scannedAt": "2026-08-03T01:23:54.554Z",
     "scannedCount": 70
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:region",
-      "pageCount": 47,
+      "pageCount": 46,
       "pages": [
         "https://www.luton.gov.uk/",
         "https://www.staffordshire.gov.uk/",
@@ -223,13 +223,13 @@
         "https://www.erewash.gov.uk/",
         "https://www.northtyneside.gov.uk/",
         "https://www.galway.ie/en",
-        "https://www.gedling.gov.uk/",
-        "https://haringey.gov.uk/"
+        "https://haringey.gov.uk/",
+        "https://carlow.ie/"
       ]
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 12,
+      "pageCount": 13,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.staffordshire.gov.uk/",
@@ -240,7 +240,7 @@
         "https://www.surreyheath.gov.uk/",
         "https://www.wirral.gov.uk/",
         "https://www.sstaffs.gov.uk/",
-        "https://www.rbkc.gov.uk/"
+        "https://new.calderdale.gov.uk/"
       ]
     },
     {
@@ -286,6 +286,29 @@
       ]
     },
     {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 6,
+      "pages": [
+        "https://www.galwaycity.ie/",
+        "https://www.tamworth.gov.uk/",
+        "https://www.lbhf.gov.uk/",
+        "https://www.hart.gov.uk/",
+        "https://www.southkesteven.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 5,
+      "pages": [
+        "https://www.staffordshire.gov.uk/",
+        "https://www.havant.gov.uk/",
+        "https://www.rutland.gov.uk/",
+        "https://new.calderdale.gov.uk/",
+        "https://www.milton-keynes.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:aria-dialog-name",
       "pageCount": 5,
       "pages": [
@@ -305,27 +328,6 @@
         "https://www.essex.gov.uk/",
         "https://www.knowsley.gov.uk/",
         "https://www.croydon.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:page-has-heading-one",
-      "pageCount": 5,
-      "pages": [
-        "https://www.tamworth.gov.uk/",
-        "https://www.lbhf.gov.uk/",
-        "https://www.hart.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.brighton-hove.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:aria-allowed-role",
-      "pageCount": 4,
-      "pages": [
-        "https://www.staffordshire.gov.uk/",
-        "https://www.havant.gov.uk/",
-        "https://www.rutland.gov.uk/",
-        "https://www.milton-keynes.gov.uk/"
       ]
     },
     {
@@ -394,6 +396,15 @@
         "https://www.dumfriesandgalloway.gov.uk/",
         "https://www.newport.gov.uk/",
         "https://www.tipperarycoco.ie/"
+      ]
+    },
+    {
+      "ruleId": "axe:frame-title",
+      "pageCount": 3,
+      "pages": [
+        "https://new.calderdale.gov.uk/",
+        "https://www.milton-keynes.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
       ]
     }
   ]
