@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-07-29T01:34:19.019Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2744,
-          "equalAccess": 18299,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 21043,
-          "scannedAt": "2026-07-29T01:34:19.019Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-08-05T01:28:09.587Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 2786,
-          "equalAccess": 0,
-          "qualweb": 4558,
-          "accesslint": 0,
-          "combined": 7344,
-          "scannedAt": "2026-08-05T01:28:09.587Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -13699,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 42,
-        "equalAccess": -18299,
-        "qualweb": 4558,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-08-05T01:28:09.587Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 1610
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-26T02:43:04.097Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2296,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 1610,
+          "combined": 3906,
+          "scannedAt": "2026-08-26T02:43:04.097Z",
+          "scannedCount": 83
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-02T05:10:48.014Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2742,
+          "equalAccess": 0,
+          "qualweb": 4465,
+          "accesslint": 0,
+          "combined": 7207,
+          "scannedAt": "2026-09-02T05:10:48.014Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 3301,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 446,
+        "equalAccess": 0,
+        "qualweb": 4465,
+        "accesslint": -1610
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-19T02:33:57.138Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2785,
-        "equalAccess": 18199,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 20984,
-        "scannedAt": "2026-08-19T02:33:57.138Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-26T02:43:04.097Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 83
       }
     },
-    "change": -17078,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-09-02T05:10:48.014Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2742,
+        "equalAccess": 0,
+        "qualweb": 4465,
+        "accesslint": 0,
+        "combined": 7207,
+        "scannedAt": "2026-09-02T05:10:48.014Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 3301,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -489,
-      "equalAccess": -18199,
-      "qualweb": 0,
-      "accesslint": 1610
+      "axe": 446,
+      "equalAccess": 0,
+      "qualweb": 4465,
+      "accesslint": -1610
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "overallTrend": "worsening",
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
-    "axe": 2296,
+    "axe": 2742,
     "equalAccess": 0,
-    "qualweb": 0,
-    "accesslint": 1610,
-    "combined": 3906,
-    "scannedAt": "2026-08-26T02:43:04.097Z",
-    "scannedCount": 83
+    "qualweb": 4465,
+    "accesslint": 0,
+    "combined": 7207,
+    "scannedAt": "2026-09-02T05:10:48.014Z",
+    "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 2744,
-    "equalAccess": 18299,
-    "qualweb": 0,
+    "axe": 2786,
+    "equalAccess": 0,
+    "qualweb": 4558,
     "accesslint": 0,
-    "combined": 21043,
-    "scannedAt": "2026-07-29T01:34:19.019Z",
+    "combined": 7344,
+    "scannedAt": "2026-08-05T01:28:09.587Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:landmark-no-duplicate-banner",
-      "pageCount": 82,
+      "pageCount": 99,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en/living-in-bcn/accessibility",
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "axe:region",
-      "pageCount": 82,
+      "pageCount": 99,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en/living-in-bcn/accessibility",
@@ -245,7 +245,7 @@
     },
     {
       "ruleId": "axe:tabindex",
-      "pageCount": 82,
+      "pageCount": 99,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en/living-in-bcn/accessibility",
@@ -261,7 +261,7 @@
     },
     {
       "ruleId": "axe:image-alt",
-      "pageCount": 72,
+      "pageCount": 88,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en/living-in-bcn/accessibility",
@@ -277,7 +277,7 @@
     },
     {
       "ruleId": "axe:aria-required-children",
-      "pageCount": 16,
+      "pageCount": 20,
       "pages": [
         "https://www.barcelona.cat/ca/coneixbcn",
         "https://www.barcelona.cat/ca/que-pots-fer-a-bcn",
@@ -309,7 +309,7 @@
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 9,
+      "pageCount": 10,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en/what-to-do-in-bcn/bathing-and-beaches/accessibility",
@@ -319,30 +319,33 @@
         "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
         "https://www.barcelona.cat/en/what-to-do-in-bcn/festes-majors",
         "https://www.barcelona.cat/en/what-to-do-in-bcn/summer/outdoor-films",
-        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/activities/list"
+        "https://www.barcelona.cat/en/what-to-do-in-bcn/montjuic-park/activities/list",
+        "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/llistat"
       ]
     },
     {
       "ruleId": "axe:frame-title",
-      "pageCount": 6,
+      "pageCount": 7,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es",
         "https://www.barcelona.cat/en/pagina-exemple-mapa-sant-jordi",
         "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio",
-        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024"
+        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
+        "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
       ]
     },
     {
       "ruleId": "axe:aria-prohibited-attr",
-      "pageCount": 5,
+      "pageCount": 6,
       "pages": [
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es",
         "https://www.barcelona.cat/es/conocebcn/la-ciutadella-del-conocimiento",
-        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024"
+        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
+        "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
       ]
     },
     {
@@ -401,6 +404,15 @@
         "https://www.barcelona.cat/ca",
         "https://www.barcelona.cat/en",
         "https://www.barcelona.cat/es"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-command-name",
+      "pageCount": 3,
+      "pages": [
+        "https://www.barcelona.cat/es/vivir-en-bcn/vive-el-barrio",
+        "https://www.barcelona.cat/ca/viure-a-bcn/diada/transports-publics-durant-la-diada-2024",
+        "https://www.barcelona.cat/en/living-in-bcn/catalan-national-day-2019/public-transport-11-september-2022-catalan-national-day"
       ]
     }
   ]
