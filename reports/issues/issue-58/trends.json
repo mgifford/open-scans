@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-08-01T02:08:33.134Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 202,
-          "equalAccess": 0,
-          "qualweb": 1813,
-          "accesslint": 0,
-          "combined": 2015,
-          "scannedAt": "2026-08-01T02:08:33.134Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-08-08T03:49:43.478Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 202,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 2,
-          "combined": 204,
-          "scannedAt": "2026-08-08T03:49:43.478Z",
-          "scannedCount": 100
-        }
-      },
-      "change": -1811,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": -1813,
-        "accesslint": 2
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-08-08T03:49:43.478Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-29T08:15:00.155Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 208,
+          "equalAccess": 1272,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1480,
+          "scannedAt": "2026-08-29T08:15:00.155Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-05T05:38:19.377Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 211,
+          "equalAccess": 1272,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1483,
+          "scannedAt": "2026-09-05T05:38:19.377Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 3,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 3,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-22T03:17:10.067Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 206,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 206,
-        "scannedAt": "2026-08-22T03:17:10.067Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-29T08:15:00.155Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 100
       }
     },
-    "change": 1274,
+    "to": {
+      "scannedAt": "2026-09-05T05:38:19.377Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 211,
+        "equalAccess": 1272,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 1483,
+        "scannedAt": "2026-09-05T05:38:19.377Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 3,
     "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": 2,
-      "equalAccess": 1272,
+      "axe": 3,
+      "equalAccess": 0,
       "qualweb": 0,
       "accesslint": 0
     }
   },
   "overallTrend": "worsening",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
-    "axe": 208,
+    "axe": 211,
     "equalAccess": 1272,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 1480,
-    "scannedAt": "2026-08-29T08:15:00.155Z",
+    "combined": 1483,
+    "scannedAt": "2026-09-05T05:38:19.377Z",
     "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
     "axe": 202,
     "equalAccess": 0,
-    "qualweb": 1813,
-    "accesslint": 0,
-    "combined": 2015,
-    "scannedAt": "2026-08-01T02:08:33.134Z",
+    "qualweb": 0,
+    "accesslint": 2,
+    "combined": 204,
+    "scannedAt": "2026-08-08T03:49:43.478Z",
     "scannedCount": 100
   },
   "latestSystemicPatterns": [
@@ -237,6 +237,15 @@
         "https://www.gov.uk/find-digital-market-research/online-nation-report-2020-ofcom",
         "https://www.gov.uk/find-digital-market-research/the-use-of-data-by-online-services-2019-ofcom",
         "https://www.gov.uk/find-digital-market-research/transparency-in-the-regulation-of-online-safety-research-report-for-ofcom-2021-ofcom"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 3,
+      "pages": [
+        "https://www.gov.uk/service-manual/helping-people-to-use-your-service/getting-an-accessibility-audit",
+        "https://www.gov.uk/service-manual/helping-people-to-use-your-service/testing-for-accessibility",
+        "https://www.gov.uk/service-manual/technology/accessibility-for-developers-an-introduction"
       ]
     }
   ]

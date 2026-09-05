@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-08-01T01:38:19.809Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 172,
-          "equalAccess": 7054,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 7226,
-          "scannedAt": "2026-08-01T01:38:19.809Z",
-          "scannedCount": 100
-        }
-      },
-      "to": {
-        "scannedAt": "2026-08-08T03:05:59.586Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 133,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 246,
-          "combined": 379,
-          "scannedAt": "2026-08-08T03:05:59.586Z",
-          "scannedCount": 69
-        }
-      },
-      "change": -6847,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": -39,
-        "equalAccess": -7054,
-        "qualweb": 0,
-        "accesslint": 246
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-08-08T03:05:59.586Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-29T07:47:54.472Z",
+        "totals": {
+          "alfa": 1941,
+          "axe": 163,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2104,
+          "scannedAt": "2026-08-29T07:47:54.472Z",
+          "scannedCount": 95
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-05T05:09:56.361Z",
+        "totals": {
+          "alfa": 2084,
+          "axe": 173,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2257,
+          "scannedAt": "2026-09-05T05:09:56.361Z",
+          "scannedCount": 99
+        }
+      },
+      "change": 153,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 143,
+        "axe": 10,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-22T02:34:47.947Z",
-      "totals": {
-        "alfa": 2021,
-        "axe": 170,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 2191,
-        "scannedAt": "2026-08-22T02:34:47.947Z",
-        "scannedCount": 98
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-29T07:47:54.472Z",
       "totals": {
         "alfa": 1941,
@@ -177,43 +164,56 @@
         "scannedCount": 95
       }
     },
-    "change": -87,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-09-05T05:09:56.361Z",
+      "totals": {
+        "alfa": 2084,
+        "axe": 173,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 2257,
+        "scannedAt": "2026-09-05T05:09:56.361Z",
+        "scannedCount": 99
+      }
+    },
+    "change": 153,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -80,
-      "axe": -7,
+      "alfa": 143,
+      "axe": 10,
       "equalAccess": 0,
       "qualweb": 0,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "overallTrend": "worsening",
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
-    "alfa": 1941,
-    "axe": 163,
+    "alfa": 2084,
+    "axe": 173,
     "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 2104,
-    "scannedAt": "2026-08-29T07:47:54.472Z",
-    "scannedCount": 95
+    "combined": 2257,
+    "scannedAt": "2026-09-05T05:09:56.361Z",
+    "scannedCount": 99
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 172,
-    "equalAccess": 7054,
+    "axe": 133,
+    "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 0,
-    "combined": 7226,
-    "scannedAt": "2026-08-01T01:38:19.809Z",
-    "scannedCount": 100
+    "accesslint": 246,
+    "combined": 379,
+    "scannedAt": "2026-08-08T03:05:59.586Z",
+    "scannedCount": 69
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 66,
+      "pageCount": 70,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.facebook.com/OldOakParkRoyal/",
@@ -228,24 +228,8 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 65,
-      "pages": [
-        "https://www.london.gov.uk/",
-        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
-        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
-        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
-        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
-        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
-        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
-        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
-        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
-        "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
-      ]
-    },
-    {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
-      "pageCount": 65,
+      "pageCount": 70,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.facebook.com/OldOakParkRoyal/",
@@ -261,9 +245,10 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
-      "pageCount": 63,
+      "pageCount": 69,
       "pages": [
         "https://www.london.gov.uk/",
+        "https://www.facebook.com/OldOakParkRoyal/",
         "https://homes.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
         "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
@@ -271,13 +256,28 @@
         "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
         "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
         "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
+        "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 69,
+      "pages": [
+        "https://www.london.gov.uk/",
+        "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
+        "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/accessibility-city-hall",
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://www.london.gov.uk/city-hall-blog/do-you-have-rogue-landlord-find-out-here",
+        "https://www.london.gov.uk/city-hall-blog/find-out-how-our-empty-land-being-used-benefit-londoners",
+        "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
         "https://www.london.gov.uk/city-hall-blog/step-outside-and-find-your-london-spring",
-        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online"
+        "https://www.london.gov.uk/city-hall-blog/where-find-best-londons-culture-online",
+        "https://www.london.gov.uk/programmes-and-strategies/environment-and-climate-change/energy/renew-0/renew-support"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
-      "pageCount": 63,
+      "pageCount": 67,
       "pages": [
         "https://www.london.gov.uk/",
         "https://homes.london.gov.uk/",
@@ -293,7 +293,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r43",
-      "pageCount": 60,
+      "pageCount": 64,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
@@ -309,7 +309,7 @@
     },
     {
       "ruleId": "axe:svg-img-alt",
-      "pageCount": 60,
+      "pageCount": 64,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
@@ -325,7 +325,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r9",
-      "pageCount": 22,
+      "pageCount": 24,
       "pages": [
         "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
         "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
@@ -341,7 +341,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r96",
-      "pageCount": 22,
+      "pageCount": 24,
       "pages": [
         "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
         "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
@@ -357,7 +357,7 @@
     },
     {
       "ruleId": "axe:meta-refresh",
-      "pageCount": 22,
+      "pageCount": 24,
       "pages": [
         "https://www.london.gov.uk/programmes-strategies/communities-and-social-justice/european-londoners-hub/advice-and-support-services",
         "https://www.london.gov.uk/programmes-strategies/environment-and-climate-change/net-zero-energy/warm-homes-local-grant",
@@ -416,6 +416,16 @@
       ]
     },
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 4,
+      "pages": [
+        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
+        "https://data.london.gov.uk/dataset/lfb-financial-and-performance-reporting-201920-e7xqq",
+        "https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-publications/london-stalling-reducing-traffic-congestion",
+        "https://www.london.gov.uk/city-hall-blog/how-register-covid-summer-food-fund"
+      ]
+    },
+    {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
       "pageCount": 4,
       "pages": [
@@ -445,12 +455,12 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "ruleId": "axe:color-contrast",
       "pageCount": 3,
       "pages": [
-        "https://www.london.gov.uk/publications/festival-ideas-workshop-findings",
-        "https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-publications/london-stalling-reducing-traffic-congestion",
-        "https://www.london.gov.uk/city-hall-blog/how-register-covid-summer-food-fund"
+        "https://www.facebook.com/OldOakParkRoyal/",
+        "https://homes.london.gov.uk/",
+        "https://nationalcareers.service.gov.uk/"
       ]
     }
   ]
