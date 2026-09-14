@@ -1,0 +1,202 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 812,
+    "axe": 212,
+    "equalAccess": 800,
+    "qualweb": 393,
+    "accesslint": 268,
+    "combined": 2485,
+    "scannedAt": "2026-09-14T14:44:38.113Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 18,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record"
+      ]
+    },
+    {
+      "ruleId": "axe:list",
+      "pageCount": 18,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 18,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 16,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 15,
+      "pages": [
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/real-time-digital-overview-accelerates-handling-delayed-suez-vessels-port",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 15,
+      "pages": [
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/real-time-digital-overview-accelerates-handling-delayed-suez-vessels-port",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 14,
+      "pages": [
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/de/pressebereich/videos",
+        "https://www.portofrotterdam.com/de/binnenschifffahrt/verwenden-sie-ais-daten-der-binnenschifffahrt/einwilligung-fuer-die",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/besuchen-sie-den-hafenbetrieb-rotterdam",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/digitalisering/beheer-en-management",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/real-time-digital-overview-accelerates-handling-delayed-suez-vessels-port",
+        "https://www.portofrotterdam.com/nl/evenementen/ondernemersbijeenkomst-rotterdam-en-omgeving"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r64",
+      "pageCount": 6,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt",
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/natuurtour-met-lezing"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 6,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/port-future/energy-transition/pillar-2-new-energy-system",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/hafen-der-zukunft/energiewende/pfeiler-3-ein-neues-system-fuer-rohstoffe-und-kraftstoffe",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt",
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/natuurtour-met-lezing"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 5,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/frisches-obst-fuer-die-lebensmittelbank-voedselbank-aus-dem"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 5,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vivienne-de-leeuw-neue-cfo-des-hafenbetriebs-rotterdam",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/rotterdams-container-hub-chalks-another-record",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/frisches-obst-fuer-die-lebensmittelbank-voedselbank-aus-dem"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 4,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/de/freizeitschifffahrt",
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/natuurtour-met-lezing"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 3,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/natuurtour-met-lezing"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 3,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/lichtjestours",
+        "https://www.portofrotterdam.com/en/portlantis/frequently-asked-questions",
+        "https://www.portofrotterdam.com/nl/portlantis/wat-is-er-te-doen/natuurtour-met-lezing"
+      ]
+    }
+  ]
+}
