@@ -419,6 +419,14 @@ export const ruleMapping = {
     conformanceLevel: "A",
     description: "Ensures every ARIA input field has an accessible name so screen reader users know what information to enter."
   },
+  "axe:aria-tab-name": {
+    roles: [ROLES.DEV, ROLES.CONTENT],
+    severity: SEVERITY.SERIOUS,
+    blocking: true,
+    wcagCriteria: ["4.1.2"],
+    conformanceLevel: "A",
+    description: "Ensures elements with role=\"tab\" have an accessible name so screen reader users can distinguish tabs and understand their purpose."
+  },
   "axe:aria-roles": {
     roles: [ROLES.DEV],
     severity: SEVERITY.SERIOUS,

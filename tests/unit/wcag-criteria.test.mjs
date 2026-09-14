@@ -119,6 +119,12 @@ test("getRuleMetadata includes WCAG AA for color-contrast", () => {
   assert.strictEqual(meta.conformanceLevel, "AA");
 });
 
+test("getRuleMetadata includes WCAG A mapping for aria-tab-name", () => {
+  const meta = getRuleMetadata("axe", "aria-tab-name");
+  assert.deepEqual(meta.wcagCriteria, ["4.1.2"]);
+  assert.strictEqual(meta.conformanceLevel, "A");
+});
+
 test("getRuleMetadata marks heading-order as best-practice", () => {
   const meta = getRuleMetadata("axe", "heading-order");
   assert.deepEqual(meta.wcagCriteria, []);
