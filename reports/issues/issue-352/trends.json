@@ -1,0 +1,139 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 81,
+    "axe": 310,
+    "equalAccess": 177,
+    "qualweb": 54,
+    "accesslint": 1,
+    "combined": 623,
+    "scannedAt": "2026-09-14T14:56:24.882Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
+      "pageCount": 19,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/files/css/css_mzHkDlt78_X9ZTU_znlQyNw3lD2jgRbGvESy2cGCvDM.css?delta=1&amp;language=en&amp;theme=drupalcon&amp;include=eJxtTtsOwjAI_aFmTfyhBoFNIi0NtDPz613cgy--EM6NAypEHPkOwQmvvXIEbBwJzTk38woqb07ks4Oitct9QfOtoFtEyOCMZk85k_-01WywJ4pMUW5oWmIAPpnKqlMoKRw2RyEJtJ39yNb4dKXKJJBX0TO9IPQh1lIHh82hP85r367lxyyz9XlXiQdTiiMG1-vjXfgV-TuXajSVP8dLY-0",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 19,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/files/css/css_mzHkDlt78_X9ZTU_znlQyNw3lD2jgRbGvESy2cGCvDM.css?delta=1&amp;language=en&amp;theme=drupalcon&amp;include=eJxtTtsOwjAI_aFmTfyhBoFNIi0NtDPz613cgy--EM6NAypEHPkOwQmvvXIEbBwJzTk38woqb07ks4Oitct9QfOtoFtEyOCMZk85k_-01WywJ4pMUW5oWmIAPpnKqlMoKRw2RyEJtJ39yNb4dKXKJJBX0TO9IPQh1lIHh82hP85r367lxyyz9XlXiQdTiiMG1-vjXfgV-TuXajSVP8dLY-0",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 18,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 17,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 16,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-contentinfo",
+      "pageCount": 16,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 16,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026",
+        "https://events.drupal.org/rotterdam2026/development-ai-agentic-architecture",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/user-experience-accessibility-and-design",
+        "https://events.drupal.org/rotterdam2026/become-volunteer",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/visa-information",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 5,
+      "pages": [
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-2026",
+        "https://events.drupal.org/rotterdam2026/contribution-mentoring",
+        "https://events.drupal.org/rotterdam2026/keynotes-speakers",
+        "https://events.drupal.org/rotterdam2026/international-splash-awards-terms-conditions",
+        "https://events.drupal.org/rotterdam2026/our-sponsors-partners"
+      ]
+    }
+  ]
+}
