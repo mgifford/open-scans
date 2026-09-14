@@ -1,0 +1,157 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 873,
+    "axe": 192,
+    "equalAccess": 629,
+    "qualweb": 443,
+    "accesslint": 213,
+    "combined": 2350,
+    "scannedAt": "2026-09-14T13:56:52.972Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 17,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
+      ]
+    },
+    {
+      "ruleId": "axe:list",
+      "pageCount": 17,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 17,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 15,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 15,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
+        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 15,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
+        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 14,
+      "pages": [
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
+        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
+        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/windbloemen-uit-de-haven"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 4,
+      "pages": [
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/nog-drie-repatrieringsschepen-naar-cruise-port-rotterdam",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/dhg-ontwikkelt-30-ha-op-distripark-maasvlakte-west"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/nog-drie-repatrieringsschepen-naar-cruise-port-rotterdam",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/dhg-ontwikkelt-30-ha-op-distripark-maasvlakte-west"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 3,
+      "pages": [
+        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
+        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
+        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo"
+      ]
+    }
+  ]
+}
