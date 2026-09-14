@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-08-10T03:02:00.589Z",
-        "totals": {
-          "alfa": 3322,
-          "axe": 331,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 3653,
-          "scannedAt": "2026-08-10T03:02:00.589Z",
-          "scannedCount": 70
-        }
-      },
-      "to": {
-        "scannedAt": "2026-08-17T02:24:48.455Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 312,
-          "equalAccess": 0,
-          "qualweb": 951,
-          "accesslint": 0,
-          "combined": 1263,
-          "scannedAt": "2026-08-17T02:24:48.455Z",
-          "scannedCount": 70
-        }
-      },
-      "change": -2390,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": -3322,
-        "axe": -19,
-        "equalAccess": 0,
-        "qualweb": 951,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-08-17T02:24:48.455Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 1011,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-09-07T05:06:31.449Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 319,
+          "equalAccess": 0,
+          "qualweb": 1011,
+          "accesslint": 0,
+          "combined": 1330,
+          "scannedAt": "2026-09-07T05:06:31.449Z",
+          "scannedCount": 70
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-14T05:31:48.808Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 329,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 8751,
+          "combined": 9080,
+          "scannedAt": "2026-09-14T05:31:48.808Z",
+          "scannedCount": 70
+        }
+      },
+      "change": 7750,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 10,
+        "equalAccess": 0,
+        "qualweb": -1011,
+        "accesslint": 8751
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-08-31T05:56:45.518Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 327,
-        "equalAccess": 2886,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 3213,
-        "scannedAt": "2026-08-31T05:56:45.518Z",
-        "scannedCount": 70
-      }
-    },
-    "to": {
       "scannedAt": "2026-09-07T05:06:31.449Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 70
       }
     },
-    "change": -1883,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-09-14T05:31:48.808Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 329,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 8751,
+        "combined": 9080,
+        "scannedAt": "2026-09-14T05:31:48.808Z",
+        "scannedCount": 70
+      }
+    },
+    "change": 7750,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -8,
-      "equalAccess": -2886,
-      "qualweb": 1011,
-      "accesslint": 0
+      "axe": 10,
+      "equalAccess": 0,
+      "qualweb": -1011,
+      "accesslint": 8751
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "overallTrend": "worsening",
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
-    "axe": 319,
+    "axe": 329,
     "equalAccess": 0,
-    "qualweb": 1011,
-    "accesslint": 0,
-    "combined": 1330,
-    "scannedAt": "2026-09-07T05:06:31.449Z",
+    "qualweb": 0,
+    "accesslint": 8751,
+    "combined": 9080,
+    "scannedAt": "2026-09-14T05:31:48.808Z",
     "scannedCount": 70
   },
   "baselineTotals": {
-    "alfa": 3322,
-    "axe": 331,
+    "alfa": 0,
+    "axe": 312,
     "equalAccess": 0,
-    "qualweb": 0,
+    "qualweb": 951,
     "accesslint": 0,
-    "combined": 3653,
-    "scannedAt": "2026-08-10T03:02:00.589Z",
+    "combined": 1263,
+    "scannedAt": "2026-08-17T02:24:48.455Z",
     "scannedCount": 70
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:region",
-      "pageCount": 46,
+      "pageCount": 47,
       "pages": [
         "https://www.luton.gov.uk/",
         "https://www.staffordshire.gov.uk/",
@@ -245,30 +245,33 @@
     },
     {
       "ruleId": "axe:landmark-one-main",
+      "pageCount": 13,
+      "pages": [
+        "https://www.woking.gov.uk/",
+        "https://www.northtyneside.gov.uk/",
+        "https://www.royalgreenwich.gov.uk/",
+        "https://www.eastcambs.gov.uk/",
+        "https://www.n-kesteven.gov.uk/",
+        "https://www.rutland.gov.uk/",
+        "https://southhams.gov.uk/",
+        "https://westdevon.gov.uk/",
+        "https://www.northdevon.gov.uk/",
+        "https://www.lbbd.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
       "pageCount": 10,
       "pages": [
         "https://www.woking.gov.uk/",
         "https://www.northtyneside.gov.uk/",
         "https://www.royalgreenwich.gov.uk/",
         "https://www.eastcambs.gov.uk/",
-        "https://southhams.gov.uk/",
-        "https://westdevon.gov.uk/",
-        "https://www.northdevon.gov.uk/",
+        "https://www.n-kesteven.gov.uk/",
+        "https://www.rutland.gov.uk/",
         "https://www.lbbd.gov.uk/",
         "https://www.redcar-cleveland.gov.uk/",
-        "https://www.brighton-hove.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:html-has-lang",
-      "pageCount": 7,
-      "pages": [
-        "https://www.woking.gov.uk/",
-        "https://www.northtyneside.gov.uk/",
-        "https://www.royalgreenwich.gov.uk/",
-        "https://www.eastcambs.gov.uk/",
-        "https://www.lbbd.gov.uk/",
-        "https://www.redcar-cleveland.gov.uk/",
+        "https://www.west-lindsey.gov.uk/",
         "https://www.brighton-hove.gov.uk/"
       ]
     },
@@ -309,6 +312,17 @@
       ]
     },
     {
+      "ruleId": "axe:heading-order",
+      "pageCount": 5,
+      "pages": [
+        "https://carlow.ie/",
+        "https://www.wokingham.gov.uk/",
+        "https://www.southkesteven.gov.uk/",
+        "https://www.bedford.gov.uk/",
+        "https://www.bracknell-forest.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:landmark-no-duplicate-contentinfo",
       "pageCount": 5,
       "pages": [
@@ -324,7 +338,7 @@
       "pageCount": 4,
       "pages": [
         "https://www.staffordshire.gov.uk/",
-        "https://www.rutland.gov.uk/",
+        "https://www.havant.gov.uk/",
         "https://new.calderdale.gov.uk/",
         "https://www.milton-keynes.gov.uk/"
       ]
@@ -337,16 +351,6 @@
         "https://www.southkesteven.gov.uk/",
         "https://www.knowsley.gov.uk/",
         "https://www.milton-keynes.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:heading-order",
-      "pageCount": 4,
-      "pages": [
-        "https://carlow.ie/",
-        "https://www.wokingham.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.bedford.gov.uk/"
       ]
     },
     {
@@ -370,22 +374,21 @@
       ]
     },
     {
-      "ruleId": "axe:image-redundant-alt",
-      "pageCount": 4,
-      "pages": [
-        "https://www.rutland.gov.uk/",
-        "https://southhams.gov.uk/",
-        "https://westdevon.gov.uk/",
-        "https://www.northdevon.gov.uk/"
-      ]
-    },
-    {
       "ruleId": "axe:meta-refresh",
       "pageCount": 3,
       "pages": [
         "https://www.dumfriesandgalloway.gov.uk/",
         "https://www.newport.gov.uk/",
         "https://www.tipperarycoco.ie/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-redundant-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://southhams.gov.uk/",
+        "https://westdevon.gov.uk/",
+        "https://www.northdevon.gov.uk/"
       ]
     },
     {
