@@ -6,27 +6,66 @@
     "equalAccessRulesets": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
     "equalAccessScUrls": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/sc-urls.json",
     "qualwebReadme": "https://github.com/qualweb/act-rules",
-    "qualwebSchema": "https://github.com/qualweb/act-rules/blob/master/act-rules.schema.json"
+    "qualwebSchema": "https://github.com/qualweb/act-rules/blob/master/act-rules.schema.json",
+    "accesslintSource": "https://github.com/accesslint/accesslint"
+  },
+  "engineVersions": {
+    "axe": {
+      "scannedVersion": "4.12.1",
+      "publishedW3CVersion": "4.10.2",
+      "versionMatch": false,
+      "consistency": "consistent"
+    },
+    "alfa": {
+      "scannedVersion": "0.84.2",
+      "publishedW3CVersion": "0.111.0",
+      "versionMatch": false,
+      "consistency": "consistent"
+    },
+    "equalAccess": {
+      "scannedVersion": "4.0.30",
+      "publishedW3CVersion": null,
+      "versionMatch": null,
+      "consistency": "partial"
+    },
+    "accesslint": {
+      "scannedVersion": "0.17.0",
+      "publishedW3CVersion": null,
+      "versionMatch": null,
+      "consistency": "partial"
+    },
+    "qualweb": {
+      "scannedVersion": "0.9.5",
+      "publishedW3CVersion": "0.8.5",
+      "versionMatch": false,
+      "consistency": "partial"
+    }
   },
   "byActRuleId": {
     "047fe0": {
       "axe": [
         "bypass"
       ],
-      "alfa": []
+      "alfa": [],
+      "equalAccess": [],
+      "accesslint": []
     },
     "09o5cg": {
       "axe": [
         "color-contrast-enhanced",
         "color-contrast"
       ],
-      "alfa": []
+      "alfa": [],
+      "equalAccess": [],
+      "accesslint": []
     },
     "0ssw9k": {
       "axe": [
         "scrollable-region-focusable"
       ],
-      "alfa": []
+      "alfa": [],
+      "equalAccess": [],
+      "accesslint": []
     },
     "23a2a8": {
       "axe": [
@@ -35,7 +74,9 @@
       ],
       "alfa": [
         "sia-r2"
-      ]
+      ],
+      "equalAccess": [],
+      "accesslint": []
     },
     "24afc2": {
       "axe": [
@@ -560,6 +601,18 @@
     ],
     "label-content-name-mismatch": [
       "2ee8b8"
+    ],
+    "equalAccess:color-contrast": [
+      "09o5cg"
+    ],
+    "equalAccess:missing-alt": [
+      "23a2a8"
+    ],
+    "accesslint:color-contrast": [
+      "09o5cg"
+    ],
+    "accesslint:missing-image-alt": [
+      "23a2a8"
     ]
   },
   "alfaRuleToActIds": {
@@ -673,6 +726,12 @@
     ],
     "sia-r9": [
       "bc659a"
+    ],
+    "equalAccess:rule-1": [
+      "047fe0"
+    ],
+    "accesslint:rule-1": [
+      "047fe0"
     ]
   }
 }

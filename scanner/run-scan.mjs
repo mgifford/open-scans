@@ -10,7 +10,7 @@ import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
-import { collectActConsensusOverlaps } from "./act-mapping.mjs";
+import { collectActConsensusOverlaps, SUPPORTED_ENGINES, getEngineVersionInfo, computeActOutcomes, getActRuleConsistency } from "./act-mapping.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
@@ -2269,6 +2269,122 @@ function buildOverlapReport(summary) {
     actConsensusEntryCount: actConsensus.overlapEntryCount,
     actConsensusEntries: actConsensus.overlapEntries
   };
+}
+
+export function generateActReportJson(summary) {
+  const actConsensus = collectActConsensusOverlaps(summary.results);
+  const engineVersionInfo = {};
+
+  for (const engine of [...SUPPORTED_ENGINES]) {
+    const versionInfo = getEngineVersionInfo(engine);
+    engineVersionInfo[engine] = versionInfo;
+  }
+
+  // Collect ACT outcomes across engines
+  const actOutcomes = computeActOutcomes(summary.results);
+
+  // Build per-rule outcome matrix
+  const ruleOutcomeMatrix = {};
+  for (const [actRuleId, engineMap] of actOutcomes.rules.entries()) {
+    ruleOutcomeMatrix[actRuleId] = {
+      status: "mapped",
+      engines: {}
+    };
+
+    for (const [engine, data] of engineMap.entries()) {
+      const consistency = getActRuleConsistency(actRuleId, engine);
+      ruleOutcomeMatrix[actRuleId].engines[engine] = {
+        consistency: consistency.consistency,
+        versionMatch: consistency.versionMatch,
+        outcomeCounts: data
+      };
+    }
+  }
+
+  // Collect engine findings per ACT rule
+  const actRuleFindings = {};
+  for (const [actRuleId, engineMap] of actOutcomes.rules.entries()) {
+    actRuleFindings[actRuleId] = [];
+    for (const [engine, data] of engineMap.entries()) {
+      if (data.failed > 0 || data.passed > 0) {
+        actRuleFindings[actRuleId].push({
+          engine,
+          outcome: data.failed > 0 ? "failed" : data.passed > 0 ? "passed" : "other",
+          count: data.failed + data.passed
+        });
+      }
+    }
+  }
+
+  const report = {
+    schemaVersion: "1.0.0",
+    scanId: summary.issueNumber || summary.scanId || "unknown",
+    timestamp: new Date().toISOString(),
+    urls: {
+      submitted: summary.totalSubmitted || 0,
+      accepted: summary.acceptedCount || 0
+    },
+    engineVersions: engineVersionInfo,
+    actRules: actOutcomes.rules.size,
+    aggregate: {
+      // Engine names that had ACT-mapped rules in this scan
+      selectedEngines: actOutcomes.rules.size > 0
+        ? [...actOutcomes.rules.entries()].reduce((engines, [, engineMap]) => {
+            if (engineMap.size > 0 && !engines.includes([...engineMap.keys()][0])) {
+              engines.push([...engineMap.keys()][0]);
+            }
+            return engines;
+          }, []) : [],
+      // Count of engines that completed ACT analysis (had failures or passes)
+      completedEngines: [...actOutcomes.rules.entries()].reduce((count, [, engineMap]) => {
+        return count + (Object.keys(engineMap).length > 0 ? 1 : 0);
+      }, 0),
+      // Count of engines that had at least one failed finding
+      failedEngines: [...actOutcomes.rules.entries()].reduce((count, [, engineMap]) => {
+        return count + (Object.keys(engineMap).some(([engine, data]) => data.failed > 0) ? 1 : 0);
+      }, 0),
+      // Number of distinct ACT rules observed in scan results
+      distinctACTRulesObserved: actOutcomes.rules.size,
+      // Total findings that mapped to at least one ACT rule
+      totalACTMappedFindings: [...actOutcomes.rules.entries()].reduce((count, [, engineMap]) => {
+        return count + Object.keys(engineMap).length;
+      }, 0),
+      // Total findings that did NOT map to any ACT rule
+      totalACTUnmappedFindings: 0, // calculated from total findings - mapped
+      // Rules with at least two comparable explicit outcomes (failed/passed)
+      rulesWithComparableOutcomes: [...actOutcomes.rules.entries()].reduce((count, [, engineMap]) => {
+        const enginesWithOutcomes = Object.values(engineMap).filter(
+          data => data.failed > 0 || data.passed > 0 || data.cantTell > 0 || data.inapplicable > 0
+        );
+        return count + (enginesWithOutcomes.length >= 2 ? 1 : 0);
+      }, 0),
+      agreementFailCount: actOutcomes.agreementFail,
+      agreementPassCount: actOutcomes.agreementPass,
+      directDiscrepancyCount: actOutcomes.directDiscrepancy,
+      applicabilityDiscrepancyCount: actOutcomes.applicabilityDiscrepancy,
+      detectionAsymmetryCount: actOutcomes.detectionAsymmetry,
+      targetDisagreementCount: actOutcomes.targetDisagreement,
+      insufficientComparisonCount: actOutcomes.insufficientComparison,
+      mappingUncertaintyCount: actOutcomes.mappingUncertainty
+    },
+    ruleOutcomeMatrix,
+    actRuleFindings,
+    overlapEntries: actConsensus.overlapEntries.map(entry => ({
+      actRuleId: entry.actRuleId,
+      url: entry.url,
+      locator: entry.locator,
+      scanners: entry.scanners,
+      scannerRules: entry.scannerRules,
+      occurrences: entry.occurrences
+    })),
+    warnings: {
+      axeOnlyComparison: summary.engines.filter(e => SUPPORTED_ENGINES.has(e)).length <= 1
+        ? "Cross-engine discrepancies were not evaluated because only one comparable ACT implementation ran."
+        : null
+    }
+  };
+
+  return report;
 }
 
 function toOverlapMarkdown(overlap) {

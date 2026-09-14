@@ -2,10 +2,12 @@ import { readFileSync } from "node:fs";
 
 const ACT_MAPPING_PATH = new URL("./data/act-mapping.json", import.meta.url);
 const QUALWEB_README_PATH = new URL("../node_modules/@qualweb/act-rules/README.md", import.meta.url);
-const SUPPORTED_ENGINES = new Set(["axe", "alfa", "qualweb"]);
 
 let cachedMapping = null;
 let cachedRuleIndex = null;
+
+const SUPPORTED_ENGINES = new Set(["axe", "alfa", "equalAccess", "accesslint", "qualweb"]);
+export { SUPPORTED_ENGINES };
 
 function normalizeRuleKey(engine, ruleId) {
   const normalizedEngine = String(engine).trim().toLowerCase();
@@ -88,21 +90,50 @@ export function getActRuleIds(engine, ruleId) {
   return [...(buildActRuleIndex().get(normalizeRuleKey(engine, ruleId)) || [])];
 }
 
+
 export function collectActConsensusOverlaps(results) {
   const dedupeMap = new Map();
-  const actCapableScanners = ["axe", "alfa", "qualweb"];
+  const actCapableScanners = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
 
   for (const result of results ?? []) {
     const resultUrl = result.finalUrl || result.submittedUrl || "(unknown-url)";
 
     for (const scannerName of actCapableScanners) {
-      const scanner = result?.[scannerName];
-      if (!scanner || !Array.isArray(scanner.failures)) continue;
+      let scanner;
+      let failures;
 
-      for (const failure of scanner.failures) {
+      if (scannerName === "axe" || scannerName === "alfa" || scannerName === "qualweb") {
+        scanner = result?.[scannerName];
+        if (!scanner || !Array.isArray(scanner.failures)) continue;
+        failures = scanner.failures;
+      } else if (scannerName === "equalAccess") {
+        scanner = result?.[scannerName];
+        if (!scanner || !scanner.counts) continue;
+        // Convert counts to failure-like entries for ACT mapping
+        const { passed, failed, cantTell, inapplicable, uniqueFailedCount, duplicateFailedCount } = scanner.counts;
+        // Create synthetic failure entries for failed and inapplicable outcomes
+        if (failed > 0) {
+          failures = [{ rule: "eq-access-rule", outcome: "failed", count: failed }];
+        } else {
+          failures = [];
+        }
+      } else if (scannerName === "accesslint") {
+        scanner = result?.[scannerName];
+        if (!scanner || !scanner.counts) continue;
+        // Convert counts to failure-like entries for ACT mapping
+        const { passed, failed, cantTell, inapplicable, uniqueFailedCount, duplicateFailedCount } = scanner.counts;
+        // Create synthetic failure entries for failed and inapplicable outcomes
+        if (failed > 0) {
+          failures = [{ rule: "accesslint-rule", outcome: "failed", count: failed }];
+        } else {
+          failures = [];
+        }
+      }
+
+      for (const failure of failures ?? []) {
         if (failure.isDuplicate) continue;
 
-        const actRuleIds = getActRuleIds(scannerName, failure.rule);
+        const actRuleIds = getActRuleIds(scannerName, failure.rule || "unknown");
         if (actRuleIds.length === 0) continue;
 
         const locator = normalizeLocator(failure.xpath || failure.selector || failure.html);
@@ -165,4 +196,174 @@ export function collectActConsensusOverlaps(results) {
     overlapEntryCount: overlapEntries.length,
     overlapEntries
   };
+}
+
+export function getEngineVersionInfo(engine) {
+  const mapping = loadActMapping();
+  return mapping.engineVersions?.[engine] || null;
+}
+
+export function getActRuleConsistency(actRuleId, engine) {
+  const mapping = loadActMapping();
+  const ruleEntry = mapping.byActRuleId?.[actRuleId];
+  if (!ruleEntry) return null;
+  const engineData = ruleEntry[engine];
+  if (!engineData || engineData.length === 0) return { consistency: "none", versionMatch: false };
+  
+  // Get the first rule ID from this engine's mapping
+  const firstRuleId = engineData[0];
+  const engineVersionInfo = mapping.engineVersions?.[engine];
+  
+  if (!engineVersionInfo) return { consistency: "unknown", versionMatch: false };
+  
+  // Check if the scanned version matches the published version
+  const versionMatch = engineVersionInfo.versionMatch !== undefined 
+    ? engineVersionInfo.versionMatch 
+    : false;
+  
+  return {
+    consistency: engineVersionInfo.consistency || "unknown",
+    versionMatch
+  };
+}
+
+export function getMappingStatus(engine, ruleId) {
+  const actRuleIds = getActRuleIds(engine, ruleId);
+  if (actRuleIds.length === 0) return "unmapped";
+  if (actRuleIds.length === 1) return "mapped";
+  return "multi-mapped";
+}
+
+export function computeActOutcomes(results) {
+  const outcomes = {
+    agreementFail: 0,
+    agreementPass: 0,
+    directDiscrepancy: 0,
+    applicabilityDiscrepancy: 0,
+    detectionAsymmetry: 0,
+    targetDisagreement: 0,
+    insufficientComparison: 0,
+    executionUncertainty: 0,
+    mappingUncertainty: 0,
+    rules: new Map(),
+    engineStatus: {}
+  };
+
+  // Collect all ACT-mapped findings per engine
+  const engineFindings = new Map();
+
+  for (const result of results ?? []) {
+    const resultUrl = result.finalUrl || result.submittedUrl || "(unknown-url)";
+
+    for (const scannerName of SUPPORTED_ENGINES) {
+      const scanner = result?.[scannerName];
+      if (!scanner || !Array.isArray(scanner.failures)) continue;
+
+      engineFindings.set(scannerName, (engineFindings.get(scannerName) || 0) + scanner.failures.length);
+    }
+  }
+
+  // For each ACT rule, collect outcomes across engines
+  const actRules = new Map();
+
+  for (const result of results ?? []) {
+    const resultUrl = result.finalUrl || result.submittedUrl || "(unknown-url)";
+
+    for (const scannerName of SUPPORTED_ENGINES) {
+      const scanner = result?.[scannerName];
+      if (!scanner || !Array.isArray(scanner.failures)) continue;
+
+      for (const failure of scanner.failures) {
+        if (failure.isDuplicate) continue;
+
+        const actRuleIds = getActRuleIds(scannerName, failure.rule);
+        if (actRuleIds.length === 0) continue;
+
+        for (const actRuleId of actRuleIds) {
+          if (!actRules.has(actRuleId)) {
+            actRules.set(actRuleId, new Map());
+          }
+          const ruleEngineMap = actRules.get(actRuleId);
+
+          if (!ruleEngineMap.has(scannerName)) {
+            ruleEngineMap.set(scannerName, { failed: 0, passed: 0, cantTell: 0, inapplicable: 0, notReported: 0 });
+          }
+          const engineData = ruleEngineMap.get(scannerName);
+
+          // Determine outcome - use explicit outcome if available, otherwise treat as notReported (silence/absent finding),
+          // never as passed or failed by default
+          const explicitOutcome = failure.outcome;
+          if (explicitOutcome === "failed") {
+            engineData.failed++;
+          } else if (explicitOutcome === "passed") {
+            engineData.passed++;
+          } else if (explicitOutcome === "cantTell") {
+            engineData.cantTell++;
+          } else if (explicitOutcome === "inapplicable") {
+            engineData.inapplicable++;
+          } else {
+            // No explicit outcome: treat as notReported (silence/absent finding),
+            // never as passed or failed by default
+            engineData.notReported++;
+          }
+        }
+      }
+    }
+  }
+
+  // Classify outcomes
+  for (const [actRuleId, engineMap] of actRules.entries()) {
+    const enginesWithResults = [...engineMap.entries()].filter(([_, data]) => 
+      data.failed > 0 || data.passed > 0 || data.cantTell > 0 || data.inapplicable > 0 || data.notReported > 0
+    );
+
+    if (enginesWithResults.length < 2) {
+      outcomes.insufficientComparison++;
+      continue;
+    }
+
+    const hasFailed = enginesWithResults.some(([_, data]) => data.failed > 0);
+    const hasPassed = enginesWithResults.some(([_, data]) => data.passed > 0);
+    const hasInapplicable = enginesWithResults.some(([_, data]) => data.inapplicable > 0);
+    const hasNotReported = enginesWithResults.some(([_, data]) => data.notReported > 0);
+
+    // Direct discrepancy: at least one failed and one passed
+    if (hasFailed && hasPassed) {
+      outcomes.directDiscrepancy++;
+    }
+    // Agreement-fail: two or more engines report failed
+    else if (hasFailed && !hasPassed && enginesWithResults.filter(([_, data]) => data.failed > 0).length >= 2) {
+      outcomes.agreementFail++;
+    }
+    // Agreement-pass: two or more engines report passed
+    else if (hasPassed && !hasFailed && enginesWithResults.filter(([_, data]) => data.passed > 0).length >= 2) {
+      outcomes.agreementPass++;
+    }
+    // Applicability discrepancy: inapplicable conflicts with substantive result
+    else if (hasInapplicable && (hasFailed || hasPassed)) {
+      outcomes.applicabilityDiscrepancy++;
+    }
+    // Detection asymmetry: at least one failure and at least one notReported
+    else if (hasFailed && hasNotReported) {
+      outcomes.detectionAsymmetry++;
+    }
+    // Insufficient comparison: fewer than two comparable outcomes
+    else {
+      outcomes.insufficientComparison++;
+    }
+  }
+
+  // Check for version mismatches
+  for (const [actRuleId, engineMap] of actRules.entries()) {
+    const versionChecks = [];
+    for (const [engine, _] of engineMap.entries()) {
+      const consistency = getActRuleConsistency(actRuleId, engine);
+      if (consistency.versionMatch === false) {
+        outcomes.mappingUncertainty++;
+      }
+    }
+  }
+
+  outcomes.rules = actRules;
+  return outcomes;
 }
