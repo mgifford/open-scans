@@ -10,7 +10,7 @@ import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
-import { collectActConsensusOverlaps } from "./act-mapping.mjs";
+import { collectActConsensusOverlaps, SUPPORTED_ENGINES, getEngineVersionInfo, computeActOutcomes, getActRuleConsistency } from "./act-mapping.mjs";
 import { crawlSiteForUrls } from "./crawl-urls.mjs";
 import { generateRemediationSuggestions, formatRemediationMarkdown } from "./ai-remediation.mjs";
 import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
@@ -2269,6 +2269,98 @@ function buildOverlapReport(summary) {
     actConsensusEntryCount: actConsensus.overlapEntryCount,
     actConsensusEntries: actConsensus.overlapEntries
   };
+}
+
+export function generateActReportJson(summary) {
+  const actConsensus = collectActConsensusOverlaps(summary.results);
+  const engineVersionInfo = {};
+
+  for (const engine of [...SUPPORTED_ENGINES]) {
+    const versionInfo = getEngineVersionInfo(engine);
+    engineVersionInfo[engine] = versionInfo;
+  }
+
+  // Collect ACT outcomes across engines
+  const actOutcomes = computeActOutcomes(summary.results);
+
+  // Build per-rule outcome matrix
+  const ruleOutcomeMatrix = {};
+  for (const [actRuleId, engineMap] of actOutcomes.rules.entries()) {
+    ruleOutcomeMatrix[actRuleId] = {
+      status: "mapped",
+      engines: {}
+    };
+
+    for (const [engine, data] of engineMap.entries()) {
+      const consistency = getActRuleConsistency(actRuleId, engine);
+      ruleOutcomeMatrix[actRuleId].engines[engine] = {
+        consistency: consistency.consistency,
+        versionMatch: consistency.versionMatch,
+        outcomeCounts: data
+      };
+    }
+  }
+
+  // Collect engine findings per ACT rule
+  const actRuleFindings = {};
+  for (const [actRuleId, engineMap] of actOutcomes.rules.entries()) {
+    actRuleFindings[actRuleId] = [];
+    for (const [engine, data] of engineMap.entries()) {
+      if (data.failed > 0 || data.passed > 0) {
+        actRuleFindings[actRuleId].push({
+          engine,
+          outcome: data.failed > 0 ? "failed" : data.passed > 0 ? "passed" : "other",
+          count: data.failed + data.passed
+        });
+      }
+    }
+  }
+
+  const report = {
+    schemaVersion: "1.0.0",
+    scanId: summary.issueNumber || summary.scanId || "unknown",
+    timestamp: new Date().toISOString(),
+    urls: {
+      submitted: summary.totalSubmitted || 0,
+      accepted: summary.acceptedCount || 0
+    },
+    engineVersions: engineVersionInfo,
+    actRules: actOutcomes.rules.size,
+    aggregate: {
+      selectedEngines: actOutcomes.rules.size > 0 ? [...actOutcomes.rules.keys()] : [],
+      completedEngines: 0,
+      failedEngines: 0,
+      distinctACTRulesObserved: actOutcomes.rules.size,
+      totalACTMappedFindings: 0,
+      totalACTUnmappedFindings: 0,
+      rulesWithComparableOutcomes: 0,
+      agreementFailCount: actOutcomes.agreementFail,
+      agreementPassCount: actOutcomes.agreementPass,
+      directDiscrepancyCount: actOutcomes.directDiscrepancy,
+      applicabilityDiscrepancyCount: actOutcomes.applicabilityDiscrepancy,
+      detectionAsymmetryCount: actOutcomes.detectionAsymmetry,
+      targetDisagreementCount: actOutcomes.targetDisagreement,
+      insufficientComparisonCount: actOutcomes.insufficientComparison,
+      mappingUncertaintyCount: actOutcomes.mappingUncertainty
+    },
+    ruleOutcomeMatrix,
+    actRuleFindings,
+    overlapEntries: actConsensus.overlapEntries.map(entry => ({
+      actRuleId: entry.actRuleId,
+      url: entry.url,
+      locator: entry.locator,
+      scanners: entry.scanners,
+      scannerRules: entry.scannerRules,
+      occurrences: entry.occurrences
+    })),
+    warnings: {
+      axeOnlyComparison: actConsensus.overlapEntryCount === 0
+        ? "Cross-engine discrepancies were not evaluated because only one comparable ACT implementation ran."
+        : null
+    }
+  };
+
+  return report;
 }
 
 function toOverlapMarkdown(overlap) {
