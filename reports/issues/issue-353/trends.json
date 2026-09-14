@@ -1,0 +1,177 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 870,
+    "axe": 256,
+    "equalAccess": 1007,
+    "qualweb": 365,
+    "accesslint": 208,
+    "combined": 2706,
+    "scannedAt": "2026-09-14T14:12:04.262Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "axe:tabindex",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handtekening-legaliseren/start-handtekening-legaliseren",
+        "https://www.rotterdam.nl/grip-op-arbeidsmigratie",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/meedenken-en-meedoen",
+        "https://www.rotterdam.nl/tourist-information",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/uittreksel-registratie-niet-ingezetenen-rni-aanvragen/start-uittreksel-registratie-niet-ingezetenen-per-post-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/wet-kwaliteitsborging-bouwen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 6,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/energie-besparen",
+        "https://www.rotterdam.nl/echtscheiding-doorgeven-door-advocaten",
+        "https://www.rotterdam.nl/sociale-lening-aanvragen"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/extra-verlof-schooldagen-aanvragen",
+        "https://www.rotterdam.nl/leerling-aanmelden-bij-zorg-en-onderwijsspecialisten",
+        "https://www.rotterdam.nl/energie-besparen",
+        "https://www.rotterdam.nl/echtscheiding-doorgeven-door-advocaten",
+        "https://www.rotterdam.nl/sociale-lening-aanvragen"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 3,
+      "pages": [
+        "https://www.rotterdam.nl/",
+        "https://www.rotterdam.nl/handhavers-in-de-wijk",
+        "https://www.rotterdam.nl/parkeergarage-oude-haven"
+      ]
+    }
+  ]
+}
