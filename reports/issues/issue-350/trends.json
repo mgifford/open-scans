@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-09-14T13:56:52.972Z",
+        "totals": {
+          "alfa": 873,
+          "axe": 192,
+          "equalAccess": 629,
+          "qualweb": 443,
+          "accesslint": 213,
+          "combined": 2350,
+          "scannedAt": "2026-09-14T13:56:52.972Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-15T02:16:43.654Z",
+        "totals": {
+          "alfa": 886,
+          "axe": 207,
+          "equalAccess": 774,
+          "qualweb": 468,
+          "accesslint": 233,
+          "combined": 2568,
+          "scannedAt": "2026-09-15T02:16:43.654Z",
+          "scannedCount": 20
+        }
+      },
+      "change": 218,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 13,
+        "axe": 15,
+        "equalAccess": 145,
+        "qualweb": 25,
+        "accesslint": 20
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-09-14T13:56:52.972Z",
+      "totals": {
+        "alfa": 873,
+        "axe": 192,
+        "equalAccess": 629,
+        "qualweb": 443,
+        "accesslint": 213,
+        "combined": 2350,
+        "scannedAt": "2026-09-14T13:56:52.972Z",
+        "scannedCount": 20
+      }
+    },
+    "to": {
+      "scannedAt": "2026-09-15T02:16:43.654Z",
+      "totals": {
+        "alfa": 886,
+        "axe": 207,
+        "equalAccess": 774,
+        "qualweb": 468,
+        "accesslint": 233,
+        "combined": 2568,
+        "scannedAt": "2026-09-15T02:16:43.654Z",
+        "scannedCount": 20
+      }
+    },
+    "change": 218,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 13,
+      "axe": 15,
+      "equalAccess": 145,
+      "qualweb": 25,
+      "accesslint": 20
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
+    "alfa": 886,
+    "axe": 207,
+    "equalAccess": 774,
+    "qualweb": 468,
+    "accesslint": 233,
+    "combined": 2568,
+    "scannedAt": "2026-09-15T02:16:43.654Z",
+    "scannedCount": 20
+  },
+  "baselineTotals": {
     "alfa": 873,
     "axe": 192,
     "equalAccess": 629,
@@ -14,143 +102,171 @@
   "latestSystemicPatterns": [
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
-      "pageCount": 17,
+      "pageCount": 18,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer"
       ]
     },
     {
       "ruleId": "axe:list",
-      "pageCount": 17,
+      "pageCount": 18,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer"
       ]
     },
     {
       "ruleId": "axe:region",
-      "pageCount": 17,
+      "pageCount": 18,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 15,
-      "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
-      "pageCount": 15,
+      "pageCount": 17,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
-        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt"
       ]
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 15,
+      "pageCount": 17,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
-        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 16,
+      "pages": [
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
-      "pageCount": 14,
+      "pageCount": 15,
       "pages": [
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/vereinbarungen-zur-gemaessigten-erhoehung-der-hafengebuehren-um",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-faciliteert-expansie-sif-op-maasvlakte",
-        "https://www.portofrotterdam.com/de/logistik/ladung/lng/lng-partnerschaften",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/veilige-ligplaatsen-voor-duwbakken",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/nautische-zahlen-im-rotterdamer-hafen-ein-sicheres-und-aktives",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-verdiept-amazonehaven",
-        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/jahresbericht-2020-auch-besonderen-zeiten-den-kurs-halten",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/havenbedrijf-rotterdam-gaat-participeren-haven-van-pecem",
-        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
-        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/windbloemen-uit-de-haven"
+        "https://www.portofrotterdam.com/nl/online-beleven/havenkrant/overzicht/een-fontein-in-de-maashaven",
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/nl/haven-van-de-toekomst/energietransitie/lopende-projecten/realisatie-hoogspanningsstation-prinses-amaliahaven",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/aankomst-sleipnir-het-grootste-kraanschip-ter-wereld-voor-de-eerste-maal",
+        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/maak-rotterdamse-haven-zichtbaar-door-bedrijfsbezoeken-en-social-media",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/umschlag-den-dalben-im-rotterdamer-hafen-populaer",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/record-breaking-lng-bunkering-sleipnir-rotterdam"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
-      "pageCount": 4,
+      "pageCount": 9,
       "pages": [
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/nog-drie-repatrieringsschepen-naar-cruise-port-rotterdam",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/dhg-ontwikkelt-30-ha-op-distripark-maasvlakte-west"
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/record-breaking-lng-bunkering-sleipnir-rotterdam",
+        "https://www.portofrotterdam.com/en/building-port/ongoing-projects/porthos",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/strong-german-interest-rotterdam-experience-tour",
+        "https://www.portofrotterdam.com/en/about-port-authority/our-organisation/port-explained"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 4,
+      "pageCount": 9,
       "pages": [
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/de/logistik/ladung/trockenes-massengut/kohle",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/nog-drie-repatrieringsschepen-naar-cruise-port-rotterdam",
-        "https://www.portofrotterdam.com/nl/nieuws-en-persberichten/dhg-ontwikkelt-30-ha-op-distripark-maasvlakte-west"
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/maasvlakte-2-five-years-operation",
+        "https://www.portofrotterdam.com/en/to-do-port/portlantis",
+        "https://www.portofrotterdam.com/de/nachrichten-und-pressemitteilungen/maasvlaktestrand-voruebergehend-teilweise-gesperrt",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/record-breaking-lng-bunkering-sleipnir-rotterdam",
+        "https://www.portofrotterdam.com/en/building-port/ongoing-projects/porthos",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/strong-german-interest-rotterdam-experience-tour",
+        "https://www.portofrotterdam.com/en/about-port-authority/our-organisation/port-explained"
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
       "pageCount": 3,
       "pages": [
-        "https://www.portofrotterdam.com/en/portlantis/to-do/accessibility",
-        "https://www.portofrotterdam.com/de/logistik/verbindungen/modalitaeten",
-        "https://www.portofrotterdam.com/nl/portlantis/onderwijs/hbo-wo"
+        "https://www.portofrotterdam.com/de/logistik",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/en/news-and-press-releases/record-breaking-lng-bunkering-sleipnir-rotterdam"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r64",
+      "pageCount": 3,
+      "pages": [
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/en/about-port-authority/our-organisation/port-explained"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 3,
+      "pages": [
+        "https://www.portofrotterdam.com/de/ausbau-des-hafens/laufende-projekte/rozenburg",
+        "https://www.portofrotterdam.com/en/portlantis/to-do/tour",
+        "https://www.portofrotterdam.com/en/about-port-authority/our-organisation/port-explained"
       ]
     }
   ]
