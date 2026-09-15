@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 4,
+  "scansAnalysed": 5,
   "diffs": [
     {
       "from": {
@@ -111,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-08-26T19:16:09.980Z",
+        "totals": {
+          "alfa": 3057,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3069,
+          "scannedAt": "2026-08-26T19:16:09.980Z",
+          "scannedCount": 45
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-15T04:11:07.274Z",
+        "totals": {
+          "alfa": 2971,
+          "axe": 12,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 2983,
+          "scannedAt": "2026-09-15T04:11:07.274Z",
+          "scannedCount": 45
+        }
+      },
+      "change": -86,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -86,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-03-27T10:40:14.946Z",
-      "totals": {
-        "alfa": 3068,
-        "axe": 12,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 3080,
-        "scannedAt": "2026-03-27T10:40:14.946Z",
-        "scannedCount": 45
-      }
-    },
-    "to": {
       "scannedAt": "2026-08-26T19:16:09.980Z",
       "totals": {
         "alfa": 3057,
@@ -140,10 +164,23 @@
         "scannedCount": 45
       }
     },
-    "change": -11,
+    "to": {
+      "scannedAt": "2026-09-15T04:11:07.274Z",
+      "totals": {
+        "alfa": 2971,
+        "axe": 12,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 2983,
+        "scannedAt": "2026-09-15T04:11:07.274Z",
+        "scannedCount": 45
+      }
+    },
+    "change": -86,
     "trend": "improving",
     "perScanner": {
-      "alfa": -11,
+      "alfa": -86,
       "axe": 0,
       "equalAccess": 0,
       "qualweb": 0,
@@ -151,16 +188,16 @@
     }
   },
   "overallTrend": "improving",
-  "improvingCount": 1,
+  "improvingCount": 2,
   "worseningCount": 2,
   "latestTotals": {
-    "alfa": 3057,
+    "alfa": 2971,
     "axe": 12,
     "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 3069,
-    "scannedAt": "2026-08-26T19:16:09.980Z",
+    "combined": 2983,
+    "scannedAt": "2026-09-15T04:11:07.274Z",
     "scannedCount": 45
   },
   "baselineTotals": {
@@ -240,7 +277,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r17",
-      "pageCount": 43,
+      "pageCount": 42,
       "pages": [
         "https://civicactions.com/",
         "https://civicactions.com/accessibility-statement/",
@@ -333,6 +370,15 @@
         "https://civicactions.com/case-studies/cms-design-challenge-mvp/",
         "https://civicactions.com/case-studies/nyc-metro-transit-digital-clocks/",
         "https://civicactions.com/case-studies/va-cms-modernization/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 3,
+      "pages": [
+        "https://civicactions.com/",
+        "https://civicactions.com/services/ditap/",
+        "https://civicactions.com/contracting/"
       ]
     },
     {
