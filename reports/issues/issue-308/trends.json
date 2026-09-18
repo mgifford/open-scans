@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-06-05T14:07:00.220Z",
-        "totals": {
-          "alfa": 4591,
-          "axe": 10,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 4601,
-          "scannedAt": "2026-06-05T14:07:00.220Z",
-          "scannedCount": 108
-        }
-      },
-      "to": {
-        "scannedAt": "2026-06-05T16:02:04.451Z",
-        "totals": {
-          "alfa": 4591,
-          "axe": 10,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 4601,
-          "scannedAt": "2026-06-05T16:02:04.451Z",
-          "scannedCount": 108
-        }
-      },
-      "change": 0,
-      "trend": "stable",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-06-05T16:02:04.451Z",
         "totals": {
           "alfa": 4591,
@@ -148,23 +111,47 @@
         "qualweb": 194,
         "accesslint": 247
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-07-26T01:47:36.239Z",
+        "totals": {
+          "alfa": 3780,
+          "axe": 8,
+          "equalAccess": 1427,
+          "qualweb": 194,
+          "accesslint": 247,
+          "combined": 5656,
+          "scannedAt": "2026-07-26T01:47:36.239Z",
+          "scannedCount": 92
+        }
+      },
+      "to": {
+        "scannedAt": "2026-09-18T20:21:41.010Z",
+        "totals": {
+          "alfa": 3450,
+          "axe": 8,
+          "equalAccess": 1279,
+          "qualweb": 197,
+          "accesslint": 290,
+          "combined": 5224,
+          "scannedAt": "2026-09-18T20:21:41.010Z",
+          "scannedCount": 89
+        }
+      },
+      "change": -432,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -330,
+        "axe": 0,
+        "equalAccess": -148,
+        "qualweb": 3,
+        "accesslint": 43
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-06-05T18:28:18.229Z",
-      "totals": {
-        "alfa": 4591,
-        "axe": 10,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 4601,
-        "scannedAt": "2026-06-05T18:28:18.229Z",
-        "scannedCount": 108
-      }
-    },
-    "to": {
       "scannedAt": "2026-07-26T01:47:36.239Z",
       "totals": {
         "alfa": 3780,
@@ -177,28 +164,41 @@
         "scannedCount": 92
       }
     },
-    "change": 1055,
-    "trend": "worsening",
+    "to": {
+      "scannedAt": "2026-09-18T20:21:41.010Z",
+      "totals": {
+        "alfa": 3450,
+        "axe": 8,
+        "equalAccess": 1279,
+        "qualweb": 197,
+        "accesslint": 290,
+        "combined": 5224,
+        "scannedAt": "2026-09-18T20:21:41.010Z",
+        "scannedCount": 89
+      }
+    },
+    "change": -432,
+    "trend": "improving",
     "perScanner": {
-      "alfa": -811,
-      "axe": -2,
-      "equalAccess": 1427,
-      "qualweb": 194,
-      "accesslint": 247
+      "alfa": -330,
+      "axe": 0,
+      "equalAccess": -148,
+      "qualweb": 3,
+      "accesslint": 43
     }
   },
-  "overallTrend": "worsening",
-  "improvingCount": 0,
+  "overallTrend": "improving",
+  "improvingCount": 1,
   "worseningCount": 1,
   "latestTotals": {
-    "alfa": 3780,
+    "alfa": 3450,
     "axe": 8,
-    "equalAccess": 1427,
-    "qualweb": 194,
-    "accesslint": 247,
-    "combined": 5656,
-    "scannedAt": "2026-07-26T01:47:36.239Z",
-    "scannedCount": 92
+    "equalAccess": 1279,
+    "qualweb": 197,
+    "accesslint": 290,
+    "combined": 5224,
+    "scannedAt": "2026-09-18T20:21:41.010Z",
+    "scannedCount": 89
   },
   "baselineTotals": {
     "alfa": 4591,
@@ -207,13 +207,13 @@
     "qualweb": 0,
     "accesslint": 0,
     "combined": 4601,
-    "scannedAt": "2026-06-05T14:07:00.220Z",
+    "scannedAt": "2026-06-05T16:02:04.451Z",
     "scannedCount": 108
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 61,
+      "pageCount": 58,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
-      "pageCount": 61,
+      "pageCount": 58,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
@@ -245,7 +245,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 61,
+      "pageCount": 58,
       "pages": [
         "https://www.cms.gov/digital-service/findsupportgov",
         "https://www.cms.gov/",
