@@ -17,6 +17,7 @@ import { loadScanHistory, analyseTrends } from "./analyse-trends.mjs";
 import { runReflowRisk } from "./reflow-risk.mjs";
 import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11y-audit.mjs";
 import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
+import { redactStringsDeep } from "./redact-secrets.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -4110,6 +4111,16 @@ async function main() {
     changeTracking
   };
 
+  // Sanitize the report before any artifact (JSON/Markdown/HTML/CSV/overlap)
+  // is generated from it. Scanned pages can embed credentials (Mapbox
+  // tokens, API keys, etc.) that otherwise end up in failure snippets and
+  // block the report push via GitHub secret-scanning push protection.
+  const redactionStats = { changed: 0 };
+  redactStringsDeep(summary, redactionStats);
+  if (redactionStats.changed > 0) {
+    console.error(`[redact] Sanitized ${redactionStats.changed} string(s) containing potential secrets in report data`);
+  }
+
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
@@ -4149,6 +4160,11 @@ async function main() {
         { token: githubToken }
       );
       fixSuggestionsPath = join(outputDir, "fix-suggestions.json");
+      const remediationStats = { changed: 0 };
+      redactStringsDeep(remediationResult, remediationStats);
+      if (remediationStats.changed > 0) {
+        console.error(`[redact] Sanitized ${remediationStats.changed} string(s) in fix-suggestions.json`);
+      }
       writeFileSync(
         fixSuggestionsPath,
         JSON.stringify(remediationResult, null, 2) + "\n",

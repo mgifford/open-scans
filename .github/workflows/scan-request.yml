@@ -170,15 +170,40 @@ jobs:
           else
             git commit -m "chore(scan): issue #${{ github.event.issue.number }} ${{ steps.meta.outputs.scan_title }}"
             
+            # Push wrapper that fails fast with a clear diagnostic when GitHub
+            # secret-scanning push protection rejects the commit. The scanner
+            # redacts known secret patterns (scanner/redact-secrets.mjs); if we
+            # land here, a credential embedded in a scanned page slipped through.
+            push_report() {
+              local log
+              log="/tmp/push-$$.log"
+              if git push origin HEAD:main >"$log" 2>&1; then
+                return 0
+              fi
+              if grep -qiE "Push cannot contain secrets|GH013|secret scanning|secret scan" "$log"; then
+                cat "$log" >&2
+                echo "::error::GitHub secret scanning blocked the push: a scanned page embeds a credential that was captured in the report. Report dir: ${{ steps.meta.outputs.report_dir }}/"
+                echo "::error::Action: mask the secret type in scanner/redact-secrets.mjs, or remove the offending URL from the scan issue."
+                return 2
+              fi
+              cat "$log" >&2
+              return 1
+            }
+            
             # Retry push with rebase up to 3 times
             PUSH_SUCCESS=false
             for attempt in 1 2 3; do
               echo "Push attempt $attempt..."
               if git pull --rebase origin main; then
-                if git push origin HEAD:main; then
+                if push_report; then
                   echo "Successfully pushed on attempt $attempt"
                   PUSH_SUCCESS=true
                   break
+                fi
+                PUSH_STATUS=$?
+                if [ "$PUSH_STATUS" -eq 2 ]; then
+                  echo "Push blocked by GitHub secret scanning — not retrying." >&2
+                  exit 2
                 fi
               else
                 # reports.html/trends.html are generated files — resolve conflicts by regenerating them
@@ -188,10 +213,15 @@ jobs:
                     node scanner/generate-reports-html.mjs
                     git add reports.html trends.html stats.json
                     if GIT_EDITOR=true git rebase --continue; then
-                      if git push origin HEAD:main; then
+                      if push_report; then
                         echo "Successfully pushed on attempt $attempt (after resolving generated file conflict)"
                         PUSH_SUCCESS=true
                         break
+                      fi
+                      PUSH_STATUS=$?
+                      if [ "$PUSH_STATUS" -eq 2 ]; then
+                        echo "Push blocked by GitHub secret scanning — not retrying." >&2
+                        exit 2
                       fi
                     fi
                   fi
