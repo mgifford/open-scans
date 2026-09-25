@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-09-25T11:42:34.766Z",
+  "issueNumber": 357,
+  "scanTitle": "https://www.rijksoverheid.nl",
+  "scannersInUse": [
+    "axe",
+    "alfa",
+    "equalAccess",
+    "qualweb"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 6,
+      "uniqueFailed": 6,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 614,
+      "uniqueFailed": 614,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 812,
+      "uniqueFailed": 353,
+      "duplicates": 459
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 243,
+      "uniqueFailed": 243,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 6,
+      "alfa": 0,
+      "equalAccess": 0,
+      "qualweb": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 99,
+      "equalAccess": 0,
+      "qualweb": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 353,
+      "qualweb": 0
+    },
+    "qualweb": {
+      "axe": 0,
+      "alfa": 0,
+      "equalAccess": 0,
+      "qualweb": 28
+    }
+  },
+  "duplicateFindingTotals": 1189,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 1,
+  "actConsensusEntries": [
+    {
+      "key": "https://www.rijksoverheid.nl/|5c01ea|(no-locator)",
+      "actRuleId": "5c01ea",
+      "url": "https://www.rijksoverheid.nl/",
+      "locator": "(no-locator)",
+      "scanners": [
+        "alfa",
+        "qualweb"
+      ],
+      "scannerRules": {
+        "alfa": [
+          "https://alfa.siteimprove.com/rules/sia-r18"
+        ],
+        "qualweb": [
+          "QW-ACT-R25"
+        ]
+      },
+      "occurrences": 2,
+      "examples": [
+        {
+          "scanner": "alfa",
+          "rule": "https://alfa.siteimprove.com/rules/sia-r18",
+          "message": "The attribute is prohibited for the element on which it is specified",
+          "xpath": null
+        },
+        {
+          "scanner": "qualweb",
+          "rule": "QW-ACT-R25",
+          "message": "The `aria-label` property is neither inherited nor supported by the `role` generic.",
+          "xpath": null
+        }
+      ]
+    }
+  ]
+}

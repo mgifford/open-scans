@@ -1,0 +1,78 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 614,
+    "axe": 6,
+    "equalAccess": 812,
+    "qualweb": 243,
+    "accesslint": 0,
+    "combined": 1675,
+    "scannedAt": "2026-09-25T11:42:34.635Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rijksoverheid.nl/",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/overheidspersoneel/wat-zijn-de-arbeidsvoorwaarden-bij-de-overheid",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/hoger-onderwijs/wanneer-moet-ik-collegegeld-betalen",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/31/agenda-staatssecretaris-de-bat-week-36",
+        "https://www.rijksoverheid.nl/documenten/2026/09/24/toespraak-mp-jetten-tijdens-de-algemene-vergadering-van-de-vn-2026",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/landbouw-en-tuinbouw/wat-zijn-de-maximale-pachtprijzen-voor-landbouwgrond",
+        "https://www.rijksoverheid.nl/themas/recht-veiligheid-en-defensie/nieuw-wetboek-van-strafvordering/innovatiewet-strafvordering",
+        "https://www.rijksoverheid.nl/themas/familie-zorg-en-gezondheid/levenseinde-en-euthanasie/euthanasieverzoek-bij-voltooid-leven",
+        "https://www.rijksoverheid.nl/themas/overheid-en-democratie/overheidspersoneel/diversiteit-overheidspersoneel",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/scheiden/checklist-ouderschapsplan-maken"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 20,
+      "pages": [
+        "https://www.rijksoverheid.nl/",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/overheidspersoneel/wat-zijn-de-arbeidsvoorwaarden-bij-de-overheid",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/hoger-onderwijs/wanneer-moet-ik-collegegeld-betalen",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/31/agenda-staatssecretaris-de-bat-week-36",
+        "https://www.rijksoverheid.nl/documenten/2026/09/24/toespraak-mp-jetten-tijdens-de-algemene-vergadering-van-de-vn-2026",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/landbouw-en-tuinbouw/wat-zijn-de-maximale-pachtprijzen-voor-landbouwgrond",
+        "https://www.rijksoverheid.nl/themas/recht-veiligheid-en-defensie/nieuw-wetboek-van-strafvordering/innovatiewet-strafvordering",
+        "https://www.rijksoverheid.nl/themas/familie-zorg-en-gezondheid/levenseinde-en-euthanasie/euthanasieverzoek-bij-voltooid-leven",
+        "https://www.rijksoverheid.nl/themas/overheid-en-democratie/overheidspersoneel/diversiteit-overheidspersoneel",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/scheiden/checklist-ouderschapsplan-maken"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 6,
+      "pages": [
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/overheidspersoneel/wat-zijn-de-arbeidsvoorwaarden-bij-de-overheid",
+        "https://www.rijksoverheid.nl/themas/overheid-en-democratie/overheidspersoneel/diversiteit-overheidspersoneel",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/scheiden/checklist-ouderschapsplan-maken",
+        "https://www.rijksoverheid.nl/actueel/nieuws/2026/09/24/structureel-20-miljoen-extra-beschikbaar-om-schulden-tegen-te-gaan",
+        "https://www.rijksoverheid.nl/vraag-en-antwoord/overheidspersoneel/kan-ik-zonder-startkwalificatie-bij-defensie-gaan-werken-als-ik-nog-geen-18-ben",
+        "https://www.rijksoverheid.nl/themas/onderwijs/leven-lang-ontwikkelen/overzicht-opleidingen-voor-werkenden-en-werkzoekenden"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 3,
+      "pages": [
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/31/agenda-staatssecretaris-de-bat-week-36",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/09/25/rijksministerraad",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/24/agenda-staatssecretaris-erkens-week-35"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/31/agenda-staatssecretaris-de-bat-week-36",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/09/25/rijksministerraad",
+        "https://www.rijksoverheid.nl/actueel/agenda/2026/08/24/agenda-staatssecretaris-erkens-week-35"
+      ]
+    }
+  ]
+}
