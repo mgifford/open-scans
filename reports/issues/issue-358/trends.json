@@ -1,0 +1,50 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 86,
+    "equalAccess": 2750,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 2836,
+    "scannedAt": "2026-09-28T11:02:30.502Z",
+    "scannedCount": 70
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:aria-input-field-name",
+      "pageCount": 70,
+      "pages": [
+        "https://www.hackney.gov.uk/health-and-social-care/find-support-services",
+        "https://www.hackney.gov.uk/health-and-social-care/support-disabled-people/disabilities-impairments-and-accessibility",
+        "https://www.hackney.gov.uk/housing/find-home/apply-join-housing-register",
+        "https://www.hackney.gov.uk/health-and-social-care/adult-social-care/help-home/find-help-home",
+        "https://www.hackney.gov.uk/housing/homelessness/help-if-youre-homeless-or-rough-sleeping/find-somewhere-stay-tonight",
+        "https://www.hackney.gov.uk/community-safety-and-environment/community-safety-and-crime-prevention/serious-violence-support-and-reporting",
+        "https://www.hackney.gov.uk/council-tax-and-benefits/applying-extra-financial-help-council/help-rising-cost-living",
+        "https://www.hackney.gov.uk/council-tax-and-benefits/council-tax/help-paying-your-council-tax",
+        "https://www.hackney.gov.uk/health-and-social-care/adult-social-care/apply-adult-social-care-support",
+        "https://www.hackney.gov.uk/housing/resident-participation/help-us-improve-housing-services"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://www.hackney.gov.uk/health-and-social-care/outreach-services-community-wellbeing-space",
+        "https://www.hackney.gov.uk/births-deaths-marriages-and-citizenship/deaths/mortuary-services",
+        "https://www.hackney.gov.uk/council-and-elections/scrutiny-local-decisions/overview-and-scrutiny-annual-reports"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.hackney.gov.uk/education/computers-and-digital-skills/free-wi-fi-and-computer-booking",
+        "https://www.hackney.gov.uk/libraries-parks-and-leisure/libraries/community-library-service",
+        "https://www.hackney.gov.uk/libraries-parks-and-leisure/libraries/library-services-children-and-teenagers"
+      ]
+    }
+  ]
+}
