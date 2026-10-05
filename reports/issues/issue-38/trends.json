@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-08-31T05:56:45.518Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 327,
-          "equalAccess": 2886,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 3213,
-          "scannedAt": "2026-08-31T05:56:45.518Z",
-          "scannedCount": 70
-        }
-      },
-      "to": {
-        "scannedAt": "2026-09-07T05:06:31.449Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 319,
-          "equalAccess": 0,
-          "qualweb": 1011,
-          "accesslint": 0,
-          "combined": 1330,
-          "scannedAt": "2026-09-07T05:06:31.449Z",
-          "scannedCount": 70
-        }
-      },
-      "change": -1883,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": -8,
-        "equalAccess": -2886,
-        "qualweb": 1011,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-09-07T05:06:31.449Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 1018,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-09-28T05:48:42.102Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 327,
+          "equalAccess": 0,
+          "qualweb": 1018,
+          "accesslint": 0,
+          "combined": 1345,
+          "scannedAt": "2026-09-28T05:48:42.102Z",
+          "scannedCount": 70
+        }
+      },
+      "to": {
+        "scannedAt": "2026-10-05T06:14:39.547Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 320,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 8811,
+          "combined": 9131,
+          "scannedAt": "2026-10-05T06:14:39.547Z",
+          "scannedCount": 70
+        }
+      },
+      "change": 7786,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -7,
+        "equalAccess": 0,
+        "qualweb": -1018,
+        "accesslint": 8811
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-09-21T05:20:53.316Z",
-      "totals": {
-        "alfa": 3558,
-        "axe": 354,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 3912,
-        "scannedAt": "2026-09-21T05:20:53.316Z",
-        "scannedCount": 70
-      }
-    },
-    "to": {
       "scannedAt": "2026-09-28T05:48:42.102Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 70
       }
     },
-    "change": -2567,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-10-05T06:14:39.547Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 320,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 8811,
+        "combined": 9131,
+        "scannedAt": "2026-10-05T06:14:39.547Z",
+        "scannedCount": 70
+      }
+    },
+    "change": 7786,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -3558,
-      "axe": -27,
+      "alfa": 0,
+      "axe": -7,
       "equalAccess": 0,
-      "qualweb": 1018,
-      "accesslint": 0
+      "qualweb": -1018,
+      "accesslint": 8811
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 3,
-  "worseningCount": 1,
+  "overallTrend": "worsening",
+  "improvingCount": 2,
+  "worseningCount": 2,
   "latestTotals": {
     "alfa": 0,
-    "axe": 327,
+    "axe": 320,
     "equalAccess": 0,
-    "qualweb": 1018,
-    "accesslint": 0,
-    "combined": 1345,
-    "scannedAt": "2026-09-28T05:48:42.102Z",
+    "qualweb": 0,
+    "accesslint": 8811,
+    "combined": 9131,
+    "scannedAt": "2026-10-05T06:14:39.547Z",
     "scannedCount": 70
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 327,
-    "equalAccess": 2886,
-    "qualweb": 0,
+    "axe": 319,
+    "equalAccess": 0,
+    "qualweb": 1011,
     "accesslint": 0,
-    "combined": 3213,
-    "scannedAt": "2026-08-31T05:56:45.518Z",
+    "combined": 1330,
+    "scannedAt": "2026-09-07T05:06:31.449Z",
     "scannedCount": 70
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:region",
-      "pageCount": 47,
+      "pageCount": 46,
       "pages": [
         "https://www.luton.gov.uk/",
         "https://www.staffordshire.gov.uk/",
@@ -229,7 +229,7 @@
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 12,
+      "pageCount": 11,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.staffordshire.gov.uk/",
@@ -237,10 +237,10 @@
         "https://www.southwark.gov.uk/",
         "https://www.northumberland.gov.uk/",
         "https://www.havant.gov.uk/",
-        "https://www.surreyheath.gov.uk/",
         "https://www.wirral.gov.uk/",
         "https://www.sstaffs.gov.uk/",
-        "https://new.calderdale.gov.uk/"
+        "https://new.calderdale.gov.uk/",
+        "https://www.milton-keynes.gov.uk/"
       ]
     },
     {
@@ -259,6 +259,19 @@
       ]
     },
     {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 7,
+      "pages": [
+        "https://www.staffordshire.gov.uk/",
+        "https://www.easthants.gov.uk/",
+        "https://www.havant.gov.uk/",
+        "https://www.rutland.gov.uk/",
+        "https://new.calderdale.gov.uk/",
+        "https://www.bedford.gov.uk/",
+        "https://www.milton-keynes.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:html-has-lang",
       "pageCount": 7,
       "pages": [
@@ -273,38 +286,13 @@
     },
     {
       "ruleId": "axe:landmark-unique",
-      "pageCount": 7,
+      "pageCount": 6,
       "pages": [
         "https://haringey.gov.uk/",
         "https://www.lbhf.gov.uk/",
         "https://www.hart.gov.uk/",
-        "https://www.surreyheath.gov.uk/",
         "https://www.elmbridge.gov.uk/",
         "https://www.rbkc.gov.uk/",
-        "https://www.croydon.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:aria-allowed-role",
-      "pageCount": 6,
-      "pages": [
-        "https://www.staffordshire.gov.uk/",
-        "https://www.easthants.gov.uk/",
-        "https://www.havant.gov.uk/",
-        "https://www.rutland.gov.uk/",
-        "https://new.calderdale.gov.uk/",
-        "https://www.milton-keynes.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:landmark-no-duplicate-contentinfo",
-      "pageCount": 6,
-      "pages": [
-        "https://schools.essex.gov.uk/",
-        "https://www.canterbury.gov.uk/",
-        "https://www.essex.gov.uk/",
-        "https://www.northdevon.gov.uk/",
-        "https://www.knowsley.gov.uk/",
         "https://www.croydon.gov.uk/"
       ]
     },
@@ -343,12 +331,23 @@
       ]
     },
     {
+      "ruleId": "axe:landmark-no-duplicate-contentinfo",
+      "pageCount": 5,
+      "pages": [
+        "https://schools.essex.gov.uk/",
+        "https://www.canterbury.gov.uk/",
+        "https://www.essex.gov.uk/",
+        "https://www.northdevon.gov.uk/",
+        "https://www.croydon.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:link-name",
       "pageCount": 4,
       "pages": [
         "https://www.staffordshire.gov.uk/",
+        "https://www.argyll-bute.gov.uk/",
         "https://www.southkesteven.gov.uk/",
-        "https://www.knowsley.gov.uk/",
         "https://www.milton-keynes.gov.uk/"
       ]
     },
@@ -377,7 +376,7 @@
       "pageCount": 3,
       "pages": [
         "https://www.staffordshire.gov.uk/",
-        "https://www.surreyheath.gov.uk/",
+        "https://www.argyll-bute.gov.uk/",
         "https://www.milton-keynes.gov.uk/"
       ]
     },
