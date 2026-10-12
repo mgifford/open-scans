@@ -1,0 +1,147 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 1451,
+    "axe": 20,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1471,
+    "scannedAt": "2026-10-12T00:34:41.073Z",
+    "scannedCount": 12
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 10,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 10,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 10,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 10,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 9,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r72",
+      "pageCount": 9,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 9,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/about/",
+        "https://ww1.hopefulfridays.org/team/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/faqs/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 7,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/",
+        "https://ww1.hopefulfridays.org/partnerships/",
+        "https://ww1.hopefulfridays.org/volunteer/",
+        "https://ww1.hopefulfridays.org/join/",
+        "https://ww1.hopefulfridays.org/donate/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 3,
+      "pages": [
+        "https://ww1.hopefulfridays.org/",
+        "https://ww1.hopefulfridays.org/events/",
+        "https://ww1.hopefulfridays.org/calendar/"
+      ]
+    }
+  ]
+}
