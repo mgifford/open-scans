@@ -1,0 +1,106 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 210,
+    "equalAccess": 0,
+    "qualweb": 307,
+    "accesslint": 0,
+    "combined": 517,
+    "scannedAt": "2026-10-15T14:05:34.394Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 20,
+      "pages": [
+        "https://insi-demo.arcstone.com/",
+        "https://insi-demo.arcstone.com/event/book-discussion-club-meeting/",
+        "https://insi-demo.arcstone.com/department-details/",
+        "https://insi-demo.arcstone.com/blog/departments/informational-city-portal-is-open/",
+        "https://insi-demo.arcstone.com/faqs/",
+        "https://insi-demo.arcstone.com/blog/departments/responds-to-citizens-advice/",
+        "https://insi-demo.arcstone.com/no-warning-appears-when-no-scan-has-been-run/",
+        "https://insi-demo.arcstone.com/blog/departments/respond-to-national-report-2/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/contact-us/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 7,
+      "pages": [
+        "https://insi-demo.arcstone.com/event/book-discussion-club-meeting/",
+        "https://insi-demo.arcstone.com/faqs/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/events/",
+        "https://insi-demo.arcstone.com/event/saturday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/event/smart-city-chess-club-meeting/",
+        "https://insi-demo.arcstone.com/event/smart-city-council-meeting/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 7,
+      "pages": [
+        "https://insi-demo.arcstone.com/department-details/",
+        "https://insi-demo.arcstone.com/blog/departments/informational-city-portal-is-open/",
+        "https://insi-demo.arcstone.com/blog/departments/responds-to-citizens-advice/",
+        "https://insi-demo.arcstone.com/blog/departments/respond-to-national-report-2/",
+        "https://insi-demo.arcstone.com/blog/departments/housing-advisers-program/",
+        "https://insi-demo.arcstone.com/blog/departments/how-to-make-the-most-of-a-weekend/",
+        "https://insi-demo.arcstone.com/blog/departments/responds-to-foreign-advice/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://insi-demo.arcstone.com/",
+        "https://insi-demo.arcstone.com/department-details/",
+        "https://insi-demo.arcstone.com/faqs/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/contact-us/",
+        "https://insi-demo.arcstone.com/event/smart-city-council-meeting/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-main-is-top-level",
+      "pageCount": 6,
+      "pages": [
+        "https://insi-demo.arcstone.com/event/book-discussion-club-meeting/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/events/",
+        "https://insi-demo.arcstone.com/event/saturday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/event/smart-city-chess-club-meeting/",
+        "https://insi-demo.arcstone.com/event/smart-city-council-meeting/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-main",
+      "pageCount": 6,
+      "pages": [
+        "https://insi-demo.arcstone.com/event/book-discussion-club-meeting/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/events/",
+        "https://insi-demo.arcstone.com/event/saturday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/event/smart-city-chess-club-meeting/",
+        "https://insi-demo.arcstone.com/event/smart-city-council-meeting/"
+      ]
+    },
+    {
+      "ruleId": "axe:skip-link",
+      "pageCount": 6,
+      "pages": [
+        "https://insi-demo.arcstone.com/event/book-discussion-club-meeting/",
+        "https://insi-demo.arcstone.com/event/thursday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/events/",
+        "https://insi-demo.arcstone.com/event/saturday-at-the-museum-series/",
+        "https://insi-demo.arcstone.com/event/smart-city-chess-club-meeting/",
+        "https://insi-demo.arcstone.com/event/smart-city-council-meeting/"
+      ]
+    }
+  ]
+}
