@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-09-14T05:31:48.808Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 329,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 8751,
-          "combined": 9080,
-          "scannedAt": "2026-09-14T05:31:48.808Z",
-          "scannedCount": 70
-        }
-      },
-      "to": {
-        "scannedAt": "2026-09-21T05:20:53.316Z",
-        "totals": {
-          "alfa": 3558,
-          "axe": 354,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 3912,
-          "scannedAt": "2026-09-21T05:20:53.316Z",
-          "scannedCount": 70
-        }
-      },
-      "change": -5168,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 3558,
-        "axe": 25,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": -8751
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-09-21T05:20:53.316Z",
         "totals": {
           "alfa": 3558,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": -8811
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-10-12T06:20:01.623Z",
+        "totals": {
+          "alfa": 3281,
+          "axe": 308,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3589,
+          "scannedAt": "2026-10-12T06:20:01.623Z",
+          "scannedCount": 70
+        }
+      },
+      "to": {
+        "scannedAt": "2026-10-19T05:07:18.529Z",
+        "totals": {
+          "alfa": 3088,
+          "axe": 311,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 3399,
+          "scannedAt": "2026-10-19T05:07:18.529Z",
+          "scannedCount": 70
+        }
+      },
+      "change": -190,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": -193,
+        "axe": 3,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-10-05T06:14:39.547Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 320,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 8811,
-        "combined": 9131,
-        "scannedAt": "2026-10-05T06:14:39.547Z",
-        "scannedCount": 70
-      }
-    },
-    "to": {
       "scannedAt": "2026-10-12T06:20:01.623Z",
       "totals": {
         "alfa": 3281,
@@ -177,59 +164,56 @@
         "scannedCount": 70
       }
     },
-    "change": -5542,
+    "to": {
+      "scannedAt": "2026-10-19T05:07:18.529Z",
+      "totals": {
+        "alfa": 3088,
+        "axe": 311,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 3399,
+        "scannedAt": "2026-10-19T05:07:18.529Z",
+        "scannedCount": 70
+      }
+    },
+    "change": -190,
     "trend": "improving",
     "perScanner": {
-      "alfa": 3281,
-      "axe": -12,
+      "alfa": -193,
+      "axe": 3,
       "equalAccess": 0,
       "qualweb": 0,
-      "accesslint": -8811
+      "accesslint": 0
     }
   },
   "overallTrend": "improving",
   "improvingCount": 3,
   "worseningCount": 1,
   "latestTotals": {
-    "alfa": 3281,
-    "axe": 308,
+    "alfa": 3088,
+    "axe": 311,
     "equalAccess": 0,
     "qualweb": 0,
     "accesslint": 0,
-    "combined": 3589,
-    "scannedAt": "2026-10-12T06:20:01.623Z",
+    "combined": 3399,
+    "scannedAt": "2026-10-19T05:07:18.529Z",
     "scannedCount": 70
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 329,
+    "alfa": 3558,
+    "axe": 354,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 8751,
-    "combined": 9080,
-    "scannedAt": "2026-09-14T05:31:48.808Z",
+    "accesslint": 0,
+    "combined": 3912,
+    "scannedAt": "2026-09-21T05:20:53.316Z",
     "scannedCount": 70
   },
   "latestSystemicPatterns": [
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 47,
-      "pages": [
-        "https://www.clarecoco.ie/",
-        "https://www.leicester.gov.uk/",
-        "https://www.luton.gov.uk/",
-        "https://www.staffordshire.gov.uk/",
-        "https://www.newark-sherwooddc.gov.uk/",
-        "https://www.leeds.gov.uk/",
-        "https://www.merton.gov.uk/",
-        "https://www.solihull.gov.uk/",
-        "https://www.kingston.gov.uk/",
-        "https://www.erewash.gov.uk/"
-      ]
-    },
-    {
       "ruleId": "axe:region",
-      "pageCount": 47,
+      "pageCount": 50,
       "pages": [
         "https://www.luton.gov.uk/",
         "https://www.staffordshire.gov.uk/",
@@ -244,24 +228,40 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
-      "pageCount": 36,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 49,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.leicester.gov.uk/",
         "https://www.luton.gov.uk/",
+        "https://www.staffordshire.gov.uk/",
+        "https://www.newark-sherwooddc.gov.uk/",
+        "https://www.leeds.gov.uk/",
+        "https://www.merton.gov.uk/",
+        "https://www.solihull.gov.uk/",
+        "https://www.kingston.gov.uk/",
+        "https://www.galway.ie/en"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 38,
+      "pages": [
+        "https://www.clarecoco.ie/",
+        "https://www.leicester.gov.uk/",
+        "https://www.luton.gov.uk/",
+        "https://www.staffordshire.gov.uk/",
         "https://www.newark-sherwooddc.gov.uk/",
         "https://www.leeds.gov.uk/",
         "https://www.merton.gov.uk/",
         "https://www.kingston.gov.uk/",
-        "https://www.erewash.gov.uk/",
         "https://www.gedling.gov.uk/",
         "https://haringey.gov.uk/"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
-      "pageCount": 35,
+      "pageCount": 37,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.leicester.gov.uk/",
@@ -277,34 +277,34 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
-      "pageCount": 32,
+      "pageCount": 35,
       "pages": [
         "https://www.luton.gov.uk/",
+        "https://www.staffordshire.gov.uk/",
+        "https://www.leeds.gov.uk/",
         "https://www.solihull.gov.uk/",
         "https://www.woking.gov.uk/",
         "https://www.kingston.gov.uk/",
+        "https://www.erewash.gov.uk/",
         "https://www.northtyneside.gov.uk/",
         "https://haringey.gov.uk/",
-        "https://carlow.ie/",
-        "https://www.londoncouncils.gov.uk/",
-        "https://www.rbwm.gov.uk/",
-        "https://schools.essex.gov.uk/"
+        "https://carlow.ie/"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
-      "pageCount": 31,
+      "pageCount": 34,
       "pages": [
         "https://www.luton.gov.uk/",
         "https://www.staffordshire.gov.uk/",
+        "https://www.leeds.gov.uk/",
         "https://www.merton.gov.uk/",
         "https://www.solihull.gov.uk/",
-        "https://www.erewash.gov.uk/",
         "https://www.galway.ie/en",
         "https://haringey.gov.uk/",
         "https://carlow.ie/",
-        "https://www.londoncouncils.gov.uk/",
-        "https://schools.essex.gov.uk/"
+        "https://schools.essex.gov.uk/",
+        "https://laois.ie/"
       ]
     },
     {
@@ -318,9 +318,9 @@
         "https://www.merton.gov.uk/",
         "https://www.solihull.gov.uk/",
         "https://www.kingston.gov.uk/",
-        "https://www.erewash.gov.uk/",
         "https://www.galway.ie/en",
-        "https://www.gedling.gov.uk/"
+        "https://www.gedling.gov.uk/",
+        "https://carlow.ie/"
       ]
     },
     {
@@ -329,67 +329,83 @@
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.leicester.gov.uk/",
+        "https://www.staffordshire.gov.uk/",
         "https://www.merton.gov.uk/",
         "https://www.kingston.gov.uk/",
-        "https://www.erewash.gov.uk/",
-        "https://www.londoncouncils.gov.uk/",
         "https://laois.ie/",
         "https://www.southwark.gov.uk/",
         "https://www.ipswich.gov.uk/",
-        "https://www.argyll-bute.gov.uk/"
+        "https://www.argyll-bute.gov.uk/",
+        "https://www.hart.gov.uk/"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
-      "pageCount": 15,
+      "pageCount": 16,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.merton.gov.uk/",
         "https://www.woking.gov.uk/",
         "https://www.galway.ie/en",
         "https://carlow.ie/",
-        "https://www.londoncouncils.gov.uk/",
         "https://laois.ie/",
         "https://www.eastcambs.gov.uk/",
-        "https://www.canterbury.gov.uk/",
+        "https://www.n-kesteven.gov.uk/",
+        "https://www.rutland.gov.uk/",
         "https://www.wirral.gov.uk/"
       ]
     },
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 12,
+      "pages": [
+        "https://www.clarecoco.ie/",
+        "https://www.luton.gov.uk/",
+        "https://www.staffordshire.gov.uk/",
+        "https://www.leeds.gov.uk/",
+        "https://schools.essex.gov.uk/",
+        "https://www.northumberland.gov.uk/",
+        "https://www.havant.gov.uk/",
+        "https://www.wirral.gov.uk/",
+        "https://www.sstaffs.gov.uk/",
+        "https://www.knowsley.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:landmark-one-main",
-      "pageCount": 13,
+      "pageCount": 12,
       "pages": [
         "https://www.woking.gov.uk/",
+        "https://www.erewash.gov.uk/",
         "https://www.northtyneside.gov.uk/",
+        "https://www.londoncouncils.gov.uk/",
         "https://www.royalgreenwich.gov.uk/",
         "https://www.eastcambs.gov.uk/",
-        "https://www.tamworth.gov.uk/",
-        "https://www.n-kesteven.gov.uk/",
-        "https://www.rutland.gov.uk/",
         "https://southhams.gov.uk/",
         "https://westdevon.gov.uk/",
+        "https://www.southkesteven.gov.uk/",
         "https://www.lbbd.gov.uk/"
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
       "pageCount": 11,
       "pages": [
-        "https://www.clarecoco.ie/",
         "https://www.kingston.gov.uk/",
+        "https://www.galway.ie/en",
         "https://www.gedling.gov.uk/",
-        "https://www.londoncouncils.gov.uk/",
+        "https://www.southwark.gov.uk/",
+        "https://www.tamworth.gov.uk/",
         "https://www.hart.gov.uk/",
-        "https://www.surreyheath.gov.uk/",
-        "https://www.wokingham.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.sstaffs.gov.uk/",
-        "https://new.calderdale.gov.uk/"
+        "https://www.knowsley.gov.uk/",
+        "https://www.sheffield.gov.uk/",
+        "https://www.west-lindsey.gov.uk/",
+        "https://www.croydon.gov.uk/"
       ]
     },
     {
       "ruleId": "axe:color-contrast",
-      "pageCount": 11,
+      "pageCount": 10,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.staffordshire.gov.uk/",
@@ -399,95 +415,55 @@
         "https://www.havant.gov.uk/",
         "https://www.wirral.gov.uk/",
         "https://www.sstaffs.gov.uk/",
-        "https://new.calderdale.gov.uk/",
-        "https://www.milton-keynes.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
-      "pageCount": 11,
-      "pages": [
-        "https://www.woking.gov.uk/",
-        "https://www.northtyneside.gov.uk/",
-        "https://www.royalgreenwich.gov.uk/",
-        "https://www.eastcambs.gov.uk/",
-        "https://www.tamworth.gov.uk/",
-        "https://www.n-kesteven.gov.uk/",
-        "https://www.rutland.gov.uk/",
-        "https://www.lbbd.gov.uk/",
-        "https://www.redcar-cleveland.gov.uk/",
-        "https://www.west-lindsey.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:html-has-lang",
-      "pageCount": 11,
-      "pages": [
-        "https://www.woking.gov.uk/",
-        "https://www.northtyneside.gov.uk/",
-        "https://www.royalgreenwich.gov.uk/",
-        "https://www.eastcambs.gov.uk/",
-        "https://www.tamworth.gov.uk/",
-        "https://www.n-kesteven.gov.uk/",
-        "https://www.rutland.gov.uk/",
-        "https://www.lbbd.gov.uk/",
-        "https://www.redcar-cleveland.gov.uk/",
-        "https://www.west-lindsey.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
-      "pageCount": 10,
-      "pages": [
-        "https://www.clarecoco.ie/",
-        "https://www.luton.gov.uk/",
-        "https://schools.essex.gov.uk/",
-        "https://www.northumberland.gov.uk/",
-        "https://www.havant.gov.uk/",
-        "https://www.wirral.gov.uk/",
-        "https://www.sstaffs.gov.uk/",
-        "https://www.knowsley.gov.uk/",
-        "https://www.rbkc.gov.uk/",
+        "https://www.milton-keynes.gov.uk/",
         "https://www.brighton-hove.gov.uk/"
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r4",
+      "pageCount": 10,
+      "pages": [
+        "https://www.woking.gov.uk/",
+        "https://www.erewash.gov.uk/",
+        "https://www.northtyneside.gov.uk/",
+        "https://www.londoncouncils.gov.uk/",
+        "https://www.royalgreenwich.gov.uk/",
+        "https://www.eastcambs.gov.uk/",
+        "https://www.southkesteven.gov.uk/",
+        "https://www.lbbd.gov.uk/",
+        "https://www.redcar-cleveland.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 10,
+      "pages": [
+        "https://www.woking.gov.uk/",
+        "https://www.erewash.gov.uk/",
+        "https://www.northtyneside.gov.uk/",
+        "https://www.londoncouncils.gov.uk/",
+        "https://www.royalgreenwich.gov.uk/",
+        "https://www.eastcambs.gov.uk/",
+        "https://www.southkesteven.gov.uk/",
+        "https://www.lbbd.gov.uk/",
+        "https://www.redcar-cleveland.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
       "pageCount": 9,
       "pages": [
+        "https://www.clarecoco.ie/",
         "https://www.kingston.gov.uk/",
-        "https://www.galway.ie/en",
         "https://www.gedling.gov.uk/",
-        "https://www.southwark.gov.uk/",
+        "https://www.tamworth.gov.uk/",
         "https://www.hart.gov.uk/",
-        "https://www.knowsley.gov.uk/",
-        "https://www.sheffield.gov.uk/",
-        "https://www.croydon.gov.uk/",
-        "https://www.walthamforest.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
-      "pageCount": 6,
-      "pages": [
-        "https://www.kingston.gov.uk/",
-        "https://haringey.gov.uk/",
-        "https://www.hart.gov.uk/",
-        "https://www.elmbridge.gov.uk/",
-        "https://www.rbkc.gov.uk/",
-        "https://www.croydon.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:landmark-unique",
-      "pageCount": 6,
-      "pages": [
-        "https://haringey.gov.uk/",
-        "https://www.lbhf.gov.uk/",
-        "https://www.hart.gov.uk/",
-        "https://www.elmbridge.gov.uk/",
-        "https://www.rbkc.gov.uk/",
-        "https://www.croydon.gov.uk/"
+        "https://www.surreyheath.gov.uk/",
+        "https://www.wokingham.gov.uk/",
+        "https://www.sstaffs.gov.uk/",
+        "https://www.bedford.gov.uk/"
       ]
     },
     {
@@ -503,18 +479,6 @@
       ]
     },
     {
-      "ruleId": "axe:page-has-heading-one",
-      "pageCount": 6,
-      "pages": [
-        "https://www.galwaycity.ie/",
-        "https://www.tamworth.gov.uk/",
-        "https://www.lbhf.gov.uk/",
-        "https://www.hart.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.brighton-hove.gov.uk/"
-      ]
-    },
-    {
       "ruleId": "axe:aria-allowed-role",
       "pageCount": 5,
       "pages": [
@@ -526,24 +490,13 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
       "pageCount": 5,
       "pages": [
-        "https://www.merton.gov.uk/",
         "https://www.kingston.gov.uk/",
-        "https://www.londoncouncils.gov.uk/",
-        "https://www.hart.gov.uk/",
-        "https://www.southkesteven.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:aria-dialog-name",
-      "pageCount": 5,
-      "pages": [
-        "https://www.erewash.gov.uk/",
-        "https://www.havant.gov.uk/",
-        "https://www.sstaffs.gov.uk/",
-        "https://www.bedford.gov.uk/",
+        "https://haringey.gov.uk/",
+        "https://www.elmbridge.gov.uk/",
+        "https://www.rbkc.gov.uk/",
         "https://www.croydon.gov.uk/"
       ]
     },
@@ -551,33 +504,43 @@
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r79",
       "pageCount": 5,
       "pages": [
+        "https://www.erewash.gov.uk/",
         "https://www.northtyneside.gov.uk/",
+        "https://www.londoncouncils.gov.uk/",
         "https://www.royalgreenwich.gov.uk/",
-        "https://www.n-kesteven.gov.uk/",
-        "https://www.rutland.gov.uk/",
-        "https://www.west-lindsey.gov.uk/"
+        "https://www.southkesteven.gov.uk/"
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r1",
+      "ruleId": "axe:landmark-unique",
       "pageCount": 5,
       "pages": [
-        "https://www.rbwm.gov.uk/",
+        "https://haringey.gov.uk/",
+        "https://www.lbhf.gov.uk/",
+        "https://www.elmbridge.gov.uk/",
+        "https://www.rbkc.gov.uk/",
+        "https://www.croydon.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 5,
+      "pages": [
+        "https://www.galwaycity.ie/",
         "https://www.tamworth.gov.uk/",
         "https://www.lbhf.gov.uk/",
-        "https://www.northdevon.gov.uk/",
+        "https://www.hart.gov.uk/",
         "https://www.brighton-hove.gov.uk/"
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
-      "pageCount": 5,
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "pageCount": 4,
       "pages": [
-        "https://www.rbwm.gov.uk/",
-        "https://www.tamworth.gov.uk/",
-        "https://www.lbhf.gov.uk/",
-        "https://www.northdevon.gov.uk/",
-        "https://www.brighton-hove.gov.uk/"
+        "https://www.merton.gov.uk/",
+        "https://www.kingston.gov.uk/",
+        "https://www.hart.gov.uk/",
+        "https://www.rutland.gov.uk/"
       ]
     },
     {
@@ -591,23 +554,23 @@
       ]
     },
     {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r1",
       "pageCount": 4,
       "pages": [
-        "https://carlow.ie/",
-        "https://www.wokingham.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.bedford.gov.uk/"
+        "https://www.rbwm.gov.uk/",
+        "https://www.lbhf.gov.uk/",
+        "https://www.northdevon.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
       ]
     },
     {
-      "ruleId": "axe:heading-order",
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
       "pageCount": 4,
       "pages": [
-        "https://carlow.ie/",
-        "https://www.wokingham.gov.uk/",
-        "https://www.southkesteven.gov.uk/",
-        "https://www.bedford.gov.uk/"
+        "https://www.rbwm.gov.uk/",
+        "https://www.lbhf.gov.uk/",
+        "https://www.northdevon.gov.uk/",
+        "https://www.brighton-hove.gov.uk/"
       ]
     },
     {
@@ -621,13 +584,22 @@
       ]
     },
     {
-      "ruleId": "axe:landmark-no-duplicate-banner",
+      "ruleId": "axe:aria-dialog-name",
       "pageCount": 4,
       "pages": [
-        "https://www.hart.gov.uk/",
-        "https://www.westmorlandandfurness.gov.uk/",
-        "https://www.elmbridge.gov.uk/",
-        "https://www.rbkc.gov.uk/"
+        "https://www.havant.gov.uk/",
+        "https://www.sstaffs.gov.uk/",
+        "https://www.bedford.gov.uk/",
+        "https://www.croydon.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 3,
+      "pages": [
+        "https://www.staffordshire.gov.uk/",
+        "https://www.argyll-bute.gov.uk/",
+        "https://www.knowsley.gov.uk/"
       ]
     },
     {
@@ -655,6 +627,42 @@
         "https://www.dumfriesandgalloway.gov.uk/",
         "https://www.newport.gov.uk/",
         "https://www.tipperarycoco.ie/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 3,
+      "pages": [
+        "https://carlow.ie/",
+        "https://www.wokingham.gov.uk/",
+        "https://www.bedford.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://carlow.ie/",
+        "https://www.wokingham.gov.uk/",
+        "https://www.bedford.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-redundant-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://www.rutland.gov.uk/",
+        "https://southhams.gov.uk/",
+        "https://westdevon.gov.uk/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 3,
+      "pages": [
+        "https://www.westmorlandandfurness.gov.uk/",
+        "https://www.elmbridge.gov.uk/",
+        "https://www.rbkc.gov.uk/"
       ]
     }
   ]
