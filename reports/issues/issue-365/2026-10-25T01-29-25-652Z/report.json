@@ -1,0 +1,955 @@
+{
+  "issueNumber": 365,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/365",
+  "issueTitle": "SCAN: test",
+  "scanTitle": "test",
+  "submittedBy": "samuelbrasileiro",
+  "engines": [
+    "axe",
+    "equalaccess"
+  ],
+  "scanContext": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "chromium"
+  },
+  "scannedAt": "2026-10-25T01:28:25.307Z",
+  "totalElapsedMs": 10771,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 41,
+    "failed": 5,
+    "cantTell": 3,
+    "inapplicable": 72
+  },
+  "equalAccessTotals": {
+    "passed": 154,
+    "failed": 6,
+    "uniqueFailed": 6,
+    "duplicates": 0,
+    "cantTell": 3,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "reflowRiskTotals": {
+    "failed": 1,
+    "potential": 0,
+    "passed": 0,
+    "cantTell": 0,
+    "notExecuted": 0
+  },
+  "semantica11yTotals": {
+    "errors": 0,
+    "warnings": 1,
+    "suggestions": 3,
+    "notExecuted": 0
+  },
+  "duplicateFindingTotals": 0,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "duplicateTitles": [],
+  "results": [
+    {
+      "submittedUrl": "https://www.amazon.com.br",
+      "finalUrl": "https://www.amazon.com.br/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "",
+      "pageTitle": null,
+      "elapsedMs": 9916,
+      "error": null,
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 41,
+          "failed": 5,
+          "cantTell": 3,
+          "inapplicable": 72
+        },
+        "failedRules": [
+          "landmark-one-main",
+          "page-has-heading-one",
+          "region"
+        ],
+        "passedRules": [
+          "aria-hidden-body",
+          "avoid-inline-spacing",
+          "button-name",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "link-name",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "region"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-one-main",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-one-main?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"a-no-js\" lang=\"pt-br\">",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "30002347135c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-6cb6e370",
+            "a11yPatternFingerprint": "3ff14bb3b419ea5b7356cf2d0b4e87c037e321fc9376d498876709ea421a678a",
+            "a11yPatternDisplayId": "A11Y-PAT-3FF14BB3B419",
+            "a11yOccurrenceFingerprint": "84b892158f605bab66d923c83cdc6025d14386bfdb38cb4789136fd044a7e958",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-84B892158F60"
+          },
+          {
+            "rule": "page-has-heading-one",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html class=\"a-no-js\" lang=\"pt-br\">",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "c5d27d185a87",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-19a7d2c7",
+            "a11yPatternFingerprint": "4935902caeb9a2946f1e5a0e2b61aceb49f9a324a542ababdc06764e40a57721",
+            "a11yPatternDisplayId": "A11Y-PAT-4935902CAEB9",
+            "a11yOccurrenceFingerprint": "6b9610ea4b9c78dd261c1ff6a4749afbc72853624eb26382d9b6ca721ae5395d",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-6B9610EA4B9C"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".a-alert",
+            "html": "<div class=\"a-box a-alert a-alert-info a-spacing-base\">\n            <div class=\"a-box-inner\">\n                <i class=\"a-icon a-icon-alert\" alt=\"Ícone de alerta\"></i>\n                <h4>Clique no botão abaixo para continuar comprando</h4>\n                </div>\n            </div>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ac3c4d6fc609",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-9f6abb53",
+            "a11yPatternFingerprint": "6ee2189ef6fadf881e2fee94841c96bec2c46d5694cdc6c338a2fc4b8cc4ca66",
+            "a11yPatternDisplayId": "A11Y-PAT-6EE2189EF6FA",
+            "a11yOccurrenceFingerprint": "e0613c2d24f14c4f13f27bfa17fed26bb68c377d11ab40157327a77d4237423d",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-E0613C2D24F1"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".a-spacing-small",
+            "html": "<div class=\"a-text-center a-spacing-small a-size-mini\">",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "4900c6311284",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-82e88c7b",
+            "a11yPatternFingerprint": "5769fda820e4566b470eb45114980106d07f7603a9e7fb1c53f683abda779550",
+            "a11yPatternDisplayId": "A11Y-PAT-5769FDA820E4",
+            "a11yOccurrenceFingerprint": "913eb17e4495b375c9c8a7ba39bd2e2a172b1dff88eb5603223f801e77ceaf66",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-913EB17E4495"
+          },
+          {
+            "rule": "region",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".a-color-base",
+            "html": "<div class=\"a-text-center a-size-mini a-color-base\">\n          © 1996<script>new Date().getFullYear()>2010&&document.write(\"-\"+new Date().getFullYear());</script>-2026, Amazon.com, Inc. ou suas afiliadas\n        </div>",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "5fb28f5e2e7c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-fff9ef47",
+            "a11yPatternFingerprint": "46014bad4383b8368ffc163b6c100e92f231ffb010127791943daee99556c962",
+            "a11yPatternDisplayId": "A11Y-PAT-46014BAD4383",
+            "a11yOccurrenceFingerprint": "d7d5e662658c9226d3950211bdc66ed0e3881fdab771f4583c8569daef28236c",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-D7D5E662658C"
+          }
+        ],
+        "renderedHtml": "<!DOCTYPE html><html class=\"a-no-js\" lang=\"pt-br\"><!--<![endif]--><head>\n<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n<meta charset=\"utf-8\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title dir=\"ltr\">Amazon.com.br</title>\n<meta name=\"viewport\" content=\"width=device-width\">\n<link rel=\"stylesheet\" href=\"https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-3c913031596ca78a3768f4e934b1cc02ce238101.secure.min._V1_.css\">\n</head>\n<body>\n\n<!--\n        To discuss automated access to Amazon data please contact api-services-support@amazon.com.\n        For information about migrating to our APIs refer to our Marketplace APIs at https://developer.amazonservices.com/ref=rm_c_sv, or our Product Advertising API at https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html/ref=rm_c_ac for advertising use cases.\n-->\n\n<!--\nCorreios.DoNotSend\n-->\n\n<div class=\"a-container a-padding-double-large\" style=\"min-width:350px;padding:44px 0 !important\">\n\n    <div class=\"a-row a-spacing-double-large\" style=\"width: 350px; margin: 0 auto\">\n\n        <div class=\"a-row a-spacing-medium a-text-center\"><i class=\"a-icon a-logo\" alt=\"Logotipo da Amazon\"></i></div>\n\n        <div class=\"a-box a-alert a-alert-info a-spacing-base\">\n            <div class=\"a-box-inner\">\n                <i class=\"a-icon a-icon-alert\" alt=\"Ícone de alerta\"></i>\n                <h4>Clique no botão abaixo para continuar comprando</h4>\n                </div>\n            </div>\n\n            <div class=\"a-section\">\n\n                <div class=\"a-box a-color-offset-background\">\n                    <div class=\"a-box-inner a-padding-extra-large\">\n\n                        <form method=\"get\" action=\"/errors_page/validateCaptcha\" name=\"\">\n                            <input type=\"hidden\" name=\"amzn\" value=\"1ZIEiy7C6D/buQwlgfKlgg==\"><input type=\"hidden\" name=\"amzn-r\" value=\"/\">\n                            <input type=\"hidden\" name=\"field-keywords\" value=\"YMERBY\">\n                            <div class=\"a-section a-spacing-extra-large\">\n\n                                <div class=\"a-row\">\n                                    <span class=\"a-button a-button-primary a-span12\">\n                                        <span class=\"a-button-inner\">\n                                            <button type=\"submit\" class=\"a-button-text\" alt=\"Continuar comprando\">Continuar comprando</button>\n                                        </span>\n                                    </span>\n                                </div>\n\n                            </div>\n                        </form>\n\n                    </div>\n                </div>\n\n            </div>\n\n        </div>\n\n        <div class=\"a-divider a-divider-section\"><div class=\"a-divider-inner\"></div></div>\n\n        <div class=\"a-text-center a-spacing-small a-size-mini\">\n            <a href=\"https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&amp;nodeId=508088\">Condições de Uso</a>\n            <span class=\"a-letter-space\"></span>\n            <span class=\"a-letter-space\"></span>\n            <span class=\"a-letter-space\"></span>\n            <span class=\"a-letter-space\"></span>\n            <a href=\"https://www.amazon.com/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&amp;nodeId=468496\">Políticas de Privacidade</a>\n        </div>\n        <div class=\"a-text-center a-size-mini a-color-base\">\n          © 1996<script>new Date().getFullYear()>2010&&document.write(\"-\"+new Date().getFullYear());</script>-2026, Amazon.com, Inc. ou suas afiliadas\n        </div>\n    </div>\n\n</body></html>",
+        "outcomeCount": 121,
+        "darkModeScanned": false,
+        "requestedColorScheme": "both",
+        "scanContext": {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "viewportPreset": "desktop",
+          "colorScheme": "both",
+          "browser": "chromium"
+        },
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": false,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "snapshotFallbackUsed": false,
+        "timings": {
+          "navigationMs": 2939,
+          "settleDelayMs": 2000,
+          "auditMs": 1089,
+          "totalMs": 5162,
+          "loadedFromSnapshot": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 5
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 154,
+          "failed": 6,
+          "cantTell": 3,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "aria_content_in_landmark",
+          "element_attribute_deprecated",
+          "html_skipnav_exists",
+          "style_highcontrast_visible"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "html_skipnav_exists",
+            "xpath": null,
+            "html": "<html lang=\"pt-br\" class=\"a-no-js\">",
+            "message": "Verify there is a way to bypass blocks of content that are repeated on multiple Web pages",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ace2a40c02c9",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-e939d631",
+            "a11yPatternFingerprint": "7cda1f463b49d69b95ca7b06980aefa10f7eac84d90952bcbd87d75c514bd233",
+            "a11yPatternDisplayId": "A11Y-PAT-7CDA1F463B49",
+            "a11yOccurrenceFingerprint": "fc862727cb34e542237cdc670b38da06db0a2afde9d520b42c591306dedc1315",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-FC862727CB34"
+          },
+          {
+            "rule": "element_attribute_deprecated",
+            "xpath": null,
+            "html": "<meta content=\"text/html; charset=UTF-8\" http-equiv=\"content-type\">",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "b36558208b56",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-8985b375",
+            "a11yPatternFingerprint": "399074839cb73cf16504922a0cd36af8f596dd4e8d5f60f3908d671c35d19de9",
+            "a11yPatternDisplayId": "A11Y-PAT-399074839CB7",
+            "a11yOccurrenceFingerprint": "8eb7aae65a180872f89d5589739ae9d4ef7d0ba5c4edb32fb65285f732ee3739",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-8EB7AAE65A18"
+          },
+          {
+            "rule": "element_attribute_deprecated",
+            "xpath": null,
+            "html": "<meta content=\"IE=edge,chrome=1\" http-equiv=\"X-UA-Compatible\">",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "6671618ca6f6",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-1b312e84",
+            "a11yPatternFingerprint": "4d4994f6043e9365e16dfae3c61e32276a50062baadbbad8a29db1130d179e69",
+            "a11yPatternDisplayId": "A11Y-PAT-4D4994F6043E",
+            "a11yOccurrenceFingerprint": "c5a3040695e50c2d397971a44c0a07a03347d6da7bb305ee0614afe095be7c23",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-C5A3040695E5"
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": null,
+            "html": "<link href=\"https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-3c913031596ca78a3768f4e934b1cc02ce238101.secure.min._V1_.css\" rel=\"stylesheet\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "aa08c267e32c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-cf1a1893",
+            "a11yPatternFingerprint": "7c7ef779060b297055ca271de174e311f140b62bf94ad2cf4341a0707dbf2c35",
+            "a11yPatternDisplayId": "A11Y-PAT-7C7EF779060B",
+            "a11yOccurrenceFingerprint": "9b9d45357793cec8fd1eddb2079343be49b5c56b311f686a9c89617806726490",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-9B9D45357793"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<h4>",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d468f1ff76c8",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-6a7c697e",
+            "a11yPatternFingerprint": "b566a90e89d6803438cbbe9cc9a9899ffb60e7d77d97bc06befb6fe6bb3ed3a7",
+            "a11yPatternDisplayId": "A11Y-PAT-B566A90E89D6",
+            "a11yOccurrenceFingerprint": "afdacf70b5f701b061a81988802de8f193ac3be1e97800f2de5a26de20787eb6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-AFDACF70B5F7"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": null,
+            "html": "<a href=\"https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&nodeId=508088\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "5ee0c05204ff",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-236969ba",
+            "a11yPatternFingerprint": "775f184bdfa9a2ab2e4d791d4ebaf015170e49d9e11d608e27a239c654c37036",
+            "a11yPatternDisplayId": "A11Y-PAT-775F184BDFA9",
+            "a11yOccurrenceFingerprint": "29308b90ac99075ffc165a578ad480830c5bf573eba8852d9f30b769244d0b41",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-29308B90AC99"
+          }
+        ],
+        "outcomeCount": 161,
+        "uniqueFailedCount": 6,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "reflowRisk": {
+        "executed": true,
+        "result": "failed",
+        "description": "Horizontal overflow detected: 30px of content overflowed the viewport at 320px width",
+        "overflowAmountPx": 30,
+        "helpUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+        "error": null,
+        "fingerprint": "e0305ae7d13b",
+        "firstSeenAt": "2026-10-25T01:28:25.307Z",
+        "patternId": "A11Y-cca881cf",
+        "a11yPatternFingerprint": "297050c8a499db081a75c61fed7cfa705ee8e588c1d3a162bec9a2752b5d9428",
+        "a11yPatternDisplayId": "A11Y-PAT-297050C8A499",
+        "a11yOccurrenceFingerprint": "2520650c697e53b0c205478198ed434232406d11ac7b219472e3325239068857",
+        "a11yOccurrenceDisplayId": "A11Y-OCC-2520650C697E"
+      },
+      "semantica11y": {
+        "executed": true,
+        "summary": {
+          "total": 4,
+          "errors": 0,
+          "warnings": 1,
+          "suggestions": 3
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "rule": "heading-hierarchy",
+            "element": "document",
+            "message": "Page does not have an h1 heading",
+            "suggestion": "Add one <h1> that describes the main topic of the page",
+            "line": 0,
+            "fingerprint": "815c7850b2d0",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-63d0f0bd",
+            "a11yPatternFingerprint": "dc26e213732a66be697bd907bd49fc451fdf344b84a15a9b1ba1a3584039c640",
+            "a11yPatternDisplayId": "A11Y-PAT-DC26E213732A",
+            "a11yOccurrenceFingerprint": "561441c4fc7e56a4a7f716b81dc1f80439f271974eaa3266007a294085311705",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-561441C4FC7E"
+          },
+          {
+            "severity": "suggestion",
+            "rule": "missing-key-landmark",
+            "element": "<body>",
+            "message": "Page should have a header landmark",
+            "suggestion": "Add a <header> element",
+            "line": 1,
+            "fingerprint": "43f3fae91232",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-4252f970",
+            "a11yPatternFingerprint": "b3cacb7d2c158883490fd65ca41d72acbc4a015d8e15acc101c37264507eeabf",
+            "a11yPatternDisplayId": "A11Y-PAT-B3CACB7D2C15",
+            "a11yOccurrenceFingerprint": "3bba39f11d47084d332200a4eed87d0a48ab7c5cbd93fbc01586dc1c6ddc949f",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-3BBA39F11D47"
+          },
+          {
+            "severity": "suggestion",
+            "rule": "missing-key-landmark",
+            "element": "<body>",
+            "message": "Page should have a footer landmark",
+            "suggestion": "Add a <footer> element",
+            "line": 1,
+            "fingerprint": "43f3fae91232",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-4252f970",
+            "a11yPatternFingerprint": "b3cacb7d2c158883490fd65ca41d72acbc4a015d8e15acc101c37264507eeabf",
+            "a11yPatternDisplayId": "A11Y-PAT-B3CACB7D2C15",
+            "a11yOccurrenceFingerprint": "3bba39f11d47084d332200a4eed87d0a48ab7c5cbd93fbc01586dc1c6ddc949f",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-3BBA39F11D47"
+          },
+          {
+            "severity": "suggestion",
+            "rule": "missing-key-landmark",
+            "element": "<body>",
+            "message": "Page should have a main content landmark",
+            "suggestion": "Add a <main> element",
+            "line": 1,
+            "fingerprint": "43f3fae91232",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-4252f970",
+            "a11yPatternFingerprint": "b3cacb7d2c158883490fd65ca41d72acbc4a015d8e15acc101c37264507eeabf",
+            "a11yPatternDisplayId": "A11Y-PAT-B3CACB7D2C15",
+            "a11yOccurrenceFingerprint": "3bba39f11d47084d332200a4eed87d0a48ab7c5cbd93fbc01586dc1c6ddc949f",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-3BBA39F11D47"
+          }
+        ],
+        "error": null
+      },
+      "duplicateFindingCount": 0,
+      "timings": {
+        "fetchMs": 250,
+        "pageNavigationMs": 2939,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 9916,
+        "scannerMs": {
+          "axe": 5162,
+          "accesslint": null
+        }
+      }
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "region",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures all page content is contained within landmark regions. Content outside landmarks cannot be found by screen reader users navigating by landmarks."
+        },
+        "wcag": {
+          "scs": [],
+          "level": "best-practice"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<div class=\"a-box a-alert a-alert-info a-spacing-base\">\n            <div class=\"a-box-inner\">\n                <i class=\"a-icon a-icon-alert\" alt=\"Ícone de alerta\"></i>\n                <h4>Clique no botão abaixo para continuar comprando</h4>\n                </div>\n            </div>",
+            "xpath": ".a-alert",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "ac3c4d6fc609",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-9f6abb53",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<div class=\"a-text-center a-spacing-small a-size-mini\">",
+            "xpath": ".a-spacing-small",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "4900c6311284",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-82e88c7b",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<div class=\"a-text-center a-size-mini a-color-base\">\n          © 1996<script>new Date().getFullYear()>2010&&document.write(\"-\"+new Date().getFullYear());</script>-2026, Amazon.com, Inc. ou suas afiliadas\n        </div>",
+            "xpath": ".a-color-base",
+            "message": "All page content should be contained by landmarks",
+            "fixSummary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "5fb28f5e2e7c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-fff9ef47",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "element_attribute_deprecated",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<meta content=\"text/html; charset=UTF-8\" http-equiv=\"content-type\">",
+            "xpath": null,
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "b36558208b56",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-8985b375",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<meta content=\"IE=edge,chrome=1\" http-equiv=\"X-UA-Compatible\">",
+            "xpath": null,
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "6671618ca6f6",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-1b312e84",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "aria_content_in_landmark",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<h4>",
+            "xpath": null,
+            "message": "Content is not within a landmark element",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "d468f1ff76c8",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-6a7c697e",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<a href=\"https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&nodeId=508088\">",
+            "xpath": null,
+            "message": "Content is not within a landmark element",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "5ee0c05204ff",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-236969ba",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "landmark-one-main",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures the page has exactly one main landmark. Screen reader users rely on the main landmark to skip navigation and jump directly to page content."
+        },
+        "wcag": {
+          "scs": [],
+          "level": "best-practice"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-one-main?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<html class=\"a-no-js\" lang=\"pt-br\">",
+            "xpath": "html",
+            "message": "Document should have one main landmark",
+            "fixSummary": "Fix all of the following:\n  Document does not have a main landmark",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "30002347135c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-6cb6e370",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "page-has-heading-one",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<html class=\"a-no-js\" lang=\"pt-br\">",
+            "xpath": "html",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "c5d27d185a87",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-19a7d2c7",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "html_skipnav_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<html lang=\"pt-br\" class=\"a-no-js\">",
+            "xpath": null,
+            "message": "Verify there is a way to bypass blocks of content that are repeated on multiple Web pages",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "ace2a40c02c9",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-e939d631",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "style_highcontrast_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://www.amazon.com.br",
+            "html": "<link href=\"https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-3c913031596ca78a3768f4e934b1cc02ce238101.secure.min._V1_.css\" rel=\"stylesheet\">",
+            "xpath": null,
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "aa08c267e32c",
+            "firstSeenAt": "2026-10-25T01:28:25.307Z",
+            "patternId": "A11Y-cf1a1893",
+            "corroboratedBy": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 4,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 11
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 11,
+      "Minor": 0
+    }
+  },
+  "changeTracking": {
+    "newCount": 14,
+    "notObservedCount": 0,
+    "newIssues": [
+      {
+        "fingerprint": "30002347135c",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:landmark-one-main|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "c5d27d185a87",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:page-has-heading-one|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "ac3c4d6fc609",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:region|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "4900c6311284",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:region|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "5fb28f5e2e7c",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:region|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "ace2a40c02c9",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:html_skipnav_exists|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "b36558208b56",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:element_attribute_deprecated|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "6671618ca6f6",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:element_attribute_deprecated|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "aa08c267e32c",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:style_highcontrast_visible|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "d468f1ff76c8",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:aria_content_in_landmark|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "5ee0c05204ff",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:aria_content_in_landmark|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "815c7850b2d0",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:heading-hierarchy|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "43f3fae91232",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:missing-key-landmark|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "e0305ae7d13b",
+        "url": "https://www.amazon.com.br/",
+        "ruleKey": "rule:reflow-risk|light",
+        "engine": "reflowRisk"
+      }
+    ],
+    "notObservedIssues": []
+  }
+}
