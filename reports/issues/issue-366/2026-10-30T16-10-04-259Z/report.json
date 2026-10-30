@@ -1,0 +1,1210 @@
+{
+  "issueNumber": 366,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/366",
+  "issueTitle": "SCAN: First Accessibility Scan",
+  "scanTitle": "First Accessibility Scan",
+  "submittedBy": "bryanwieczorek-wentzville",
+  "engines": [
+    "axe",
+    "qualweb"
+  ],
+  "scanContext": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "chromium"
+  },
+  "scannedAt": "2026-10-30T16:09:19.499Z",
+  "totalElapsedMs": 16409,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "axeTotals": {
+    "passed": 416,
+    "failed": 4,
+    "cantTell": 6,
+    "inapplicable": 46
+  },
+  "equalAccessTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 187,
+    "failed": 2,
+    "cantTell": 40,
+    "inapplicable": 1
+  },
+  "reflowRiskTotals": {
+    "failed": 0,
+    "potential": 0,
+    "passed": 1,
+    "cantTell": 0,
+    "notExecuted": 0
+  },
+  "semantica11yTotals": {
+    "errors": 2,
+    "warnings": 24,
+    "suggestions": 0,
+    "notExecuted": 0
+  },
+  "duplicateFindingTotals": 1,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 1,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "duplicateTitles": [],
+  "results": [
+    {
+      "submittedUrl": "https://wentzvilleparksprojects.com/",
+      "finalUrl": "https://wentzvilleparksprojects.com/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "Home | Wentzville Parks Projects",
+      "elapsedMs": 15342,
+      "error": null,
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "alfa": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 416,
+          "failed": 4,
+          "cantTell": 6,
+          "inapplicable": 46
+        },
+        "failedRules": [
+          "landmark-contentinfo-is-top-level",
+          "landmark-no-duplicate-contentinfo",
+          "landmark-unique",
+          "page-has-heading-one"
+        ],
+        "passedRules": [
+          "aria-allowed-attr",
+          "aria-allowed-role",
+          "aria-command-name",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roles",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "avoid-inline-spacing",
+          "bypass",
+          "color-contrast",
+          "document-title",
+          "duplicate-id-aria",
+          "empty-heading",
+          "heading-order",
+          "html-has-lang",
+          "html-lang-valid",
+          "image-alt",
+          "image-redundant-alt",
+          "landmark-banner-is-top-level",
+          "landmark-contentinfo-is-top-level",
+          "landmark-main-is-top-level",
+          "landmark-no-duplicate-banner",
+          "landmark-no-duplicate-main",
+          "landmark-one-main",
+          "landmark-unique",
+          "link-name",
+          "list",
+          "listitem",
+          "meta-viewport",
+          "meta-viewport-large",
+          "nested-interactive",
+          "region",
+          "skip-link",
+          "tabindex"
+        ],
+        "failures": [
+          {
+            "rule": "landmark-contentinfo-is-top-level",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-contentinfo-is-top-level?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".elementor-element-5fbd199b",
+            "html": "<footer class=\"elementor-element elementor-element-5fbd199b e-flex e-con-boxed e-con e-parent\" data-id=\"5fbd199b\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{\"background_background\":\"classic\"}\">",
+            "message": "Contentinfo landmark should not be contained in another landmark",
+            "fixSummary": "Fix any of the following:\n  The contentinfo landmark is contained in another landmark.",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "2daa4182038d",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-710cf8f2",
+            "a11yPatternFingerprint": "5fc44525334099ee30485bc0e3e642bd635fc3f379d4e3d4dd2b39cca9600136",
+            "a11yPatternDisplayId": "A11Y-PAT-5FC445253340",
+            "a11yOccurrenceFingerprint": "5dbef59dd69786171a073f70c5eab68d25fff2165b0c0c33f7cd03270442f286",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-5DBEF59DD697"
+          },
+          {
+            "rule": "landmark-no-duplicate-contentinfo",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-no-duplicate-contentinfo?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".elementor-376",
+            "html": "<footer data-elementor-type=\"footer\" data-elementor-id=\"376\" class=\"elementor elementor-376 elementor-location-footer\" data-elementor-post-type=\"elementor_library\">",
+            "message": "Document should not have more than one contentinfo landmark",
+            "fixSummary": "Fix any of the following:\n  Document has more than one contentinfo landmark",
+            "relatedPaths": [
+              ".elementor-element-5fbd199b"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "20a7a07480e5",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-80f56baa",
+            "a11yPatternFingerprint": "06d181f25931ec6bdb5ae1779afa334c65add30ec375add478f614f013133a42",
+            "a11yPatternDisplayId": "A11Y-PAT-06D181F25931",
+            "a11yOccurrenceFingerprint": "7db32730698b97ac0c2d9981f5a1e00f5fef01ceb6865714dd1482dd0e5208c3",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-7DB32730698B"
+          },
+          {
+            "rule": "landmark-unique",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-unique?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": ".elementor-376",
+            "html": "<footer data-elementor-type=\"footer\" data-elementor-id=\"376\" class=\"elementor elementor-376 elementor-location-footer\" data-elementor-post-type=\"elementor_library\">",
+            "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "fixSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+            "relatedPaths": [
+              ".elementor-element-5fbd199b"
+            ],
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "670ef836e2e7",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-86967afe",
+            "a11yPatternFingerprint": "e2eb09e722e407c3e56706e7b788c1c00384ec0acb18fdb89d8bba7437f729d1",
+            "a11yPatternDisplayId": "A11Y-PAT-E2EB09E722E4",
+            "a11yOccurrenceFingerprint": "121704e306c1d3097ff9d02fcddb435df5ceba964871c9c8299e5c08fb7d6cc9",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-121704E306C1"
+          },
+          {
+            "rule": "page-has-heading-one",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=playwright",
+            "impact": "moderate",
+            "wcagSc": [],
+            "xpath": "html",
+            "html": "<html lang=\"en-US\">",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "877cb5cf2b59",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-19a7d2c7",
+            "a11yPatternFingerprint": "c96df29b3da16c470047bf3c583f0d4d165e178d07ccafd28c3341bbf7f2d0d1",
+            "a11yPatternDisplayId": "A11Y-PAT-C96DF29B3DA1",
+            "a11yOccurrenceFingerprint": "22a3cf556c620775a717b6e3754a471bf703262a2a271a09d40e8df9cc275dbe",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-22A3CF556C62"
+          }
+        ],
+        "renderedHtml": "<!DOCTYPE html><html lang=\"en-US\"><head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">\n\t<meta name=\"robots\" content=\"noindex, nofollow\">\n\n\t<!-- This site is optimized with the Yoast SEO plugin v28.8 - https://yoast.com/product/yoast-seo-wordpress/ -->\n\t<title>Home | Wentzville Parks Projects</title>\n\t<meta name=\"description\" content=\"Explore Wentzville Parks and Recreation master plans, community projects and future improvements shaping parks and recreational opportunities in Wentzville, MO.\">\n\t<meta property=\"og:locale\" content=\"en_US\">\n\t<meta property=\"og:type\" content=\"website\">\n\t<meta property=\"og:title\" content=\"Home | Wentzville Parks Projects\">\n\t<meta property=\"og:description\" content=\"Explore Wentzville Parks and Recreation master plans, community projects and future improvements shaping parks and recreational opportunities in Wentzville, MO.\">\n\t<meta property=\"og:url\" content=\"https://wentzvilleparksprojects.com/\">\n\t<meta property=\"og:site_name\" content=\"Wentzville Parks Projects\">\n\t<meta property=\"article:modified_time\" content=\"2026-10-30T15:50:58+00:00\">\n\t<meta name=\"twitter:card\" content=\"summary_large_image\">\n\t<script type=\"application/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https:\\/\\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/\",\"url\":\"https:\\/\\/wentzvilleparksprojects.com\\/\",\"name\":\"Home | Wentzville Parks Projects\",\"isPartOf\":{\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#website\"},\"about\":{\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#organization\"},\"datePublished\":\"2026-03-30T20:46:22+00:00\",\"dateModified\":\"2026-10-30T15:50:58+00:00\",\"description\":\"Explore Wentzville Parks and Recreation master plans, community projects and future improvements shaping parks and recreational opportunities in Wentzville, MO.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\\/\\/wentzvilleparksprojects.com\\/\"]}]},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#website\",\"url\":\"https:\\/\\/wentzvilleparksprojects.com\\/\",\"name\":\"Wentzville Parks Master Plans and Projects\",\"description\":\"Wentzville, Missouri, Parks and Recreation\",\"publisher\":{\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#organization\"},\"alternateName\":\"WPRD Parks Projects\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\/\\/wentzvilleparksprojects.com\\/?s={search_term_string}\"},\"query-input\":{\"@type\":\"PropertyValueSpecification\",\"valueRequired\":true,\"valueName\":\"search_term_string\"}}],\"inLanguage\":\"en-US\"},{\"@type\":\"Organization\",\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#organization\",\"name\":\"Wentzville Parks Master Plans and Projects\",\"url\":\"https:\\/\\/wentzvilleparksprojects.com\\/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-US\",\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#\\/schema\\/logo\\/image\\/\",\"url\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/uploads\\/2026\\/03\\/WPRD_RPMP_logo2.svg\",\"contentUrl\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/uploads\\/2026\\/03\\/WPRD_RPMP_logo2.svg\",\"width\":393,\"height\":156,\"caption\":\"Wentzville Parks Master Plans and Projects\"},\"image\":{\"@id\":\"https:\\/\\/wentzvilleparksprojects.com\\/#\\/schema\\/logo\\/image\\/\"}}]}</script>\n\t<!-- / Yoast SEO plugin. -->\n\n\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Wentzville Parks Projects » Feed\" href=\"https://wentzvilleparksprojects.com/feed/\">\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Wentzville Parks Projects » Comments Feed\" href=\"https://wentzvilleparksprojects.com/comments/feed/\">\n<link rel=\"alternate\" title=\"oEmbed (JSON)\" type=\"application/json+oembed\" href=\"https://wentzvilleparksprojects.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwentzvilleparksprojects.com%2F\">\n<link rel=\"alternate\" title=\"oEmbed (XML)\" type=\"text/xml+oembed\" href=\"https://wentzvilleparksprojects.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwentzvilleparksprojects.com%2F&amp;format=xml\">\n<style id=\"wp-img-auto-sizes-contain-inline-css\">\nimg:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}\n/*# sourceURL=wp-img-auto-sizes-contain-inline-css */\n</style>\n<style id=\"wp-emoji-styles-inline-css\">\n\n\timg.wp-smiley, img.emoji {\n\t\tdisplay: inline !important;\n\t\tborder: none !important;\n\t\tbox-shadow: none !important;\n\t\theight: 1em !important;\n\t\twidth: 1em !important;\n\t\tmargin: 0 0.07em !important;\n\t\tvertical-align: -0.1em !important;\n\t\tbackground: none !important;\n\t\tpadding: 0 !important;\n\t}\n/*# sourceURL=wp-emoji-styles-inline-css */\n</style>\n<style id=\"global-styles-inline-css\">\n:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}\n:root :where(.wp-block-icon svg){width: 24px;}\n:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}\n/*# sourceURL=global-styles-inline-css */\n</style>\n<link rel=\"stylesheet\" id=\"hello-elementor-css\" href=\"https://wentzvilleparksprojects.com/wp-content/themes/hello-elementor/assets/css/reset.css?ver=3.5.1\" media=\"all\">\n<link rel=\"stylesheet\" id=\"hello-elementor-theme-style-css\" href=\"https://wentzvilleparksprojects.com/wp-content/themes/hello-elementor/assets/css/theme.css?ver=3.5.1\" media=\"all\">\n<link rel=\"stylesheet\" id=\"hello-elementor-header-footer-css\" href=\"https://wentzvilleparksprojects.com/wp-content/themes/hello-elementor/assets/css/header-footer.css?ver=3.5.1\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-frontend-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-post-75-css\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/elementor/css/post-75.css?ver=1793371378\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-image-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-nav-menu-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css?ver=4.3.2\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-heading-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-icon-list-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-social-icons-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"e-apple-webkit-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/conditionals/apple-webkit.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-spacer-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-spacer.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"e-animation-fadeInUp-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInUp.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-posts-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor-pro/assets/css/widget-posts.min.css?ver=4.3.2\" media=\"all\">\n<link rel=\"stylesheet\" id=\"e-shapes-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/conditionals/shapes.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"e-animation-grow-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-grow.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"widget-icon-box-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/widget-icon-box.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"swiper-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"e-swiper-css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=4.3.5\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-post-102-css\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/elementor/css/post-102.css?ver=1793373954\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-post-67-css\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/elementor/css/post-67.css?ver=1793371378\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-post-376-css\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/elementor/css/post-376.css?ver=1793371378\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-gf-sourcesanspro-css\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&amp;display=swap\" media=\"all\">\n<link rel=\"stylesheet\" id=\"elementor-gf-sourceserifpro-css\" href=\"https://fonts.googleapis.com/css?family=Source+Serif+Pro:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&amp;display=swap\" media=\"all\">\n<link rel=\"stylesheet\" type=\"text/css\" href=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/smartslider.min.css?ver=25b00e2c\" media=\"all\">\n<style data-related=\"n2-ss-2\">div#n2-ss-2 .n2-ss-slider-1{display:grid;position:relative;}div#n2-ss-2 .n2-ss-slider-2{display:grid;position:relative;overflow:hidden;padding:0px 0px 0px 0px;border:0px solid RGBA(62,62,62,1);border-radius:0px;background-clip:padding-box;background-repeat:repeat;background-position:50% 50%;background-size:cover;background-attachment:scroll;z-index:1;}div#n2-ss-2:not(.n2-ss-loaded) .n2-ss-slider-2{background-image:none !important;}div#n2-ss-2 .n2-ss-slider-3{display:grid;grid-template-areas:'cover';position:relative;overflow:hidden;z-index:10;}div#n2-ss-2 .n2-ss-slider-3 > *{grid-area:cover;}div#n2-ss-2 .n2-ss-slide-backgrounds,div#n2-ss-2 .n2-ss-slider-3 > .n2-ss-divider{position:relative;}div#n2-ss-2 .n2-ss-slide-backgrounds{z-index:10;}div#n2-ss-2 .n2-ss-slide-backgrounds > *{overflow:hidden;}div#n2-ss-2 .n2-ss-slide-background{transform:translateX(-100000px);}div#n2-ss-2 .n2-ss-slider-4{place-self:center;position:relative;width:100%;height:100%;z-index:20;display:grid;grid-template-areas:'slide';}div#n2-ss-2 .n2-ss-slider-4 > *{grid-area:slide;}div#n2-ss-2.n2-ss-full-page--constrain-ratio .n2-ss-slider-4{height:auto;}div#n2-ss-2 .n2-ss-slide{display:grid;place-items:center;grid-auto-columns:100%;position:relative;z-index:20;-webkit-backface-visibility:hidden;transform:translateX(-100000px);}div#n2-ss-2 .n2-ss-slide{perspective:1500px;}div#n2-ss-2 .n2-ss-slide-active{z-index:21;}.n2-ss-background-animation{position:absolute;top:0;left:0;width:100%;height:100%;z-index:3;}div#n2-ss-2 .n2-ss-button-container,div#n2-ss-2 .n2-ss-button-container a{display:block;}div#n2-ss-2 .n2-ss-button-container--non-full-width,div#n2-ss-2 .n2-ss-button-container--non-full-width a{display:inline-block;}div#n2-ss-2 .n2-ss-button-container.n2-ss-nowrap{white-space:nowrap;}div#n2-ss-2 .n2-ss-button-container a div{display:inline;font-size:inherit;text-decoration:inherit;color:inherit;line-height:inherit;font-family:inherit;font-weight:inherit;}div#n2-ss-2 .n2-ss-button-container a > div{display:inline-flex;align-items:center;vertical-align:top;}div#n2-ss-2 .n2-ss-button-container span{font-size:100%;vertical-align:baseline;}div#n2-ss-2 .n2-ss-button-container a[data-iconplacement=\"left\"] span{margin-right:0.3em;}div#n2-ss-2 .n2-ss-button-container a[data-iconplacement=\"right\"] span{margin-left:0.3em;}div#n2-ss-2 .nextend-arrow{cursor:pointer;overflow:hidden;line-height:0 !important;z-index:18;-webkit-user-select:none;}div#n2-ss-2 .nextend-arrow img{position:relative;display:block;}div#n2-ss-2 .nextend-arrow img.n2-arrow-hover-img{display:none;}div#n2-ss-2 .nextend-arrow:FOCUS img.n2-arrow-hover-img,div#n2-ss-2 .nextend-arrow:HOVER img.n2-arrow-hover-img{display:inline;}div#n2-ss-2 .nextend-arrow:FOCUS img.n2-arrow-normal-img,div#n2-ss-2 .nextend-arrow:HOVER img.n2-arrow-normal-img{display:none;}div#n2-ss-2 .nextend-arrow-animated{overflow:hidden;}div#n2-ss-2 .nextend-arrow-animated > div{position:relative;}div#n2-ss-2 .nextend-arrow-animated .n2-active{position:absolute;}div#n2-ss-2 .nextend-arrow-animated-fade{transition:background 0.3s, opacity 0.4s;}div#n2-ss-2 .nextend-arrow-animated-horizontal > div{transition:all 0.4s;transform:none;}div#n2-ss-2 .nextend-arrow-animated-horizontal .n2-active{top:0;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal .n2-active{left:100%;}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal .n2-active{right:100%;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal:HOVER > div,div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-horizontal:FOCUS > div{transform:translateX(-100%);}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal:HOVER > div,div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-horizontal:FOCUS > div{transform:translateX(100%);}div#n2-ss-2 .nextend-arrow-animated-vertical > div{transition:all 0.4s;transform:none;}div#n2-ss-2 .nextend-arrow-animated-vertical .n2-active{left:0;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical .n2-active{top:100%;}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical .n2-active{bottom:100%;}div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical:HOVER > div,div#n2-ss-2 .nextend-arrow-previous.nextend-arrow-animated-vertical:FOCUS > div{transform:translateY(-100%);}div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical:HOVER > div,div#n2-ss-2 .nextend-arrow-next.nextend-arrow-animated-vertical:FOCUS > div{transform:translateY(100%);}div#n2-ss-2 .n2-ss-control-bullet{visibility:hidden;text-align:center;justify-content:center;z-index:14;}div#n2-ss-2 .n2-ss-control-bullet--calculate-size{left:0 !important;}div#n2-ss-2 .n2-ss-control-bullet-horizontal.n2-ss-control-bullet-fullsize{width:100%;}div#n2-ss-2 .n2-ss-control-bullet-vertical.n2-ss-control-bullet-fullsize{height:100%;flex-flow:column;}div#n2-ss-2 .nextend-bullet-bar{display:inline-flex;vertical-align:top;visibility:visible;align-items:center;flex-wrap:wrap;}div#n2-ss-2 .n2-bar-justify-content-left{justify-content:flex-start;}div#n2-ss-2 .n2-bar-justify-content-center{justify-content:center;}div#n2-ss-2 .n2-bar-justify-content-right{justify-content:flex-end;}div#n2-ss-2 .n2-ss-control-bullet-vertical > .nextend-bullet-bar{flex-flow:column;}div#n2-ss-2 .n2-ss-control-bullet-fullsize > .nextend-bullet-bar{display:flex;}div#n2-ss-2 .n2-ss-control-bullet-horizontal.n2-ss-control-bullet-fullsize > .nextend-bullet-bar{flex:1 1 auto;}div#n2-ss-2 .n2-ss-control-bullet-vertical.n2-ss-control-bullet-fullsize > .nextend-bullet-bar{height:100%;}div#n2-ss-2 .nextend-bullet-bar .n2-bullet{cursor:pointer;transition:background-color 0.4s;}div#n2-ss-2 .nextend-bullet-bar .n2-bullet.n2-active{cursor:default;}div#n2-ss-2 div.n2-ss-bullet-thumbnail-container{position:absolute;z-index:10000000;}div#n2-ss-2 .n2-ss-bullet-thumbnail-container .n2-ss-bullet-thumbnail{background-size:cover;background-repeat:no-repeat;background-position:center;}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner{background-color:RGBA(255,255,255,0.95);border-radius:3px;box-shadow:0px 1px 10px 0px RGBA(0,0,0,0.22);}div#n2-ss-2 .n2-font-2b61e49a7b079f9d881c2b32ff1ed93c-hover{font-family: 'Source Sans Pro','Arial';color: #001489;font-size:225%;text-shadow: none;line-height: 1.3;font-weight: normal;font-style: normal;text-decoration: none;text-align: inherit;letter-spacing: normal;word-spacing: normal;text-transform: none;font-weight: 700;}div#n2-ss-2 .n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph{font-family: 'Source Sans Pro','Arial';color: #1d1d1d;font-size:100%;text-shadow: none;line-height: 1.8;font-weight: normal;font-style: normal;text-decoration: none;text-align: inherit;letter-spacing: normal;word-spacing: normal;text-transform: none;font-weight: 400;}div#n2-ss-2 .n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph a, div#n2-ss-2 .n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph a:FOCUS{font-family: 'Source Sans Pro','Arial';color: #16b7cc;font-size:100%;text-shadow: none;line-height: 1.8;font-weight: normal;font-style: normal;text-decoration: none;text-align: inherit;letter-spacing: normal;word-spacing: normal;text-transform: none;font-weight: 400;}div#n2-ss-2 .n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph a:HOVER, div#n2-ss-2 .n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph a:ACTIVE{font-family: 'Source Sans Pro','Arial';color: #16b7cc;font-size:100%;text-shadow: none;line-height: 1.8;font-weight: normal;font-style: normal;text-decoration: none;text-align: inherit;letter-spacing: normal;word-spacing: normal;text-transform: none;font-weight: 400;}div#n2-ss-2 .n2-font-d2f69336c8d229124bb973995068e668-link a{font-family: 'Source Sans Pro','Arial';color: #ffffff;font-size:100%;text-shadow: 1px 1px 0px RGBA(0,0,0,0.17);line-height: 1.5;font-weight: normal;font-style: normal;text-decoration: none;text-align: center;letter-spacing: 1px;word-spacing: normal;text-transform: none;font-weight: bold;}div#n2-ss-2 .n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading{background: #001489;opacity:1;padding:10px 18px 10px 18px ;box-shadow: none;border: 0px solid RGBA(0,0,0,1);border-radius:3px;}div#n2-ss-2 .n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading:Hover, div#n2-ss-2 .n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading:ACTIVE, div#n2-ss-2 .n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading:FOCUS{background: #3343A1;opacity:1;}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner{background-color:RGBA(255,255,255,0.95);border-radius:3px;box-shadow:0px 1px 10px 0px RGBA(0,0,0,0.22);}div#n2-ss-2 .n2-style-8cabe8979b5f3344267c55612a87d82a-heading{background: #ffffff;opacity:0.5;padding:12px 12px 12px 12px ;box-shadow: 0px 1px 10px 0px RGBA(0,0,0,0.17);border: 0px solid RGBA(0,0,0,1);border-radius:99px;}div#n2-ss-2 .n2-style-8cabe8979b5f3344267c55612a87d82a-heading:Hover, div#n2-ss-2 .n2-style-8cabe8979b5f3344267c55612a87d82a-heading:ACTIVE, div#n2-ss-2 .n2-style-8cabe8979b5f3344267c55612a87d82a-heading:FOCUS{background: #001489;}div#n2-ss-2 .n2-style-e15f6252cd14d358fa6d6935369eea71-dot{background: RGBA(0,0,0,0.57);opacity:1;padding:5px 5px 5px 5px ;box-shadow: none;border: 0px solid RGBA(0,0,0,1);border-radius:50px;margin:6px 5px;}div#n2-ss-2 .n2-style-e15f6252cd14d358fa6d6935369eea71-dot.n2-active, div#n2-ss-2 .n2-style-e15f6252cd14d358fa6d6935369eea71-dot:HOVER, div#n2-ss-2 .n2-style-e15f6252cd14d358fa6d6935369eea71-dot:FOCUS{background: #001489;}div#n2-ss-2 .n2-style-52a3032cdf5e0a73159365f609201a73-simple{background: #ffffff;opacity:1;padding:5px 10px 5px 10px ;box-shadow: 0px 0px 10px 0px RGBA(0,0,0,0.16);border: 0px solid RGBA(0,0,0,1);border-radius:99px;}div#n2-ss-2 .n2-ss-slide-limiter{max-width:1200px;}div#n2-ss-2 .n-uc-ILLE9womQxiT{padding:20px 40px 20px 40px}div#n2-ss-2 .n-uc-1c6c49c96a8d6-inner{padding:10px 10px 10px 10px;text-align:left;--ssselfalign:var(--ss-fs);;justify-content:center}div#n2-ss-2 .n-uc-1c6c49c96a8d6{align-self:var(--ss-fs);}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner{padding:35px 30px 35px 30px}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner > .n2-ss-layer-row-inner{width:calc(100% + 21px);margin:-10px;flex-wrap:nowrap;}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner > .n2-ss-layer-row-inner > .n2-ss-layer[data-sstype=\"col\"]{margin:10px}div#n2-ss-2 .n-uc-mG2k8HLSPV4a{max-width:475px}div#n2-ss-2 .n-uc-153023fc3458e-inner{padding:10px 10px 10px 10px;justify-content:flex-start}div#n2-ss-2 .n-uc-153023fc3458e{width:100%}div#n2-ss-2 .n-uc-aK32FAB0sODG{--margin-top:15px;--margin-bottom:25px}div#n2-ss-2 .n-uc-hcEFEqqyvgjZ{padding:20px 40px 20px 40px}div#n2-ss-2 .n-uc-0UL6EL8krJmU-inner{padding:10px 10px 10px 10px;text-align:left;--ssselfalign:var(--ss-fs);;justify-content:center}div#n2-ss-2 .n-uc-0UL6EL8krJmU{align-self:var(--ss-fs);}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner{padding:35px 30px 35px 30px}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner > .n2-ss-layer-row-inner{width:calc(100% + 21px);margin:-10px;flex-wrap:nowrap;}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner > .n2-ss-layer-row-inner > .n2-ss-layer[data-sstype=\"col\"]{margin:10px}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ{max-width:475px}div#n2-ss-2 .n-uc-9gqhdkSRE2XR-inner{padding:10px 10px 10px 10px;justify-content:flex-start}div#n2-ss-2 .n-uc-9gqhdkSRE2XR{width:100%}div#n2-ss-2 .n-uc-GeCSDBgtg7cC{--margin-top:15px;--margin-bottom:25px}div#n2-ss-2 .nextend-arrow img{width: 26px}@media (min-width: 1200px){div#n2-ss-2 [data-hide-desktopportrait=\"1\"]{display: none !important;}}@media (orientation: landscape) and (max-width: 1199px) and (min-width: 901px),(orientation: portrait) and (max-width: 1199px) and (min-width: 701px){div#n2-ss-2 .n-uc-ILLE9womQxiT{padding:20px 70px 60px 70px}div#n2-ss-2 .n-uc-1c6c49c96a8d6-inner{padding:10px 10px 10px 10px}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner > .n2-ss-layer-row-inner{flex-wrap:nowrap;}div#n2-ss-2 .n-uc-153023fc3458e{width:100%}div#n2-ss-2 .n-uc-A3iho7WnCNLp{--ssfont-scale:0.8}div#n2-ss-2 .n-uc-hcEFEqqyvgjZ{padding:20px 70px 60px 70px}div#n2-ss-2 .n-uc-0UL6EL8krJmU-inner{padding:10px 10px 10px 10px}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner > .n2-ss-layer-row-inner{flex-wrap:nowrap;}div#n2-ss-2 .n-uc-9gqhdkSRE2XR{width:100%}div#n2-ss-2 .n-uc-zcW3NyoKlI73{--ssfont-scale:0.8}div#n2-ss-2 [data-hide-tabletportrait=\"1\"]{display: none !important;}}@media (orientation: landscape) and (max-width: 900px),(orientation: portrait) and (max-width: 700px){div#n2-ss-2 .n-uc-ILLE9womQxiT{padding:20px 10px 60px 10px}div#n2-ss-2 .n-uc-1c6c49c96a8d6-inner{padding:10px 10px 10px 10px}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner{padding:15px 10px 15px 10px}div#n2-ss-2 .n-uc-mG2k8HLSPV4a-inner > .n2-ss-layer-row-inner{flex-wrap:wrap;}div#n2-ss-2 .n-uc-153023fc3458e{width:calc(100% - 20px)}div#n2-ss-2 .n-uc-A3iho7WnCNLp{--ssfont-scale:0.6}div#n2-ss-2 .n-uc-aK32FAB0sODG{--ssfont-scale:0.8}div#n2-ss-2 .n-uc-vbXU3g7OjwvP{--ssfont-scale:0.8}div#n2-ss-2 .n-uc-hcEFEqqyvgjZ{padding:20px 10px 60px 10px}div#n2-ss-2 .n-uc-0UL6EL8krJmU-inner{padding:10px 10px 10px 10px}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner{padding:15px 10px 15px 10px}div#n2-ss-2 .n-uc-TIqC9CLPrkkZ-inner > .n2-ss-layer-row-inner{flex-wrap:wrap;}div#n2-ss-2 .n-uc-9gqhdkSRE2XR{width:calc(100% - 20px)}div#n2-ss-2 .n-uc-zcW3NyoKlI73{--ssfont-scale:0.6}div#n2-ss-2 .n-uc-GeCSDBgtg7cC{--ssfont-scale:0.8}div#n2-ss-2 .n-uc-nF00VdtKUNo7{--ssfont-scale:0.8}div#n2-ss-2 [data-hide-mobileportrait=\"1\"]{display: none !important;}div#n2-ss-2 .nextend-arrow img{width: 16px}}</style>\n<script>(function(){this._N2=this._N2||{_r:[],_d:[],r:function(){this._r.push(arguments)},d:function(){this._d.push(arguments)}}}).call(window);</script><script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/n2.min.js?ver=25b00e2c\" defer=\"\" async=\"\"></script>\n<script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Application/Frontend/Assets/dist/smartslider-frontend.min.js?ver=25b00e2c\" defer=\"\" async=\"\"></script>\n<script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Slider/SliderType/Simple/Assets/dist/ss-simple.min.js?ver=25b00e2c\" defer=\"\" async=\"\"></script>\n<script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Widget/Arrow/ArrowImage/Assets/dist/w-arrow-image.min.js?ver=25b00e2c\" defer=\"\" async=\"\"></script>\n<script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/smart-slider-3/Public/SmartSlider3/Widget/Bullet/Assets/dist/w-bullet.min.js?ver=25b00e2c\" defer=\"\" async=\"\"></script>\n<script>_N2.r('documentReady',function(){n2const.prefersReducedMotion=false;_N2.r([\"documentReady\",\"smartslider-frontend\",\"SmartSliderWidgetArrowImage\",\"SmartSliderWidgetBulletTransition\",\"ss-simple\"],function(){new _N2.SmartSliderSimple('n2-ss-2',{\"admin\":false,\"background.video.mobile\":1,\"loadingTime\":2000,\"alias\":{\"id\":0,\"smoothScroll\":0,\"slideSwitch\":0,\"scroll\":1},\"align\":\"normal\",\"isDelayed\":0,\"responsive\":{\"mediaQueries\":{\"all\":false,\"desktopportrait\":[\"(min-width: 1200px)\"],\"tabletportrait\":[\"(orientation: landscape) and (max-width: 1199px) and (min-width: 901px)\",\"(orientation: portrait) and (max-width: 1199px) and (min-width: 701px)\"],\"mobileportrait\":[\"(orientation: landscape) and (max-width: 900px)\",\"(orientation: portrait) and (max-width: 700px)\"]},\"base\":{\"slideOuterWidth\":1200,\"slideOuterHeight\":600,\"sliderWidth\":1200,\"sliderHeight\":600,\"slideWidth\":1200,\"slideHeight\":600},\"hideOn\":{\"desktopLandscape\":false,\"desktopPortrait\":false,\"tabletLandscape\":false,\"tabletPortrait\":false,\"mobileLandscape\":false,\"mobilePortrait\":false},\"onResizeEnabled\":true,\"type\":\"fullwidth\",\"sliderHeightBasedOn\":\"real\",\"focusUser\":1,\"focusEdge\":\"auto\",\"breakpoints\":[{\"device\":\"tabletPortrait\",\"type\":\"max-screen-width\",\"portraitWidth\":1199,\"landscapeWidth\":1199},{\"device\":\"mobilePortrait\",\"type\":\"max-screen-width\",\"portraitWidth\":700,\"landscapeWidth\":900}],\"enabledDevices\":{\"desktopLandscape\":0,\"desktopPortrait\":1,\"tabletLandscape\":0,\"tabletPortrait\":1,\"mobileLandscape\":0,\"mobilePortrait\":1},\"sizes\":{\"desktopPortrait\":{\"width\":1200,\"height\":600,\"max\":3000,\"min\":1200},\"tabletPortrait\":{\"width\":701,\"height\":350,\"customHeight\":false,\"max\":1199,\"min\":701},\"mobilePortrait\":{\"width\":320,\"height\":160,\"customHeight\":false,\"max\":900,\"min\":320}},\"overflowHiddenPage\":0,\"focus\":{\"offsetTop\":\"#wpadminbar\",\"offsetBottom\":\"\"}},\"controls\":{\"mousewheel\":0,\"touch\":\"horizontal\",\"keyboard\":1,\"blockCarouselInteraction\":1},\"playWhenVisible\":1,\"playWhenVisibleAt\":0.5,\"lazyLoad\":0,\"lazyLoadNeighbor\":0,\"blockrightclick\":0,\"maintainSession\":0,\"autoplay\":{\"enabled\":1,\"start\":1,\"duration\":8000,\"autoplayLoop\":1,\"allowReStart\":0,\"reverse\":0,\"pause\":{\"click\":1,\"mouse\":\"0\",\"mediaStarted\":1},\"resume\":{\"click\":0,\"mouse\":\"0\",\"mediaEnded\":1,\"slidechanged\":0},\"interval\":1,\"intervalModifier\":\"loop\",\"intervalSlide\":\"current\"},\"perspective\":1500,\"layerMode\":{\"playOnce\":0,\"playFirstLayer\":1,\"mode\":\"skippable\",\"inAnimation\":\"mainInEnd\"},\"bgAnimations\":0,\"mainanimation\":{\"type\":\"horizontal\",\"duration\":800,\"delay\":0,\"ease\":\"easeOutQuad\",\"shiftedBackgroundAnimation\":0},\"carousel\":1,\"initCallbacks\":function(){new _N2.SmartSliderWidgetArrowImage(this);new _N2.SmartSliderWidgetBulletTransition(this,{\"area\":10,\"dotClasses\":\"n2-style-e15f6252cd14d358fa6d6935369eea71-dot \",\"mode\":\"\",\"action\":\"click\"})}})})});</script><script id=\"jquery-core-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1\"></script>\n<script id=\"jquery-migrate-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1\"></script>\n<link rel=\"https://api.w.org/\" href=\"https://wentzvilleparksprojects.com/wp-json/\"><link rel=\"alternate\" title=\"JSON\" type=\"application/json\" href=\"https://wentzvilleparksprojects.com/wp-json/wp/v2/pages/102\"><link rel=\"EditURI\" type=\"application/rsd+xml\" title=\"RSD\" href=\"https://wentzvilleparksprojects.com/xmlrpc.php?rsd\">\n<meta name=\"generator\" content=\"WordPress 7.1.4\">\n<link rel=\"shortlink\" href=\"https://wentzvilleparksprojects.com/\">\n<meta name=\"generator\" content=\"Elementor 4.3.5; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap\">\n\t\t\t<style>\n\t\t\t\t.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),\n\t\t\t\t.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {\n\t\t\t\t\tbackground-image: none !important;\n\t\t\t\t}\n\t\t\t\t@media screen and (max-height: 1024px) {\n\t\t\t\t\t.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),\n\t\t\t\t\t.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {\n\t\t\t\t\t\tbackground-image: none !important;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t@media screen and (max-height: 640px) {\n\t\t\t\t\t.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),\n\t\t\t\t\t.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {\n\t\t\t\t\t\tbackground-image: none !important;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t</style>\n\t\t\t<style class=\"wpcode-css-snippet\">.single-post .elementor-widget-theme-post-content p {\n    margin-bottom: 24px;\n}</style><!-- Google tag (gtag.js) -->\n<script async=\"\" src=\"https://www.googletagmanager.com/gtag/js?id=G-S9MLBHDK2B\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-S9MLBHDK2B');\n</script><link rel=\"icon\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/idRSPvj6GJ_logos-150x150.webp\" sizes=\"32x32\">\n<link rel=\"icon\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/idRSPvj6GJ_logos-300x300.webp\" sizes=\"192x192\">\n<link rel=\"apple-touch-icon\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/idRSPvj6GJ_logos-300x300.webp\">\n<meta name=\"msapplication-TileImage\" content=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/idRSPvj6GJ_logos-300x300.webp\">\n<script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/chunks/background-slideshow.min.js?ver=4.3.5\" async=\"\"></script><script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/chunks/background-video.min.js?ver=4.3.5\" async=\"\"></script><script src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/chunks/text-editor.min.js?ver=4.3.5\" async=\"\"></script><script src=\"https://wentzvilleparksprojects.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.4\" defer=\"\"></script></head>\n<body class=\"home wp-singular page-template-default page page-id-102 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor eio-default hello-elementor-default elementor-default elementor-kit-75 elementor-page elementor-page-102 e--ua-blink e--ua-webkit\" data-elementor-device-mode=\"desktop\">\n\n\n<a class=\"skip-link screen-reader-text\" href=\"#content\">Skip to content</a>\n\n\t\t<header data-elementor-type=\"header\" data-elementor-id=\"67\" class=\"elementor elementor-67 elementor-location-header\" data-elementor-post-type=\"elementor_library\">\n\t\t\t<div class=\"elementor-element elementor-element-23a7814 e-con-full e-flex e-con e-parent e-lazyloaded\" data-id=\"23a7814\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t<div class=\"elementor-element elementor-element-4bae556 e-con-full header_logo e-flex e-con e-child\" data-id=\"4bae556\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-d521689 elementor-widget elementor-widget-theme-site-logo elementor-widget-image\" data-id=\"d521689\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"theme-site-logo.default\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com\">\n\t\t\t<img fetchpriority=\"high\" width=\"393\" height=\"156\" src=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/WPRD_RPMP_logo2.svg\" class=\"attachment-full size-full wp-image-1705\" alt=\"Wentzville Parks and Rec logo with Master Plan and Projects tagline added\">\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-36130a2 e-con-full e-flex e-con e-child\" data-id=\"36130a2\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-b605117 elementor-nav-menu--dropdown-mobile elementor-nav-menu--stretch elementor-nav-menu__align-end elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu\" data-id=\"b605117\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;full_width&quot;:&quot;stretch&quot;,&quot;layout&quot;:&quot;horizontal&quot;,&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;svg aria-hidden=\\&quot;true\\&quot; class=\\&quot;e-font-icon-svg e-fas-caret-down\\&quot; viewBox=\\&quot;0 0 320 512\\&quot; xmlns=\\&quot;http:\\/\\/www.w3.org\\/2000\\/svg\\&quot;&gt;&lt;path d=\\&quot;M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\\&quot;&gt;&lt;\\/path&gt;&lt;\\/svg&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;toggle&quot;:&quot;burger&quot;}\" data-widget_type=\"nav-menu.default\">\n\t\t\t\t\t\t\t\t<nav aria-label=\"Menu\" class=\"elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-fade\">\n\t\t\t\t<ul id=\"menu-1-b605117\" class=\"elementor-nav-menu\" data-smartmenus-id=\"1793376546633944\"><li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-102 current_page_item menu-item-415\"><a href=\"https://wentzvilleparksprojects.com/\" aria-current=\"page\" class=\"elementor-item elementor-item-active\">Home</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-413\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/\" class=\"elementor-item has-submenu\" id=\"sm-1793376546633944-1\" aria-haspopup=\"true\" aria-controls=\"sm-1793376546633944-2\" aria-expanded=\"false\">Rotary Park Master Plan<span class=\"sub-arrow\"><svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-caret-down\" viewBox=\"0 0 320 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\"></path></svg></span></a>\n<ul class=\"sub-menu elementor-nav-menu--dropdown\" id=\"sm-1793376546633944-2\" role=\"group\" aria-hidden=\"true\" aria-labelledby=\"sm-1793376546633944-1\" aria-expanded=\"false\">\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-411\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\" class=\"elementor-sub-item has-submenu\" id=\"sm-1793376546633944-3\" aria-haspopup=\"true\" aria-controls=\"sm-1793376546633944-4\" aria-expanded=\"false\">Activity Zones<span class=\"sub-arrow\"><svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-caret-down\" viewBox=\"0 0 320 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\"></path></svg></span></a>\n\t<ul class=\"sub-menu elementor-nav-menu--dropdown\" id=\"sm-1793376546633944-4\" role=\"group\" aria-hidden=\"true\" aria-labelledby=\"sm-1793376546633944-3\" aria-expanded=\"false\">\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1167\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/active-zone/\" class=\"elementor-sub-item\">Active Zone</a></li>\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1500\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/event-zone/\" class=\"elementor-sub-item\">Event Zone</a></li>\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1434\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/passive-zone/\" class=\"elementor-sub-item\">Passive Zone</a></li>\n\t</ul>\n</li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1935\"><a href=\"https://wentzvilleparksprojects.com/downloads/\" class=\"elementor-sub-item\">Downloads</a></li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-412\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/map/\" class=\"elementor-sub-item\">Rotary Park Map</a></li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-414\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/timeline/\" class=\"elementor-sub-item\">Timeline</a></li>\n</ul>\n</li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1695\"><a href=\"https://wentzvilleparksprojects.com/systemwide/\" class=\"elementor-item\">Systemwide Master Plan</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-594\"><a href=\"https://wentzvilleparksprojects.com/about/\" class=\"elementor-item\">About</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-429\"><a href=\"https://wentzvilleparksprojects.com/input/\" class=\"elementor-item\">Community Input</a></li>\n</ul>\t\t\t</nav>\n\t\t\t\t\t<div class=\"elementor-menu-toggle\" role=\"button\" tabindex=\"0\" aria-label=\"Menu Toggle\" aria-expanded=\"false\" style=\"\">\n\t\t\t<svg aria-hidden=\"true\" role=\"presentation\" class=\"elementor-menu-toggle__icon--open e-font-icon-svg e-eicon-menu-bar\" viewBox=\"0 0 1000 1000\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M104 333H896C929 333 958 304 958 271S929 208 896 208H104C71 208 42 237 42 271S71 333 104 333ZM104 583H896C929 583 958 554 958 521S929 458 896 458H104C71 458 42 487 42 521S71 583 104 583ZM104 833H896C929 833 958 804 958 771S929 708 896 708H104C71 708 42 737 42 771S71 833 104 833Z\"></path></svg><svg aria-hidden=\"true\" role=\"presentation\" class=\"elementor-menu-toggle__icon--close e-font-icon-svg e-eicon-close\" viewBox=\"0 0 1000 1000\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M742 167L500 408 258 167C246 154 233 150 217 150 196 150 179 158 167 167 154 179 150 196 150 212 150 229 154 242 171 254L408 500 167 742C138 771 138 800 167 829 196 858 225 858 254 829L496 587 738 829C750 842 767 846 783 846 800 846 817 842 829 829 842 817 846 804 846 783 846 767 842 750 829 737L588 500 833 258C863 229 863 200 833 171 804 137 775 137 742 167Z\"></path></svg>\t\t</div>\n\t\t\t\t\t<nav class=\"elementor-nav-menu--dropdown elementor-nav-menu__container\" aria-hidden=\"true\" style=\"width: 1280px; left: 0px; top: 44px; --menu-height: 0;\">\n\t\t\t\t<ul id=\"menu-2-b605117\" class=\"elementor-nav-menu\" data-smartmenus-id=\"17933765466350188\"><li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-102 current_page_item menu-item-415\"><a href=\"https://wentzvilleparksprojects.com/\" aria-current=\"page\" class=\"elementor-item elementor-item-active\" tabindex=\"-1\">Home</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-413\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/\" class=\"elementor-item has-submenu\" tabindex=\"-1\" id=\"sm-17933765466350188-1\" aria-haspopup=\"true\" aria-controls=\"sm-17933765466350188-2\" aria-expanded=\"false\">Rotary Park Master Plan<span class=\"sub-arrow\"><svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-caret-down\" viewBox=\"0 0 320 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\"></path></svg></span></a>\n<ul class=\"sub-menu elementor-nav-menu--dropdown\" id=\"sm-17933765466350188-2\" role=\"group\" aria-hidden=\"true\" aria-labelledby=\"sm-17933765466350188-1\" aria-expanded=\"false\">\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-411\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\" class=\"elementor-sub-item has-submenu\" tabindex=\"-1\" id=\"sm-17933765466350188-3\" aria-haspopup=\"true\" aria-controls=\"sm-17933765466350188-4\" aria-expanded=\"false\">Activity Zones<span class=\"sub-arrow\"><svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-caret-down\" viewBox=\"0 0 320 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\"></path></svg></span></a>\n\t<ul class=\"sub-menu elementor-nav-menu--dropdown\" id=\"sm-17933765466350188-4\" role=\"group\" aria-hidden=\"true\" aria-labelledby=\"sm-17933765466350188-3\" aria-expanded=\"false\">\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1167\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/active-zone/\" class=\"elementor-sub-item\" tabindex=\"-1\">Active Zone</a></li>\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1500\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/event-zone/\" class=\"elementor-sub-item\" tabindex=\"-1\">Event Zone</a></li>\n\t\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1434\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/passive-zone/\" class=\"elementor-sub-item\" tabindex=\"-1\">Passive Zone</a></li>\n\t</ul>\n</li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1935\"><a href=\"https://wentzvilleparksprojects.com/downloads/\" class=\"elementor-sub-item\" tabindex=\"-1\">Downloads</a></li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-412\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/map/\" class=\"elementor-sub-item\" tabindex=\"-1\">Rotary Park Map</a></li>\n\t<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-414\"><a href=\"https://wentzvilleparksprojects.com/rotary-park/timeline/\" class=\"elementor-sub-item\" tabindex=\"-1\">Timeline</a></li>\n</ul>\n</li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-1695\"><a href=\"https://wentzvilleparksprojects.com/systemwide/\" class=\"elementor-item\" tabindex=\"-1\">Systemwide Master Plan</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-594\"><a href=\"https://wentzvilleparksprojects.com/about/\" class=\"elementor-item\" tabindex=\"-1\">About</a></li>\n<li class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-429\"><a href=\"https://wentzvilleparksprojects.com/input/\" class=\"elementor-item\" tabindex=\"-1\">Community Input</a></li>\n</ul>\t\t\t</nav>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</header>\n\t\t\n<main id=\"content\" class=\"site-main post-102 page type-page status-publish hentry\">\n\n\t\n\t<div class=\"page-content\">\n\t\t\t\t<div data-elementor-type=\"wp-page\" data-elementor-id=\"102\" class=\"elementor elementor-102\" data-elementor-post-type=\"page\">\n\t\t\t\t<div class=\"elementor-element elementor-element-cfb51e2 e-con-full e-flex e-con e-parent e-lazyloaded\" data-id=\"cfb51e2\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;classic&quot;}\">\n\t\t\t\t<div class=\"elementor-element elementor-element-e5b9fca elementor-widget elementor-widget-smartslider\" data-id=\"e5b9fca\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"smartslider.default\">\n\t\t\t\t<div class=\"elementor-widget-container\">\n\t\t\t\t\t<div class=\"n2-section-smartslider fitvidsignore n2_clear\" data-ssid=\"2\" tabindex=\"0\" role=\"region\" aria-label=\"Homepage Slider\"><div id=\"n2-ss-2-align\" class=\"n2-ss-align n2-ss-align-visible\"><div class=\"n2-padding\"><div id=\"n2-ss-2\" data-creator=\"Smart Slider 3\" data-responsive=\"fullwidth\" class=\"n2-ss-slider n2-ow n2-has-hover n2-ss-desktopPortrait n2-ss-loaded\" data-device-mode=\"desktopPortrait\">\n\n\n\n\n\n\n\n\n\n<div class=\"n2-ss-slider-wrapper-inside\">\n        <div class=\"n2-ss-slider-1 n2_ss__touch_element n2-ow\" style=\"cursor: grab; touch-action: pan-y;\">\n            <div class=\"n2-ss-slider-2 n2-ow\">\n                                                <div class=\"n2-ss-slider-3 n2-ow\">\n\n                    <div class=\"n2-ss-slide-backgrounds n2-ow-all\"><div class=\"n2-ss-slide-background\" data-public-id=\"1\" data-mode=\"fill\" style=\"transform: translate3d(0px, 0px, 0px);\"><div class=\"n2-ss-slide-background-image\" data-blur=\"0\" data-opacity=\"100\" data-x=\"50\" data-y=\"100\" data-alt=\"Aerial rendering of Rotary Park\" data-title=\"\" style=\"--ss-o-pos-y: 100%; margin: 0px; padding: 0px;\"><picture class=\"skip-lazy\" data-skip-lazy=\"1\" style=\"filter: blur(0px);\"><img decoding=\"async\" src=\"//wentzvilleparksprojects.com/wp-content/uploads/slider/cache/694212484eb46de7276417c788d0a6b3/Aerial-render-of-Rotary-Park-plan.webp\" alt=\"Aerial rendering of Rotary Park\" title=\"\" loading=\"eager\" class=\"skip-lazy\" data-skip-lazy=\"1\"></picture></div><div data-gradient=\"vertical\" data-color-start=\"RGBA(0,0,0,0)\" data-color-end=\"RGBA(0,20,137,0.54)\" style=\"background:linear-gradient(to bottom, RGBA(0,0,0,0) 0%,RGBA(0,20,137,0.54) 100%);\" class=\"n2-ss-slide-background-color\" data-overlay=\"1\"></div></div><div class=\"n2-ss-slide-background\" data-public-id=\"2\" data-mode=\"fill\" aria-hidden=\"true\" style=\"transform: translate3d(-100000px, 0px, 0px);\"><div class=\"n2-ss-slide-background-image\" data-blur=\"0\" data-opacity=\"100\" data-x=\"50\" data-y=\"100\" data-alt=\"Rendering of lake in Passive Zone\" data-title=\"\" style=\"--ss-o-pos-y: 100%; margin: 0px; padding: 0px;\"><picture class=\"skip-lazy\" data-skip-lazy=\"1\" style=\"filter: blur(0px);\"><img decoding=\"async\" src=\"//wentzvilleparksprojects.com/wp-content/uploads/slider/cache/984515e8626c35aa00ef72b9903cd2b7/629_Lake-View-copy.webp\" alt=\"Rendering of lake in Passive Zone\" title=\"\" loading=\"eager\" class=\"skip-lazy\" data-skip-lazy=\"1\"></picture></div><div data-gradient=\"vertical\" data-color-start=\"RGBA(0,0,0,0)\" data-color-end=\"RGBA(0,20,137,0.54)\" style=\"background:linear-gradient(to bottom, RGBA(0,0,0,0) 0%,RGBA(0,20,137,0.54) 100%);\" class=\"n2-ss-slide-background-color\" data-overlay=\"1\"></div></div></div>                    <div class=\"n2-ss-slider-4 n2-ow\">\n                        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 600\" data-related-device=\"desktopPortrait\" class=\"n2-ow n2-ss-preserve-size n2-ss-preserve-size--slider n2-ss-slide-limiter\"></svg><div data-first=\"1\" data-slide-duration=\"0\" data-id=\"3\" data-slide-public-id=\"1\" data-title=\"Slide 1\" class=\"n2-ss-slide n2-ow n2-ss-slide-3 n2-ss-slide-active\" style=\"transform: translate3d(0px, 0px, 0px); width: 1280px; height: 600px;\"><div role=\"note\" class=\"n2-ss-slide--focus\" tabindex=\"-1\">Slide 1</div><div class=\"n2-ss-layers-container n2-ss-slide-limiter n2-ow\"><div class=\"n2-ss-layer n2-ow n-uc-ILLE9womQxiT\" data-sstype=\"slide\" data-pm=\"default\"><div class=\"n2-ss-layer n2-ow n-uc-1c6c49c96a8d6\" data-pm=\"default\" data-sstype=\"content\" data-hasbackground=\"0\"><div class=\"n2-ss-section-main-content n2-ss-layer-with-background n2-ss-layer-content n2-ow n-uc-1c6c49c96a8d6-inner\"><div class=\"n2-ss-layer n2-ow n2-ss-layer--block n2-ss-has-self-align n-uc-mG2k8HLSPV4a\" data-pm=\"normal\" data-sstype=\"row\"><div class=\"n2-ss-layer-row n2-ss-layer-with-background n-uc-mG2k8HLSPV4a-inner\"><div class=\"n2-ss-layer-row-inner \"><div class=\"n2-ss-layer n2-ow n-uc-153023fc3458e\" data-pm=\"default\" data-sstype=\"col\"><div class=\"n2-ss-layer-col n2-ss-layer-with-background n2-ss-layer-content n-uc-153023fc3458e-inner\"><div class=\"n2-ss-layer n2-ow n-uc-A3iho7WnCNLp\" data-pm=\"normal\" data-sstype=\"layer\"><h3 id=\"n2-ss-2item1\" class=\"  n2-ss-item-content n2-ss-text n2-ow\" style=\"display:block;\"><a class=\"n2-ow n2-font-2b61e49a7b079f9d881c2b32ff1ed93c-hover \" style=\"display:block;\" href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\" tabindex=\"0\">Three Activity Zones</a></h3></div><div class=\"n2-ss-layer n2-ow n-uc-aK32FAB0sODG\" data-pm=\"normal\" data-sstype=\"layer\"><div class=\"n2-ss-item-content n2-ss-text n2-ow-all\"><div class=\"\"><p class=\"n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph   \">The Rotary Park Master Plan organizes Rotary Park into three distinct activity zones, each designed to support unique recreational experiences and community needs.</p>\n</div></div></div><div class=\"n2-ss-layer n2-ow n-uc-vbXU3g7OjwvP n2-ss-layer--auto\" data-pm=\"normal\" data-sstype=\"layer\"><div class=\"n2-ss-button-container n2-ss-item-content n2-ow n2-font-d2f69336c8d229124bb973995068e668-link  n2-ss-nowrap n2-ss-button-container--non-full-width\"><a class=\"n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading  n2-ow \" href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\" tabindex=\"0\"><div><div>SEE THE ZONES</div></div></a></div></div></div></div></div></div></div></div></div></div></div></div><div data-slide-duration=\"0\" data-id=\"6\" data-slide-public-id=\"2\" aria-hidden=\"true\" data-title=\"Slide 1\" class=\"n2-ss-slide n2-ow  n2-ss-slide-6\" style=\"transform: translate3d(-100000px, 0px, 0px); width: 1280px; height: 600px;\"><div role=\"note\" class=\"n2-ss-slide--focus\" tabindex=\"-1\">Slide 1</div><div class=\"n2-ss-layers-container n2-ss-slide-limiter n2-ow\"><div class=\"n2-ss-layer n2-ow n-uc-hcEFEqqyvgjZ\" data-sstype=\"slide\" data-pm=\"default\"><div class=\"n2-ss-layer n2-ow n-uc-0UL6EL8krJmU\" data-pm=\"default\" data-sstype=\"content\" data-hasbackground=\"0\"><div class=\"n2-ss-section-main-content n2-ss-layer-with-background n2-ss-layer-content n2-ow n-uc-0UL6EL8krJmU-inner\"><div class=\"n2-ss-layer n2-ow n2-ss-layer--block n2-ss-has-self-align n-uc-TIqC9CLPrkkZ\" data-pm=\"normal\" data-sstype=\"row\"><div class=\"n2-ss-layer-row n2-ss-layer-with-background n-uc-TIqC9CLPrkkZ-inner\"><div class=\"n2-ss-layer-row-inner \"><div class=\"n2-ss-layer n2-ow n-uc-9gqhdkSRE2XR\" data-pm=\"default\" data-sstype=\"col\"><div class=\"n2-ss-layer-col n2-ss-layer-with-background n2-ss-layer-content n-uc-9gqhdkSRE2XR-inner\"><div class=\"n2-ss-layer n2-ow n-uc-zcW3NyoKlI73\" data-pm=\"normal\" data-sstype=\"layer\"><div id=\"n2-ss-2item4\" class=\"  n2-ss-item-content n2-ss-text n2-ow\" style=\"display:block;\"><a class=\"n2-ow n2-font-2b61e49a7b079f9d881c2b32ff1ed93c-hover \" style=\"display:block;\" href=\"https://wentzvilleparksprojects.com/rotary-park/zones/passive-zone/\" tabindex=\"-1\">Explore Nature's Beauty</a></div></div><div class=\"n2-ss-layer n2-ow n-uc-GeCSDBgtg7cC\" data-pm=\"normal\" data-sstype=\"layer\"><div class=\"n2-ss-item-content n2-ss-text n2-ow-all\"><div class=\"\"><p class=\"n2-font-8a9eb3fad36d96a2153451552752a9b3-paragraph   \">Discover peaceful ponds, scenic trails and nature-inspired experiences designed to connect visitors with the natural beauty of Rotary Park.</p>\n</div></div></div><div class=\"n2-ss-layer n2-ow n-uc-nF00VdtKUNo7 n2-ss-layer--auto\" data-pm=\"normal\" data-sstype=\"layer\"><div class=\"n2-ss-button-container n2-ss-item-content n2-ow n2-font-d2f69336c8d229124bb973995068e668-link  n2-ss-nowrap n2-ss-button-container--non-full-width\"><a class=\"n2-style-8ab7bc8c1ecc85020a4032e317cffdb8-heading  n2-ow \" href=\"https://wentzvilleparksprojects.com/rotary-park/zones/passive-zone/\" tabindex=\"-1\"><div><div>VISIT THE PASSIVE ZONE</div></div></a></div></div></div></div></div></div></div></div></div></div></div></div>                    </div>\n\n                                    </div>\n            </div>\n        </div>\n        <div class=\"n2-ss-slider-controls n2-ss-slider-controls-absolute-left-center\"><div style=\"--widget-offset:15px;\" class=\"n2-ss-widget n2-style-8cabe8979b5f3344267c55612a87d82a-heading nextend-arrow n2-ow-all nextend-arrow-previous  nextend-arrow-animated-fade\" data-hide-mobileportrait=\"1\" id=\"n2-ss-2-arrow-previous\" role=\"button\" aria-label=\"previous arrow\" tabindex=\"0\"><img decoding=\"async\" width=\"32\" height=\"32\" class=\"n2-arrow-normal-img skip-lazy\" data-skip-lazy=\"1\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMS40MzMgMTUuOTkyTDIyLjY5IDUuNzEyYy4zOTMtLjM5LjM5My0xLjAzIDAtMS40Mi0uMzkzLS4zOS0xLjAzLS4zOS0xLjQyMyAwbC0xMS45OCAxMC45NGMtLjIxLjIxLS4zLjQ5LS4yODUuNzYtLjAxNS4yOC4wNzUuNTYuMjg0Ljc3bDExLjk4IDEwLjk0Yy4zOTMuMzkgMS4wMy4zOSAxLjQyNCAwIC4zOTMtLjQuMzkzLTEuMDMgMC0xLjQybC0xMS4yNTctMTAuMjkiCiAgICAgICAgICBmaWxsPSIjMDAxNDg5IiBvcGFjaXR5PSIxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+\" alt=\"previous arrow\"><img decoding=\"async\" width=\"32\" height=\"32\" class=\"n2-arrow-hover-img skip-lazy\" data-skip-lazy=\"1\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMS40MzMgMTUuOTkyTDIyLjY5IDUuNzEyYy4zOTMtLjM5LjM5My0xLjAzIDAtMS40Mi0uMzkzLS4zOS0xLjAzLS4zOS0xLjQyMyAwbC0xMS45OCAxMC45NGMtLjIxLjIxLS4zLjQ5LS4yODUuNzYtLjAxNS4yOC4wNzUuNTYuMjg0Ljc3bDExLjk4IDEwLjk0Yy4zOTMuMzkgMS4wMy4zOSAxLjQyNCAwIC4zOTMtLjQuMzkzLTEuMDMgMC0xLjQybC0xMS4yNTctMTAuMjkiCiAgICAgICAgICBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+\" alt=\"previous arrow\"></div></div><div class=\"n2-ss-slider-controls n2-ss-slider-controls-absolute-right-center\"><div style=\"--widget-offset:15px;\" class=\"n2-ss-widget n2-style-8cabe8979b5f3344267c55612a87d82a-heading nextend-arrow n2-ow-all nextend-arrow-next  nextend-arrow-animated-fade\" data-hide-mobileportrait=\"1\" id=\"n2-ss-2-arrow-next\" role=\"button\" aria-label=\"next arrow\" tabindex=\"0\"><img loading=\"lazy\" decoding=\"async\" width=\"32\" height=\"32\" class=\"n2-arrow-normal-img skip-lazy\" data-skip-lazy=\"1\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMC43MjIgNC4yOTNjLS4zOTQtLjM5LTEuMDMyLS4zOS0xLjQyNyAwLS4zOTMuMzktLjM5MyAxLjAzIDAgMS40MmwxMS4yODMgMTAuMjgtMTEuMjgzIDEwLjI5Yy0uMzkzLjM5LS4zOTMgMS4wMiAwIDEuNDIuMzk1LjM5IDEuMDMzLjM5IDEuNDI3IDBsMTIuMDA3LTEwLjk0Yy4yMS0uMjEuMy0uNDkuMjg0LS43Ny4wMTQtLjI3LS4wNzYtLjU1LS4yODYtLjc2TDEwLjcyIDQuMjkzeiIKICAgICAgICAgIGZpbGw9IiMwMDE0ODkiIG9wYWNpdHk9IjEiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4=\" alt=\"next arrow\"><img loading=\"lazy\" decoding=\"async\" width=\"32\" height=\"32\" class=\"n2-arrow-hover-img skip-lazy\" data-skip-lazy=\"1\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMC43MjIgNC4yOTNjLS4zOTQtLjM5LTEuMDMyLS4zOS0xLjQyNyAwLS4zOTMuMzktLjM5MyAxLjAzIDAgMS40MmwxMS4yODMgMTAuMjgtMTEuMjgzIDEwLjI5Yy0uMzkzLjM5LS4zOTMgMS4wMiAwIDEuNDIuMzk1LjM5IDEuMDMzLjM5IDEuNDI3IDBsMTIuMDA3LTEwLjk0Yy4yMS0uMjEuMy0uNDkuMjg0LS43Ny4wMTQtLjI3LS4wNzYtLjU1LS4yODYtLjc2TDEwLjcyIDQuMjkzeiIKICAgICAgICAgIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjEiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4=\" alt=\"next arrow\"></div></div><div class=\"n2-ss-slider-controls n2-ss-slider-controls-absolute-center-bottom\"><div style=\"--widget-offset:10px;\" class=\"n2-ss-widget n2-ss-control-bullet n2-ow-all n2-ss-control-bullet-horizontal\"><div class=\"n2-style-52a3032cdf5e0a73159365f609201a73-simple  nextend-bullet-bar n2-bar-justify-content-center\" role=\"group\" aria-label=\"Choose slide to display.\"><div><div class=\"n2-bullet n2-style-e15f6252cd14d358fa6d6935369eea71-dot n2-active\" tabindex=\"0\" role=\"button\" aria-label=\"Slide 1\" aria-current=\"true\"></div></div><div><div class=\"n2-bullet n2-style-e15f6252cd14d358fa6d6935369eea71-dot\" tabindex=\"0\" role=\"button\" aria-label=\"Slide 1\"></div></div></div></div></div></div></div><ss3-loader></ss3-loader></div></div><div class=\"n2_clear\"></div></div>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-57ae6cd e-flex e-con-boxed e-con e-parent e-lazyloaded\" data-id=\"57ae6cd\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;classic&quot;}\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t<div class=\"elementor-element elementor-element-9352707 e-con-full e-flex e-con e-child\" data-id=\"9352707\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-8899534 elementor-widget elementor-widget-heading\" data-id=\"8899534\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\"><a href=\"#\">Explore the final Rotary Park Master Plan and see how community input helped shape proposed improvements, new amenities and opportunities for generations to come.</a></h2>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-5d53bd8 e-con-full e-flex e-con e-child\" data-id=\"5d53bd8\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-bdfa009 elementor-widget elementor-widget-button\" data-id=\"bdfa009\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"button.default\">\n\t\t\t\t\t\t\t\t\t\t<a class=\"elementor-button elementor-button-link elementor-size-sm\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/10/Rotary-Park-Master-Plan_Final-Report.pdf\">\n\t\t\t\t\t\t<span class=\"elementor-button-content-wrapper\">\n\t\t\t\t\t\t<span class=\"elementor-button-icon\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-file-download\" viewBox=\"0 0 384 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z\"></path></svg>\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<span class=\"elementor-button-text\">View the Final Rotary Park Master Plan</span>\n\t\t\t\t\t</span>\n\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-93ba5a0 elementor-widget elementor-widget-text-editor\" data-id=\"93ba5a0\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p>PDF Document • 102.1 MB</p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-a7d8fec e-flex e-con-boxed e-con e-parent e-lazyloaded\" data-id=\"a7d8fec\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;classic&quot;,&quot;shape_divider_top&quot;:&quot;arrow&quot;}\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t\t\t<div class=\"elementor-shape elementor-shape-top\" aria-hidden=\"true\" data-negative=\"false\">\n\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 10\" preserveAspectRatio=\"none\">\n\t<path class=\"elementor-shape-fill\" d=\"M350,10L340,0h20L350,10z\"></path>\n</svg>\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-5079ff6 e-con-full e-flex elementor-invisible e-con e-child\" data-id=\"5079ff6\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;animation&quot;:&quot;fadeInUp&quot;}\">\n\t\t\t\t<div class=\"elementor-element elementor-element-e87311d elementor-widget elementor-widget-heading\" data-id=\"e87311d\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<h1 class=\"elementor-heading-title elementor-size-default\">Two Plans, One Vision</h1>\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-5f6a043 elementor-widget elementor-widget-text-editor\" data-id=\"5f6a043\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p>Over the past 25 years, Wentzville has experienced tremendous growth, transforming into one of the fastest-growing communities in the St. Louis metropolitan area. <strong>As our community continues to evolve, thoughtful planning is essential to ensure our parks, facilities and recreational opportunities meet the needs of current and future generations.</strong></p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-c46515b elementor-widget elementor-widget-text-editor\" data-id=\"c46515b\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p>Wentzville Parks and Recreation is advancing two important planning initiatives: the <a href=\"https://wentzvilleparksprojects.com/rotary-park/\">Rotary Park Master Plan</a> and the forthcoming <a href=\"https://wentzvilleparksprojects.com/systemwide/\">Systemwide Parks and Recreation Master Plan</a>. These efforts will establish a long-term vision for the City’s largest park and the parks and recreation system as a whole, helping guide future improvements, investments and development.</p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-59ea209 elementor-widget elementor-widget-text-editor\" data-id=\"59ea209\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p data-pm-slice=\"1 1 []\">Community input has been instrumental in shaping the Rotary Park Master Plan and will remain a key component of the forthcoming Systemwide Parks and Recreation Master Plan. Together, these efforts will help ensure Wentzville’s parks and recreational opportunities continue to grow alongside the community.</p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-4e3be66 elementor-widget elementor-widget-spacer\" data-id=\"4e3be66\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"spacer.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-spacer\">\n\t\t\t<div class=\"elementor-spacer-inner\"></div>\n\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-91c30db e-con-full e-flex elementor-invisible e-con e-child\" data-id=\"91c30db\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}\">\n\t\t\t\t<div class=\"elementor-element elementor-element-808b350 elementor-widget elementor-widget-heading\" data-id=\"808b350\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\">Recent Master Plan and Project News</h2>\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-2d84832 elementor-grid-1 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-widget elementor-widget-posts\" data-id=\"2d84832\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;classic_columns&quot;:&quot;1&quot;,&quot;classic_columns_tablet&quot;:&quot;2&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;classic_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;classic_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}\" data-widget_type=\"posts.classic\">\n\t\t\t\t<div class=\"elementor-widget-container\">\n\t\t\t\t\t\t\t<div class=\"elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid elementor-has-item-ratio\" role=\"list\">\n\t\t\t\t<article class=\"elementor-post elementor-grid-item post-1962 post type-post status-publish format-standard hentry category-uncategorized\" role=\"listitem\">\n\t\t\t\t<div class=\"elementor-post__text\">\n\t\t\t\t<h3 class=\"elementor-post__title\">\n\t\t\t<a href=\"https://wentzvilleparksprojects.com/final-rotary-park-master-plan-presented/\">\n\t\t\t\tFinal Rotary Park Master Plan Presented\t\t\t</a>\n\t\t</h3>\n\t\t\t\t<div class=\"elementor-post__meta-data\">\n\t\t\t\t\t<span class=\"elementor-post-date\">\n\t\t\tOctober 29, 2026\t\t</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-post__excerpt\">\n\t\t\t<p>The Wentzville Parks and Recreation Department is proud to have made available the Rotary Park Master Plan for the public to review. As Wentzville continues to grow, so does the need for parks, facilities, and recreational opportunities that meet the evolving needs of the community. The Rotary Park Master Plan provides a long-term vision for the future of the City’s</p>\n\t\t</div>\n\t\t\t\t\t<div class=\"elementor-post__read-more-wrapper\">\n\t\t\n\t\t<a class=\"elementor-post__read-more\" href=\"https://wentzvilleparksprojects.com/final-rotary-park-master-plan-presented/\" aria-label=\"Read more about Final Rotary Park Master Plan Presented\" tabindex=\"-1\">\n\t\t\tRead More »\t\t</a>\n\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</article>\n\t\t\t\t<article class=\"elementor-post elementor-grid-item post-1702 post type-post status-publish format-standard hentry category-uncategorized\" role=\"listitem\">\n\t\t\t\t<div class=\"elementor-post__text\">\n\t\t\t\t<h3 class=\"elementor-post__title\">\n\t\t\t<a href=\"https://wentzvilleparksprojects.com/movie-in-the-park/\">\n\t\t\t\tBig Screen, Big Plans for Rotary Park\t\t\t</a>\n\t\t</h3>\n\t\t\t\t<div class=\"elementor-post__meta-data\">\n\t\t\t\t\t<span class=\"elementor-post-date\">\n\t\t\tApril 14, 2026\t\t</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-post__excerpt\">\n\t\t\t<p>Wentzville Parks and Recreation unveiled the initial draft of the Rotary Park Master Plan during the Flights &amp; Bites Movie-in-the-Park event on April 11, 2026. Attendees enjoyed food trucks and a showing of How to Train Your Dragon while getting a first look at proposed improvements to Rotary Park. The event also provided an opportunity for residents to ask questions,</p>\n\t\t</div>\n\t\t\t\t\t<div class=\"elementor-post__read-more-wrapper\">\n\t\t\n\t\t<a class=\"elementor-post__read-more\" href=\"https://wentzvilleparksprojects.com/movie-in-the-park/\" aria-label=\"Read more about Big Screen, Big Plans for Rotary Park\" tabindex=\"-1\">\n\t\t\tRead More »\t\t</a>\n\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</article>\n\t\t\t\t</div>\n\t\t\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-1384886 elementor-align-right elementor-mobile-align-center elementor-widget elementor-widget-button\" data-id=\"1384886\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"button.default\">\n\t\t\t\t\t\t\t\t\t\t<a class=\"elementor-button elementor-button-link elementor-size-sm\" href=\"https://wentzvilleparksprojects.com/news/\">\n\t\t\t\t\t\t<span class=\"elementor-button-content-wrapper\">\n\t\t\t\t\t\t<span class=\"elementor-button-icon\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-angle-double-right\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z\"></path></svg>\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<span class=\"elementor-button-text\">Browse Past Articles</span>\n\t\t\t\t\t</span>\n\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-d043607 e-flex e-con-boxed e-con e-parent\" data-id=\"d043607\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;classic&quot;}\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t<div class=\"elementor-element elementor-element-a6ebe00 e-con-full e-flex e-con e-child\" data-id=\"a6ebe00\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-0f7eed3 elementor-widget elementor-widget-heading\" data-id=\"0f7eed3\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\">You've seen the vision. Now, we want to hear from you! Take a few minutes to share your feedback on the Rotary Park Master Plan and help guide the next phase of planning.</h2>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-6934393 e-con-full e-flex e-con e-child\" data-id=\"6934393\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-ebcc062 elementor-widget elementor-widget-button\" data-id=\"ebcc062\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"button.default\">\n\t\t\t\t\t\t\t\t\t\t<a class=\"elementor-button elementor-button-link elementor-size-sm\" href=\"#\">\n\t\t\t\t\t\t<span class=\"elementor-button-content-wrapper\">\n\t\t\t\t\t\t<span class=\"elementor-button-icon\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-far-check-square\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zm0 400H48V80h352v352zm-35.864-241.724L191.547 361.48c-4.705 4.667-12.303 4.637-16.97-.068l-90.781-91.516c-4.667-4.705-4.637-12.303.069-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l59.792 60.277 141.352-140.216c4.705-4.667 12.303-4.637 16.97.068l22.536 22.718c4.667 4.706 4.637 12.304-.068 16.971z\"></path></svg>\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<span class=\"elementor-button-text\">Take the Final Rotary Park Master Plan Survey</span>\n\t\t\t\t\t</span>\n\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-f6110bb elementor-widget elementor-widget-text-editor\" data-id=\"f6110bb\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p>Survey opens in a new tab</p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-49afea2 e-flex e-con-boxed e-con e-parent\" data-id=\"49afea2\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1765,&quot;url&quot;:&quot;https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/uploads\\/2026\\/10\\/hazy-grass.webp&quot;}],&quot;shape_divider_top&quot;:&quot;arrow&quot;,&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}\"><div class=\"elementor-background-slideshow swiper\" dir=\"rtl\"><div class=\"swiper-wrapper\"><div class=\"elementor-background-slideshow__slide swiper-slide\"><div class=\"elementor-background-slideshow__slide__image\" style=\"background-image: url(&quot;https://wentzvilleparksprojects.com/wp-content/uploads/2026/10/hazy-grass.webp&quot;);\"></div></div></div></div>\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t\t\t<div class=\"elementor-shape elementor-shape-top\" aria-hidden=\"true\" data-negative=\"false\">\n\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 700 10\" preserveAspectRatio=\"none\">\n\t<path class=\"elementor-shape-fill\" d=\"M350,10L340,0h20L350,10z\"></path>\n</svg>\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-9c4f565 e-con-full e-flex e-con e-child\" data-id=\"9c4f565\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-4e035ca elementor-invisible elementor-widget elementor-widget-heading\" data-id=\"4e035ca\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;}\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<h2 class=\"elementor-heading-title elementor-size-default\">Rotary Park Master Plan</h2>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-fbd0b7b e-con-full e-flex e-con e-child\" data-id=\"fbd0b7b\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t<div class=\"elementor-element elementor-element-f7248a3 e-con-full e-flex e-con e-child\" data-id=\"f7248a3\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t<div class=\"elementor-element elementor-element-e44dad6 e-con-full e-flex e-con e-child\" data-id=\"e44dad6\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-e65c023 elementor-view-default elementor-position-block-start elementor-mobile-position-block-start elementor-invisible elementor-widget elementor-widget-icon-box\" data-id=\"e65c023\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;}\" data-widget_type=\"icon-box.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-icon-box-wrapper\">\n\n\t\t\t\t\t\t<div class=\"elementor-icon-box-icon\">\n\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/\" class=\"elementor-icon elementor-animation-grow\" tabindex=\"-1\" aria-label=\"About\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-info\" viewBox=\"0 0 192 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg>\t\t\t\t</a>\n\t\t\t</div>\n\t\t\t\n\t\t\t\t\t\t<div class=\"elementor-icon-box-content\">\n\n\t\t\t\t\t\t\t\t\t<h3 class=\"elementor-icon-box-title\">\n\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/\">\n\t\t\t\t\t\t\tAbout\t\t\t\t\t\t</a>\n\t\t\t\t\t</h3>\n\t\t\t\t\n\t\t\t\t\t\t\t\t\t<p class=\"elementor-icon-box-description\">\n\t\t\t\t\t\t<a href=\"/rotary-park/\">Discover Rotary Park’s history and the vision that will be shaping its future.</a>\t\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-9be16a0 e-con-full e-flex e-con e-child\" data-id=\"9be16a0\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-d1f532b elementor-view-default elementor-position-block-start elementor-mobile-position-block-start elementor-invisible elementor-widget elementor-widget-icon-box\" data-id=\"d1f532b\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100}\" data-widget_type=\"icon-box.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-icon-box-wrapper\">\n\n\t\t\t\t\t\t<div class=\"elementor-icon-box-icon\">\n\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\" class=\"elementor-icon elementor-animation-grow\" tabindex=\"-1\" aria-label=\"Activity Zones\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-map-marker-alt\" viewBox=\"0 0 384 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z\"></path></svg>\t\t\t\t</a>\n\t\t\t</div>\n\t\t\t\n\t\t\t\t\t\t<div class=\"elementor-icon-box-content\">\n\n\t\t\t\t\t\t\t\t\t<h3 class=\"elementor-icon-box-title\">\n\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\">\n\t\t\t\t\t\t\tActivity Zones\t\t\t\t\t\t</a>\n\t\t\t\t\t</h3>\n\t\t\t\t\n\t\t\t\t\t\t\t\t\t<p class=\"elementor-icon-box-description\">\n\t\t\t\t\t\t<a href=\"/rotary-park/zones/\">Explore proposed park areas, amenities and how each space will be used.</a>\t\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-4a53c26 e-con-full e-flex e-con e-child\" data-id=\"4a53c26\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-e58de4b elementor-view-default elementor-position-block-start elementor-mobile-position-block-start elementor-invisible elementor-widget elementor-widget-icon-box\" data-id=\"e58de4b\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}\" data-widget_type=\"icon-box.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-icon-box-wrapper\">\n\n\t\t\t\t\t\t<div class=\"elementor-icon-box-icon\">\n\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/map/\" class=\"elementor-icon elementor-animation-grow\" tabindex=\"-1\" aria-label=\"Park Map\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-far-map\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M560.02 32c-1.96 0-3.98.37-5.96 1.16L384.01 96H384L212 35.28A64.252 64.252 0 0 0 191.76 32c-6.69 0-13.37 1.05-19.81 3.14L20.12 87.95A32.006 32.006 0 0 0 0 117.66v346.32C0 473.17 7.53 480 15.99 480c1.96 0 3.97-.37 5.96-1.16L192 416l172 60.71a63.98 63.98 0 0 0 40.05.15l151.83-52.81A31.996 31.996 0 0 0 576 394.34V48.02c0-9.19-7.53-16.02-15.98-16.02zM224 90.42l128 45.19v285.97l-128-45.19V90.42zM48 418.05V129.07l128-44.53v286.2l-.64.23L48 418.05zm480-35.13l-128 44.53V141.26l.64-.24L528 93.95v288.97z\"></path></svg>\t\t\t\t</a>\n\t\t\t</div>\n\t\t\t\n\t\t\t\t\t\t<div class=\"elementor-icon-box-content\">\n\n\t\t\t\t\t\t\t\t\t<h3 class=\"elementor-icon-box-title\">\n\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/map/\">\n\t\t\t\t\t\t\tPark Map\t\t\t\t\t\t</a>\n\t\t\t\t\t</h3>\n\t\t\t\t\n\t\t\t\t\t\t\t\t\t<p class=\"elementor-icon-box-description\">\n\t\t\t\t\t\t<a href=\"/rotary-park/map/\">View the park layout and see how planned improvements connect the park.</a>\t\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-aa43d33 e-con-full e-flex e-con e-child\" data-id=\"aa43d33\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-9e69ff7 elementor-view-default elementor-position-block-start elementor-mobile-position-block-start elementor-invisible elementor-widget elementor-widget-icon-box\" data-id=\"9e69ff7\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300}\" data-widget_type=\"icon-box.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-icon-box-wrapper\">\n\n\t\t\t\t\t\t<div class=\"elementor-icon-box-icon\">\n\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/timeline/\" class=\"elementor-icon elementor-animation-grow\" tabindex=\"-1\" aria-label=\"Timeline\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-far-clock\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z\"></path></svg>\t\t\t\t</a>\n\t\t\t</div>\n\t\t\t\n\t\t\t\t\t\t<div class=\"elementor-icon-box-content\">\n\n\t\t\t\t\t\t\t\t\t<h3 class=\"elementor-icon-box-title\">\n\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/timeline/\">\n\t\t\t\t\t\t\tTimeline\t\t\t\t\t\t</a>\n\t\t\t\t\t</h3>\n\t\t\t\t\n\t\t\t\t\t\t\t\t\t<p class=\"elementor-icon-box-description\">\n\t\t\t\t\t\t<a href=\"/rotary-park/timeline/\">Follow the phased approach and see when key moments are set to happen.</a>\t\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-7b57804 e-con-full e-flex e-con e-child\" data-id=\"7b57804\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-d2dc103 elementor-align-center elementor-invisible elementor-widget elementor-widget-button\" data-id=\"d2dc103\" data-element_type=\"widget\" data-e-type=\"widget\" data-settings=\"{&quot;_animation&quot;:&quot;fadeInUp&quot;}\" data-widget_type=\"button.default\">\n\t\t\t\t\t\t\t\t\t\t<a class=\"elementor-button elementor-button-link elementor-size-sm\" href=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/10/Rotary-Park-Master-Plan_Final-Report.pdf\">\n\t\t\t\t\t\t<span class=\"elementor-button-content-wrapper\">\n\t\t\t\t\t\t<span class=\"elementor-button-icon\">\n\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-file-download\" viewBox=\"0 0 384 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z\"></path></svg>\t\t\t</span>\n\t\t\t\t\t\t\t\t\t<span class=\"elementor-button-text\">Download the Rotary Park Master Plan (PDF)</span>\n\t\t\t\t\t</span>\n\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\n\t\t\n\t\t\t</div>\n\n\t\n</main>\n\n\t\t\t<footer data-elementor-type=\"footer\" data-elementor-id=\"376\" class=\"elementor elementor-376 elementor-location-footer\" data-elementor-post-type=\"elementor_library\">\n\t\t\t<footer class=\"elementor-element elementor-element-5fbd199b e-flex e-con-boxed e-con e-parent\" data-id=\"5fbd199b\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{&quot;background_background&quot;:&quot;classic&quot;}\">\n\t\t\t\t\t<div class=\"e-con-inner\">\n\t\t<div class=\"elementor-element elementor-element-31e3ebe9 e-con-full e-flex e-con e-child\" data-id=\"31e3ebe9\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t<div class=\"elementor-element elementor-element-959e87d e-con-full e-flex e-con e-child\" data-id=\"959e87d\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-8102c71 elementor-widget elementor-widget-image\" data-id=\"8102c71\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"image.default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img width=\"800\" height=\"240\" src=\"https://wentzvilleparksprojects.com/wp-content/uploads/2026/03/WPRD_light_logo.svg\" class=\"attachment-large size-large wp-image-483\" alt=\"Wentzville Parks &amp; Rec logo\">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t<div class=\"elementor-element elementor-element-59b9384a elementor-widget elementor-widget-heading\" data-id=\"59b9384a\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<p class=\"elementor-heading-title elementor-size-default\">500 Great Oaks Blvd.<br>\nWentzville, MO 63385<br>\nMain Phone: (636) 332-9236</p>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-1b58f26 e-con-full e-flex e-con e-child\" data-id=\"1b58f26\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-ebb5f6a elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list\" data-id=\"ebb5f6a\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"icon-list.default\">\n\t\t\t\t\t\t\t<ul class=\"elementor-icon-list-items\">\n\t\t\t\t\t\t\t<li class=\"elementor-icon-list-item\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/rotary-park/zones/\">\n\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-icon\">\n\t\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-square\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z\"></path></svg>\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-text\">Activity Zones</span>\n\t\t\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"elementor-icon-list-item\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://wentzvilleparksprojects.com/input/\">\n\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-icon\">\n\t\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-square\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z\"></path></svg>\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-text\">Community Input</span>\n\t\t\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t<li class=\"elementor-icon-list-item\">\n\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://www.wentzvillemo.gov/parks-recreation/\">\n\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-icon\">\n\t\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-square\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z\"></path></svg>\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t<span class=\"elementor-icon-list-text\">Parks and Recreation</span>\n\t\t\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-985a181 e-con-full e-flex e-con e-child\" data-id=\"985a181\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-9305c19 elementor-widget elementor-widget-text-editor\" data-id=\"9305c19\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"text-editor.default\">\n\t\t\t\t\t\t\t\t\t<p>Explore the future of Wentzville Parks and Recreation through master plans, project updates and community-driven initiatives. This site serves as a resource for learning about ongoing planning efforts, proposed improvements and long-term investments in our parks, facilities and recreational opportunities. Guided by community input and thoughtful planning, these efforts will help shape the future of parks and recreation in Wentzville, Missouri.</p>\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-27468ea2 e-con-full e-flex e-con e-child\" data-id=\"27468ea2\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t<div class=\"elementor-element elementor-element-40b92adf e-con-full e-flex e-con e-child\" data-id=\"40b92adf\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-673b9f45 elementor-widget elementor-widget-heading\" data-id=\"673b9f45\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"heading.default\">\n\t\t\t\t\t<p class=\"elementor-heading-title elementor-size-default\">© 2026 CITY OF WENTZVILLE, MO</p>\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t<div class=\"elementor-element elementor-element-6fc6aa71 e-con-full e-flex e-con e-child\" data-id=\"6fc6aa71\" data-element_type=\"container\" data-e-type=\"container\">\n\t\t\t\t<div class=\"elementor-element elementor-element-4a58b27d e-grid-align-right e-grid-align-mobile-center elementor-shape-rounded elementor-grid-0 elementor-widget elementor-widget-social-icons\" data-id=\"4a58b27d\" data-element_type=\"widget\" data-e-type=\"widget\" data-widget_type=\"social-icons.default\">\n\t\t\t\t\t\t\t<div class=\"elementor-social-icons-wrapper elementor-grid\" role=\"list\">\n\t\t\t\t\t\t\t<span class=\"elementor-grid-item\" role=\"listitem\">\n\t\t\t\t\t<a class=\"elementor-icon elementor-social-icon elementor-social-icon-facebook-f elementor-repeater-item-993ef04\" href=\"http://facebook.com/wentzville.parks/\" target=\"_blank\">\n\t\t\t\t\t\t<span class=\"elementor-screen-only\">Facebook-f</span>\n\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fab-facebook-f\" viewBox=\"0 0 320 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z\"></path></svg>\t\t\t\t\t</a>\n\t\t\t\t</span>\n\t\t\t\t\t\t\t<span class=\"elementor-grid-item\" role=\"listitem\">\n\t\t\t\t\t<a class=\"elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-650624b\" href=\"https://www.instagram.com/wentzvilleparks/\" target=\"_blank\">\n\t\t\t\t\t\t<span class=\"elementor-screen-only\">Instagram</span>\n\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fab-instagram\" viewBox=\"0 0 448 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z\"></path></svg>\t\t\t\t\t</a>\n\t\t\t\t</span>\n\t\t\t\t\t\t\t<span class=\"elementor-grid-item\" role=\"listitem\">\n\t\t\t\t\t<a class=\"elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-8ed762e\" href=\"https://www.youtube.com/user/wentzvillecity\" target=\"_blank\">\n\t\t\t\t\t\t<span class=\"elementor-screen-only\">Youtube</span>\n\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fab-youtube\" viewBox=\"0 0 576 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z\"></path></svg>\t\t\t\t\t</a>\n\t\t\t\t</span>\n\t\t\t\t\t\t\t<span class=\"elementor-grid-item\" role=\"listitem\">\n\t\t\t\t\t<a class=\"elementor-icon elementor-social-icon elementor-social-icon-globe elementor-repeater-item-bbcc7ea\" href=\"https://www.wentzvillemo.gov/parks-recreation/\" target=\"_blank\">\n\t\t\t\t\t\t<span class=\"elementor-screen-only\">Globe</span>\n\t\t\t\t\t\t<svg aria-hidden=\"true\" class=\"e-font-icon-svg e-fas-globe\" viewBox=\"0 0 496 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z\"></path></svg>\t\t\t\t\t</a>\n\t\t\t\t</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</footer>\n\t\t\t\t</footer>\n\t\t\n<script type=\"speculationrules\">\n{\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/wp-content/uploads/*\",\"/wp-content/*\",\"/wp-content/plugins/*\",\"/wp-content/themes/hello-elementor/*\",\"/*\\\\?(.+)\"]}},{\"not\":{\"selector_matches\":\"a[rel~=\\\"nofollow\\\"]\"}},{\"not\":{\"selector_matches\":\".no-prefetch, .no-prefetch a\"}}]},\"eagerness\":\"conservative\"}]}\n</script>\n\t\t\t<script>\n\t\t\t\t( () => {\n\t\t\t\t\tconst lazyloadRunObserver = () => {\n\t\t\t\t\t\tconst lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );\n\t\t\t\t\t\tconst lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {\n\t\t\t\t\t\t\tentries.forEach( ( entry ) => {\n\t\t\t\t\t\t\t\tif ( entry.isIntersecting ) {\n\t\t\t\t\t\t\t\t\tlet lazyloadBackground = entry.target;\n\t\t\t\t\t\t\t\t\tif( lazyloadBackground ) {\n\t\t\t\t\t\t\t\t\t\tlazyloadBackground.classList.add( 'e-lazyloaded' );\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\tlazyloadBackgroundObserver.unobserve( entry.target );\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t});\n\t\t\t\t\t\t}, { rootMargin: '200px 0px 200px 0px' } );\n\t\t\t\t\t\tlazyloadBackgrounds.forEach( ( lazyloadBackground ) => {\n\t\t\t\t\t\t\tlazyloadBackgroundObserver.observe( lazyloadBackground );\n\t\t\t\t\t\t} );\n\t\t\t\t\t};\n\t\t\t\t\tconst events = [\n\t\t\t\t\t\t'DOMContentLoaded',\n\t\t\t\t\t\t'elementor/lazyload/observe',\n\t\t\t\t\t];\n\t\t\t\t\tevents.forEach( ( event ) => {\n\t\t\t\t\t\tdocument.addEventListener( event, lazyloadRunObserver );\n\t\t\t\t\t} );\n\t\t\t\t} )();\n\t\t\t</script>\n\t\t\t<script id=\"hello-theme-frontend-js\" src=\"https://wentzvilleparksprojects.com/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=3.5.1\"></script>\n<script id=\"elementor-webpack-runtime-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.3.5\"></script>\n<script id=\"elementor-frontend-modules-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.3.5\"></script>\n<script id=\"jquery-ui-core-js-before\">\njQuery.uiBackCompat = true;\n//# sourceURL=jquery-ui-core-js-before\n</script>\n<script id=\"jquery-ui-core-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/jquery/ui/core.min.js?ver=1.14.2\"></script>\n<script id=\"elementor-frontend-js-before\">\nvar elementorFrontendConfig = {\"environmentMode\":{\"edit\":false,\"wpPreview\":false,\"isScriptDebug\":false},\"i18n\":{\"shareOnFacebook\":\"Share on Facebook\",\"shareOnX\":\"Share on X\",\"pinIt\":\"Pin it\",\"download\":\"Download\",\"downloadImage\":\"Download image\",\"fullscreen\":\"Fullscreen\",\"zoom\":\"Zoom\",\"share\":\"Share\",\"playVideo\":\"Play Video\",\"previous\":\"Previous\",\"next\":\"Next\",\"close\":\"Close\",\"a11yCarouselPrevSlideMessage\":\"Previous slide\",\"a11yCarouselNextSlideMessage\":\"Next slide\",\"a11yCarouselFirstSlideMessage\":\"This is the first slide\",\"a11yCarouselLastSlideMessage\":\"This is the last slide\",\"a11yCarouselPaginationBulletMessage\":\"Go to slide\"},\"is_rtl\":false,\"breakpoints\":{\"xs\":0,\"sm\":480,\"md\":768,\"lg\":1025,\"xl\":1440,\"xxl\":1600},\"responsive\":{\"breakpoints\":{\"mobile\":{\"label\":\"Mobile Portrait\",\"value\":767,\"default_value\":767,\"direction\":\"max\",\"is_enabled\":true},\"mobile_extra\":{\"label\":\"Mobile Landscape\",\"value\":880,\"default_value\":880,\"direction\":\"max\",\"is_enabled\":false},\"tablet\":{\"label\":\"Tablet Portrait\",\"value\":1024,\"default_value\":1024,\"direction\":\"max\",\"is_enabled\":true},\"tablet_extra\":{\"label\":\"Tablet Landscape\",\"value\":1200,\"default_value\":1200,\"direction\":\"max\",\"is_enabled\":false},\"laptop\":{\"label\":\"Laptop\",\"value\":1366,\"default_value\":1366,\"direction\":\"max\",\"is_enabled\":false},\"widescreen\":{\"label\":\"Widescreen\",\"value\":2400,\"default_value\":2400,\"direction\":\"min\",\"is_enabled\":false}},\"hasCustomBreakpoints\":false},\"version\":\"4.3.5\",\"is_static\":false,\"experimentalFeatures\":{\"e_font_icon_svg\":true,\"additional_custom_breakpoints\":true,\"container\":true,\"e_optimized_markup\":true,\"theme_builder_v2\":true,\"hello-theme-header-footer\":true,\"nested-elements\":true,\"import-export-customization\":true,\"e_pro_atomic_form\":true,\"e_pro_collection_loop\":true,\"mega-menu\":true},\"urls\":{\"assets\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/plugins\\/elementor\\/assets\\/\",\"ajaxurl\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-admin\\/admin-ajax.php\",\"uploadUrl\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/uploads\"},\"nonces\":{\"floatingButtonsClickTracking\":\"439bbde195\",\"atomicFormsSendForm\":\"2c1681823f\"},\"swiperClass\":\"swiper\",\"settings\":{\"page\":[],\"editorPreferences\":[]},\"kit\":{\"active_breakpoints\":[\"viewport_mobile\",\"viewport_tablet\"],\"global_image_lightbox\":\"yes\",\"lightbox_enable_counter\":\"yes\",\"lightbox_enable_fullscreen\":\"yes\",\"lightbox_enable_zoom\":\"yes\",\"lightbox_enable_share\":\"yes\",\"lightbox_title_src\":\"title\",\"lightbox_description_src\":\"description\",\"hello_header_logo_type\":\"logo\",\"hello_header_menu_layout\":\"horizontal\",\"hello_footer_logo_type\":\"logo\"},\"post\":{\"id\":102,\"title\":\"Home%20%7C%20Wentzville%20Parks%20Projects\",\"excerpt\":\"\",\"featuredImage\":false}};\n//# sourceURL=elementor-frontend-js-before\n</script>\n<script id=\"elementor-frontend-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.3.5\"></script><span id=\"elementor-device-mode\" class=\"elementor-screen-only\"></span>\n<script id=\"smartmenus-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.2.1\"></script>\n<script id=\"imagesloaded-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/imagesloaded.min.js?ver=5.0.0\"></script>\n<script id=\"swiper-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5\"></script>\n<script id=\"wp-hooks-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255\"></script>\n<script id=\"wp-i18n-js\" src=\"https://wentzvilleparksprojects.com/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216\"></script>\n<script id=\"wp-i18n-js-after\">\nwp.i18n.setLocaleData( { 'text direction\\u0004ltr': [ 'ltr' ] } );\n//# sourceURL=wp-i18n-js-after\n</script>\n<script id=\"elementor-pro-frontend-js-before\">\nvar ElementorProFrontendConfig = {\"ajaxurl\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-admin\\/admin-ajax.php\",\"nonce\":\"97a48f89f4\",\"urls\":{\"assets\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/plugins\\/elementor-pro\\/assets\\/\",\"rest\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-json\\/\"},\"settings\":{\"lazy_load_background_images\":true},\"popup\":{\"hasPopUps\":false},\"shareButtonsNetworks\":{\"facebook\":{\"title\":\"Facebook\",\"has_counter\":true},\"twitter\":{\"title\":\"Twitter\"},\"linkedin\":{\"title\":\"LinkedIn\",\"has_counter\":true},\"pinterest\":{\"title\":\"Pinterest\",\"has_counter\":true},\"reddit\":{\"title\":\"Reddit\",\"has_counter\":true},\"vk\":{\"title\":\"VK\",\"has_counter\":true},\"odnoklassniki\":{\"title\":\"OK\",\"has_counter\":true},\"tumblr\":{\"title\":\"Tumblr\"},\"digg\":{\"title\":\"Digg\"},\"skype\":{\"title\":\"Skype\"},\"stumbleupon\":{\"title\":\"StumbleUpon\",\"has_counter\":true},\"mix\":{\"title\":\"Mix\"},\"telegram\":{\"title\":\"Telegram\"},\"pocket\":{\"title\":\"Pocket\",\"has_counter\":true},\"xing\":{\"title\":\"XING\",\"has_counter\":true},\"whatsapp\":{\"title\":\"WhatsApp\"},\"email\":{\"title\":\"Email\"},\"print\":{\"title\":\"Print\"},\"x-twitter\":{\"title\":\"X\"},\"threads\":{\"title\":\"Threads\"}},\"facebook_sdk\":{\"lang\":\"en_US\",\"app_id\":\"\"},\"lottie\":{\"defaultAnimationUrl\":\"https:\\/\\/wentzvilleparksprojects.com\\/wp-content\\/plugins\\/elementor-pro\\/modules\\/lottie\\/assets\\/animations\\/default.json\"}};\n//# sourceURL=elementor-pro-frontend-js-before\n</script>\n<script id=\"elementor-pro-frontend-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=4.3.2\"></script>\n<script id=\"pro-elements-handlers-js\" src=\"https://wentzvilleparksprojects.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=4.3.2\"></script><svg style=\"display: none;\" class=\"e-font-icon-svg-symbols\"></svg>\n<script id=\"wp-emoji-settings\" type=\"application/json\">\n{\"baseUrl\":\"https://s.w.org/images/core/emoji/17.0.2/72x72/\",\"ext\":\".png\",\"svgUrl\":\"https://s.w.org/images/core/emoji/17.0.2/svg/\",\"svgExt\":\".svg\",\"source\":{\"concatemoji\":\"https://wentzvilleparksprojects.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.4\"}}\n</script>\n<script type=\"module\">\n/*! This file is auto-generated */\nvar e=\"script#wp-emoji-settings\",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error(\"Element missing: \"+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,\"wpEmojiSettingsSupports\"),o=[\"flag\",\"emoji\"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case\"flag\":return n(e,\"\\ud83c\\udff3\\ufe0f\\u200d\\u26a7\\ufe0f\",\"\\ud83c\\udff3\\ufe0f\\u200b\\u26a7\\ufe0f\")?!1:!n(e,\"\\ud83c\\udde8\\ud83c\\uddf6\",\"\\ud83c\\udde8\\u200b\\ud83c\\uddf6\")&&!n(e,\"\\ud83c\\udff4\\udb40\\udc67\\udb40\\udc62\\udb40\\udc65\\udb40\\udc6e\\udb40\\udc67\\udb40\\udc7f\",\"\\ud83c\\udff4\\u200b\\udb40\\udc67\\u200b\\udb40\\udc62\\u200b\\udb40\\udc65\\u200b\\udb40\\udc6e\\u200b\\udb40\\udc67\\u200b\\udb40\\udc7f\");case\"emoji\":return!r(e,\"\\ud83e\\u1fac8\")}return!1}function f(e,t,n,r){let a;const s=(a=\"undefined\"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement(\"canvas\")).getContext(\"2d\",{willReadFrequently:!0}),o=(s.textBaseline=\"top\",s.font=\"600 32px Arial\",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement(\"script\");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if(\"object\"==typeof e&&\"number\"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&\"object\"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if(\"undefined\"!=typeof Worker&&\"undefined\"!=typeof OffscreenCanvas&&\"undefined\"!=typeof URL&&URL.createObjectURL&&\"undefined\"!=typeof Blob)try{var e=\"postMessage(\"+f.toString()+\"(\"+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(\",\")+\"));\",r=new Blob([e],{type:\"text/javascript\"});const a=new Worker(URL.createObjectURL(r),{name:\"wpTestEmojiSupports\"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],\"flag\"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});\n//# sourceURL=https://wentzvilleparksprojects.com/wp-includes/js/wp-emoji-loader.min.js\n</script>\n\n\n\n</body></html>",
+        "outcomeCount": 472,
+        "darkModeScanned": false,
+        "requestedColorScheme": "both",
+        "scanContext": {
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "viewportPreset": "desktop",
+          "colorScheme": "both",
+          "browser": "chromium"
+        },
+        "mediaQuerySupport": {
+          "darkMode": false,
+          "reducedMotion": true,
+          "highContrast": false,
+          "forcedColors": false,
+          "reducedTransparency": false
+        },
+        "snapshotFallbackUsed": false,
+        "timings": {
+          "navigationMs": 3727,
+          "settleDelayMs": 2000,
+          "auditMs": 1650,
+          "totalMs": 6472,
+          "loadedFromSnapshot": false
+        },
+        "duplicateFailedCount": 0,
+        "uniqueFailedCount": 4
+      },
+      "equalAccess": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 187,
+          "failed": 2,
+          "cantTell": 40,
+          "inapplicable": 1
+        },
+        "failedRules": [
+          "QW-ACT-R76"
+        ],
+        "passedRules": [
+          "QW-ACT-R1",
+          "QW-ACT-R12",
+          "QW-ACT-R13",
+          "QW-ACT-R17",
+          "QW-ACT-R2",
+          "QW-ACT-R20",
+          "QW-ACT-R25",
+          "QW-ACT-R27",
+          "QW-ACT-R28",
+          "QW-ACT-R33",
+          "QW-ACT-R34",
+          "QW-ACT-R35",
+          "QW-ACT-R37",
+          "QW-ACT-R38",
+          "QW-ACT-R44",
+          "QW-ACT-R48",
+          "QW-ACT-R5",
+          "QW-ACT-R65",
+          "QW-ACT-R76",
+          "QW-ACT-R9"
+        ],
+        "failures": [
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "926908981c3a",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-82fca3fc",
+            "a11yPatternFingerprint": "1607511ee4da209d8823595dabf5978580b3f202747bb04dd75418520a7fcfbe",
+            "a11yPatternDisplayId": "A11Y-PAT-1607511EE4DA",
+            "a11yOccurrenceFingerprint": "2427feca7c778e4d866d3c711f9e6736c6b0333cf29510525ebe78f148410be2",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-2427FECA7C77"
+          },
+          {
+            "rule": "QW-ACT-R76",
+            "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+            "description": "Element has contrast ratio lower than minimum.",
+            "xpath": null,
+            "selector": null,
+            "html": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "isDuplicate": true,
+            "duplicateOf": "qualweb"
+          }
+        ],
+        "outcomeCount": 230,
+        "duplicateFailedCount": 1,
+        "uniqueFailedCount": 1,
+        "crossEngineOverlapCount": 0
+      },
+      "reflowRisk": {
+        "executed": true,
+        "result": "passed",
+        "description": "No horizontal overflow detected at 320px width",
+        "overflowAmountPx": 0,
+        "helpUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+        "error": null
+      },
+      "semantica11y": {
+        "executed": true,
+        "summary": {
+          "total": 26,
+          "errors": 2,
+          "warnings": 24,
+          "suggestions": 0
+        },
+        "issues": [
+          {
+            "severity": "warning",
+            "rule": "aria-landmarks",
+            "element": "<div class=\"n2-section-smartslider fitvidsignore n2_clear\" role=\"region\" tabindex=\"0\" aria-label=\"Homepage Slider\">",
+            "message": "Element appears to be used for a page section",
+            "suggestion": "Consider using <section> semantic element instead",
+            "line": 0,
+            "fingerprint": "0ac3d234883d",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-49872c57",
+            "a11yPatternFingerprint": "0171c6ee24d4d442d5f1e324309f3908f21b1b68235c6a19aa68336b94c22a88",
+            "a11yPatternDisplayId": "A11Y-PAT-0171C6EE24D4",
+            "a11yOccurrenceFingerprint": "f0164dfd43dadf065938e56629bfdcd0d9fa158880093a5b6de768cddb79c3bb",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F0164DFD43DA"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-actions",
+            "element": "<div class=\"elementor-menu-toggle\" role=\"button\" tabindex=\"0\" aria-label=\"Menu Toggle\" aria-expanded=\"false\">",
+            "message": "Element uses ARIA button role instead of a semantic element",
+            "suggestion": "Consider using <button> element instead",
+            "line": 0,
+            "fingerprint": "fe7064dc8538",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-f0c63cdd",
+            "a11yPatternFingerprint": "b31288cf3ded983897190e0b5d32275434fe0daca513bfca50c73c98e2ac5b5f",
+            "a11yPatternDisplayId": "A11Y-PAT-B31288CF3DED",
+            "a11yOccurrenceFingerprint": "9d557971fcd884dc5cfbbb7828a5aca9c433c67f20f9c51c8ba1f8c5e457b100",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-9D557971FCD8"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-actions",
+            "element": "<div id=\"n2-ss-2-arrow-previous\" class=\"n2-ss-widget n2-style-8cabe8979b5f3344267c55612a87d82a-heading nextend-arrow n2-ow-all nextend-arrow-previous  nextend-arrow-animated-fade\" role=\"button\" tabindex=\"0\" aria-label=\"previous arrow\">",
+            "message": "Element uses ARIA button role instead of a semantic element",
+            "suggestion": "Consider using <button> element instead",
+            "line": 0,
+            "fingerprint": "a0b8b22be691",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-fb308aa2",
+            "a11yPatternFingerprint": "a0997a01f983053af0177fc7f0f0984b7eb5f36605681dd6e0c638b3201d739b",
+            "a11yPatternDisplayId": "A11Y-PAT-A0997A01F983",
+            "a11yOccurrenceFingerprint": "f09f943f624b2cc7c7271f265728bb3e7a988c828eaead3df2f83bfca585f8b3",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F09F943F624B"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-actions",
+            "element": "<div id=\"n2-ss-2-arrow-next\" class=\"n2-ss-widget n2-style-8cabe8979b5f3344267c55612a87d82a-heading nextend-arrow n2-ow-all nextend-arrow-next  nextend-arrow-animated-fade\" role=\"button\" tabindex=\"0\" aria-label=\"next arrow\">",
+            "message": "Element uses ARIA button role instead of a semantic element",
+            "suggestion": "Consider using <button> element instead",
+            "line": 0,
+            "fingerprint": "e12800f25f60",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-0d64d1c2",
+            "a11yPatternFingerprint": "13a1504cb1a7d9aeeb949a1e61a284a7f1890a04c1548a5f3058a25d6ea29f23",
+            "a11yPatternDisplayId": "A11Y-PAT-13A1504CB1A7",
+            "a11yOccurrenceFingerprint": "f7b1d1f0b7119c548760abd6fdb218559c15f88f414703c85863c690f5229e93",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F7B1D1F0B711"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-actions",
+            "element": "<div class=\"n2-bullet n2-style-e15f6252cd14d358fa6d6935369eea71-dot n2-active\" role=\"button\" tabindex=\"0\" aria-label=\"Slide 1\">",
+            "message": "Element uses ARIA button role instead of a semantic element",
+            "suggestion": "Consider using <button> element instead",
+            "line": 0,
+            "fingerprint": "b91bc9517ceb",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-6deb01d6",
+            "a11yPatternFingerprint": "ae4f275a2a1f59c7352dea2f624eda9135e04d555533a45bcfd911642bce0826",
+            "a11yPatternDisplayId": "A11Y-PAT-AE4F275A2A1F",
+            "a11yOccurrenceFingerprint": "77d15634196ca68a440bff2fc3cb8d1489f3b84241dd62ded5d7e9bcf4bd5b80",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-77D15634196C"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-actions",
+            "element": "<div class=\"n2-bullet n2-style-e15f6252cd14d358fa6d6935369eea71-dot\" role=\"button\" tabindex=\"0\" aria-label=\"Slide 1\">",
+            "message": "Element uses ARIA button role instead of a semantic element",
+            "suggestion": "Consider using <button> element instead",
+            "line": 0,
+            "fingerprint": "4fb65bcefe82",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-be58f863",
+            "a11yPatternFingerprint": "a496d840ec024fefafffba8a9c6d9538d9d301d3cd3ffffc66120157a51b7844",
+            "a11yPatternDisplayId": "A11Y-PAT-A496D840EC02",
+            "a11yOccurrenceFingerprint": "fe64d1c09434981adc64f85feb8740451c7155cc53b6ab10f2196755ec9fb1f1",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-FE64D1C09434"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<a id=\"sm-1793376546633944-1\" class=\"elementor-item has-submenu\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "ec7122c0859c",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-eb9fa0da",
+            "a11yPatternFingerprint": "464e19fd44c2571584f03b4528e5c22a94f7128b6a3d5393b1777e4e0d4672e4",
+            "a11yPatternDisplayId": "A11Y-PAT-464E19FD44C2",
+            "a11yOccurrenceFingerprint": "faa1f3bba0ba7cfef085a285691fd0be32885c52c029b723ad83c8598880bf94",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-FAA1F3BBA0BA"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<ul id=\"sm-1793376546633944-2\" class=\"sub-menu elementor-nav-menu--dropdown\" role=\"group\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "4e30037218df",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-ca0f20ce",
+            "a11yPatternFingerprint": "75f172c3b333add76182c9d5f770df094ee3d274a4233057d0c4b64d85adf502",
+            "a11yPatternDisplayId": "A11Y-PAT-75F172C3B333",
+            "a11yOccurrenceFingerprint": "352327f1f9eee713003c568eb141f30a3346c4b19575e026c528d0839086ac95",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-352327F1F9EE"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<a id=\"sm-1793376546633944-3\" class=\"elementor-sub-item has-submenu\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "004198de94f6",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-a44e2224",
+            "a11yPatternFingerprint": "b25e0e562df68eb75c34aa6851caff26785b7d1240eb122afaecc20e638b586f",
+            "a11yPatternDisplayId": "A11Y-PAT-B25E0E562DF6",
+            "a11yOccurrenceFingerprint": "2f8e97513502540414d79dc029c6385e418a58480626cd369e7aaa6a653d5085",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-2F8E97513502"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<ul id=\"sm-1793376546633944-4\" class=\"sub-menu elementor-nav-menu--dropdown\" role=\"group\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "ec82d7d16f00",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-ceca75d0",
+            "a11yPatternFingerprint": "c1f9b4d27011d7fb56e3941b606bb4da23e16772e168ed45e9be2af0797b3cda",
+            "a11yPatternDisplayId": "A11Y-PAT-C1F9B4D27011",
+            "a11yOccurrenceFingerprint": "750b0696609aa9a91e12665e5d9fe63724b833267c3d5f717ff51e143ca5be55",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-750B0696609A"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<div class=\"elementor-menu-toggle\" role=\"button\" tabindex=\"0\" aria-label=\"Menu Toggle\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "39e505819021",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-92d1bbad",
+            "a11yPatternFingerprint": "189899ebc75928910b6c202ddd5b9a9dbf683c0daa489096aaf018acf5f845fb",
+            "a11yPatternDisplayId": "A11Y-PAT-189899EBC759",
+            "a11yOccurrenceFingerprint": "47ad5d125b1c9a067c79f00ff675142f86197f6bb7c7e4448a6084dda17578d0",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-47AD5D125B1C"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<a id=\"sm-17933765466350188-1\" class=\"elementor-item has-submenu\" tabindex=\"-1\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "b6a017bcc507",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-b6f0b55c",
+            "a11yPatternFingerprint": "817a565b55e5e34ff0b9d7476a62a729eeeb53a301e6f7554ca5099d622b37d7",
+            "a11yPatternDisplayId": "A11Y-PAT-817A565B55E5",
+            "a11yOccurrenceFingerprint": "9328f4af41c1d9c9c8f950a61708ec54dd7c6fffa81dadc6d975b2ba0a55a9db",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-9328F4AF41C1"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<ul id=\"sm-17933765466350188-2\" class=\"sub-menu elementor-nav-menu--dropdown\" role=\"group\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "da256c889888",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-a02c8740",
+            "a11yPatternFingerprint": "023d10a971823850b527bd95302eddbda808a0f0f88684821f2158e01e553d68",
+            "a11yPatternDisplayId": "A11Y-PAT-023D10A97182",
+            "a11yOccurrenceFingerprint": "73d2fdc3bbff5c8a4d9000edb0d02674d1e0b6de91a25ee91cbcda617e608cf4",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-73D2FDC3BBFF"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<a id=\"sm-17933765466350188-3\" class=\"elementor-sub-item has-submenu\" tabindex=\"-1\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "22c5f7001084",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-8094928e",
+            "a11yPatternFingerprint": "9a89f5153aa9e516bb30125f2c900928934513991280ad430fde9148609d94f3",
+            "a11yPatternDisplayId": "A11Y-PAT-9A89F5153AA9",
+            "a11yOccurrenceFingerprint": "fcd07897e28f6e77e0e5e25958b8352e5fc599666e3ff1b23f18bd813d13c300",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-FCD07897E28F"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-expanded",
+            "element": "<ul id=\"sm-17933765466350188-4\" class=\"sub-menu elementor-nav-menu--dropdown\" role=\"group\" aria-expanded=\"false\">",
+            "message": "Element uses aria-expanded=\"false\" for disclosure state",
+            "suggestion": "Consider using native <details> and <summary> elements for expandable content",
+            "line": 0,
+            "fingerprint": "10f348d7c1c9",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-f51dfa8d",
+            "a11yPatternFingerprint": "ccdd6361c9f1209c6b66960172a6b392e6f2ef3ebbd189a71dccf52c6a8e7635",
+            "a11yPatternDisplayId": "A11Y-PAT-CCDD6361C9F1",
+            "a11yOccurrenceFingerprint": "3bafdfbe2b552679f38f9306fe5a3e0a1e224b2eae43a3d757466b06d01b075d",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-3BAFDFBE2B55"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<div class=\"elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid elementor-has-item-ratio\" role=\"list\">",
+            "message": "Element uses ARIA list role instead of a semantic element",
+            "suggestion": "Consider using <ul> or <ol> element instead",
+            "line": 0,
+            "fingerprint": "99539972028c",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-78836403",
+            "a11yPatternFingerprint": "6b3dcf9ee7e013a7ea5b0e8bd86871988a79a7ed121c24c353d2d24498f1ad2b",
+            "a11yPatternDisplayId": "A11Y-PAT-6B3DCF9EE7E0",
+            "a11yOccurrenceFingerprint": "34bb5e00f441d50d848d7e6b9c7f35fb73c1da2f802b5874bbb106a8bf3669f6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-34BB5E00F441"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<article class=\"elementor-post elementor-grid-item post-1962 post type-post status-publish format-standard hentry category-uncategorized\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "9b1417be5833",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-22b6cf12",
+            "a11yPatternFingerprint": "8856ad09cede11d72d6fbb32b3b7f8ca3c9ea5e320701873daf143582bd6e676",
+            "a11yPatternDisplayId": "A11Y-PAT-8856AD09CEDE",
+            "a11yOccurrenceFingerprint": "7d0868b19f9ef0589be8e1fb87185da97886262002d50de318f1381be2aa8224",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-7D0868B19F9E"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<article class=\"elementor-post elementor-grid-item post-1702 post type-post status-publish format-standard hentry category-uncategorized\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "a429cd6db295",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-956a1f52",
+            "a11yPatternFingerprint": "6e636ac8865b5ef969823192d92e3755cdc22acc5c02ef79ea493b19d460a065",
+            "a11yPatternDisplayId": "A11Y-PAT-6E636AC8865B",
+            "a11yOccurrenceFingerprint": "375dc23cdea7bbf1aec2da7609d905cb4433103d42802cf836bc49914774c513",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-375DC23CDEA7"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<div class=\"elementor-social-icons-wrapper elementor-grid\" role=\"list\">",
+            "message": "Element uses ARIA list role instead of a semantic element",
+            "suggestion": "Consider using <ul> or <ol> element instead",
+            "line": 0,
+            "fingerprint": "b87933f553e0",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-231212cd",
+            "a11yPatternFingerprint": "53a1c8226490d1d2344850bc0d68aadb18d5a56a372722611394679043365b64",
+            "a11yPatternDisplayId": "A11Y-PAT-53A1C8226490",
+            "a11yOccurrenceFingerprint": "77323ffe039e2a3472591e7f90310a6cc9c348d81462d24775fde234b77c5919",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-77323FFE039E"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<span class=\"elementor-grid-item\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "05d1571a4048",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-75a88442",
+            "a11yPatternFingerprint": "ba5ae868c9daf302b6a0b553678890426b716992959b4799344fd5e7b99f7f59",
+            "a11yPatternDisplayId": "A11Y-PAT-BA5AE868C9DA",
+            "a11yOccurrenceFingerprint": "bf6c81fbea42ed4e0631bae661058b6d9a032b56c0c7e8352b3ef76b0f45c8c6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-BF6C81FBEA42"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<span class=\"elementor-grid-item\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "05d1571a4048",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-75a88442",
+            "a11yPatternFingerprint": "ba5ae868c9daf302b6a0b553678890426b716992959b4799344fd5e7b99f7f59",
+            "a11yPatternDisplayId": "A11Y-PAT-BA5AE868C9DA",
+            "a11yOccurrenceFingerprint": "bf6c81fbea42ed4e0631bae661058b6d9a032b56c0c7e8352b3ef76b0f45c8c6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-BF6C81FBEA42"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<span class=\"elementor-grid-item\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "05d1571a4048",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-75a88442",
+            "a11yPatternFingerprint": "ba5ae868c9daf302b6a0b553678890426b716992959b4799344fd5e7b99f7f59",
+            "a11yPatternDisplayId": "A11Y-PAT-BA5AE868C9DA",
+            "a11yOccurrenceFingerprint": "bf6c81fbea42ed4e0631bae661058b6d9a032b56c0c7e8352b3ef76b0f45c8c6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-BF6C81FBEA42"
+          },
+          {
+            "severity": "warning",
+            "rule": "aria-structure",
+            "element": "<span class=\"elementor-grid-item\" role=\"listitem\">",
+            "message": "Element uses ARIA listitem role instead of a semantic element",
+            "suggestion": "Consider using <li> element instead",
+            "line": 0,
+            "fingerprint": "05d1571a4048",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-75a88442",
+            "a11yPatternFingerprint": "ba5ae868c9daf302b6a0b553678890426b716992959b4799344fd5e7b99f7f59",
+            "a11yPatternDisplayId": "A11Y-PAT-BA5AE868C9DA",
+            "a11yOccurrenceFingerprint": "bf6c81fbea42ed4e0631bae661058b6d9a032b56c0c7e8352b3ef76b0f45c8c6",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-BF6C81FBEA42"
+          },
+          {
+            "severity": "warning",
+            "rule": "missing-role-action",
+            "element": "<div class=\"n2-section-smartslider fitvidsignore n2_clear\" role=\"region\" tabindex=\"0\" aria-label=\"Homepage Slider\">",
+            "message": "Focusable element does not have an action role",
+            "suggestion": "Use a native action element such as <button> or <a>, or add an appropriate action role",
+            "line": 0,
+            "fingerprint": "5392f3feb44f",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-1131feb6",
+            "a11yPatternFingerprint": "c1050f78822b92a10ec6b113b4c6d87ce71fe95a21dd7030c1c38f5cdef17cf4",
+            "a11yPatternDisplayId": "A11Y-PAT-C1050F78822B",
+            "a11yOccurrenceFingerprint": "0caf733412ac189bd426e2213d4dde7c2086ff13433edbc516668bed556a07dd",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-0CAF733412AC"
+          },
+          {
+            "severity": "error",
+            "rule": "native-label",
+            "element": "<a class=\"elementor-post__read-more\" tabindex=\"-1\" aria-label=\"Read more about Final Rotary Park Master Plan Presented\">",
+            "message": "aria-label does not match native label text",
+            "suggestion": "Update aria-label to match the visible label, or remove it and rely on native text",
+            "line": 0,
+            "fingerprint": "8ed58bc7e1c4",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-6c1bed5a",
+            "a11yPatternFingerprint": "594ca1473a2e6518ff3469a28a566c987e0a9cf38a629e8b7c6d1082968ab239",
+            "a11yPatternDisplayId": "A11Y-PAT-594CA1473A2E",
+            "a11yOccurrenceFingerprint": "82f183486e9061653be1d2993fd28e4563eaa2c3414a12f6f9290f7088d91e71",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-82F183486E90"
+          },
+          {
+            "severity": "error",
+            "rule": "native-label",
+            "element": "<a class=\"elementor-post__read-more\" tabindex=\"-1\" aria-label=\"Read more about Big Screen, Big Plans for Rotary Park\">",
+            "message": "aria-label does not match native label text",
+            "suggestion": "Update aria-label to match the visible label, or remove it and rely on native text",
+            "line": 0,
+            "fingerprint": "47ba92d99830",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-1e3e1a1d",
+            "a11yPatternFingerprint": "14d6de453ad71b07ca0503c7a7b2a8c931e26b9c40c1c1a480647fffee8e93fb",
+            "a11yPatternDisplayId": "A11Y-PAT-14D6DE453AD7",
+            "a11yOccurrenceFingerprint": "041d600a0eabe99aef298d17a58d29de7ba7f1d48b08b48f30fd26ab84c14dda",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-041D600A0EAB"
+          }
+        ],
+        "error": null
+      },
+      "duplicateFindingCount": 1,
+      "timings": {
+        "fetchMs": 1036,
+        "pageNavigationMs": 3727,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 15342,
+        "scannerMs": {
+          "axe": 6472,
+          "accesslint": null
+        }
+      }
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "landmark-contentinfo-is-top-level",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-contentinfo-is-top-level?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://wentzvilleparksprojects.com/",
+            "html": "<footer class=\"elementor-element elementor-element-5fbd199b e-flex e-con-boxed e-con e-parent\" data-id=\"5fbd199b\" data-element_type=\"container\" data-e-type=\"container\" data-settings=\"{\"background_background\":\"classic\"}\">",
+            "xpath": ".elementor-element-5fbd199b",
+            "message": "Contentinfo landmark should not be contained in another landmark",
+            "fixSummary": "Fix any of the following:\n  The contentinfo landmark is contained in another landmark.",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "2daa4182038d",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-710cf8f2",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "landmark-no-duplicate-contentinfo",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer",
+            "UX Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": "best-practice",
+          "description": "Ensures the page has only one contentinfo landmark (<footer> at top level). Duplicate contentinfo landmarks make landmark navigation unpredictable."
+        },
+        "wcag": {
+          "scs": [],
+          "level": "best-practice"
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-no-duplicate-contentinfo?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://wentzvilleparksprojects.com/",
+            "html": "<footer data-elementor-type=\"footer\" data-elementor-id=\"376\" class=\"elementor elementor-376 elementor-location-footer\" data-elementor-post-type=\"elementor_library\">",
+            "xpath": ".elementor-376",
+            "message": "Document should not have more than one contentinfo landmark",
+            "fixSummary": "Fix any of the following:\n  Document has more than one contentinfo landmark",
+            "relatedPaths": [
+              ".elementor-element-5fbd199b"
+            ],
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "20a7a07480e5",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-80f56baa",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "landmark-unique",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-unique?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://wentzvilleparksprojects.com/",
+            "html": "<footer data-elementor-type=\"footer\" data-elementor-id=\"376\" class=\"elementor elementor-376 elementor-location-footer\" data-elementor-post-type=\"elementor_library\">",
+            "xpath": ".elementor-376",
+            "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+            "fixSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+            "relatedPaths": [
+              ".elementor-element-5fbd199b"
+            ],
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "670ef836e2e7",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-86967afe",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "page-has-heading-one",
+        "engine": "axe",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=playwright",
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://wentzvilleparksprojects.com/",
+            "html": "<html lang=\"en-US\">",
+            "xpath": "html",
+            "message": "Page should contain a level-one heading",
+            "fixSummary": "Fix all of the following:\n  Page must have a level-one heading",
+            "relatedPaths": null,
+            "colorScheme": "light",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "877cb5cf2b59",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-19a7d2c7",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "QW-ACT-R76",
+        "engine": "qualweb",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+        "ruleTitle": "Element has contrast ratio lower than minimum.",
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://wentzvilleparksprojects.com/",
+            "html": null,
+            "xpath": null,
+            "message": "Element has contrast ratio lower than minimum.",
+            "viewport": "desktop",
+            "browser": "chromium",
+            "fingerprint": "926908981c3a",
+            "firstSeenAt": "2026-10-30T16:09:19.499Z",
+            "patternId": "A11Y-82fca3fc",
+            "corroboratedBy": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 1,
+      "Visual Designer": 0,
+      "Content Author": 0,
+      "Front-End Developer": 5
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 0,
+      "Moderate": 5,
+      "Minor": 0
+    }
+  },
+  "changeTracking": {
+    "newCount": 28,
+    "notObservedCount": 0,
+    "newIssues": [
+      {
+        "fingerprint": "2daa4182038d",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:landmark-contentinfo-is-top-level|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "20a7a07480e5",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:landmark-no-duplicate-contentinfo|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "670ef836e2e7",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:landmark-unique|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "877cb5cf2b59",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:page-has-heading-one|light",
+        "engine": "axe"
+      },
+      {
+        "fingerprint": "926908981c3a",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:qw-act-r76|light",
+        "engine": "qualweb"
+      },
+      {
+        "fingerprint": "0ac3d234883d",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-landmarks|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "fe7064dc8538",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-actions|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "a0b8b22be691",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-actions|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "e12800f25f60",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-actions|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "b91bc9517ceb",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-actions|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "4fb65bcefe82",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-actions|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "ec7122c0859c",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "4e30037218df",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "004198de94f6",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "ec82d7d16f00",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "39e505819021",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "b6a017bcc507",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "da256c889888",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "22c5f7001084",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "10f348d7c1c9",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-expanded|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "99539972028c",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-structure|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "9b1417be5833",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-structure|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "a429cd6db295",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-structure|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "b87933f553e0",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-structure|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "05d1571a4048",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:aria-structure|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "5392f3feb44f",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:missing-role-action|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "8ed58bc7e1c4",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:native-label|light",
+        "engine": "semantica11y"
+      },
+      {
+        "fingerprint": "47ba92d99830",
+        "url": "https://wentzvilleparksprojects.com/",
+        "ruleKey": "rule:native-label|light",
+        "engine": "semantica11y"
+      }
+    ],
+    "notObservedIssues": []
+  }
+}
