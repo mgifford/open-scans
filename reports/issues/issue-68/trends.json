@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-09-26T05:40:58.757Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 132,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 238,
-          "combined": 370,
-          "scannedAt": "2026-09-26T05:40:58.757Z",
-          "scannedCount": 68
-        }
-      },
-      "to": {
-        "scannedAt": "2026-10-03T06:01:28.185Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 129,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 226,
-          "combined": 355,
-          "scannedAt": "2026-10-03T06:01:28.185Z",
-          "scannedCount": 66
-        }
-      },
-      "change": -15,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 0,
-        "axe": -3,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": -12
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-10-03T06:01:28.185Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": 477,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-10-24T05:18:37.598Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 170,
+          "equalAccess": 0,
+          "qualweb": 477,
+          "accesslint": 0,
+          "combined": 647,
+          "scannedAt": "2026-10-24T05:18:37.598Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-10-31T06:15:50.629Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 170,
+          "equalAccess": 7339,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7509,
+          "scannedAt": "2026-10-31T06:15:50.629Z",
+          "scannedCount": 100
+        }
+      },
+      "change": 6862,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 7339,
+        "qualweb": -477,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-10-17T05:08:14.819Z",
-      "totals": {
-        "alfa": 2059,
-        "axe": 178,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 2237,
-        "scannedAt": "2026-10-17T05:08:14.819Z",
-        "scannedCount": 98
-      }
-    },
-    "to": {
       "scannedAt": "2026-10-24T05:18:37.598Z",
       "totals": {
         "alfa": 0,
@@ -177,38 +164,51 @@
         "scannedCount": 100
       }
     },
-    "change": -1590,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-10-31T06:15:50.629Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 170,
+        "equalAccess": 7339,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 7509,
+        "scannedAt": "2026-10-31T06:15:50.629Z",
+        "scannedCount": 100
+      }
+    },
+    "change": 6862,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": -2059,
-      "axe": -8,
-      "equalAccess": 0,
-      "qualweb": 477,
+      "alfa": 0,
+      "axe": 0,
+      "equalAccess": 7339,
+      "qualweb": -477,
       "accesslint": 0
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 2,
-  "worseningCount": 2,
+  "overallTrend": "worsening",
+  "improvingCount": 1,
+  "worseningCount": 3,
   "latestTotals": {
     "alfa": 0,
     "axe": 170,
-    "equalAccess": 0,
-    "qualweb": 477,
+    "equalAccess": 7339,
+    "qualweb": 0,
     "accesslint": 0,
-    "combined": 647,
-    "scannedAt": "2026-10-24T05:18:37.598Z",
+    "combined": 7509,
+    "scannedAt": "2026-10-31T06:15:50.629Z",
     "scannedCount": 100
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 132,
+    "axe": 129,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 238,
-    "combined": 370,
-    "scannedAt": "2026-09-26T05:40:58.757Z",
-    "scannedCount": 68
+    "accesslint": 226,
+    "combined": 355,
+    "scannedAt": "2026-10-03T06:01:28.185Z",
+    "scannedCount": 66
   },
   "latestSystemicPatterns": [
     {
