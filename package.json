@@ -29,7 +29,7 @@
   "dependencies": {
     "@accesslint/core": "^0.17.0",
     "@axe-core/playwright": "^4.14.0",
-    "@cucumber/cucumber": "^12.9.0",
+    "@cucumber/cucumber": "^13.3.0",
     "@siteimprove/alfa-cli": "^0.84.2",
     "@siteimprove/alfa-formatter-earl": "^0.84.2",
     "@siteimprove/alfa-formatter-json": "^0.84.2",
