@@ -70,16 +70,22 @@ export function buildActRuleIndex() {
     }
   }
 
-  const qualwebReadme = readFileSync(QUALWEB_README_PATH, "utf8");
-  const qualwebMappings = parseQualWebMappings(qualwebReadme);
-  for (const [ruleId, actRuleIds] of qualwebMappings.entries()) {
-    const key = normalizeRuleKey("qualweb", ruleId);
-    if (!index.has(key)) {
-      index.set(key, new Set());
+  try {
+    const qualwebReadme = readFileSync(QUALWEB_README_PATH, "utf8");
+    const qualwebMappings = parseQualWebMappings(qualwebReadme);
+    for (const [ruleId, actRuleIds] of qualwebMappings.entries()) {
+      const key = normalizeRuleKey("qualweb", ruleId);
+      if (!index.has(key)) {
+        index.set(key, new Set());
+      }
+      for (const actRuleId of actRuleIds) {
+        index.get(key).add(actRuleId);
+      }
     }
-    for (const actRuleId of actRuleIds) {
-      index.get(key).add(actRuleId);
-    }
+  } catch {
+    // QualWeb is intentionally no longer used for active scans, and the package
+    // may be absent in a hardened dependency set. Keep the index working for
+    // legacy or cached scan results without crashing the report pipeline.
   }
 
   cachedRuleIndex = index;
