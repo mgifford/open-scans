@@ -191,22 +191,22 @@ describe("Dual-Scanner Integration Tests", () => {
     assert.strictEqual(axeTotals.inapplicable, 14);
   });
 
-  it("should determine all scanners run when 'all' is specified", () => {
+  it("should determine the supported scanners run when 'all' is specified", () => {
     const result = determineScannersToRun(["all"]);
     assert.strictEqual(result.runAxe, true);
     assert.strictEqual(result.runAlfa, true);
     assert.strictEqual(result.runEqualAccess, true);
     assert.strictEqual(result.runAccesslint, true);
-    assert.strictEqual(result.runQualWeb, true);
+    assert.strictEqual(result.runQualWeb, false);
   });
 
-  it("should determine all scanners run by default when no engines specified", () => {
+  it("should determine the supported scanners run by default when no engines specified", () => {
     const result = determineScannersToRun([]);
     assert.strictEqual(result.runAxe, true);
     assert.strictEqual(result.runAlfa, true);
     assert.strictEqual(result.runEqualAccess, true);
     assert.strictEqual(result.runAccesslint, true);
-    assert.strictEqual(result.runQualWeb, true);
+    assert.strictEqual(result.runQualWeb, false);
   });
 
   it("should determine only axe runs when 'axe' is specified", () => {
@@ -245,12 +245,12 @@ describe("Dual-Scanner Integration Tests", () => {
     assert.strictEqual(result.runQualWeb, false);
   });
 
-  it("should determine only qualweb runs when 'qualweb' is specified", () => {
+  it("should ignore qualweb requests because the engine is no longer supported", () => {
     const result = determineScannersToRun(["qualweb"]);
     assert.strictEqual(result.runAxe, true); // axe always runs
     assert.strictEqual(result.runAlfa, false);
     assert.strictEqual(result.runEqualAccess, false);
     assert.strictEqual(result.runAccesslint, false);
-    assert.strictEqual(result.runQualWeb, true);
+    assert.strictEqual(result.runQualWeb, false);
   });
 });

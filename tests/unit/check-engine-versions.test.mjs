@@ -32,15 +32,10 @@ test("getDeclaredRange returns null for a package not in package.json", () => {
   assert.strictEqual(getDeclaredRange("not-a-real-package-xyz"), null);
 });
 
-test("ENGINE_PACKAGES lists all accessibility scanning engines used by run-scan.mjs", () => {
+test("ENGINE_PACKAGES lists the supported accessibility scanning engines used by run-scan.mjs", () => {
   assert.ok(ENGINE_PACKAGES.includes("@siteimprove/alfa-cli"));
   assert.ok(ENGINE_PACKAGES.includes("@axe-core/playwright"));
   assert.ok(ENGINE_PACKAGES.includes("accessibility-checker"));
   assert.ok(ENGINE_PACKAGES.includes("@accesslint/core"));
-  assert.ok(ENGINE_PACKAGES.includes("@qualweb/core"));
-});
-
-test("package.json declares @qualweb/util required by @qualweb/core at runtime", () => {
-  const range = getDeclaredRange("@qualweb/util");
-  assert.ok(range, "Expected @qualweb/util in package.json dependencies");
+  assert.ok(!ENGINE_PACKAGES.includes("@qualweb/core"), "QualWeb is intentionally no longer supported");
 });

@@ -14,10 +14,9 @@ test("loadActMapping exposes the expected overlap counts", () => {
 test("getActRuleIds resolves shared axe and alfa mappings", () => {
   assert.deepEqual(getActRuleIds("axe", "image-alt"), ["23a2a8"]);
   assert.deepEqual(getActRuleIds("alfa", "https://alfa.siteimprove.com/rules/sia-r2"), ["23a2a8"]);
-  assert.deepEqual(getActRuleIds("qualweb", "QW-ACT-R17"), ["23a2a8"]);
 });
 
-test("collectActConsensusOverlaps finds the same ACT rule for axe and QualWeb", () => {
+test("collectActConsensusOverlaps finds the same ACT rule for axe and ALFA", () => {
   const summary = [
     {
       finalUrl: "https://example.com/page",
@@ -33,18 +32,18 @@ test("collectActConsensusOverlaps finds the same ACT rule for axe and QualWeb", 
         ]
       },
       alfa: {
-        failures: []
-      },
-      qualweb: {
         failures: [
           {
-            rule: "QW-ACT-R17",
+            rule: "https://alfa.siteimprove.com/rules/sia-r2",
             html: "<img src=\"logo.png\">",
             xpath: "img.logo",
             message: "Image has non-empty accessible name",
             isDuplicate: false
           }
         ]
+      },
+      qualweb: {
+        failures: []
       }
     }
   ];
@@ -52,7 +51,7 @@ test("collectActConsensusOverlaps finds the same ACT rule for axe and QualWeb", 
   const overlap = collectActConsensusOverlaps(summary);
   assert.equal(overlap.overlapEntryCount, 1);
   assert.equal(overlap.overlapEntries[0].actRuleId, "23a2a8");
-  assert.deepEqual(overlap.overlapEntries[0].scanners.sort(), ["axe", "qualweb"]);
+  assert.deepEqual(overlap.overlapEntries[0].scanners.sort(), ["alfa", "axe"]);
 });
 
 test("buildActRuleIndex caches a rule lookup table", () => {

@@ -36,18 +36,19 @@ export function determineScannersToRun(engines) {
       runAlfa: true,
       runEqualAccess: true,
       runAccesslint: true,
-      runQualWeb: true
+      runQualWeb: false
     };
   }
 
-  // Map engine names to scanner flags
-  // axe always runs regardless of what was specified
+  // Map engine names to scanner flags. QualWeb was removed from the supported
+  // engine set because the upstream package chain has recurring audit issues.
+  // axe always runs regardless of what was specified.
   return {
     runAxe: true,
     runAlfa: engines.includes("alfa"),
     runEqualAccess: engines.includes("equalaccess"),
     runAccesslint: engines.includes("accesslint"),
-    runQualWeb: engines.includes("qualweb")
+    runQualWeb: false
   };
 }
 

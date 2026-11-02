@@ -154,7 +154,7 @@ test("parseScanIssue extracts ACCESSLINT engine from title", () => {
   assert.equal(result.value.scanTitle, "Validation");
 });
 
-test("parseScanIssue extracts QUALWEB engine from title", () => {
+test("parseScanIssue ignores unsupported QUALWEB engine values", () => {
   const payload = {
     issue: {
       number: 105,
@@ -168,7 +168,9 @@ test("parseScanIssue extracts QUALWEB engine from title", () => {
 
   const result = parseScanIssue(payload);
   assert.equal(result.ok, true);
-  assert.deepEqual(result.engines, ["qualweb"]);
+  assert.equal(result.engines.length, 2);
+  assert.equal(result.engines[0], "axe");
+  assert.ok(NON_AXE_ENGINES.includes(result.engines[1]));
   assert.equal(result.value.scanTitle, "ACT Rules scan");
 });
 

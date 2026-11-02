@@ -22,29 +22,22 @@
   },
   "overrides": {
     "js-yaml": "^4.3.2",
-    "@qualweb/core": {
-      "brace-expansion": "^1.1.16"
-    },
     "@cucumber/cucumber": {
       "brace-expansion": "^5.0.8"
     }
   },
   "dependencies": {
     "@accesslint/core": "^0.17.0",
-    "@axe-core/playwright": "^4.12.1",
+    "@axe-core/playwright": "^4.14.0",
     "@cucumber/cucumber": "^12.9.0",
-    "@qualweb/act-rules": "^0.8.5",
-    "@qualweb/core": "0.9.5",
-    "@qualweb/qw-page": "0.3.8",
-    "@qualweb/util": "^0.7.4",
     "@siteimprove/alfa-cli": "^0.84.2",
     "@siteimprove/alfa-formatter-earl": "^0.84.2",
     "@siteimprove/alfa-formatter-json": "^0.84.2",
     "accessibility-checker": "^4.0.30",
-    "playwright": "^1.60.0",
+    "playwright": "^1.64.1",
     "semantica11y": "^1.0.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.60.0"
+    "@playwright/test": "^1.64.1"
   }
 }

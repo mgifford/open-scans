@@ -1254,8 +1254,8 @@ Workflows use minimal required permissions:
 
 ### 17.5 Dependency Security
 
-- QualWeb has a known low-severity ReDoS vulnerability in the transitive dependency `trim@0.0.1` (via `@qualweb/util → franc-min → trigram-utils`). This is used only for language detection in QualWeb, not in accessibility scanning code paths.
-- All other dependencies are actively maintained with no known critical vulnerabilities.
+- QualWeb was removed from the supported engine set because its upstream dependency chain has recurring audit issues; it is no longer part of the default or explicit scan configuration.
+- Remaining dependencies are actively maintained and the default engine set is limited to the supported, audited packages.
 
 ---
 

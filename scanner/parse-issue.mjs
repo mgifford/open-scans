@@ -9,10 +9,12 @@ const scanRequestSchema = JSON.parse(readFileSync(schemaPath, "utf8"));
  * The non-axe engines available for random selection when no engines are specified.
  * axe is always included in the default selection; one of these is chosen at random.
  */
-export const NON_AXE_ENGINES = ["alfa", "equalaccess", "accesslint", "qualweb"];
+// QualWeb has been removed from the supported engine list because the upstream
+// dependency chain has recurring audit issues and is not a secure default.
+export const NON_AXE_ENGINES = ["alfa", "equalaccess", "accesslint"];
 
 /** All valid engine names accepted by the scanner (including the "all" alias). */
-const KNOWN_ENGINES = new Set(["axe", "alfa", "equalaccess", "accesslint", "qualweb", "all"]);
+const KNOWN_ENGINES = new Set(["axe", "alfa", "equalaccess", "accesslint", "all"]);
 
 /**
  * Returns the default engines to use when none are specified:
@@ -186,12 +188,16 @@ function extractScanTitle(issueTitle) {
   const isScanIssue = normalizedPrefix === "SCAN";
   const remainingTitle = match[2].trim();
   
-  // Extract engine specifications from the title
-  // Look for engine keywords: AXE, ALFA, ACCESSLINT, EQUALACCESS, QUALWEB, ALL
-  const engineKeywords = ["AXE", "ALFA", "ACCESSLINT", "EQUALACCESS", "QUALWEB", "ALL"];
+  // Extract engine specifications from the title.
+  // QualWeb is intentionally ignored because it is no longer a supported engine.
+  const engineKeywords = ["AXE", "ALFA", "ACCESSLINT", "EQUALACCESS", "ALL"];
   const foundEngines = [];
   let scanTitle = remainingTitle;
-  
+
+  // Strip unsupported legacy keywords so stale issue titles do not leak into the
+  // scan title and default engine resolution still works as intended.
+  scanTitle = scanTitle.replace(/\bQUALWEB\b/gi, "").trim();
+
   // Check for engine keywords in the title
   for (const keyword of engineKeywords) {
     const regex = new RegExp(`\\b${keyword}\\b`, "i");
