@@ -1,0 +1,279 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 1562,
+    "axe": 418,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1980,
+    "scannedAt": "2026-11-03T06:43:18.248Z",
+    "scannedCount": 10
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r47",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/search",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/cookie-policy",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 8,
+      "pages": [
+        "https://www.midea.com/uk",
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/air-treatment/porta-split",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/error-page",
+        "https://www.midea.com/uk/psti-statement",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk",
+        "https://www.midea.com/uk/support"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 3,
+      "pages": [
+        "https://www.midea.com/uk/refrigerators/american-style-fridge-freezers/midea-mdrf692fic46-freestanding-fridge-freezer.mdrf692fic46",
+        "https://www.midea.com/uk/dishwasher",
+        "https://www.midea.com/uk/cooking/air-fryer/midea-_mfd75j8apk-juicy-lock-technology.mfd75j8apk"
+      ]
+    }
+  ]
+}

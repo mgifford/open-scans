@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-03T06:43:18.365Z",
+  "issueNumber": 373,
+  "scanTitle": "Midea UK WA Audit - Nov 2026",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 418,
+      "uniqueFailed": 418,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 1562,
+      "uniqueFailed": 1562,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 418,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 147
+    }
+  },
+  "duplicateFindingTotals": 1415,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
