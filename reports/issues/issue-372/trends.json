@@ -1,0 +1,444 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 3753,
+    "axe": 890,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 4643,
+    "scannedAt": "2026-11-03T06:35:52.849Z",
+    "scannedCount": 19
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r47",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r8",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 19,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 13,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/support/kontaktformular",
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page"
+      ]
+    },
+    {
+      "ruleId": "axe:label",
+      "pageCount": 11,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/support/kontaktformular",
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc"
+      ]
+    },
+    {
+      "ruleId": "axe:link-in-text-block",
+      "pageCount": 11,
+      "pages": [
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular",
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r75",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/de",
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/error-page",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/de/support/kataloge",
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/de/anmeldung-mein-account",
+        "https://www.midea.com/de/support/kontaktformular"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 10,
+      "pages": [
+        "https://www.midea.com/de/space-master",
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc",
+        "https://www.midea.com/fr/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 9,
+      "pages": [
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc",
+        "https://www.midea.com/fr/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 9,
+      "pages": [
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc",
+        "https://www.midea.com/fr/support"
+      ]
+    },
+    {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 9,
+      "pages": [
+        "https://www.midea.com/fr",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer",
+        "https://www.midea.com/fr/error-page",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc",
+        "https://www.midea.com/fr/support"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
+      "pageCount": 6,
+      "pages": [
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/datenschutz",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/privacy-policy",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 6,
+      "pages": [
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-valid-attr-value",
+      "pageCount": 5,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/de/support/kontaktformular",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    },
+    {
+      "ruleId": "axe:listitem",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/staubsauger/saugroboter/saugroboter-s8-.s8-",
+        "https://www.midea.com/fr/dish-washer/60-cm-dish-washer/freestanding-dishwasher-60-cm-class-a.mdwef1433dss-wa",
+        "https://www.midea.com/fr/air-treatment/electric-heaters/ceramic-heater-2000w.nth20-22gr-gr-",
+        "https://www.midea.com/fr/dish-washer/45-cm-dish-washer/freestanding-dishwasher-45-cm-class-c.mdwef1034dss-wc"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r19",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r90",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    },
+    {
+      "ruleId": "axe:nested-interactive",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    },
+    {
+      "ruleId": "axe:tabindex",
+      "pageCount": 4,
+      "pages": [
+        "https://www.midea.com/de/search",
+        "https://www.midea.com/de/staubsauger",
+        "https://www.midea.com/fr/search",
+        "https://www.midea.com/fr/dish-washer"
+      ]
+    }
+  ]
+}

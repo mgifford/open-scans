@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-03T06:35:53.069Z",
+  "issueNumber": 372,
+  "scanTitle": "WA testing",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 890,
+      "uniqueFailed": 890,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 3753,
+      "uniqueFailed": 3753,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 888,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 333
+    }
+  },
+  "duplicateFindingTotals": 3422,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
