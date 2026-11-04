@@ -1,0 +1,290 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 1703,
+    "axe": 547,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 2250,
+    "scannedAt": "2026-11-04T00:18:11.081Z",
+    "scannedCount": 24
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r86",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-contentinfo",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 24,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 22,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/",
+        "https://www.masshiremvwb.org/labor-market/",
+        "https://www.masshiremvwb.org/accessibility/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 22,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/about/governance-downloads/",
+        "https://www.masshiremvwb.org/about/mission-vision/",
+        "https://www.masshiremvwb.org/contact/",
+        "https://www.masshiremvwb.org/employers/workforce-training-fund/",
+        "https://www.masshiremvwb.org/ita/",
+        "https://www.masshiremvwb.org/jobseekers/",
+        "https://www.masshiremvwb.org/labor-market/",
+        "https://www.masshiremvwb.org/accessibility/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r64",
+      "pageCount": 9,
+      "pages": [
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/jobseekers/",
+        "https://www.masshiremvwb.org/masshire-mvwb-job-postings/",
+        "https://www.masshiremvwb.org/youth/",
+        "https://www.masshiremvwb.org/youth/connecting-activities/",
+        "https://www.masshiremvwb.org/youth/wioa-youth-education-training-programs/",
+        "https://www.masshiremvwb.org/youth/youth-committee/",
+        "https://www.masshiremvwb.org/youth/youthworks/"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 9,
+      "pages": [
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/jobseekers/",
+        "https://www.masshiremvwb.org/masshire-mvwb-job-postings/",
+        "https://www.masshiremvwb.org/youth/",
+        "https://www.masshiremvwb.org/youth/connecting-activities/",
+        "https://www.masshiremvwb.org/youth/wioa-youth-education-training-programs/",
+        "https://www.masshiremvwb.org/youth/youth-committee/",
+        "https://www.masshiremvwb.org/youth/youthworks/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 5,
+      "pages": [
+        "https://www.masshiremvwb.org/",
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/events/",
+        "https://www.masshiremvwb.org/resources/",
+        "https://www.masshiremvwb.org/youth/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 3,
+      "pages": [
+        "https://www.masshiremvwb.org/about/",
+        "https://www.masshiremvwb.org/about/board/",
+        "https://www.masshiremvwb.org/events/"
+      ]
+    }
+  ]
+}

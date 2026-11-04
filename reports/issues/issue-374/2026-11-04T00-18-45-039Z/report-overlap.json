@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-04T00:18:11.266Z",
+  "issueNumber": 374,
+  "scanTitle": "MassHire MVWB Accessibility Audit",
+  "scannersInUse": [
+    "axe",
+    "alfa"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 547,
+      "uniqueFailed": 547,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 1703,
+      "uniqueFailed": 1703,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 547,
+      "alfa": 0
+    },
+    "alfa": {
+      "axe": 0,
+      "alfa": 251
+    }
+  },
+  "duplicateFindingTotals": 1452,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
