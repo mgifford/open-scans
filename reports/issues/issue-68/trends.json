@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-10-03T06:01:28.185Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 129,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 226,
-          "combined": 355,
-          "scannedAt": "2026-10-03T06:01:28.185Z",
-          "scannedCount": 66
-        }
-      },
-      "to": {
-        "scannedAt": "2026-10-10T06:35:15.307Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 131,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 232,
-          "combined": 363,
-          "scannedAt": "2026-10-10T06:35:15.307Z",
-          "scannedCount": 68
-        }
-      },
-      "change": 8,
-      "trend": "worsening",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 2,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 6
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-10-10T06:35:15.307Z",
         "totals": {
           "alfa": 0,
@@ -148,23 +111,47 @@
         "qualweb": -477,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-10-31T06:15:50.629Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 170,
+          "equalAccess": 7339,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 7509,
+          "scannedAt": "2026-10-31T06:15:50.629Z",
+          "scannedCount": 100
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-07T06:40:12.977Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 141,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 240,
+          "combined": 381,
+          "scannedAt": "2026-11-07T06:40:12.977Z",
+          "scannedCount": 69
+        }
+      },
+      "change": -7128,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -29,
+        "equalAccess": -7339,
+        "qualweb": 0,
+        "accesslint": 240
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-10-24T05:18:37.598Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 170,
-        "equalAccess": 0,
-        "qualweb": 477,
-        "accesslint": 0,
-        "combined": 647,
-        "scannedAt": "2026-10-24T05:18:37.598Z",
-        "scannedCount": 100
-      }
-    },
-    "to": {
       "scannedAt": "2026-10-31T06:15:50.629Z",
       "totals": {
         "alfa": 0,
@@ -177,43 +164,56 @@
         "scannedCount": 100
       }
     },
-    "change": 6862,
-    "trend": "worsening",
+    "to": {
+      "scannedAt": "2026-11-07T06:40:12.977Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 141,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 240,
+        "combined": 381,
+        "scannedAt": "2026-11-07T06:40:12.977Z",
+        "scannedCount": 69
+      }
+    },
+    "change": -7128,
+    "trend": "improving",
     "perScanner": {
       "alfa": 0,
-      "axe": 0,
-      "equalAccess": 7339,
-      "qualweb": -477,
-      "accesslint": 0
+      "axe": -29,
+      "equalAccess": -7339,
+      "qualweb": 0,
+      "accesslint": 240
     }
   },
-  "overallTrend": "worsening",
-  "improvingCount": 1,
-  "worseningCount": 3,
+  "overallTrend": "improving",
+  "improvingCount": 2,
+  "worseningCount": 2,
   "latestTotals": {
     "alfa": 0,
-    "axe": 170,
-    "equalAccess": 7339,
+    "axe": 141,
+    "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 0,
-    "combined": 7509,
-    "scannedAt": "2026-10-31T06:15:50.629Z",
-    "scannedCount": 100
+    "accesslint": 240,
+    "combined": 381,
+    "scannedAt": "2026-11-07T06:40:12.977Z",
+    "scannedCount": 69
   },
   "baselineTotals": {
     "alfa": 0,
-    "axe": 129,
+    "axe": 131,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 226,
-    "combined": 355,
-    "scannedAt": "2026-10-03T06:01:28.185Z",
-    "scannedCount": 66
+    "accesslint": 232,
+    "combined": 363,
+    "scannedAt": "2026-10-10T06:35:15.307Z",
+    "scannedCount": 68
   },
   "latestSystemicPatterns": [
     {
       "ruleId": "axe:svg-img-alt",
-      "pageCount": 65,
+      "pageCount": 34,
       "pages": [
         "https://www.london.gov.uk/",
         "https://www.london.gov.uk/events/2016-03-18/find-your-london/find-your-london-festival-map",
@@ -244,22 +244,6 @@
       ]
     },
     {
-      "ruleId": "axe:landmark-unique",
-      "pageCount": 10,
-      "pages": [
-        "https://www.london.gov.uk/media-centre",
-        "https://data.london.gov.uk/dataset/lfb-financial-and-performance-reporting-201920-e7xqq",
-        "https://www.london.gov.uk/events/77-memorial-service-2023",
-        "https://www.london.gov.uk/events/77-memorial-service-2024",
-        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2023",
-        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2024",
-        "https://www.london.gov.uk/events/mayors-christmas-carol-service-2025",
-        "https://www.london.gov.uk/events/remembrance-day-service-2023",
-        "https://www.london.gov.uk/events/remembrance-day-service-2024",
-        "https://www.london.gov.uk/events/remembrance-service-2025"
-      ]
-    },
-    {
       "ruleId": "axe:region",
       "pageCount": 5,
       "pages": [
@@ -274,10 +258,10 @@
       "ruleId": "axe:heading-order",
       "pageCount": 4,
       "pages": [
+        "https://www.london.gov.uk/",
         "https://www.london.gov.uk/city-hall-blog/finding-ways-get-more-women-cleantech-and-keep-them-there",
         "https://www.london.gov.uk/could-you-please-confirm-if-we-need-apply-map-quality-mark-construction-provision-if-it-already",
-        "https://www.london.gov.uk/covid-19-resources-and-services-your-language",
-        "https://www.london.gov.uk/city-hall-blog/digital-service-standard-local-government"
+        "https://www.london.gov.uk/covid-19-resources-and-services-your-language"
       ]
     }
   ]
