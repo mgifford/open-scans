@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-10-05T06:14:39.547Z",
-        "totals": {
-          "alfa": 0,
-          "axe": 320,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 8811,
-          "combined": 9131,
-          "scannedAt": "2026-10-05T06:14:39.547Z",
-          "scannedCount": 70
-        }
-      },
-      "to": {
-        "scannedAt": "2026-10-12T06:20:01.623Z",
-        "totals": {
-          "alfa": 3281,
-          "axe": 308,
-          "equalAccess": 0,
-          "qualweb": 0,
-          "accesslint": 0,
-          "combined": 3589,
-          "scannedAt": "2026-10-12T06:20:01.623Z",
-          "scannedCount": 70
-        }
-      },
-      "change": -5542,
-      "trend": "improving",
-      "perScanner": {
-        "alfa": 3281,
-        "axe": -12,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": -8811
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-10-12T06:20:01.623Z",
         "totals": {
           "alfa": 3281,
@@ -148,23 +111,47 @@
         "qualweb": 971,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-11-02T06:24:46.998Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 301,
+          "equalAccess": 0,
+          "qualweb": 971,
+          "accesslint": 0,
+          "combined": 1272,
+          "scannedAt": "2026-11-02T06:24:46.998Z",
+          "scannedCount": 70
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-09T06:57:19.978Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 336,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 8876,
+          "combined": 9212,
+          "scannedAt": "2026-11-09T06:57:19.978Z",
+          "scannedCount": 70
+        }
+      },
+      "change": 7940,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 35,
+        "equalAccess": 0,
+        "qualweb": -971,
+        "accesslint": 8876
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-10-26T05:09:58.122Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 303,
-        "equalAccess": 2829,
-        "qualweb": 0,
-        "accesslint": 0,
-        "combined": 3132,
-        "scannedAt": "2026-10-26T05:09:58.122Z",
-        "scannedCount": 70
-      }
-    },
-    "to": {
       "scannedAt": "2026-11-02T06:24:46.998Z",
       "totals": {
         "alfa": 0,
@@ -177,37 +164,50 @@
         "scannedCount": 70
       }
     },
-    "change": -1860,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-11-09T06:57:19.978Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 336,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 8876,
+        "combined": 9212,
+        "scannedAt": "2026-11-09T06:57:19.978Z",
+        "scannedCount": 70
+      }
+    },
+    "change": 7940,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -2,
-      "equalAccess": -2829,
-      "qualweb": 971,
-      "accesslint": 0
+      "axe": 35,
+      "equalAccess": 0,
+      "qualweb": -971,
+      "accesslint": 8876
     }
   },
-  "overallTrend": "improving",
-  "improvingCount": 4,
-  "worseningCount": 0,
+  "overallTrend": "worsening",
+  "improvingCount": 3,
+  "worseningCount": 1,
   "latestTotals": {
     "alfa": 0,
-    "axe": 301,
+    "axe": 336,
     "equalAccess": 0,
-    "qualweb": 971,
-    "accesslint": 0,
-    "combined": 1272,
-    "scannedAt": "2026-11-02T06:24:46.998Z",
+    "qualweb": 0,
+    "accesslint": 8876,
+    "combined": 9212,
+    "scannedAt": "2026-11-09T06:57:19.978Z",
     "scannedCount": 70
   },
   "baselineTotals": {
-    "alfa": 0,
-    "axe": 320,
+    "alfa": 3281,
+    "axe": 308,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 8811,
-    "combined": 9131,
-    "scannedAt": "2026-10-05T06:14:39.547Z",
+    "accesslint": 0,
+    "combined": 3589,
+    "scannedAt": "2026-10-12T06:20:01.623Z",
     "scannedCount": 70
   },
   "latestSystemicPatterns": [
@@ -228,8 +228,24 @@
       ]
     },
     {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 15,
+      "pages": [
+        "https://www.galway.ie/en",
+        "https://www.gedling.gov.uk/",
+        "https://www.rbwm.gov.uk/",
+        "https://www.southwark.gov.uk/",
+        "https://www.tamworth.gov.uk/",
+        "https://www.lbhf.gov.uk/",
+        "https://www.hart.gov.uk/",
+        "https://www.wokingham.gov.uk/",
+        "https://www.knowsley.gov.uk/",
+        "https://new.calderdale.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:color-contrast",
-      "pageCount": 9,
+      "pageCount": 10,
       "pages": [
         "https://www.clarecoco.ie/",
         "https://www.staffordshire.gov.uk/",
@@ -238,6 +254,7 @@
         "https://www.havant.gov.uk/",
         "https://www.wirral.gov.uk/",
         "https://www.sstaffs.gov.uk/",
+        "https://new.calderdale.gov.uk/",
         "https://www.milton-keynes.gov.uk/",
         "https://www.brighton-hove.gov.uk/"
       ]
@@ -328,6 +345,16 @@
       ]
     },
     {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 4,
+      "pages": [
+        "https://haringey.gov.uk/",
+        "https://www.westmorlandandfurness.gov.uk/",
+        "https://www.elmbridge.gov.uk/",
+        "https://www.rbkc.gov.uk/"
+      ]
+    },
+    {
       "ruleId": "axe:heading-order",
       "pageCount": 4,
       "pages": [
@@ -362,15 +389,6 @@
         "https://www.canterbury.gov.uk/",
         "https://www.essex.gov.uk/",
         "https://www.northyorks.gov.uk/"
-      ]
-    },
-    {
-      "ruleId": "axe:landmark-no-duplicate-banner",
-      "pageCount": 3,
-      "pages": [
-        "https://www.westmorlandandfurness.gov.uk/",
-        "https://www.elmbridge.gov.uk/",
-        "https://www.rbkc.gov.uk/"
       ]
     }
   ]
