@@ -1,0 +1,70 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 14,
+    "axe": 52,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 66,
+    "scannedAt": "2026-11-09T19:45:07.930Z",
+    "scannedCount": 7
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r59",
+      "pageCount": 7,
+      "pages": [
+        "https://store.enjoytopshelf.com/",
+        "https://store.enjoytopshelf.com/login",
+        "https://store.enjoytopshelf.com/user/register",
+        "https://store.enjoytopshelf.com/portal/login",
+        "https://store.enjoytopshelf.com/menu",
+        "https://store.enjoytopshelf.com/promo",
+        "https://store.enjoytopshelf.com/coupons"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 7,
+      "pages": [
+        "https://store.enjoytopshelf.com/",
+        "https://store.enjoytopshelf.com/login",
+        "https://store.enjoytopshelf.com/user/register",
+        "https://store.enjoytopshelf.com/portal/login",
+        "https://store.enjoytopshelf.com/menu",
+        "https://store.enjoytopshelf.com/promo",
+        "https://store.enjoytopshelf.com/coupons"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 4,
+      "pages": [
+        "https://store.enjoytopshelf.com/login",
+        "https://store.enjoytopshelf.com/user/register",
+        "https://store.enjoytopshelf.com/portal/login",
+        "https://store.enjoytopshelf.com/coupons"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://store.enjoytopshelf.com/login",
+        "https://store.enjoytopshelf.com/user/register",
+        "https://store.enjoytopshelf.com/portal/login"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 3,
+      "pages": [
+        "https://store.enjoytopshelf.com/login",
+        "https://store.enjoytopshelf.com/user/register",
+        "https://store.enjoytopshelf.com/portal/login"
+      ]
+    }
+  ]
+}
