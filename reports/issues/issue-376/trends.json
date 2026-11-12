@@ -1,0 +1,205 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 800,
+    "equalAccess": 2699,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 3499,
+    "scannedAt": "2026-11-12T10:00:40.520Z",
+    "scannedCount": 30
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 15,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.map.org.uk/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.acted.org/fr/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 14,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://www.emro.who.int/",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.acted.org/fr/",
+        "https://www.atfaluna.org/",
+        "https://www.starsofhope.org/",
+        "https://sdfpro.net/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 13,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.acted.org/fr/",
+        "https://www.atfaluna.org/",
+        "https://www.starsofhope.org/",
+        "https://sdfpro.net/",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 11,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://www.emro.who.int/",
+        "https://www.msf.org/palestine",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.acted.org/fr/",
+        "https://pardgaza.ps/ar"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 7,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.acted.org/fr/",
+        "https://www.atfaluna.org/",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 7,
+      "pages": [
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://www.acted.org/fr/",
+        "https://www.starsofhope.org/",
+        "https://sdfpro.net/",
+        "https://nrsta.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-refresh",
+      "pageCount": 6,
+      "pages": [
+        "https://www.unrwa.org/",
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.crs.org/",
+        "https://palestinercs.org/",
+        "https://sdf-pal.org/",
+        "https://tatweralosra.ensany.com/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 6,
+      "pages": [
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://sdfpro.net/"
+      ]
+    },
+    {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 5,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://pardgaza.ps/ar"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://org.pngoportal.org/",
+        "https://twasol.ps/"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 3,
+      "pages": [
+        "https://www.emro.who.int/",
+        "https://www.atfaluna.org/",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 3,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.hi.org/en/country/palestine"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-input-field-name",
+      "pageCount": 3,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-parent",
+      "pageCount": 3,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.acted.org/fr/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-children",
+      "pageCount": 3,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.acted.org/fr/"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 3,
+      "pages": [
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://nrsta.org/",
+        "https://org.pngoportal.org/"
+      ]
+    }
+  ]
+}

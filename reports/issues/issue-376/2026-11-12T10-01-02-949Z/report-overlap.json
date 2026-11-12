@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-12T10:00:40.720Z",
+  "issueNumber": 376,
+  "scanTitle": "Facts",
+  "scannersInUse": [
+    "axe",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 800,
+      "uniqueFailed": 800,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 2699,
+      "uniqueFailed": 1889,
+      "duplicates": 810
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "axe": {
+      "axe": 796,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "axe": 0,
+      "equalAccess": 1889
+    }
+  },
+  "duplicateFindingTotals": 814,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
