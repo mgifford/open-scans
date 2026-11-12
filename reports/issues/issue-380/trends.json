@@ -1,0 +1,103 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 321,
+    "equalAccess": 3543,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 3864,
+    "scannedAt": "2026-11-12T19:25:13.820Z",
+    "scannedCount": 15
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 9,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.unrwa.org/",
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://www.msf.org/",
+        "https://internationalmedicalcorps.org/",
+        "https://www.map.org.uk/",
+        "https://www.nrc.no/",
+        "https://www.oxfam.org/en"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 8,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.unicef.org/",
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://internationalmedicalcorps.org/",
+        "https://www.savethechildren.net/",
+        "https://www.oxfam.org/en",
+        "https://wck.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 7,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.wfp.org/",
+        "https://www.ochaopt.org/",
+        "https://www.emro.who.int/",
+        "https://www.savethechildren.net/",
+        "https://www.oxfam.org/en",
+        "https://wck.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 7,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://www.emro.who.int/",
+        "https://www.msf.org/",
+        "https://internationalmedicalcorps.org/",
+        "https://www.oxfam.org/en",
+        "https://wck.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 7,
+      "pages": [
+        "https://www.unicef.org/",
+        "https://www.ochaopt.org/",
+        "https://palestine.unfpa.org/en",
+        "https://internationalmedicalcorps.org/",
+        "https://www.nrc.no/",
+        "https://www.savethechildren.net/",
+        "https://www.oxfam.org/en"
+      ]
+    },
+    {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 4,
+      "pages": [
+        "https://www.wfp.org/",
+        "https://www.msf.org/",
+        "https://internationalmedicalcorps.org/",
+        "https://wck.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://www.moh.gov.ps/portal/",
+        "https://www.ochaopt.org/",
+        "https://www.oxfam.org/en"
+      ]
+    }
+  ]
+}
