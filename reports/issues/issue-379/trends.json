@@ -1,0 +1,112 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 454,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 432,
+    "combined": 886,
+    "scannedAt": "2026-11-12T19:14:09.633Z",
+    "scannedCount": 15
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 11,
+      "pages": [
+        "https://www.hi.org/",
+        "https://www.crs.org/",
+        "https://www.acted.org/fr/",
+        "https://palestinercs.org/",
+        "https://www.atfaluna.org/",
+        "https://www.starsofhope.org/",
+        "https://sdfpro.net/",
+        "https://gfvip.org/",
+        "https://nrsta.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 10,
+      "pages": [
+        "https://www.hi.org/",
+        "https://www.acted.org/fr/",
+        "https://palestinercs.org/",
+        "https://www.atfaluna.org/",
+        "https://www.starsofhope.org/",
+        "https://sdf-pal.org/",
+        "https://sdfpro.net/",
+        "https://gfvip.org/",
+        "https://nrsta.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 7,
+      "pages": [
+        "https://www.crs.org/",
+        "https://www.acted.org/fr/",
+        "https://palestinercs.org/",
+        "https://www.atfaluna.org/",
+        "https://pardgaza.ps/ar",
+        "https://sdf-pal.org/",
+        "https://tatweralosra.ensany.com/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 6,
+      "pages": [
+        "https://www.acted.org/fr/",
+        "https://www.starsofhope.org/",
+        "https://sdfpro.net/",
+        "https://nrsta.org/",
+        "https://org.pngoportal.org/",
+        "https://tatweralosra.ensany.com/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 5,
+      "pages": [
+        "https://www.crs.org/",
+        "https://www.acted.org/fr/",
+        "https://palestinercs.org/",
+        "https://www.atfaluna.org/",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 4,
+      "pages": [
+        "https://www.crs.org/",
+        "https://www.acted.org/fr/",
+        "https://pardgaza.ps/ar",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-redundant-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://www.hi.org/",
+        "https://pardgaza.ps/ar",
+        "https://tatweralosra.ensany.com/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 3,
+      "pages": [
+        "https://palestinercs.org/",
+        "https://sdfpro.net/",
+        "https://tatweralosra.ensany.com/"
+      ]
+    }
+  ]
+}
