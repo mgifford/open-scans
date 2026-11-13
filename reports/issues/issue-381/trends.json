@@ -1,0 +1,770 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 4239,
+    "axe": 1530,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 5769,
+    "scannedAt": "2026-11-13T17:42:29.921Z",
+    "scannedCount": 58
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
+      "pageCount": 36,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.unicef.org/sop/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 35,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 35,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.unicef.org/sop/",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected",
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
+      "pageCount": 33,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.unicef.org/sop/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r69",
+      "pageCount": 30,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r57",
+      "pageCount": 29,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.unicef.org/sop/",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://palestine.unfpa.org/en",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 28,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.hi.org/en/hi-in-the-world",
+        "https://www.acted.org/en/countries/opt/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 25,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.ochaopt.org/about-us",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r11",
+      "pageCount": 23,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.hi.org/en/hi-in-the-world",
+        "https://www.acted.org/en/countries/opt/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 23,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.msf.org/palestine",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
+      "pageCount": 22,
+      "pages": [
+        "https://www.unicef.org/sop/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 20,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://www.ochaopt.org/about-us",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.msf.org/palestine",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters",
+        "https://wck.org/relief/chefs-for-gaza/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r53",
+      "pageCount": 17,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.ochaopt.org/about-us",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://wck.org/relief/chefs-for-gaza/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-one-main",
+      "pageCount": 17,
+      "pages": [
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://support.nrc.no/neglected",
+        "https://www.acted.org/en/countries/opt/",
+        "https://www.starsofhope.org/",
+        "https://www.starsofhope.org/home/complaint/ar",
+        "https://sdfpro.net/",
+        "http://wefaq.ps/",
+        "http://wefaq.ps/complaints"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r78",
+      "pageCount": 16,
+      "pages": [
+        "https://help.unicef.org/donate-to-children",
+        "https://www.wfp.org/countries/palestine",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://www.nrc.no/countries/middle-east/palestine"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r61",
+      "pageCount": 13,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.ochaopt.org/about-us",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.map.org.uk/ar/",
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://support.nrc.no/neglected",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters",
+        "https://www.crs.org/donate/crs-give-where-needed?ms=agicrs0226unr00but00"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r74",
+      "pageCount": 13,
+      "pages": [
+        "https://www.unicef.org/sop/",
+        "https://help.unicef.org/donate-to-children",
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://palestine.unfpa.org/en",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.crs.org/donate/crs-give-where-needed?ms=agicrs0226unr00but00",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r87",
+      "pageCount": 13,
+      "pages": [
+        "https://help.unicef.org/donate-to-children",
+        "https://pal.beneficiaryregistration.cbt.wfp.org/update",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.map.org.uk/ar/",
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://www.nrc.no/countries/middle-east/palestine",
+        "https://support.nrc.no/neglected",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 11,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.ochaopt.org/about-us",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.crs.org/where-we-work/middle-east-north-africa/jerusalem-west-bank-and-gaza",
+        "https://www.crs.org/donate/crs-give-where-needed?ms=agicrs0226unr00but00",
+        "https://www.acted.org/en/countries/opt/",
+        "https://palestinercs.org/ar",
+        "http://wefaq.ps/",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r18",
+      "pageCount": 11,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unrwa.org/",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "https://gfvip.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r14",
+      "pageCount": 10,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.map.org.uk/ar/",
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://pardgaza.ps/ar",
+        "https://pardgaza.ps/ar/activities"
+      ]
+    },
+    {
+      "ruleId": "axe:label-content-name-mismatch",
+      "pageCount": 10,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://pardgaza.ps/ar",
+        "https://pardgaza.ps/ar/activities"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r9",
+      "pageCount": 9,
+      "pages": [
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers",
+        "https://www.crs.org/where-we-work/middle-east-north-africa/jerusalem-west-bank-and-gaza",
+        "https://palestinercs.org/ar",
+        "https://pay.lahza.io/PRCS-Donation",
+        "https://sdf-pal.org/en/home/",
+        "https://en.pngoportal.org/",
+        "https://tatweralosra.ensany.com/",
+        "https://tatweralosra.ensany.com/volunteer"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r96",
+      "pageCount": 9,
+      "pages": [
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers",
+        "https://www.crs.org/where-we-work/middle-east-north-africa/jerusalem-west-bank-and-gaza",
+        "https://palestinercs.org/ar",
+        "https://pay.lahza.io/PRCS-Donation",
+        "https://sdf-pal.org/en/home/",
+        "https://en.pngoportal.org/",
+        "https://tatweralosra.ensany.com/",
+        "https://tatweralosra.ensany.com/volunteer"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 8,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.ochaopt.org/about-us",
+        "https://www.who.int/health-topics/international-health-regulations",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.acted.org/en/countries/opt/",
+        "https://gfvip.org/",
+        "https://gfvip.org/%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D9%85%D8%B9%D9%86%D8%A7/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-role",
+      "pageCount": 8,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.hi.org/en/hi-in-the-world",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r80",
+      "pageCount": 7,
+      "pages": [
+        "https://www.unicef.org/sop/",
+        "https://www.unfpa.org/donate",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.hi.org/en/country/palestine",
+        "https://www.hi.org/en/hi-in-the-world",
+        "https://www.crs.org/donate/crs-give-where-needed?ms=agicrs0226unr00but00",
+        "https://twasol.ps/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r68",
+      "pageCount": 7,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.map.org.uk/ar/",
+        "https://support.nrc.no/neglected",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters",
+        "https://www.acted.org/en/countries/opt/",
+        "https://twasol.ps/en/contact-us/"
+      ]
+    },
+    {
+      "ruleId": "axe:empty-heading",
+      "pageCount": 7,
+      "pages": [
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "http://elwafa.ps/index/questionnaire",
+        "https://nrsta.org/",
+        "https://nrsta.org/contact",
+        "https://en.pngoportal.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r17",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.unfpa.org/donate",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.hi.org/en/hi-in-the-world"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 6,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "https://gfvip.org/",
+        "https://gfvip.org/%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D9%85%D8%B9%D9%86%D8%A7/",
+        "http://elwafa.ps/index/questionnaire"
+      ]
+    },
+    {
+      "ruleId": "axe:frame-title",
+      "pageCount": 6,
+      "pages": [
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.crs.org/donate/crs-give-where-needed?ms=agicrs0226unr00but00",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "http://wefaq.ps/complaints",
+        "https://nrsta.org/contact"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+      "pageCount": 6,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://en.pngoportal.org/",
+        "https://org.pngoportal.org/",
+        "https://twasol.ps/"
+      ]
+    },
+    {
+      "ruleId": "axe:listitem",
+      "pageCount": 6,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "http://wefaq.ps/",
+        "http://wefaq.ps/complaints"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r64",
+      "pageCount": 6,
+      "pages": [
+        "https://www.map.org.uk/what-we-do/disability-inclusion/",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "https://nrsta.org/",
+        "https://nrsta.org/contact",
+        "https://en.pngoportal.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r113",
+      "pageCount": 5,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.unicef.org/sop/",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://en.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:page-has-heading-one",
+      "pageCount": 5,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://palestinercs.org/ar",
+        "https://www.starsofhope.org/",
+        "https://www.starsofhope.org/home/complaint/ar",
+        "http://wefaq.ps/"
+      ]
+    },
+    {
+      "ruleId": "axe:tabindex",
+      "pageCount": 5,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r47",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "https://gfvip.org/",
+        "https://gfvip.org/%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D9%85%D8%B9%D9%86%D8%A7/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-hidden-focus",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.msf.org/donate",
+        "https://www.oxfam.org/en/what-we-do/countries/oxfam-occupied-palestinian-territory",
+        "https://www.oxfam.org/en/what-we-do/issues/conflicts-and-disasters"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 5,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers",
+        "https://en.pngoportal.org/",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r42",
+      "pageCount": 5,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r8",
+      "pageCount": 5,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://org.pngoportal.org/",
+        "https://twasol.ps/en/contact-us/"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 5,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://en.pngoportal.org/",
+        "https://org.pngoportal.org/",
+        "https://twasol.ps/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-redundant-alt",
+      "pageCount": 5,
+      "pages": [
+        "https://www.hi.org/en/country/palestine",
+        "https://www.hi.org/en/hi-in-the-world",
+        "https://pardgaza.ps/ar",
+        "https://tatweralosra.ensany.com/",
+        "https://tatweralosra.ensany.com/volunteer"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-contentinfo",
+      "pageCount": 4,
+      "pages": [
+        "https://www.moh.gov.ps/portal/pharmaceutical-statistics/",
+        "https://www.wfp.org/countries/palestine",
+        "https://donate.unrwa.org/int/en/gaza",
+        "https://gfvip.org/%D8%AA%D9%88%D8%A7%D8%B5%D9%84-%D9%85%D8%B9%D9%86%D8%A7/"
+      ]
+    },
+    {
+      "ruleId": "axe:list",
+      "pageCount": 4,
+      "pages": [
+        "https://www.ochaopt.org/about-us",
+        "https://support.nrc.no/neglected",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r13",
+      "pageCount": 4,
+      "pages": [
+        "https://crisisrelief.un.org/en/donate-opt-crisis",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "https://nrsta.org/contact"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-input-field-name",
+      "pageCount": 4,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://org.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-parent",
+      "pageCount": 4,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://www.acted.org/en/countries/opt/"
+      ]
+    },
+    {
+      "ruleId": "axe:scrollable-region-focusable",
+      "pageCount": 4,
+      "pages": [
+        "https://www.msf.org/palestine",
+        "https://www.msf.org/donate",
+        "https://wck.org/relief/chefs-for-gaza/",
+        "http://wefaq.ps/"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-prohibited-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.unicef.org/sop/",
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-refresh",
+      "pageCount": 3,
+      "pages": [
+        "https://help.unicef.org/donate-to-children",
+        "https://pay.lahza.io/PRCS-Donation",
+        "https://en.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r72",
+      "pageCount": 3,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.unfpa.org/donate",
+        "https://www.acted.org/en/countries/opt/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-banner-is-top-level",
+      "pageCount": 3,
+      "pages": [
+        "https://www.wfp.org/countries/palestine",
+        "https://www.savethechildren.net/occupied-palestinian-territory",
+        "https://www.savethechildren.net/careers"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r86",
+      "pageCount": 3,
+      "pages": [
+        "https://www.unrwa.org/",
+        "https://www.unfpa.org/donate",
+        "https://en.pngoportal.org/"
+      ]
+    },
+    {
+      "ruleId": "axe:autocomplete-valid",
+      "pageCount": 3,
+      "pages": [
+        "https://internationalmedicalcorps.org/country/gaza/",
+        "https://internationalmedicalcorps.org/?form=Main",
+        "https://support.nrc.no/neglected"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-allowed-attr",
+      "pageCount": 3,
+      "pages": [
+        "https://www.atfaluna.org/%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA-%D9%88%D8%A3%D8%B1%D9%88%D8%A7%D9%82-%D8%AD%D9%82%D8%A7%D8%A6%D9%82",
+        "https://atfaluna.org/en/news-activites",
+        "http://elwafa.ps/index/questionnaire"
+      ]
+    }
+  ]
+}
