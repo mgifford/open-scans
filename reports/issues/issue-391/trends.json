@@ -1,0 +1,213 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 2131,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 2510,
+    "combined": 4641,
+    "scannedAt": "2026-11-17T15:34:50.035Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 20,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7"
+      ]
+    },
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 20,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7"
+      ]
+    },
+    {
+      "ruleId": "axe:html-has-lang",
+      "pageCount": 20,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7"
+      ]
+    },
+    {
+      "ruleId": "axe:meta-viewport",
+      "pageCount": 20,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-attr",
+      "pageCount": 19,
+      "pages": [
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies"
+      ]
+    },
+    {
+      "ruleId": "axe:link-name",
+      "pageCount": 19,
+      "pages": [
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies"
+      ]
+    },
+    {
+      "ruleId": "axe:nested-interactive",
+      "pageCount": 19,
+      "pages": [
+        "https://huggingface.co/blog/habana",
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/ethics-soc-7",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 15,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies",
+        "https://huggingface.co/blog/torch-profiler",
+        "https://huggingface.co/blog/codegemma",
+        "https://huggingface.co/blog/gradio-workflow-1111"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 15,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies",
+        "https://huggingface.co/blog/torch-profiler",
+        "https://huggingface.co/blog/codegemma",
+        "https://huggingface.co/blog/gradio-workflow-1111"
+      ]
+    },
+    {
+      "ruleId": "axe:scrollable-region-focusable",
+      "pageCount": 10,
+      "pages": [
+        "https://huggingface.co/blog/gradient_accumulation",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/sagemaker-distributed-training-seq2seq",
+        "https://huggingface.co/blog/universal_assisted_generation",
+        "https://huggingface.co/blog/leaderboard-arabic",
+        "https://huggingface.co/blog/PaddlePaddle/pp-ocrv6",
+        "https://huggingface.co/blog/rlhf",
+        "https://huggingface.co/blog/inference-pro",
+        "https://huggingface.co/blog/nvidia/nvidia-isaac-for-healthcare",
+        "https://huggingface.co/blog/openai-privacy-filter-web-apps"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-main-is-top-level",
+      "pageCount": 8,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies",
+        "https://huggingface.co/blog/codegemma",
+        "https://huggingface.co/blog/gradio-workflow-1111",
+        "https://huggingface.co/blog/PaddlePaddle/pp-ocrv6",
+        "https://huggingface.co/blog/inference-pro",
+        "https://huggingface.co/blog/openai-privacy-filter-web-apps"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-main",
+      "pageCount": 8,
+      "pages": [
+        "https://huggingface.co/",
+        "https://huggingface.co/blog/gemma-july-update",
+        "https://huggingface.co/blog/hugging-science/ai-for-food-allergies",
+        "https://huggingface.co/blog/codegemma",
+        "https://huggingface.co/blog/gradio-workflow-1111",
+        "https://huggingface.co/blog/PaddlePaddle/pp-ocrv6",
+        "https://huggingface.co/blog/inference-pro",
+        "https://huggingface.co/blog/openai-privacy-filter-web-apps"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://huggingface.co/blog/jfrog",
+        "https://huggingface.co/blog/rlhf",
+        "https://huggingface.co/blog/inference-pro"
+      ]
+    }
+  ]
+}
