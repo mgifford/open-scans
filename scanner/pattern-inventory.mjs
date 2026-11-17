@@ -122,8 +122,19 @@ function extractFindings(results) {
   return findings;
 }
 
+function selectorFromHtml(html) {
+  const match = String(html ?? "").match(/\bid\s*=\s*["']([^"']+)["']/i);
+  if (!match) return null;
+  const id = match[1].trim();
+  if (!id || /[\s"'<>]/.test(id)) return null;
+  return `#${id}`;
+}
+
 function makePatternFinding({ result, pageUrl, engine, failure }) {
-  const selector = text(failure.selector || failure.xpath || "");
+  const explicitSelector = text(failure.selector || failure.xpath || "");
+  const selector = explicitSelector && explicitSelector !== "(page-level)"
+    ? explicitSelector
+    : selectorFromHtml(failure.html) ?? "";
   const locator = selector || text(failure.html || failure.message || "(page-level)");
   const locatorSource = selector ? "selector" : failure.html ? "html" : "none";
   const rule = text(failure.rule ?? failure.ruleId ?? "unknown-rule");

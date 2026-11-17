@@ -79,7 +79,7 @@ Inference order prefers a semantic ancestor in the selector/XPath:
 - `table.results td` → `table`;
 - `.widget` with no semantic evidence → `unknown`.
 
-If the locator is missing, the first tag in the recorded HTML is used as a fallback. A `<meta>` or page-level finding maps to `document`.
+If the locator is missing, a stable `id` from the recorded HTML is used as a selector candidate, and the first tag supplies a fallback. An explicit ARIA role takes precedence over the element's default role (for example `<a role="button">` is a button). A `<meta>` or page-level finding maps to `document`.
 
 ## 4. Locator coverage
 

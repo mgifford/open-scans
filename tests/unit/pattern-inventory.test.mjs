@@ -90,12 +90,21 @@ test("form, form-control, header, footer, table and unassigned containers are co
 
 test("patterns without selectors are reported as HTML-only instead of inventing a locator", () => {
   const value = inventory([
-    makeResult("https://example.gov/", [failure({ xpath: null, html: "<input id=\"email\">", patternId: "A11Y-html", fingerprint: "999999999999" })])
+    makeResult("https://example.gov/", [failure({ xpath: null, html: "<input>", patternId: "A11Y-html", fingerprint: "999999999999" })])
   ]);
   assert.equal(value.summary.htmlOnlyPatterns, 1);
   assert.equal(value.patterns[0].locatorCoverage, "html-only");
   assert.equal(value.patterns[0].hasSelector, false);
   assert.equal(value.patterns[0].category, "form-control");
+});
+
+test("a stable HTML id is used as a locator candidate when the engine provides no selector", () => {
+  const value = inventory([
+    makeResult("https://example.gov/", [failure({ xpath: null, html: "<div id=\"map\" tabindex=\"0\">", patternId: "A11Y-id", fingerprint: "aaaa11111111" })])
+  ]);
+  assert.equal(value.patterns[0].locatorCoverage, "selector");
+  assert.equal(value.patterns[0].hasSelector, true);
+  assert.equal(value.patterns[0].examples[0].locator, "#map");
 });
 
 test("different rules on the same container remain different patterns", () => {

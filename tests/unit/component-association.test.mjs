@@ -38,6 +38,11 @@ test("the failing HTML element supplies a container candidate when the locator i
   assert.equal(associateFinding({ locator: "(page-level)", html: '<meta http-equiv="refresh">' }).semanticRegion, "document");
 });
 
+test("an explicit ARIA role takes precedence over the element's default role", () => {
+  assert.equal(associateFinding({ locator: "a.leaflet-control", html: "<a role=\"button\">Zoom in</a>" }).semanticRegion, "button");
+  assert.equal(associateFinding({ locator: "div.control", html: "<div role=\"link\">Open</div>" }).semanticRegion, "link");
+});
+
 test("explicit component identifiers are preserved at high confidence but ownership stays false", () => {
   const finding = associateFinding({
     locator: "nav a.icon",

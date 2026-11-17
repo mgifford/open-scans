@@ -45,11 +45,14 @@ function inferRegion(locator, html) {
   if (roleToken(source, "table") || elementToken(elementSource, "table")) return "table";
   if (roleToken(source, "list") || elementToken(elementSource, "ul") || elementToken(elementSource, "ol") || elementToken(elementSource, "li")) return "list";
   if (/(^|[/>\s<])h[1-6](?=[\s.#:[>/]|$)/.test(elementSource)) return "heading";
+  if (roleToken(source, "button")) return "button";
+  if (roleToken(source, "link")) return "link";
   if (elementToken(elementSource, "a")) return "link";
   if (elementToken(elementSource, "button")) return "button";
   if (elementToken(elementSource, "img")) return "image";
   if (elementToken(elementSource, "iframe")) return "frame";
   if (roleToken(source, "dialog") || elementToken(elementSource, "dialog")) return "dialog";
+  if (roleToken(source, "searchbox") || roleToken(source, "combobox") || roleToken(source, "textbox") || roleToken(source, "spinbutton")) return "form-control";
   if (/aria-live|role\s*=\s*["']?(?:status|alert|log)/.test(source)) return "live-region";
   if (["html", "body", "meta", "title", "script", "style", "link"].some((tag) => elementToken(elementSource, tag))) return "document";
   return null;
