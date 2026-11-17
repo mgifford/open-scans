@@ -93,9 +93,9 @@ If the locator is missing, the first tag in the recorded HTML is used as a fallb
 ## 5. Outputs
 
 - `report.json` — full `patternInventory` with every pattern, pages, first/last seen, examples, container and category indexes.
-- `report.md` — pattern counts by category and the first 20 patterns by container.
+- `report.md` — pattern counts by category, locator coverage, and the first 20 patterns by container.
 - `report.html` — accessible “Pattern and container inventory” section with category and pattern tables and a `patterns.csv` link.
-- `patterns.csv` — one row per pattern with category, container element/basis/confidence, component id/label, pattern/display id, identity source, rule, engine, WCAG/ACT, occurrences, pages, first/last seen and example page/locator.
+- `patterns.csv` — one row per pattern with category, container element/basis/confidence, component id/label, pattern/display id, identity source, rule, engine, WCAG/ACT, occurrences, pages, locator coverage, first/last seen and example page/locator.
 
 `patterns.csv` is generated next to the other report artifacts.
 

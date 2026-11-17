@@ -60,6 +60,10 @@ test("the same navigation pattern on two pages becomes one pattern with a naviga
   assert.equal(value.summary.byCategory.navigation.patterns, 1);
   assert.equal(value.summary.byCategory.navigation.occurrences, 2);
   assert.equal(value.summary.byCategory.navigation.pages, 2);
+  assert.equal(value.summary.patternsWithSelector, 1);
+  assert.equal(value.summary.htmlOnlyPatterns, 0);
+  assert.equal(value.patterns[0].locatorCoverage, "selector");
+  assert.equal(value.patterns[0].hasSelector, true);
   assert.ok(value.patterns[0].actRuleIds.includes("c487ae"));
 });
 
@@ -82,6 +86,16 @@ test("form, form-control, header, footer, table and unassigned containers are co
   assert.equal(value.summary.byCategory.table.patterns, 1);
   assert.equal(value.summary.byCategory.unknown.patterns, 1);
   assert.equal(value.summary.unassignedPatterns, 1);
+});
+
+test("patterns without selectors are reported as HTML-only instead of inventing a locator", () => {
+  const value = inventory([
+    makeResult("https://example.gov/", [failure({ xpath: null, html: "<input id=\"email\">", patternId: "A11Y-html", fingerprint: "999999999999" })])
+  ]);
+  assert.equal(value.summary.htmlOnlyPatterns, 1);
+  assert.equal(value.patterns[0].locatorCoverage, "html-only");
+  assert.equal(value.patterns[0].hasSelector, false);
+  assert.equal(value.patterns[0].category, "form-control");
 });
 
 test("different rules on the same container remain different patterns", () => {
@@ -150,6 +164,7 @@ test("pattern inventory CSV has the expected identifiers and container columns",
   assert.match(csv, /"category"/);
   assert.match(csv, /"container_element"/);
   assert.match(csv, /"pattern_id"/);
+  assert.match(csv, /"locator_coverage"/);
   assert.match(csv, /"A11Y-aaaaaaaa"/);
   assert.match(csv, /"c487ae"/);
   assert.match(csv, /"navigation"/);
@@ -162,5 +177,6 @@ test("the pattern inventory schema is versioned and states no ownership", () => 
   assert.equal(schema.additionalProperties, false);
   assert.equal(schema.properties.summary.properties.ownershipEstablished.const, false);
   assert.equal(schema.$defs.container.properties.ownershipEstablished.const, false);
+  assert.ok(schema.properties.summary.required.includes("patternsWithSelector"));
   assert.ok(schema.required.includes("patterns"));
 });

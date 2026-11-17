@@ -123,7 +123,9 @@ function extractFindings(results) {
 }
 
 function makePatternFinding({ result, pageUrl, engine, failure }) {
-  const locator = text(failure.selector || failure.xpath || failure.html || failure.message || "(page-level)");
+  const selector = text(failure.selector || failure.xpath || "");
+  const locator = selector || text(failure.html || failure.message || "(page-level)");
+  const locatorSource = selector ? "selector" : failure.html ? "html" : "none";
   const rule = text(failure.rule ?? failure.ruleId ?? "unknown-rule");
   const canonicalPattern = failure.a11yPatternFingerprint ?? null;
   const legacyPattern = failure.patternId ?? null;
@@ -153,6 +155,7 @@ function makePatternFinding({ result, pageUrl, engine, failure }) {
     impact: failure.impact ?? failure.severity ?? null,
     pageUrl,
     locator,
+    locatorSource,
     html: failure.html ?? failure.element ?? null,
     firstSeenAt: failure.firstSeenAt ?? null,
     container: {
@@ -194,6 +197,8 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
       actRuleIds: [],
       impact: finding.impact,
       occurrenceCount: 0,
+      selectorOccurrences: 0,
+      htmlOccurrences: 0,
       pages: new Set(),
       firstSeenAt: null,
       lastSeenAt: null,
@@ -201,6 +206,8 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
       container: finding.container
     };
     existing.occurrenceCount += 1;
+    if (finding.locatorSource === "selector") existing.selectorOccurrences += 1;
+    else if (finding.locatorSource === "html") existing.htmlOccurrences += 1;
     existing.pages.add(finding.pageUrl);
     existing.wcagSc = unique([...existing.wcagSc, ...finding.wcagSc]);
     existing.actRuleIds = unique([...existing.actRuleIds, ...finding.actRuleIds]);
@@ -237,6 +244,12 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
     actRuleIds: pattern.actRuleIds,
     impact: pattern.impact,
     category: pattern.container.category,
+    locatorCoverage: pattern.selectorOccurrences === pattern.occurrenceCount
+      ? "selector"
+      : pattern.selectorOccurrences > 0
+        ? "mixed"
+        : pattern.htmlOccurrences > 0 ? "html-only" : "none",
+    hasSelector: pattern.selectorOccurrences > 0,
     container: pattern.container,
     occurrenceCount: pattern.occurrenceCount,
     pageCount: pattern.pages.size,
@@ -281,6 +294,10 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
       occurrences: serialized.reduce((total, pattern) => total + pattern.occurrenceCount, 0),
       pages: new Set(serialized.flatMap((pattern) => pattern.pages)).size,
       categories: Object.keys(byCategory).length,
+      patternsWithSelector: serialized.filter((pattern) => pattern.locatorCoverage === "selector").length,
+      patternsWithMixedLocators: serialized.filter((pattern) => pattern.locatorCoverage === "mixed").length,
+      htmlOnlyPatterns: serialized.filter((pattern) => pattern.locatorCoverage === "html-only").length,
+      patternsWithoutLocator: serialized.filter((pattern) => pattern.locatorCoverage === "none").length,
       byCategory,
       byContainerElement,
       byComponentId,
@@ -304,7 +321,7 @@ export function patternInventoryToCsv(inventory) {
     "category", "category_label", "container_element", "container_basis", "container_confidence",
     "component_id", "component_label", "pattern_id", "display_id", "identity_source",
     "rule", "engine", "wcag_sc", "act_rule_ids", "occurrences", "page_count",
-    "first_seen_at", "last_seen_at", "example_page", "example_locator"
+    "locator_coverage", "has_selector", "first_seen_at", "last_seen_at", "example_page", "example_locator"
   ];
   const cell = (value) => {
     let out = String(value ?? "");
@@ -330,6 +347,8 @@ export function patternInventoryToCsv(inventory) {
       (pattern.actRuleIds ?? []).join(";"),
       pattern.occurrenceCount,
       pattern.pageCount,
+      pattern.locatorCoverage,
+      String(pattern.hasSelector),
       pattern.firstSeenAt ?? "",
       pattern.lastSeenAt ?? "",
       pattern.examples?.[0]?.pageUrl ?? "",
