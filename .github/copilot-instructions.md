@@ -29,15 +29,14 @@ For Spec Kitty project management rules (work packages, path references, encodin
 
 ### Scanning Engines
 
-Five accessibility engines are supported (run individually or in combination via the issue title or body):
+Four accessibility engines are selectable (run individually or in combination via the issue title or body). QualWeb is retired and is not selectable:
 
 1. **axe-core** (`@axe-core/playwright`) - Deque's industry-standard engine
 2. **Siteimprove ALFA** (`@siteimprove/alfa-cli`) - Standards-first, ACT-rules-based
 3. **IBM Equal Access Checker** (`accessibility-checker`) - IBM's comprehensive checker
 4. **AccessLint** (`@accesslint/core`) - Automated accessibility testing
-5. **QualWeb** (`@qualweb/core`) - University of Lisbon WCAG/ACT evaluator
 
-Default: **axe** plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all five.
+Default: **axe** plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all four supported engines.
 
 ---
 

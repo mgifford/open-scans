@@ -92,7 +92,7 @@ The `.github/prompts/` directory contains task-specific prompt files that give A
 
 | Prompt file | When to use |
 |---|---|
-| [`new-scanner-rule.prompt.md`](.github/prompts/new-scanner-rule.prompt.md) | Adding a new rule entry to `rule-metadata.mjs` for any of the five engines |
+| [`new-scanner-rule.prompt.md`](.github/prompts/new-scanner-rule.prompt.md) | Adding a new rule entry to `rule-metadata.mjs` for any of the four supported engines |
 | [`report-template.prompt.md`](.github/prompts/report-template.prompt.md) | Creating or modifying HTML report templates in `interactive-report.mjs` or `generate-reports-html.mjs` |
 | [`fix-accessibility-violation.prompt.md`](.github/prompts/fix-accessibility-violation.prompt.md) | Fixing a specific WCAG violation found in a scan report |
 | [`write-scan-test.prompt.md`](.github/prompts/write-scan-test.prompt.md) | Writing unit tests for scanner modules in `tests/unit/` |
