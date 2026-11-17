@@ -1,0 +1,48 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 390,
+    "equalAccess": 412,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 802,
+    "scannedAt": "2026-11-17T13:54:35.998Z",
+    "scannedCount": 20
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:color-contrast",
+      "pageCount": 19,
+      "pages": [
+        "https://fosdem.org/2027/",
+        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/practical/transportation/",
+        "https://fosdem.org/2027/news/fosdem-2027-dates/",
+        "https://fosdem.org/2027/news/call-for-stands/",
+        "https://fosdem.org/2027/news/junior-call-for-participation/",
+        "https://fosdem.org/2027/news/call-for-main-track/",
+        "https://fosdem.org/2027/about/charter/",
+        "https://fosdem.org/2027/news/accepted-stands/",
+        "https://fosdem.org/2027/calendar/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 19,
+      "pages": [
+        "https://fosdem.org/2027/",
+        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/practical/transportation/",
+        "https://fosdem.org/2027/news/fosdem-2027-dates/",
+        "https://fosdem.org/2027/news/call-for-stands/",
+        "https://fosdem.org/2027/news/junior-call-for-participation/",
+        "https://fosdem.org/2027/news/call-for-main-track/",
+        "https://fosdem.org/2027/about/charter/",
+        "https://fosdem.org/2027/news/accepted-stands/",
+        "https://fosdem.org/2027/calendar/"
+      ]
+    }
+  ]
+}
