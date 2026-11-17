@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 2,
+  "session": {
+    "id": "fixture-session",
+    "startedAt": "2026-11-02T10:00:00.000Z",
+    "mode": "diagnose"
+  },
+  "capabilities": {
+    "tier": "full",
+    "summary": "Fixture only",
+    "unavailable": []
+  },
+  "environment": {
+    "timestamp": "2026-11-02T10:00:00.000Z",
+    "firefoxVersion": "153.0",
+    "playwrightVersion": "1.62.1",
+    "co2jsVersion": "0.19.0",
+    "viewport": { "width": 1440, "height": 900 }
+  },
+  "target": { "url": "https://example.gov/" },
+  "configuration": { "idleMs": 10000 },
+  "families": {
+    "families": [
+      { "id": "pf-nav", "label": "Navigation pages", "pages": ["pg-home", "pg-services"] }
+    ]
+  },
+  "graph": {
+    "schema": "component-graph/1",
+    "sources": [
+      {
+        "id": "firefox-dom",
+        "browser": "Firefox 153.0",
+        "timestamp": "2026-11-02T10:00:00.000Z",
+        "method": "Read from the rendered DOM after the measured window",
+        "boundary": "the page as Firefox rendered it"
+      },
+      {
+        "id": "firefox-network",
+        "browser": "Firefox 153.0",
+        "timestamp": "2026-11-02T10:00:00.000Z",
+        "method": "Network events during the measured page load",
+        "boundary": "transfer to this browser"
+      },
+      {
+        "id": "lighthouse",
+        "browser": "HeadlessChrome/157.0.0.0",
+        "timestamp": "2026-11-02T10:00:00.000Z",
+        "method": "Lighthouse simulated throttling, 3 runs per URL",
+        "boundary": "Chromium lab, simulated throttling"
+      }
+    ],
+    "pages": [
+      {
+        "id": "pg-home",
+        "url": "https://example.gov/",
+        "family": "pf-nav",
+        "metrics": {
+          "domNodes": { "value": 820, "unit": "count", "source": "firefox-dom", "scope": "page" },
+          "transferBytes": { "value": 1450000, "unit": "bytes", "source": "firefox-network", "scope": "page" },
+          "requests": { "value": 72, "unit": "count", "source": "firefox-network", "scope": "page" }
+        },
+        "instances": ["ci-nav", "ci-dialog"],
+        "resources": ["rs-hero"]
+      },
+      {
+        "id": "pg-services",
+        "url": "https://example.gov/services",
+        "family": "pf-nav",
+        "metrics": {
+          "domNodes": { "value": 610, "unit": "count", "source": "firefox-dom", "scope": "page" },
+          "transferBytes": { "value": 980000, "unit": "bytes", "source": "firefox-network", "scope": "page" },
+          "requests": { "value": 51, "unit": "count", "source": "firefox-network", "scope": "page" }
+        },
+        "instances": ["ci-nav-2"],
+        "resources": ["rs-hero"]
+      }
+    ],
+    "types": [
+      {
+        "id": "ct-nav",
+        "signature": "component:site-nav",
+        "method": "annotation",
+        "identification": "explicit",
+        "confidence": "high",
+        "matchedBy": ["signature", "tag", "role"],
+        "tag": "nav",
+        "role": "navigation",
+        "families": ["pf-nav"],
+        "instances": 2,
+        "ownNodes": { "median": 210, "max": 230, "estimated": false },
+        "inclusiveNodes": { "median": 210, "max": 230 },
+        "container": false,
+        "variants": 1,
+        "notes": []
+      },
+      {
+        "id": "ct-sidebar-nav",
+        "signature": "component:sidebar-nav",
+        "method": "annotation",
+        "identification": "explicit",
+        "confidence": "medium",
+        "matchedBy": ["signature", "role"],
+        "tag": "nav",
+        "role": "navigation",
+        "families": ["pf-nav"],
+        "instances": 1,
+        "ownNodes": { "median": 90, "max": 90, "estimated": false },
+        "inclusiveNodes": { "median": 90, "max": 90 },
+        "container": false,
+        "variants": 1,
+        "notes": []
+      },
+      {
+        "id": "ct-dialog",
+        "signature": "component:consent-dialog",
+        "method": "annotation",
+        "identification": "explicit",
+        "confidence": "high",
+        "matchedBy": ["signature", "role"],
+        "tag": "div",
+        "role": "dialog",
+        "families": [],
+        "instances": 1,
+        "ownNodes": { "median": 45, "max": 45, "estimated": false },
+        "inclusiveNodes": { "median": 45, "max": 45 },
+        "container": false,
+        "variants": 1,
+        "notes": []
+      }
+    ],
+    "instances": [
+      {
+        "id": "ci-nav",
+        "type": "ct-nav",
+        "page": "pg-home",
+        "occurrence": 0,
+        "children": [],
+        "selector": "header.site-header nav.primary",
+        "tag": "nav",
+        "role": "navigation",
+        "inclusiveNodes": 210,
+        "own": { "nodes": 210 },
+        "ownEstimated": false,
+        "resources": [],
+        "ref": { "scenario": 0, "instance": 0 }
+      },
+      {
+        "id": "ci-dialog",
+        "type": "ct-dialog",
+        "page": "pg-home",
+        "occurrence": 0,
+        "children": [],
+        "selector": "[data-component-id=\"consent-dialog\"]",
+        "tag": "div",
+        "role": "dialog",
+        "inclusiveNodes": 45,
+        "own": { "nodes": 45 },
+        "ownEstimated": false,
+        "resources": [],
+        "ref": { "scenario": 0, "instance": 1 }
+      },
+      {
+        "id": "ci-nav-2",
+        "type": "ct-nav",
+        "page": "pg-services",
+        "occurrence": 0,
+        "children": [],
+        "selector": "header.site-header nav.primary",
+        "tag": "nav",
+        "role": "navigation",
+        "inclusiveNodes": 210,
+        "own": { "nodes": 210 },
+        "ownEstimated": false,
+        "resources": [],
+        "ref": { "scenario": 0, "instance": 0 }
+      },
+      {
+        "id": "ci-sidebar",
+        "type": "ct-sidebar-nav",
+        "page": "pg-services",
+        "occurrence": 0,
+        "children": [],
+        "selector": "aside nav.sidebar",
+        "tag": "nav",
+        "role": "navigation",
+        "inclusiveNodes": 90,
+        "own": { "nodes": 90 },
+        "ownEstimated": false,
+        "resources": [],
+        "ref": { "scenario": 0, "instance": 2 }
+      }
+    ],
+    "resources": [
+      {
+        "id": "rs-hero",
+        "key": "https://example.gov/assets/hero.jpg",
+        "host": "example.gov",
+        "kind": "image",
+        "thirdParty": false,
+        "pages": 2,
+        "families": ["pf-nav"],
+        "scope": "site-wide",
+        "transferBytes": { "median": 480000, "max": 520000 },
+        "loadedBy": ["ci-nav"]
+      }
+    ],
+    "findings": [
+      {
+        "id": "fd-render",
+        "kind": "endless-animation",
+        "title": "Navigation keeps an animation running",
+        "page": "pg-home",
+        "target": { "type": "instance", "id": "ci-nav" },
+        "evidenceClass": "direct-observation",
+        "role": "finding",
+        "evidence": [
+          { "source": "firefox-dom", "ref": "graph.instances[0]", "detail": "1 animation with infinite iterations" }
+        ],
+        "metric": { "value": 1, "unit": "count", "source": "firefox-dom", "scope": "instance-own" },
+        "energy": { "status": "not-measured", "measuredWorkloadDeltaMwh": null }
+      },
+      {
+        "id": "fd-dialog-structure",
+        "kind": "structural-heuristic",
+        "title": "Large consent dialog subtree",
+        "page": "pg-home",
+        "target": { "type": "type", "id": "ct-dialog" },
+        "evidenceClass": "structural-heuristic",
+        "role": "finding",
+        "evidence": [
+          { "source": "firefox-dom", "ref": "graph.types[2]", "detail": "45 owned elements" }
+        ],
+        "metric": { "value": 45, "unit": "count", "source": "firefox-dom", "scope": "component-type" },
+        "energy": { "status": "not-measured", "measuredWorkloadDeltaMwh": null }
+      }
+    ],
+    "limitations": [
+      "Nothing here is an energy figure. A finding's energy is not-measured until a controlled experiment measures a workload difference."
+    ]
+  },
+  "lighthouse": {
+    "tool": "lighthouse",
+    "version": "13.5.0",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "formFactor": "desktop",
+    "throttling": "simulate, 40 ms RTT, 10.0 Mbps, 1× CPU slowdown",
+    "categories": ["performance"],
+    "runsPerUrl": 3,
+    "benchmarkIndex": 3107,
+    "results": [
+      {
+        "requestedUrl": "https://example.gov/",
+        "finalUrl": "https://example.gov/",
+        "runs": 3,
+        "scores": { "performance": 62 },
+        "metrics": { "fcpMs": 900, "lcpMs": 2600, "tbtMs": 310, "speedIndexMs": 2100, "cls": 0.08 },
+        "recommendations": [
+          {
+            "id": "unused-javascript",
+            "title": "Reduce unused JavaScript",
+            "score": 0.5,
+            "savingsBytes": 120000,
+            "savingsMs": 300
+          }
+        ],
+        "failingAudits": {},
+        "work": {
+          "mainThreadMs": 1200,
+          "mainThreadByCategory": [
+            { "category": "Script Evaluation", "ms": 600 },
+            { "category": "Style & Layout", "ms": 300 }
+          ],
+          "jsExecutionMs": 550,
+          "totalBytes": 1450000,
+          "domElements": 820
+        },
+        "evidence": {
+          "nodes": [
+            {
+              "audit": "lcp-breakdown-insight",
+              "title": "LCP breakdown",
+              "kind": "context",
+              "selector": "main > h1",
+              "detail": "largest contentful paint element"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "investigation": {
+    "method": "queue-v1",
+    "order": ["evidence", "reach", "opportunity", "workload"],
+    "items": [
+      {
+        "rank": 1,
+        "kind": "component",
+        "id": "cmp-nav",
+        "title": "component:site-nav",
+        "evidence": "structure-and-lighthouse",
+        "because": ["210 elements (26% of the page)", "Lighthouse: Reduce unused JavaScript"],
+        "reach": { "pages": 2, "of": 2, "families": 1 },
+        "workload": { "elements": 210, "shareOfPage": 0.26, "transferBytes": 480000 },
+        "remediation": [
+          {
+            "id": "reduce-dom",
+            "title": "Render fewer elements",
+            "action": "Paginate or virtualise long menus.",
+            "rationale": "Every element is re-examined on layout.",
+            "verify": "Measure with an experiment.",
+            "experiment": "pagination"
+          }
+        ],
+        "confidence": "medium",
+        "where": [
+          { "page": "https://example.gov/", "selector": "header.site-header nav.primary", "belowFold": false }
+        ],
+        "audits": ["unused-javascript"]
+      }
+    ],
+    "limitations": ["The order is a sort order, not a score."]
+  },
+  "warnings": []
+}

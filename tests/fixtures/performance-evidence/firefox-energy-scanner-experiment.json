@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "environment": {
+    "timestamp": "2026-11-04T11:00:00.000Z",
+    "firefoxVersion": "153.0",
+    "viewport": { "width": 1440, "height": 900 }
+  },
+  "target": { "url": "https://example.gov/" },
+  "configuration": { "idleMs": 10000 },
+  "graph": {
+    "schema": "component-graph/1",
+    "sources": [
+      {
+        "id": "firefox-dom",
+        "browser": "Firefox 153.0",
+        "timestamp": "2026-11-04T11:00:00.000Z",
+        "method": "Read from the rendered DOM after the measured window",
+        "boundary": "the page as Firefox rendered it"
+      },
+      {
+        "id": "firefox-energy",
+        "browser": "Firefox 153.0",
+        "timestamp": "2026-11-04T11:00:00.000Z",
+        "method": "Observed client energy over interleaved baseline and variant runs",
+        "boundary": "Firefox observed client energy"
+      }
+    ],
+    "pages": [
+      {
+        "id": "pg-exp",
+        "url": "https://example.gov/",
+        "metrics": {
+          "domNodes": { "value": 820, "unit": "count", "source": "firefox-dom", "scope": "page" }
+        },
+        "instances": [],
+        "resources": []
+      }
+    ],
+    "types": [],
+    "instances": [],
+    "resources": [],
+    "findings": [],
+    "limitations": []
+  },
+  "experiment": {
+    "name": "carousel-animation",
+    "url": "https://example.gov/",
+    "variant": {
+      "kind": "pause-animations",
+      "selector": "div.hero-carousel"
+    },
+    "description": "CSS animations and transitions paused",
+    "sides": {
+      "baseline": "the page as served",
+      "variant": "animations paused in div.hero-carousel"
+    },
+    "applied": { "ok": true },
+    "assertions": { "checked": 2, "baseline": [], "variant": [] },
+    "differences": [
+      {
+        "step": "idle",
+        "runs": [10, 10],
+        "verdict": "different",
+        "reading": "The difference is outside the run-to-run spread.",
+        "energy": {
+          "basis": "window",
+          "medianMwh": [0.0711, 0.0377],
+          "differenceMwh": -0.0334,
+          "resolved": [true, true]
+        }
+      }
+    ]
+  }
+}

@@ -6,6 +6,10 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 
 - `parse-issue.mjs` - Parses issue bodies into normalized `ScanRequest` data.
 - `parse-performance-issue.mjs` - Parses `PERF:` issue bodies into a validated `performance-request/1` object. Performs no browser work and no network access.
+- `performance-evidence.mjs` - Assembles, merges and validates the common `performance-evidence/1` format.
+- `performance-source-loader.mjs` - Loads repo/local/https evidence with DNS-aware and redirect-aware checks.
+- `run-performance-reuse.mjs` - Reuse-only investigation runner; no browser launches.
+- `adapters/` - Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review.
 - `validate-targets.mjs` - Validates URL syntax and blocks private/internal targets.
 - `run-scan.mjs` - Fetches accepted URLs, runs the scan engines below, and generates reports.
 - `reflow-risk.mjs` - WCAG 1.4.10 reflow check (always runs; page-level indicator, not a rule engine).
@@ -14,6 +18,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `crawl-urls.mjs` - Discovers additional same-site URLs to scan when requested.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.
 - `schemas/performance-request.schema.json` - Versioned `performance-request/1` contract for `PERF:` issues.
+- `schemas/performance-evidence.schema.json` - Versioned `performance-evidence/1` common evidence contract.
 
 ## Scan engines
 
@@ -28,6 +33,7 @@ separate from WCAG violation counts: `reflowRisk` and `semantica11y`.
 - `npm run run:validate`
 - `npm run run:scan -- <issue-event-json-file> <output-dir>`
 - `npm run run:parse-performance -- <issue-event-json-file>`
+- `npm run run:performance-reuse -- <performance-request.json> --source <type>=<location> --allow-local --out <file>`
 
 `parse-performance-issue.mjs` accepts `--out <file>`, `--summary <file>` and
 `--allow-invalid`. It exits non-zero on an invalid request. `reuse` requests are

@@ -1568,6 +1568,29 @@ Browser providers, Sitespeed, CO2.js computation, adapters, evidence normalizati
 
 `tests/unit/parse-performance-issue.test.mjs` covers reusable fixtures, defaults, mode boundaries, source validation, credential/private-host rejection, budget limits, deterministic identity, schema/parser consistency, and the no-browser guarantee. See `docs/performance/PHASE-0-ASSESSMENT.md` for the baseline test result and the one pre-existing, timezone-dependent accessibility-report test failure.
 
+### 23.6 PR 2: common evidence model and adapters
+
+PR 2 adds `performance-evidence/1`, a versioned adapter layer for existing evidence. It preserves Firefox Energy Scanner IDs (`pg-`, `ct-`, `ci-`, `rs-`, `fd-`) and Vital Core `VFR-`/`VO-` references, keeps measurements from different browsers/methods separate, and never fills a missing metric with zero.
+
+Adapters:
+
+| Adapter | Source | Imported evidence |
+| :--- | :--- | :--- |
+| A | Open Scans report | URLs, browser/viewport, accessibility context only |
+| B | Firefox Energy Scanner | Graph, families, resources, findings, Lighthouse, investigation queue, experiments |
+| C | Vital Core | Sampled pages, families, configured components, accessibility context, Lighthouse medians, existing CO2.js metrics |
+| D | Open Site Review | CSS quality and compatibility candidates; no runtime cost |
+
+- Pages merge by normalized URL; the Firefox Energy Scanner ID is canonical when present.
+- Resources merge by URL; differing sizes are recorded, never averaged.
+- Component types are never merged by label; same-label types are cross-referenced with `possibleDuplicateOf`.
+- Findings are never merged across sources; duplicate IDs are retained with a suffix.
+- CO2.js figures imported from Vital Core keep their `modelled-transfer` boundary and are not recalculated.
+- `reuse` mode is executed by `scanner/run-performance-reuse.mjs`, which records `browserLaunches: 0`.
+- Remote evidence is https-only, DNS-checked before the request, redirect-checked, size-limited and JSON-only. Address pinning at connect time remains a PR 3/4 task.
+
+Tests: `tests/unit/performance-evidence.test.mjs` (28 tests at the time of writing) cover all four adapters, ID preservation, incompatible measurements, missing data, merge rules, context-only accessibility evidence, validation boundaries, the reuse runner and source-loader safety.
+
 ---
 
 ## Related Documentation

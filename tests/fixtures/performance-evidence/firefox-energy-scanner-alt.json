@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "environment": {
+    "timestamp": "2026-11-03T09:00:00.000Z",
+    "firefoxVersion": "152.0",
+    "viewport": { "width": 1280, "height": 800 }
+  },
+  "target": { "url": "https://example.gov/" },
+  "graph": {
+    "schema": "component-graph/1",
+    "sources": [
+      {
+        "id": "firefox-network",
+        "browser": "Firefox 152.0",
+        "timestamp": "2026-11-03T09:00:00.000Z",
+        "method": "Network events during the page load",
+        "boundary": "transfer to this browser"
+      }
+    ],
+    "pages": [
+      {
+        "id": "pg-home-alt",
+        "url": "https://example.gov/",
+        "metrics": {
+          "transferBytes": { "value": 900000, "unit": "bytes", "source": "firefox-network", "scope": "page" },
+          "requests": { "value": 60, "unit": "count", "source": "firefox-network", "scope": "page" }
+        },
+        "instances": [],
+        "resources": []
+      }
+    ],
+    "types": [],
+    "instances": [],
+    "resources": [],
+    "findings": [],
+    "limitations": []
+  },
+  "lighthouse": {
+    "tool": "lighthouse",
+    "version": "13.6.0",
+    "browser": "HeadlessChrome/158.0.0.0",
+    "formFactor": "desktop",
+    "throttling": "provided, no throttling",
+    "runsPerUrl": 1,
+    "results": [
+      {
+        "requestedUrl": "https://example.gov/",
+        "finalUrl": "https://example.gov/",
+        "runs": 1,
+        "scores": { "performance": 48 },
+        "metrics": { "fcpMs": 1100, "lcpMs": 3600, "tbtMs": 520, "speedIndexMs": 3000, "cls": 0.12 },
+        "recommendations": [],
+        "work": { "mainThreadMs": 1800, "jsExecutionMs": 900, "totalBytes": 900000, "domElements": 700 },
+        "evidence": { "nodes": [] }
+      }
+    ]
+  }
+}

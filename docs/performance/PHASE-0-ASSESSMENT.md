@@ -337,7 +337,9 @@ PR 1-specific tests cover: valid reuse/light/combined fixtures (43 tests total),
 | Pipeline cost accounting (browser launches, pages, duration) | PR 3 onward |
 | Fix stale QualWeb documentation/schema | Separate accessibility change |
 
-**PR 1 deliberately omits:** browser collection, provider adapters, evidence normalization, report publication, UI, AI calls, MCP, combined execution, and any change to `SCAN:` execution. The next smallest useful step is PR 2: adapt one existing Open Scans report and one Vital Core snapshot into `performance-evidence/1` with no browser.
+**PR 1 deliberately omits:** browser collection, provider adapters, evidence normalization, report publication, UI, AI calls, MCP, combined execution, and any change to `SCAN:` execution.
+
+> **Update after PR 2:** the `performance-evidence/1` model, adapters A–D and the no-browser reuse runner are implemented. See [`PR-2-EVIDENCE-ADAPTERS.md`](./PR-2-EVIDENCE-ADAPTERS.md) and [`performance-evidence.md`](./performance-evidence.md). The next smallest useful step is PR 3: bounded Lighthouse collection for pages whose existing evidence is insufficient.
 
 **Sustainability impact of PR 1:** neutral-to-positive. No new dependency, no browser launch, no external request, no LLM call and no committed artifact. The validation workflow runs a single Node process with a 5-minute ceiling and a 14-day artifact; `reuse` requests force both browser budgets to zero. The parser rejects unbounded page counts and source lists before any provider could spend compute.
 

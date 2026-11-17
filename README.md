@@ -125,7 +125,7 @@ Engine: axe, alfa
 
 ## Performance Investigation (`PERF:`)
 
-Performance investigation is a **separate request type** from accessibility scanning. It is currently at **PR 1: request contract**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. PR 1 launches **no browser**, runs **no accessibility engine**, calls no external API and commits no report.
+Performance investigation is a **separate request type** from accessibility scanning. It currently covers **PR 1: request contract** and **PR 2: common evidence model and existing-source adapters**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. The PR 2 reuse runner can then assemble existing Open Scans, Firefox Energy Scanner, Vital Core and Open Site Review evidence with **no browser launch**. PR 2 does not run accessibility engines, call an LLM, or commit a performance report.
 
 ```text
 PERF: example.gov performance investigation
@@ -168,14 +168,27 @@ Contract and assessment documents:
 - [`scanner/schemas/performance-request.schema.json`](./scanner/schemas/performance-request.schema.json) — versioned `performance-request/1` contract
 - [`scanner/parse-performance-issue.mjs`](./scanner/parse-performance-issue.mjs) — deterministic parser and validator (no browser, no network)
 - [`docs/performance/performance-request-contract.md`](./docs/performance/performance-request-contract.md) — body format, fields, modes and validation rules
+- [`docs/performance/performance-evidence.md`](./docs/performance/performance-evidence.md) — common `performance-evidence/1` entities, identity and merge rules
 - [`docs/performance/PHASE-0-ASSESSMENT.md`](./docs/performance/PHASE-0-ASSESSMENT.md) — provider inventory, duplicate-measurement map and compatibility risks
 - [`docs/performance/ADR-001-performance-workflow-in-open-scans.md`](./docs/performance/ADR-001-performance-workflow-in-open-scans.md) — why the workflow lives here
+- [`docs/performance/PR-2-EVIDENCE-ADAPTERS.md`](./docs/performance/PR-2-EVIDENCE-ADAPTERS.md) — what PR 2 implemented and deliberately omitted
 
 Use the **Performance Request** issue template, or run the parser locally:
 
 ```bash
 node scanner/parse-performance-issue.mjs tests/fixtures/performance-issue-reuse.json
 ```
+
+Assemble existing evidence without launching a browser:
+
+```bash
+node scanner/run-performance-reuse.mjs tests/fixtures/performance-issue-reuse.json \
+  --source firefox-energy-scanner=/path/to/result.json \
+  --source vital-core=/path/to/snapshot.json \
+  --allow-local --out evidence.json --summary evidence.md
+```
+
+The reuse runner accepts a validated request, a parser result, or the original issue event. Local paths require an explicit `--source` override and `--allow-local`. A source that cannot be adapted is omitted with a visible limitation; the runner never falls back to a new scan.
 
 ## View Scan Results
 
@@ -321,6 +334,9 @@ The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`)
 - **scanner/parse-issue.mjs**: Extracts URLs and engine specifications from scan request issues
 - **scanner/parse-performance-issue.mjs**: Parses and validates `PERF:` requests without launching a browser or running an accessibility engine
 - **scanner/schemas/performance-request.schema.json**: Versioned `performance-request/1` contract
+- **scanner/performance-evidence.mjs**: Assembles, merges and validates the common `performance-evidence/1` format
+- **scanner/adapters/**: Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review
+- **scanner/run-performance-reuse.mjs**: Reuse-only investigation runner (no browser launches)
 - **scanner/validate-targets.mjs**: Server-side URL validation
 - **scanner/run-scan.mjs**: Executes accessibility scans with selected engines and generates reports
 - **scanner/generate-reports-html.mjs**: Builds the reports dashboard
@@ -480,6 +496,7 @@ Development of `open-scans` has used AI coding assistants for:
 | Claude Code (claude-sonnet-5) | Added `scanner/fingerprint-core.mjs` to dual-write the versioned, cross-project `a11y/pattern/v1`/`a11y/occurrence/v1` fingerprints from mgifford/ACCESSIBILITY.md alongside the existing `A11Y-xxxxxxxx` Instance ID and Pattern ID (verified against ACCESSIBILITY.md's published golden test vectors); renamed `computeChangeTracking`'s `resolvedCount`/`resolvedIssues` output fields to `notObservedCount`/`notObservedIssues` and updated both consumers so absence from a scan is no longer labelled as resolution | Development – July 2026 |
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

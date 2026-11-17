@@ -1,0 +1,63 @@
+{
+  "issueNumber": 42,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/42",
+  "issueTitle": "SCAN: example.gov accessibility",
+  "scanTitle": "example.gov accessibility",
+  "submittedBy": "octocat",
+  "engines": ["axe"],
+  "scanContext": {
+    "viewport": { "width": 1280, "height": 800 },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "chromium"
+  },
+  "scannedAt": "2026-11-01T12:00:00.000Z",
+  "totalSubmitted": 2,
+  "acceptedCount": 2,
+  "scannedCount": 2,
+  "rejectedCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://example.gov/",
+      "finalUrl": "https://example.gov/",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Example Government",
+      "elapsedMs": 1200,
+      "error": null,
+      "scanContext": {
+        "viewport": { "width": 1280, "height": 800 },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "axe": {
+        "executed": true,
+        "counts": { "passed": 40, "failed": 2, "cantTell": 0, "inapplicable": 5 }
+      }
+    },
+    {
+      "submittedUrl": "https://example.gov/services",
+      "finalUrl": "https://example.gov/services",
+      "redirected": false,
+      "statusCode": 200,
+      "ok": true,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Services",
+      "elapsedMs": 1500,
+      "error": null,
+      "scanContext": {
+        "viewport": { "width": 1280, "height": 800 },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "chromium"
+      },
+      "axe": {
+        "executed": true,
+        "counts": { "passed": 38, "failed": 1, "cantTell": 0, "inapplicable": 4 }
+      }
+    }
+  ]
+}
