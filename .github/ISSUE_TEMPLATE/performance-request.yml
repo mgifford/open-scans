@@ -187,6 +187,6 @@ body:
     attributes:
       value: |
         ---
-        **What happens next:** this issue is validated and the structured `performance-request/1` JSON is published as a workflow artifact. PR 1 does not launch a browser, run an accessibility engine or commit a report.
+        **What happens next:** this issue is validated, then the separate Performance Scan workflow executes the selected `reuse`, `light` or `deep` mode. `combined` is validated but not yet executable. Raw provider artifacts are uploaded to Actions; compact evidence, run report and summary are committed under `reports/performance/`. No accessibility engine runs unless combined mode is implemented and explicitly selected.
 
         **Privacy:** issue text and request fields are public. Do not include tokens, credentials, private URLs or sensitive query parameters.
