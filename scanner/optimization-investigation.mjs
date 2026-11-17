@@ -476,6 +476,7 @@ export function buildOptimizationInvestigation(comparison, request, { generatedA
       engines: comparison.engines,
       summary: comparison.summary,
       coverageGaps: comparison.coverageGaps,
+      externalInvestigations: comparison.externalInvestigations ?? [],
       limitations: comparison.limitations
     },
     request: {
@@ -498,6 +499,7 @@ export function buildOptimizationInvestigation(comparison, request, { generatedA
       functionalEquivalenceClaim: false,
       humanReviewRequired: true
     },
+    externalInvestigations: comparison.externalInvestigations ?? [],
     manualVerification,
     limitations: unique([
       ...comparison.limitations,

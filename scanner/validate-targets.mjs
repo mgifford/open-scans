@@ -64,7 +64,7 @@ function isPrivateIPv6(hostname) {
   return false;
 }
 
-function reasonForBlockedHost(hostname) {
+export function reasonForBlockedHost(hostname) {
   const normalized = hostname.toLowerCase();
   const bareHost = normalized.startsWith("[") && normalized.endsWith("]")
     ? normalized.slice(1, -1)

@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { compareScanReports } from "../../scanner/compare-scans.mjs";
+import { attachExternalInvestigations } from "../../scanner/external-investigations.mjs";
 import {
   OPTIMIZATION_INVESTIGATION_SCHEMA_VERSION,
   OPTIMIZATION_REQUEST_SCHEMA_VERSION,
@@ -136,6 +137,19 @@ test("scenario page scoping excludes findings from unlisted pages", () => {
   assert.equal(result.value.scenarios[0].summary.notEvaluatedFindings, 0);
   assert.equal(result.value.scenarios[0].concerns.find((concern) => concern.id === "heading-hierarchy").findings.length, 0);
   assert.ok(scoped);
+});
+
+test("external investigation references are carried into the optimization report", () => {
+  const refs = JSON.parse(readFileSync(new URL("../fixtures/external-investigations/references.json", import.meta.url), "utf8"));
+  const attached = attachExternalInvestigations(comparison(), refs);
+  assert.equal(attached.ok, true, attached.errors.join("\n"));
+  const value = investigate(["replacing-navigation"], attached.value);
+  assert.equal(value.externalInvestigations.length, 2);
+  assert.match(formatOptimizationMarkdown(value), /Related performance and energy investigations/);
+  assert.match(formatOptimizationMarkdown(value), /not an accessibility failure/i);
+  const html = formatOptimizationHtml(value);
+  assert.match(html, /id="external-heading"/);
+  assert.match(html, /rel="noopener noreferrer"/);
 });
 
 test("unknown scenarios and invalid requests are rejected", () => {

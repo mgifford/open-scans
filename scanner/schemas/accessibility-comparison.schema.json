@@ -231,6 +231,12 @@
     },
     "componentAssociations": {
       "$ref": "#/$defs/componentAssociations"
+    },
+    "externalInvestigations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/externalInvestigation"
+      }
     }
   },
   "$defs": {
@@ -745,6 +751,170 @@
       "additionalProperties": {
         "type": "array",
         "items": {
+          "type": "string"
+        }
+      }
+    },
+    "externalInvestigation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceProject",
+        "sourceResultUrl",
+        "investigationId",
+        "relatedPageUrl",
+        "relatedResourceUrl",
+        "relatedComponent",
+        "relatedAccessibilityFindingIds",
+        "description",
+        "observedAt",
+        "referencedAt",
+        "source",
+        "evidenceType",
+        "metadataOnly",
+        "sourceFetched",
+        "linkage",
+        "boundary"
+      ],
+      "properties": {
+        "sourceProject": {
+          "type": "string",
+          "enum": [
+            "firefox-energy-scanner",
+            "vital-core",
+            "other"
+          ]
+        },
+        "sourceResultUrl": {
+          "type": "string"
+        },
+        "investigationId": {
+          "type": "string"
+        },
+        "relatedPageUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedResourceUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedComponent": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "relatedAccessibilityFindingIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "observedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "referencedAt": {
+          "type": "string"
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidenceType": {
+          "type": "string",
+          "enum": [
+            "performance-investigation",
+            "sustainability-investigation",
+            "external-investigation"
+          ]
+        },
+        "metadataOnly": {
+          "type": "boolean",
+          "const": true
+        },
+        "sourceFetched": {
+          "type": "boolean",
+          "const": false
+        },
+        "linkage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pageIds",
+            "componentFindingIds",
+            "accessibilityFindingIds",
+            "unmatchedAccessibilityFindingIds",
+            "resourceLinkage",
+            "basis",
+            "confidence",
+            "ownershipEstablished"
+          ],
+          "properties": {
+            "pageIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "componentFindingIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "accessibilityFindingIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unmatchedAccessibilityFindingIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "resourceLinkage": {
+              "type": "string",
+              "enum": [
+                "metadata-only",
+                "none"
+              ]
+            },
+            "basis": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            },
+            "ownershipEstablished": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+        "boundary": {
           "type": "string"
         }
       }

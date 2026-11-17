@@ -31,6 +31,7 @@
 23. [Accessibility Comparison](#23-accessibility-comparison)
 24. [Optimization Accessibility Investigation](#24-optimization-accessibility-investigation)
 25. [Component and Semantic-Region Evidence](#25-component-and-semantic-region-evidence)
+26. [External Investigation References](#26-external-investigation-references)
 
 ---
 
@@ -1661,6 +1662,40 @@ Findings also retain ACT Rule ids (`actRuleIds`), WCAG criteria, engine/rule ids
 - `tests/unit/component-association.test.mjs` — 5 tests.
 - `tests/unit/compare-scans.test.mjs` — component context, indexes, ACT ids, exports and backward compatibility.
 - `tests/unit/optimization-investigation.test.mjs` — region/ACT context in optimization findings.
+
+---
+
+## 26. External Investigation References
+
+Phase D adds optional metadata links to related Firefox Energy Scanner or Vital Core investigations.
+
+### 26.1 Format and CLI
+
+| Item | Value |
+| :--- | :--- |
+| Request schema | `external-investigation-references/1` |
+| Attachment | `externalInvestigations` on comparison and optimization reports |
+| CLI | `npm run compare:scans -- ... --external-references references.json` |
+
+References contain source project, result URL, investigation id, related page/resource/component, description, observed/referenced dates and optional original accessibility finding ids.
+
+### 26.2 Validation and linkage
+
+- Public HTTP(S) URLs only; credentials, localhost and private ranges rejected.
+- URLs are validated but never fetched.
+- At least one page/resource/component relation is required.
+- Page URL, explicit component id/type id and original A11Y finding id can establish linkage.
+- Component labels are not identity; resource URLs are metadata-only.
+- Unmatched references remain visible at low confidence.
+- `ownershipEstablished` is always false.
+
+### 26.3 Boundaries
+
+An external performance investigation is not an accessibility failure. An energy finding is not WCAG nonconformance. An accessibility finding does not establish excessive energy use. No FES/Vital Core schema, component graph or live API is imported, and no external scan is triggered.
+
+### 26.4 Tests
+
+`tests/unit/external-investigations.test.mjs` has 8 tests covering valid references, linkage, private URL rejection, missing/unknown fields, unmatched references, redaction, Markdown/HTML and the CLI. Optimization tests verify references are carried forward.
 
 ---
 

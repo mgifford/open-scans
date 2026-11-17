@@ -161,3 +161,10 @@ Phase B adds `optimization-investigation/1` and an opt-in CLI that maps a comple
 ## 9. Update after Phase C
 
 Phase C adds explicit component-id preservation and low-confidence semantic-region candidates to comparison findings, plus region/component/page indexes and ACT Rule ids. It deliberately does not copy or import the Firefox Energy Scanner component graph. See [`component-association.md`](./component-association.md).
+
+
+---
+
+## 10. Update after Phase D
+
+Phase D adds optional, validated external investigation references to comparisons and optimization reports. The integration is metadata-only: URLs are validated but not fetched, no FES/Vital Core schema is copied, and an external performance/energy investigation is explicitly not an accessibility finding or conformance claim. See [`external-investigations.md`](./external-investigations.md).

@@ -124,7 +124,7 @@ limitations
 - A no-new-findings comparison does **not** prove functional equivalence.
 - Visual, keyboard, screen-reader and assistive-technology behaviour still require manual testing.
 - Component attribution is not inferred here; Phase C will add evidence-backed component/region association.
-- No external investigation links are imported in Phase A; Phase D will add opt-in references.
+- External investigation references are optional Phase D metadata; see [`external-investigations.md`](./external-investigations.md).
 - Comparison output is sanitized with the existing recursive secret redaction before it is written.
 
 ## 10. Fixtures

@@ -150,6 +150,7 @@ npm run compare:scans -- \
 - The report includes browser, viewport, colour scheme, engine and release information, plus manual-testing limits.
 - Outputs are versioned JSON, Markdown, CSV and a self-contained accessible HTML report.
 - Findings preserve ACT Rule mappings and carry explicit component identifiers or low-confidence selector-derived semantic regions. Labels are never used as identity and no component ownership is inferred.
+- An optional `--external-references references.json` file can link the comparison to Firefox Energy Scanner or Vital Core. It is metadata-only: URLs are validated but never fetched, and the external evidence is not treated as an accessibility finding.
 
 Read the [comparison documentation](./docs/accessibility-comparison/comparison.md) and the [Phase 0 assessment](./docs/accessibility-comparison/PHASE-0-ASSESSMENT.md).
 
@@ -172,7 +173,8 @@ The report:
 - maps findings to accessibility concerns such as names, keyboard operation, focus, headings, landmarks, forms, live regions, reduced motion, forced colours and disappearing content;
 - says **“not a pass”** when no matching automated finding exists;
 - requires human review for keyboard, screen-reader, motion, forced-colours and functional-equivalence checks;
-- never claims WCAG conformance, functional equivalence, or energy/performance savings.
+- never claims WCAG conformance, functional equivalence, or energy/performance savings;
+- carries linked external performance/energy investigations forward as metadata, with an explicit evidence boundary.
 
 Read the [optimization investigation documentation](./docs/accessibility-comparison/optimization-investigation.md).
 
@@ -380,7 +382,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[SUSTAINABILITY.md](./SUSTAINABILITY.md)** — Digital sustainability policy
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
-- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, component/region evidence, optimization investigation, schemas and limitations
+- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, component/region evidence, optimization investigation, external references, schemas and limitations
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -472,6 +474,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Phase A baseline-to-comparison accessibility reports: comparison engine, identity matching, page mapping, conditions/coverage classifications, JSON/Markdown/CSV/HTML exports, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase B optimization accessibility investigation: scenarios, concern mapping, manual verification, no-conformance boundaries, schemas, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase C component and semantic-region evidence: explicit-id preservation, selector-derived region candidates, ACT Rule ids, indexes and exports | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase D optional external investigation references: validation, linkage, metadata-only boundaries, schemas, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

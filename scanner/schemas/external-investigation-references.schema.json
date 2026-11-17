@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/external-investigation-references.schema.json",
+  "title": "ExternalInvestigationReferences",
+  "description": "Opt-in metadata links between an accessibility comparison and a performance or energy investigation. Metadata only: no external URL is fetched and no external scan is triggered.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "references"],
+  "properties": {
+    "schema": { "type": "string", "const": "external-investigation-references/1" },
+    "references": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sourceProject", "sourceResultUrl", "investigationId", "description", "referencedAt"
+        ],
+        "properties": {
+          "sourceProject": {
+            "type": "string",
+            "enum": ["firefox-energy-scanner", "vital-core", "other"]
+          },
+          "sourceResultUrl": { "type": "string", "format": "uri" },
+          "investigationId": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "relatedPageUrl": { "type": "string", "format": "uri" },
+          "relatedResourceUrl": { "type": "string", "format": "uri" },
+          "relatedComponent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "componentId": { "type": ["string", "null"] },
+              "componentTypeId": { "type": ["string", "null"] },
+              "componentLabel": { "type": ["string", "null"] }
+            }
+          },
+          "relatedAccessibilityFindingIds": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 3, "maxLength": 200 }
+          },
+          "description": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "observedAt": { "type": ["string", "null"], "maxLength": 40 },
+          "referencedAt": { "type": "string", "minLength": 8, "maxLength": 40 },
+          "source": { "type": ["string", "null"], "maxLength": 300 }
+        }
+      }
+    }
+  }
+}
