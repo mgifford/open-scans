@@ -248,6 +248,12 @@ The inventory also reports locator coverage (`selector`, `mixed`, `html-only`, `
 
 Read the [pattern inventory documentation](./docs/pattern-inventory.md).
 
+### Accessibility context for FES
+
+Each scan also writes a compact `accessibility-context.json` (and CSV) with one record per finding occurrence: page URL, selector, pattern ID, WCAG/ACT mapping and a semantic-container candidate. This is the handoff Firefox Energy Scanner can join to its component graph. It contains accessibility evidence only—no energy, Lighthouse, Sitespeed or ownership claim.
+
+See [accessibility context](./docs/accessibility-context.md) and [product direction](./docs/PRODUCT-DIRECTION.md).
+
 ## Compare Baseline and Optimized Scans
 
 Open Scans can compare two **stored** scan reports without running another scan. This is useful when a performance or energy optimization changes navigation, scripts, images, CSS, or a third-party widget and you need to know whether accessibility changed.
@@ -515,6 +521,8 @@ npm run run:analyse-trends    # Analyse trend data
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
 - **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, component/region evidence, optimization investigation, external references, schemas and limitations
 - **[docs/pattern-inventory.md](./docs/pattern-inventory.md)** — Per-scan unique patterns by semantic container, JSON/Markdown/HTML/CSV outputs and limits
+- **[docs/accessibility-context.md](./docs/accessibility-context.md)** — Compact occurrence-level handoff for Firefox Energy Scanner
+- **[docs/PRODUCT-DIRECTION.md](./docs/PRODUCT-DIRECTION.md)** — Open Scans vs Vital Core vs FES boundaries
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -611,6 +619,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Phase F complete comparison exports: appended CSV metadata, compatibility, formula-injection protection, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Accessibility pattern/container inventory for scan reports: unique-pattern grouping, semantic container candidates, JSON/Markdown/HTML/CSV outputs and tests | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Equal Access DOM locator retention and pattern locator-coverage metrics, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Accessibility context handoff for FES: occurrence-level page/selector/pattern/container artifact, schema, workflow persistence and product-direction boundaries | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 3: pinned Lighthouse provider, bounded page selection and family coverage, evidence reuse planning, DNS/redirect preflight, raw-artifact retention, cost reporting, tests and documentation | Development – November 2026 |

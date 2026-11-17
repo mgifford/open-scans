@@ -74,15 +74,21 @@ function pageUrlFor(result) {
 
 function extractFindings(results) {
   const findings = [];
-  for (const result of results ?? []) {
+  for (const [resultIndex, result] of (results ?? []).entries()) {
     const pageUrl = pageUrlFor(result);
     if (!pageUrl) continue;
     for (const engine of ENGINES) {
       const engineResult = result[engine];
       if (!engineResult || !Array.isArray(engineResult.failures)) continue;
-      for (const failure of engineResult.failures) {
+      for (const [failureIndex, failure] of engineResult.failures.entries()) {
         if (!failure || failure.isDuplicate) continue;
-        findings.push({ result, pageUrl, engine, failure });
+        findings.push({
+          result,
+          pageUrl,
+          engine,
+          failure,
+          sourceRef: `results[${resultIndex}].${engine}.failures[${failureIndex}]`
+        });
       }
     }
     if (result.reflowRisk?.executed && result.reflowRisk.result === "failed") {
@@ -90,6 +96,7 @@ function extractFindings(results) {
         result,
         pageUrl,
         engine: "reflowRisk",
+        sourceRef: `results[${resultIndex}].reflowRisk`,
         failure: {
           ...result.reflowRisk,
           rule: "reflow-risk",
@@ -107,6 +114,7 @@ function extractFindings(results) {
           result,
           pageUrl,
           engine: "semantica11y",
+          sourceRef: `results[${resultIndex}].semantica11y.issues[${result.semantica11y.issues.indexOf(issue)}]`,
           failure: {
             ...issue,
             rule: issue.rule ?? "semantica11y",
@@ -130,7 +138,7 @@ function selectorFromHtml(html) {
   return `#${id}`;
 }
 
-function makePatternFinding({ result, pageUrl, engine, failure }) {
+function makePatternFinding({ result, pageUrl, engine, failure, sourceRef }) {
   const explicitSelector = text(failure.selector || failure.xpath || "");
   const selector = explicitSelector && explicitSelector !== "(page-level)"
     ? explicitSelector
@@ -165,8 +173,10 @@ function makePatternFinding({ result, pageUrl, engine, failure }) {
     actRuleIds: getActRuleIds(engine, rule),
     impact: failure.impact ?? failure.severity ?? null,
     pageUrl,
+    selector: selector || null,
     locator,
     locatorSource,
+    sourceRef: sourceRef ?? null,
     html: failure.html ?? failure.element ?? null,
     firstSeenAt: failure.firstSeenAt ?? null,
     container: {
@@ -185,6 +195,15 @@ function makePatternFinding({ result, pageUrl, engine, failure }) {
 }
 
 /**
+ * Return one normalized record per non-duplicate finding occurrence.
+ * @param {object[]} results
+ * @returns {object[]}
+ */
+export function collectPatternOccurrences(results) {
+  return extractFindings(results).map(makePatternFinding);
+}
+
+/**
  * Build a pattern/container inventory for a scan report.
  *
  * @param {object[]} results - scan result objects
@@ -192,7 +211,7 @@ function makePatternFinding({ result, pageUrl, engine, failure }) {
  * @returns {object} a11y-pattern-inventory/1
  */
 export function buildPatternInventory(results, { generatedAt = new Date().toISOString() } = {}) {
-  const findings = extractFindings(results).map(makePatternFinding);
+  const findings = collectPatternOccurrences(results);
   const patterns = new Map();
   for (const finding of findings) {
     const existing = patterns.get(finding.patternKey) ?? {

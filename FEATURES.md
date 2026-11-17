@@ -36,6 +36,7 @@
 28. [Complete Comparison Exports](#28-complete-comparison-exports)
 29. [Accessibility Pattern and Container Inventory](#29-accessibility-pattern-and-container-inventory)
 30. [Performance Investigation Request](#30-performance-investigation-request)
+31. [Accessibility Context for FES](#31-accessibility-context-for-fes)
 
 ---
 
@@ -580,7 +581,7 @@ Generates `trends.html` — a static cross-issue accessibility trend dashboard. 
 
 ## 6. Report Formats & Artifacts
 
-Each completed scan produces up to **seven output files** stored in `reports/issues/issue-{N}/{timestamp}/`:
+Each completed scan produces up to **nine output files** stored in `reports/issues/issue-{N}/{timestamp}/`:
 
 | File | Format | Audience |
 |---|---|---|
@@ -589,6 +590,8 @@ Each completed scan produces up to **seven output files** stored in `reports/iss
 | `report.html` | HTML (self-contained) | Browsers, stakeholders |
 | `report.csv` | CSV | Spreadsheets, data analysis |
 | `patterns.csv` | CSV | Unique patterns grouped by semantic container |
+| `accessibility-context.json` | JSON | Compact occurrence-level handoff for FES |
+| `accessibility-context.csv` | CSV | Spreadsheet view of the same occurrences |
 | `report-overlap.json` | JSON | Cross-engine deduplication analysis |
 | `report-overlap.md` | Markdown | Cross-engine overlap summary |
 
@@ -1438,6 +1441,7 @@ scan-request.yml (GitHub Actions)
             ├─ report.html     (interactive, self-contained)
             ├─ report.csv      (spreadsheet)
             ├─ patterns.csv    (pattern/container inventory)
+            ├─ accessibility-context.json/.csv (FES handoff)
             ├─ report-overlap.json
             └─ report-overlap.md
   │
@@ -1501,7 +1505,7 @@ A single accessibility scan report is considered **done** when all of the follow
 ### 22.2 Format & Artifacts
 
 - [ ] `report.json` is generated as machine-readable output in `reports/issues/issue-{N}/{timestamp}/`
-- [ ] `report.md`, `report.csv` and `patterns.csv` are generated alongside `report.json`
+- [ ] `report.md`, `report.csv`, `patterns.csv` and `accessibility-context.json`/`.csv` are generated alongside `report.json`
 - [ ] An interactive HTML report is generated and linked from a stable GitHub Pages URL
 - [ ] `reports.html` and `trends.html` are regenerated to include the new scan run
 
@@ -1923,6 +1927,30 @@ PR 5 adds `performance-investigation/1`, `scanner/performance-investigation.mjs`
 - Tests: `tests/unit/performance-investigation.test.mjs` (13 tests).
 - Full suite: 765 tests, 760 pass, 1 pre-existing timezone failure, 4 skipped.
 
+
+---
+
+## 31. Accessibility Context for FES
+
+Open Scans publishes `a11y-accessibility-context/1` as a compact occurrence-level handoff:
+
+- `accessibility-context.json` — one record per finding occurrence;
+- `accessibility-context.csv` — the same data for spreadsheets.
+
+Each occurrence contains page URL, selector/locator, locator source, pattern and display IDs, rule, engine, WCAG/ACT mappings, semantic container candidate, source reference and no ownership claim.
+
+FES can join page URL to `component-graph/1` pages and selector to component instance selectors. Matching must preserve unmatched evidence and must not use labels as identity.
+
+Boundaries:
+
+- accessibility evidence only;
+- no Lighthouse/Sitespeed/CO2/energy data in this artifact;
+- no component ownership;
+- no combined score;
+- no live API or MCP dependency;
+- FES import is a separate cross-repository step.
+
+See [accessibility context](docs/accessibility-context.md) and [product direction](docs/PRODUCT-DIRECTION.md).
 
 ---
 

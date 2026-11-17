@@ -109,6 +109,7 @@ jobs:
           const htmlPath = `${reportDir}/report.html`;
           const csvPath = `${reportDir}/report.csv`;
           const patternsCsvPath = `${reportDir}/patterns.csv`;
+          const accessibilityContextPath = `${reportDir}/accessibility-context.json`;
           const overlapJsonPath = `${reportDir}/report-overlap.json`;
           const overlapMarkdownPath = `${reportDir}/report-overlap.md`;
 
@@ -125,6 +126,7 @@ jobs:
             `html_path=${htmlPath}`,
             `csv_path=${csvPath}`,
             `patterns_csv_path=${patternsCsvPath}`,
+            `accessibility_context_path=${accessibilityContextPath}`,
             `overlap_json_path=${overlapJsonPath}`,
             `overlap_markdown_path=${overlapMarkdownPath}`,
             `stamp=${stamp}`
@@ -149,6 +151,8 @@ jobs:
           cp .scan-output/report.html "${{ steps.meta.outputs.html_path }}"
           cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
           cp .scan-output/patterns.csv "${{ steps.meta.outputs.patterns_csv_path }}"
+          cp .scan-output/accessibility-context.json "${{ steps.meta.outputs.accessibility_context_path }}"
+          cp .scan-output/accessibility-context.csv "${{ steps.meta.outputs.report_dir }}/accessibility-context.csv"
           cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
           cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
           # Copy AI fix suggestions if they were generated (REMEDIATE mode only)
@@ -255,6 +259,7 @@ jobs:
             const htmlPath = process.env.HTML_PATH;
             const csvPath = process.env.CSV_PATH;
             const patternsCsvPath = process.env.PATTERNS_CSV_PATH;
+            const accessibilityContextPath = process.env.ACCESSIBILITY_CONTEXT_PATH;
             const overlapMarkdownPath = process.env.OVERLAP_MARKDOWN_PATH;
             const acceptedCount = process.env.ACCEPTED_COUNT;
             const rejectedCount = process.env.REJECTED_COUNT;
@@ -265,6 +270,8 @@ jobs:
             const blobUrl = `https://github.com/${owner}/${repo}/blob/main/${markdownPath}`;
             const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${csvPath}`;
             const patternsCsvBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${patternsCsvPath}`;
+            const accessibilityContextPagesUrl = `https://${owner}.github.io/${repo}/${accessibilityContextPath}`;
+            const accessibilityContextBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${accessibilityContextPath}`;
             const overlapBlobUrl = `https://github.com/${owner}/${repo}/blob/main/${overlapMarkdownPath}`;
 
             const body = [
@@ -300,6 +307,8 @@ jobs:
               `CSV Fallback (GitHub): ${csvBlobUrl}`,
               `Patterns CSV (Pages): ${patternsCsvPagesUrl}`,
               `Patterns CSV Fallback (GitHub): ${patternsCsvBlobUrl}`,
+              `Accessibility context (Pages): ${accessibilityContextPagesUrl}`,
+              `Accessibility context fallback (GitHub): ${accessibilityContextBlobUrl}`,
               `Scanner Overlap (Pages): ${overlapPagesUrl}`,
               `Scanner Overlap Fallback (GitHub): ${overlapBlobUrl}`
             );
@@ -333,6 +342,7 @@ jobs:
           HTML_PATH: ${{ steps.meta.outputs.html_path }}
           CSV_PATH: ${{ steps.meta.outputs.csv_path }}
           PATTERNS_CSV_PATH: ${{ steps.meta.outputs.patterns_csv_path }}
+          ACCESSIBILITY_CONTEXT_PATH: ${{ steps.meta.outputs.accessibility_context_path }}
           OVERLAP_MARKDOWN_PATH: ${{ steps.meta.outputs.overlap_markdown_path }}
           ACCEPTED_COUNT: ${{ steps.meta.outputs.accepted_count }}
           SCANNED_COUNT: ${{ steps.meta.outputs.scanned_count }}
