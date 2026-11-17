@@ -7,3 +7,5 @@
 - [PR B implementation notes](./PR-B-OPTIMIZATION.md) — Phase B scope, tests, omissions and next step.
 - [Component and semantic-region evidence](./component-association.md) — Phase C evidence hierarchy, fields, indexes and limits.
 - [PR C implementation notes](./PR-C-COMPONENT.md) — Phase C scope, tests, omissions and next step.
+- [External investigation references](./external-investigations.md) — Phase D metadata-only FES/Vital Core links, validation and boundaries.
+- [PR D implementation notes](./PR-D-EXTERNAL.md) — Phase D scope, tests, omissions and next step.

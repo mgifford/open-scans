@@ -138,7 +138,7 @@ Markdown and HTML exports include the same boundaries. The HTML is self-containe
 - This is not an energy measurement, performance score or carbon report.
 - No energy, carbon or performance saving is claimed.
 - No component graph is reproduced.
-- No Firefox Energy Scanner or Vital Core data is imported.
+- External investigation links may be carried in from the comparison as metadata; no FES/Vital Core data is imported.
 - No automatic scan or experiment is triggered.
 - No overall accessibility/performance score is produced.
 - Human review and assistive-technology testing remain required.

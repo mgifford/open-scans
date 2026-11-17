@@ -77,6 +77,15 @@ export function formatOptimizationMarkdown(value) {
     `- Comparison engines: ${value.comparison.engines.comparison.join(", ") || "none recorded"}`,
     ""
   ];
+  if (value.externalInvestigations?.length) {
+    lines.push("## Related performance and energy investigations", "");
+    lines.push("_Linked metadata only. An external investigation is not an accessibility failure; no external URL was fetched._", "");
+    lines.push("| Source | Investigation | Related page | Date | Link |", "| :--- | :--- | :--- | :--- | :--- |");
+    for (const reference of value.externalInvestigations) {
+      lines.push(`| ${escapeMarkdown(reference.sourceProject)} | ${escapeMarkdown(reference.investigationId)} | ${escapeMarkdown(reference.relatedPageUrl ?? "not recorded")} | ${escapeMarkdown(reference.referencedAt)} | [Open ${escapeMarkdown(reference.investigationId)}](<${reference.sourceResultUrl}>) |`);
+    }
+    lines.push("", `> ${value.externalInvestigations[0].boundary}`, "");
+  }
   for (const scenario of value.scenarios) {
     lines.push(`## ${scenario.label}`, "", scenario.description, "");
     if (scenario.components.length) lines.push(`- Components or resources named: ${scenario.components.join(", ")}`);
@@ -174,6 +183,7 @@ th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-alig
 <tr><th scope="row">Conditions compatible</th><td colspan="2">${value.comparison.conditions.compatible ? "yes" : "no"}</td></tr>
 <tr><th scope="row">Engines</th><td>${escapeHtml(value.comparison.engines.baseline.join(", "))}</td><td>${escapeHtml(value.comparison.engines.comparison.join(", "))}</td></tr>
 </tbody></table></section>
+${value.externalInvestigations?.length ? `<section aria-labelledby="external-heading"><h2 id="external-heading">Related performance and energy investigations</h2><p><strong>Linked metadata only.</strong> An external investigation is not an accessibility failure; no external URL was fetched.</p><table><caption>External investigations linked to this optimization review</caption><thead><tr><th scope="col">Investigation</th><th scope="col">Source</th><th scope="col">Related page</th><th scope="col">Date</th><th scope="col">Link</th></tr></thead><tbody>${value.externalInvestigations.map((reference) => `<tr><th scope="row">${escapeHtml(reference.investigationId)}</th><td>${escapeHtml(reference.sourceProject)}</td><td>${escapeHtml(reference.relatedPageUrl ?? "not recorded")}</td><td>${escapeHtml(reference.referencedAt)}</td><td><a href="${escapeHtml(reference.sourceResultUrl)}" target="_blank" rel="noopener noreferrer">Open ${escapeHtml(reference.investigationId)}</a></td></tr>`).join("")}</tbody></table><p>${escapeHtml(value.externalInvestigations[0].boundary)}</p></section>` : ""}
 ${scenarioSections}
 <section aria-labelledby="gaps-heading"><h2 id="gaps-heading">Coverage gaps</h2>${gaps}</section>
 <section aria-labelledby="limitations-heading"><h2 id="limitations-heading">Limitations</h2><ul>${value.limitations.map((limitation) => `<li>${escapeHtml(limitation)}</li>`).join("")}</ul></section>

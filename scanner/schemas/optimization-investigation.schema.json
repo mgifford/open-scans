@@ -13,7 +13,8 @@
     "scenarios",
     "summary",
     "manualVerification",
-    "limitations"
+    "limitations",
+    "externalInvestigations"
   ],
   "properties": {
     "schema": {
@@ -206,6 +207,12 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "externalInvestigations": {
+      "type": "array",
+      "items": {
+        "type": "object"
       }
     }
   },

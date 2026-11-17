@@ -1,0 +1,24 @@
+{
+  "schema": "external-investigation-references/1",
+  "references": [
+    {
+      "sourceProject": "firefox-energy-scanner",
+      "sourceResultUrl": "https://mgifford.github.io/firefox-energy-scanner/",
+      "investigationId": "fes-nav-2026-11-01",
+      "relatedPageUrl": "https://example.gov/",
+      "relatedAccessibilityFindingIds": ["aaaaaaaaaaaa"],
+      "description": "Navigation animation experiment on the primary navigation.",
+      "observedAt": "2026-11-01",
+      "referencedAt": "2026-11-17T12:00:00Z",
+      "source": "Firefox Energy Scanner investigation"
+    },
+    {
+      "sourceProject": "vital-core",
+      "sourceResultUrl": "https://mgifford.github.io/vital-core/",
+      "investigationId": "vc-example-2026-11",
+      "relatedPageUrl": "https://example.gov/services",
+      "description": "Recurring services-page component issue.",
+      "referencedAt": "2026-11-17T12:00:00Z"
+    }
+  ]
+}

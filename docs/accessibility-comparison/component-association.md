@@ -75,7 +75,7 @@ Explicit component ids are only indexed by id. Two components with the same labe
 - No component label is used as identity.
 - Selector-derived regions are low-confidence candidates.
 - A finding may appear in a region without belonging to the component being optimized.
-- Phase D will add optional external investigation references; Phase C does not depend on those.
+- Phase D adds optional external investigation references; Phase C does not depend on those.
 - No combined accessibility/performance score and no conformance claim.
 
 ## 7. Example

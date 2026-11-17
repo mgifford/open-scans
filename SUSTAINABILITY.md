@@ -229,6 +229,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 | Phase A comparison engine, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Phase B optimization investigation, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Phase C component/region evidence, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
+| Phase D external investigation references, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 
 ## Agent instruction snippet
 

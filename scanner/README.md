@@ -13,6 +13,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `crawl-urls.mjs` - Discovers additional same-site URLs to scan when requested.
 - `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML.
 - `component-association.mjs` - Preserves explicit component ids and derives low-confidence semantic-region candidates from stable selectors.
+- `external-investigations.mjs` - Validates and attaches optional FES/Vital Core investigation metadata; never fetches external URLs.
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).
 - `run-optimization-investigation.mjs` - CLI for the opt-in optimization review; writes JSON, Markdown and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.
@@ -30,7 +31,7 @@ retired and is not selectable; legacy report fields remain readable.
 - `npm run run:parse`
 - `npm run run:validate`
 - `npm run run:scan -- <issue-event-json-file> <output-dir>`
-- `npm run compare:scans -- <baseline-report.json> <comparison-report.json> [--page-map <baseline-url>=<comparison-url>] [--out <file>] [--summary <file>] [--csv <file>] [--html <file>]`
+- `npm run compare:scans -- <baseline-report.json> <comparison-report.json> [--page-map <baseline-url>=<comparison-url>] [--external-references <file>] [--out <file>] [--summary <file>] [--csv <file>] [--html <file>]`
 - `npm run investigate:optimization -- <comparison.json> [--scenario <kind>] [--request <request.json>] [--out <file>] [--summary <file>] [--html <file>]`
 
 `run-scan.mjs` generates:

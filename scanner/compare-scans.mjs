@@ -4,6 +4,7 @@ import { dirname } from "node:path";
 import { pathToFileURL } from "node:url";
 import { redactStringsDeep } from "./redact-secrets.mjs";
 import { associateFinding, buildComponentAssociations } from "./component-association.mjs";
+import { attachExternalInvestigations } from "./external-investigations.mjs";
 import { getActRuleIds } from "./act-mapping.mjs";
 
 export const ACCESSIBILITY_COMPARISON_SCHEMA_VERSION = "accessibility-comparison/1";
@@ -996,6 +997,19 @@ export function formatComparisonMarkdown(comparisonInput) {
     lines.push(`- Findings with an explicit component identifier: ${comparison.componentAssociations.summary.withComponentId}`);
     lines.push(`- Findings with no association: ${comparison.componentAssociations.summary.unassociated}`);
   }
+  if (comparison.externalInvestigations?.length) {
+    lines.push("", "## Related performance and energy investigations", "");
+    lines.push("_Linked metadata only. An external investigation is not an accessibility failure; no external URL was fetched._", "");
+    lines.push("| Source | Investigation | Related page | Component | Date | Link | Linkage |", "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |");
+    for (const reference of comparison.externalInvestigations) {
+      const component = reference.relatedComponent
+        ? reference.relatedComponent.componentId ?? reference.relatedComponent.componentTypeId ?? reference.relatedComponent.componentLabel ?? "not recorded"
+        : "not recorded";
+      const link = `[Open ${escapeMarkdown(reference.investigationId)}](<${reference.sourceResultUrl}>)`;
+      lines.push(`| ${escapeMarkdown(reference.sourceProject)} | ${escapeMarkdown(reference.investigationId)} | ${escapeMarkdown(reference.relatedPageUrl ?? "not recorded")} | ${escapeMarkdown(component)} | ${escapeMarkdown(reference.referencedAt)} | ${link} | ${reference.linkage.confidence} |`);
+    }
+    lines.push("", `> ${comparison.externalInvestigations[0].boundary}`);
+  }
   const sections = [
     ["new", "New accessibility findings"],
     ["persistent", "Persistent findings"],
@@ -1094,6 +1108,15 @@ export function formatComparisonHtml(comparisonInput) {
     const componentIdTable = componentIdEntries.length === 0 ? "" : `<h3>Explicit component identifiers</h3><table><caption>Findings linked to explicit component identifiers</caption><thead><tr><th scope="col">Component ID</th><th scope="col">Findings</th></tr></thead><tbody>${componentIdEntries.map(([componentId, ids]) => `<tr><th scope="row">${escapeHtml(componentId)}</th><td>${ids.length}</td></tr>`).join("")}</tbody></table>`;
     return `<section aria-labelledby="components-heading"><h2 id="components-heading">Component and semantic-region evidence</h2><p><strong>Regions are selector-derived candidates unless an explicit component identifier is present. This is not a component-ownership claim.</strong></p>${regionTable}${componentIdTable}<p>Findings with a semantic region: ${comparison.componentAssociations.summary.withSemanticRegion}. Findings with an explicit component identifier: ${comparison.componentAssociations.summary.withComponentId}. Findings with no association: ${comparison.componentAssociations.summary.unassociated}.</p></section>`;
   })() : "";
+  const externalSectionHtml = comparison.externalInvestigations?.length ? (() => {
+    const rows = comparison.externalInvestigations.map((reference) => {
+      const component = reference.relatedComponent
+        ? reference.relatedComponent.componentId ?? reference.relatedComponent.componentTypeId ?? reference.relatedComponent.componentLabel ?? "not recorded"
+        : "not recorded";
+      return `<tr><th scope="row">${escapeHtml(reference.investigationId)}</th><td>${escapeHtml(reference.sourceProject)}</td><td>${escapeHtml(reference.relatedPageUrl ?? "not recorded")}</td><td>${escapeHtml(component)}</td><td>${escapeHtml(reference.referencedAt)}</td><td><a href="${escapeHtml(reference.sourceResultUrl)}" target="_blank" rel="noopener noreferrer">Open ${escapeHtml(reference.investigationId)}</a></td><td>${escapeHtml(reference.linkage.confidence)}</td></tr>`;
+    }).join("");
+    return `<section aria-labelledby="external-heading"><h2 id="external-heading">Related performance and energy investigations</h2><p><strong>Linked metadata only.</strong> An external investigation is not an accessibility failure; no external URL was fetched.</p><table><caption>External investigations linked to this comparison</caption><thead><tr><th scope="col">Investigation</th><th scope="col">Source</th><th scope="col">Related page</th><th scope="col">Component</th><th scope="col">Date</th><th scope="col">Link</th><th scope="col">Linkage</th></tr></thead><tbody>${rows}</tbody></table><p>${escapeHtml(comparison.externalInvestigations[0].boundary)}</p></section>`;
+  })() : "";
   const sectionHtml = sections.map(([key, heading]) => `<section aria-labelledby="section-${key}"><h2 id="section-${key}">${heading}</h2>${(comparison.findings[key] ?? []).length === 0 ? "<p>None.</p>" : `<table><caption>${heading}</caption><thead><tr><th scope="col">Page</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th><th scope="col">Confirmed remediation</th><th scope="col">Qualification</th></tr></thead><tbody>${rowsFor(comparison.findings[key] ?? [])}</tbody></table>`}</section>`).join("");
   return `<!doctype html>
 <html lang="en">
@@ -1149,6 +1172,7 @@ ${comparison.conditions.differences.length ? `<p><strong>Condition differences:<
 ${comparison.pageMappings.length === 0 ? "<p>No pages were paired. Different URLs require an explicit page mapping.</p>" : `<table><caption>Pages paired between the baseline and comparison scans</caption><thead><tr><th scope="col">Logical page</th><th scope="col">Baseline URL</th><th scope="col">Comparison URL</th><th scope="col">Mapping</th><th scope="col">Baseline evaluated</th><th scope="col">Comparison evaluated</th></tr></thead><tbody>${comparison.pageMappings.map((page) => `<tr><th scope="row">${escapeHtml(page.logicalPageId)}</th><td>${escapeHtml(page.baselineUrl)}</td><td>${escapeHtml(page.comparisonUrl)}</td><td>${escapeHtml(page.mapping)}</td><td>${page.baselineEvaluated ? "yes" : "no"}</td><td>${page.comparisonEvaluated ? "yes" : "no"}</td></tr>`).join("")}</tbody></table>`}
 </section>
 ${componentSectionHtml}
+${externalSectionHtml}
 ${sectionHtml}
 <section aria-labelledby="coverage-heading"><h2 id="coverage-heading">Coverage gaps</h2>${comparison.coverageGaps.length === 0 ? "<p>None recorded.</p>" : `<ul>${comparison.coverageGaps.map((gap) => `<li>${escapeHtml(gap.kind)}: ${escapeHtml(gap.url ?? gap.logicalPageId ?? "")} ${escapeHtml(gap.reason ?? gap.baselineError ?? gap.comparisonError ?? "")}</li>`).join("")}</ul>`}</section>
 <section aria-labelledby="limitations-heading"><h2 id="limitations-heading">Limitations</h2><ul>${comparison.limitations.map((limitation) => `<li>${escapeHtml(limitation)}</li>`).join("")}</ul></section>
@@ -1164,7 +1188,7 @@ function parseArgs(argv) {
   const positional = [];
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
-    if (["--page-map", "--baseline-release", "--comparison-release", "--out", "--summary", "--csv", "--html", "--now"].includes(arg)) {
+    if (["--page-map", "--baseline-release", "--comparison-release", "--external-references", "--out", "--summary", "--csv", "--html", "--now"].includes(arg)) {
       const value = argv[index + 1];
       if (!value) throw new Error(`${arg} requires a value.`);
       index += 1;
@@ -1218,11 +1242,30 @@ function main() {
     process.exitCode = 1;
     return;
   }
-  if (args.out) writeOutput(args.out, `${JSON.stringify(result.value, null, 2)}\n`);
-  else process.stdout.write(`${JSON.stringify(result.value, null, 2)}\n`);
-  if (args.summary) writeOutput(args.summary, formatComparisonMarkdown(result.value));
-  if (args.csv) writeOutput(args.csv, comparisonToCsv(result.value));
-  if (args.html) writeOutput(args.html, formatComparisonHtml(result.value));
+  let value = result.value;
+  if (args.externalReferences) {
+    let references;
+    try {
+      references = JSON.parse(readFileSync(args.externalReferences, "utf8"));
+    } catch (error) {
+      console.error(`Could not read external references: ${error.message}`);
+      process.exitCode = 2;
+      return;
+    }
+    const attached = attachExternalInvestigations(value, references);
+    if (!attached.ok) {
+      for (const error of attached.errors) console.error(`Error: ${error}`);
+      process.exitCode = 1;
+      return;
+    }
+    for (const warning of attached.warnings) console.error(`Warning: ${warning}`);
+    value = attached.value;
+  }
+  if (args.out) writeOutput(args.out, `${JSON.stringify(value, null, 2)}\n`);
+  else process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
+  if (args.summary) writeOutput(args.summary, formatComparisonMarkdown(value));
+  if (args.csv) writeOutput(args.csv, comparisonToCsv(value));
+  if (args.html) writeOutput(args.html, formatComparisonHtml(value));
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
