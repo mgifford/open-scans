@@ -4,7 +4,7 @@ This document tracks primary software components used by `open-scans`, including
 
 ## Scope and source of truth
 
-- **Repository snapshot**: `a4b29e9`
+- **Repository snapshot**: `b07851a` (main at the time of this documentation correction)
 - **NPM inventory source**: `package.json` + `package-lock.json` (direct dependencies)
 - **Python tooling source**: `pyproject.toml`
 - **Project license**: [AGPL-3.0](./LICENSE)
@@ -21,16 +21,19 @@ This document tracks primary software components used by `open-scans`, including
 
 | Package | Requested | Resolved | License |
 |---|---|---|---|
-| `@accesslint/core` | `^0.8.7` | `0.8.7` | MIT |
-| `@axe-core/playwright` | `^4.11.1` | `4.11.1` | MPL-2.0 |
-| `@cucumber/cucumber` | `^12.9.0` | `12.9.0` | MIT |
-| `@qualweb/act-rules` | `^0.7.6` | `0.7.6` | ISC |
-| `@qualweb/core` | `0.8.1` | `0.8.1` | ISC |
-| `@siteimprove/alfa-cli` | `^0.81.3` | `0.81.3` | MIT |
-| `@siteimprove/alfa-formatter-earl` | `^0.81.3` | `0.81.3` | MIT |
-| `@siteimprove/alfa-formatter-json` | `^0.81.3` | `0.81.3` | MIT |
-| `accessibility-checker` | `^4.0.26` | `4.0.26` | Apache-2.0 |
-| `playwright` | `^1.60.0` | `1.60.0` | Apache-2.0 |
+| `@accesslint/core` | `^0.17.0` | `0.17.0` | MIT |
+| `@axe-core/playwright` | `^4.14.0` | `4.14.0` | MPL-2.0 |
+| `@cucumber/cucumber` | `^13.3.0` | `13.3.0` | MIT |
+| `@siteimprove/alfa-cli` | `^0.84.2` | `0.84.2` | MIT |
+| `@siteimprove/alfa-formatter-earl` | `^0.84.2` | `0.84.2` | MIT |
+| `@siteimprove/alfa-formatter-json` | `^0.84.2` | `0.84.2` | MIT |
+| `accessibility-checker` | `^4.0.30` | `4.0.30` | Apache-2.0 |
+| `playwright` | `^1.64.1` | `1.64.1` | Apache-2.0 |
+| `semantica11y` | `^1.0.1` | `1.0.1` | MIT |
+| `@playwright/test` | `^1.64.1` | `1.64.1` | Apache-2.0 |
+
+QualWeb is not a current dependency and is not selectable. Historical report
+fields may still contain QualWeb data, which remains readable.
 
 ## Python dependencies
 

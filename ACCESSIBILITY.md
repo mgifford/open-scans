@@ -13,7 +13,7 @@ This document defines the accessibility standards, practices, and guidelines for
 open-scans is an issue-driven accessibility scanning tool that uses GitHub Pages and GitHub Actions to perform automated accessibility scans. The tool helps developers identify and fix accessibility issues by:
 
 - Scanning multiple URLs for WCAG compliance
-- Generating actionable reports using five accessibility engines
+- Generating actionable reports using four selectable accessibility engines
 - Publishing results to GitHub Pages for easy comparison
 
 ---
@@ -35,15 +35,14 @@ open-scans is an issue-driven accessibility scanning tool that uses GitHub Pages
 
 ### Multi-Engine Approach
 
-This project uses five accessibility scanning engines:
+This project uses four selectable accessibility scanning engines (QualWeb is retired and is not selectable):
 
 1. **axe-core** (`@axe-core/playwright`) - Industry-standard accessibility testing; Playwright integration for dynamic content
 2. **Siteimprove Alfa** (`@siteimprove/alfa-cli`) - Standards-first approach based on ACT rules; comprehensive WCAG 2.2 coverage; EARL report format support
 3. **IBM Equal Access Checker** (`accessibility-checker`) - IBM's comprehensive WCAG checker
 4. **AccessLint** (`@accesslint/core`) - Automated accessibility testing with WCAG rule mapping
-5. **QualWeb** (`@qualweb/core`) - University of Lisbon WCAG/ACT evaluator
 
-Default: axe-core plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all five.
+Default: axe-core plus one randomly chosen engine. Use `ALL` in the issue title or `Engine: all` in the body to run all four supported engines.
 
 ### CI/CD Integration
 
@@ -58,7 +57,7 @@ This project supplements static engine scanning with native Playwright-based beh
 
 - **Reflow-Risk Check** (WCAG 1.4.10) - Native Playwright test at 320px viewport to verify content reflows remain contained, implemented in `scanner/reflow-risk.mjs`
 - **Duplicate Page Titles** (WCAG 2.4.2) - Cross-page title analysis that normalizes and groups pages with duplicate descriptive titles, implemented in `scanner/run-scan.mjs`
-- **Cross-Engine Focus Analysis** - Automated comparison of focus-visible capabilities across all 5 accessibility engines to ensure consistent focus indicator coverage
+- **Cross-Engine Focus Analysis** - Automated comparison of focus-visible capabilities across the supported accessibility engines to ensure consistent focus indicator coverage
 
 These behavioral checks provide runtime verification of WCAG criteria that static scanning engines may miss, including dynamic layout changes and cross-engine focus management consistency.
 
@@ -316,7 +315,6 @@ This project follows guidance from established accessibility authorities:
 - [Siteimprove Alfa](https://alfa.siteimprove.com/) - Standards-first accessibility testing
 - [axe-core](https://github.com/dequelabs/axe-core) - Industry-standard accessibility engine
 - [IBM Equal Access Checker](https://www.ibm.com/able/toolkit/tools/) - IBM's WCAG checker
-- [QualWeb](https://qualweb.di.fc.ul.pt/) - University of Lisbon WCAG/ACT evaluator
 - [Playwright](https://playwright.dev/) - Cross-browser testing framework
 - [ReflowAudit](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) - CWAC's native Playwright-based reflow testing methodology
 - [CWAC Repository](https://github.com/w3c/cwac) - Central Web Accessibility Checker
@@ -376,7 +374,7 @@ AI coding assistants (GitHub Copilot, Cursor, Claude, etc.) working in this repo
 ### Current Test Coverage
 - ✅ 409/409 unit tests passing
 - ✅ All scanner modules lint-clean
-- ✅ Five-engine validation (axe-core, ALFA, Equal Access, AccessLint, QualWeb)
+- ✅ Four-engine validation (axe-core, ALFA, Equal Access, AccessLint); QualWeb is retired
 
 ### Known Limitations
 - Manual screen reader testing not yet performed

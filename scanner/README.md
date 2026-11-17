@@ -15,10 +15,11 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 
 ## Scan engines
 
-Every scan runs `axe`, `alfa` (ALFA), `equalAccess`, `accesslint`, and `qualweb` as
+Every scan runs `axe`, `alfa` (ALFA), `equalAccess`, and `accesslint` as
 rule-based engines (each with pass/fail/cantTell/inapplicable counts and its own
 Playwright/CLI process), plus two always-on page-level indicators that are kept
-separate from WCAG violation counts: `reflowRisk` and `semantica11y`.
+separate from WCAG violation counts: `reflowRisk` and `semantica11y`. QualWeb is
+retired and is not selectable; legacy report fields remain readable.
 
 ## Usage
 

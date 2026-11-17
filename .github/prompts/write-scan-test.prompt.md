@@ -84,7 +84,7 @@ tests/fixtures/
   axe-result-sample.json      ← axe-core violations array
   alfa-result-sample.json     ← ALFA outcomes array
   equalaccess-result-sample.json
-  qualweb-result-sample.json
+  accesslint-result-sample.json
 ```
 
 Load them in your test and pass them directly to the function under test:

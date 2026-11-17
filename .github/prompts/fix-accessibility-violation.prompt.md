@@ -1,10 +1,10 @@
 ---
-description: Fix a specific WCAG accessibility violation found by one of the five open-scans engines.
+description: Fix a specific WCAG accessibility violation found by one of the four supported open-scans engines.
 ---
 
 ## Context
 
-You are fixing an accessibility violation reported by one of the five engines used in **open-scans**: **axe-core**, **Siteimprove ALFA**, **IBM Equal Access Checker**, **AccessLint**, or **QualWeb**. Use the engine name and rule ID from the scan report to guide your fix.
+You are fixing an accessibility violation reported by one of the four supported engines used in **open-scans**: **axe-core**, **Siteimprove ALFA**, **IBM Equal Access Checker**, or **AccessLint**. Use the engine name and rule ID from the scan report to guide your fix.
 
 ## Common Violations by Engine
 
@@ -50,10 +50,6 @@ IBM rules use IDs like `IBMA_*` or `Rpt_Aria_*`. Common fixes:
 ### AccessLint
 
 AccessLint findings are enriched with `wcagSc` derived from the corresponding axe rule. Fix patterns mirror the axe-core table above. Check the `ruleUrl` in the finding for the relevant axe documentation.
-
-### QualWeb (University of Lisbon)
-
-QualWeb uses ACT rule names like `QW-ACT-R1`. Fixes follow the same WCAG SC guidance as the tables above.
 
 ## ARIA Role and Property Usage
 

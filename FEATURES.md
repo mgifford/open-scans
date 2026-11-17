@@ -78,7 +78,7 @@ Open Scans is a **three-tier, serverless accessibility scanning platform** built
 
 ## 2. Accessibility Scanning Engines
 
-Open Scans integrates **five independent accessibility engines**. Each engine implements different rules, methodologies, and WCAG interpretations, enabling broad coverage and cross-validation.
+Open Scans integrates **four independent, selectable accessibility engines** (QualWeb is retired and is not selectable). Each engine implements different rules, methodologies, and WCAG interpretations, enabling broad coverage and cross-validation.
 
 ### 2.1 Engine Overview
 
@@ -90,7 +90,6 @@ Open Scans integrates **five independent accessibility engines**. Each engine im
 | **Siteimprove ALFA** | `@siteimprove/alfa-cli` | WCAG 2.0/2.1/2.2, ACT rules | CLI subprocess |
 | **IBM Equal Access** | `accessibility-checker` | WCAG 2.1, IBM Accessibility | Puppeteer + Chromium |
 | **AccessLint** | `@accesslint/core` | WCAG 2.x | Browser API (iife bundle) |
-| **QualWeb** | `@qualweb/core` | WCAG 2.1, ACT rules | Puppeteer (isolated instance) |
 
 ### 2.2 Engine Selection
 
@@ -102,20 +101,19 @@ AXE        → run axe-core only (axe always runs anyway)
 ALFA       → run axe + ALFA
 EQUALACCESS → run axe + IBM Equal Access
 ACCESSLINT → run axe + AccessLint
-QUALWEB    → run axe + QualWeb
-ALL        → run all five engines
+ALL        → run all four supported rule engines
 ```
 
 **Priority 2 – `Engine:` line in issue body**:
 ```
-Engine: alfa qualweb
+Engine: alfa accesslint
 Engine: all
 Engine: axe, accesslint
 ```
 
 **Priority 3 – Issue form dropdown** (`### Accessibility engines` section in issue template).
 
-**Default behavior**: axe-core plus one randomly selected non-axe engine from `[alfa, equalaccess, accesslint, qualweb]`.
+**Default behavior**: axe-core plus one randomly selected non-axe engine from `[alfa, equalaccess, accesslint]`.
 
 > **Note**: axe-core always runs regardless of engine selection, as it serves as the reference baseline for cross-engine overlap calculations.
 
@@ -143,10 +141,12 @@ Engine: axe, accesslint
 - Loaded from its IIFE bundle (`dist/index.iife.js`) and injected into the browser page
 - Results enriched with axe WCAG success-criteria metadata via `getRuleMetadata('axe', rule)`
 
-#### QualWeb
-- Loaded via `createRequire` for CommonJS compatibility in the ES module environment
-- Creates a new isolated Puppeteer browser instance per URL scan
-- Evaluates ACT rules, WCAG techniques, and best practices
+#### QualWeb (retired)
+
+QualWeb is **not selectable**. The repository still contains historical QualWeb code paths and
+report fields so older reports remain readable, but the parser ignores `QUALWEB` keywords and
+the engine is not part of the default or explicit scan configuration. Do not re-enable it
+without a separate dependency/security review.
 
 ---
 
@@ -182,7 +182,7 @@ Default (axe + random)
 ```
 
 Optional directives parsed from the body:
-- `Engine: alfa qualweb` – engine selection
+- `Engine: alfa accesslint` – engine selection
 - `Page: 20` – crawl up to 20 URLs from the base URL
 - `TREND_ANALYSIS` – opt in to historical trend analysis
 - `REMEDIATE` (in issue title) – opt in to AI-powered remediation suggestions (requires `GITHUB_TOKEN`)
@@ -282,7 +282,7 @@ The heart of the platform. Orchestrates multi-engine scanning, report generation
 
 | Function | Description |
 |---|---|
-| `determineScannersToRun(engines)` | Maps engine spec to `{ runAxe, runAlfa, runEqualAccess, runAccesslint, runQualWeb }` |
+| `determineScannersToRun(engines)` | Maps engine spec to `{ runAxe, runAlfa, runEqualAccess, runAccesslint }` (QualWeb is retired) |
 | `hasErrAbortedError(result)` | Detects `net::ERR_ABORTED` in browser error lists |
 | `formatFirstSeenDate(isoDate)` | Formats ISO date as human-readable `first seen YYYY-MM-DD` |
 | `computeFindingFingerprint(url, locator, ruleKey)` | SHA-256(`url\|locator\|ruleKey`).slice(0, 12) |
@@ -300,7 +300,7 @@ The heart of the platform. Orchestrates multi-engine scanning, report generation
 | `runAlfaAudit(url)` | ALFA CLI | CLI subprocess |
 | `runEqualAccessAudit(url)` | IBM accessibility-checker | Puppeteer |
 | `runAccessLintAudit(url)` | AccessLint | Playwright (IIFE inject) |
-| `runQualWebAudit(url)` | QualWeb | Puppeteer (isolated) |
+| `runQualWebAudit(url)` | Legacy QualWeb code; not selectable | Puppeteer (isolated) |
 | `detectMediaQuerySupport(page)` | – | Playwright |
 
 **`detectMediaQuerySupport`** detects 5 media queries per page:
@@ -327,7 +327,7 @@ Extracts structured scan configuration from raw GitHub issue payloads.
 | `validateScanRequest(request)` | JSON Schema validation of parsed request |
 | `getDefaultEngines()` | Returns `["axe", <random non-axe engine>]` |
 | `extractPageCount(body)` | Extracts `Page: N` crawl count from issue body |
-| `NON_AXE_ENGINES` | `["alfa", "equalaccess", "accesslint", "qualweb"]` |
+| `NON_AXE_ENGINES` | `["alfa", "equalaccess", "accesslint"]` |
 
 **URL extraction methods** (applied in order, all unique results merged):
 1. Plain text URLs (one per line or comma-separated)
@@ -596,7 +596,7 @@ Top-level structure:
     "alfa": { "pass", "fail", "cantTell" },
     "equalAccess": { "pass", "violation", "potentialViolation", "recommendation" },
     "accesslint": { "pass", "fail" },
-    "qualweb": { "pass", "fail", "cantTell" }
+    "accesslint": { "pass", "fail", "cantTell" }
   },
   "results": [ /* per-URL results */ ],
   "violations": [ /* consolidated violation list with fingerprints */ ]
@@ -668,7 +668,7 @@ Real-time client-side filters:
 
 | Filter | Options |
 |---|---|
-| Scanner engine | axe · ALFA · IBM Equal Access · AccessLint · QualWeb |
+| Scanner engine | axe · ALFA · IBM Equal Access · AccessLint |
 | WCAG level | A · AA · AAA · Best Practice |
 | Role affected | UX Designer · Visual Designer · Content Author · Front-End Developer |
 | Severity | Critical · Serious · Moderate · Minor |
@@ -950,7 +950,7 @@ If a URL triggers more than this many `net::ERR_ABORTED` browser errors, it is s
 - Max 2 retries
 - Exponential backoff between retries
 
-Applied to Equal Access Checker and QualWeb scan functions where navigation errors are most common.
+Applied to Equal Access Checker and other browser-based scan functions where navigation errors are most common.
 
 ### 13.5 Customization
 
@@ -1372,9 +1372,9 @@ JSON Schema for validating parsed scan requests:
 | `issueUrl` | string (URI) | required |
 | `submittedBy` | string | required |
 | `submittedAt` | string (date-time) | required |
-| `requestedUrls` | array of URI strings | required, 1–100 items (500 absolute hard limit; batches above 100 are split by `submit.js` before schema validation) |
+| `requestedUrls` | array of URI strings | required, 1–500 items |
 | `scanTitle` | string | optional |
-| `engines` | array of enum | optional: `all`, `axe`, `alfa`, `accesslint`, `equalaccess`, `qualweb` |
+| `engines` | array of enum | optional: `all`, `axe`, `alfa`, `accesslint`, `equalaccess` |
 | `pageLoadDelay` | integer | optional, 0–300 ms |
 
 ---
@@ -1413,7 +1413,7 @@ scan-request.yml (GitHub Actions)
        ├─ runAlfaAudit()    → ALFA CLI  (subprocess)
        ├─ runEqualAccessAudit() → IBM   (Puppeteer)
        ├─ runAccessLintAudit()  → AccessLint (Playwright inject)
-       └─ runQualWebAudit() → QualWeb   (Puppeteer isolated)
+       └─ (legacy QualWeb code path is retained for old reports but is not selectable)
             │
             ├─ computeFindingFingerprint()   (SHA-256 stable IDs)
             ├─ loadFingerprintStore()        (load history)
@@ -1450,8 +1450,8 @@ User views results at reports.html
 
 | Metric | Value |
 |---|---|
-| Max URLs per scan request | 500 (absolute hard limit; recommended: 100–150) |
-| URLs enforced by JSON Schema | 1–100 per validated request object (submit.js applies the 500 limit before schema validation by splitting large batches) |
+| Max URLs per scan request | 500 (enforced by the form and parser; recommended: 100–150) |
+| URLs enforced by JSON Schema | 1–500 per request object |
 | Default scan duration | 30–60 minutes |
 | GitHub Actions job time limit | 6 hours (practical limit: ~50 min via `TOTAL_SCAN_TIMEOUT_MS`) |
 | Max concurrent scans | 1 (sequential via concurrency group) |

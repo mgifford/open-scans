@@ -4,7 +4,7 @@ description: Write a new accessibility scanner rule for open-scans, including ru
 
 ## Context
 
-You are adding a new accessibility rule to the **open-scans** scanner. Rules are defined as metadata entries in `scanner/rule-metadata.mjs`. The scanner supports five engines: **axe-core**, **Siteimprove ALFA**, **IBM Equal Access Checker**, **AccessLint**, and **QualWeb**.
+You are adding a new accessibility rule to the **open-scans** scanner. Rules are defined as metadata entries in `scanner/rule-metadata.mjs`. The scanner supports four selectable engines: **axe-core**, **Siteimprove ALFA**, **IBM Equal Access Checker**, and **AccessLint**. QualWeb is retired and is not selectable.
 
 ## WCAG Success Criterion Structure
 
