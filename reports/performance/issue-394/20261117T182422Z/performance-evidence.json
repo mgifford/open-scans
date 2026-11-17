@@ -1,0 +1,3012 @@
+{
+  "schema": "performance-evidence/1",
+  "generatedAt": "2026-11-17T18:23:46.602Z",
+  "request": {
+    "requestId": "394-perf-7bb26715a30c",
+    "mode": "light",
+    "contractVersion": "performance-request/1"
+  },
+  "site": {
+    "id": "site-eb9751b7a883",
+    "origin": "https://fosdem.org",
+    "host": "fosdem.org",
+    "sourceIds": [
+      "src-fedc4a021eed",
+      "src-ede273c7666d"
+    ],
+    "coverage": {
+      "discoveredPages": null,
+      "inspectedPages": 2,
+      "basis": "Maximum source-reported discovered count; inspectedPages counts the unique pages present in this evidence package. Sources may overlap.",
+      "limitations": [
+        "Source coverage basis: One bounded Lighthouse lab run",
+        "A Lighthouse run measures one page in Chromium, not the site or a user population."
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "src-fedc4a021eed",
+      "type": "lighthouse",
+      "adapter": "lighthouse",
+      "adapterVersion": "1.0.0",
+      "tool": "lighthouse",
+      "toolVersion": "13.6.0",
+      "location": "lighthouse/lh-9a0922874191-1-1794939827006.json",
+      "locationKind": "artifact",
+      "collectedAt": "2026-11-17T18:23:57.217Z",
+      "importedAt": "2026-11-17T18:23:46.602Z",
+      "contentDigest": "sha256:8bc702db4db4fec390c728dd85686ed7d028b2f396419ff83be00345b033aae7",
+      "schemaVersion": "lighthouse-json",
+      "limitations": [
+        "Raw Lighthouse JSON is retained in the bounded workflow artifact directory, not in Git history.",
+        "Lighthouse is Chromium-only lab evidence and is never Firefox energy.",
+        "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+        "Throttling: Chromium lab, simulated throttling.",
+        "Element/node evidence does not establish component ownership."
+      ]
+    },
+    {
+      "id": "src-ede273c7666d",
+      "type": "lighthouse",
+      "adapter": "lighthouse",
+      "adapterVersion": "1.0.0",
+      "tool": "lighthouse",
+      "toolVersion": "13.6.0",
+      "location": "lighthouse/lh-2bf150ae815d-2-1794939842903.json",
+      "locationKind": "artifact",
+      "collectedAt": "2026-11-17T18:24:05.912Z",
+      "importedAt": "2026-11-17T18:23:46.602Z",
+      "contentDigest": "sha256:40482c3155a76850631fa9b300b1b46f2a2d16dd06450241a0185e9697cdecce",
+      "schemaVersion": "lighthouse-json",
+      "limitations": [
+        "Raw Lighthouse JSON is retained in the bounded workflow artifact directory, not in Git history.",
+        "Lighthouse is Chromium-only lab evidence and is never Firefox energy.",
+        "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+        "Throttling: Chromium lab, simulated throttling.",
+        "Element/node evidence does not establish component ownership."
+      ]
+    }
+  ],
+  "measurementSources": [
+    {
+      "id": "src-fedc4a021eed:lighthouse",
+      "sourceId": "src-fedc4a021eed",
+      "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+      "tool": "lighthouse",
+      "toolVersion": "13.6.0",
+      "timestamp": "2026-11-17T18:23:57.217Z",
+      "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+      "boundary": "Chromium lab, simulated throttling"
+    },
+    {
+      "id": "src-ede273c7666d:lighthouse",
+      "sourceId": "src-ede273c7666d",
+      "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+      "tool": "lighthouse",
+      "toolVersion": "13.6.0",
+      "timestamp": "2026-11-17T18:24:05.912Z",
+      "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+      "boundary": "Chromium lab, simulated throttling"
+    }
+  ],
+  "pages": [
+    {
+      "id": "lh-pg-9a092287",
+      "url": "https://fosdem.org/2027/support/sponsors/",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/",
+      "familyId": null,
+      "sourceIds": [
+        "src-fedc4a021eed"
+      ],
+      "contexts": [
+        {
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "profile": "desktop",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "sourceId": "src-fedc4a021eed"
+        }
+      ],
+      "metrics": [
+        {
+          "name": "lcp",
+          "value": 457.81600000000003,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.largest-contentful-paint",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "fcp",
+          "value": 457.81600000000003,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.first-contentful-paint",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "tbt",
+          "value": 2.5,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.total-blocking-time",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "cls",
+          "value": 0.0751209948991548,
+          "unit": "score",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.cumulative-layout-shift",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "speed-index",
+          "value": 754.1283250997135,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.speed-index",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "main-thread-work",
+          "value": 370.9889999999987,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.mainthread-work-breakdown",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "js-execution",
+          "value": 11.857,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.bootup-time",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "total-bytes",
+          "value": 737223,
+          "unit": "bytes",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.total-byte-weight",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "performance-score",
+          "value": 0.99,
+          "unit": "score",
+          "scope": "page",
+          "sourceId": "src-fedc4a021eed",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#categories.performance.score",
+          "confidence": "high",
+          "limitations": [
+            "A Lighthouse category score, not a site-wide score."
+          ]
+        }
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#"
+        }
+      ],
+      "limitations": [
+        "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+        "Throttling: Chromium lab, simulated throttling.",
+        "Element/node evidence does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-pg-2bf150ae",
+      "url": "https://fosdem.org/2027/",
+      "normalizedUrl": "https://fosdem.org/2027/",
+      "familyId": null,
+      "sourceIds": [
+        "src-ede273c7666d"
+      ],
+      "contexts": [
+        {
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "profile": "desktop",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "sourceId": "src-ede273c7666d"
+        }
+      ],
+      "metrics": [
+        {
+          "name": "lcp",
+          "value": 563.0260000000001,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.largest-contentful-paint",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "fcp",
+          "value": 563.0260000000001,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.first-contentful-paint",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "tbt",
+          "value": 0,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.total-blocking-time",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "cls",
+          "value": 0.004457339580664437,
+          "unit": "score",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.cumulative-layout-shift",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "speed-index",
+          "value": 813.704514480319,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.speed-index",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "main-thread-work",
+          "value": 322.105,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.mainthread-work-breakdown",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "js-execution",
+          "value": 52.09400000000006,
+          "unit": "ms",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.bootup-time",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "total-bytes",
+          "value": 1051435,
+          "unit": "bytes",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.total-byte-weight",
+          "confidence": "high",
+          "limitations": [
+            "Lighthouse lab measurement under the recorded configuration; not field data and not Firefox energy."
+          ]
+        },
+        {
+          "name": "performance-score",
+          "value": 1,
+          "unit": "score",
+          "scope": "page",
+          "sourceId": "src-ede273c7666d",
+          "measurementSourceId": "lighthouse",
+          "tool": "lighthouse",
+          "toolVersion": "13.6.0",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+          "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+          "boundary": "Chromium lab, simulated throttling",
+          "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#categories.performance.score",
+          "confidence": "high",
+          "limitations": [
+            "A Lighthouse category score, not a site-wide score."
+          ]
+        }
+      ],
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#"
+        }
+      ],
+      "limitations": [
+        "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+        "Throttling: Chromium lab, simulated throttling.",
+        "Element/node evidence does not establish component ownership."
+      ]
+    }
+  ],
+  "pageFamilies": [],
+  "componentTypes": [],
+  "componentInstances": [],
+  "resources": [
+    {
+      "id": "lh-rs-2d3ca225fda6",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/css/style.min.65bc4bdb1a12a360f479c52b7e3bff4cb35da6a9f115b9aaebb9f6bbc62ea105.css",
+      "normalizedUrl": "https://fosdem.org/2027/css/style.min.65bc4bdb1a12a360f479c52b7e3bff4cb35da6a9f115b9aaebb9f6bbc62ea105.css",
+      "kind": "stylesheet",
+      "thirdParty": false,
+      "sizeBytes": 4532,
+      "sizeStatistic": "single",
+      "timingMs": 89.24399999994785,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[1]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[1]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-0bae4281edeb",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/css/fonts/Signika/Signika-VariableFont_GRAD,wght.woff2",
+      "normalizedUrl": "https://fosdem.org/2027/css/fonts/Signika/Signika-VariableFont_GRAD,wght.woff2",
+      "kind": "font",
+      "thirdParty": false,
+      "sizeBytes": 259681,
+      "sizeStatistic": "single",
+      "timingMs": 428.1369999999879,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[2]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[7]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-7dd189789975",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/css/fonts/dejavu-sans-ttf-2.37/ttf/DejaVuSansMono.woff2",
+      "normalizedUrl": "https://fosdem.org/2027/css/fonts/dejavu-sans-ttf-2.37/ttf/DejaVuSansMono.woff2",
+      "kind": "font",
+      "thirdParty": false,
+      "sizeBytes": 145803,
+      "sizeStatistic": "single",
+      "timingMs": 428.47100000001956,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[3]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[6]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-86256f839fee",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/css/fonts/dejavu-sans-ttf-2.37/ttf/DejaVuSans.woff2",
+      "normalizedUrl": "https://fosdem.org/2027/css/fonts/dejavu-sans-ttf-2.37/ttf/DejaVuSans.woff2",
+      "kind": "font",
+      "thirdParty": false,
+      "sizeBytes": 258197,
+      "sizeStatistic": "single",
+      "timingMs": 430.05300000007264,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[4]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[8]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-adfeba87c6a2",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/google/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/google/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 4259,
+      "sizeStatistic": "single",
+      "timingMs": 434.51600000006147,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[5]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[9]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-d456875ddf92",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/redhat/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/redhat/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 4412,
+      "sizeStatistic": "single",
+      "timingMs": 434.3739999999525,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[6]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[10]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-2decbb62d869",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/arm/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/arm/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 2000,
+      "sizeStatistic": "single",
+      "timingMs": 434.92500000004657,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[7]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[11]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-27dc14763ca3",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/colt/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/colt/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 1682,
+      "sizeStatistic": "single",
+      "timingMs": 434.3850000000093,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[8]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[12]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-529e1d5d861a",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/dstny/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/dstny/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 3652,
+      "sizeStatistic": "single",
+      "timingMs": 433.74600000004284,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[9]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[13]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-ca20a73a4606",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/ducklabs/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/ducklabs/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 4664,
+      "sizeStatistic": "single",
+      "timingMs": 433.76899999997113,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[10]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[14]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-3b4d978743b1",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/element/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/element/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 5879,
+      "sizeStatistic": "single",
+      "timingMs": 433.78599999984726,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[11]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[15]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-26ee66b540b6",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/lmax/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/lmax/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 3478,
+      "sizeStatistic": "single",
+      "timingMs": 433.75800000003073,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[12]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[16]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-fc04e52611ac",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/percona/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/percona/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 3314,
+      "sizeStatistic": "single",
+      "timingMs": 433.80200000002515,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[13]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[17]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-89ee326a448d",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/rocky-linux/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/rocky-linux/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 6012,
+      "sizeStatistic": "single",
+      "timingMs": 429.53899999998976,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[14]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[18]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-c4136dc848ef",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/ulb/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/ulb/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 3030,
+      "sizeStatistic": "single",
+      "timingMs": 428.9679999999935,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[15]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[19]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-ea1bd790b1c6",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/upcloud/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/upcloud/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 3959,
+      "sizeStatistic": "single",
+      "timingMs": 428.94900000002235,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[16]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[20]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-59bb096ac07f",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/verda/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/verda/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 5652,
+      "sizeStatistic": "single",
+      "timingMs": 429.2190000001574,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[17]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[21]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-8e51ccab27d7",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/support/sponsors/zabbix/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/support/sponsors/zabbix/logo.svg",
+      "kind": "image",
+      "thirdParty": false,
+      "sizeBytes": 2333,
+      "sizeStatistic": "single",
+      "timingMs": 429.6840000000084,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[18]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[22]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-f856d4fa9d1f",
+      "sourceId": "src-fedc4a021eed",
+      "url": "https://fosdem.org/2027/logo.svg",
+      "normalizedUrl": "https://fosdem.org/2027/logo.svg",
+      "kind": "other",
+      "thirdParty": false,
+      "sizeBytes": 6550,
+      "sizeStatistic": "single",
+      "timingMs": 88.28799999994226,
+      "pageIds": [
+        "lh-pg-9a092287",
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-fedc4a021eed",
+          "ref": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-requests.details.items[19]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[5]"
+        },
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[33]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-99da6494abc0",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://fosdem.org/2027/css/leaflet/leaflet.css",
+      "normalizedUrl": "https://fosdem.org/2027/css/leaflet/leaflet.css",
+      "kind": "stylesheet",
+      "thirdParty": false,
+      "sizeBytes": 4683,
+      "sizeStatistic": "single",
+      "timingMs": 89.80600000009872,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[2]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-c1c766b3ff10",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://fosdem.org/2027/js/leaflet.js",
+      "normalizedUrl": "https://fosdem.org/2027/js/leaflet.js",
+      "kind": "script",
+      "thirdParty": false,
+      "sizeBytes": 52245,
+      "sizeStatistic": "single",
+      "timingMs": 175.75599999993574,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[3]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-89cea21de558",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://fosdem.org/2027/js/map.js",
+      "normalizedUrl": "https://fosdem.org/2027/js/map.js",
+      "kind": "script",
+      "thirdParty": false,
+      "sizeBytes": 1983,
+      "sizeStatistic": "single",
+      "timingMs": 173.89100000006147,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[4]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-1ada859b2892",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33565/21993.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33565/21993.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 29411,
+      "sizeStatistic": "single",
+      "timingMs": 53.81299999996554,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[23]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-f8be1a388400",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33565/21994.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33565/21994.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 23324,
+      "sizeStatistic": "single",
+      "timingMs": 52.35800000000745,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[24]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-c1778f4d3278",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33564/21993.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33564/21993.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 21492,
+      "sizeStatistic": "single",
+      "timingMs": 51.65999999991618,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[25]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-99827000f3e0",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33566/21993.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33566/21993.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 32369,
+      "sizeStatistic": "single",
+      "timingMs": 43.57299999985844,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[26]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-5db3f47a274d",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33564/21994.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33564/21994.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 14343,
+      "sizeStatistic": "single",
+      "timingMs": 50.8159999998752,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[27]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-a155412c3f56",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33566/21994.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33566/21994.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 29220,
+      "sizeStatistic": "single",
+      "timingMs": 57.61399999994319,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[28]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-a8ce8353901e",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33563/21993.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33563/21993.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 26959,
+      "sizeStatistic": "single",
+      "timingMs": 17.27099999994971,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[29]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-1a92fb8c42db",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33567/21993.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33567/21993.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 28701,
+      "sizeStatistic": "single",
+      "timingMs": 19.42499999993015,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[30]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-a49f18480c62",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33563/21994.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33563/21994.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 19807,
+      "sizeStatistic": "single",
+      "timingMs": 23.760000000009313,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[31]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    },
+    {
+      "id": "lh-rs-1f09c07ff479",
+      "sourceId": "src-ede273c7666d",
+      "url": "https://tile.openstreetmap.org/16/33567/21994.png",
+      "normalizedUrl": "https://tile.openstreetmap.org/16/33567/21994.png",
+      "kind": "image",
+      "thirdParty": true,
+      "sizeBytes": 34625,
+      "sizeStatistic": "single",
+      "timingMs": 20.625,
+      "pageIds": [
+        "lh-pg-2bf150ae"
+      ],
+      "instanceIds": [],
+      "attribution": "page-level",
+      "sourceRefs": [
+        {
+          "sourceId": "src-ede273c7666d",
+          "ref": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-requests.details.items[32]"
+        }
+      ],
+      "limitations": [
+        "Lighthouse network request; it does not establish component ownership.",
+        "Transfer size is a Lighthouse lab observation under the recorded throttling configuration."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "lh-fnd-0d762c9a",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "speed-index",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Speed Index",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse:speed-index",
+        "value": 754.1283250997135,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.speed-index",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.speed-index",
+      "limitations": [
+        "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-49e0a29e",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "cumulative-layout-shift",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Cumulative Layout Shift",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse:cumulative-layout-shift",
+        "value": 0.0751209948991548,
+        "unit": "score",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.cumulative-layout-shift",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.cumulative-layout-shift",
+      "limitations": [
+        "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/articles/cls).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-206743f6",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "cache-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Use efficient cache lifetimes",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse:cache-insight",
+        "value": 691715.6416666665,
+        "unit": "bytes",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.cache-insight",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.cache-insight",
+      "limitations": [
+        "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-775927bd",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "network-dependency-tree-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Network dependency tree",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.network-dependency-tree-insight",
+      "limitations": [
+        "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-120ee689",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "render-blocking-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Render-blocking requests",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse:render-blocking-insight",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.render-blocking-insight",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.render-blocking-insight",
+      "limitations": [
+        "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-opp-5d003709",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "server-response-time",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Initial server response time was short",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:server-response-time",
+        "value": 90,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.server-response-time",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.server-response-time",
+      "limitations": [
+        "Keep the server response time for the main document short because all other requests depend on it. [Learn more about the Time to First Byte metric](https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-12680d9a",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "redirects",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Avoid multiple page redirects",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:redirects",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.redirects",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.redirects",
+      "limitations": [
+        "Redirects introduce additional delays before the page can be loaded. [Learn how to avoid page redirects](https://developer.chrome.com/docs/lighthouse/performance/redirects/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-a883604b",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "unminified-css",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Minify CSS",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unminified-css",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unminified-css",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unminified-css",
+      "limitations": [
+        "Minifying CSS files can reduce network payload sizes. [Learn how to minify CSS](https://developer.chrome.com/docs/lighthouse/performance/unminified-css/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-9decd75d",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "unminified-javascript",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Minify JavaScript",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unminified-javascript",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unminified-javascript",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unminified-javascript",
+      "limitations": [
+        "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn how to minify JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-9a1fd9f1",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "unused-css-rules",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Reduce unused CSS",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unused-css-rules",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unused-css-rules",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unused-css-rules",
+      "limitations": [
+        "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-35323876",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": "unused-javascript",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Reduce unused JavaScript",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unused-javascript",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-fedc4a021eed",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unused-javascript",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.unused-javascript",
+      "limitations": [
+        "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-node-eef59aa9",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "Sponsors",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.layout-shifts.details.items[0]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-da4ee1c9",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "Google",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.dom-size-insight.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-b95656b7",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "Main Sponsors\n\n(in alphabetical order)\n\nArm\n\nArm is leader in global semiconduc…",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.dom-size-insight.details.items[2]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-0efe3e3e",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "LCP breakdown",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.lcp-breakdown-insight.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-163ae88d",
+      "sourceId": "src-fedc4a021eed",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "head > meta",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-9a092287"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-9a0922874191-1-1794939827006.json#audits.viewport-insight.details.items[0]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-fnd-79c28ad0",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "first-contentful-paint",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "First Contentful Paint",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:first-contentful-paint",
+        "value": 563.0260000000001,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.first-contentful-paint",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.first-contentful-paint",
+      "limitations": [
+        "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-98ac183f",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "speed-index",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Speed Index",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:speed-index",
+        "value": 813.704514480319,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.speed-index",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.speed-index",
+      "limitations": [
+        "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-6d9d09f6",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "unused-javascript",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Reduce unused JavaScript",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:unused-javascript",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-javascript",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-javascript",
+      "limitations": [
+        "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-e293848b",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "cache-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Use efficient cache lifetimes",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:cache-insight",
+        "value": 922106.6367222221,
+        "unit": "bytes",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.cache-insight",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.cache-insight",
+      "limitations": [
+        "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-45dd4a58",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "image-delivery-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Improve image delivery",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:image-delivery-insight",
+        "value": 145032,
+        "unit": "bytes",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight",
+      "limitations": [
+        "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery).",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-1f67155a",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "network-dependency-tree-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Network dependency tree",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.network-dependency-tree-insight",
+      "limitations": [
+        "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-fnd-f6f9f827",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "render-blocking-insight",
+      "kind": "lighthouse-audit",
+      "phase": "load",
+      "title": "Render-blocking requests",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse:render-blocking-insight",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.render-blocking-insight",
+        "confidence": "medium",
+        "limitations": [
+          "Lighthouse lab audit; not field data, not a component measurement and not Firefox energy."
+        ]
+      },
+      "evidenceClass": "observed",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.render-blocking-insight",
+      "limitations": [
+        "Requests are blocking the page’s initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
+        "Lighthouse identifies work in Chromium under its recorded lab configuration; it does not establish component ownership."
+      ]
+    },
+    {
+      "id": "lh-opp-8e859a32",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "server-response-time",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Initial server response time was short",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:server-response-time",
+        "value": 84,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.server-response-time",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.server-response-time",
+      "limitations": [
+        "Keep the server response time for the main document short because all other requests depend on it. [Learn more about the Time to First Byte metric](https://developer.chrome.com/docs/lighthouse/performance/time-to-first-byte/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-86d38eca",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "redirects",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Avoid multiple page redirects",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:redirects",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.redirects",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.redirects",
+      "limitations": [
+        "Redirects introduce additional delays before the page can be loaded. [Learn how to avoid page redirects](https://developer.chrome.com/docs/lighthouse/performance/redirects/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-06f583b7",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "unminified-css",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Minify CSS",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unminified-css",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unminified-css",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unminified-css",
+      "limitations": [
+        "Minifying CSS files can reduce network payload sizes. [Learn how to minify CSS](https://developer.chrome.com/docs/lighthouse/performance/unminified-css/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-e9928de3",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "unminified-javascript",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Minify JavaScript",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unminified-javascript",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unminified-javascript",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unminified-javascript",
+      "limitations": [
+        "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn how to minify JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-2816e2a5",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "unused-css-rules",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Reduce unused CSS",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unused-css-rules",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-css-rules",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-css-rules",
+      "limitations": [
+        "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-opp-6d9d09f6",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": "unused-javascript",
+      "kind": "lighthouse-opportunity",
+      "phase": "load",
+      "title": "Reduce unused JavaScript",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": {
+        "name": "lighthouse-opportunity:unused-javascript",
+        "value": 0,
+        "unit": "ms",
+        "scope": "page",
+        "sourceId": "src-ede273c7666d",
+        "measurementSourceId": "lighthouse",
+        "tool": "lighthouse",
+        "toolVersion": "13.6.0",
+        "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+        "method": "Lighthouse 13.6.0 desktop, simulate throttling",
+        "boundary": "Chromium lab, simulated throttling",
+        "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-javascript",
+        "confidence": "medium",
+        "limitations": [
+          "A modelled opportunity, not a measured saving."
+        ]
+      },
+      "evidenceClass": "associated",
+      "confidence": "medium",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.unused-javascript",
+      "limitations": [
+        "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
+        "Estimated opportunity under the recorded lab configuration; not a guaranteed improvement."
+      ]
+    },
+    {
+      "id": "lh-node-3614fc3e",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "SPONSORS",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.layout-shifts.details.items[0]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-7aa2f1bc",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "Brussels, Belgium",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.layout-shifts.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-d5750880",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-control-attribution > a > svg.leaflet-attribution-flag > path",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.dom-size-insight.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-e13a6083",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "Arm",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.dom-size-insight.details.items[2]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-dfae3696",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[0]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-05971b89",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-ee9f2b89",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[2]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-dc661be9",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[3]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-e6c1bd62",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[4]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-21e9abca",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[5]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-9a2679c4",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[6]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-4fe37fc6",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[7]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-0f5547a8",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "div.leaflet-pane > div.leaflet-layer > div.leaflet-tile-container > img.leaflet-tile",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.image-delivery-insight.details.items[8]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-9f7ff89b",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "LCP breakdown",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.lcp-breakdown-insight.details.items[1]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    },
+    {
+      "id": "lh-node-058a857d",
+      "sourceId": "src-ede273c7666d",
+      "sourceFindingId": null,
+      "kind": "lighthouse-node",
+      "phase": "load",
+      "title": "head > meta",
+      "target": {
+        "type": "page",
+        "id": "lh-pg-2bf150ae"
+      },
+      "metric": null,
+      "evidenceClass": "associated",
+      "confidence": "low",
+      "evidenceRef": "lighthouse/lh-2bf150ae815d-2-1794939842903.json#audits.viewport-insight.details.items[0]",
+      "limitations": [
+        "Lighthouse node locator; this does not establish component ownership.",
+        "Scope: Chromium lab, simulated throttling."
+      ]
+    }
+  ],
+  "experiments": [],
+  "investigation": [],
+  "mergeDecisions": [
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-2d3ca225fda6",
+      "mergedIds": [
+        "lh-rs-e6b4d14e78a3"
+      ],
+      "aliases": [
+        "lh-rs-e6b4d14e78a3"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-f856d4fa9d1f",
+      "mergedIds": [
+        "lh-rs-084f094038fd"
+      ],
+      "aliases": [
+        "lh-rs-084f094038fd"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-7dd189789975",
+      "mergedIds": [
+        "lh-rs-df65521977d7"
+      ],
+      "aliases": [
+        "lh-rs-df65521977d7"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-0bae4281edeb",
+      "mergedIds": [
+        "lh-rs-e1267b875bfe"
+      ],
+      "aliases": [
+        "lh-rs-e1267b875bfe"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-86256f839fee",
+      "mergedIds": [
+        "lh-rs-16e62a15dbeb"
+      ],
+      "aliases": [
+        "lh-rs-16e62a15dbeb"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-adfeba87c6a2",
+      "mergedIds": [
+        "lh-rs-3b5424244b3f"
+      ],
+      "aliases": [
+        "lh-rs-3b5424244b3f"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-d456875ddf92",
+      "mergedIds": [
+        "lh-rs-9890efd64125"
+      ],
+      "aliases": [
+        "lh-rs-9890efd64125"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-2decbb62d869",
+      "mergedIds": [
+        "lh-rs-45083a249e97"
+      ],
+      "aliases": [
+        "lh-rs-45083a249e97"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-27dc14763ca3",
+      "mergedIds": [
+        "lh-rs-be4f4e7951ec"
+      ],
+      "aliases": [
+        "lh-rs-be4f4e7951ec"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-529e1d5d861a",
+      "mergedIds": [
+        "lh-rs-06935ecb34c3"
+      ],
+      "aliases": [
+        "lh-rs-06935ecb34c3"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-ca20a73a4606",
+      "mergedIds": [
+        "lh-rs-5ba4adc390a1"
+      ],
+      "aliases": [
+        "lh-rs-5ba4adc390a1"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-3b4d978743b1",
+      "mergedIds": [
+        "lh-rs-10d02284e58a"
+      ],
+      "aliases": [
+        "lh-rs-10d02284e58a"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-26ee66b540b6",
+      "mergedIds": [
+        "lh-rs-af0e216dbc0a"
+      ],
+      "aliases": [
+        "lh-rs-af0e216dbc0a"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-fc04e52611ac",
+      "mergedIds": [
+        "lh-rs-447bc857c4a5"
+      ],
+      "aliases": [
+        "lh-rs-447bc857c4a5"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-89ee326a448d",
+      "mergedIds": [
+        "lh-rs-52a6f5129777"
+      ],
+      "aliases": [
+        "lh-rs-52a6f5129777"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-c4136dc848ef",
+      "mergedIds": [
+        "lh-rs-320bee358ce4"
+      ],
+      "aliases": [
+        "lh-rs-320bee358ce4"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-ea1bd790b1c6",
+      "mergedIds": [
+        "lh-rs-3e7d178f550d"
+      ],
+      "aliases": [
+        "lh-rs-3e7d178f550d"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-59bb096ac07f",
+      "mergedIds": [
+        "lh-rs-d95405e2e21b"
+      ],
+      "aliases": [
+        "lh-rs-d95405e2e21b"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-8e51ccab27d7",
+      "mergedIds": [
+        "lh-rs-929ed87e6d9a"
+      ],
+      "aliases": [
+        "lh-rs-929ed87e6d9a"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": []
+    },
+    {
+      "entity": "resource",
+      "keptId": "lh-rs-f856d4fa9d1f",
+      "mergedIds": [
+        "lh-rs-7e139c907381"
+      ],
+      "aliases": [
+        "lh-rs-7e139c907381"
+      ],
+      "reason": "Same normalized resource URL; the higher-trust source's resource ID is kept.",
+      "sourceIds": [
+        "src-fedc4a021eed",
+        "src-ede273c7666d"
+      ],
+      "differences": [
+        "Resource size differs: kept 6550 (single), other source reported 0. Not averaged."
+      ]
+    }
+  ],
+  "limitations": [
+    "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+    "Throttling: Chromium lab, simulated throttling.",
+    "Element/node evidence does not establish component ownership.",
+    "Page selection: 0 reused, 2 scheduled, 0 skipped within the Lighthouse budget.",
+    "The page selection order is a bounded investigation policy, not a performance score."
+  ]
+}

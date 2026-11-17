@@ -1,0 +1,12 @@
+{
+  "schema": "performance-issue-run/1",
+  "runnerVersion": "1.0.0",
+  "requestId": "394-perf-7bb26715a30c",
+  "mode": "light",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "evidencePath": "performance-evidence.json",
+  "runReportPath": "performance-run.json",
+  "summaryPath": "performance-summary.md"
+}
