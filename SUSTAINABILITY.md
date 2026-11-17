@@ -227,6 +227,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 | Content drafting and policy editing | OpenAI GPT-4-class via Copilot Chat | During development |
 | Policy review and improvement | OpenAI GPT-4-class via Copilot Chat | During development |
 | Phase A comparison engine, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
+| Phase B optimization investigation, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 
 ## Agent instruction snippet
 

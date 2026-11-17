@@ -29,6 +29,7 @@
 21. [Capacity & Limits](#21-capacity--limits)
 22. [Definition of Done](#22-definition-of-done)
 23. [Accessibility Comparison](#23-accessibility-comparison)
+24. [Optimization Accessibility Investigation](#24-optimization-accessibility-investigation)
 
 ---
 
@@ -1569,6 +1570,58 @@ The comparison records browser, viewport, colour scheme, page-load delay, select
 - No component-ownership inference in Phase A.
 - No external investigation import in Phase A.
 - No conformance or functional-equivalence claim from automated results.
+
+---
+
+## 24. Optimization Accessibility Investigation
+
+Phase B adds an opt-in review layer over `accessibility-comparison/1`. It does not run a scanner, browser or LLM.
+
+### 24.1 Module and CLI
+
+| Item | Value |
+| :--- | :--- |
+| Module | `scanner/optimization-investigation.mjs` |
+| CLI | `npm run investigate:optimization -- <comparison.json> [--scenario <kind>]` |
+| Request schema | `optimization-investigation-request/1` |
+| Result schema | `optimization-investigation/1` |
+| Outputs | JSON, Markdown, self-contained HTML |
+
+### 24.2 Scenarios
+
+- `removing-unused-javascript`
+- `deferring-script-execution`
+- `replacing-navigation`
+- `lazy-loading-images-or-embeds`
+- `reducing-or-removing-animation`
+- `replacing-third-party-widgets`
+- `simplifying-dom`
+- `removing-unnecessary-css`
+- `changing-progressive-enhancement`
+- `replacing-component-with-lighter-alternative`
+
+Short aliases such as `navigation-replacement` and `css-removal` are accepted by the CLI/engine.
+
+### 24.3 Concerns and statuses
+
+Concerns cover accessible names, keyboard operation, focus management, headings, landmarks, form labels, live regions/status, ARIA states, dynamic content, disappearing content, reading order, contrast/forced colours, reduced motion, reflow and consistent navigation.
+
+Statuses: `new-finding`, `persistent-finding`, `details-changed`, `not-observed`, `not-evaluated`, `no-matching-automated-finding` and `manual-only`.
+
+No matching automated finding is labelled **not a pass**. `not-observed` is labelled **not proof of remediation**. Every scenario requires human review and sets conformance and functional-equivalence claims to false.
+
+### 24.4 Reuse and boundaries
+
+- Findings come from the Phase A comparison, which reuses the existing engines.
+- Scenario-specific filters prevent unrelated findings from being attributed to an optimization.
+- Page scoping is supported; component names are context only, not ownership.
+- No new scanner, crawler, Sitespeed/Lighthouse/CO2.js step or automatic trigger.
+- Reduced motion, forced colours, keyboard, screen-reader and functional-equivalence checks remain manual.
+- No accessibility/performance score.
+
+### 24.5 Tests
+
+`tests/unit/optimization-investigation.test.mjs` has 14 tests covering navigation regression, animation manual-only status, lazy-loading changes, CSS removal, no-regression comparisons, conditions/engine gaps, aliases, redaction, accessible exports, the CLI request-file flow and no-conformance schema rules.
 
 ---
 

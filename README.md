@@ -21,6 +21,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [Choose Scanning Engines](#choose-scanning-engines)
 - [View Scan Results](#view-scan-results)
 - [Compare Baseline and Optimized Scans](#compare-baseline-and-optimized-scans)
+- [Review Optimization Accessibility](#review-optimization-accessibility)
 - [Managing Your Scans](#managing-your-scans)
 - [Scanning Triggers](#scanning-triggers)
 - [Security & Privacy](#security--privacy)
@@ -150,6 +151,29 @@ npm run compare:scans -- \
 - Outputs are versioned JSON, Markdown, CSV and a self-contained accessible HTML report.
 
 Read the [comparison documentation](./docs/accessibility-comparison/comparison.md) and the [Phase 0 assessment](./docs/accessibility-comparison/PHASE-0-ASSESSMENT.md).
+
+## Review Optimization Accessibility
+
+After comparing a baseline and an optimized implementation, describe the optimization and review the accessibility evidence that matters:
+
+```bash
+npm run investigate:optimization -- comparison.json \
+  --scenario replacing-navigation \
+  --scenario reducing-or-removing-animation \
+  --out optimization.json --summary optimization.md --html optimization.html
+```
+
+Supported scenarios include script removal/deferral, navigation replacement, lazy-loading, animation reduction, third-party replacement, DOM simplification, CSS removal, progressive-enhancement changes and lighter component replacement.
+
+The report:
+
+- reuses the existing comparison findings; it does not run another scanner;
+- maps findings to accessibility concerns such as names, keyboard operation, focus, headings, landmarks, forms, live regions, reduced motion, forced colours and disappearing content;
+- says **“not a pass”** when no matching automated finding exists;
+- requires human review for keyboard, screen-reader, motion, forced-colours and functional-equivalence checks;
+- never claims WCAG conformance, functional equivalence, or energy/performance savings.
+
+Read the [optimization investigation documentation](./docs/accessibility-comparison/optimization-investigation.md).
 
 ## Managing Your Scans
 
@@ -355,7 +379,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[SUSTAINABILITY.md](./SUSTAINABILITY.md)** — Digital sustainability policy
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
-- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, schema and limitations
+- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, optimization investigation, schemas and limitations
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -445,6 +469,7 @@ Development of `open-scans` has used AI coding assistants for:
 | Claude Code (claude-sonnet-5) | Added `scanner/fingerprint-core.mjs` to dual-write the versioned, cross-project `a11y/pattern/v1`/`a11y/occurrence/v1` fingerprints from mgifford/ACCESSIBILITY.md alongside the existing `A11Y-xxxxxxxx` Instance ID and Pattern ID (verified against ACCESSIBILITY.md's published golden test vectors); renamed `computeChangeTracking`'s `resolvedCount`/`resolvedIssues` output fields to `notObservedCount`/`notObservedIssues` and updated both consumers so absence from a scan is no longer labelled as resolution | Development – July 2026 |
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase A baseline-to-comparison accessibility reports: comparison engine, identity matching, page mapping, conditions/coverage classifications, JSON/Markdown/CSV/HTML exports, fixtures, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase B optimization accessibility investigation: scenarios, concern mapping, manual verification, no-conformance boundaries, schemas, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

@@ -1,0 +1,18 @@
+{
+  "schema": "optimization-investigation-request/1",
+  "reviewer": "accessibility reviewer",
+  "notes": "Navigation was replaced and animation was reduced to improve performance.",
+  "scenarios": [
+    {
+      "kind": "replacing-navigation",
+      "description": "Replaced the primary navigation with an icon-only menu.",
+      "components": ["primary-navigation"],
+      "pages": ["https://example.gov/"]
+    },
+    {
+      "kind": "reducing-or-removing-animation",
+      "description": "Removed a decorative animation.",
+      "components": ["hero-animation"]
+    }
+  ]
+}
