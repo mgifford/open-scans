@@ -1,9 +1,9 @@
 name: Performance Request Validation
 
-# PR 1 boundary: validate and publish the structured PERF: request only.
-# This workflow launches no browser, runs no accessibility engine, calls no
-# external API and commits nothing. Measurement providers are added later and
-# must stay independently selectable.
+# Validate and publish the structured PERF: request only.
+# This workflow launches no browser and commits nothing. The separate
+# performance-scan workflow executes validated requests with the selected
+# bounded provider; validation and execution stay independently reviewable.
 
 on:
   issues:

@@ -127,7 +127,7 @@ Engine: axe, alfa
 
 ## Performance Investigation (`PERF:`)
 
-Performance investigation is a **separate request type** from accessibility scanning. It currently covers **PR 1: request contract**, **PR 2: evidence model and existing-source adapters**, **PR 3: bounded Lighthouse collection**, **PR 4: targeted Sitespeed deep investigation**, and **PR 5: cross-page investigation**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. The reuse runner assembles existing Open Scans, Firefox Energy Scanner, Vital Core and Open Site Review evidence with **no browser launch**; the light runner reuses that evidence first and only runs bounded Lighthouse on the remaining selected pages.
+Performance investigation is a **separate request type** from accessibility scanning. It currently covers **PR 1: request contract**, **PR 2: evidence model and existing-source adapters**, **PR 3: bounded Lighthouse collection**, **PR 4: targeted Sitespeed deep investigation**, and **PR 5: cross-page investigation**. A `PERF:` issue is parsed, validated and then executed by the separate **Performance Scan** workflow. `reuse`, `light` and `deep` modes run; `combined` is validated but not yet executable. The reuse runner assembles existing Open Scans, Firefox Energy Scanner, Vital Core and Open Site Review evidence with **no browser launch**; the light runner reuses that evidence first and only runs bounded Lighthouse on the remaining selected pages; the deep runner runs a bounded Sitespeed investigation. Raw provider artifacts are uploaded as workflow artifacts and are not committed; evidence, run report and summary are published under `reports/performance/`.
 
 ```text
 PERF: example.gov performance investigation
@@ -178,6 +178,7 @@ Contract and assessment documents:
 - [`docs/performance/PR-4-SITESPEED.md`](./docs/performance/PR-4-SITESPEED.md) — targeted Sitespeed deep investigation, CO2.js provenance and safety limits
 - [`docs/performance/performance-investigation.md`](./docs/performance/performance-investigation.md) — cross-page grouping, phases, ranking and bidirectional indexes
 - [`docs/performance/PR-5-INVESTIGATION.md`](./docs/performance/PR-5-INVESTIGATION.md) — PR 5 scope, tests and limitations
+- [`docs/performance/performance-execution.md`](./docs/performance/performance-execution.md) — validation vs execution workflows, modes and artifacts
 
 Use the **Performance Request** issue template, or run the parser locally:
 
@@ -447,6 +448,7 @@ The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`)
 - **scanner/run-performance-light.mjs**: Bounded light investigation runner with cost accounting
 - **scanner/performance-sitespeed.mjs**: Pinned Sitespeed Docker provider, analysisstorer/sustainable parsing and CO2 provenance
 - **scanner/run-performance-deep.mjs**: Targeted Sitespeed deep-investigation runner
+- **scanner/run-performance-issue.mjs**: Issue-driven performance dispatcher (`reuse`, `light`, `deep`)
 - **scanner/performance-investigation.mjs**: Cross-page component/resource grouping, deduplication and ranking
 - **scanner/run-performance-investigation.mjs**: Offline investigation package builder
 - **scanner/validate-targets.mjs**: Server-side URL validation
@@ -620,6 +622,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Accessibility pattern/container inventory for scan reports: unique-pattern grouping, semantic container candidates, JSON/Markdown/HTML/CSV outputs and tests | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Equal Access DOM locator retention and pattern locator-coverage metrics, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Accessibility context handoff for FES: occurrence-level page/selector/pattern/container artifact, schema, workflow persistence and product-direction boundaries | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Issue-driven performance execution: dispatcher, GitHub Actions workflow, local end-to-end validation, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 3: pinned Lighthouse provider, bounded page selection and family coverage, evidence reuse planning, DNS/redirect preflight, raw-artifact retention, cost reporting, tests and documentation | Development – November 2026 |

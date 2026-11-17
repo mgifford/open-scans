@@ -1,0 +1,190 @@
+name: Performance Scan
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: performance-repository
+  cancel-in-progress: false
+
+jobs:
+  run-performance-request:
+    if: startsWith(github.event.issue.title, 'PERF:') && github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Persist event payload
+        run: |
+          mkdir -p .tmp
+          cat > .tmp/issue-event.json <<'EOF'
+          ${{ toJson(github.event) }}
+          EOF
+
+      - name: Validate performance request
+        id: parse
+        run: |
+          mkdir -p .tmp .scan-output/performance
+          set +e
+          node scanner/parse-performance-issue.mjs \
+            .tmp/issue-event.json \
+            --out .tmp/performance-request.json \
+            --summary .tmp/performance-summary.md
+          code=$?
+          set -e
+          if [ "$code" -ne 0 ]; then
+            echo "valid=false" >> "$GITHUB_OUTPUT"
+            echo "::error::PERF: request is invalid. No browser or provider was started."
+            exit 0
+          fi
+          mode="$(node -e "const r=require('./.tmp/performance-request.json'); process.stdout.write(r.value.mode)")"
+          echo "valid=true" >> "$GITHUB_OUTPUT"
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Parsed performance request in '$mode' mode."
+
+      - name: Install Chromium for Lighthouse
+        if: steps.parse.outputs.valid == 'true' && steps.parse.outputs.mode == 'light'
+        run: npx playwright install --with-deps chromium
+
+      - name: Pull pinned Sitespeed image
+        if: steps.parse.outputs.valid == 'true' && steps.parse.outputs.mode == 'deep'
+        run: docker pull sitespeedio/sitespeed.io:43.0.0
+
+      - name: Run bounded performance scan
+        id: run
+        if: steps.parse.outputs.valid == 'true'
+        run: |
+          set +e
+          node scanner/run-performance-issue.mjs \
+            .tmp/performance-request.json \
+            --out .scan-output/performance \
+            --artifacts-dir .scan-output/performance/artifacts
+          code=$?
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [ -f .scan-output/performance/performance-result.json ]; then
+            cat .scan-output/performance/performance-summary.md >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f .tmp/performance-summary.md ]; then
+            cat .tmp/performance-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit 0
+
+      - name: Prepare report directory
+        id: meta
+        if: always()
+        run: |
+          issue="${{ github.event.issue.number }}"
+          stamp="$(date -u +%Y%m%dT%H%M%SZ)"
+          report_dir="reports/performance/issue-${issue}/${stamp}"
+          echo "report_dir=$report_dir" >> "$GITHUB_OUTPUT"
+          echo "stamp=$stamp" >> "$GITHUB_OUTPUT"
+          mkdir -p "$report_dir"
+          for file in performance-result.json performance-evidence.json performance-run.json performance-summary.md; do
+            if [ -f ".scan-output/performance/$file" ]; then
+              cp ".scan-output/performance/$file" "$report_dir/$file"
+            fi
+          done
+          if [ ! -f "$report_dir/performance-summary.md" ] && [ -f .tmp/performance-summary.md ]; then
+            cp .tmp/performance-summary.md "$report_dir/performance-summary.md"
+          fi
+          if [ -f "$report_dir/performance-evidence.json" ]; then
+            echo "has_evidence=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_evidence=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload raw performance artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-raw-${{ github.event.issue.number }}-${{ steps.meta.outputs.stamp }}
+          path: .scan-output/performance/artifacts
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Commit performance evidence
+        if: always() && steps.run.outputs.exit_code == '0' && steps.meta.outputs.has_evidence == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${{ steps.meta.outputs.report_dir }}"
+          if git diff --cached --quiet; then
+            echo "No performance report changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(perf): issue #${{ github.event.issue.number }} ${{ steps.parse.outputs.mode }} performance evidence"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            git pull --rebase origin main || true
+          done
+          echo "::error::Could not push performance evidence after 3 attempts."
+          exit 1
+
+      - name: Comment and close on success
+        if: always() && steps.run.outputs.exit_code == '0' && steps.meta.outputs.has_evidence == 'true'
+        uses: actions/github-script@v8
+        env:
+          REPORT_DIR: ${{ steps.meta.outputs.report_dir }}
+          MODE: ${{ steps.parse.outputs.mode }}
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const reportDir = process.env.REPORT_DIR;
+            const pagesBase = `https://${owner}.github.io/${repo}/${reportDir}`;
+            const githubBase = `https://github.com/${owner}/${repo}/blob/main/${reportDir}`;
+            const body = [
+              `Performance scan complete for **${context.payload.issue.title.replace(/^PERF:\s*/i, "")}**.`,
+              "",
+              `- Mode: ${process.env.MODE}`,
+              `- Evidence (Pages): ${pagesBase}/performance-evidence.json`,
+              `- Summary (Pages): ${pagesBase}/performance-summary.md`,
+              `- Run report (GitHub): ${githubBase}/performance-run.json`,
+              "",
+              "_Boundaries: Lighthouse is Chromium lab evidence; Sitespeed is bounded targeted evidence; no accessibility engine ran; no aggregate energy/performance score is produced._"
+            ].join("\n");
+            await github.rest.issues.createComment({ owner, repo, issue_number: context.payload.issue.number, body });
+            await github.rest.issues.update({ owner, repo, issue_number: context.payload.issue.number, state: "closed" });
+
+      - name: Comment failure
+        if: always() && (steps.parse.outputs.valid != 'true' || steps.run.outputs.exit_code != '0')
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const body = [
+              "Performance scan did not complete.",
+              "",
+              "See the workflow run for validation or provider errors. No successful performance report was published.",
+              "",
+              "_No accessibility engine ran and no aggregate performance/energy score was produced._"
+            ].join("\n");
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body
+            });
+
+      - name: Fail invalid or failed performance scan
+        if: always() && (steps.parse.outputs.valid != 'true' || steps.run.outputs.exit_code != '0')
+        run: exit 1

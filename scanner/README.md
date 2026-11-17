@@ -14,6 +14,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `run-performance-light.mjs` - Bounded light investigation runner with cost reporting.
 - `performance-sitespeed.mjs` - Pinned Sitespeed Docker provider and analysisstorer/sustainable parser.
 - `run-performance-deep.mjs` - Targeted Sitespeed deep-investigation runner.
+- `run-performance-issue.mjs` - Dispatches a validated `PERF:` request to the reuse, Lighthouse or Sitespeed runner.
 - `performance-investigation.mjs` - Cross-page component/resource grouping, deduplication and ranking.
 - `run-performance-investigation.mjs` - Offline investigation package builder (no browser/network).
 - `adapters/` - Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review.
