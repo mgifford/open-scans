@@ -11,7 +11,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `semantica11y-audit.mjs` - Semantic HTML/ARIA suggestions via `semantica11y` (always runs; reuses axe's rendered HTML, no extra browser launch).
 - `resolve-browser.mjs` - Resolves which Playwright browser (chromium/firefox/webkit) a scan issue requested.
 - `crawl-urls.mjs` - Discovers additional same-site URLs to scan when requested.
-- `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML.
+- `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML. CSV preserves original columns and appends scan/source/condition, component/region, external-investigation and coverage metadata.
 - `component-association.mjs` - Preserves explicit component ids and derives low-confidence semantic-region candidates from stable selectors.
 - `external-investigations.mjs` - Validates and attaches optional FES/Vital Core investigation metadata; never fetches external URLs.
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).

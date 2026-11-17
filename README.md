@@ -152,6 +152,7 @@ npm run compare:scans -- \
 - Findings preserve ACT Rule mappings and carry explicit component identifiers or low-confidence selector-derived semantic regions. Labels are never used as identity and no component ownership is inferred.
 - An optional `--external-references references.json` file can link the comparison to Firefox Energy Scanner or Vital Core. It is metadata-only: URLs are validated but never fetched, and the external evidence is not treated as an accessibility finding.
 - The generated comparison report has section navigation, a plain-language “What changed” summary, status definitions, per-finding evidence disclosures and a manual-verification section. It is fully usable without JavaScript.
+- JSON and CSV exports retain baseline/comparison scan metadata, source reports, testing conditions, page mappings, finding identities, component/region evidence, external investigation ids and coverage limitations. CSV keeps its original columns and appends the new fields.
 
 Read the [comparison documentation](./docs/accessibility-comparison/comparison.md) and the [Phase 0 assessment](./docs/accessibility-comparison/PHASE-0-ASSESSMENT.md).
 
@@ -477,6 +478,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Phase C component and semantic-region evidence: explicit-id preservation, selector-derived region candidates, ACT Rule ids, indexes and exports | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase D optional external investigation references: validation, linkage, metadata-only boundaries, schemas, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase E comparison report interface: section navigation, plain-language summary, evidence disclosures, manual verification and accessible styling | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase F complete comparison exports: appended CSV metadata, compatibility, formula-injection protection, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

@@ -4,7 +4,7 @@ import { readFileSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { compareScanReports, formatComparisonMarkdown, formatComparisonHtml } from "../../scanner/compare-scans.mjs";
+import { compareScanReports, formatComparisonMarkdown, formatComparisonHtml, comparisonToCsv } from "../../scanner/compare-scans.mjs";
 import {
   EXTERNAL_INVESTIGATION_BOUNDARY,
   EXTERNAL_REFERENCES_SCHEMA_VERSION,
@@ -45,6 +45,9 @@ test("valid external references attach as metadata-only links without changing f
   assert.match(after.externalInvestigations[0].boundary, /not an accessibility failure/i);
   assert.ok(after.limitations.includes(EXTERNAL_INVESTIGATION_BOUNDARY));
   assert.ok(after.manualVerification.some((task) => task.id === "review-external-investigations"));
+  const csv = comparisonToCsv(after);
+  assert.match(csv, /"external_investigation_ids"/);
+  assert.match(csv, /fes-nav-2026-11-01;vc-example-2026-11/);
 });
 
 test("explicit component ids provide component linkage but labels alone do not", () => {

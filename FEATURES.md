@@ -33,6 +33,7 @@
 25. [Component and Semantic-Region Evidence](#25-component-and-semantic-region-evidence)
 26. [External Investigation References](#26-external-investigation-references)
 27. [Comparison Report Interface](#27-comparison-report-interface)
+28. [Complete Comparison Exports](#28-complete-comparison-exports)
 
 ---
 
@@ -1733,6 +1734,37 @@ Phase E improves the static comparison report without adding JavaScript.
 ### 27.4 Tests
 
 `tests/unit/compare-scans.test.mjs` has 26 tests, including section navigation, summary, evidence details, manual sections, condition/engine tasks and backward compatibility.
+
+---
+
+## 28. Complete Comparison Exports
+
+Phase F completes the machine-readable comparison exports without breaking existing formats.
+
+### 28.1 CSV compatibility
+
+The original Phase A columns stay first and in order:
+
+`logical_page_id`, `baseline_url`, `comparison_url`, `classification`, `engine`, `rule_id`, `title`, `confidence`, `confirmed_remediation`, `qualification`, `baseline_occurrence_id`, `comparison_occurrence_id`.
+
+New columns are appended: component/region evidence, ACT/WCAG, match/page mapping, scan ids and issue URLs, releases, source-report paths, browser/viewport/colour scheme, external investigation ids, coverage-gap kinds and limitations.
+
+### 28.2 JSON
+
+JSON retains the complete comparison evidence: scan metadata, page mappings, conditions, findings with baseline/comparison evidence, component indexes, external references, manual verification, coverage gaps and limitations. Phase C/D/E/F fields are additive.
+
+### 28.3 Security and compatibility
+
+- CSV cells are quoted/escaped.
+- Formula-shaped cells are prefixed with `'` to reduce spreadsheet injection risk.
+- Output remains redacted.
+- Older comparison JSON without newer optional fields still exports.
+- No existing column is renamed or reordered.
+- No combined score or conformance claim.
+
+### 28.4 Tests
+
+`tests/unit/compare-scans.test.mjs` has 30 tests, including metadata completeness, formula-injection protection and older-JSON compatibility.
 
 ---
 
