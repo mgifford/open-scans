@@ -1768,3 +1768,64 @@ test("generateInteractiveHtml omits change tracking section when changeTracking 
     "Should not render change-tracking-section element when changeTracking is undefined"
   );
 });
+
+test("pattern inventory section groups unique patterns by semantic container", () => {
+  const summary = makeSummary({
+    patternInventory: {
+      schema: "a11y-pattern-inventory/1",
+      generatedAt: "2026-03-10T00:00:00.000Z",
+      summary: {
+        uniquePatterns: 1,
+        occurrences: 2,
+        pages: 2,
+        categories: 1,
+        byCategory: { navigation: { patterns: 1, occurrences: 2, pages: 2, patternIds: ["A11Y-aaaaaaaa"] } },
+        byContainerElement: { navigation: { patterns: 1, occurrences: 2, pages: 2, patternIds: ["A11Y-aaaaaaaa"] } },
+        byComponentId: {},
+        unassignedPatterns: 0,
+        ownershipEstablished: false,
+        note: "Container categories are selector-derived candidates, not component ownership."
+      },
+      categoryLabels: { navigation: "Navigation" },
+      patterns: [{
+        patternId: "A11Y-aaaaaaaa",
+        displayId: "A11Y-aaaaaaaa",
+        identitySource: "legacy",
+        legacyPatternId: "A11Y-aaaaaaaa",
+        canonicalPatternFingerprint: null,
+        engine: "axe",
+        engineLabel: "axe-core",
+        rule: "link-name",
+        wcagSc: ["244", "412"],
+        actRuleIds: ["c487ae"],
+        impact: "serious",
+        category: "navigation",
+        container: {
+          category: "navigation",
+          label: "Navigation",
+          element: "navigation",
+          componentId: null,
+          componentTypeId: null,
+          componentLabel: null,
+          basis: "selector-token",
+          confidence: "low",
+          ownershipEstablished: false,
+          uncertainty: ["Selector-derived region candidate."]
+        },
+        occurrenceCount: 2,
+        pageCount: 2,
+        pages: ["https://example.com/page1", "https://example.com/page2"],
+        firstSeenAt: "2026-03-10T00:00:00.000Z",
+        lastSeenAt: "2026-03-10T00:00:00.000Z",
+        examples: []
+      }]
+    }
+  });
+  const html = generateInteractiveHtml(summary);
+  assert.match(html, /Pattern and container inventory/);
+  assert.match(html, /Unique accessibility patterns by semantic container category/);
+  assert.match(html, /Patterns by container/);
+  assert.match(html, /A11Y-aaaaaaaa/);
+  assert.match(html, /patterns\.csv/);
+  assert.match(html, /not component ownership/);
+});

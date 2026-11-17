@@ -20,6 +20,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [Quick Start](#quick-start)
 - [Choose Scanning Engines](#choose-scanning-engines)
 - [View Scan Results](#view-scan-results)
+- [Pattern and Container Inventory](#pattern-and-container-inventory)
 - [Compare Baseline and Optimized Scans](#compare-baseline-and-optimized-scans)
 - [Review Optimization Accessibility](#review-optimization-accessibility)
 - [Managing Your Scans](#managing-your-scans)
@@ -130,6 +131,18 @@ Visit the [Reports page](https://mgifford.github.io/open-scans/reports.html) to 
 - Scan timestamp and number of URLs scanned
 - Pass/fail/can't tell statistics
 - Links to detailed reports (Markdown, CSV, JSON)
+
+## Pattern and Container Inventory
+
+Every scan now summarizes **unique accessibility patterns** using the existing Pattern IDs, and groups them by a conservative semantic container candidate: navigation, forms, form controls, header, footer, main content, tables, lists, dialogs and more.
+
+- `report.json` → `patternInventory`
+- `report.md` and `report.html` → category/pattern tables
+- `patterns.csv` → one row per pattern
+
+A pattern like `nav a.icon` is reported under **Navigation**; `form#search input` under **Forms**; `input#email` under **Forms → form controls**. The container is a candidate, not a component-ownership claim, and it is not derived from the Firefox Energy Scanner graph or Playwright MCP data.
+
+Read the [pattern inventory documentation](./docs/pattern-inventory.md).
 
 ## Compare Baseline and Optimized Scans
 
@@ -385,6 +398,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
 - **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, component/region evidence, optimization investigation, external references, schemas and limitations
+- **[docs/pattern-inventory.md](./docs/pattern-inventory.md)** — Per-scan unique patterns by semantic container, JSON/Markdown/HTML/CSV outputs and limits
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -479,6 +493,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Phase D optional external investigation references: validation, linkage, metadata-only boundaries, schemas, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase E comparison report interface: section navigation, plain-language summary, evidence disclosures, manual verification and accessible styling | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase F complete comparison exports: appended CSV metadata, compatibility, formula-injection protection, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Accessibility pattern/container inventory for scan reports: unique-pattern grouping, semantic container candidates, JSON/Markdown/HTML/CSV outputs and tests | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

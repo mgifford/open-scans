@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { writeFileSync, mkdirSync, rmSync } from "node:fs";
+import { writeFileSync, mkdirSync, rmSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -69,6 +69,14 @@ test("run-scan.mjs outputs valid JSON to stdout", () => {
       assert.equal(typeof parsedOutput.scanTitle, "string", "Output should have 'scanTitle' field");
       assert.equal(typeof parsedOutput.acceptedCount, "number", "Output should have 'acceptedCount' field");
       assert.equal(parsedOutput.scanContext.browser, "chromium", "Output should include normalized scan context");
+      assert.equal(typeof parsedOutput.patternInventory?.uniquePatterns, "number", "Output should include a pattern inventory summary");
+      assert.ok(existsSync(join(outputDir, "patterns.csv")), "patterns.csv should be generated");
+      assert.match(readFileSync(join(outputDir, "patterns.csv"), "utf8"), /"category"/);
+      assert.match(readFileSync(join(outputDir, "report.md"), "utf8"), /Pattern and Container Inventory/);
+      assert.match(readFileSync(join(outputDir, "report.html"), "utf8"), /Pattern and container inventory/);
+      const report = JSON.parse(readFileSync(join(outputDir, "report.json"), "utf8"));
+      assert.equal(report.patternInventory?.schema, "a11y-pattern-inventory/1");
+      assert.ok(Array.isArray(report.patternInventory.patterns));
     }
 
     // Verify progress messages are in stderr, not stdout

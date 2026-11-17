@@ -32,23 +32,26 @@ function roleToken(value, role) {
 function inferRegion(locator, html) {
   const source = `${lower(locator)} ${lower(html)}`;
   if (!source.trim()) return null;
-  if (roleToken(source, "navigation") || elementToken(locator, "nav")) return "navigation";
-  if (roleToken(source, "banner") || elementToken(locator, "header")) return "banner";
-  if (roleToken(source, "contentinfo") || elementToken(locator, "footer")) return "contentinfo";
-  if (roleToken(source, "main") || elementToken(locator, "main")) return "main";
-  if (roleToken(source, "complementary") || elementToken(locator, "aside")) return "complementary";
+  const htmlTag = lower(html).match(/<\s*([a-z][a-z0-9-]*)/)?.[1] ?? "";
+  const elementSource = `${lower(locator)} ${htmlTag}`.trim();
+  if (roleToken(source, "navigation") || elementToken(elementSource, "nav")) return "navigation";
+  if (roleToken(source, "banner") || elementToken(elementSource, "header")) return "banner";
+  if (roleToken(source, "contentinfo") || elementToken(elementSource, "footer")) return "contentinfo";
+  if (roleToken(source, "main") || elementToken(elementSource, "main")) return "main";
+  if (roleToken(source, "complementary") || elementToken(elementSource, "aside")) return "complementary";
   if (roleToken(source, "search")) return "search";
-  if (elementToken(locator, "form")) return "form";
-  if (roleToken(source, "table") || elementToken(locator, "table")) return "table";
-  if (roleToken(source, "list") || elementToken(locator, "ul") || elementToken(locator, "ol")) return "list";
-  if (/(^|[/>\s<])h[1-6](?=[\s.#:[>/]|$)/.test(lower(locator))) return "heading";
-  if (elementToken(locator, "a")) return "link";
-  if (elementToken(locator, "button")) return "button";
-  if (elementToken(locator, "img")) return "image";
-  if (elementToken(locator, "iframe")) return "frame";
-  if (roleToken(source, "dialog") || elementToken(locator, "dialog")) return "dialog";
+  if (elementToken(elementSource, "form")) return "form";
+  if (elementToken(elementSource, "input") || elementToken(elementSource, "select") || elementToken(elementSource, "textarea") || elementToken(elementSource, "label")) return "form-control";
+  if (roleToken(source, "table") || elementToken(elementSource, "table")) return "table";
+  if (roleToken(source, "list") || elementToken(elementSource, "ul") || elementToken(elementSource, "ol") || elementToken(elementSource, "li")) return "list";
+  if (/(^|[/>\s<])h[1-6](?=[\s.#:[>/]|$)/.test(elementSource)) return "heading";
+  if (elementToken(elementSource, "a")) return "link";
+  if (elementToken(elementSource, "button")) return "button";
+  if (elementToken(elementSource, "img")) return "image";
+  if (elementToken(elementSource, "iframe")) return "frame";
+  if (roleToken(source, "dialog") || elementToken(elementSource, "dialog")) return "dialog";
   if (/aria-live|role\s*=\s*["']?(?:status|alert|log)/.test(source)) return "live-region";
-  if (elementToken(locator, "html") || elementToken(locator, "body")) return "document";
+  if (["html", "body", "meta", "title", "script", "style", "link"].some((tag) => elementToken(elementSource, tag))) return "document";
   return null;
 }
 

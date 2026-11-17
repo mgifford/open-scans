@@ -266,6 +266,7 @@ jobs:
                 fs.copyFileSync(`${scanOutputDir}/report.md`, markdownPath);
                 fs.copyFileSync(`${scanOutputDir}/report.html`, htmlPath);
                 fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
+                fs.copyFileSync(`${scanOutputDir}/patterns.csv`, `${reportDir}/patterns.csv`);
 
                 const trendResult = spawnSync(
                   process.execPath,

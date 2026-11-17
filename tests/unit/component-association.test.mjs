@@ -32,6 +32,12 @@ test("class-name lookalikes are not treated as semantic regions", () => {
   assert.match(finding.uncertainty[0], /No explicit component identifier/i);
 });
 
+test("the failing HTML element supplies a container candidate when the locator is missing", () => {
+  assert.equal(associateFinding({ locator: "(page-level)", html: '<input id="email">' }).semanticRegion, "form-control");
+  assert.equal(associateFinding({ locator: "(page-level)", html: '<a href="/">Home</a>' }).semanticRegion, "link");
+  assert.equal(associateFinding({ locator: "(page-level)", html: '<meta http-equiv="refresh">' }).semanticRegion, "document");
+});
+
 test("explicit component identifiers are preserved at high confidence but ownership stays false", () => {
   const finding = associateFinding({
     locator: "nav a.icon",
