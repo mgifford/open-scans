@@ -168,3 +168,10 @@ Phase C adds explicit component-id preservation and low-confidence semantic-regi
 ## 10. Update after Phase D
 
 Phase D adds optional, validated external investigation references to comparisons and optimization reports. The integration is metadata-only: URLs are validated but not fetched, no FES/Vital Core schema is copied, and an external performance/energy investigation is explicitly not an accessibility finding or conformance claim. See [`external-investigations.md`](./external-investigations.md).
+
+
+---
+
+## 11. Update after Phase E
+
+Phase E adds a static report interface with section navigation, plain-language change summary, status definitions, per-finding evidence disclosures, manual-verification tasks, and mobile/print/forced-colours/reduced-motion styling. The report remains JavaScript-free. See [`interface.md`](./interface.md).

@@ -9,3 +9,5 @@
 - [PR C implementation notes](./PR-C-COMPONENT.md) — Phase C scope, tests, omissions and next step.
 - [External investigation references](./external-investigations.md) — Phase D metadata-only FES/Vital Core links, validation and boundaries.
 - [PR D implementation notes](./PR-D-EXTERNAL.md) — Phase D scope, tests, omissions and next step.
+- [Comparison report interface](./interface.md) — Phase E structure, evidence disclosures, manual verification and accessibility.
+- [PR E implementation notes](./PR-E-INTERFACE.md) — Phase E scope, tests, omissions and next step.

@@ -456,3 +456,53 @@ test("old comparison exports without component associations still render", () =>
   assert.doesNotThrow(() => comparisonToCsv(old));
   assert.equal(formatComparisonMarkdown(old).includes("Component and semantic-region evidence"), false);
 });
+
+test("manual verification records the limits of automated comparison", () => {
+  const result = compare();
+  assert.ok(Array.isArray(result.manualVerification));
+  assert.ok(result.manualVerification.some((task) => task.id === "keyboard-and-at"));
+  assert.ok(result.manualVerification.some((task) => task.id === "review-new-findings"));
+  assert.ok(result.manualVerification.some((task) => task.id === "verify-not-observed"));
+  assert.ok(result.manualVerification.some((task) => task.id === "review-coverage-gaps"));
+  const markdown = formatComparisonMarkdown(result);
+  assert.match(markdown, /## Manual verification/);
+  assert.match(markdown, /keyboard/i);
+});
+
+test("manual verification adds condition and engine tasks when needed", () => {
+  const different = structuredClone(optimized);
+  different.scanContext.viewport = { width: 390, height: 844 };
+  different.engines = ["axe"];
+  for (const result of different.results) {
+    result.scanContext.viewport = { width: 390, height: 844 };
+    if (result.alfa) {
+      result.alfa.executed = false;
+      result.alfa.failures = [];
+    }
+  }
+  const result = compare(different);
+  assert.ok(result.manualVerification.some((task) => task.id === "rerun-comparable-conditions"));
+  assert.ok(result.manualVerification.some((task) => task.id === "rerun-common-engines"));
+});
+
+test("the HTML report has a section navigation, plain-language summary, evidence details and manual section", () => {
+  const result = compare();
+  const html = formatComparisonHtml(result);
+  assert.match(html, /<nav aria-labelledby="toc-heading">/);
+  assert.match(html, /<h2 id="summary-heading">What changed<\/h2>/);
+  assert.match(html, /<h2 id="manual-heading">Manual verification<\/h2>/);
+  assert.match(html, /<h3>Status terms<\/h3>/);
+  assert.match(html, /<details><summary>Evidence for /);
+  assert.match(html, /<dt>Occurrence<\/dt>/);
+  assert.match(html, /<a href="#manual-heading">Manual verification<\/a>/);
+  assert.equal(html.includes("<script"), false);
+  assert.equal(/combined score|performance score/i.test(html), false);
+});
+
+test("old comparison output without manual tasks still renders a manual section", () => {
+  const result = compare();
+  const old = structuredClone(result);
+  delete old.manualVerification;
+  assert.match(formatComparisonMarkdown(old), /## Manual verification/);
+  assert.match(formatComparisonHtml(old), /id="manual-heading"/);
+});

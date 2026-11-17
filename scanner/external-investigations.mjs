@@ -272,6 +272,14 @@ export function attachExternalInvestigations(comparison, input) {
   ]);
   const value = structuredClone(comparison);
   value.externalInvestigations = externalInvestigations;
+  value.manualVerification = Array.isArray(value.manualVerification) ? value.manualVerification : [];
+  if (!value.manualVerification.some((task) => task.id === "review-external-investigations")) {
+    value.manualVerification.push({
+      id: "review-external-investigations",
+      task: "Use linked performance/energy investigations as separate evidence and confirm the shared page or component before drawing an accessibility conclusion.",
+      reason: "An external performance investigation is not an accessibility failure."
+    });
+  }
   value.limitations = limitations;
   const redaction = { changed: 0 };
   redactStringsDeep(value, redaction);

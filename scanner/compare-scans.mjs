@@ -687,6 +687,64 @@ function matchPageFindings({ pagePair, conditionsCompatible }) {
   return results;
 }
 
+function buildManualVerification(comparison) {
+  const tasks = [];
+  const add = (id, task, reason) => tasks.push({ id, task, reason });
+  add(
+    "keyboard-and-at",
+    "Test the changed pages with keyboard only and at least one screen reader, including the components implicated by new or changed findings.",
+    "Automated engines cannot establish keyboard operation, focus management or screen-reader announcements."
+  );
+  if (comparison.summary.newCount > 0) {
+    add(
+      "review-new-findings",
+      "Review every new finding against the optimization change before treating it as a regression.",
+      "A new automated finding is an observed difference; it does not by itself prove the optimization caused it."
+    );
+  }
+  if (comparison.summary.detailsChangedCount > 0) {
+    add(
+      "review-changed-details",
+      "Compare the before/after locator, HTML, message and WCAG mapping for findings whose details changed.",
+      "A detail change may reflect different content, a different page or a different engine version."
+    );
+  }
+  if (comparison.summary.notObservedCount > 0) {
+    add(
+      "verify-not-observed",
+      "For each no-longer-observed finding, confirm the remediation in the live page or source; do not mark it fixed from absence alone.",
+      "Absence from one comparison is not proof of remediation."
+    );
+  }
+  if (comparison.summary.notEvaluatedCount > 0 || comparison.coverageGaps.length > 0) {
+    add(
+      "review-coverage-gaps",
+      "Review every unpaired, failed, HTTP-error or engine-gap page before drawing conclusions.",
+      "Missing coverage is not evidence of improvement."
+    );
+  }
+  if (!comparison.conditions.compatible) {
+    add(
+      "rerun-comparable-conditions",
+      "Re-run the comparison with the same browser, viewport, colour scheme and page-load delay.",
+      "Different testing conditions reduce confidence and can change findings."
+    );
+  }
+  if (comparison.summary.enginesChanged) {
+    add(
+      "rerun-common-engines",
+      "Re-run with the same engine selection, or confirm that findings from engines absent on one side are not treated as new or absent.",
+      "The scans did not run the same engine set."
+    );
+  }
+  add(
+    "zoom-forced-colours-motion",
+    "Check the changed pages at 320px, 200%/400% zoom, in forced-colours mode and with reduced motion enabled.",
+    "These user conditions are not fully covered by automated rule findings."
+  );
+  return tasks;
+}
+
 export function compareScanReports(baselineReport, comparisonReport, options = {}) {
   let baseline;
   let comparison;
@@ -894,6 +952,18 @@ export function compareScanReports(baselineReport, comparisonReport, options = {
     findings,
     componentAssociations: buildComponentAssociations(Object.values(findings).flat()),
     coverageGaps,
+    manualVerification: buildManualVerification({
+      summary: {
+        newCount: findings.new.length,
+        persistentCount: findings.persistent.length,
+        detailsChangedCount: findings["details-changed"].length,
+        notObservedCount: findings["not-observed"].length,
+        notEvaluatedCount: findings["not-evaluated"].length,
+        enginesChanged: onlyBaselineEngines.length > 0 || onlyComparisonEngines.length > 0
+      },
+      conditions: { compatible: conditionsCompatible },
+      coverageGaps
+    }),
     limitations
   };
 
@@ -1032,6 +1102,13 @@ export function formatComparisonMarkdown(comparisonInput) {
       lines.push("", `_Showing the first ${rows.length} of ${(comparison.findings[key] ?? []).length} findings; see the JSON or CSV export for all rows._`);
     }
   }
+  lines.push("", "## Manual verification", "");
+  const manualTasks = comparison.manualVerification ?? [];
+  if (manualTasks.length === 0) {
+    lines.push("_Review keyboard, screen-reader, zoom, forced-colours and reduced-motion behaviour manually._");
+  } else {
+    for (const task of manualTasks) lines.push(`- **${task.task}** ${task.reason}`);
+  }
   lines.push("", "## Coverage gaps", "");
   if (comparison.coverageGaps.length === 0) lines.push("_None recorded._");
   for (const gap of comparison.coverageGaps) {
@@ -1091,7 +1168,19 @@ export function formatComparisonHtml(comparisonInput) {
     ["not-observed", "No longer observed"],
     ["not-evaluated", "Not evaluated"]
   ];
-  const rowsFor = (findings) => findings.map((finding) => `<tr><th scope="row">${escapeHtml(finding.page.comparisonUrl ?? finding.page.baselineUrl)}</th><td>${escapeHtml(finding.engineLabel)}</td><td>${escapeHtml(finding.ruleId)}</td><td>${escapeHtml(finding.title)}</td><td>${escapeHtml(finding.confidence)}</td><td>${finding.confirmedRemediation ? "yes" : "no"}</td><td>${escapeHtml(finding.qualification ?? "None")}</td></tr>`).join("");
+  const rowsFor = (findings) => findings.map((finding) => {
+    const source = finding.comparison ?? finding.baseline;
+    const evidence = [
+      ["Occurrence", source?.occurrenceId ?? "not recorded"],
+      ["Pattern", source?.patternId ?? "not recorded"],
+      ["Locator", source?.locator ?? "not recorded"],
+      ["WCAG", (finding.wcagSc ?? []).join(", ") || "not recorded"],
+      ["ACT", (finding.actRuleIds ?? []).join(", ") || "not recorded"],
+      ["Evidence", source?.evidenceRef ?? "not recorded"]
+    ];
+    const evidenceHtml = `<details><summary>Evidence for ${escapeHtml(finding.ruleId)}</summary><dl>${evidence.map(([term, value]) => `<dt>${escapeHtml(term)}</dt><dd>${escapeHtml(String(value).slice(0, 500))}</dd>`).join("")}</dl></details>`;
+    return `<tr><th scope="row">${escapeHtml(finding.page.comparisonUrl ?? finding.page.baselineUrl)}</th><td>${escapeHtml(finding.engineLabel)}</td><td>${escapeHtml(finding.ruleId)}</td><td>${escapeHtml(finding.title)}</td><td>${escapeHtml(finding.confidence)}</td><td>${finding.confirmedRemediation ? "yes" : "no"}</td><td>${escapeHtml(finding.qualification ?? "None")}</td><td>${evidenceHtml}</td></tr>`;
+  }).join("");
   const allHtmlFindings = Object.values(comparison.findings).flat();
   const htmlFindingsById = new Map(allHtmlFindings.map((finding) => [finding.comparisonId, finding]));
   const componentSectionHtml = comparison.componentAssociations ? (() => {
@@ -1117,7 +1206,25 @@ export function formatComparisonHtml(comparisonInput) {
     }).join("");
     return `<section aria-labelledby="external-heading"><h2 id="external-heading">Related performance and energy investigations</h2><p><strong>Linked metadata only.</strong> An external investigation is not an accessibility failure; no external URL was fetched.</p><table><caption>External investigations linked to this comparison</caption><thead><tr><th scope="col">Investigation</th><th scope="col">Source</th><th scope="col">Related page</th><th scope="col">Component</th><th scope="col">Date</th><th scope="col">Link</th><th scope="col">Linkage</th></tr></thead><tbody>${rows}</tbody></table><p>${escapeHtml(comparison.externalInvestigations[0].boundary)}</p></section>`;
   })() : "";
-  const sectionHtml = sections.map(([key, heading]) => `<section aria-labelledby="section-${key}"><h2 id="section-${key}">${heading}</h2>${(comparison.findings[key] ?? []).length === 0 ? "<p>None.</p>" : `<table><caption>${heading}</caption><thead><tr><th scope="col">Page</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th><th scope="col">Confirmed remediation</th><th scope="col">Qualification</th></tr></thead><tbody>${rowsFor(comparison.findings[key] ?? [])}</tbody></table>`}</section>`).join("");
+  const manualTasks = comparison.manualVerification ?? [];
+  const manualSectionHtml = `<section aria-labelledby="manual-heading"><h2 id="manual-heading">Manual verification</h2><p>These tasks remain necessary after automated comparison; passing automated checks does not establish conformance or functional equivalence.</p>${manualTasks.length ? `<ul>${manualTasks.map((task) => `<li><strong>${escapeHtml(task.task)}</strong><br><span>${escapeHtml(task.reason)}</span></li>`).join("")}</ul>` : "<p>Review keyboard, screen-reader, zoom, forced-colours and reduced-motion behaviour manually.</p>"}</section>`;
+  const tocItems = [
+    ["summary-heading", "What changed"],
+    ["conditions-heading", "Testing conditions"],
+    ["pages-heading", "Page coverage"],
+    ...(comparison.componentAssociations ? [["components-heading", "Component and region evidence"]] : []),
+    ...(comparison.externalInvestigations?.length ? [["external-heading", "Related investigations"]] : []),
+    ["section-new", "New findings"],
+    ["section-persistent", "Persistent findings"],
+    ["section-details-changed", "Changed details"],
+    ["section-not-observed", "No longer observed"],
+    ["section-not-evaluated", "Not evaluated"],
+    ["manual-heading", "Manual verification"],
+    ["coverage-heading", "Coverage gaps"],
+    ["limitations-heading", "Limitations"]
+  ];
+  const tocHtml = `<nav aria-labelledby="toc-heading"><h2 id="toc-heading">On this page</h2><ul>${tocItems.map(([id, label]) => `<li><a href="#${id}">${escapeHtml(label)}</a></li>`).join("")}</ul></nav>`;
+  const sectionHtml = sections.map(([key, heading]) => `<section aria-labelledby="section-${key}"><h2 id="section-${key}">${heading}</h2>${(comparison.findings[key] ?? []).length === 0 ? "<p>None.</p>" : `<table><caption>${heading}</caption><thead><tr><th scope="col">Page</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th><th scope="col">Confirmed remediation</th><th scope="col">Qualification</th><th scope="col">Evidence</th></tr></thead><tbody>${rowsFor(comparison.findings[key] ?? [])}</tbody></table>`}</section>`).join("");
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -1132,8 +1239,14 @@ export function formatComparisonHtml(comparisonInput) {
 .skip-link{position:absolute;left:-999px;top:0;background:var(--surface);color:var(--fg);padding:.75rem;z-index:10}.skip-link:focus{left:0}
 header,main{max-width:70rem;margin:0 auto;padding:1rem}header{border-bottom:1px solid var(--border)}h1,h2{line-height:1.2}
 table{width:100%;border-collapse:collapse;margin:1rem 0}caption{text-align:left;font-weight:700;margin-bottom:.5rem}
-th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-align:top}th{background:var(--surface)}
+th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:var(--surface)}
 .notice{border-left:4px solid var(--accent);padding:.75rem 1rem;background:var(--surface)}a{color:var(--accent)}
+h3{line-height:1.2}.summary-list{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;list-style:none;padding:0}
+.status-legend{display:grid;grid-template-columns:max-content 1fr;gap:.25rem 1rem}.status-legend dt{font-weight:700}
+details{margin:.25rem 0}summary{cursor:pointer}summary:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+dl{margin:.5rem 0}dt{font-weight:700}dd{margin:0 0 .25rem 1rem;overflow-wrap:anywhere}
+@media (max-width:48rem){th,td{font-size:.85rem;padding:.35rem}h1{font-size:1.6rem}}
+@media print{thead{display:table-header-group}tr{break-inside:avoid}}
 @media (forced-colors:active){th,td{border:1px solid CanvasText}.notice{border:2px solid CanvasText}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
@@ -1142,19 +1255,28 @@ th,td{border:1px solid var(--border);padding:.5rem;text-align:left;vertical-alig
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header><h1>Accessibility comparison</h1><p class="notice"><strong>No longer observed does not mean fixed.</strong> Absence from one comparison is not proof of remediation. Automated checks cannot establish WCAG conformance or functional equivalence.</p></header>
 <main id="main-content">
-<h2>Comparison summary</h2>
-<ul>
-<li>Baseline: ${escapeHtml(comparison.baseline.scanTitle ?? "untitled")} (${escapeHtml(comparison.baseline.scannedAt ?? "date not recorded")}; release: ${escapeHtml(comparison.baseline.release ?? "not supplied")})</li>
-<li>Comparison: ${escapeHtml(comparison.comparison.scanTitle ?? "untitled")} (${escapeHtml(comparison.comparison.scannedAt ?? "date not recorded")}; release: ${escapeHtml(comparison.comparison.release ?? "not supplied")})</li>
-<li>Pages compared: ${comparison.summary.pagesCompared}</li>
-<li>New findings: ${comparison.summary.newCount}</li>
-<li>Persistent findings: ${comparison.summary.persistentCount}</li>
-<li>Details changed: ${comparison.summary.detailsChangedCount}</li>
-<li>No longer observed: ${comparison.summary.notObservedCount}</li>
-<li>Not evaluated: ${comparison.summary.notEvaluatedCount}</li>
-<li>Confirmed remediations: ${comparison.summary.confirmedRemediations}</li>
-<li>Testing conditions compatible: ${comparison.conditions.compatible ? "yes" : "no"}</li>
+${tocHtml}
+<section aria-labelledby="summary-heading"><h2 id="summary-heading">What changed</h2>
+<p>Baseline: ${escapeHtml(comparison.baseline.scanTitle ?? "untitled")} (${escapeHtml(comparison.baseline.scannedAt ?? "date not recorded")}; release: ${escapeHtml(comparison.baseline.release ?? "not supplied")}). Comparison: ${escapeHtml(comparison.comparison.scanTitle ?? "untitled")} (${escapeHtml(comparison.comparison.scannedAt ?? "date not recorded")}; release: ${escapeHtml(comparison.comparison.release ?? "not supplied")}).</p>
+<ul class="summary-list">
+<li><strong>${comparison.summary.newCount}</strong> new finding${comparison.summary.newCount === 1 ? "" : "s"}</li>
+<li><strong>${comparison.summary.persistentCount}</strong> persistent finding${comparison.summary.persistentCount === 1 ? "" : "s"}</li>
+<li><strong>${comparison.summary.detailsChangedCount}</strong> finding${comparison.summary.detailsChangedCount === 1 ? "" : "s"} with changed details</li>
+<li><strong>${comparison.summary.notObservedCount}</strong> no longer observed — not proof of remediation</li>
+<li><strong>${comparison.summary.notEvaluatedCount}</strong> not evaluated — coverage gap</li>
+<li><strong>${comparison.summary.pagesCompared}</strong> page${comparison.summary.pagesCompared === 1 ? "" : "s"} compared; <strong>${comparison.summary.confirmedRemediations}</strong> confirmed remediation${comparison.summary.confirmedRemediations === 1 ? "" : "s"}</li>
+<li>Testing conditions compatible: <strong>${comparison.conditions.compatible ? "yes" : "no"}</strong></li>
 </ul>
+<p class="notice"><strong>No longer observed does not mean fixed.</strong> Absence from this comparison is not proof of remediation.</p>
+<h3>Status terms</h3>
+<dl class="status-legend">
+<dt>New</dt><dd>A finding present in the comparison and not matched in the baseline, on a page and engine evaluated in both scans.</dd>
+<dt>Persistent</dt><dd>The same finding identity and details appear in both scans.</dd>
+<dt>Changed details</dt><dd>The finding identity persists, but its locator, message, HTML, WCAG mapping or other detail changed.</dd>
+<dt>No longer observed</dt><dd>The baseline finding is absent, but absence is not proof of remediation.</dd>
+<dt>Not evaluated</dt><dd>A page, engine or evidence source was missing or failed; this is not a clean result.</dd>
+</dl>
+</section>
 <section aria-labelledby="conditions-heading"><h2 id="conditions-heading">Testing conditions</h2>
 <table><caption>Browser, viewport, colour scheme and engines used by each scan</caption>
 <thead><tr><th scope="col">Field</th><th scope="col">Baseline</th><th scope="col">Comparison</th></tr></thead>
@@ -1174,6 +1296,7 @@ ${comparison.pageMappings.length === 0 ? "<p>No pages were paired. Different URL
 ${componentSectionHtml}
 ${externalSectionHtml}
 ${sectionHtml}
+${manualSectionHtml}
 <section aria-labelledby="coverage-heading"><h2 id="coverage-heading">Coverage gaps</h2>${comparison.coverageGaps.length === 0 ? "<p>None recorded.</p>" : `<ul>${comparison.coverageGaps.map((gap) => `<li>${escapeHtml(gap.kind)}: ${escapeHtml(gap.url ?? gap.logicalPageId ?? "")} ${escapeHtml(gap.reason ?? gap.baselineError ?? gap.comparisonError ?? "")}</li>`).join("")}</ul>`}</section>
 <section aria-labelledby="limitations-heading"><h2 id="limitations-heading">Limitations</h2><ul>${comparison.limitations.map((limitation) => `<li>${escapeHtml(limitation)}</li>`).join("")}</ul></section>
 </main>

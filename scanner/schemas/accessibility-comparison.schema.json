@@ -237,6 +237,12 @@
       "items": {
         "$ref": "#/$defs/externalInvestigation"
       }
+    },
+    "manualVerification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/manualTask"
+      }
     }
   },
   "$defs": {
@@ -915,6 +921,26 @@
           }
         },
         "boundary": {
+          "type": "string"
+        }
+      }
+    },
+    "manualTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "task",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        },
+        "reason": {
           "type": "string"
         }
       }

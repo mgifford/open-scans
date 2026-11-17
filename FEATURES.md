@@ -32,6 +32,7 @@
 24. [Optimization Accessibility Investigation](#24-optimization-accessibility-investigation)
 25. [Component and Semantic-Region Evidence](#25-component-and-semantic-region-evidence)
 26. [External Investigation References](#26-external-investigation-references)
+27. [Comparison Report Interface](#27-comparison-report-interface)
 
 ---
 
@@ -1696,6 +1697,42 @@ An external performance investigation is not an accessibility failure. An energy
 ### 26.4 Tests
 
 `tests/unit/external-investigations.test.mjs` has 8 tests covering valid references, linkage, private URL rejection, missing/unknown fields, unmatched references, redaction, Markdown/HTML and the CLI. Optimization tests verify references are carried forward.
+
+---
+
+## 27. Comparison Report Interface
+
+Phase E improves the static comparison report without adding JavaScript.
+
+### 27.1 Structure
+
+- **On this page** navigation.
+- **What changed** plain-language counts.
+- **Status terms** definition list.
+- Testing conditions, page coverage, component/region evidence and related investigations.
+- New, persistent, changed-details, no-longer-observed and not-evaluated finding tables.
+- **Manual verification** tasks.
+- Coverage gaps and limitations.
+
+### 27.2 Evidence and manual work
+
+- Every finding table has an expandable native `<details>` evidence cell with occurrence/pattern ids, locator, WCAG, ACT Rule ids and evidence reference.
+- Manual tasks are generated from new and changed findings, no-longer-observed findings, coverage gaps, condition/engine differences and external references.
+- Keyboard, screen-reader, zoom, forced-colours and reduced-motion checks remain explicit.
+
+### 27.3 Accessibility
+
+- Semantic landmarks, headings and lists; skip link and section navigation.
+- Captioned tables with column headers and row headers.
+- Text status labels, not colour alone.
+- Native keyboard-operable disclosures; no script.
+- Light/dark, forced-colours, reduced-motion and print styles.
+- Mobile table text wrapping; data tables may scroll at narrow widths under the WCAG table exception.
+- No combined accessibility/performance/sustainability score.
+
+### 27.4 Tests
+
+`tests/unit/compare-scans.test.mjs` has 26 tests, including section navigation, summary, evidence details, manual sections, condition/engine tasks and backward compatibility.
 
 ---
 
