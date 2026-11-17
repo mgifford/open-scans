@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 2,
+  "scansAnalysed": 3,
   "diffs": [
     {
       "from": {
@@ -37,23 +37,47 @@
         "qualweb": 0,
         "accesslint": 3
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-11-17T16:45:54.391Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2023,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2513,
+          "combined": 4536,
+          "scannedAt": "2026-11-17T16:45:54.391Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-17T17:25:00.396Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1918,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2240,
+          "combined": 4158,
+          "scannedAt": "2026-11-17T17:25:00.396Z",
+          "scannedCount": 20
+        }
+      },
+      "change": -378,
+      "trend": "improving",
+      "perScanner": {
+        "alfa": 0,
+        "axe": -105,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": -273
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-11-17T15:34:50.035Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2131,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 2510,
-        "combined": 4641,
-        "scannedAt": "2026-11-17T15:34:50.035Z",
-        "scannedCount": 20
-      }
-    },
-    "to": {
       "scannedAt": "2026-11-17T16:45:54.391Z",
       "totals": {
         "alfa": 0,
@@ -66,27 +90,40 @@
         "scannedCount": 20
       }
     },
-    "change": -105,
+    "to": {
+      "scannedAt": "2026-11-17T17:25:00.396Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 1918,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 2240,
+        "combined": 4158,
+        "scannedAt": "2026-11-17T17:25:00.396Z",
+        "scannedCount": 20
+      }
+    },
+    "change": -378,
     "trend": "improving",
     "perScanner": {
       "alfa": 0,
-      "axe": -108,
+      "axe": -105,
       "equalAccess": 0,
       "qualweb": 0,
-      "accesslint": 3
+      "accesslint": -273
     }
   },
   "overallTrend": "improving",
-  "improvingCount": 1,
+  "improvingCount": 2,
   "worseningCount": 0,
   "latestTotals": {
     "alfa": 0,
-    "axe": 2023,
+    "axe": 1918,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 2513,
-    "combined": 4536,
-    "scannedAt": "2026-11-17T16:45:54.391Z",
+    "accesslint": 2240,
+    "combined": 4158,
+    "scannedAt": "2026-11-17T17:25:00.396Z",
     "scannedCount": 20
   },
   "baselineTotals": {
@@ -105,15 +142,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/docs/microsoft-azure/index",
+        "https://huggingface.co/blog/ray-rag"
       ]
     },
     {
@@ -121,15 +158,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/docs/microsoft-azure/index",
+        "https://huggingface.co/blog/ray-rag"
       ]
     },
     {
@@ -137,15 +174,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/docs/microsoft-azure/index",
+        "https://huggingface.co/blog/ray-rag"
       ]
     },
     {
@@ -153,79 +190,79 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal"
-      ]
-    },
-    {
-      "ruleId": "axe:aria-required-attr",
-      "pageCount": 18,
-      "pages": [
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal",
-        "https://huggingface.co/blog/kv-cache"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/docs/microsoft-azure/index",
+        "https://huggingface.co/blog/ray-rag"
       ]
     },
     {
       "ruleId": "axe:link-name",
-      "pageCount": 18,
+      "pageCount": 17,
       "pages": [
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal",
-        "https://huggingface.co/blog/kv-cache"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/docs/microsoft-azure/index",
+        "https://huggingface.co/blog/ray-rag",
+        "https://huggingface.co/blog/amazon/higher-order-pruning-experts"
+      ]
+    },
+    {
+      "ruleId": "axe:aria-required-attr",
+      "pageCount": 15,
+      "pages": [
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/blog/ray-rag",
+        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+        "https://huggingface.co/blog/falcon-180b"
       ]
     },
     {
       "ruleId": "axe:nested-interactive",
-      "pageCount": 18,
+      "pageCount": 15,
       "pages": [
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/writer-case-study",
-        "https://huggingface.co/blog/hardware-partners-program",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/blog/ethical-charter-multimodal",
-        "https://huggingface.co/blog/kv-cache"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
+        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/blog/ray-rag",
+        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+        "https://huggingface.co/blog/falcon-180b"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 13,
+      "pageCount": 14,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/pricing",
-        "https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes",
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
         "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/audioldm2"
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/blog/ray-rag",
+        "https://huggingface.co/blog/falcon-180b"
       ]
     },
     {
@@ -233,30 +270,31 @@
       "pageCount": 13,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/olympic-coder-lmstudio",
-        "https://huggingface.co/pricing",
-        "https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes",
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/Hcompany/holotab",
         "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/audioldm2"
+        "https://huggingface.co/blog/fireworks-ai",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/blog/falcon-180b",
+        "https://huggingface.co/blog/reflection-beam"
       ]
     },
     {
       "ruleId": "axe:scrollable-region-focusable",
-      "pageCount": 9,
+      "pageCount": 11,
       "pages": [
-        "https://huggingface.co/blog/dialog-agents",
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/liger-grpo",
-        "https://huggingface.co/blog/swiss-ai/apertus-v15-release-notes",
+        "https://huggingface.co/blog/flux-3",
         "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/audioldm2",
-        "https://huggingface.co/blog/community-tools",
-        "https://huggingface.co/blog/vertex-colored-to-textured-mesh"
+        "https://huggingface.co/blog/peft_merging",
+        "https://huggingface.co/blog/ray-rag",
+        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+        "https://huggingface.co/blog/falcon-180b",
+        "https://huggingface.co/blog/reflection-beam",
+        "https://huggingface.co/blog/wuerstchen",
+        "https://huggingface.co/blog/tiiuae/3lm-benchmark",
+        "https://huggingface.co/blog/llama31-on-vertex-ai"
       ]
     },
     {
@@ -264,11 +302,11 @@
       "pageCount": 6,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/pricing",
-        "https://huggingface.co/blog/community-tools",
-        "https://huggingface.co/blog/vertex-colored-to-textured-mesh",
-        "https://huggingface.co/blog/tiiuae/falcon-asr"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/reflection-beam",
+        "https://huggingface.co/blog/wuerstchen",
+        "https://huggingface.co/blog/phonon-tts"
       ]
     },
     {
@@ -276,21 +314,20 @@
       "pageCount": 6,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/claude-and-mcp",
-        "https://huggingface.co/pricing",
-        "https://huggingface.co/blog/community-tools",
-        "https://huggingface.co/blog/vertex-colored-to-textured-mesh",
-        "https://huggingface.co/blog/tiiuae/falcon-asr"
+        "https://huggingface.co/blog/flux-3",
+        "https://huggingface.co/blog/open-asr-leaderboard",
+        "https://huggingface.co/blog/reflection-beam",
+        "https://huggingface.co/blog/wuerstchen",
+        "https://huggingface.co/blog/phonon-tts"
       ]
     },
     {
-      "ruleId": "axe:image-alt",
-      "pageCount": 4,
+      "ruleId": "axe:empty-table-header",
+      "pageCount": 3,
       "pages": [
-        "https://huggingface.co/blog/sd_distillation",
-        "https://huggingface.co/blog/stable-diffusion-finetuning-intel",
-        "https://huggingface.co/blog/audioldm2",
-        "https://huggingface.co/blog/community-tools"
+        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
+        "https://huggingface.co/blog/falcon-180b",
+        "https://huggingface.co/blog/reflection-beam"
       ]
     }
   ]
