@@ -44,6 +44,7 @@ test("valid external references attach as metadata-only links without changing f
   assert.equal(after.externalInvestigations[0].linkage.ownershipEstablished, false);
   assert.match(after.externalInvestigations[0].boundary, /not an accessibility failure/i);
   assert.ok(after.limitations.includes(EXTERNAL_INVESTIGATION_BOUNDARY));
+  assert.ok(after.manualVerification.some((task) => task.id === "review-external-investigations"));
 });
 
 test("explicit component ids provide component linkage but labels alone do not", () => {
