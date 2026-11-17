@@ -88,7 +88,7 @@ If you're using the [Top Task Finder](https://mgifford.github.io/top-task-finder
 
 ## Choose Scanning Engines
 
-By default, **axe** plus one randomly selected engine run for a balanced result. Use `ALL` to run all five engines.
+By default, **axe** plus one randomly selected engine run for a balanced result. Use `ALL` to run all four supported rule engines.
 
 ### Available Engines
 
@@ -98,7 +98,6 @@ By default, **axe** plus one randomly selected engine run for a balanced result.
 | Siteimprove ALFA | `ALFA` | Siteimprove's open-source, ACT-rules-based engine |
 | IBM Equal Access | `EQUALACCESS` | IBM's comprehensive accessibility checker |
 | AccessLint | `ACCESSLINT` | Automated accessibility testing tool |
-| QualWeb | `QUALWEB` | University of Lisbon's WCAG and ACT Rules evaluator |
 
 ### Specifying Engines
 
@@ -118,7 +117,7 @@ Engine: axe, alfa
 **Examples**:
 - `SCAN: AXE Homepage check` — Runs only axe-core
 - `SCAN: ALFA EQUALACCESS Government site scan` — Runs ALFA and Equal Access
-- `SCAN: ALL Complete audit` — Runs all five engines
+- `SCAN: ALL Complete audit` — Runs all four supported rule engines (axe, ALFA, Equal Access and AccessLint)
 - `SCAN: Homepage check` — Runs axe + one randomly chosen engine (default)
 - Body: `Engine: axe accesslint` — Runs axe and AccessLint regardless of title
 
@@ -225,7 +224,7 @@ This workflow requires no secrets beyond the built-in `GITHUB_TOKEN` (which has 
 
 ### 5. Accessibility Engine Version Check (monthly)
 
-The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`) compares the installed version of each scanning engine dependency (ALFA, axe-core, IBM Equal Access, AccessLint, QualWeb) against the latest release on npm and opens or updates a tracking issue when any are behind.
+The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`) compares the installed version of each scanning engine dependency (ALFA, axe-core, IBM Equal Access, AccessLint) against the latest release on npm and opens or updates a tracking issue when any are behind.
 
 **Why this exists:** manually curated rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`, `scanner/equalaccess-rule-metadata.mjs`) maps opaque rule IDs to human-readable names and WCAG criteria. That mapping can silently drift out of sync as an engine ships new rule numbering or reclassifies a rule's WCAG mapping — this happened with ALFA's SIA-R65 and SIA-R83 rules. A monthly nudge to check for engine updates is also a prompt to re-verify the metadata against the new version.
 
@@ -367,7 +366,7 @@ Key differences:
 - **Discovery mode**: Uses Bing SERP + navigation crawl to automatically identify a site's most important pages (useful when you lack a reliable sitemap).
 - **Lighter stack**: Primarily axe-core via Playwright; lower setup overhead for single-engine use.
 
-Choose **open-scans** when you need multi-engine comparison (axe, ALFA, IBM Equal Access, AccessLint, QualWeb), cross-engine WCAG overlap analysis, or a no-infrastructure scanning service anyone can trigger via a form.
+Choose **open-scans** when you need multi-engine comparison (axe, ALFA, IBM Equal Access, AccessLint), cross-engine WCAG overlap analysis, or a no-infrastructure scanning service anyone can trigger via a form.
 
 ---
 
@@ -386,7 +385,7 @@ Development of `open-scans` has used AI coding assistants for:
 
 ### Is any AI used when running the program?
 
-**Optionally, yes.** The `REMEDIATE` keyword in scan issues and the on-demand **AI Accessibility Review** workflow both call the GitHub Models API (gpt-4o-mini) to generate natural-language findings and fix suggestions. These features are entirely opt-in — regular scans and the review workflow only call the API when you explicitly trigger them. The standard scanner is a deterministic Node.js tool that runs established open-source accessibility engines (axe-core, Siteimprove ALFA, IBM Equal Access Checker, AccessLint, QualWeb); no LLM is invoked during normal operation.
+**Optionally, yes.** The `REMEDIATE` keyword in scan issues and the on-demand **AI Accessibility Review** workflow both call the GitHub Models API (gpt-4o-mini) to generate natural-language findings and fix suggestions. These features are entirely opt-in — regular scans and the review workflow only call the API when you explicitly trigger them. The standard scanner is a deterministic Node.js tool that runs established open-source accessibility engines (axe-core, Siteimprove ALFA, IBM Equal Access Checker, AccessLint); no LLM is invoked during normal operation.
 
 ### Is browser-based AI enabled?
 
@@ -418,7 +417,7 @@ Development of `open-scans` has used AI coding assistants for:
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Upgraded Playwright to 1.60.0 to avoid the browser installer hang on recent Node.js releases | Development – June 2026 |
 | GitHub Copilot Coding Agent (GPT-5.4 mini) | Diagnosed failing `run-scan-request` workflow and fixed QualWeb runtime module resolution by adding `@qualweb/qw-page` dependency | Development – June 2026 |
 | GitHub Copilot Coding Agent (GPT-5-class) | Diagnosed `run-scan-request` failure for check run `89724134570` and fixed QualWeb runtime module resolution by adding explicit `@qualweb/util` dependency with regression coverage | Development – July 2026 |
-| Claude Code (claude-sonnet-5) | Verified manually curated ALFA rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`) against the installed `@siteimprove/alfa-rules` package and the published rule descriptions at alfa.siteimprove.com/rules; corrected name/WCAG-criteria/conformance-level drift affecting 24 of 29 curated rules and fixed a duplicate object key; upgraded `@siteimprove/alfa-cli`/`alfa-formatter-earl`/`alfa-formatter-json` from 0.81.3 to 0.84.2; added `scanner/check-engine-versions.mjs` and the monthly `engine-version-check.yml` workflow to catch future engine drift across all five scanning engines | Development – July 2026 |
+| Claude Code (claude-sonnet-5) | Verified manually curated ALFA rule metadata (`scanner/alfa-rule-metadata.mjs`, `scanner/rule-metadata.mjs`) against the installed `@siteimprove/alfa-rules` package and the published rule descriptions at alfa.siteimprove.com/rules; corrected name/WCAG-criteria/conformance-level drift affecting 24 of 29 curated rules and fixed a duplicate object key; upgraded `@siteimprove/alfa-cli`/`alfa-formatter-earl`/`alfa-formatter-json` from 0.81.3 to 0.84.2; added `scanner/check-engine-versions.mjs` and the monthly `engine-version-check.yml` workflow to catch future engine drift across all supported scanning engines | Development – July 2026 |
 | Claude Code (claude-sonnet-5) | Completed a pre-existing, uncommitted `analyzeDuplicateTitles`/`normalizeTitle` implementation found unwired in `scanner/run-scan.mjs`: added it to the scan summary and to `toMarkdownReport()` as a "Duplicate Page Titles" (WCAG 2.4.2) report section, fixed a JSDoc return-type mismatch, and added unit test coverage | Development – July 2026 |
 | Claude Code (claude-sonnet-5) | Added `scanner/fingerprint-core.mjs` to dual-write the versioned, cross-project `a11y/pattern/v1`/`a11y/occurrence/v1` fingerprints from mgifford/ACCESSIBILITY.md alongside the existing `A11Y-xxxxxxxx` Instance ID and Pattern ID (verified against ACCESSIBILITY.md's published golden test vectors); renamed `computeChangeTracking`'s `resolvedCount`/`resolvedIssues` output fields to `notObservedCount`/`notObservedIssues` and updated both consumers so absence from a scan is no longer labelled as resolution | Development – July 2026 |
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
