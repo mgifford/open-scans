@@ -1,0 +1,120 @@
+{
+  "schema": "performance-light-run/1",
+  "runnerVersion": "1.0.0",
+  "lighthouseProviderVersion": "1.0.0",
+  "requestId": "394-perf-7bb26715a30c",
+  "mode": "light",
+  "generatedAt": "2026-11-17T18:48:41.778Z",
+  "site": "https://fosdem.org",
+  "selection": {
+    "candidates": 2,
+    "ordered": 2,
+    "runs": 2,
+    "reused": 0,
+    "skipped": [],
+    "familyCount": 0,
+    "coveredFamilies": [],
+    "omittedFamilies": [],
+    "discovery": null,
+    "thresholds": {
+      "domMedian": null,
+      "requestMedian": null,
+      "transferMedian": null,
+      "domHigh": null,
+      "requestHigh": null,
+      "transferHigh": null
+    },
+    "excluded": [],
+    "rejected": [],
+    "reusable": [],
+    "scheduled": [
+      {
+        "url": "https://fosdem.org/2027/support/sponsors/",
+        "reasons": [
+          "Explicit URL from the request",
+          "Unusual page: deep path"
+        ]
+      },
+      {
+        "url": "https://fosdem.org/2027/",
+        "reasons": [
+          "Explicit URL from the request",
+          "Fills the bounded investigation budget"
+        ]
+      }
+    ]
+  },
+  "discovery": null,
+  "runs": [
+    {
+      "url": "https://fosdem.org/2027/support/sponsors/",
+      "finalUrl": "https://fosdem.org/2027/support/sponsors/",
+      "action": "run",
+      "status": "completed",
+      "sourceId": "src-0a771864e51a",
+      "artifact": "lighthouse/lh-9a0922874191-1-1794941322368.json",
+      "durationMs": 16035,
+      "redirected": false,
+      "summary": {
+        "url": "https://fosdem.org/2027/support/sponsors/",
+        "lighthouseVersion": "13.6.0",
+        "fetchTime": "2026-11-17T18:48:52.745Z",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "performanceScore": 0.99,
+        "lcp": 526.2914999999999,
+        "tbt": 0,
+        "cls": 0.07459399244637473,
+        "auditCount": 49
+      }
+    },
+    {
+      "url": "https://fosdem.org/2027/",
+      "finalUrl": "https://fosdem.org/2027/",
+      "action": "run",
+      "status": "completed",
+      "sourceId": "src-f24e5a3c7c04",
+      "artifact": "lighthouse/lh-2bf150ae815d-2-1794941338815.json",
+      "durationMs": 8391,
+      "redirected": false,
+      "summary": {
+        "url": "https://fosdem.org/2027/",
+        "lighthouseVersion": "13.6.0",
+        "fetchTime": "2026-11-17T18:49:01.745Z",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "performanceScore": 0.99,
+        "lcp": 769.327,
+        "tbt": 0,
+        "cls": 0.003905116736513615,
+        "auditCount": 49
+      }
+    }
+  ],
+  "failures": [],
+  "sourceLoadFailures": [],
+  "cost": {
+    "browserLaunches": 2,
+    "lighthouseAudits": 2,
+    "reusedPages": 0,
+    "pagesInspected": 2,
+    "artifacts": [
+      "lighthouse/lh-9a0922874191-1-1794941322368.json",
+      "lighthouse/lh-2bf150ae815d-2-1794941338815.json"
+    ],
+    "networkEvidenceFetches": 0,
+    "durationMs": 25433,
+    "timeBudgetMs": 900000
+  },
+  "limitations": [
+    "Lighthouse is Chromium-only lab evidence; it is not a Firefox energy or real-user measurement.",
+    "Throttling: Chromium lab, simulated throttling.",
+    "Element/node evidence does not establish component ownership.",
+    "Page selection: 0 reused, 2 scheduled, 0 skipped within the Lighthouse budget.",
+    "The page selection order is a bounded investigation policy, not a performance score.",
+    "Address pinning at Chrome connect time is not implemented; the preflight validates redirects and DNS for the page URL only."
+  ],
+  "redaction": {
+    "changed": 0
+  }
+}
