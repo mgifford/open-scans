@@ -392,3 +392,67 @@ test("the CLI accepts explicit page maps for staging reports", () => {
   assert.equal(value.summary.pagesCompared, 2);
   assert.equal(value.pageMappings.every((page) => page.mapping === "explicit"), true);
 });
+
+test("component and semantic-region evidence is added without changing finding identities", () => {
+  const result = compare();
+  assert.equal(result.componentAssociations.schema, "component-association/1");
+  assert.equal(result.componentAssociations.summary.ownershipEstablished, false);
+  assert.equal(result.componentAssociations.bySemanticRegion.navigation.length, 2);
+  assert.equal(result.componentAssociations.bySemanticRegion.button.length, 1);
+  assert.equal(result.componentAssociations.bySemanticRegion.image.length, 1);
+  const navigation = result.findings.persistent.find((finding) => finding.ruleId === "link-name" && finding.page.baselineUrl.endsWith("/services"));
+  assert.equal(navigation.componentContext.semanticRegion, "navigation");
+  assert.equal(navigation.componentContext.basis, "selector-token");
+  assert.equal(navigation.componentContext.confidence, "low");
+  assert.equal(navigation.componentContext.ownershipEstablished, false);
+  assert.ok(navigation.actRuleIds.includes("c487ae"));
+  assert.equal(navigation.baseline.occurrenceId, "dddddddddddd");
+  assert.match(navigation.componentContext.uncertainty[0], /not a claim/i);
+  const markdown = formatComparisonMarkdown(result);
+  assert.match(markdown, /## Component and semantic-region evidence/);
+  assert.match(markdown, /selector-derived candidates/i);
+  const html = formatComparisonHtml(result);
+  assert.match(html, /id="components-heading"/);
+  assert.match(html, /<caption>Component and semantic-region evidence<\/caption>/);
+  assert.match(html, /scope="row"/);
+  const csv = comparisonToCsv(result);
+  assert.match(csv, /"semantic_region"/);
+  assert.match(csv, /"navigation"/);
+});
+
+test("explicit component identifiers are indexed by id, never by label", () => {
+  const baselineWithIds = structuredClone(baseline);
+  const optimizedWithIds = structuredClone(optimized);
+  for (const report of [baselineWithIds, optimizedWithIds]) {
+    for (const result of report.results) {
+      for (const failure of result.axe?.failures ?? []) {
+        if (failure.rule === "link-name") {
+          failure.componentId = "cmp-primary-nav";
+          failure.componentTypeId = "type-primary-nav";
+          failure.componentLabel = "Primary navigation";
+        }
+      }
+    }
+  }
+  const result = compareScanReports(baselineWithIds, optimizedWithIds, { generatedAt: "2026-11-16T12:00:00.000Z" });
+  assert.equal(result.ok, true, result.errors.join("\n"));
+  const context = result.value.findings.persistent.find((finding) => finding.ruleId === "link-name").componentContext;
+  assert.equal(context.componentId, "cmp-primary-nav");
+  assert.equal(context.componentTypeId, "type-primary-nav");
+  assert.equal(context.basis, "explicit-component");
+  assert.equal(context.confidence, "high");
+  assert.equal(context.ownershipEstablished, false);
+  assert.deepEqual(Object.keys(result.value.componentAssociations.byComponentId), ["cmp-primary-nav"]);
+  assert.equal(result.value.componentAssociations.byComponentId["Primary navigation"], undefined);
+});
+
+test("old comparison exports without component associations still render", () => {
+  const result = compare();
+  const old = structuredClone(result);
+  delete old.componentAssociations;
+  for (const finding of Object.values(old.findings).flat()) delete finding.componentContext;
+  assert.doesNotThrow(() => formatComparisonMarkdown(old));
+  assert.doesNotThrow(() => formatComparisonHtml(old));
+  assert.doesNotThrow(() => comparisonToCsv(old));
+  assert.equal(formatComparisonMarkdown(old).includes("Component and semantic-region evidence"), false);
+});

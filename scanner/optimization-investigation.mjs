@@ -315,6 +315,8 @@ function findingSummary(finding) {
     confidence: finding.confidence,
     confirmedRemediation: finding.confirmedRemediation,
     qualification: finding.qualification,
+    componentContext: finding.componentContext ?? null,
+    actRuleIds: finding.actRuleIds ?? [],
     baselineOccurrenceId: finding.baseline?.occurrenceId ?? null,
     comparisonOccurrenceId: finding.comparison?.occurrenceId ?? null,
     evidence: {

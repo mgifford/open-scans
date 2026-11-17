@@ -429,7 +429,9 @@
         "qualification",
         "baselineOccurrenceId",
         "comparisonOccurrenceId",
-        "evidence"
+        "evidence",
+        "componentContext",
+        "actRuleIds"
       ],
       "properties": {
         "classification": {
@@ -528,6 +530,18 @@
                 "null"
               ]
             }
+          }
+        },
+        "componentContext": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "actRuleIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }

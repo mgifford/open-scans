@@ -12,6 +12,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `resolve-browser.mjs` - Resolves which Playwright browser (chromium/firefox/webkit) a scan issue requested.
 - `crawl-urls.mjs` - Discovers additional same-site URLs to scan when requested.
 - `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML.
+- `component-association.mjs` - Preserves explicit component ids and derives low-confidence semantic-region candidates from stable selectors.
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).
 - `run-optimization-investigation.mjs` - CLI for the opt-in optimization review; writes JSON, Markdown and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.

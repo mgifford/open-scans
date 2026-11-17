@@ -154,3 +154,10 @@ npm run lint
 ## 8. Update after Phase B
 
 Phase B adds `optimization-investigation/1` and an opt-in CLI that maps a completed comparison to ten optimization scenarios and fifteen accessibility concerns. It reuses existing findings, adds scenario-specific filters, page scoping and manual-verification tasks, and explicitly disclaims conformance, functional equivalence and savings. See [`optimization-investigation.md`](./optimization-investigation.md).
+
+
+---
+
+## 9. Update after Phase C
+
+Phase C adds explicit component-id preservation and low-confidence semantic-region candidates to comparison findings, plus region/component/page indexes and ACT Rule ids. It deliberately does not copy or import the Firefox Energy Scanner component graph. See [`component-association.md`](./component-association.md).

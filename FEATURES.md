@@ -30,6 +30,7 @@
 22. [Definition of Done](#22-definition-of-done)
 23. [Accessibility Comparison](#23-accessibility-comparison)
 24. [Optimization Accessibility Investigation](#24-optimization-accessibility-investigation)
+25. [Component and Semantic-Region Evidence](#25-component-and-semantic-region-evidence)
 
 ---
 
@@ -1622,6 +1623,44 @@ No matching automated finding is labelled **not a pass**. `not-observed` is labe
 ### 24.5 Tests
 
 `tests/unit/optimization-investigation.test.mjs` has 14 tests covering navigation regression, animation manual-only status, lazy-loading changes, CSS removal, no-regression comparisons, conditions/engine gaps, aliases, redaction, accessible exports, the CLI request-file flow and no-conformance schema rules.
+
+---
+
+## 25. Component and Semantic-Region Evidence
+
+Phase C makes existing findings easier to associate without creating a component graph.
+
+### 25.1 Fields and indexes
+
+Each comparison finding has `componentContext`:
+
+- explicit `componentId`/`componentTypeId`/`componentLabel`, when present in source evidence;
+- a low-confidence `semanticRegion` derived from stable selector/element evidence (`nav`, `header`, `main`, `button`, `role="navigation"`, etc.);
+- `basis`: `explicit-component`, `selector-token` or `none`;
+- `confidence`: `high`, `low` or `unknown`;
+- `ownershipEstablished: false`;
+- uncertainty text.
+
+`componentAssociations` provides `bySemanticRegion`, `byComponentId`, `byPage` and a summary. Labels are never used as component identity.
+
+### 25.2 Preservation
+
+Findings also retain ACT Rule ids (`actRuleIds`), WCAG criteria, engine/rule ids, locator, HTML evidence, evidence references, colour scheme and original occurrence/pattern ids. Markdown, HTML and CSV expose region/component/ACT fields; optimization finding tables show the semantic region.
+
+### 25.3 Boundaries
+
+- No FES `component-graph/1` is copied or imported.
+- No visual-proximity or DOM-neighbour ownership.
+- Selector-derived regions are candidates, not ownership.
+- Class-name lookalikes such as `.nav-link` are not semantic regions.
+- Two components with the same label remain separate.
+- No combined accessibility/performance score.
+
+### 25.4 Tests
+
+- `tests/unit/component-association.test.mjs` — 5 tests.
+- `tests/unit/compare-scans.test.mjs` — component context, indexes, ACT ids, exports and backward compatibility.
+- `tests/unit/optimization-investigation.test.mjs` — region/ACT context in optimization findings.
 
 ---
 
