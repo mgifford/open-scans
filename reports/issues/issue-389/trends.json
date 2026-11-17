@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-11-17T13:54:35.998Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 390,
+          "equalAccess": 412,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 802,
+          "scannedAt": "2026-11-17T13:54:35.998Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-17T15:44:35.091Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 542,
+          "equalAccess": 491,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 1033,
+          "scannedAt": "2026-11-17T15:44:35.091Z",
+          "scannedCount": 20
+        }
+      },
+      "change": 231,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 152,
+        "equalAccess": 79,
+        "qualweb": 0,
+        "accesslint": 0
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-11-17T13:54:35.998Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 390,
+        "equalAccess": 412,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 802,
+        "scannedAt": "2026-11-17T13:54:35.998Z",
+        "scannedCount": 20
+      }
+    },
+    "to": {
+      "scannedAt": "2026-11-17T15:44:35.091Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 542,
+        "equalAccess": 491,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 1033,
+        "scannedAt": "2026-11-17T15:44:35.091Z",
+        "scannedCount": 20
+      }
+    },
+    "change": 231,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 0,
+      "axe": 152,
+      "equalAccess": 79,
+      "qualweb": 0,
+      "accesslint": 0
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
+    "alfa": 0,
+    "axe": 542,
+    "equalAccess": 491,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 1033,
+    "scannedAt": "2026-11-17T15:44:35.091Z",
+    "scannedCount": 20
+  },
+  "baselineTotals": {
     "alfa": 0,
     "axe": 390,
     "equalAccess": 412,
@@ -17,15 +105,15 @@
       "pageCount": 19,
       "pages": [
         "https://fosdem.org/2027/",
-        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/about/",
+        "https://fosdem.org/2027/practical/",
+        "https://fosdem.org/2027/news/accepted-stands-complete/",
         "https://fosdem.org/2027/practical/transportation/",
-        "https://fosdem.org/2027/news/fosdem-2027-dates/",
-        "https://fosdem.org/2027/news/call-for-stands/",
-        "https://fosdem.org/2027/news/junior-call-for-participation/",
-        "https://fosdem.org/2027/news/call-for-main-track/",
+        "https://fosdem.org/2027/support/donate/",
         "https://fosdem.org/2027/about/charter/",
-        "https://fosdem.org/2027/news/accepted-stands/",
-        "https://fosdem.org/2027/calendar/"
+        "https://fosdem.org/2027/practical/conduct/",
+        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/support/sponsors/"
       ]
     },
     {
@@ -33,15 +121,15 @@
       "pageCount": 19,
       "pages": [
         "https://fosdem.org/2027/",
-        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/about/",
+        "https://fosdem.org/2027/practical/",
+        "https://fosdem.org/2027/news/accepted-stands-complete/",
         "https://fosdem.org/2027/practical/transportation/",
-        "https://fosdem.org/2027/news/fosdem-2027-dates/",
-        "https://fosdem.org/2027/news/call-for-stands/",
-        "https://fosdem.org/2027/news/junior-call-for-participation/",
-        "https://fosdem.org/2027/news/call-for-main-track/",
+        "https://fosdem.org/2027/support/donate/",
         "https://fosdem.org/2027/about/charter/",
-        "https://fosdem.org/2027/news/accepted-stands/",
-        "https://fosdem.org/2027/calendar/"
+        "https://fosdem.org/2027/practical/conduct/",
+        "https://fosdem.org/2027/news/call-for-devrooms/",
+        "https://fosdem.org/2027/support/sponsors/"
       ]
     }
   ]
