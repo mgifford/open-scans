@@ -125,7 +125,7 @@ Engine: axe, alfa
 
 ## Performance Investigation (`PERF:`)
 
-Performance investigation is a **separate request type** from accessibility scanning. It currently covers **PR 1: request contract**, **PR 2: evidence model and existing-source adapters**, **PR 3: bounded Lighthouse collection**, and **PR 4: targeted Sitespeed deep investigation**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. The reuse runner assembles existing Open Scans, Firefox Energy Scanner, Vital Core and Open Site Review evidence with **no browser launch**; the light runner reuses that evidence first and only runs bounded Lighthouse on the remaining selected pages.
+Performance investigation is a **separate request type** from accessibility scanning. It currently covers **PR 1: request contract**, **PR 2: evidence model and existing-source adapters**, **PR 3: bounded Lighthouse collection**, **PR 4: targeted Sitespeed deep investigation**, and **PR 5: cross-page investigation**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. The reuse runner assembles existing Open Scans, Firefox Energy Scanner, Vital Core and Open Site Review evidence with **no browser launch**; the light runner reuses that evidence first and only runs bounded Lighthouse on the remaining selected pages.
 
 ```text
 PERF: example.gov performance investigation
@@ -174,6 +174,8 @@ Contract and assessment documents:
 - [`docs/performance/PR-2-EVIDENCE-ADAPTERS.md`](./docs/performance/PR-2-EVIDENCE-ADAPTERS.md) — what PR 2 implemented and deliberately omitted
 - [`docs/performance/PR-3-LIGHTHOUSE.md`](./docs/performance/PR-3-LIGHTHOUSE.md) — bounded Lighthouse provider, page selection and cost accounting
 - [`docs/performance/PR-4-SITESPEED.md`](./docs/performance/PR-4-SITESPEED.md) — targeted Sitespeed deep investigation, CO2.js provenance and safety limits
+- [`docs/performance/performance-investigation.md`](./docs/performance/performance-investigation.md) — cross-page grouping, phases, ranking and bidirectional indexes
+- [`docs/performance/PR-5-INVESTIGATION.md`](./docs/performance/PR-5-INVESTIGATION.md) — PR 5 scope, tests and limitations
 
 Use the **Performance Request** issue template, or run the parser locally:
 
@@ -212,6 +214,15 @@ node scanner/run-performance-deep.mjs performance-request.json \
 ```
 
 Sitespeed uses `sitespeedio/sitespeed.io:43.0.0`, `analysisstorer`, Sustainable Web Design v4 and a maximum of three pages per run. It never scans the full discovery crawl, never shares a Playwright session, and keeps modelled CO2e separate from Firefox energy.
+
+Group evidence across pages into ranked investigation candidates without a browser, network or LLM:
+
+```bash
+node scanner/run-performance-investigation.mjs evidence.json \
+  --out investigation.json --summary investigation.md
+```
+
+Candidates are grouped by component type, resource or page, never by class name. Shared navigation on several pages is one candidate; unrelated navigation implementations stay separate. The package includes coverage, uncertainty, candidate interventions and bidirectional indexes, but no aggregate performance or energy score.
 
 ## View Scan Results
 
@@ -365,6 +376,8 @@ The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`)
 - **scanner/run-performance-light.mjs**: Bounded light investigation runner with cost accounting
 - **scanner/performance-sitespeed.mjs**: Pinned Sitespeed Docker provider, analysisstorer/sustainable parsing and CO2 provenance
 - **scanner/run-performance-deep.mjs**: Targeted Sitespeed deep-investigation runner
+- **scanner/performance-investigation.mjs**: Cross-page component/resource grouping, deduplication and ranking
+- **scanner/run-performance-investigation.mjs**: Offline investigation package builder
 - **scanner/validate-targets.mjs**: Server-side URL validation
 - **scanner/run-scan.mjs**: Executes accessibility scans with selected engines and generates reports
 - **scanner/generate-reports-html.mjs**: Builds the reports dashboard
@@ -527,6 +540,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 3: pinned Lighthouse provider, bounded page selection and family coverage, evidence reuse planning, DNS/redirect preflight, raw-artifact retention, cost reporting, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 4: targeted Sitespeed Docker provider, analysisstorer/sustainable parsing, three-page shortlist, CO2 provenance, run-report cost accounting, safety limits, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | PR 5: cross-page investigation schema/engine, observation deduplication, phase classification, explicit ranking, bidirectional indexes, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

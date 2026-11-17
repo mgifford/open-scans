@@ -30,7 +30,7 @@ Each record keeps its source tool, version, browser, method, boundary, scope, un
 | Component type | Stable id, source component id, signature, identification method, confidence, family/instance/resource/finding links, possible duplicates |
 | Component instance | Page, type, selector, parent/children, resources, findings, source refs |
 | Resource | URL, kind, third-party state, size/statistic, timing, pages/instances, direct/inferred/page-level attribution |
-| Performance finding | Exact observation, target, optional metric, evidence class, confidence, evidence ref, limitations |
+| Performance finding | Exact observation, target, optional metric, evidence class, optional phase, confidence, evidence ref, limitations |
 | Experiment | Hypothesis, intervention, workload, baseline/variant, validation checks, recorded results, physical-energy status |
 | Investigation item | A source-provided queue item, preserving rank, order and separate workload indicators |
 | Merge decision | Which identity was kept, which was merged, why, and what differed |
@@ -184,6 +184,10 @@ node scanner/run-performance-reuse.mjs <performance-request.json> \
 - No browser is launched; the runner records `browserLaunches: 0`.
 - A failed source is omitted with a visible warning/limitation; successful sources still produce a package. It never falls back to a new scan.
 - The request may be a validated `performance-request/1` object, a parser result, or the original issue event.
+
+## 8b. Cross-page investigation
+
+`performance-investigation/1` consumes this format to group component/resource/page evidence across pages and to provide bidirectional indexes and uncertainty. It never establishes component ownership and produces no aggregate score. See [`performance-investigation.md`](./performance-investigation.md).
 
 ## 9. Coverage
 

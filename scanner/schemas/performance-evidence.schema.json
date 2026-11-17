@@ -1065,6 +1065,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "load",
+            "interaction",
+            "idle",
+            "unknown"
+          ],
+          "description": "When the observation occurs, when the source states it. Unknown is not a claim that it occurs in every phase."
         }
       }
     },

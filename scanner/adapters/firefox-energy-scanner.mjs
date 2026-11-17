@@ -11,6 +11,18 @@ export const FIREFOX_ENERGY_SCANNER_ADAPTER_VERSION = "1.0.0";
 const SUPPORTED_RESULT_SCHEMA_VERSIONS = new Set([1, 2]);
 const SUPPORTED_GRAPH_SCHEMA = "component-graph/1";
 
+const PHASE_BY_KIND = Object.freeze({
+  "endless-animation": "idle",
+  "repeating-timer": "idle",
+  "idle-main-thread-work": "idle",
+  "interaction-work": "interaction",
+  "long-task": "load",
+  "forced-layout": "unknown",
+  "running-animation": "idle",
+  "iframe-idle-work": "idle",
+  "continuous-animation-frames": "idle"
+});
+
 const EVIDENCE_CLASS = Object.freeze({
   "direct-observation": "observed",
   "direct-node": "observed",
@@ -261,6 +273,7 @@ function mapFinding({ finding, index, data, source, measurements, pageIdByUrl })
     sourceId: source.id,
     sourceFindingId: finding.id,
     kind: finding.kind ?? "source-finding",
+    phase: finding.phase ?? PHASE_BY_KIND[finding.kind] ?? "unknown",
     title: finding.title ?? finding.kind ?? "Source finding",
     target,
     metric,
@@ -479,6 +492,7 @@ function mapExperiment({ data, source, pagesByUrl }) {
         sourceId: source.id,
         sourceFindingId: null,
         kind: "experiment-energy-difference",
+        phase: difference.step === "idle" ? "idle" : difference.step === "load" ? "load" : "unknown",
         title: `Measured energy difference (${difference.step})`,
         target: { type: "page", id: page.id },
         metric: createMetric({

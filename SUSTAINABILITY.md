@@ -230,6 +230,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 | PR 2 common performance-evidence model, adapters, reuse runner, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | PR 3 bounded Lighthouse provider, page selection, reuse planning, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | PR 4 targeted Sitespeed provider, CO2 provenance, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
+| PR 5 cross-page investigation engine, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 
 ## Agent instruction snippet
 

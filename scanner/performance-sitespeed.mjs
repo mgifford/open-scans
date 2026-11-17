@@ -452,6 +452,7 @@ function normalizePageGroup({
         sourceId: source.id,
         sourceFindingId: null,
         kind: "modelled-emissions",
+        phase: "load",
         title: "Modelled CO2e per page view",
         target: { type: "page", id },
         metric: co2Metric,
@@ -467,6 +468,7 @@ function normalizePageGroup({
         sourceId: source.id,
         sourceFindingId: null,
         kind: "modelled-emissions-by-party",
+        phase: "load",
         title: "Modelled CO2e split by first/third party",
         target: { type: "page", id },
         metric: co2Third === null ? null : createMetric({
@@ -507,6 +509,7 @@ function normalizePageGroup({
       sourceId: source.id,
       sourceFindingId: null,
       kind: "third-party-transfer",
+      phase: "load",
       title: "Third-party transfer",
       target: { type: "page", id },
       metric: createMetric({
@@ -542,6 +545,7 @@ function normalizePageGroup({
       sourceId: source.id,
       sourceFindingId: null,
       kind: "resource-observation",
+      phase: "load",
       title: `Large resource: ${resource.url.split("/").pop() || resource.url}`,
       target: { type: "resource", id: resource.id },
       metric: createMetric({
@@ -574,6 +578,7 @@ function normalizePageGroup({
       sourceId: source.id,
       sourceFindingId: null,
       kind: "long-task",
+      phase: "load",
       title: "Total blocking time",
       target: { type: "page", id },
       metric: tbt,
@@ -591,6 +596,7 @@ function normalizePageGroup({
       sourceId: source.id,
       sourceFindingId: null,
       kind: "long-task-count",
+      phase: "load",
       title: "Long tasks during load",
       target: { type: "page", id },
       metric: createMetric({
@@ -626,6 +632,7 @@ function normalizePageGroup({
       sourceId: source.id,
       sourceFindingId: null,
       kind: "render-blocking",
+      phase: "load",
       title: "Render-blocking resources",
       target: { type: "page", id },
       metric: createMetric({

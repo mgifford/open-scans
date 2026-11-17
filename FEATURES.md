@@ -1619,6 +1619,20 @@ PR 4 adds `scanner/run-performance-deep.mjs` and `scanner/performance-sitespeed.
 - Tests: `tests/unit/performance-sitespeed.test.mjs` (9 tests).
 - Full suite: 752 tests, 747 pass, 1 pre-existing timezone failure, 4 skipped.
 
+### 23.9 PR 5: cross-page investigation
+
+PR 5 adds `performance-investigation/1`, `scanner/performance-investigation.mjs` and the offline `scanner/run-performance-investigation.mjs` CLI.
+
+- Groups component findings by component type id, resource findings by resource, and unlocated findings by page.
+- Deduplicates repeated observations by mechanism/phase/source/browser/method while keeping every finding id.
+- Keeps distinct mechanisms separate; never merges by class name, label, co-occurrence or accessibility component group.
+- Records phase (`load`, `interaction`, `idle`, `unknown`), coverage, confidence, uncertainty, candidate interventions and existing experiments.
+- Ranks by explicit separate keys (evidence tier, occurrences, pages, families, DOM/resource tie-breakers), never a summed score.
+- Builds bidirectional indexes: component type/page/family/resource to candidate ids.
+- `ownershipEstablished` is always false.
+- Tests: `tests/unit/performance-investigation.test.mjs` (12 tests).
+- Full suite: 764 tests, 759 pass, 1 pre-existing timezone failure, 4 skipped.
+
 ---
 
 ## Related Documentation

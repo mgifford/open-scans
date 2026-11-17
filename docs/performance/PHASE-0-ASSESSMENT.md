@@ -343,7 +343,9 @@ PR 1-specific tests cover: valid reuse/light/combined fixtures (43 tests total),
 >
 > **Update after PR 3:** bounded Lighthouse collection, page selection, reuse planning, redirect/DNS preflight and cost reporting are implemented. See [`PR-3-LIGHTHOUSE.md`](./PR-3-LIGHTHOUSE.md).
 >
-> **Update after PR 4:** targeted Sitespeed.io deep investigation, analysisstorer parsing, CO2.js/SWD provenance, a three-page shortlist and Docker safety limits are implemented. See [`PR-4-SITESPEED.md`](./PR-4-SITESPEED.md). The next smallest useful step is PR 5: cross-page component investigation and prioritization over the combined evidence.
+> **Update after PR 4:** targeted Sitespeed.io deep investigation, analysisstorer parsing, CO2.js/SWD provenance, a three-page shortlist and Docker safety limits are implemented. See [`PR-4-SITESPEED.md`](./PR-4-SITESPEED.md).
+>
+> **Update after PR 5:** cross-page component/resource investigation, observation deduplication, phase/coverage/uncertainty metadata and bidirectional indexes are implemented. See [`PR-5-INVESTIGATION.md`](./PR-5-INVESTIGATION.md). The next smallest useful step is PR 6: the Performance Explorer and static JSON API.
 
 **Sustainability impact of PR 1:** neutral-to-positive. No new dependency, no browser launch, no external request, no LLM call and no committed artifact. The validation workflow runs a single Node process with a 5-minute ceiling and a 14-day artifact; `reuse` requests force both browser budgets to zero. The parser rejects unbounded page counts and source lists before any provider could spend compute.
 

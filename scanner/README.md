@@ -14,6 +14,8 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `run-performance-light.mjs` - Bounded light investigation runner with cost reporting.
 - `performance-sitespeed.mjs` - Pinned Sitespeed Docker provider and analysisstorer/sustainable parser.
 - `run-performance-deep.mjs` - Targeted Sitespeed deep-investigation runner.
+- `performance-investigation.mjs` - Cross-page component/resource grouping, deduplication and ranking.
+- `run-performance-investigation.mjs` - Offline investigation package builder (no browser/network).
 - `adapters/` - Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review.
 - `validate-targets.mjs` - Validates URL syntax and blocks private/internal targets.
 - `run-scan.mjs` - Fetches accepted URLs, runs the scan engines below, and generates reports.
@@ -41,6 +43,7 @@ separate from WCAG violation counts: `reflowRisk` and `semantica11y`.
 - `npm run run:performance-reuse -- <performance-request.json> --source <type>=<location> --allow-local --out <file>`
 - `npm run run:performance-light -- <performance-request.json> [--out <file>] [--run-report <file>] [--artifacts-dir <dir>] [--chrome-path <file>]`
 - `npm run run:performance-deep -- <performance-request.json> [--out <file>] [--run-report <file>] [--artifacts-dir <dir>]`
+- `npm run run:performance-investigation -- <performance-evidence.json> [--out <file>] [--summary <file>]`
 
 `parse-performance-issue.mjs` accepts `--out <file>`, `--summary <file>` and
 `--allow-invalid`. It exits non-zero on an invalid request. `reuse` requests are

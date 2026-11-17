@@ -315,6 +315,7 @@ function auditFindings(data, { pageId, source, rawPath, boundary }) {
       sourceId: source.id,
       sourceFindingId: id,
       kind: "lighthouse-audit",
+      phase: "load",
       title: audit.title ?? id,
       target: { type: "page", id: pageId },
       metric,
@@ -342,6 +343,7 @@ function opportunityFindings(data, { pageId, source, rawPath, boundary }) {
       sourceId: source.id,
       sourceFindingId: id,
       kind: "lighthouse-opportunity",
+      phase: "load",
       title: audit.title ?? id,
       target: { type: "page", id: pageId },
       metric: createMetric({
@@ -387,6 +389,7 @@ function elementFindings(data, { pageId, source, rawPath, boundary }) {
         sourceId: source.id,
         sourceFindingId: null,
         kind: "lighthouse-node",
+        phase: "load",
         title: node?.nodeLabel ?? audit.title ?? "Lighthouse element evidence",
         target: { type: "page", id: pageId },
         metric: null,
