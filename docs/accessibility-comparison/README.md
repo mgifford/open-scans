@@ -11,3 +11,5 @@
 - [PR D implementation notes](./PR-D-EXTERNAL.md) — Phase D scope, tests, omissions and next step.
 - [Comparison report interface](./interface.md) — Phase E structure, evidence disclosures, manual verification and accessibility.
 - [PR E implementation notes](./PR-E-INTERFACE.md) — Phase E scope, tests, omissions and next step.
+- [Comparison exports](./exports.md) — Phase F JSON/CSV fields, compatibility and sanitization.
+- [PR F implementation notes](./PR-F-EXPORTS.md) — Phase F scope, tests and final status.

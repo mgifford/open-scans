@@ -506,3 +506,67 @@ test("old comparison output without manual tasks still renders a manual section"
   assert.match(formatComparisonMarkdown(old), /## Manual verification/);
   assert.match(formatComparisonHtml(old), /id="manual-heading"/);
 });
+
+test("CSV includes scan, source-report, condition, external-reference and coverage metadata", () => {
+  const withPaths = compareScanReports(baseline, optimized, {
+    generatedAt: "2026-11-16T12:00:00.000Z",
+    baselinePath: "tests/fixtures/comparison/baseline-report.json",
+    comparisonPath: "tests/fixtures/comparison/optimized-report.json"
+  });
+  assert.equal(withPaths.ok, true, withPaths.errors.join("\n"));
+  const csv = comparisonToCsv(withPaths.value);
+  assert.match(csv, /"baseline_source_report"/);
+  assert.match(csv, /"tests\/fixtures\/comparison\/baseline-report.json"/);
+  assert.match(csv, /"baseline_browser"/);
+  assert.match(csv, /"1280x800"/);
+  assert.match(csv, /"coverage_gap_kinds"/);
+  assert.match(csv, /"baseline-only-page;comparison-only-page"/);
+  assert.match(csv, /"baseline_scan_id"/);
+  assert.match(csv, /"9001@2026-11-01T10:00:00.000Z"/);
+  assert.match(csv, /"baseline_pattern_id"/);
+  assert.match(csv, /"display_id"/);
+  assert.match(csv, /"baseline_evidence_ref"/);
+  assert.match(csv, /"A11Y-aaaaaaaa"/);
+});
+
+test("CSV keeps existing columns first and sanitizes formula-shaped cells", () => {
+  const unsafe = structuredClone(optimized);
+  unsafe.results[0].axe.failures[2].description = "=HYPERLINK(\"https://example.com\")";
+  const result = compare(unsafe);
+  const csv = comparisonToCsv(result);
+  const header = csv.split("\n")[0];
+  assert.ok(header.startsWith('"logical_page_id","baseline_url","comparison_url","classification","engine","rule_id","title"'));
+  assert.match(csv, /"'=HYPERLINK/);
+});
+
+test("JSON export retains the full comparison evidence needed for review", () => {
+  const result = compareScanReports(baseline, optimized, {
+    generatedAt: "2026-11-16T12:00:00.000Z",
+    baselinePath: "tests/fixtures/comparison/baseline-report.json",
+    comparisonPath: "tests/fixtures/comparison/optimized-report.json"
+  }).value;
+  for (const key of [
+    "baseline", "comparison", "pageMappings", "conditions", "engines", "summary",
+    "findings", "componentAssociations", "coverageGaps", "manualVerification", "limitations"
+  ]) {
+    assert.ok(key in result, `missing ${key}`);
+  }
+  assert.equal(result.baseline.sourcePath, "tests/fixtures/comparison/baseline-report.json");
+  assert.equal(result.comparison.sourcePath, "tests/fixtures/comparison/optimized-report.json");
+  assert.ok(result.findings.persistent[0].baseline.evidenceRef);
+  assert.ok(result.findings.persistent[0].componentContext);
+});
+
+test("CSV export works for older comparison JSON without newer optional fields", () => {
+  const result = compare();
+  const old = structuredClone(result);
+  delete old.externalInvestigations;
+  delete old.manualVerification;
+  delete old.componentAssociations;
+  for (const finding of Object.values(old.findings).flat()) {
+    delete finding.componentContext;
+  }
+  const csv = comparisonToCsv(old);
+  assert.match(csv, /"logical_page_id"/);
+  assert.match(csv, /"coverage_gap_kinds"/);
+});

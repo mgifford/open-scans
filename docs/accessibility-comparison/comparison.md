@@ -114,7 +114,7 @@ coverageGaps: unpaired pages, failed pages, HTTP error pages
 limitations
 ```
 
-`comparison.csv` has one row per finding with page, classification, engine, rule, title, confidence, confirmed-remediation flag and original occurrence ids.
+`comparison.csv` has one row per finding with the original Phase A columns preserved and appended scan/source/condition, component/region, ACT/WCAG, external-investigation and coverage metadata. See [`exports.md`](./exports.md).
 
 `comparison.html` is semantic, keyboard-usable without JavaScript, with a skip link, section navigation, headings, captioned tables, evidence disclosures and visible qualifications. It supports light/dark colour schemes, forced colours, reduced motion and print. It has no combined accessibility/performance score. See [`interface.md`](./interface.md).
 

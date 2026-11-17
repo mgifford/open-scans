@@ -175,3 +175,10 @@ Phase D adds optional, validated external investigation references to comparison
 ## 11. Update after Phase E
 
 Phase E adds a static report interface with section navigation, plain-language change summary, status definitions, per-finding evidence disclosures, manual-verification tasks, and mobile/print/forced-colours/reduced-motion styling. The report remains JavaScript-free. See [`interface.md`](./interface.md).
+
+
+---
+
+## 12. Update after Phase F
+
+Phase F completes the comparison export surface. CSV keeps every original column in order and appends scan/source/condition, component/region, ACT/WCAG, external-investigation and coverage metadata, with formula-injection protection. JSON retains the complete evidence and remains additive/backward-compatible. See [`exports.md`](./exports.md).

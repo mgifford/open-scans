@@ -1127,8 +1127,26 @@ export function comparisonToCsv(comparisonInput) {
   const header = [
     "logical_page_id", "baseline_url", "comparison_url", "classification", "engine", "rule_id",
     "title", "confidence", "confirmed_remediation", "qualification", "baseline_occurrence_id", "comparison_occurrence_id",
-    "semantic_region", "component_id", "association_basis", "association_confidence", "act_rule_ids"
+    "semantic_region", "component_id", "association_basis", "association_confidence", "act_rule_ids",
+    "wcag_sc", "wcag_level", "impact", "match_basis", "page_mapping",
+    "baseline_scan_id", "comparison_scan_id", "baseline_issue_url", "comparison_issue_url",
+    "baseline_release", "comparison_release", "baseline_source_report", "comparison_source_report",
+    "baseline_browser", "comparison_browser", "baseline_viewport", "comparison_viewport",
+    "baseline_colour_scheme", "comparison_colour_scheme",
+    "external_investigation_ids", "coverage_gap_kinds", "limitations",
+    "baseline_pattern_id", "comparison_pattern_id", "display_id", "identity_source",
+    "baseline_evidence_ref", "comparison_evidence_ref", "component_label"
   ];
+  const sourcePath = (scan) => scan?.sourcePath ?? "";
+  const viewport = (context) => context?.viewport ? `${context.viewport.width}x${context.viewport.height}` : "";
+  const externalIds = (comparison.externalInvestigations ?? []).map((reference) => reference.investigationId).join(";");
+  const gapKinds = [...new Set((comparison.coverageGaps ?? []).map((gap) => gap.kind).filter(Boolean))].join(";");
+  const limitations = (comparison.limitations ?? []).join(" | ");
+  const csvCell = (value) => {
+    let cell = String(value ?? "");
+    if (/^[\s]*[=+\-@]/.test(cell)) cell = `'${cell}`;
+    return `"${cell.replace(/"/g, '""')}"`;
+  };
   const rows = [header];
   for (const [classification, list] of Object.entries(comparison.findings)) {
     for (const finding of list) {
@@ -1149,12 +1167,42 @@ export function comparisonToCsv(comparisonInput) {
         finding.componentContext?.componentId ?? "",
         finding.componentContext?.basis ?? "none",
         finding.componentContext?.confidence ?? "unknown",
-        (finding.actRuleIds ?? []).join(" ")
+        (finding.actRuleIds ?? []).join(";"),
+        (finding.wcagSc ?? []).join(";"),
+        finding.wcagLevel ?? "",
+        finding.impact ?? "",
+        finding.matchBasis ?? "",
+        finding.page.mapping ?? "",
+        comparison.baseline.scanId ?? "",
+        comparison.comparison.scanId ?? "",
+        comparison.baseline.issueUrl ?? "",
+        comparison.comparison.issueUrl ?? "",
+        comparison.baseline.release ?? "",
+        comparison.comparison.release ?? "",
+        sourcePath(comparison.baseline),
+        sourcePath(comparison.comparison),
+        comparison.conditions.baseline?.browser ?? "",
+        comparison.conditions.comparison?.browser ?? "",
+        viewport(comparison.conditions.baseline),
+        viewport(comparison.conditions.comparison),
+        comparison.conditions.baseline?.colorScheme ?? "",
+        comparison.conditions.comparison?.colorScheme ?? "",
+        externalIds,
+        gapKinds,
+        limitations,
+        finding.baseline?.patternId ?? "",
+        finding.comparison?.patternId ?? "",
+        finding.baseline?.displayId ?? finding.comparison?.displayId ?? "",
+        finding.baseline?.identitySource ?? finding.comparison?.identitySource ?? "",
+        finding.baseline?.evidenceRef ?? "",
+        finding.comparison?.evidenceRef ?? "",
+        finding.componentContext?.componentLabel ?? ""
       ]);
     }
   }
-  return rows.map((row) => row.map((cell) => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n") + "\n";
+  return rows.map((row) => row.map(csvCell).join(",")).join("\n") + "\n";
 }
+
 
 export function formatComparisonHtml(comparisonInput) {
   const comparison = comparisonInput?.schema === ACCESSIBILITY_COMPARISON_SCHEMA_VERSION
