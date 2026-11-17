@@ -220,6 +220,8 @@ jobs:
             copyFileSync('.scan-output/report.html', htmlPath);
             copyFileSync('.scan-output/report.csv', csvPath);
             copyFileSync('.scan-output/patterns.csv', `${reportDir}/patterns.csv`);
+            copyFileSync('.scan-output/accessibility-context.json', `${reportDir}/accessibility-context.json`);
+            copyFileSync('.scan-output/accessibility-context.csv', `${reportDir}/accessibility-context.csv`);
             copyFileSync('.scan-output/report-overlap.json', overlapJsonPath);
             copyFileSync('.scan-output/report-overlap.md', overlapMarkdownPath);
 
@@ -246,6 +248,7 @@ jobs:
               htmlPath,
               csvPath,
               patternsCsvPath: `${reportDir}/patterns.csv`,
+              accessibilityContextPath: `${reportDir}/accessibility-context.json`,
               overlapMarkdownPath,
               scannedAt: meta.scannedAt || new Date().toISOString()
             }) + '\n', 'utf8');
@@ -328,6 +331,7 @@ jobs:
               const pagesHtmlUrl = `https://${owner}.github.io/${repo}/${item.htmlPath}`;
               const pagesCsvUrl = `https://${owner}.github.io/${repo}/${item.csvPath}`;
               const pagesPatternsCsvUrl = `https://${owner}.github.io/${repo}/${item.patternsCsvPath}`;
+              const pagesAccessibilityContextUrl = `https://${owner}.github.io/${repo}/${item.accessibilityContextPath}`;
               const pagesOverlapUrl = `https://${owner}.github.io/${repo}/${item.overlapMarkdownPath}`;
               const ghMdUrl = `https://github.com/${owner}/${repo}/blob/main/${item.markdownPath}`;
               const ghOverlapUrl = `https://github.com/${owner}/${repo}/blob/main/${item.overlapMarkdownPath}`;
@@ -352,6 +356,7 @@ jobs:
                 `Latest report (Pages, Markdown): ${pagesMdUrl}`,
                 `Latest CSV (Pages): ${pagesCsvUrl}`,
                 `Latest patterns CSV (Pages): ${pagesPatternsCsvUrl}`,
+                `Latest accessibility context (Pages): ${pagesAccessibilityContextUrl}`,
                 `Scanner overlap report (Pages): ${pagesOverlapUrl}`,
                 `Fallback (GitHub): ${ghMdUrl}`,
                 `Overlap fallback (GitHub): ${ghOverlapUrl}`,

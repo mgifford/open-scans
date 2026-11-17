@@ -19,6 +19,7 @@ import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11
 import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
 import { redactStringsDeep } from "./redact-secrets.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
+import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -4115,6 +4116,10 @@ async function main() {
   const enhancedData = buildEnhancedSummary(initialSummary);
   const duplicateTitles = analyzeDuplicateTitles(results);
   const patternInventory = buildPatternInventory(results, { generatedAt: scannedAt });
+  const accessibilityContext = buildAccessibilityContext(results, {
+    generatedAt: scannedAt,
+    scan: { issueNumber: request.issueNumber, issueUrl: request.issueUrl, scanTitle: request.scanTitle || request.issueTitle, scannedAt, engines, scanContext }
+  });
 
   const summary = {
     issueNumber: request.issueNumber,
@@ -4151,6 +4156,12 @@ async function main() {
     results,
     enhanced: enhancedData,
     patternInventory,
+    accessibilityContext: {
+      schema: accessibilityContext.schema,
+      generatedAt: accessibilityContext.generatedAt,
+      summary: accessibilityContext.summary,
+      artifact: "accessibility-context.json"
+    },
     changeTracking
   };
 
@@ -4186,6 +4197,8 @@ async function main() {
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
   const patternsCsvPath = join(outputDir, "patterns.csv");
+  const accessibilityContextPath = join(outputDir, "accessibility-context.json");
+  const accessibilityContextCsvPath = join(outputDir, "accessibility-context.csv");
   const overlapJsonPath = join(outputDir, "report-overlap.json");
   const overlapMarkdownPath = join(outputDir, "report-overlap.md");
 
@@ -4262,6 +4275,10 @@ async function main() {
   writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
   writeFileSync(patternsCsvPath, patternInventoryToCsv(patternInventory), "utf8");
+  const contextRedaction = { changed: 0 };
+  redactStringsDeep(accessibilityContext, contextRedaction);
+  writeFileSync(accessibilityContextPath, JSON.stringify(accessibilityContext, null, 2) + "\n", "utf8");
+  writeFileSync(accessibilityContextCsvPath, accessibilityContextToCsv(accessibilityContext), "utf8");
   writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
   writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");
 

@@ -74,7 +74,13 @@ test("run-scan.mjs outputs valid JSON to stdout", () => {
       assert.match(readFileSync(join(outputDir, "patterns.csv"), "utf8"), /"category"/);
       assert.match(readFileSync(join(outputDir, "report.md"), "utf8"), /Pattern and Container Inventory/);
       assert.match(readFileSync(join(outputDir, "report.html"), "utf8"), /Pattern and container inventory/);
+      assert.ok(existsSync(join(outputDir, "accessibility-context.json")), "accessibility-context.json should be generated");
+      assert.ok(existsSync(join(outputDir, "accessibility-context.csv")), "accessibility-context.csv should be generated");
+      const context = JSON.parse(readFileSync(join(outputDir, "accessibility-context.json"), "utf8"));
+      assert.equal(context.schema, "a11y-accessibility-context/1");
+      assert.ok(Array.isArray(context.observations));
       const report = JSON.parse(readFileSync(join(outputDir, "report.json"), "utf8"));
+      assert.equal(report.accessibilityContext?.summary?.ownershipEstablished, false);
       assert.equal(report.patternInventory?.schema, "a11y-pattern-inventory/1");
       assert.ok(Array.isArray(report.patternInventory.patterns));
     }

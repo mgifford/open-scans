@@ -260,6 +260,7 @@ jobs:
                 const htmlPath = `${reportDir}/report.html`;
                 const csvPath = `${reportDir}/report.csv`;
                 const patternsCsvPath = `${reportDir}/patterns.csv`;
+                const accessibilityContextPath = `${reportDir}/accessibility-context.json`;
 
                 // Create report directory and copy files
                 fs.mkdirSync(reportDir, { recursive: true });
@@ -268,6 +269,8 @@ jobs:
                 fs.copyFileSync(`${scanOutputDir}/report.html`, htmlPath);
                 fs.copyFileSync(`${scanOutputDir}/report.csv`, csvPath);
                 fs.copyFileSync(`${scanOutputDir}/patterns.csv`, `${reportDir}/patterns.csv`);
+                fs.copyFileSync(`${scanOutputDir}/accessibility-context.json`, `${reportDir}/accessibility-context.json`);
+                fs.copyFileSync(`${scanOutputDir}/accessibility-context.csv`, `${reportDir}/accessibility-context.csv`);
 
                 const trendResult = spawnSync(
                   process.execPath,
@@ -364,12 +367,15 @@ jobs:
                 const encodedHtmlPath = htmlPath.split('/').map(encodeURIComponent).join('/');
                 const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
                 const encodedPatternsCsvPath = patternsCsvPath.split('/').map(encodeURIComponent).join('/');
+                const encodedAccessibilityContextPath = accessibilityContextPath.split('/').map(encodeURIComponent).join('/');
                 const pagesUrl = `https://${owner}.github.io/${repo}/${encodedHtmlPath}`;
                 const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
                 const patternsCsvPagesUrl = `https://${owner}.github.io/${repo}/${encodedPatternsCsvPath}`;
+                const accessibilityContextPagesUrl = `https://${owner}.github.io/${repo}/${encodedAccessibilityContextPath}`;
                 const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
                 const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
                 const patternsCsvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedPatternsCsvPath}`;
+                const accessibilityContextBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedAccessibilityContextPath}`;
 
                 const body = [
                   `Scheduled scan complete for **${meta.scanTitle}**.`,
@@ -398,7 +404,9 @@ jobs:
                   `CSV (Pages): ${csvPagesUrl}`,
                   `CSV Fallback (GitHub): ${csvBlobUrl}`,
                   `Patterns CSV (Pages): ${patternsCsvPagesUrl}`,
-                  `Patterns CSV Fallback (GitHub): ${patternsCsvBlobUrl}`
+                  `Patterns CSV Fallback (GitHub): ${patternsCsvBlobUrl}`,
+                  `Accessibility context (Pages): ${accessibilityContextPagesUrl}`,
+                  `Accessibility context fallback (GitHub): ${accessibilityContextBlobUrl}`
                 );
                 
                 const commentBody = body.join("\n");

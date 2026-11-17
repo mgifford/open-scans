@@ -27,6 +27,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `component-association.mjs` - Preserves explicit component ids and derives low-confidence semantic-region candidates from stable selectors.
 - `external-investigations.mjs` - Validates and attaches optional FES/Vital Core investigation metadata; never fetches external URLs.
 - `pattern-inventory.mjs` - Groups stable accessibility pattern IDs into semantic-container categories and writes `patterns.csv`.
+- `accessibility-context.mjs` - Writes occurrence-level page/selector/pattern/container evidence for FES joins (`accessibility-context.json`/`.csv`).
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).
 - `run-optimization-investigation.mjs` - CLI for the opt-in optimization review; writes JSON, Markdown and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.
@@ -63,7 +64,11 @@ imported.
 
 - `report.json` - Full structured report including all engines' rule outcomes.
 - `report.md` - Human-readable report summary.
+- `report.html` - Self-contained accessible interactive report.
 - `report.csv` - URL-level flat report export.
+- `patterns.csv` - Unique accessibility patterns by semantic container.
+- `accessibility-context.json` and `.csv` - Compact occurrence-level accessibility evidence for Firefox Energy Scanner joins.
+- `report-overlap.json` and `.md` - Cross-engine overlap evidence.
 
 Scans with more than `LARGE_SCAN_URL_WARNING_THRESHOLD` accepted URLs (default 150)
 get a soft warning in the log and report suggesting the URL list be split across
