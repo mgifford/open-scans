@@ -108,6 +108,7 @@ jobs:
           const markdownPath = `${reportDir}/report.md`;
           const htmlPath = `${reportDir}/report.html`;
           const csvPath = `${reportDir}/report.csv`;
+          const patternsCsvPath = `${reportDir}/patterns.csv`;
           const overlapJsonPath = `${reportDir}/report-overlap.json`;
           const overlapMarkdownPath = `${reportDir}/report-overlap.md`;
 
@@ -123,6 +124,7 @@ jobs:
             `markdown_path=${markdownPath}`,
             `html_path=${htmlPath}`,
             `csv_path=${csvPath}`,
+            `patterns_csv_path=${patternsCsvPath}`,
             `overlap_json_path=${overlapJsonPath}`,
             `overlap_markdown_path=${overlapMarkdownPath}`,
             `stamp=${stamp}`
@@ -146,6 +148,7 @@ jobs:
           cp .scan-output/report.md "${{ steps.meta.outputs.markdown_path }}"
           cp .scan-output/report.html "${{ steps.meta.outputs.html_path }}"
           cp .scan-output/report.csv "${{ steps.meta.outputs.csv_path }}"
+          cp .scan-output/patterns.csv "${{ steps.meta.outputs.patterns_csv_path }}"
           cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
           cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
           # Copy AI fix suggestions if they were generated (REMEDIATE mode only)

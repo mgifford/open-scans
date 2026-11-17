@@ -312,6 +312,34 @@ Browser: ${escapeHtml(context.browser)}</div>
     </section>`;
 }
 
+function renderPatternInventorySection(inventory, esc) {
+  if (!inventory || !Array.isArray(inventory.patterns)) return "";
+  const categoryRows = Object.entries(inventory.summary.byCategory || {})
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([category, counts]) => `<tr><th scope="row">${esc(inventory.categoryLabels?.[category] || category)}</th><td class="count-cell">${counts.patterns}</td><td class="count-cell">${counts.occurrences}</td><td class="count-cell">${counts.pages}</td></tr>`)
+    .join("");
+  const patternRows = inventory.patterns.slice(0, 20).map((pattern) => `<tr><th scope="row">${esc(pattern.container?.label || "Unassigned")}${pattern.container?.element ? ` <code>${esc(pattern.container.element)}</code>` : ""}</th><td>${esc(pattern.rule)}</td><td>${esc(pattern.engineLabel)}</td><td class="count-cell">${pattern.occurrenceCount}</td><td class="count-cell">${pattern.pageCount}</td><td><code>${esc(pattern.displayId)}</code></td></tr>`).join("");
+  return `<section class="priority-section" aria-labelledby="section-patterns">
+      <h2 id="section-patterns" tabindex="-1">Pattern and container inventory</h2>
+      <p><strong>${inventory.summary.uniquePatterns} unique patterns</strong> across ${inventory.summary.pages} page(s) and ${inventory.summary.occurrences} occurrence(s). Container categories are selector-derived candidates, not component ownership.</p>
+      <div class="table-wrapper">
+        <table class="priority-table">
+          <caption>Unique accessibility patterns by semantic container category</caption>
+          <thead><tr><th scope="col">Category</th><th scope="col">Unique patterns</th><th scope="col">Occurrences</th><th scope="col">Pages</th></tr></thead>
+          <tbody>${categoryRows || '<tr><td colspan="4">No patterns recorded.</td></tr>'}</tbody>
+        </table>
+      </div>
+      <div class="table-wrapper" style="margin-top:1rem;">
+        <table class="priority-table">
+          <caption>Patterns by container (first 20)</caption>
+          <thead><tr><th scope="col">Container</th><th scope="col">Rule</th><th scope="col">Engine</th><th scope="col">Occurrences</th><th scope="col">Pages</th><th scope="col">Pattern ID</th></tr></thead>
+          <tbody>${patternRows || '<tr><td colspan="6">No patterns recorded.</td></tr>'}</tbody>
+        </table>
+      </div>
+      <p><a href="patterns.csv">Download all patterns as CSV</a></p>
+    </section>`;
+}
+
 export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const scanContext = buildScanContext(summary.scanContext);
@@ -821,6 +849,9 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
   // ── Trend section ─────────────────────────────────────────────────────────
   const trendSectionHtml = trendData ? renderTrendSection(trendData, escapeHtml) : "";
+
+  // ── Pattern and container inventory ───────────────────────────────────────
+  const patternInventoryHtml = renderPatternInventorySection(summary.patternInventory, escapeHtml);
 
   // ── Change tracking section ────────────────────────────────────────────────
   const changeTracking = summary.changeTracking;
@@ -1775,6 +1806,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         </div>
       </div>
     </section>
+
+    ${patternInventoryHtml}
 
     <section aria-labelledby="section-issues">
       <h2 id="section-issues" class="section-heading" tabindex="-1">

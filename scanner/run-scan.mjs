@@ -18,6 +18,7 @@ import { runReflowRisk } from "./reflow-risk.mjs";
 import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11y-audit.mjs";
 import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
 import { redactStringsDeep } from "./redact-secrets.mjs";
+import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -3074,6 +3075,32 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     lines.push("");
   }
 
+  if (summary.patternInventory) {
+    const inventory = summary.patternInventory;
+    lines.push("## 🧭 Pattern and Container Inventory");
+    lines.push("");
+    lines.push(`**${inventory.summary.uniquePatterns} unique patterns** across ${inventory.summary.pages} page(s) and ${inventory.summary.occurrences} occurrence(s). Container categories are selector-derived candidates, not component ownership.`);
+    lines.push("");
+    lines.push("| Category | Unique patterns | Occurrences | Pages |");
+    lines.push("|---|---:|---:|---:|");
+    for (const [category, counts] of Object.entries(inventory.summary.byCategory).sort(([a], [b]) => a.localeCompare(b))) {
+      lines.push(`| ${escapeMarkdown(inventory.categoryLabels[category] ?? category)} | ${counts.patterns} | ${counts.occurrences} | ${counts.pages} |`);
+    }
+    lines.push("");
+    lines.push("### Patterns by container");
+    lines.push("");
+    lines.push("| Container | Rule | Engine | Occurrences | Pages | Pattern ID |");
+    lines.push("|---|---|---|---:|---:|---|");
+    for (const pattern of inventory.patterns.slice(0, 20)) {
+      const containerLabel = pattern.container.element ? `${pattern.container.label} (${pattern.container.element})` : pattern.container.label;
+      lines.push(`| ${escapeMarkdown(containerLabel)} | ${escapeMarkdown(pattern.rule)} | ${escapeMarkdown(pattern.engineLabel)} | ${pattern.occurrenceCount} | ${pattern.pageCount} | ${escapeMarkdown(pattern.displayId)} |`);
+    }
+    if (inventory.patterns.length > 20) {
+      lines.push("", `_Showing the first 20 of ${inventory.patterns.length} patterns; see \`patterns.csv\` for all rows._`);
+    }
+    lines.push("");
+  }
+
   lines.push("## 📊 Detailed Results");
   lines.push("");
   lines.push("Complete scan results for all tested pages:");
@@ -4075,6 +4102,7 @@ async function main() {
   };
   const enhancedData = buildEnhancedSummary(initialSummary);
   const duplicateTitles = analyzeDuplicateTitles(results);
+  const patternInventory = buildPatternInventory(results, { generatedAt: scannedAt });
 
   const summary = {
     issueNumber: request.issueNumber,
@@ -4085,6 +4113,7 @@ async function main() {
     engines,
     scanContext,
     scannedAt,
+    patternInventory: patternInventory.summary,
     totalElapsedMs: totalElapsedTime,
     totalSubmitted: request.requestedUrls.length,
     acceptedCount: acceptedTargets.length,
@@ -4109,6 +4138,7 @@ async function main() {
     duplicateTitles,
     results,
     enhanced: enhancedData,
+    patternInventory,
     changeTracking
   };
 
@@ -4143,6 +4173,7 @@ async function main() {
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
+  const patternsCsvPath = join(outputDir, "patterns.csv");
   const overlapJsonPath = join(outputDir, "report-overlap.json");
   const overlapMarkdownPath = join(outputDir, "report-overlap.md");
 
@@ -4218,6 +4249,7 @@ async function main() {
   writeFileSync(markdownPath, markdownContent, "utf8");
   writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
+  writeFileSync(patternsCsvPath, patternInventoryToCsv(patternInventory), "utf8");
   writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
   writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");
 
@@ -4232,6 +4264,7 @@ async function main() {
     rejectedCount: summary.rejectedCount,
     scanContext,
     scannedAt,
+    patternInventory: patternInventory.summary,
     totalElapsedMs: totalElapsedTime,
     alfaTotals,
     axeTotals,

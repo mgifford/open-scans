@@ -14,6 +14,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML. CSV preserves original columns and appends scan/source/condition, component/region, external-investigation and coverage metadata.
 - `component-association.mjs` - Preserves explicit component ids and derives low-confidence semantic-region candidates from stable selectors.
 - `external-investigations.mjs` - Validates and attaches optional FES/Vital Core investigation metadata; never fetches external URLs.
+- `pattern-inventory.mjs` - Groups stable accessibility pattern IDs into semantic-container categories and writes `patterns.csv`.
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).
 - `run-optimization-investigation.mjs` - CLI for the opt-in optimization review; writes JSON, Markdown and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.

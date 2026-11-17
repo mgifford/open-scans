@@ -34,6 +34,7 @@
 26. [External Investigation References](#26-external-investigation-references)
 27. [Comparison Report Interface](#27-comparison-report-interface)
 28. [Complete Comparison Exports](#28-complete-comparison-exports)
+29. [Accessibility Pattern and Container Inventory](#29-accessibility-pattern-and-container-inventory)
 
 ---
 
@@ -578,7 +579,7 @@ Generates `trends.html` — a static cross-issue accessibility trend dashboard. 
 
 ## 6. Report Formats & Artifacts
 
-Each completed scan produces up to **six output files** stored in `reports/issues/issue-{N}/{timestamp}/`:
+Each completed scan produces up to **seven output files** stored in `reports/issues/issue-{N}/{timestamp}/`:
 
 | File | Format | Audience |
 |---|---|---|
@@ -586,6 +587,7 @@ Each completed scan produces up to **six output files** stored in `reports/issue
 | `report.md` | Markdown | Developers, GitHub viewers |
 | `report.html` | HTML (self-contained) | Browsers, stakeholders |
 | `report.csv` | CSV | Spreadsheets, data analysis |
+| `patterns.csv` | CSV | Unique patterns grouped by semantic container |
 | `report-overlap.json` | JSON | Cross-engine deduplication analysis |
 | `report-overlap.md` | Markdown | Cross-engine overlap summary |
 
@@ -627,7 +629,11 @@ See [§7](#7-interactive-html-report) for full details.
 
 Columns: `url`, `engine`, `ruleId`, `wcagSc`, `wcagLevel`, `severity`, `impact`, `description`, `helpUrl`, `xpath`, `html`, `firstSeen`
 
-### 6.5 `report-overlap.json` / `report-overlap.md` – Cross-Engine Overlap
+### 6.5 `patterns.csv` – Pattern and Container Inventory
+
+One row per unique accessibility pattern, with category/container, pattern and display IDs, identity source, engine/rule, WCAG/ACT mappings, occurrences, pages, first/last seen and an example page/locator. This is a selector-derived container candidate, not component ownership.
+
+### 6.6 `report-overlap.json` / `report-overlap.md` – Cross-Engine Overlap
 
 Documents violations found by multiple engines for the same WCAG success criterion. Helps identify high-confidence findings confirmed by multiple tools.
 
@@ -1430,6 +1436,7 @@ scan-request.yml (GitHub Actions)
             ├─ report.md       (Markdown)
             ├─ report.html     (interactive, self-contained)
             ├─ report.csv      (spreadsheet)
+            ├─ patterns.csv    (pattern/container inventory)
             ├─ report-overlap.json
             └─ report-overlap.md
   │
@@ -1493,7 +1500,7 @@ A single accessibility scan report is considered **done** when all of the follow
 ### 22.2 Format & Artifacts
 
 - [ ] `report.json` is generated as machine-readable output in `reports/issues/issue-{N}/{timestamp}/`
-- [ ] `report.md` and `report.csv` are generated alongside `report.json`
+- [ ] `report.md`, `report.csv` and `patterns.csv` are generated alongside `report.json`
 - [ ] An interactive HTML report is generated and linked from a stable GitHub Pages URL
 - [ ] `reports.html` and `trends.html` are regenerated to include the new scan run
 
@@ -1765,6 +1772,45 @@ JSON retains the complete comparison evidence: scan metadata, page mappings, con
 ### 28.4 Tests
 
 `tests/unit/compare-scans.test.mjs` has 30 tests, including metadata completeness, formula-injection protection and older-JSON compatibility.
+
+---
+
+## 29. Accessibility Pattern and Container Inventory
+
+Every scan writes `patternInventory` in `report.json`, a section in `report.md`/`report.html`, and `patterns.csv`.
+
+### 29.1 Identity and grouping
+
+- Uses the existing page-specific fingerprint and cross-page legacy/canonical pattern IDs.
+- Groups occurrences by pattern identity, never by a new hash system.
+- Preserves engine, rule, WCAG, ACT, pages, occurrences and first/last seen.
+
+### 29.2 Container candidates
+
+- Prefers a semantic ancestor in the selector/XPath (`nav a`, `form input`, `header`, `footer`, `main`, `table`, `dialog`).
+- Falls back to the first recorded HTML tag when the locator is missing.
+- Maps page-level/meta/document evidence to `document`.
+- Categories: navigation, banner, contentinfo, main, complementary, search, form, form-control, table, list, heading, link, button, image, frame, dialog, live-region, document, unknown.
+- Reports category counts, unique patterns, occurrences, unique pages, and unassigned patterns.
+
+### 29.3 Boundaries
+
+- Container categories are selector/HTML-derived candidates, not component ownership.
+- No Firefox Energy Scanner component graph or Playwright MCP data is imported.
+- No performance/energy attribution.
+- Labels are not identity.
+- No combined score.
+- Each scan writes its own inventory; stable pattern IDs and first/last seen support future trend work.
+
+### 29.4 Artifacts
+
+- `report.json` — full inventory and indexes.
+- `report.md` / `report.html` — accessible category and pattern tables.
+- `patterns.csv` — one row per pattern with container element/basis/confidence, identifiers, engine/rule, WCAG/ACT, counts, dates and example.
+
+### 29.5 Tests
+
+`tests/unit/pattern-inventory.test.mjs` covers grouping, navigation/forms/header/footer/table/unknown categories, canonical identity, duplicates, reflow/Semantica11y and CSV. Run-scan and interactive-report tests cover the artifacts and HTML section.
 
 ---
 
