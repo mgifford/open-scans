@@ -23,7 +23,7 @@ Each record keeps its source tool, version, browser, method, boundary, scope, un
 | Entity | What it preserves |
 | :--- | :--- |
 | Site | Origin, host, source ids, coverage and coverage limitations |
-| Source | Evidence file/API location, content digest, adapter and version, tool/version, collected/imported time, schema version, limitations |
+| Source | Evidence file/API/artifact location, content digest, adapter and version, tool/version, collected/imported time, schema version, limitations |
 | Measurement source | The source tool's own boundary declaration (for example `firefox-dom`, `firefox-network`, `lighthouse`) |
 | Page | Original/normalized URL, family, browser/viewport contexts, metrics, source refs, limitations |
 | Page family | Label, source, basis (`measured-structure`, `configured-route`, `imported`), page ids |
@@ -111,7 +111,7 @@ The format keeps these separate and provides no field that combines them:
 
 Validation rejects:
 
-- `mWh` metrics attributed to Lighthouse, CO2.js or Open Site Review;
+- `mWh` metrics attributed to anything except Firefox observed energy or webNRG;
 - CO2.js metrics whose boundary is not labelled `modelled`;
 - `gCO2e` metrics that claim an observed-energy boundary;
 - broken page/type/instance/resource/source references;
@@ -158,6 +158,10 @@ A domain index alone is rejected with an instruction to point at the domain snap
 
 Imports compatibility findings and Project Wallace CSS quality/complexity as `candidate-explanation` records. None is presented as a measured runtime cost.
 
+### Lighthouse provider (PR 3)
+
+New Lighthouse runs are not an adapter over a user-supplied source. The provider writes raw JSON to a bounded artifact directory and creates a source with `type: "lighthouse"`, `locationKind: "artifact"`, the Lighthouse version, fetch time and content digest. Metrics and findings carry `evidenceRef` anchors into that raw JSON. The raw artifact is not committed to Git. See [`PR-3-LIGHTHOUSE.md`](./PR-3-LIGHTHOUSE.md).
+
 ## 8. Reuse-only investigation
 
 ```bash
@@ -188,12 +192,13 @@ Coverage is not a score. `discoveredPages` is the maximum count reported by a so
 - A breaking change to required fields, identity/merge semantics or measurement boundaries requires `performance-evidence/2` and a migration note.
 - The format must not absorb provider-specific fields. Provider-specific details stay in the source artifact and in `limitations` until a versioned adapter field is justified.
 
-## 11. Known limitations in PR 2
+## 11. Known limitations in PR 2/3
 
 - No Sitespeed adapter.
 - No direct CO2.js computation (correct: reuse first).
 - No full Firefox timeline/spike adaptation.
 - No cross-page hotspot ranking yet (PR 5).
 - Vital Core per-page performance is not available in the public API; only aggregated Lighthouse medians and sampled URLs.
-- Remote evidence fetch checks DNS before the request but does not yet pin the resolved address at connect time. This is recorded and must be hardened in PR 3/4.
+- Remote evidence fetch and the page preflight check DNS before the request but do not yet pin the resolved address at connect time. This is recorded and remains a hardening item.
 - Component instances are not merged across sources; only page/resource identity and identical component types are merged.
+- Lighthouse runs are Chromium lab evidence under simulated throttling; they are never converted to Firefox energy.

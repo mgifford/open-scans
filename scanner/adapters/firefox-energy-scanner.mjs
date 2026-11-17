@@ -334,6 +334,18 @@ function mapLighthouse({ data, source, pagesByUrl, measurements }) {
     const url = result.finalUrl ?? result.requestedUrl;
     if (!url) continue;
     const page = ensurePage(url);
+    const lighthouseProfile = summary.formFactor === "mobile"
+      ? "mobile"
+      : summary.formFactor === "desktop" ? "desktop" : null;
+    if (!page.contexts.some((context) => context.method === method && context.profile === lighthouseProfile)) {
+      page.contexts.push({
+        browser,
+        viewport: null,
+        profile: lighthouseProfile,
+        method,
+        sourceId: source.id
+      });
+    }
     const metrics = result.metrics ?? {};
     addMetric(page, "fcp", metrics.fcpMs, "ms", `lighthouse.results[${index}].metrics.fcpMs`);
     addMetric(page, "lcp", metrics.lcpMs, "ms", `lighthouse.results[${index}].metrics.lcpMs`);

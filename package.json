@@ -7,7 +7,7 @@
     "test": "node --test tests/unit/*.test.mjs",
     "test:playwright": "node --test tests/unit/playwright-accessibility.test.mjs",
     "test:bdd": "cucumber-js --import tests/bdd/steps/**/*.mjs tests/bdd/features/**/*.feature",
-    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/parse-performance-issue.mjs && node --check scanner/performance-evidence.mjs && node --check scanner/performance-source-loader.mjs && node --check scanner/run-performance-reuse.mjs && node --check scanner/adapters/index.mjs && node --check scanner/adapters/firefox-energy-scanner.mjs && node --check scanner/adapters/vital-core.mjs && node --check scanner/adapters/open-scans-report.mjs && node --check scanner/adapters/open-site-review.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/redact-secrets.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs && node --check scanner/check-engine-versions.mjs",
+    "lint": "node --check scan-context.js && node --check submit.js && node --check scanner/parse-issue.mjs && node --check scanner/parse-performance-issue.mjs && node --check scanner/performance-evidence.mjs && node --check scanner/performance-source-loader.mjs && node --check scanner/run-performance-reuse.mjs && node --check scanner/performance-page-selection.mjs && node --check scanner/performance-lighthouse.mjs && node --check scanner/run-performance-light.mjs && node --check scanner/adapters/index.mjs && node --check scanner/adapters/firefox-energy-scanner.mjs && node --check scanner/adapters/vital-core.mjs && node --check scanner/adapters/open-scans-report.mjs && node --check scanner/adapters/open-site-review.mjs && node --check scanner/validate-targets.mjs && node --check scanner/run-scan.mjs && node --check scanner/redact-secrets.mjs && node --check scanner/generate-reports-html.mjs && node --check scanner/generate-trends-html.mjs && node --check scanner/analyse-trends.mjs && node --check scanner/ai-remediation.mjs && node --check scanner/review-source.mjs && node --check scanner/interactive-report.mjs && node --check scanner/check-engine-versions.mjs",
     "run:parse": "node scanner/parse-issue.mjs",
     "run:parse-performance": "node scanner/parse-performance-issue.mjs",
     "run:validate": "node scanner/validate-targets.mjs",
@@ -17,7 +17,8 @@
     "run:analyse-trends": "node scanner/analyse-trends.mjs",
     "run:review": "node scanner/review-source.mjs",
     "run:check-engines": "node scanner/check-engine-versions.mjs",
-    "run:performance-reuse": "node scanner/run-performance-reuse.mjs"
+    "run:performance-reuse": "node scanner/run-performance-reuse.mjs",
+    "run:performance-light": "node scanner/run-performance-light.mjs"
   },
   "engines": {
     "node": ">=24"
@@ -36,6 +37,7 @@
     "@siteimprove/alfa-formatter-earl": "^0.84.2",
     "@siteimprove/alfa-formatter-json": "^0.84.2",
     "accessibility-checker": "^4.0.30",
+    "lighthouse": "13.6.0",
     "playwright": "^1.64.1",
     "semantica11y": "^1.0.1"
   },

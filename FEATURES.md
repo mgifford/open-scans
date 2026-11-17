@@ -1591,6 +1591,21 @@ Adapters:
 
 Tests: `tests/unit/performance-evidence.test.mjs` (28 tests at the time of writing) cover all four adapters, ID preservation, incompatible measurements, missing data, merge rules, context-only accessibility evidence, validation boundaries, the reuse runner and source-loader safety.
 
+### 23.7 PR 3: bounded Lighthouse provider
+
+PR 3 adds `scanner/run-performance-light.mjs` and the pinned `lighthouse` 13.6.0 dependency.
+
+- Candidate collection: request URLs, priority/top-task URLs, reusable evidence pages, and bounded discovery only when no inventory exists.
+- Selection order: nominated tasks → one representative per page family → structurally unusual pages. Transfer size is one weak signal, never the sole ordering.
+- Defaults: 20 pages inspected, 5 Lighthouse audits, sequential runs, 180 s per run, 15 min pipeline budget.
+- Reuse: a page with complete, current, profile-compatible Lighthouse metrics is not re-audited.
+- Collection: Chromium only, simulated throttling, explicit form factor/viewport, private URL blocking, no telemetry and no full-page screenshot.
+- Evidence: LCP, FCP, TBT, CLS, Speed Index, main-thread work, JS execution, bytes, DOM size, performance category score, network resources, audit/opportunity/element findings.
+- Raw JSON: bounded artifacts directory; `evidenceRef` links back to the raw audit. A `performance-light-run/1` report records selection, discovery, failures, artifacts and cost (`browserLaunches`, audits, reused pages, duration).
+- Security: execution-time revalidation, manual redirects with DNS checks at each hop, same-site restriction, private URL patterns, no forms or mutations.
+- Tests: `tests/unit/performance-lighthouse.test.mjs` (15 tests) covers normalization, selection, reuse/staleness, discovery, fake-runner cost accounting, partial failure and mode refusal.
+- Remaining hardening: DNS address pinning at Chrome connect time; Chrome can still request page-controlled third-party subresources.
+
 ---
 
 ## Related Documentation

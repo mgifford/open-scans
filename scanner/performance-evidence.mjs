@@ -10,9 +10,11 @@ export const PERFORMANCE_EVIDENCE_ADAPTER_VERSION = "1.0.0";
 
 const SOURCE_PRIORITY = Object.freeze({
   "firefox-energy-scanner": 0,
-  "vital-core": 1,
-  "open-scans-report": 2,
-  "open-site-review": 3
+  lighthouse: 1,
+  "vital-core": 2,
+  "open-scans-report": 3,
+  "open-site-review": 4,
+  sitespeed: 5
 });
 
 /**
@@ -723,7 +725,7 @@ export function validatePerformanceEvidence(evidence) {
     for (const key of ["id", "type", "adapter", "adapterVersion", "tool", "location", "locationKind", "importedAt", "contentDigest"]) {
       if (source[key] === undefined || source[key] === null || source[key] === "") errors.push(`Source '${source.id ?? "?"}' is missing ${key}.`);
     }
-    if (!["open-scans-report", "firefox-energy-scanner", "vital-core", "open-site-review"].includes(source.type)) {
+    if (!["open-scans-report", "firefox-energy-scanner", "vital-core", "open-site-review", "lighthouse", "sitespeed"].includes(source.type)) {
       errors.push(`Source '${source.id}' has unsupported type '${source.type}'.`);
     }
   }

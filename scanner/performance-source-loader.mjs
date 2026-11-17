@@ -368,3 +368,70 @@ export async function loadEvidenceSource({ source, repoRoot, localOverride = nul
 
   return { source: record, data, finalLocation, networkFetches };
 }
+
+/**
+ * Validate a page URL at execution time and follow redirects with a public-host
+ * check at every hop. This is a preflight for browser providers; Chrome can
+ * still issue third-party subresource requests, which remain a documented
+ * browser-scan boundary.
+ *
+ * @param {string} rawUrl
+ * @param {{timeoutMs?: number}} [options]
+ * @returns {Promise<{finalUrl: string, status: number, redirected: boolean}>}
+ */
+export async function preflightPublicUrl(rawUrl, options = {}) {
+  const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  let current;
+  try {
+    current = new URL(rawUrl);
+  } catch {
+    throw new EvidenceSourceError("Page URL is not a valid URL.", "invalid-url");
+  }
+
+  for (let redirect = 0; redirect <= 5; redirect += 1) {
+    if (!["http:", "https:"].includes(current.protocol)) {
+      throw new EvidenceSourceError("Page URLs must use http:// or https://.", "unsafe-scheme");
+    }
+    if (current.username || current.password) {
+      throw new EvidenceSourceError("Page URLs must not contain a username or password.", "credentials");
+    }
+    if (current.hash) current.hash = "";
+    await assertPublicHostname(current.hostname, timeoutMs);
+
+    let response;
+    try {
+      response = await fetch(current, {
+        redirect: "manual",
+        signal: AbortSignal.timeout(timeoutMs),
+        headers: {
+          accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.1",
+          "user-agent": "open-scans-performance-investigation/1.0 (+https://github.com/mgifford/open-scans)"
+        }
+      });
+    } catch (error) {
+      throw new EvidenceSourceError(`Preflight failed for '${current.origin}': ${error.message}.`, "preflight-error");
+    }
+
+    if (response.status >= 300 && response.status < 400) {
+      const location = response.headers.get("location");
+      if (!location) throw new EvidenceSourceError("Page redirect had no Location header.", "redirect-error");
+      if (redirect >= 5) throw new EvidenceSourceError("Page URL exceeded 5 redirects.", "redirect-limit");
+      try {
+        current = new URL(location, current);
+      } catch {
+        throw new EvidenceSourceError(`Page redirected to an invalid location '${location}'.`, "redirect-error");
+      }
+      continue;
+    }
+
+    const redirected = current.toString() !== new URL(rawUrl).toString();
+    if (!response.ok) {
+      await response.body?.cancel().catch(() => {});
+      throw new EvidenceSourceError(`Page URL returned HTTP ${response.status}.`, "http-error");
+    }
+    await response.body?.cancel().catch(() => {});
+    return { finalUrl: current.toString(), status: response.status, redirected };
+  }
+
+  throw new EvidenceSourceError("Page URL could not be validated.", "preflight-error");
+}

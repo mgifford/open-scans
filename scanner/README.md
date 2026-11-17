@@ -9,6 +9,9 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `performance-evidence.mjs` - Assembles, merges and validates the common `performance-evidence/1` format.
 - `performance-source-loader.mjs` - Loads repo/local/https evidence with DNS-aware and redirect-aware checks.
 - `run-performance-reuse.mjs` - Reuse-only investigation runner; no browser launches.
+- `performance-page-selection.mjs` - Bounded candidate selection, family coverage and Lighthouse reuse planning.
+- `performance-lighthouse.mjs` - Pinned Lighthouse runner, raw JSON retention and evidence normalization.
+- `run-performance-light.mjs` - Bounded light investigation runner with cost reporting.
 - `adapters/` - Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review.
 - `validate-targets.mjs` - Validates URL syntax and blocks private/internal targets.
 - `run-scan.mjs` - Fetches accepted URLs, runs the scan engines below, and generates reports.
@@ -34,6 +37,7 @@ separate from WCAG violation counts: `reflowRisk` and `semantica11y`.
 - `npm run run:scan -- <issue-event-json-file> <output-dir>`
 - `npm run run:parse-performance -- <issue-event-json-file>`
 - `npm run run:performance-reuse -- <performance-request.json> --source <type>=<location> --allow-local --out <file>`
+- `npm run run:performance-light -- <performance-request.json> [--out <file>] [--run-report <file>] [--artifacts-dir <dir>] [--chrome-path <file>]`
 
 `parse-performance-issue.mjs` accepts `--out <file>`, `--summary <file>` and
 `--allow-invalid`. It exits non-zero on an invalid request. `reuse` requests are
