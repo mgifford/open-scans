@@ -1,0 +1,2749 @@
+# Scan Report: https://fosdem.org
+
+- Issue: https://github.com/mgifford/open-scans/issues/389
+- Submitted by: mgifford
+- Scanned at: 2026-11-17T18:55:50.307Z
+- Engines used: EQUALACCESS, AXE
+- Scan duration: 6.1 minutes
+- Total URLs submitted: 20
+- Accepted public URLs: 20
+- Rejected URLs: 0
+- 🎨 **Accessibility personalization (CSS media queries):**
+  - 🌙 **Dark mode:** 20 of 20 URLs (100%) support `prefers-color-scheme: dark`
+  - ⚡ Reduced motion: None of the scanned URLs support `prefers-reduced-motion: reduce`
+  - 🔍 High contrast: None of the scanned URLs support `prefers-contrast: more`
+  - 🖥️ Forced colors: None of the scanned URLs support `forced-colors: active`
+  - 🪟 Reduced transparency: None of the scanned URLs support `prefers-reduced-transparency: reduce`
+- ALFA outcomes: 0 passed, 0 failed, 0 cantTell, 0 inapplicable
+- axe outcomes: 12136 passed, 556 failed, 56 cantTell, 2262 inapplicable
+- Equal Access outcomes: 17458 passed, 489 failed (489 unique, 0 duplicate), 171 cantTell, 0 inapplicable
+- AccessLint outcomes: 0 passed, 0 failed (0 unique, 0 duplicate), 0 cantTell, 0 inapplicable
+- QualWeb outcomes: 0 passed, 0 failed, 0 cantTell, 0 inapplicable
+- Reflow risk outcomes (WCAG 1.4.10, indicator only — not a conformance verdict): 0 failed, 0 potential, 20 passed, 0 cantTell, 0 not executed
+- Semantica11y outcomes (semantic HTML/ARIA suggestions, kept separate from WCAG violation counts): 4 errors, 6 warnings, 0 suggestions, 0 not executed
+- Duplicate findings caught by later scanners: 0
+
+## 🔄 Changes Since Last Scan
+
+- 🆕 **1000 new unique issue(s)** detected for the first time in this scan
+
+### 🆕 New Issues
+
+- **A11Y-168ba3e0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-16207741** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-a75c6064** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-84814183** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-33f676d8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-0e5e4547** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-ebecf731** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-7c912f46** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-f30b52d3** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/
+- **A11Y-6f277a8b** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/
+- **A11Y-c8cc6245** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-e770a2e2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-bf1ed2a4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-296800ee** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-dfb603c0** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-bff7a616** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-bb3a2bee** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-9599de2b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-14496d07** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-642966d9** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/
+- **A11Y-e584b7f7** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-bf23a4dd** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-f5fac4e3** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-f47e2257** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-8fc0ac62** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-b0a65b86** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-9dbcc1fd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-d30fb50c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-176e557a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-d45e0dda** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-7d59f95a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-ee87054f** `rule:element_tabbable_role_valid|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-4a581112** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-74a23200** `rule:svg_graphics_labelled|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-851babb5** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-61e8b9a2** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-13dbd0d0** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-4da2fd0f** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-79965f90** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-dd191a96** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-2fe4aa0c** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-70829057** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-1c42678b** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-041237bc** `rule:text_block_heading|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-17a08997** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-b1c54b4d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-234e95c6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-cf090791** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-8adc8533** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-4fc872b4** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/
+- **A11Y-f9fd127f** `rule:aria-actions|light` (semantica11y) — https://fosdem.org/2027/
+- **A11Y-28bcb481** `rule:aria-actions|light` (semantica11y) — https://fosdem.org/2027/
+- **A11Y-23f80f71** `rule:missing-role-action|light` (semantica11y) — https://fosdem.org/2027/
+- **A11Y-e591dd61** `rule:native-label|light` (semantica11y) — https://fosdem.org/2027/
+- **A11Y-14388e09** `rule:native-label|light` (semantica11y) — https://fosdem.org/2027/
+- **A11Y-d214b7d5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-50322f65** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-e4fac58f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-c05815ae** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-fded3c14** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-53a50908** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-68055e6a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-aaf2bb42** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-8a5129b8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-c6fc0e97** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-543effdd** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-3eef4f2b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-11408c05** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-8191c1f6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-ee691f9d** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-2b635c17** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-fc8a295d** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-330f00d0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-c1c452c6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-02e7e52f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-e9474781** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-403c8620** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-6422b596** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-6ad61efa** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-7f1816f6** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-665977e7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-e4758a1a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-e643f586** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-20763912** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-fb2bfb8d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d34dd084** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-1799c165** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-9572dbf6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-c46d80ea** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d0a25449** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-a21bdaae** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-aacbeada** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-5ec993c8** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-434c60f5** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-f135b049** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-87f1166c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-0d7f29c0** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-b9eb98c7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-1cceff9a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-3069739a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-4a30a3e4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-fdc1fe20** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-9a7e6fea** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d0d7da8d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-deb80ff5** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-8809a2e6** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-1a03038d** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-ba2abe2a** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d3a2b98d** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-6efc652b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-3fd9de3f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-ba5b216f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-b47a5299** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-83aff3e6** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-5b228651** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-9cf2f0db** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-2d09ca1d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-2181b313** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-34773dc7** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-09b9b06f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-5f54271b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-b0dca85d** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-0a59e833** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-5fc38cf7** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-3172ce7d** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d53b4000** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-71794591** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-ad59d461** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-0dddb91d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-f570d5aa** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-9e22f9ad** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-fb5f7264** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-8a294d39** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-a8fc628f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d60a8ab1** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-da469b0e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-487a6c7c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-aabfbe06** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-208c4de8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-b5f9c2a9** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-b6d3e7dd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-22e0c5ee** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-a553356b** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-d508e5e2** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-ad73e0f9** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-0934a8a7** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-25a8d371** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-12cf50fc** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-63dd37a7** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-bdfc63d2** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-8e576dc0** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/support/sponsors/
+- **A11Y-421cd763** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-cc6e58ed** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-d0d481c1** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-b7202996** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-94bf9ca6** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-3e72f5b5** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-779c6b39** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-f9177fa5** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-57bc57d7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-25994859** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/practical/services/
+- **A11Y-3813a398** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-2e460a57** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-0b616eec** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-e4a28e0b** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-d0537f4f** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-bbe3b0bb** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-7b965241** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-5b85d529** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-68722cdc** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-2007ffc4** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-65831bea** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-87d234f7** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/practical/services/
+- **A11Y-fbf8be90** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-ce5485b9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-94e67d68** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-b0a0afd9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-80d26b79** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-0bf5ba5f** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-5efc223f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-8c787e86** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-c494d7b2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-06541552** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-82d33d17** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-ea65daae** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-24b928cb** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-6909a9aa** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-645cec01** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-060a38d1** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-ba69d703** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-26abde8d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-ada0919a** `rule:aria_complementary_labelled|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-1b46f249** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-be95bfe6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-1926bd43** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-a594f431** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-8ae58081** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-646d1137** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/call-for-stands/
+- **A11Y-b703092c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-7f22137e** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-cbb86d15** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-a6c90619** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-675cfc37** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-7098ee61** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-83261301** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-d0d086a7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-ca0ebcee** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-0c39ab3a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-ab88ccc4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-b7f35a3b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-5d97a710** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-4dfe03a2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-47b4146d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-bdb18180** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-ba2965aa** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-e2b8ede5** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/about/charter/
+- **A11Y-065694ad** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-3a29189b** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-27314855** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-d6789444** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-08e0608a** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-1153de8f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-d7a14729** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-d051f46e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-6676fe79** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-70dbadf4** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-b8b32e52** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-84aa32a3** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-5c8c627b** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-e136c0fd** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-dbdc7c3b** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-255255ec** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-abe6ba5d** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-48ab907f** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-bddeb1a5** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-95073ff3** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-f7641819** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-10182f90** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-ca5b09d9** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-c1ca66d5** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-dc9e487a** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-28053fe3** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-08a43bb8** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-0a9ca584** `rule:list_markup_review|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-07d0231e** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-6e563ecd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-9bf9550d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-4ba9e866** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-0fb9c6fd** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-c4ebb294** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/about/charter/
+- **A11Y-b3dbda54** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-299a43b6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-eb92954c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-0b843e25** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-8cb41ff2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-295692a9** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-62280c03** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-e8f0c8f2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-146ee5fb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-ed706d18** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-47381377** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-d6445c57** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-f3940ce5** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-489cb368** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-1b0b78e0** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-1ff72be2** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-2dc9ff6d** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-e6552d6c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-6660a56a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-e2c844dd** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-e8b4aa90** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-0915a265** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-15b5051b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-d783562e** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-32de5fea** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/practical/conduct/
+- **A11Y-759996a8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-4062e557** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-eae07420** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-4f8ba37b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-876f3b83** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-ee8760fb** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-ec9d205f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-984f3e02** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-7dd35a43** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-9b4fc7ce** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-bef22528** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-7aebf46a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-ebd71a77** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-27a9dbf1** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-fa7df17d** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-c6c6693b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-f1bb83f8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-d814dbe0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-ec59e950** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-67bba4f0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-5f7e929a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-d6223597** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-dafff7fe** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-b6ba37e2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-81821cd4** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-f24cf67c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-1cdb2dc7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-9053348f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-411e0b98** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-88d8841e** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-3348e8c9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-e6b30b3f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-53411bf9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-3c1b0021** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-5fdf0ed8** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-13f28812** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-b7a38480** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-acbf88bc** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-474345f2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-87f3cd99** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-0b72b583** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-62a79566** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-07014e47** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-f5a77bd2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-1424cacd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-bb2a84f4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-3ab58c9e** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-1bc49a51** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-c27dd570** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-788cfd89** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-65622f64** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-2782ed4d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-301baf45** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-00184ed2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-d9eacf16** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-fd2e4d21** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-3751dfac** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-0f8cb1fe** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-7075a5bc** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-9df64f33** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/archives/
+- **A11Y-06e98c4b** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-31c5793a** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-2e6855c6** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-43d95508** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-6db1eab3** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-9ee36979** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-6b07bd3e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-ca7b7174** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-3a615ba8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-555d0d1a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-8a8c5424** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-d5329991** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-e7ba1122** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-4aac5cd2** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-cb90ec11** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-b318a233** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-ba187f93** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-01264339** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-cfeb9416** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-1ef2616e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-bd42c5c9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-765ac3e1** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-7163f7dc** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-52f9221d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-bef0bbff** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-2465919d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-1e753e4a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-427179d8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-c24d4515** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-3ce9bcba** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-86c0a1cc** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-cc46ec32** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-8f896118** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-5fd4c023** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-5a43f3ef** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-35b89650** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/archives/
+- **A11Y-6843de71** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-98568887** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-4dc42237** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-4b47d089** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-e1079979** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-135652b0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-e7ecaa07** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/about/
+- **A11Y-fed7fe7d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-ee83bfee** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-65984bcc** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-22e3d93d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-5bfe6890** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-e6ea9d00** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-b8787b6e** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/about/
+- **A11Y-67fe720f** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-4640bcd8** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-9df7ae5d** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-8453e722** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-6ec18cd9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-a17d365f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-2584a896** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-be397f8e** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-1483b38e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-f531729b** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-9f4a8896** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-540039bd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-9ea72133** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-87b1ff6e** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-33788dfa** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/about/
+- **A11Y-ec1c7c9a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-8291764f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-8a6be957** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-9b3a4de7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-d8d8c537** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-dd9c6308** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-1ce8fb75** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-f21f387a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-7462185b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-6881cbd6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-dbb550b0** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-70de649d** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-2e079148** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-a99c0c8e** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-e57794cc** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-b28892d7** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-9720f182** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-fc5cf102** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-217cedf8** `rule:aria_complementary_labelled|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-cb897c86** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-53e605aa** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-82d456f9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-8eeb30ef** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-8c11c4d8** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-309f312e** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/junior-call-for-participation/
+- **A11Y-907112c7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-0e64c93d** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-1a0cf3a8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-e985fac6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-c3fd2f2b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-25c13035** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-6ef43e88** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-3bfde3ee** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-2a7efd26** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-3327028c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-e1e491dd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-68744d7f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-662d1711** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-64731433** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-bc38823c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-59b6b6aa** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/faq/
+- **A11Y-83e380cc** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-b48d1b76** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-a81e056b** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-4a4c8b9c** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-86187f95** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-8051e57a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-04506078** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-086092ed** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-c9eb0c7d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-90a8670b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-3aa41029** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-45803fa6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-c8d7a95c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-5a3d1708** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-ff7b1d10** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-2bcf289d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-ff032217** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-30bf59ad** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-dba3ff80** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-0b12ce3f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-3f5dde5a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-74ee7694** `rule:element_tabbable_unobscured|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-de6ea9da** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-60647efe** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-48717e8d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-355d9cec** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-a69decac** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-f48222d9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-6bdbfc28** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-62754b8d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-9715ac28** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-56825311** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/faq/
+- **A11Y-0aacf835** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b2a577ff** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-fd2b998b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e758f281** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-87272630** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7ca955cf** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d1b42fc0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e80a7399** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4eac17c2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7974b2b9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-477e78d7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a8d079af** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6aab7078** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e50cc626** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1def9763** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c8b3585a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-82c5bbab** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-14fc110a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-43edc94b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-9e4a1fd8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7c569c07** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-56a512d9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-67cee156** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-25560568** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-83c07364** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6c91c803** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8afacb37** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-936f22dd** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1073c13a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-26808aa6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-571f4477** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ecab4b04** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b2bb47c5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f6e97692** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d35f30fa** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e9f3ca83** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d2ea6112** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ba3720d2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-715375d0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ae107b16** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6e0672ba** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e7d7a5b6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f43f9547** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e9b75cbe** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-9a1788e5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f00117f5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b6ec2d41** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-68fecb00** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b7ad4ec9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-85fb0657** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c044cf32** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a03457e0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2084626a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d361aa79** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-39552fd7** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6159a194** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-40924027** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e9f30c82** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-62045e5f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-5521e191** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-efe9cdc2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-76545269** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-74494d29** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d9c35152** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-83aedcc2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7aa8560c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-445aeaca** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c8960587** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-5c0eec65** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-31388bc6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e58827fe** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-075aec91** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-428434ec** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-457476a6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-485666f8** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-9ec5e890** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-49b34b7a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-57020844** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-383a71ca** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2fabc394** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-be435f09** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-556a9ddd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-307c6df1** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2d3b2e85** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d71f1e5b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ad27e31c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2a0f94a6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-eba7dc9b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f90ee326** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c53037de** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-252efc60** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3ce0045e** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-11250897** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6fbfb10c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1730424a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2b09b3fb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-eeb89c8b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2a377b4f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-61be73ed** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-dca71657** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a2179777** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8098df7e** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f4eb04d7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c6d0519f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c58730cd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-bc3d6a92** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2b3725be** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-56e1d21f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1000248f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-fa476cdb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-98cfe663** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f006b8d8** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8d5674bd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-5e33d0c9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-afad184f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e8bbe158** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-777020ee** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-cecf85e6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3ca04b3d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c89a5e7a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ae47a6c6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-59b15820** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8dfd523c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-70c48aea** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4be7b0dd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-47b953d7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-884bf610** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8f40fee6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-519e8f6a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8a1a8b5b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-8f0cbfa8** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1daea045** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4e06ec72** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ba05de8e** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7f556ceb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d49f023c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2b0cf42a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-95c5042e** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d922a5a6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d8c3ea6b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3006b3de** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-38da26b6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4f27b962** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a05201a0** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-84676f0a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e638cbe4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e593088a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-dc770026** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-dab33af7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f955994c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4a63a801** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-67647609** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ab38ae0c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-683a12f5** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-691fe3a4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-086c5bd3** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-bd592444** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1d28705f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-dfced1ab** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f33a4422** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f8e28ee2** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-325f713a** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4a41f9a0** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-06e9d177** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-615df603** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ba415e6e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-af4d267a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-913c048d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-dcc9fa5b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7b6a4308** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-34acec64** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ab830fae** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-851179a8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-58df8181** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3b9b2e70** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-64324afe** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-57d9e267** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-d7308159** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-271d49a6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a20c6aaf** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-69121723** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c7aacb99** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-59e8015a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ddde9341** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7dfa0e67** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-50cd6340** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-78b2146a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b13d5426** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-edddac6a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4e82f120** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a620d49e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e4f39199** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b80829ff** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4d80de98** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4b676eb2** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-0bcaef13** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-0ef92ffe** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7fcd18bf** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-98449d6c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-84062acf** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-ac38cbd6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-893ec901** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-715efd46** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e8ca3c0b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c1577a02** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-89ddc5d3** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-0b77d135** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-13fe02c7** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c878201e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-e03279f0** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-20d29e32** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4281a49b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-346ddfec** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-b514aa97** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-1a4d9e75** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-0a5841aa** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-67df8fb6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c052337a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3bcaeefb** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a5a7cf07** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3c5038f1** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-fbf6052c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c961d241** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-cfa7f480** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-39439b9d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c8f35439** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-61d2f7b9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-551fae9f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-c2e70c17** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-a5e18fb4** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-f5be5ac4** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-76ce17ab** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-fe76a899** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-5fc65d34** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-7d71b323** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-4759f51c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-903a1d51** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-38f3ea32** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2af89476** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-eabd64ea** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3ce9bc91** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-20467784** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3dfb2123** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3be04db5** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-540d4917** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-3fffbecf** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-6cf48d99** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-developer-rooms/
+- **A11Y-2414793b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-0248e09f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-e21f91b9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-f45f97d4** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-2aa16e22** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-81b6b0f0** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-313c61e2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-247c470b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-2079d403** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-faaa1968** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/support/donate/
+- **A11Y-92e4d4ea** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-ccf76f5f** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-9652d58f** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-60eec77a** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-6270ea6c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-3e6b5cad** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-a83a9629** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-8528dcfd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-737da767** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-60cbdfae** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-97ce437f** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/support/donate/
+- **A11Y-2300a191** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-42f2874e** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-ce8f2c4a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-13b34e97** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-3b236294** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-291eaa76** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-52e022d5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-b39d8050** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-471ec88c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-975dfce5** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-a11a5840** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-809f4b0b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-452ca8a2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-760f1665** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-2146d159** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-b7bf6034** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-ab89609b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-669b104a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-f5352855** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-4b4966d7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-b8b623f2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-e9650d7a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-9dec5ae9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-9a40aa26** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-5bc8400b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-c8a93635** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-797b1e6c** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-a5e3c4bc** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-68d774b4** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-a71c640d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-bfc2905d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-d022a3b9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-838e16bf** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-0442d1b3** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-3a4bc6ad** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-108f5fa5** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-a382f300** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-123864ac** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-3242d593** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-80d038ac** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-fd1e7499** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-0bcaaaca** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-d6a6d923** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-4e382239** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-ff52a655** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-1c06f04e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-9feb9bf8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-e053b413** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-4b72ebf3** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-f06a3c44** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-8dd52d77** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-a159331e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-d86e608b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-9bf19a93** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-91f54e8f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-18e754be** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-f80d8a30** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-3ac89f45** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-d5e95d25** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-0f7b1f5a** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-d997b0e7** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-68e9196a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-de81bedb** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-87de00e2** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-5377b144** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/practical/transportation/
+- **A11Y-82619a0a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-4b82c7cc** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-d3413131** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-00588e77** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-7675737c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-6154c141** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-679fa512** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-05d9e145** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-ce67942c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-b9c64069** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-53413642** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-6d2abf0b** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/support/
+- **A11Y-89bb21b3** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-285df517** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-6597cc93** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-92c802c9** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-fd970d3b** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-3d7f9239** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-a0e2c04a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-a9a2f408** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-63729404** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-52e032a1** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-99b60218** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-8834f8fa** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/support/
+- **A11Y-e53a10af** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-14b07381** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-886459f8** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-fff6eb65** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-4e0d5114** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-a4ea2d29** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-acc946ce** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-c44a6066** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-740b6bef** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-dabdd406** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-d5147074** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-d016baec** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-d4ef7100** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-5201ffb0** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-7c8616e8** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-daa0d806** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-056638c2** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-0929fcbc** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/support/
+- **A11Y-c554b132** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-c0fb553c** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-8cfcfc9e** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-b438688a** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-b7abfca3** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-fdc5c4b2** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-991dc804** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-1ea41a12** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-35a162d7** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-f4b13a3b** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-0b20504e** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-8d3fd96f** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-480f2644** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-e7adeab1** `rule:text_sensory_misuse|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-7609a859** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-ca1ccdbd** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-aa1d581f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-a11aca86** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-0ceb5e21** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-893c66b7** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/practical/jobcorner/
+- **A11Y-5a4b74c9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-bc90a575** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-e5e51bb2** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-b1f48005** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-7ded05f7** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-c10f1a5d** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-7258552f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-dc817480** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-7a7b88ac** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-7aa691ab** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-fdcd533c** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-55b19ff5** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-d50c25bd** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-8a89554f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-e803249d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-9bbe7726** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-ef8a6272** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-1cc29ec0** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/fosdem-2027-dates/
+- **A11Y-eb4e7718** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-d36c93a0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-27636cac** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-b81eb3ad** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-710213b0** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-477e2558** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-5fd3d365** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-74410a9a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-22f35585** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-54262d20** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-664661a4** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-5ef0a366** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-5600d03f** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-07408dce** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-4ece3905** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-20c66269** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-3d24be19** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-7122f4d6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-591514e3** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-6154744a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-55b57f94** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-2d9d2495** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-da3d1ec1** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-14e7fadb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-f3c33419** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-cf270455** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-80a89ecb** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-36524d96** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-f435fe02** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-ea755b75** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-3d60009a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-e37480f6** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/contact/
+- **A11Y-0950c353** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-ab204316** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-17f02341** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-35c9c56f** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-ff3e5c3b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-68a6519d** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-417a2366** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-fbaeb471** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-367ff489** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-39ccb32a** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-eb223ba6** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-f6b71f8e** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-027df79c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-92f6c750** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-c88663eb** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-8f5c7f43** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-76b73415** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-505d6e09** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-c495c9b9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-a8bf26c1** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-e409fd1e** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-77f38b65** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/contact/
+- **A11Y-110bdfe9** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-d500a780** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-3092f98b** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-8ea9a87a** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-5c774344** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-bd67dbbd** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-65d0b01f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-07a38ef5** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-49213b82** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-9503523f** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-c14b495b** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-a26495f7** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-d82987a1** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-ed9e2f45** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-7933ce28** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-e1c6f2ea** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-11807cda** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-2f2bd553** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/accepted-stands/
+- **A11Y-a7fe828a** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-5a7851f6** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-291a1736** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-9fe76d39** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-fc23df43** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-7105e010** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-57427cbf** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-c1eb05dd** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-04c3f100** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-5d799a4d** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-e1bbf004** `wcag:wcag143|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-e69e64a5** `rule:landmark-unique|light` (axe) — https://fosdem.org/2027/news/
+- **A11Y-b5d4a036** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-96177ec1** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-d024b78a** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-4a9d0829** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-c1217fa6** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-9c97b13f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-a31577fe** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-67fa2ac1** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-ea0e5446** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-8c84647f** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-2f9ba550** `wcag:wcag143|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-9f624c9d** `rule:landmark-unique|dark` (axe) — https://fosdem.org/2027/news/
+- **A11Y-11f38a9e** `rule:style_color_misuse|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-47510bde** `rule:style_highcontrast_visible|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-f93f67f7** `rule:style_viewport_resizable|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-ad79c7ac** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-97cacf79** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-35ca85b1** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-3b9b4b46** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-1f38dbe3** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-2a5b6e5c** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-16fcc8f9** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-04d0eb4f** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-c88ef9d2** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-c719e538** `rule:aria_navigation_label_unique|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-47c80f5b** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-ee7ea091** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-5ebf4659** `rule:text_contrast_sufficient|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-fd1a5791** `rule:style_focus_visible|light` (equalAccess) — https://fosdem.org/2027/news/
+- **A11Y-a3d0caf7** `rule:input_label_visible|light` (equalAccess) — https://fosdem.org/2027/news/
+
+## 🎯 Pages with Most Errors
+
+Focus your efforts on these pages to make the biggest impact. Scanner columns show raw failures; the Total column remains unique across the active scanners.
+
+| Page | axe Errors | Equal Access Errors | Total Unique | Page Title |
+|---|---:|---:|---:|---|
+| [View Page](https://fosdem.org/2027/news/accepted-developer-rooms/) | 160 | 87 | **247** | Accepted developer rooms &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/support/sponsors/) | 50 | 46 | **96** | Sponsors &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/archives/) | 60 | 36 | **96** | Previous FOSDEM Editions &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/practical/transportation/) | 38 | 27 | **65** | Transportation &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/contact/) | 32 | 22 | **54** | Contact &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/about/charter/) | 18 | 34 | **52** | The FOSDEM Charter &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/) | 20 | 30 | **50** | FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/) | 20 | 30 | **50** | FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/faq/) | 16 | 32 | **48** | Frequently Asked Questions &mdash; FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/support/) | 24 | 18 | **42** | Support FOSDEM &mdash; FOSDEM 2027 |
+
+## 🧭 Reflow Risk (WCAG 1.4.10)
+
+Page-level indicator: resizes to 320 CSS pixels wide and checks for horizontal overflow. This is a risk indicator, not a conformance verdict — see [Behavioral Accessibility Automation](https://github.com/mgifford/ACCESSIBILITY.md/blob/main/examples/BEHAVIORAL_ACCESSIBILITY_AUTOMATION.md) for what it can and cannot detect.
+
+✅ No horizontal overflow detected at 320px width on any scanned page!
+
+## 🏷️ Semantic HTML & ARIA (Semantica11y)
+
+Checks for non-semantic HTML and ARIA usage with suggestions for semantic improvements. These are suggestions, not WCAG conformance failures — see [semantica11y](https://npm.im/semantica11y) for the rule set.
+
+| Page | Errors | Warnings | Suggestions | Corroborated | Page Title |
+|---|---|---|---|---|---|
+| [View Page](https://fosdem.org/2027/) | 2 | 3 | 0 | - | FOSDEM 2027 |
+| [View Page](https://fosdem.org/2027/) | 2 | 3 | 0 | - | FOSDEM 2027 |
+
+## 🔧 Most Common Issues (ALFA)
+
+These ALFA accessibility issues appear most frequently across your pages:
+
+✅ No ALFA failed rules detected!
+
+## 🔧 Most Common Issues (axe)
+
+These axe accessibility issues appear most frequently across your pages:
+
+| Rule | Pages Affected | Documentation |
+|---|---:|---|
+| color-contrast | **20** of 20 | [View Rule](https://dequeuniversity.com/rules/axe/4.14.0/color-contrast) |
+| landmark-unique | **20** of 20 | [View Rule](https://dequeuniversity.com/rules/axe/4.14.0/landmark-unique) |
+
+> 💡 **Tip**: Click on the rule documentation links to learn how to fix each issue. Consider fixing the most common issues first for maximum impact.
+
+> 🤖 **Future Enhancement**: This report will soon include AI-powered fix suggestions for authenticated GitHub users (opt-in only, no auto-run AI).
+
+## 🔍 Cross-Page Patterns: Common HTML Issues
+
+These HTML patterns cause the same accessibility errors across multiple pages. **Fix the pattern once in your codebase to fix it everywhere!**
+
+### 🎯 Top Patterns to Fix (Highest Impact)
+
+#### Pattern 1: Affects 20 page(s) - 40 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<p class="license">
+        Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM
+        name and gear logo.
+    </p>
+```
+
+**XPath** (use in browser DevTools):
+```
+.license:nth-child(2)
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.license:nth-child(2)')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/practical/services/
+- https://fosdem.org/2027/news/call-for-stands/
+- https://fosdem.org/2027/about/charter/
+- *...and 15 more page(s)*
+
+---
+
+#### Pattern 2: Affects 20 page(s) - 40 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+.license:nth-child(2) > a
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.license:nth-child(2) > a')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/practical/services/
+- https://fosdem.org/2027/news/call-for-stands/
+- https://fosdem.org/2027/about/charter/
+- *...and 15 more page(s)*
+
+---
+
+#### Pattern 3: Affects 20 page(s) - 40 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<p class="license">
+        All content such as talks and biographies is the sole responsibility of the speaker.
+    </p>
+```
+
+**XPath** (use in browser DevTools):
+```
+.license:nth-child(3)
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.license:nth-child(3)')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/practical/services/
+- https://fosdem.org/2027/news/call-for-stands/
+- https://fosdem.org/2027/about/charter/
+- *...and 15 more page(s)*
+
+---
+
+#### Pattern 4: Affects 17 page(s) - 34 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+**Issue**: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+
+**HTML Pattern**:
+```html
+<nav class="topnav">
+        <ul>
+            <li><a href="/2027/news/">News</a></li>
+            <li><a href="/2027/about/">About</a></li>
+            <li><a href="/2027/practical/">Practical</a></li>
+            <li><a href="/2027/support/">Support</a></li>
+        </ul>
+    </nav>
+```
+
+**XPath** (use in browser DevTools):
+```
+.topnav
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.topnav')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/practical/services/
+- https://fosdem.org/2027/news/call-for-stands/
+- https://fosdem.org/2027/about/charter/
+- *...and 12 more page(s)*
+
+---
+
+#### Pattern 5: Affects 3 page(s) - 6 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="/2027/news/accepted-stands-complete/">FOSDEM 2027 Accepted Stands: complete list</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+.news-list > li:nth-child(1) > a
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.news-list > li:nth-child(1) > a')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+- https://fosdem.org/2027/news/
+
+---
+
+#### Pattern 6: Affects 3 page(s) - 6 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="/2027/news/junior-call-for-participation/">FOSDEM Junior Call for Participation</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+.news-list > li:nth-child(2) > a
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.news-list > li:nth-child(2) > a')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+- https://fosdem.org/2027/news/
+
+---
+
+#### Pattern 7: Affects 3 page(s) - 6 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="/2027/news/accepted-stands/">FOSDEM Accepted Stands</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+a[href$="accepted-stands/"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('a[href$="accepted-stands/"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+- https://fosdem.org/2027/news/
+
+---
+
+#### Pattern 8: Affects 3 page(s) - 6 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+**Issue**: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+
+**HTML Pattern**:
+```html
+<nav class="topnav">
+```
+
+**XPath** (use in browser DevTools):
+```
+.topnav
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.topnav')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org/2027/about/
+- https://fosdem.org/2027/support/
+- https://fosdem.org/2027/news/
+
+---
+
+#### Pattern 9: Affects 2 page(s) - 6 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="mailto:info@fosdem.org">info@fosdem.org</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+a[href$="mailto:info@fosdem.org"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('a[href$="mailto:info@fosdem.org"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org/2027/support/donate/
+- https://fosdem.org/2027/contact/
+
+---
+
+#### Pattern 10: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="/2027/news/">All news</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+.news-more > a[href$="news/"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.news-more > a[href$="news/"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+
+---
+
+#### Pattern 11: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="https://www.openstreetmap.org/?mlat=50.8138&amp;mlon=4.3817#map=16/50.8138/4.3817">Av. F. D. Roosevelt 50, 1050 <b>Brussels, Belgium</b></a>
+```
+
+**XPath** (use in browser DevTools):
+```
+.location > p > a
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('.location > p > a')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+
+---
+
+#### Pattern 12: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<b>Brussels, Belgium</b>
+```
+
+**XPath** (use in browser DevTools):
+```
+b
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('b')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org
+- https://fosdem.org/2027/
+
+---
+
+#### Pattern 13: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="mailto:sponsors@fosdem.org">sponsors@fosdem.org</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+a[href="mailto:sponsors@fosdem.org"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('a[href="mailto:sponsors@fosdem.org"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/contact/
+
+---
+
+#### Pattern 14: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="/2027/support/donate/">donations</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+a[href$="donate/"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('a[href$="donate/"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org/2027/support/sponsors/
+- https://fosdem.org/2027/about/
+
+---
+
+#### Pattern 15: Affects 2 page(s) - 4 occurrence(s)
+
+**Scanner**: axe
+**Rule**: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**Issue**: Elements must meet minimum color contrast ratio thresholds
+
+**HTML Pattern**:
+```html
+<a href="https://volunteers.fosdem.org/">volunteers.fosdem.org</a>
+```
+
+**XPath** (use in browser DevTools):
+```
+a[href$="volunteers.fosdem.org/"]
+```
+
+**How to Replicate**:
+1. Open any affected page in your browser
+2. Press F12 to open DevTools
+3. Go to Console tab
+4. Run: `$x('a[href$="volunteers.fosdem.org/"]')`
+5. The element will be highlighted
+
+**Affected Pages**:
+- https://fosdem.org/2027/support/
+- https://fosdem.org/2027/contact/
+
+---
+
+> 💡 **Pro Tip**: These patterns likely come from shared components or templates in your codebase. Fix them in the component/template source, and the fix will propagate to all affected pages.
+
+## 🧭 Pattern and Container Inventory
+
+**397 unique patterns** across 19 page(s) and 1055 occurrence(s). Container categories are selector-derived candidates, not component ownership.
+
+Locator coverage: 393 pattern(s) with selectors, 0 mixed, 4 HTML-only, 0 with no locator.
+
+| Category | Unique patterns | Occurrences | Pages |
+|---|---:|---:|---:|
+| Buttons | 4 | 8 | 1 |
+| Footer | 5 | 100 | 19 |
+| Document/page-level | 3 | 60 | 19 |
+| Headings | 14 | 28 | 1 |
+| Links | 54 | 168 | 19 |
+| Lists | 92 | 236 | 7 |
+| Main content | 216 | 289 | 17 |
+| Navigation | 3 | 80 | 19 |
+| Unassigned | 6 | 86 | 19 |
+
+### Patterns by container
+
+| Container | Rule | Engine | Occurrences | Pages | Pattern ID |
+|---|---|---|---:|---:|---|
+| Navigation (navigation) | landmark-unique | axe-core | 40 | 19 | A11Y-PAT-23C6D2602700 |
+| Links (link) | color-contrast | axe-core | 38 | 18 | A11Y-PAT-87759A5BF889 |
+| Unassigned | color-contrast | axe-core | 38 | 18 | A11Y-PAT-8C410B72221F |
+| Unassigned | color-contrast | axe-core | 38 | 18 | A11Y-PAT-E31F6C33E88C |
+| Footer (contentinfo) | input_label_visible | IBM Equal Access | 20 | 19 | A11Y-PAT-1FF6F4FB5092 |
+| Footer (contentinfo) | text_contrast_sufficient | IBM Equal Access | 20 | 19 | A11Y-PAT-30EF0FD0DF50 |
+| Footer (contentinfo) | text_contrast_sufficient | IBM Equal Access | 20 | 19 | A11Y-PAT-7495E1C303B3 |
+| Navigation (navigation) | aria_navigation_label_unique | IBM Equal Access | 20 | 19 | A11Y-PAT-896E67ABE821 |
+| Document/page-level (document) | style_highcontrast_visible | IBM Equal Access | 20 | 19 | A11Y-PAT-A131F02C5C0F |
+| Document/page-level (document) | style_color_misuse | IBM Equal Access | 20 | 19 | A11Y-PAT-D13BFFA8BDFD |
+| Document/page-level (document) | style_viewport_resizable | IBM Equal Access | 20 | 19 | A11Y-PAT-E12C005A8751 |
+| Footer (contentinfo) | style_focus_visible | IBM Equal Access | 20 | 19 | A11Y-PAT-E8BD92115683 |
+| Footer (contentinfo) | text_contrast_sufficient | IBM Equal Access | 20 | 19 | A11Y-PAT-F1F68A36DC39 |
+| Navigation (navigation) | aria_navigation_label_unique | IBM Equal Access | 20 | 19 | A11Y-PAT-FCEDC185A83C |
+| Links (link) | color-contrast | axe-core | 6 | 3 | A11Y-PAT-37EBC4D19789 |
+| Links (link) | color-contrast | axe-core | 6 | 3 | A11Y-PAT-EB84C41CCBC9 |
+| Links (link) | color-contrast | axe-core | 6 | 2 | A11Y-PAT-06BE2BCDD99B |
+| Lists (list) | color-contrast | axe-core | 6 | 2 | A11Y-PAT-7B9672FCA693 |
+| Main content (main) | text_contrast_sufficient | IBM Equal Access | 4 | 4 | A11Y-PAT-4A2EFB317814 |
+| Lists (list) | color-contrast | axe-core | 4 | 2 | A11Y-PAT-08790B5B688E |
+
+_Showing the first 20 of 397 patterns; see `patterns.csv` for all rows._
+
+## 📊 Detailed Results
+
+Complete scan results for all tested pages:
+
+| Submitted URL | Final URL | Status | HTTP | Redirected | Time (ms) | axe Errors | ALFA Errors | Equal Access Errors | AccessLint Errors | Duplicates | Notes |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| https://fosdem.org | https://fosdem.org/2027/ | OK | 200 | yes | 14381 | 20 | 0 | 30 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, element_tabbable_role_valid, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, svg_graphics_labelled, text_block_heading, text_contrast_sufficient |
+| https://fosdem.org/2027/support/sponsors/ | https://fosdem.org/2027/support/sponsors/ | OK | 200 | no | 15318 | 50 | 0 | 46 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, element_tabbable_unobscured, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/practical/services/ | https://fosdem.org/2027/practical/services/ | OK | 200 | no | 17207 | 10 | 0 | 12 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/news/call-for-stands/ | https://fosdem.org/2027/news/call-for-stands/ | OK | 200 | no | 16535 | 12 | 0 | 13 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_complementary_labelled, aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/about/charter/ | https://fosdem.org/2027/about/charter/ | OK | 200 | no | 18400 | 18 | 0 | 34 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, list_markup_review, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/ | https://fosdem.org/2027/ | OK | 200 | no | 17905 | 20 | 0 | 30 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, element_tabbable_role_valid, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, svg_graphics_labelled, text_block_heading, text_contrast_sufficient |
+| https://fosdem.org/2027/practical/conduct/ | https://fosdem.org/2027/practical/conduct/ | OK | 200 | no | 18138 | 12 | 0 | 13 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/archives/ | https://fosdem.org/2027/archives/ | OK | 200 | no | 18782 | 60 | 0 | 36 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/about/ | https://fosdem.org/2027/about/ | OK | 200 | no | 19018 | 14 | 0 | 15 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/news/junior-call-for-participation/ | https://fosdem.org/2027/news/junior-call-for-participation/ | OK | 200 | no | 18847 | 12 | 0 | 13 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_complementary_labelled, aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/faq/ | https://fosdem.org/2027/faq/ | OK | 200 | no | 18900 | 16 | 0 | 32 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, element_tabbable_unobscured, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/news/accepted-developer-rooms/ | https://fosdem.org/2027/news/accepted-developer-rooms/ | OK | 200 | no | 19164 | 160 | 0 | 87 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/support/donate/ | https://fosdem.org/2027/support/donate/ | OK | 200 | no | 18826 | 10 | 0 | 11 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/practical/transportation/ | https://fosdem.org/2027/practical/transportation/ | OK | 200 | no | 19120 | 38 | 0 | 27 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/support/ | https://fosdem.org/2027/support/ | OK | 200 | no | 18883 | 24 | 0 | 18 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/practical/jobcorner/ | https://fosdem.org/2027/practical/jobcorner/ | OK | 200 | no | 18807 | 8 | 0 | 12 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient, text_sensory_misuse |
+| https://fosdem.org/2027/news/fosdem-2027-dates/ | https://fosdem.org/2027/news/fosdem-2027-dates/ | OK | 200 | no | 18739 | 8 | 0 | 10 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/contact/ | https://fosdem.org/2027/contact/ | OK | 200 | no | 19110 | 32 | 0 | 22 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/news/accepted-stands/ | https://fosdem.org/2027/news/accepted-stands/ | OK | 200 | no | 19287 | 8 | 0 | 10 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+| https://fosdem.org/2027/news/ | https://fosdem.org/2027/news/ | OK | 200 | no | 18858 | 24 | 0 | 18 | 0 | 0 | Skipped (not requested) |
+|  |  |  |  |  |  |  |  |  |  | axe failed rules: color-contrast, landmark-unique |
+|  |  |  |  |  |  |  |  |  |  | Equal Access failed rules: aria_navigation_label_unique, input_label_visible, style_color_misuse, style_focus_visible, style_highcontrast_visible, style_viewport_resizable, text_contrast_sufficient |
+
+## Detailed Failure Information (ALFA)
+
+## Detailed Failure Information (axe)
+
+### https://fosdem.org
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands-complete/">FOSDEM 2027 Accepted Stands: complete list</a>`
+- XPath: `.news-list > li:nth-child(1) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/junior-call-for-participation/">FOSDEM Junior Call for Participation</a>`
+- XPath: `.news-list > li:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands/">FOSDEM Accepted Stands</a>`
+- XPath: `a[href$="accepted-stands/"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/">All news</a>`
+- XPath: `.news-more > a[href$="news/"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.openstreetmap.org/?mlat=50.8138&amp;mlon=4.3817#map=16/50.8138/4.3817">Av. F. D. Roosevelt 50, 1050 <b>Brussels, Belgium</b></a>`
+- XPath: `.location > p > a`
+
+*... and 13 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/support/sponsors/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:sponsors@fosdem.org">sponsors@fosdem.org</a>`
+- XPath: `a[href="mailto:sponsors@fosdem.org"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/contact/">contact</a>`
+- XPath: `p:nth-child(3) > a[href$="contact/"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/support/donate/">donations</a>`
+- XPath: `a[href$="donate/"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://opensource.google/">Google</a>`
+- XPath: `h3 > a[href$="opensource.google/"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.redhat.com/">Red Hat</a>`
+- XPath: `h3 > a[href$="redhat.com/"]`
+
+*... and 43 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/practical/services/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://nav.fosdem.org/l/red_cross/">on-campus interactive map</a>`
+- XPath: `p:nth-child(13) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://nav.fosdem.org/l/red_cross/">on-campus interactive map</a>`
+- XPath: `p:nth-child(13) > a`
+
+*... and 3 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/call-for-stands/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://fosdem.org/stands">Submit your proposal</a>`
+- XPath: `a[href$="stands"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:stands@fosdem.org">stands@fosdem.org</a>`
+- XPath: `a[href$="mailto:stands@fosdem.org"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+*... and 5 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/about/charter/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/about/">About</a>`
+- XPath: `p:nth-child(2) > a[href$="about/"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://fit.fosdem.org/wiki/Staff">https://fit.fosdem.org/wiki/Staff</a>`
+- XPath: `ul:nth-child(4) > li:nth-child(4) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://volunteers.fosdem.org">https://volunteers.fosdem.org</a>`
+- XPath: `a[href$="volunteers.fosdem.org"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://fit.fosdem.org">https://fit.fosdem.org</a>`
+- XPath: `a[href$="fit.fosdem.org"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:fit@lists.fosdem.org">fit@lists.fosdem.org</a>`
+- XPath: `a[href="mailto:fit@lists.fosdem.org"]`
+
+*... and 11 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands-complete/">FOSDEM 2027 Accepted Stands: complete list</a>`
+- XPath: `.news-list > li:nth-child(1) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/junior-call-for-participation/">FOSDEM Junior Call for Participation</a>`
+- XPath: `.news-list > li:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands/">FOSDEM Accepted Stands</a>`
+- XPath: `a[href$="accepted-stands/"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/">All news</a>`
+- XPath: `.news-more > a[href$="news/"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.openstreetmap.org/?mlat=50.8138&amp;mlon=4.3817#map=16/50.8138/4.3817">Av. F. D. Roosevelt 50, 1050 <b>Brussels, Belgium</b></a>`
+- XPath: `.location > p > a`
+
+*... and 13 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/practical/conduct/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:conduct@fosdem.org">conduct@fosdem.org</a>`
+- XPath: `a[href$="mailto:conduct@fosdem.org"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="tel:+3227887473">+32 2 788 74 73</a>`
+- XPath: `a[href="tel:+3227887473"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+*... and 5 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/archives/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://archive.fosdem.org/2026/">2026</a>`
+- XPath: `article > ul > li:nth-child(1) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://archive.fosdem.org/2025/">2025</a>`
+- XPath: `article > ul > li:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://archive.fosdem.org/2024/">2024</a>`
+- XPath: `article > ul > li:nth-child(3) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://archive.fosdem.org/2023/">2023</a>`
+- XPath: `article > ul > li:nth-child(4) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://archive.fosdem.org/2022/">2022</a>`
+- XPath: `article > ul > li:nth-child(5) > a`
+
+*... and 53 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/about/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/support/donate/">donations</a>`
+- XPath: `a[href$="donate/"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/support/sponsors/">sponsorship</a>`
+- XPath: `p:nth-child(8) > a[href$="sponsors/"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/about/charter/">here</a>`
+- XPath: `a[href$="charter/"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+*... and 7 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/junior-call-for-participation/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://fosdem.org/submit">https://fosdem.org/submit</a>`
+- XPath: `a[href$="submit"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://fosdem.org/2027/practical/conduct/">Code of Conduct</a>`
+- XPath: `p:nth-child(12) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+*... and 5 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/faq/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="#cfp">CFP</a>`
+- XPath: `a[href$="#cfp"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="#visiting">Visiting and Videos</a>`
+- XPath: `a[href$="#visiting"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="#registration">Registration</a>`
+- XPath: `a[href$="#registration"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="#general">FOSDEM in General</a>`
+- XPath: `a[href$="#general"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+*... and 9 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/accepted-developer-rooms/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://lists.fosdem.org/hyperkitty/list/fosdem@lists.fosdem.org/thread/JFFRW3GDJ2EVX2GGQLCJICLJAAMHLGIB/">Accessibility</a>`
+- XPath: `article > ul > li:nth-child(2) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://lists.fosdem.org/hyperkitty/list/fosdem@lists.fosdem.org/message/A4SSLX7XOBPV2N5EXB2BX6VFTMMB4G4F/">AI Plumbers</a>`
+- XPath: `article > ul > li:nth-child(3) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.iaru-r1.org/2026/fosdem-2027-amateur-radio-devroom/">Amateur Radio</a>`
+- XPath: `article > ul > li:nth-child(4) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://aldm-devroom.github.io/cfp/">Archives, Libraries, and Digital Memory</a>`
+- XPath: `article > ul > li:nth-child(5) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://discourse.atmosphere.community/t/call-for-participation-at-protocol-devroom-at-fosdem-2027/1381">AT Protocol</a>`
+- XPath: `article > ul > li:nth-child(6) > a`
+
+*... and 153 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/support/donate/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:info@fosdem.org">info@fosdem.org</a>`
+- XPath: `a[href$="mailto:info@fosdem.org"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="mailto:info@fosdem.org">info@fosdem.org</a>`
+- XPath: `a[href$="mailto:info@fosdem.org"]`
+
+*... and 3 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/practical/transportation/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="geo:50.812375,4.380734">Geo URI</a>`
+- XPath: `a[href="geo:50.812375,4.380734"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://maps.google.com/?q=50.812375,4.380734">Google Maps</a>`
+- XPath: `ul:nth-child(5) > li:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.openstreetmap.org/?mlat=50.812375&amp;mlon=4.380734#map=17/50.812375/4.380734">OpenStreetMap</a>`
+- XPath: `ul:nth-child(5) > li:nth-child(3) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.stib-mivb.be/home/travel/realtime/lines">STIB/MIVB line timetables</a>`
+- XPath: `p:nth-child(8) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://www.stib-mivb.be/home/buy">tickets and fares</a>`
+- XPath: `p:nth-child(9) > a`
+
+*... and 31 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/support/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/call-for-devrooms/">Organise a devroom</a>`
+- XPath: `a[href$="call-for-devrooms/"]`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://doc.volunteers.fosdem.org/devrooms/devroom-managers/">devroom managers manual</a>`
+- XPath: `li:nth-child(1) > a:nth-child(2)`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/call-for-stands/">Run a stand</a>`
+- XPath: `a[href$="call-for-stands/"]`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://volunteers.fosdem.org/">volunteers.fosdem.org</a>`
+- XPath: `a[href$="volunteers.fosdem.org/"]`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://doc.volunteers.fosdem.org/">volunteer documentation</a>`
+- XPath: `p:nth-child(6) > a:nth-child(2)`
+
+*... and 17 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/practical/jobcorner/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+*... and 1 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/fosdem-2027-dates/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+*... and 1 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/contact/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://lists.fosdem.org/postorius/lists/fosdem.lists.fosdem.org/">mailing list</a>`
+- XPath: `p:nth-child(3) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://matrix.to/#/#fosdem:fosdem.org?web-instance%5Belement.io%5D=chat.fosdem.org">the #fosdem:fosdem.org matrix room</a>`
+- XPath: `p:nth-child(4) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://matrix.to/#/#fosdem-space:fosdem.org?web-instance%5Belement.io%5D=chat.fosdem.org">#fosdem-space:fosdem.org</a>`
+- XPath: `p:nth-child(5) > a:nth-child(1)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://chat.fosdem.org/#/room/#fosdem:fosdem.org">chat.fosdem.org</a>`
+- XPath: `p:nth-child(5) > a:nth-child(2)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://lists.fosdem.org/postorius/lists/volunteers.lists.fosdem.org/">volunteers</a>`
+- XPath: `p:nth-child(7) > a`
+
+*... and 25 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/accepted-stands/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         All content such as talks and biographies is the sole responsibility of the speaker.     </p>`
+- XPath: `.license:nth-child(3)`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<p class="license">         Content licensed <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>, except the FOSDEM         name and gear logo.     </p>`
+- XPath: `.license:nth-child(2)`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC BY 4.0</a>`
+- XPath: `.license:nth-child(2) > a`
+
+*... and 1 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">         <ul>             <li><a href="/2027/news/">News</a></li>             <li><a href="/2027/about/">About</a></li>             <li><a href="/2027/practical/">Practical</a></li>             <li><a href="/2027/support/">Support</a></li>         </ul>     </nav>`
+- XPath: `.topnav`
+
+### https://fosdem.org/2027/news/
+
+#### Rule: [color-contrast](https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright)
+**Impact**: serious
+**WCAG**: [SC 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum) (Level AA)
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands-complete/">FOSDEM 2027 Accepted Stands: complete list</a>`
+- XPath: `.news-list > li:nth-child(1) > a`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-stands/">FOSDEM Accepted Stands</a>`
+- XPath: `a[href$="accepted-stands/"]`
+
+**Failure 3:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/junior-call-for-participation/">FOSDEM Junior Call for Participation</a>`
+- XPath: `.news-list > li:nth-child(3) > a`
+
+**Failure 4:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/accepted-developer-rooms/">Accepted developer rooms</a>`
+- XPath: `.news-list > li:nth-child(4) > a`
+
+**Failure 5:**
+- First identified: 2026-11-17
+- Message: Elements must meet minimum color contrast ratio thresholds
+- HTML: `<a href="/2027/news/call-for-main-track/">FOSDEM 2027 Call for Main Track talks</a>`
+- XPath: `.news-list > li:nth-child(5) > a`
+
+*... and 17 more failures for this rule*
+
+#### Rule: [landmark-unique](https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright)
+**Impact**: moderate
+
+**Failure 1:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
+**Failure 2:**
+- First identified: 2026-11-17
+- Message: Landmarks should have a unique role or role/label/title (i.e. accessible name) combination
+- HTML: `<nav class="topnav">`
+- XPath: `.topnav`
+
