@@ -11,6 +11,7 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `semantica11y-audit.mjs` - Semantic HTML/ARIA suggestions via `semantica11y` (always runs; reuses axe's rendered HTML, no extra browser launch).
 - `resolve-browser.mjs` - Resolves which Playwright browser (chromium/firefox/webkit) a scan issue requested.
 - `crawl-urls.mjs` - Discovers additional same-site URLs to scan when requested.
+- `compare-scans.mjs` - Compares two stored `report.json` files without rescanning; writes JSON, Markdown, CSV and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.
 
 ## Scan engines
@@ -25,6 +26,7 @@ separate from WCAG violation counts: `reflowRisk` and `semantica11y`.
 - `npm run run:parse`
 - `npm run run:validate`
 - `npm run run:scan -- <issue-event-json-file> <output-dir>`
+- `npm run compare:scans -- <baseline-report.json> <comparison-report.json> [--page-map <baseline-url>=<comparison-url>] [--out <file>] [--summary <file>] [--csv <file>] [--html <file>]`
 
 `run-scan.mjs` generates:
 

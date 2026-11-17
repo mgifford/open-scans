@@ -28,6 +28,7 @@
 20. [Data Flow](#20-data-flow)
 21. [Capacity & Limits](#21-capacity--limits)
 22. [Definition of Done](#22-definition-of-done)
+23. [Accessibility Comparison](#23-accessibility-comparison)
 
 ---
 
@@ -1520,6 +1521,54 @@ A single accessibility scan report is considered **done** when all of the follow
 
 - [ ] Generated report artifacts are committed to `main` and GitHub Pages deployment completes successfully
 - [ ] The scan respects the configured total timeout, and partial results are committed if the timeout is reached
+
+---
+
+## 23. Accessibility Comparison
+
+Phase A adds an explicit baseline-versus-comparison report over stored Open Scans reports. It does not run a scanner, browser or LLM.
+
+### 23.1 Module and CLI
+
+| Item | Value |
+| :--- | :--- |
+| Module | `scanner/compare-scans.mjs` |
+| CLI | `npm run compare:scans -- <baseline-report.json> <comparison-report.json>` |
+| Schema | `scanner/schemas/accessibility-comparison.schema.json` |
+| Outputs | JSON, Markdown, CSV, self-contained HTML |
+
+### 23.2 Matching and classification
+
+- Default page pairing is exact normalized URL only.
+- `--page-map` supplies a reviewed baseline/comparison URL pair; missing or duplicate mappings are errors.
+- Finding identity uses canonical `a11y/*` fingerprints when present, then legacy `fingerprint`/`patternId`, then a deterministic derived id that is explicitly disclosed.
+- Classification: `new`, `persistent`, `details-changed`, `not-observed`, `not-evaluated`.
+- `not-observed` is never called fixed and always has `confirmedRemediation: false`; `summary.confirmedRemediations` is always `0`.
+- Page/engine gaps, HTTP error pages and testing-condition differences are retained as coverage gaps/limitations.
+- New findings and absences on engines not run in both reports become `not-evaluated`, not regressions/remediations.
+
+### 23.3 Testing conditions
+
+The comparison records browser, viewport, colour scheme, page-load delay, selected and executed engines, release identifiers, scan timestamps and per-page engine errors. Differences are visible and lower confidence.
+
+### 23.4 Exports
+
+- JSON follows `accessibility-comparison/1`.
+- Markdown includes summary, conditions, page coverage, five finding sections, coverage gaps and limitations.
+- CSV contains one row per finding with original occurrence IDs.
+- HTML is semantic and usable without JavaScript: skip link, headings, captioned tables, visible qualifications, light/dark and forced-colours support, no animation and no combined score.
+
+### 23.5 Tests
+
+`tests/unit/compare-scans.test.mjs` has 19 tests covering new/persistent/details/not-observed/not-evaluated results, explicit staging mappings, invalid mappings, viewport and engine changes, failed pages, missing fingerprints, redaction, historical QualWeb/reflow/Semantica11y data, and exports.
+
+### 23.6 Deliberate boundaries
+
+- No new crawler, accessibility engine, performance engine, Sitespeed, Lighthouse, CO2.js or Firefox profiling.
+- No automatic cross-repository scan.
+- No component-ownership inference in Phase A.
+- No external investigation import in Phase A.
+- No conformance or functional-equivalence claim from automated results.
 
 ---
 
