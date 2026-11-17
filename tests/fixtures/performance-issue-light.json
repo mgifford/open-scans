@@ -1,0 +1,10 @@
+{
+  "issue": {
+    "number": 502,
+    "html_url": "https://github.com/mgifford/open-scans/issues/502",
+    "title": "PERF: Lightweight check for example.gov",
+    "created_at": "2026-11-16T15:00:00Z",
+    "user": { "login": "octocat" },
+    "body": "### Performance mode\nlight\n\n### Domain\nhttps://example.gov\n\n### URLs\nhttps://example.gov/about\n\n### Priority URLs\nhttps://example.gov/contact\n\n### Top task URLs\nhttps://example.gov/apply\n\n### Evidence sources\nopen-scans-report: reports/issues/issue-42/2026-11-01T00-00-00-000Z/report.json\n\n### Browser\nchromium\n\n### Profile\ndesktop\n"
+  }
+}

@@ -28,6 +28,7 @@
 20. [Data Flow](#20-data-flow)
 21. [Capacity & Limits](#21-capacity--limits)
 22. [Definition of Done](#22-definition-of-done)
+23. [Performance Investigation Request (PR 1)](#23-performance-investigation-request-pr-1)
 
 ---
 
@@ -1520,6 +1521,52 @@ A single accessibility scan report is considered **done** when all of the follow
 
 - [ ] Generated report artifacts are committed to `main` and GitHub Pages deployment completes successfully
 - [ ] The scan respects the configured total timeout, and partial results are committed if the timeout is reached
+
+---
+
+## 23. Performance Investigation Request (PR 1)
+
+`PERF:` is a separate request type from `SCAN:`. PR 1 implements only the request contract and its validation; it adds no browser measurement, no provider adapter and no published report.
+
+### 23.1 Contract
+
+- Schema: `scanner/schemas/performance-request.schema.json`
+- Version: `performance-request/1`
+- Parser: `scanner/parse-performance-issue.mjs` (Node built-ins plus existing Open Scans helpers only)
+- Workflow: `.github/workflows/performance-request.yml` (read-only, 5-minute timeout, artifact retention 14 days)
+
+Required fields include the mode, site origin/host/URLs, evidence sources, three bounded limits, browser/profile/viewport, consent state, source-report reuse permission, maximum evidence age, priority/top-task URLs, and deterministic provenance (`requestId`, `inputDigest`).
+
+### 23.2 Modes and default budgets
+
+| Mode | Pages | Lighthouse audits | Sitespeed pages | Accessibility engines |
+|---|---:|---:|---:|---|
+| `reuse` | 20 | 0 | 0 | none |
+| `light` | 20 | 5 | 0 | none |
+| `deep` | 20 | 5 | 3 | none |
+| `combined` | 20 | 5 | 3 | explicit only |
+
+These are proposed defaults, not permanent policy. `reuse` forbids browser budgets. `light` forbids Sitespeed. `deep`/`combined` require at least one Sitespeed page. Firefox cannot carry Lighthouse audits because Lighthouse is Chromium-only under this contract.
+
+### 23.3 Separation guarantees
+
+- A `PERF:` request produces no `engines` field and does not import Playwright.
+- Accessibility engines exist only under `accessibility.engines` in `combined` mode, and must be explicit (no random default).
+- A `SCAN:` title is rejected by the performance parser.
+- An `Accessibility engines` section outside `combined` mode is an error, not an implicit scan.
+- Unknown body sections cannot become request fields (`additionalProperties: false` and a strict parser).
+- Evidence locations are https-only or a bounded `reports/...json` repository path; credentials, private hosts and credential-like query parameters are rejected.
+- Page URLs reuse the existing private-network and non-web-document policy.
+- Page, priority and top-task URLs must stay on the requested site (subdomains allowed).
+- The parser and its workflow perform no network access and no process execution.
+
+### 23.4 Deliberately omitted in PR 1
+
+Browser providers, Sitespeed, CO2.js computation, adapters, evidence normalization, the Performance Explorer, the static JSON API, AI prompts, MCP, hypothesis export, combined execution, and any change to `SCAN:` behaviour.
+
+### 23.5 Tests
+
+`tests/unit/parse-performance-issue.test.mjs` covers reusable fixtures, defaults, mode boundaries, source validation, credential/private-host rejection, budget limits, deterministic identity, schema/parser consistency, and the no-browser guarantee. See `docs/performance/PHASE-0-ASSESSMENT.md` for the baseline test result and the one pre-existing, timezone-dependent accessibility-report test failure.
 
 ---
 

@@ -19,6 +19,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [How it works](#how-it-works)
 - [Quick Start](#quick-start)
 - [Choose Scanning Engines](#choose-scanning-engines)
+- [Performance Investigation (`PERF:`)](#performance-investigation-perf)
 - [View Scan Results](#view-scan-results)
 - [Managing Your Scans](#managing-your-scans)
 - [Scanning Triggers](#scanning-triggers)
@@ -121,6 +122,60 @@ Engine: axe, alfa
 - `SCAN: ALL Complete audit` — Runs all five engines
 - `SCAN: Homepage check` — Runs axe + one randomly chosen engine (default)
 - Body: `Engine: axe accesslint` — Runs axe and AccessLint regardless of title
+
+## Performance Investigation (`PERF:`)
+
+Performance investigation is a **separate request type** from accessibility scanning. It is currently at **PR 1: request contract**. A `PERF:` issue is parsed and validated, and the structured request is published as a 14-day workflow artifact. PR 1 launches **no browser**, runs **no accessibility engine**, calls no external API and commits no report.
+
+```text
+PERF: example.gov performance investigation
+```
+
+The issue body selects a mode and, optionally, existing evidence:
+
+```markdown
+### Performance mode
+reuse
+
+### Domain
+example.gov
+
+### URLs
+https://example.gov/
+https://example.gov/services
+
+### Evidence sources
+vital-core: https://vital.example.gov/api/v1/example.gov/snapshot.json
+firefox-energy-scanner: https://example.gov/energy/result.json
+
+### Limits
+Max pages to inspect: 20
+Max Lighthouse audits: 0
+Max Sitespeed pages: 0
+```
+
+| Mode | What it may do |
+| :--- | :--- |
+| `reuse` | Import existing evidence only. Performs no browser measurement. |
+| `light` | Bounded Lighthouse and lightweight resource analysis only where evidence is missing. |
+| `deep` | Add Sitespeed.io on a small selected page set. |
+| `combined` | Run an explicitly selected accessibility scan as well. |
+
+A performance request never implies axe, ALFA, IBM Equal Access or AccessLint. A `SCAN:` request never becomes a performance scan, and `SCAN:` never triggers Sitespeed.io. In `combined` mode the accessibility engines must be named explicitly; there is no random default.
+
+Contract and assessment documents:
+
+- [`scanner/schemas/performance-request.schema.json`](./scanner/schemas/performance-request.schema.json) — versioned `performance-request/1` contract
+- [`scanner/parse-performance-issue.mjs`](./scanner/parse-performance-issue.mjs) — deterministic parser and validator (no browser, no network)
+- [`docs/performance/performance-request-contract.md`](./docs/performance/performance-request-contract.md) — body format, fields, modes and validation rules
+- [`docs/performance/PHASE-0-ASSESSMENT.md`](./docs/performance/PHASE-0-ASSESSMENT.md) — provider inventory, duplicate-measurement map and compatibility risks
+- [`docs/performance/ADR-001-performance-workflow-in-open-scans.md`](./docs/performance/ADR-001-performance-workflow-in-open-scans.md) — why the workflow lives here
+
+Use the **Performance Request** issue template, or run the parser locally:
+
+```bash
+node scanner/parse-performance-issue.mjs tests/fixtures/performance-issue-reuse.json
+```
 
 ## View Scan Results
 
@@ -264,6 +319,8 @@ The **Accessibility Engine Version Check** workflow (`engine-version-check.yml`)
 
 ### Backend (GitHub Actions)
 - **scanner/parse-issue.mjs**: Extracts URLs and engine specifications from scan request issues
+- **scanner/parse-performance-issue.mjs**: Parses and validates `PERF:` requests without launching a browser or running an accessibility engine
+- **scanner/schemas/performance-request.schema.json**: Versioned `performance-request/1` contract
 - **scanner/validate-targets.mjs**: Server-side URL validation
 - **scanner/run-scan.mjs**: Executes accessibility scans with selected engines and generates reports
 - **scanner/generate-reports-html.mjs**: Builds the reports dashboard
@@ -422,6 +479,7 @@ Development of `open-scans` has used AI coding assistants for:
 | Claude Code (claude-sonnet-5) | Completed a pre-existing, uncommitted `analyzeDuplicateTitles`/`normalizeTitle` implementation found unwired in `scanner/run-scan.mjs`: added it to the scan summary and to `toMarkdownReport()` as a "Duplicate Page Titles" (WCAG 2.4.2) report section, fixed a JSDoc return-type mismatch, and added unit test coverage | Development – July 2026 |
 | Claude Code (claude-sonnet-5) | Added `scanner/fingerprint-core.mjs` to dual-write the versioned, cross-project `a11y/pattern/v1`/`a11y/occurrence/v1` fingerprints from mgifford/ACCESSIBILITY.md alongside the existing `A11Y-xxxxxxxx` Instance ID and Pattern ID (verified against ACCESSIBILITY.md's published golden test vectors); renamed `computeChangeTracking`'s `resolvedCount`/`resolvedIssues` output fields to `notObservedCount`/`notObservedIssues` and updated both consumers so absence from a scan is no longer labelled as resolution | Development – July 2026 |
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
