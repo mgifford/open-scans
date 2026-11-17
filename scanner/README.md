@@ -5,6 +5,18 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 ## Files
 
 - `parse-issue.mjs` - Parses issue bodies into normalized `ScanRequest` data.
+- `parse-performance-issue.mjs` - Parses `PERF:` issue bodies into a validated `performance-request/1` object. Performs no browser work and no network access.
+- `performance-evidence.mjs` - Assembles, merges and validates the common `performance-evidence/1` format.
+- `performance-source-loader.mjs` - Loads repo/local/https evidence with DNS-aware and redirect-aware checks.
+- `run-performance-reuse.mjs` - Reuse-only investigation runner; no browser launches.
+- `performance-page-selection.mjs` - Bounded candidate selection, family coverage and Lighthouse reuse planning.
+- `performance-lighthouse.mjs` - Pinned Lighthouse runner, raw JSON retention and evidence normalization.
+- `run-performance-light.mjs` - Bounded light investigation runner with cost reporting.
+- `performance-sitespeed.mjs` - Pinned Sitespeed Docker provider and analysisstorer/sustainable parser.
+- `run-performance-deep.mjs` - Targeted Sitespeed deep-investigation runner.
+- `performance-investigation.mjs` - Cross-page component/resource grouping, deduplication and ranking.
+- `run-performance-investigation.mjs` - Offline investigation package builder (no browser/network).
+- `adapters/` - Adapters for Open Scans reports, Firefox Energy Scanner, Vital Core and Open Site Review.
 - `validate-targets.mjs` - Validates URL syntax and blocks private/internal targets.
 - `run-scan.mjs` - Fetches accepted URLs, runs the scan engines below, and generates reports.
 - `reflow-risk.mjs` - WCAG 1.4.10 reflow check (always runs; page-level indicator, not a rule engine).
@@ -18,6 +30,8 @@ This module contains issue parsing, URL safety checks, and scan execution/report
 - `optimization-investigation.mjs` - Maps comparison findings to optimization scenarios and accessibility concerns (no scanner).
 - `run-optimization-investigation.mjs` - CLI for the opt-in optimization review; writes JSON, Markdown and accessible HTML.
 - `schemas/scan-request.schema.json` - Canonical payload structure and constraints.
+- `schemas/performance-request.schema.json` - Versioned `performance-request/1` contract for `PERF:` issues.
+- `schemas/performance-evidence.schema.json` - Versioned `performance-evidence/1` common evidence contract.
 
 ## Scan engines
 
@@ -34,6 +48,16 @@ retired and is not selectable; legacy report fields remain readable.
 - `npm run run:scan -- <issue-event-json-file> <output-dir>`
 - `npm run compare:scans -- <baseline-report.json> <comparison-report.json> [--page-map <baseline-url>=<comparison-url>] [--external-references <file>] [--out <file>] [--summary <file>] [--csv <file>] [--html <file>]`
 - `npm run investigate:optimization -- <comparison.json> [--scenario <kind>] [--request <request.json>] [--out <file>] [--summary <file>] [--html <file>]`
+- `npm run run:parse-performance -- <issue-event-json-file>`
+- `npm run run:performance-reuse -- <performance-request.json> --source <type>=<location> --allow-local --out <file>`
+- `npm run run:performance-light -- <performance-request.json> [--out <file>] [--run-report <file>] [--artifacts-dir <dir>] [--chrome-path <file>]`
+- `npm run run:performance-deep -- <performance-request.json> [--out <file>] [--run-report <file>] [--artifacts-dir <dir>]`
+- `npm run run:performance-investigation -- <performance-evidence.json> [--out <file>] [--summary <file>]`
+
+`parse-performance-issue.mjs` accepts `--out <file>`, `--summary <file>` and
+`--allow-invalid`. It exits non-zero on an invalid request. `reuse` requests are
+validated with zero Lighthouse and zero Sitespeed budget; no browser module is
+imported.
 
 `run-scan.mjs` generates:
 

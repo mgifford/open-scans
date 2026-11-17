@@ -1,0 +1,484 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/performance-request.schema.json",
+  "title": "PerformanceRequest",
+  "description": "Versioned contract for Open Scans `PERF:` issue requests. A performance request never implies an accessibility engine, and an accessibility request never implies a performance provider. Budgets are limits, not quotas: a `reuse` request must not launch a browser.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "issueNumber",
+    "issueUrl",
+    "submittedBy",
+    "submittedAt",
+    "issueTitle",
+    "requestLabel",
+    "mode",
+    "site",
+    "evidenceSources",
+    "limits",
+    "measurement",
+    "consent",
+    "reuseSourceReports",
+    "maxEvidenceAgeDays",
+    "priorityUrls",
+    "topTaskUrls",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "performance-request/1"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Deterministic identifier derived from the issue number and the normalized title and body. Re-parsing the same issue revision yields the same id.",
+      "pattern": "^[0-9]+-perf-[0-9a-f]{12}$"
+    },
+    "issueNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "issueUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "submittedBy": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "submittedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "issueTitle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "requestLabel": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "mode": {
+      "$ref": "#/$defs/mode"
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "host", "urls"],
+      "properties": {
+        "origin": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "host": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 253
+        },
+        "urls": {
+          "$ref": "#/$defs/siteUrlList"
+        }
+      }
+    },
+    "evidenceSources": {
+      "type": "array",
+      "description": "Existing evidence to reuse. An empty list is valid but means a `reuse` request has nothing to import yet.",
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/$defs/evidenceSource"
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxPagesToInspect",
+        "maxLighthouseAudits",
+        "maxSitespeedPages"
+      ],
+      "properties": {
+        "maxPagesToInspect": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500
+        },
+        "maxLighthouseAudits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "maxSitespeedPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["browser", "profile", "viewport", "viewportPreset"],
+      "properties": {
+        "browser": {
+          "type": "string",
+          "enum": ["chromium", "firefox"]
+        },
+        "profile": {
+          "type": "string",
+          "enum": ["mobile", "desktop"]
+        },
+        "viewport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 200,
+              "maximum": 10000
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 200,
+              "maximum": 10000
+            }
+          }
+        },
+        "viewportPreset": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["not-configured", "not-needed", "accepted", "rejected"]
+        }
+      }
+    },
+    "reuseSourceReports": {
+      "type": "boolean"
+    },
+    "maxEvidenceAgeDays": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3650
+    },
+    "priorityUrls": {
+      "$ref": "#/$defs/nominatedUrlList"
+    },
+    "topTaskUrls": {
+      "$ref": "#/$defs/nominatedUrlList"
+    },
+    "accessibility": {
+      "type": "object",
+      "description": "Present only for an explicitly requested combined scan. Performance modes never infer accessibility engines.",
+      "additionalProperties": false,
+      "required": ["engines"],
+      "properties": {
+        "engines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["all", "axe", "alfa", "accesslint", "equalaccess"]
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestOrigin",
+        "parser",
+        "parserVersion",
+        "contractVersion",
+        "inputDigest",
+        "modeSource",
+        "defaultedFields"
+      ],
+      "properties": {
+        "requestOrigin": {
+          "type": "string",
+          "const": "github-issue"
+        },
+        "parser": {
+          "type": "string",
+          "const": "scanner/parse-performance-issue.mjs"
+        },
+        "parserVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contractVersion": {
+          "type": "string",
+          "const": "performance-request/1"
+        },
+        "inputDigest": {
+          "type": "string",
+          "description": "sha256 of the normalized issue title and body. The body itself is never copied into the request.",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "modeSource": {
+          "type": "string",
+          "enum": ["body", "default"]
+        },
+        "defaultedFields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "mode",
+              "browser",
+              "profile",
+              "viewport",
+              "consent",
+              "reuseSourceReports",
+              "maxEvidenceAgeDays",
+              "maxPagesToInspect",
+              "maxLighthouseAudits",
+              "maxSitespeedPages",
+              "requestLabel",
+              "submittedAt"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "mode": {
+      "type": "string",
+      "enum": ["reuse", "light", "deep", "combined"]
+    },
+    "pageUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 2048
+    },
+    "siteUrlList": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/pageUrl"
+      }
+    },
+    "nominatedUrlList": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "#/$defs/pageUrl"
+      }
+    },
+    "evidenceSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "location", "locationKind"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "open-scans-report",
+            "firefox-energy-scanner",
+            "vital-core",
+            "open-site-review"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "locationKind": {
+          "type": "string",
+          "enum": ["https", "repo-path"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "locationKind": {
+                "const": "repo-path"
+              }
+            },
+            "required": ["locationKind"]
+          },
+          "then": {
+            "properties": {
+              "type": {
+                "const": "open-scans-report"
+              },
+              "location": {
+                "pattern": "^reports/[A-Za-z0-9._/-]+\\.json$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "locationKind": {
+                "const": "https"
+              }
+            },
+            "required": ["locationKind"]
+          },
+          "then": {
+            "properties": {
+              "location": {
+                "pattern": "^https://"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "reuse"
+          }
+        },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "limits": {
+            "properties": {
+              "maxLighthouseAudits": {
+                "const": 0
+              },
+              "maxSitespeedPages": {
+                "const": 0
+              }
+            }
+          },
+          "reuseSourceReports": {
+            "const": true
+          }
+        },
+        "not": {
+          "required": ["accessibility"]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "light"
+          }
+        },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "limits": {
+            "properties": {
+              "maxSitespeedPages": {
+                "const": 0
+              }
+            }
+          }
+        },
+        "not": {
+          "required": ["accessibility"]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "deep"
+          }
+        },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "limits": {
+            "properties": {
+              "maxSitespeedPages": {
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "not": {
+          "required": ["accessibility"]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "combined"
+          }
+        },
+        "required": ["mode"]
+      },
+      "then": {
+        "required": ["accessibility"],
+        "properties": {
+          "limits": {
+            "properties": {
+              "maxSitespeedPages": {
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "measurement": {
+            "properties": {
+              "browser": {
+                "const": "firefox"
+              }
+            },
+            "required": ["browser"]
+          }
+        },
+        "required": ["measurement"]
+      },
+      "then": {
+        "properties": {
+          "limits": {
+            "properties": {
+              "maxLighthouseAudits": {
+                "const": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -121,15 +121,34 @@ function unwrapGoogleUrl(url) {
   return url;
 }
 
-function extractSection(body, sectionName) {
-  const sectionPattern = new RegExp(`(?:^|\\n)#{1,6}\\s*${sectionName}\\s*\\n([\\s\\S]*?)(?=\\n#{1,6}\\s|$)`, "i");
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Extract the content of a Markdown section (e.g. "### URLs") from an issue body.
+ * Exported so the performance-request parser can reuse the same section format.
+ * @param {string} body - Issue body
+ * @param {string} sectionName - Heading text without the leading #
+ * @returns {string} Section content, or "" when absent
+ */
+export function extractSection(body, sectionName) {
+  const escaped = escapeRegExp(sectionName.trim());
+  const sectionPattern = new RegExp(`(?:^|\\n)#{1,6}\\s*${escaped}\\s*\\n([\\s\\S]*?)(?=\\n#{1,6}\\s|$)`, "i");
   const match = body.match(sectionPattern);
   return match ? match[1].trim() : "";
 }
 
-function extractNamedValue(text, label) {
+/**
+ * Extract a "Label: value" line from free text.
+ * @param {string} text - Text to search
+ * @param {string} label - Label text before the colon
+ * @returns {string|null}
+ */
+export function extractNamedValue(text, label) {
   if (!text) return null;
-  const match = text.match(new RegExp(`(?:^|\\n)${label}:\\s*(.+)$`, "im"));
+  const escaped = escapeRegExp(label.trim());
+  const match = text.match(new RegExp(`(?:^|\\n)${escaped}:\\s*(.+)$`, "im"));
   return match?.[1]?.trim() || null;
 }
 
@@ -391,7 +410,7 @@ export function parseScanIssue(issueEvent) {
   };
 }
 
-function validateUriLike(value) {
+export function validateUriLike(value) {
   try {
     const parsed = new URL(value);
     return ["http:", "https:"].includes(parsed.protocol);

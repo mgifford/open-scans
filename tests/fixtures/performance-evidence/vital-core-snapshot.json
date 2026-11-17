@@ -1,0 +1,100 @@
+{
+  "schema_version": "1",
+  "domain": "example.gov",
+  "key": "example.gov",
+  "generated_at": "2026-11-05T08:00:00.000Z",
+  "latest_week": "2026-W45",
+  "summary": {
+    "critical_count": 1,
+    "serious_count": 2,
+    "moderate_count": 3,
+    "minor_count": 4,
+    "total_findings": 10,
+    "pages_scanned": 40
+  },
+  "reporting": {
+    "engine_finding_count": 120,
+    "remediation_group_count": 10,
+    "remediation_task_count": null,
+    "counting_basis": "engine_observations_not_tasks"
+  },
+  "coverage": {
+    "access_level": "partial",
+    "pages_scanned": 40,
+    "pages_audited": 30,
+    "pages_attempted": 45,
+    "pages_succeeded": 30,
+    "pages_blocked": 5,
+    "pages_skipped": 10,
+    "known_urls_estimate": 1200,
+    "known_urls_note": "Inventory estimate of known/scanned URLs; not an authoritative site inventory.",
+    "engines": [
+      { "engine": "lighthouse", "pages": 12, "share": 30 },
+      { "engine": "axe", "pages": 30, "share": 75 }
+    ]
+  },
+  "inventory": {
+    "totalKnownPages": 1200,
+    "pagesWithKnownIssues": 240,
+    "scannedThisWeek": 40
+  },
+  "weekly": {
+    "series": [
+      {
+        "domain": "example.gov",
+        "week": "2026-W45",
+        "generatedAt": "2026-11-05T08:00:00.000Z",
+        "pagesScanned": 40,
+        "sustainability": {
+          "pages": 12,
+          "medianBytes": 1807591,
+          "meanBytes": 1539698,
+          "medianRequests": 47,
+          "totalCo2g": 8.21,
+          "meanCo2g": 0.2282,
+          "totalEnergyWh": 16.63,
+          "meanEnergyWh": 0.4619
+        },
+        "lighthouse": {
+          "pagesSampled": 12,
+          "medianPerformance": 66,
+          "metrics": {
+            "firstContentfulPaintMs": 1872,
+            "largestContentfulPaintMs": 5028,
+            "speedIndexMs": 2668,
+            "totalBlockingTimeMs": 398,
+            "cumulativeLayoutShift": 0.066
+          },
+          "recommendations": [
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 45000,
+              "savingsMs": 120
+            }
+          ]
+        }
+      }
+    ],
+    "diffs": []
+  },
+  "findings": {
+    "VS-1": {
+      "finding_id": "VS-1",
+      "finding_ref": "VFR-11111111",
+      "occurrence_id": "VO-11111111",
+      "observation_id": "VOB-11111111",
+      "rule_id": "color-contrast",
+      "rule_label": "Elements must meet minimum color contrast ratio thresholds",
+      "engine": "axe",
+      "severity": "serious",
+      "reporting": {
+        "page_family": null,
+        "component_scope": null,
+        "distinct_urls": {
+          "sample": ["https://example.gov/"]
+        }
+      }
+    }
+  }
+}

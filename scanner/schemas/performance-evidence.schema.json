@@ -1,0 +1,1511 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/performance-evidence.schema.json",
+  "title": "PerformanceEvidence",
+  "description": "Versioned common evidence format for performance investigations. It is an adapter layer over source tools, not a replacement for the Firefox Energy Scanner component graph or a new measurement engine. Measurements from different tools, browsers and methods remain separate records; missing values stay null/absent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "generatedAt",
+    "request",
+    "site",
+    "sources",
+    "measurementSources",
+    "pages",
+    "pageFamilies",
+    "componentTypes",
+    "componentInstances",
+    "resources",
+    "findings",
+    "experiments",
+    "investigation",
+    "mergeDecisions",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "performance-evidence/1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestId",
+        "mode",
+        "contractVersion"
+      ],
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "$ref": "#/$defs/mode"
+        },
+        "contractVersion": {
+          "type": "string",
+          "const": "performance-request/1"
+        }
+      }
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "origin",
+        "host",
+        "sourceIds",
+        "coverage"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "origin": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "host": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 253
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "discoveredPages",
+            "inspectedPages",
+            "basis",
+            "limitations"
+          ],
+          "properties": {
+            "discoveredPages": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "inspectedPages": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "measurementSources": {
+      "type": "array",
+      "description": "The tool's own measurement-source declarations (for example firefox-dom, firefox-network, lighthouse). These are not evidence files.",
+      "items": {
+        "$ref": "#/$defs/measurementSource"
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/page"
+      }
+    },
+    "pageFamilies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pageFamily"
+      }
+    },
+    "componentTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/componentType"
+      }
+    },
+    "componentInstances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/componentInstance"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/experiment"
+      }
+    },
+    "investigation": {
+      "type": "array",
+      "description": "A source-provided investigation queue, preserving its order and rank. It is a sort order, not a score.",
+      "items": {
+        "$ref": "#/$defs/investigationItem"
+      }
+    },
+    "mergeDecisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/mergeDecision"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]*$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "reuse",
+        "light",
+        "deep",
+        "combined"
+      ]
+    },
+    "isoDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "value",
+        "unit",
+        "scope",
+        "sourceId",
+        "measurementSourceId",
+        "tool",
+        "toolVersion",
+        "browser",
+        "method",
+        "boundary",
+        "evidenceRef",
+        "confidence",
+        "limitations"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "scope": {
+          "$ref": "#/$defs/metricScope"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "measurementSourceId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "tool": {
+          "$ref": "#/$defs/tool"
+        },
+        "toolVersion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 60
+        },
+        "browser": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "evidenceRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "ms",
+        "bytes",
+        "count",
+        "score",
+        "ratio",
+        "percent",
+        "requests",
+        "mWh",
+        "Wh",
+        "joules",
+        "gCO2e",
+        "ugCO2e"
+      ]
+    },
+    "metricScope": {
+      "type": "string",
+      "enum": [
+        "page",
+        "component-type",
+        "component-instance",
+        "resource",
+        "resource-per-page",
+        "page-family",
+        "site",
+        "run",
+        "median-over-pages",
+        "max-over-pages",
+        "instance-own",
+        "instance-inclusive"
+      ]
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "lighthouse",
+        "firefox-energy-scanner",
+        "vital-core",
+        "sitespeed",
+        "browsertime",
+        "co2js",
+        "open-scans",
+        "open-site-review",
+        "project-wallace",
+        "chromium-trace",
+        "webnrg",
+        "unknown"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "adapter",
+        "adapterVersion",
+        "tool",
+        "toolVersion",
+        "location",
+        "locationKind",
+        "collectedAt",
+        "importedAt",
+        "contentDigest",
+        "schemaVersion",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "open-scans-report",
+            "firefox-energy-scanner",
+            "vital-core",
+            "open-site-review",
+            "lighthouse",
+            "sitespeed"
+          ]
+        },
+        "adapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapterVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "toolVersion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 60
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "locationKind": {
+          "type": "string",
+          "enum": [
+            "https",
+            "repo-path",
+            "local-file",
+            "artifact"
+          ]
+        },
+        "collectedAt": {
+          "$ref": "#/$defs/isoDate"
+        },
+        "importedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "contentDigest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "schemaVersion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 80
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "measurementSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "browser",
+        "tool",
+        "toolVersion",
+        "timestamp",
+        "method",
+        "boundary"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "browser": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "toolVersion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 60
+        },
+        "timestamp": {
+          "$ref": "#/$defs/isoDate"
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "normalizedUrl",
+        "familyId",
+        "sourceIds",
+        "contexts",
+        "metrics",
+        "sourceRefs",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "normalizedUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "familyId": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pageContext"
+          }
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/metric"
+          }
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pageContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "browser",
+        "viewport",
+        "profile",
+        "method",
+        "sourceId"
+      ],
+      "properties": {
+        "browser": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "viewport": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "height"
+          ],
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "profile": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "mobile",
+            "desktop",
+            null
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "pageFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "sourceId",
+        "basis",
+        "pageIds",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "measured-structure",
+            "configured-route",
+            "imported",
+            "unknown"
+          ]
+        },
+        "pageIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "componentType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "sourceComponentId",
+        "signature",
+        "label",
+        "identificationMethod",
+        "confidence",
+        "pageFamilyIds",
+        "instanceIds",
+        "resourceIds",
+        "findingIds",
+        "possibleDuplicateOf",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceComponentId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "signature": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "identificationMethod": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "annotation",
+            "semantic",
+            "structural",
+            "inferred",
+            "configured-signature",
+            "unknown"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "pageFamilyIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "instanceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "resourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "findingIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "possibleDuplicateOf": {
+          "type": "array",
+          "description": "A cross-reference, never a merge. Different implementations with the same label stay separate.",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "componentInstance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "pageId",
+        "typeId",
+        "selector",
+        "parentId",
+        "childIds",
+        "resourceIds",
+        "findingIds",
+        "sourceRefs",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "pageId": {
+          "$ref": "#/$defs/id"
+        },
+        "typeId": {
+          "$ref": "#/$defs/id"
+        },
+        "selector": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "parentId": {
+          "$ref": "#/$defs/nullableId"
+        },
+        "childIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "resourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "findingIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "url",
+        "normalizedUrl",
+        "kind",
+        "thirdParty",
+        "sizeBytes",
+        "sizeStatistic",
+        "timingMs",
+        "pageIds",
+        "instanceIds",
+        "attribution",
+        "sourceRefs",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "normalizedUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "script",
+            "stylesheet",
+            "font",
+            "image",
+            "iframe",
+            "media",
+            "other"
+          ]
+        },
+        "thirdParty": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "sizeBytes": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sizeStatistic": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "median",
+            "max",
+            "single",
+            null
+          ]
+        },
+        "timingMs": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "pageIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "instanceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "attribution": {
+          "type": "string",
+          "enum": [
+            "direct",
+            "inferred",
+            "page-level"
+          ]
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "sourceFindingId",
+        "kind",
+        "title",
+        "target",
+        "metric",
+        "evidenceClass",
+        "confidence",
+        "evidenceRef",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceFindingId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 200
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "id"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "page",
+                "component-type",
+                "component-instance",
+                "resource",
+                "site"
+              ]
+            },
+            "id": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "metric": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidenceClass": {
+          "type": "string",
+          "enum": [
+            "observed",
+            "associated",
+            "inferred",
+            "tested",
+            "confirmed",
+            "context-only",
+            "candidate-explanation"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidenceRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "load",
+            "interaction",
+            "idle",
+            "unknown"
+          ],
+          "description": "When the observation occurs, when the source states it. Unknown is not a claim that it occurs in every phase."
+        }
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "hypothesis",
+        "intervention",
+        "workload",
+        "baseline",
+        "variant",
+        "validationChecks",
+        "results",
+        "physicalEnergyStatus",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "hypothesis": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2000
+        },
+        "intervention": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "selector",
+            "description"
+          ],
+          "properties": {
+            "kind": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 100
+            },
+            "selector": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 1000
+            },
+            "description": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2000
+            }
+          }
+        },
+        "workload": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pageId",
+            "idleMs",
+            "journey"
+          ],
+          "properties": {
+            "pageId": {
+              "$ref": "#/$defs/nullableId"
+            },
+            "idleMs": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "journey": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 500
+            }
+          }
+        },
+        "baseline": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "variant": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "validationChecks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "results": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "delta",
+            "unit",
+            "runs",
+            "recordedAt",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not-run",
+                "completed",
+                "failed",
+                "incomplete",
+                "refused"
+              ]
+            },
+            "delta": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "unit": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "mWh",
+                "Wh",
+                "joules",
+                null
+              ]
+            },
+            "runs": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "recordedAt": {
+              "$ref": "#/$defs/isoDate"
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "physicalEnergyStatus": {
+          "type": "string",
+          "enum": [
+            "not-measured",
+            "measured",
+            "not-applicable"
+          ]
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRef"
+          }
+        }
+      }
+    },
+    "investigationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "id",
+        "kind",
+        "title",
+        "evidence",
+        "because",
+        "reach",
+        "workload",
+        "remediation",
+        "confidence",
+        "where",
+        "audits",
+        "sourceId"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "because": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reach": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pages",
+            "of",
+            "families"
+          ],
+          "properties": {
+            "pages": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "of": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "families": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "workload": {
+          "type": "object",
+          "description": "Separate indicators in their own units. Never summed into a score.",
+          "additionalProperties": false,
+          "properties": {
+            "elements": {
+              "type": "number"
+            },
+            "shareOfPage": {
+              "type": "number"
+            },
+            "endlessAnimations": {
+              "type": "number"
+            },
+            "chromiumMainThreadMs": {
+              "type": "number"
+            },
+            "transferBytes": {
+              "type": "number"
+            }
+          }
+        },
+        "remediation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "where": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "page",
+              "selector",
+              "rect",
+              "belowFold"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "selector": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rect": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  }
+                }
+              },
+              "belowFold": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "audits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "mergeDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity",
+        "keptId",
+        "mergedIds",
+        "aliases",
+        "reason",
+        "sourceIds",
+        "differences"
+      ],
+      "properties": {
+        "entity": {
+          "type": "string",
+          "enum": [
+            "page",
+            "resource",
+            "site"
+          ]
+        },
+        "keptId": {
+          "$ref": "#/$defs/id"
+        },
+        "mergedIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "differences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "ref"
+      ],
+      "properties": {
+        "sourceId": {
+          "$ref": "#/$defs/id"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "nullableId": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

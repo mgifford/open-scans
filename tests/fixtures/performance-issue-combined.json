@@ -1,0 +1,10 @@
+{
+  "issue": {
+    "number": 503,
+    "html_url": "https://github.com/mgifford/open-scans/issues/503",
+    "title": "PERF: Combined audit for example.gov",
+    "created_at": "2026-11-16T16:00:00Z",
+    "user": { "login": "octocat" },
+    "body": "### Performance mode\ncombined\n\n### Domain\nexample.gov\n\n### URLs\nhttps://example.gov/\n\n### Evidence sources\nvital-core: https://vital.example.gov/api/v1/example.gov/snapshot.json\n\n### Accessibility engines\naxe, alfa\n\n### Limits\nMax pages to inspect: 10\nMax Lighthouse audits: 2\nMax Sitespeed pages: 2\n\n### Browser\nchromium\n\n### Profile\nmobile\n\n### Viewport\n390x844\n\n### Consent state\naccepted\n"
+  }
+}

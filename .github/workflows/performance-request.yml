@@ -1,0 +1,73 @@
+name: Performance Request Validation
+
+# PR 1 boundary: validate and publish the structured PERF: request only.
+# This workflow launches no browser, runs no accessibility engine, calls no
+# external API and commits nothing. Measurement providers are added later and
+# must stay independently selectable.
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: performance-request-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate-performance-request:
+    if: startsWith(github.event.issue.title, 'PERF:') && github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Persist event payload
+        run: |
+          mkdir -p .tmp
+          cat > .tmp/issue-event.json <<'EOF'
+          ${{ toJson(github.event) }}
+          EOF
+
+      - name: Validate performance request
+        id: validate
+        run: |
+          set +e
+          node scanner/parse-performance-issue.mjs \
+            .tmp/issue-event.json \
+            --out .tmp/performance-request.json \
+            --summary .tmp/performance-summary.md
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [ -f .tmp/performance-summary.md ]; then
+            cat .tmp/performance-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit 0
+
+      - name: Upload validated request
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-request-${{ github.event.issue.number }}
+          path: |
+            .tmp/performance-request.json
+            .tmp/performance-summary.md
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Fail when the request is invalid
+        if: steps.validate.outputs.exit_code != '0'
+        run: |
+          echo "::error::PERF: request is invalid. See the job summary for exact errors. No scan was started and no browser was launched."
+          exit 1

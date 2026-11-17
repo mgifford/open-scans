@@ -1,0 +1,46 @@
+{
+  "config": {
+    "targets": "defaults",
+    "scanMode": "urls",
+    "sameOriginOnly": true
+  },
+  "report": {
+    "scannedFiles": 3,
+    "sourceErrors": [],
+    "findings": [
+      {
+        "id": "document-write",
+        "title": "Avoid document.write",
+        "file": "https://example.gov/services",
+        "line": 42,
+        "severity": "medium",
+        "kind": "legacy-pattern",
+        "message": "document.write blocks parsing.",
+        "recommendation": "Use DOM APIs.",
+        "unsupportedPercent": 4,
+        "supportSource": "browserslist"
+      }
+    ],
+    "cssAnalysis": [
+      {
+        "file": "https://example.gov/assets/site.css",
+        "quality": {
+          "performance": 42,
+          "maintainability": 71,
+          "complexity": 55,
+          "violations": [
+            { "id": "css-quality:duplicate-selectors", "score": 12 }
+          ]
+        },
+        "complexityMetrics": {
+          "sourceLinesOfCode": 5200,
+          "totalRules": 1400,
+          "totalSelectors": 2100,
+          "totalDeclarations": 6800,
+          "importants": 37,
+          "maxSelectorSpecificity": "1,2,3"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,192 @@
+name: Performance Request
+description: Investigate performance using existing evidence first, then bounded Lighthouse or Sitespeed collection.
+title: "PERF: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Performance investigation request
+
+        This request is **separate** from `SCAN:`. It never starts axe, ALFA, IBM Equal Access or AccessLint unless you explicitly choose **combined** mode and name the engines.
+
+        Start with **reuse** whenever you already have evidence. `reuse` performs no browser measurement.
+
+        | Mode | What it may do |
+        | --- | --- |
+        | `reuse` | Import existing evidence only. No browser. |
+        | `light` | Bounded Lighthouse and lightweight resource analysis where evidence is missing. |
+        | `deep` | Add Sitespeed.io on a small selected page set. |
+        | `combined` | Run an explicitly selected accessibility scan as well. |
+
+  - type: input
+    id: domain
+    attributes:
+      label: Domain
+      description: Public site domain or origin. Do not include a path, query string or credentials.
+      placeholder: example.gov
+    validations:
+      required: true
+
+  - type: textarea
+    id: urls
+    attributes:
+      label: URLs
+      description: Optional exact public page URLs on this site, one per line. Maximum 500. Leave blank to let the bounded discovery step choose pages.
+      placeholder: |
+        https://example.gov/
+        https://example.gov/services
+    validations:
+      required: false
+
+  - type: dropdown
+    id: performance-mode
+    attributes:
+      label: Performance mode
+      description: Choose `reuse` first. Combined mode also requires an explicit accessibility engine selection below.
+      options:
+        - reuse
+        - light
+        - deep
+        - combined
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence-sources
+    attributes:
+      label: Evidence sources
+      description: |
+        Optional. One source per line, as `<type>: <location>`. Supported types:
+        `open-scans-report`, `firefox-energy-scanner`, `vital-core`, `open-site-review`.
+        Remote locations must be public `https://` URLs without credentials.
+        Open Scans reports may use a repository path such as `reports/issues/issue-42/2026-11-01T00-00-00-000Z/report.json`.
+        MCP servers and arbitrary tools are not supported.
+      placeholder: |
+        vital-core: https://vital.example.gov/api/v1/example.gov/snapshot.json
+        firefox-energy-scanner: https://example.gov/energy/result.json
+    validations:
+      required: false
+
+  - type: textarea
+    id: priority-urls
+    attributes:
+      label: Priority URLs
+      description: Optional pages to include in the representative sample, one per line. Must be on this site.
+      placeholder: https://example.gov/apply
+    validations:
+      required: false
+
+  - type: textarea
+    id: top-task-urls
+    attributes:
+      label: Top task URLs
+      description: Optional top-task pages from Top Task Finder or a similar source, one per line. Must be on this site.
+      placeholder: https://example.gov/renew
+    validations:
+      required: false
+
+  - type: textarea
+    id: limits
+    attributes:
+      label: Limits
+      description: Optional. Defaults are 20 pages, 5 Lighthouse audits, and 0 or 3 Sitespeed pages depending on mode.
+      placeholder: |
+        Max pages to inspect: 20
+        Max Lighthouse audits: 5
+        Max Sitespeed pages: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Lighthouse is Chromium-only. Choose Firefox only when Lighthouse audits are set to 0 (for example, a Sitespeed deep run).
+      options:
+        - chromium
+        - firefox
+      default: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Profile
+      description: Mobile or desktop measurement profile.
+      options:
+        - desktop
+        - mobile
+      default: 0
+    validations:
+      required: false
+
+  - type: input
+    id: viewport
+    attributes:
+      label: Viewport
+      description: Optional preset name or size such as `1280x800` or `390x844`. Leave blank to use the profile default.
+      placeholder: 1280x800
+    validations:
+      required: false
+
+  - type: dropdown
+    id: consent-state
+    attributes:
+      label: Consent state
+      description: Record the consent condition under which evidence was or will be collected. This is metadata, not authorisation to bypass a consent choice.
+      options:
+        - not-configured
+        - not-needed
+        - accepted
+        - rejected
+      default: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reuse-source-reports
+    attributes:
+      label: Reuse source reports
+      description: Allow the investigation to reuse compatible evidence from the sources above. Required for `reuse` mode.
+      options:
+        - "true"
+        - "false"
+      default: 0
+    validations:
+      required: false
+
+  - type: input
+    id: max-evidence-age
+    attributes:
+      label: Max evidence age (days)
+      description: Evidence older than this is reported as stale rather than silently reused. Enter a whole number from 1 to 3650.
+      placeholder: "30"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: accessibility-engines
+    attributes:
+      label: Accessibility engines
+      description: Only used in combined mode. Choose a fixed engine list; a random default makes the run harder to reproduce.
+      options:
+        - none
+        - axe
+        - alfa
+        - equalaccess
+        - accesslint
+        - all
+      default: 0
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **What happens next:** this issue is validated and the structured `performance-request/1` JSON is published as a workflow artifact. PR 1 does not launch a browser, run an accessibility engine or commit a report.
+
+        **Privacy:** issue text and request fields are public. Do not include tokens, credentials, private URLs or sensitive query parameters.

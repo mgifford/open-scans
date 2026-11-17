@@ -1,0 +1,608 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/performance-investigation.schema.json",
+  "title": "PerformanceInvestigation",
+  "description": "Versioned cross-page investigation package derived from performance-evidence/1. It groups evidence; it is not a measurement and contains no overall energy or carbon score.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "generatedAt",
+    "evidence",
+    "site",
+    "candidates",
+    "byComponentType",
+    "byPage",
+    "byFamily",
+    "byResource",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "performance-investigation/1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "generatedAt",
+        "requestId"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "performance-evidence/1"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "requestId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "host"
+      ],
+      "properties": {
+        "origin": {
+          "type": "string",
+          "format": "uri"
+        },
+        "host": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "byComponentType": {
+      "$ref": "#/$defs/candidateIndex"
+    },
+    "byPage": {
+      "$ref": "#/$defs/candidateIndex"
+    },
+    "byFamily": {
+      "$ref": "#/$defs/candidateIndex"
+    },
+    "byResource": {
+      "$ref": "#/$defs/candidateIndex"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]*$"
+    },
+    "candidateIndex": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "findingId",
+        "pageId",
+        "value",
+        "unit",
+        "tool",
+        "browser",
+        "boundary"
+      ],
+      "properties": {
+        "findingId": {
+          "$ref": "#/$defs/id"
+        },
+        "pageId": {
+          "$ref": "#/$defs/id"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "ms",
+            "bytes",
+            "count",
+            "score",
+            "ratio",
+            "percent",
+            "requests",
+            "mWh",
+            "Wh",
+            "joules",
+            "gCO2e",
+            "ugCO2e"
+          ]
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "browser": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "phase",
+        "evidenceClass",
+        "confidence",
+        "occurrences",
+        "pageIds",
+        "instanceIds",
+        "findingIds",
+        "measurements",
+        "uncertainty"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "load",
+            "interaction",
+            "idle",
+            "unknown"
+          ]
+        },
+        "evidenceClass": {
+          "type": "string",
+          "enum": [
+            "observed",
+            "associated",
+            "inferred",
+            "tested",
+            "confirmed",
+            "candidate-explanation"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "occurrences": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pageIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "instanceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "findingIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "measurements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/measurement"
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "intervention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "description",
+        "realistic",
+        "diagnosticOnly",
+        "experimentKindCandidate",
+        "basis"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "realistic": {
+          "type": "boolean"
+        },
+        "diagnosticOnly": {
+          "type": "boolean"
+        },
+        "experimentKindCandidate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 100
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        }
+      }
+    },
+    "priority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceTier",
+        "reachPages",
+        "reachFamilies",
+        "workload",
+        "rankReason"
+      ],
+      "properties": {
+        "evidenceTier": {
+          "type": "string",
+          "enum": [
+            "tested",
+            "observed",
+            "associated",
+            "inferred",
+            "candidate-explanation",
+            "structure"
+          ]
+        },
+        "reachPages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reachFamilies": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "workload": {
+          "type": "object",
+          "description": "Separate indicators in their own units. Never summed into a score.",
+          "additionalProperties": false,
+          "properties": {
+            "observations": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "domNodesMax": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "transferBytesMax": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "mainThreadMsMax": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "resourceBytesMax": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          }
+        },
+        "rankReason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "rank",
+        "kind",
+        "title",
+        "label",
+        "signature",
+        "identificationMethod",
+        "componentTypeIds",
+        "pageIds",
+        "familyIds",
+        "instanceIds",
+        "resourceIds",
+        "findingIds",
+        "resourceFindingIds",
+        "observations",
+        "coverage",
+        "confidence",
+        "ownershipEstablished",
+        "uncertainty",
+        "interventions",
+        "existingExperimentIds",
+        "possibleDuplicateOf",
+        "priority",
+        "category",
+        "categoryBasis"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "component",
+            "resource",
+            "page"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        },
+        "signature": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        },
+        "identificationMethod": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 100
+        },
+        "componentTypeIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "pageIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "familyIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "instanceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "resourceIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "findingIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "resourceFindingIds": {
+          "type": "array",
+          "description": "Resource findings linked to this component through a declared/loaded resource. They are not component-owned costs.",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/observation"
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pages",
+            "of",
+            "families",
+            "basis"
+          ],
+          "properties": {
+            "pages": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "of": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "families": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "ownershipEstablished": {
+          "type": "boolean",
+          "description": "PR 5 never establishes component ownership of a performance cost; this is always false."
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interventions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/intervention"
+          }
+        },
+        "existingExperimentIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "possibleDuplicateOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "priority": {
+          "$ref": "#/$defs/priority"
+        },
+        "thirdParty": {
+          "type": "boolean",
+          "description": "Resource candidate: source-declared third-party state."
+        },
+        "media": {
+          "type": "boolean",
+          "description": "Resource candidate: media resource."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "site-header",
+            "primary-navigation",
+            "sidebar-navigation",
+            "footer",
+            "search-form",
+            "result-list",
+            "table",
+            "chart",
+            "dashboard",
+            "embedded-application",
+            "video-media",
+            "cookie-consent",
+            "shared-third-party",
+            "resource",
+            "page-evidence",
+            "other",
+            "unknown"
+          ]
+        },
+        "categoryBasis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        }
+      }
+    }
+  }
+}

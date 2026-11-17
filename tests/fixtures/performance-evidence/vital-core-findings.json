@@ -1,0 +1,69 @@
+{
+  "schema_version": "1",
+  "domain": "example.gov",
+  "week": "2026-W45",
+  "generated_at": "2026-11-05T08:00:00.000Z",
+  "pages_scanned": 40,
+  "scope_of_analysis": {
+    "page_families": {
+      "families": [
+        {
+          "id": "services",
+          "label": "Service pages",
+          "url_count": 12,
+          "urls": ["https://example.gov/services", "https://example.gov/apply"],
+          "implementation_basis": "configured_route"
+        }
+      ]
+    },
+    "shared_components": {
+      "components": [
+        {
+          "id": "site-navigation",
+          "label": "Site navigation",
+          "confidence": "medium",
+          "signals": ["class", "dom_ancestry"],
+          "findings": 4
+        }
+      ]
+    },
+    "component_groups": {
+      "groups": [
+        {
+          "key": "component:site-navigation",
+          "label": "Site navigation",
+          "type": "component:site-navigation",
+          "findings": 4,
+          "confidence": "medium"
+        }
+      ]
+    }
+  },
+  "findings": [
+    {
+      "finding_id": "VS-2",
+      "finding_ref": "VFR-22222222",
+      "occurrence_id": "VO-22222222",
+      "observation_id": "VOB-22222222",
+      "rule_id": "link-name",
+      "rule_label": "Links must have discernible text",
+      "engine": "alfa",
+      "severity": "serious",
+      "selector": "header nav a.icon",
+      "reporting": {
+        "page_family": {
+          "key": "services",
+          "label": "Service pages"
+        },
+        "component_scope": {
+          "classification": "candidate_shared_component",
+          "ownership_established": false,
+          "component_type": "site-navigation"
+        },
+        "distinct_urls": {
+          "sample": ["https://example.gov/services", "https://example.gov/apply"]
+        }
+      }
+    }
+  ]
+}

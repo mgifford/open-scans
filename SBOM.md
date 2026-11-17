@@ -4,7 +4,7 @@ This document tracks primary software components used by `open-scans`, including
 
 ## Scope and source of truth
 
-- **Repository snapshot**: `b07851a` (main at the time of this documentation correction)
+- **Repository snapshot**: `85dba2a` (main before merging the performance stack)
 - **NPM inventory source**: `package.json` + `package-lock.json` (direct dependencies)
 - **Python tooling source**: `pyproject.toml`
 - **Project license**: [AGPL-3.0](./LICENSE)
@@ -28,12 +28,23 @@ This document tracks primary software components used by `open-scans`, including
 | `@siteimprove/alfa-formatter-earl` | `^0.84.2` | `0.84.2` | MIT |
 | `@siteimprove/alfa-formatter-json` | `^0.84.2` | `0.84.2` | MIT |
 | `accessibility-checker` | `^4.0.30` | `4.0.30` | Apache-2.0 |
+| `lighthouse` | `13.6.0` (exact) | `13.6.0` | Apache-2.0 |
 | `playwright` | `^1.64.1` | `1.64.1` | Apache-2.0 |
 | `semantica11y` | `^1.0.1` | `1.0.1` | MIT |
 | `@playwright/test` | `^1.64.1` | `1.64.1` | Apache-2.0 |
 
 QualWeb is not a current dependency and is not selectable. Historical report
 fields may still contain QualWeb data, which remains readable.
+
+`lighthouse` is pinned exactly because its audit set, metric names and configuration
+flags change between releases; performance evidence records its version with every
+measurement.
+
+## External runtime images
+
+| Image | Tag | Purpose | License | Notes |
+|---|---|---|---|---|
+| `sitespeedio/sitespeed.io` | `43.0.0` (pinned) | Optional targeted Sitespeed/Browsertime deep investigation | MIT | Docker image pulled at run time; image ID recorded in the run report; output-only volume mount and resource limits |
 
 ## Python dependencies
 

@@ -35,6 +35,7 @@
 27. [Comparison Report Interface](#27-comparison-report-interface)
 28. [Complete Comparison Exports](#28-complete-comparison-exports)
 29. [Accessibility Pattern and Container Inventory](#29-accessibility-pattern-and-container-inventory)
+30. [Performance Investigation Request](#30-performance-investigation-request)
 
 ---
 
@@ -1812,6 +1813,116 @@ Every scan writes `patternInventory` in `report.json`, a section in `report.md`/
 ### 29.5 Tests
 
 `tests/unit/pattern-inventory.test.mjs` covers grouping, navigation/forms/header/footer/table/unknown categories, canonical identity, duplicates, reflow/Semantica11y, locator coverage and CSV. `tests/unit/engine-locators.test.mjs` covers Equal Access `path.dom`/`path.xpath` fallback. Run-scan and interactive-report tests cover the artifacts and HTML section.
+
+## 30. Performance Investigation Request (PR 1)
+
+`PERF:` is a separate request type from `SCAN:`. PR 1 implements only the request contract and its validation; it adds no browser measurement, no provider adapter and no published report.
+
+### 30.1 Contract
+
+- Schema: `scanner/schemas/performance-request.schema.json`
+- Version: `performance-request/1`
+- Parser: `scanner/parse-performance-issue.mjs` (Node built-ins plus existing Open Scans helpers only)
+- Workflow: `.github/workflows/performance-request.yml` (read-only, 5-minute timeout, artifact retention 14 days)
+
+Required fields include the mode, site origin/host/URLs, evidence sources, three bounded limits, browser/profile/viewport, consent state, source-report reuse permission, maximum evidence age, priority/top-task URLs, and deterministic provenance (`requestId`, `inputDigest`).
+
+### 30.2 Modes and default budgets
+
+| Mode | Pages | Lighthouse audits | Sitespeed pages | Accessibility engines |
+|---|---:|---:|---:|---|
+| `reuse` | 20 | 0 | 0 | none |
+| `light` | 20 | 5 | 0 | none |
+| `deep` | 20 | 5 | 3 | none |
+| `combined` | 20 | 5 | 3 | explicit only |
+
+These are proposed defaults, not permanent policy. `reuse` forbids browser budgets. `light` forbids Sitespeed. `deep`/`combined` require at least one Sitespeed page. Firefox cannot carry Lighthouse audits because Lighthouse is Chromium-only under this contract.
+
+### 30.3 Separation guarantees
+
+- A `PERF:` request produces no `engines` field and does not import Playwright.
+- Accessibility engines exist only under `accessibility.engines` in `combined` mode, and must be explicit (no random default).
+- A `SCAN:` title is rejected by the performance parser.
+- An `Accessibility engines` section outside `combined` mode is an error, not an implicit scan.
+- Unknown body sections cannot become request fields (`additionalProperties: false` and a strict parser).
+- Evidence locations are https-only or a bounded `reports/...json` repository path; credentials, private hosts and credential-like query parameters are rejected.
+- Page URLs reuse the existing private-network and non-web-document policy.
+- Page, priority and top-task URLs must stay on the requested site (subdomains allowed).
+- The parser and its workflow perform no network access and no process execution.
+
+### 30.4 Deliberately omitted in PR 1
+
+Browser providers, Sitespeed, CO2.js computation, adapters, evidence normalization, the Performance Explorer, the static JSON API, AI prompts, MCP, hypothesis export, combined execution, and any change to `SCAN:` behaviour.
+
+### 30.5 Tests
+
+`tests/unit/parse-performance-issue.test.mjs` covers reusable fixtures, defaults, mode boundaries, source validation, credential/private-host rejection, budget limits, deterministic identity, schema/parser consistency, and the no-browser guarantee. See `docs/performance/PHASE-0-ASSESSMENT.md` for the baseline test result and the one pre-existing, timezone-dependent accessibility-report test failure.
+
+### 30.6 PR 2: common evidence model and adapters
+
+PR 2 adds `performance-evidence/1`, a versioned adapter layer for existing evidence. It preserves Firefox Energy Scanner IDs (`pg-`, `ct-`, `ci-`, `rs-`, `fd-`) and Vital Core `VFR-`/`VO-` references, keeps measurements from different browsers/methods separate, and never fills a missing metric with zero.
+
+Adapters:
+
+| Adapter | Source | Imported evidence |
+| :--- | :--- | :--- |
+| A | Open Scans report | URLs, browser/viewport, accessibility context only |
+| B | Firefox Energy Scanner | Graph, families, resources, findings, Lighthouse, investigation queue, experiments |
+| C | Vital Core | Sampled pages, families, configured components, accessibility context, Lighthouse medians, existing CO2.js metrics |
+| D | Open Site Review | CSS quality and compatibility candidates; no runtime cost |
+
+- Pages merge by normalized URL; the Firefox Energy Scanner ID is canonical when present.
+- Resources merge by URL; differing sizes are recorded, never averaged.
+- Component types are never merged by label; same-label types are cross-referenced with `possibleDuplicateOf`.
+- Findings are never merged across sources; duplicate IDs are retained with a suffix.
+- CO2.js figures imported from Vital Core keep their `modelled-transfer` boundary and are not recalculated.
+- `reuse` mode is executed by `scanner/run-performance-reuse.mjs`, which records `browserLaunches: 0`.
+- Remote evidence is https-only, DNS-checked before the request, redirect-checked, size-limited and JSON-only. Address pinning at connect time remains a PR 3/4 task.
+
+Tests: `tests/unit/performance-evidence.test.mjs` (28 tests at the time of writing) cover all four adapters, ID preservation, incompatible measurements, missing data, merge rules, context-only accessibility evidence, validation boundaries, the reuse runner and source-loader safety.
+
+### 30.7 PR 3: bounded Lighthouse provider
+
+PR 3 adds `scanner/run-performance-light.mjs` and the pinned `lighthouse` 13.6.0 dependency.
+
+- Candidate collection: request URLs, priority/top-task URLs, reusable evidence pages, and bounded discovery only when no inventory exists.
+- Selection order: nominated tasks → one representative per page family → structurally unusual pages. Transfer size is one weak signal, never the sole ordering.
+- Defaults: 20 pages inspected, 5 Lighthouse audits, sequential runs, 180 s per run, 15 min pipeline budget.
+- Reuse: a page with complete, current, profile-compatible Lighthouse metrics is not re-audited.
+- Collection: Chromium only, simulated throttling, explicit form factor/viewport, private URL blocking, no telemetry and no full-page screenshot.
+- Evidence: LCP, FCP, TBT, CLS, Speed Index, main-thread work, JS execution, bytes, DOM size, performance category score, network resources, audit/opportunity/element findings.
+- Raw JSON: bounded artifacts directory; `evidenceRef` links back to the raw audit. A `performance-light-run/1` report records selection, discovery, failures, artifacts and cost (`browserLaunches`, audits, reused pages, duration).
+- Security: execution-time revalidation, manual redirects with DNS checks at each hop, same-site restriction, private URL patterns, no forms or mutations.
+- Tests: `tests/unit/performance-lighthouse.test.mjs` (15 tests) covers normalization, selection, reuse/staleness, discovery, fake-runner cost accounting, partial failure and mode refusal.
+- Remaining hardening: DNS address pinning at Chrome connect time; Chrome can still request page-controlled third-party subresources.
+
+### 30.8 PR 4: targeted Sitespeed deep investigation
+
+PR 4 adds `scanner/run-performance-deep.mjs` and `scanner/performance-sitespeed.mjs`, pinned to `sitespeedio/sitespeed.io:43.0.0`.
+
+- Shortlist: maximum three pages, nominated top tasks first, then pages with existing performance findings, then family representatives/unusual pages.
+- One isolated Docker run per invocation; output-only volume mount, memory/CPU/PID limits, no-new-privileges, bridge network and forced cleanup.
+- Flags: Chrome, 3 iterations, native connectivity, visual metrics, CPU long tasks, `--plugins.add analysisstorer`, `--sustainable.enable`, `--sustainable.model swd`, `--sustainable.modelVersion 4`, hosting matching disabled for a conservative grid assumption.
+- Normalized metrics: LCP, FCP, TBT, CLS, Speed Index, visual timings, TTFB, load, bytes, requests, resources and CPU long-task findings.
+- CO2.js values carry `gCO2e`, `modelled-transfer`, source tool/version, model version and explicit limitations; they are never converted to `mWh` or added to Firefox energy.
+- Raw analysisstorer JSON stays in the bounded artifact directory; a `performance-deep-run/1` report records selection, image/image ID, iterations, duration, expected browser launches and failures.
+- Tests: `tests/unit/performance-sitespeed.test.mjs` (9 tests).
+- Full suite: 752 tests, 747 pass, 1 pre-existing timezone failure, 4 skipped.
+
+### 30.9 PR 5: cross-page investigation
+
+PR 5 adds `performance-investigation/1`, `scanner/performance-investigation.mjs` and the offline `scanner/run-performance-investigation.mjs` CLI.
+
+- Groups component findings by component type id, resource findings by resource, and unlocated findings by page.
+- Deduplicates repeated observations by mechanism/phase/source/browser/method while keeping every finding id.
+- Keeps distinct mechanisms separate; never merges by class name, label, co-occurrence or accessibility component group.
+- Records phase (`load`, `interaction`, `idle`, `unknown`), coverage, confidence, uncertainty, candidate interventions and existing experiments.
+- Ranks by explicit separate keys (evidence tier, occurrences, pages, families, DOM/resource tie-breakers), never a summed score.
+- Builds bidirectional indexes: component type/page/family/resource to candidate ids.
+- `ownershipEstablished` is always false.
+- Tests: `tests/unit/performance-investigation.test.mjs` (13 tests).
+- Full suite: 765 tests, 760 pass, 1 pre-existing timezone failure, 4 skipped.
+
 
 ---
 

@@ -64,6 +64,14 @@ function isPrivateIPv6(hostname) {
   return false;
 }
 
+/**
+ * Explain why a host is not a permitted public scan target, or null when it is
+ * not blocked by the private-network rules. Exported so request parsers that
+ * accept non-page URLs (for example evidence API locations) can reuse the same
+ * host policy without treating a .json endpoint as a non-web document.
+ * @param {string} hostname - URL hostname (brackets allowed for IPv6)
+ * @returns {string|null}
+ */
 export function reasonForBlockedHost(hostname) {
   const normalized = hostname.toLowerCase();
   const bareHost = normalized.startsWith("[") && normalized.endsWith("]")

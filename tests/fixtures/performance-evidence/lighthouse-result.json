@@ -1,0 +1,169 @@
+{
+  "lighthouseVersion": "13.6.0",
+  "fetchTime": "2026-11-10T10:00:00.000Z",
+  "requestedUrl": "https://example.gov/",
+  "finalUrl": "https://example.gov/",
+  "finalDisplayedUrl": "https://example.gov/",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 HeadlessChrome/158.0.0.0 Safari/537.36",
+  "configSettings": {
+    "formFactor": "desktop",
+    "throttlingMethod": "simulate",
+    "screenEmulation": { "width": 1280, "height": 800, "deviceScaleFactor": 1, "mobile": false, "disabled": false }
+  },
+  "categories": {
+    "performance": { "id": "performance", "score": 0.62, "title": "Performance" }
+  },
+  "runWarnings": [],
+  "audits": {
+    "largest-contentful-paint": {
+      "id": "largest-contentful-paint",
+      "title": "Largest Contentful Paint",
+      "description": "LCP marks the point in the page load timeline when the page's main content has likely loaded.",
+      "score": 0.45,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 2600,
+      "numericUnit": "millisecond",
+      "displayValue": "2.6 s"
+    },
+    "first-contentful-paint": {
+      "id": "first-contentful-paint",
+      "title": "First Contentful Paint",
+      "score": 0.8,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 900,
+      "numericUnit": "millisecond"
+    },
+    "total-blocking-time": {
+      "id": "total-blocking-time",
+      "title": "Total Blocking Time",
+      "score": 0.6,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 310,
+      "numericUnit": "millisecond"
+    },
+    "cumulative-layout-shift": {
+      "id": "cumulative-layout-shift",
+      "title": "Cumulative Layout Shift",
+      "score": 0.7,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 0.08,
+      "numericUnit": "unitless"
+    },
+    "speed-index": {
+      "id": "speed-index",
+      "title": "Speed Index",
+      "score": 0.7,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 2100,
+      "numericUnit": "millisecond"
+    },
+    "mainthread-work-breakdown": {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "score": 0.5,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 1200,
+      "numericUnit": "millisecond"
+    },
+    "bootup-time": {
+      "id": "bootup-time",
+      "title": "Reduce JavaScript execution time",
+      "score": 0.5,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 550,
+      "numericUnit": "millisecond"
+    },
+    "total-byte-weight": {
+      "id": "total-byte-weight",
+      "title": "Avoid enormous network payloads",
+      "score": 0.6,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 1450000,
+      "numericUnit": "byte"
+    },
+    "dom-size": {
+      "id": "dom-size",
+      "title": "Avoid an excessive DOM size",
+      "score": 0.8,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 820,
+      "numericUnit": "element"
+    },
+    "unused-javascript": {
+      "id": "unused-javascript",
+      "title": "Reduce unused JavaScript",
+      "description": "Reduce unused JavaScript and defer loading scripts until they are required.",
+      "score": 0.5,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 300,
+      "numericUnit": "millisecond",
+      "details": { "type": "opportunity", "overallSavingsMs": 300, "overallSavingsBytes": 120000, "items": [] }
+    },
+    "render-blocking-resources": {
+      "id": "render-blocking-resources",
+      "title": "Eliminate render-blocking resources",
+      "description": "Resources are blocking the first paint.",
+      "score": 0.4,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 450,
+      "numericUnit": "millisecond",
+      "details": {
+        "type": "opportunity",
+        "items": [
+          { "url": "https://example.gov/assets/site.css", "totalBytes": 90000, "wastedMs": 450 }
+        ]
+      }
+    },
+    "network-requests": {
+      "id": "network-requests",
+      "title": "Network Requests",
+      "score": null,
+      "scoreDisplayMode": "informative",
+      "details": {
+        "type": "table",
+        "items": [
+          {
+            "url": "https://example.gov/",
+            "resourceType": "Document",
+            "transferSize": 15000,
+            "networkRequestTime": 0,
+            "networkEndTime": 120
+          },
+          {
+            "url": "https://example.gov/assets/site.js",
+            "resourceType": "Script",
+            "transferSize": 120000,
+            "networkRequestTime": 20,
+            "networkEndTime": 320
+          },
+          {
+            "url": "https://cdn.example.org/chat.js",
+            "resourceType": "Script",
+            "transferSize": 80000,
+            "networkRequestTime": 40,
+            "networkEndTime": 600
+          },
+          {
+            "url": "https://example.gov/assets/site.css",
+            "resourceType": "Stylesheet",
+            "transferSize": 90000,
+            "networkRequestTime": 10,
+            "networkEndTime": 180
+          }
+        ]
+      }
+    },
+    "lcp-breakdown-insight": {
+      "id": "lcp-breakdown-insight",
+      "title": "LCP breakdown",
+      "score": 0.5,
+      "scoreDisplayMode": "informative",
+      "details": {
+        "type": "table",
+        "items": [
+          { "node": { "selector": "main > h1", "nodeLabel": "Example Government", "snippet": "<h1>" } }
+        ]
+      }
+    }
+  }
+}
