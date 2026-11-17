@@ -1606,6 +1606,19 @@ PR 3 adds `scanner/run-performance-light.mjs` and the pinned `lighthouse` 13.6.0
 - Tests: `tests/unit/performance-lighthouse.test.mjs` (15 tests) covers normalization, selection, reuse/staleness, discovery, fake-runner cost accounting, partial failure and mode refusal.
 - Remaining hardening: DNS address pinning at Chrome connect time; Chrome can still request page-controlled third-party subresources.
 
+### 23.8 PR 4: targeted Sitespeed deep investigation
+
+PR 4 adds `scanner/run-performance-deep.mjs` and `scanner/performance-sitespeed.mjs`, pinned to `sitespeedio/sitespeed.io:43.0.0`.
+
+- Shortlist: maximum three pages, nominated top tasks first, then pages with existing performance findings, then family representatives/unusual pages.
+- One isolated Docker run per invocation; output-only volume mount, memory/CPU/PID limits, no-new-privileges, bridge network and forced cleanup.
+- Flags: Chrome, 3 iterations, native connectivity, visual metrics, CPU long tasks, `--plugins.add analysisstorer`, `--sustainable.enable`, `--sustainable.model swd`, `--sustainable.modelVersion 4`, hosting matching disabled for a conservative grid assumption.
+- Normalized metrics: LCP, FCP, TBT, CLS, Speed Index, visual timings, TTFB, load, bytes, requests, resources and CPU long-task findings.
+- CO2.js values carry `gCO2e`, `modelled-transfer`, source tool/version, model version and explicit limitations; they are never converted to `mWh` or added to Firefox energy.
+- Raw analysisstorer JSON stays in the bounded artifact directory; a `performance-deep-run/1` report records selection, image/image ID, iterations, duration, expected browser launches and failures.
+- Tests: `tests/unit/performance-sitespeed.test.mjs` (9 tests).
+- Full suite: 752 tests, 747 pass, 1 pre-existing timezone failure, 4 skipped.
+
 ---
 
 ## Related Documentation

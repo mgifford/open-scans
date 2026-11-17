@@ -499,3 +499,151 @@ export function summarizeSelection(plan, discovery = null) {
     discovery: discovery ? { method: discovery.method, urls: discovery.urls.length, limitations: discovery.limitations } : null
   };
 }
+
+const MAX_INITIAL_SITESPEED_PAGES = 3;
+
+/**
+ * Count performance findings that can be tied to a page without inventing
+ * ownership. Context-only and static candidate explanations are excluded.
+ * @param {object} evidence
+ * @returns {Map<string, {total: number, observed: number, resourceIds: Set<string>}>}
+ */
+export function pageFindingIndex(evidence) {
+  const index = new Map();
+  const ensure = (pageId) => {
+    if (!pageId) return null;
+    const entry = index.get(pageId) ?? { total: 0, observed: 0, resourceIds: new Set() };
+    index.set(pageId, entry);
+    return entry;
+  };
+  const pageIdsForTarget = (target) => {
+    if (!target) return [];
+    if (target.type === "page") return [target.id];
+    if (target.type === "component-instance") {
+      const instance = (evidence?.componentInstances ?? []).find((entry) => entry.id === target.id);
+      return instance ? [instance.pageId] : [];
+    }
+    if (target.type === "component-type") {
+      return (evidence?.componentInstances ?? [])
+        .filter((instance) => instance.typeId === target.id)
+        .map((instance) => instance.pageId);
+    }
+    if (target.type === "resource") {
+      const resource = (evidence?.resources ?? []).find((entry) => entry.id === target.id);
+      return resource?.pageIds ?? [];
+    }
+    return [];
+  };
+
+  for (const finding of evidence?.findings ?? []) {
+    if (["context-only", "candidate-explanation"].includes(finding.evidenceClass)) continue;
+    for (const pageId of pageIdsForTarget(finding.target)) {
+      const entry = ensure(pageId);
+      if (!entry) continue;
+      entry.total += 1;
+      if (finding.evidenceClass === "observed" || finding.evidenceClass === "tested") entry.observed += 1;
+      if (finding.target.type === "resource") entry.resourceIds.add(finding.target.id);
+    }
+  }
+  return index;
+}
+
+/**
+ * Select a small Sitespeed deep-investigation shortlist. This deliberately
+ * caps the initial run at three pages and prioritises pages with existing
+ * performance findings over pages with only a large transfer size.
+ * @param {object} input
+ * @returns {object}
+ */
+export function selectSitespeedPages({ request, evidence, orderedCandidates }) {
+  const cap = Math.min(request.limits.maxSitespeedPages, MAX_INITIAL_SITESPEED_PAGES);
+  const findingIndex = pageFindingIndex(evidence);
+  const enriched = orderedCandidates.map((candidate) => {
+    const findings = candidate.pageId ? findingIndex.get(candidate.pageId) : null;
+    return {
+      ...candidate,
+      findingCount: findings?.total ?? 0,
+      observedFindingCount: findings?.observed ?? 0,
+      resourceFindingCount: findings?.resourceIds.size ?? 0
+    };
+  });
+
+  const ordered = [];
+  const seen = new Set();
+  const add = (candidate, reason) => {
+    if (!candidate || seen.has(candidate.normalizedUrl) || ordered.length >= cap) return;
+    seen.add(candidate.normalizedUrl);
+    ordered.push({ ...candidate, sitespeedReasons: [...new Set([...(candidate.selectionReasons ?? []), reason])] });
+  };
+
+  // Preserve nominated tasks even when the existing evidence is thin.
+  const nominated = enriched
+    .filter((candidate) => candidate.priority <= SOURCE_PRIORITY.priority)
+    .sort((a, b) => a.priority - b.priority || a.order - b.order || a.url.localeCompare(b.url));
+  for (const candidate of nominated) {
+    add(candidate, candidate.priority === SOURCE_PRIORITY["top-task"] ? "Nominated top task" : "Nominated priority page");
+  }
+
+  // Existing findings are the next strongest reason to spend a deep run.
+  const withFindings = enriched
+    .filter((candidate) => candidate.findingCount > 0)
+    .sort((a, b) => (
+      b.observedFindingCount - a.observedFindingCount
+      || b.findingCount - a.findingCount
+      || a.priority - b.priority
+      || b.unusualScore - a.unusualScore
+      || a.url.localeCompare(b.url)
+    ));
+  for (const candidate of withFindings) {
+    add(candidate, `Existing performance finding(s): ${candidate.findingCount} (${candidate.observedFindingCount} observed)`);
+  }
+
+  // One representative per family, then unusual pages.
+  const families = new Map();
+  for (const candidate of enriched) {
+    if (!candidate.familyId) continue;
+    const group = families.get(candidate.familyId) ?? [];
+    group.push(candidate);
+    families.set(candidate.familyId, group);
+  }
+  for (const [familyId, group] of [...families.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    const representative = [...group].sort((a, b) => (
+      b.representativeScore - a.representativeScore
+      || b.findingCount - a.findingCount
+      || a.priority - b.priority
+      || a.url.localeCompare(b.url)
+    ))[0];
+    add(representative, `Representative page for family '${familyId}'`);
+  }
+
+  for (const candidate of enriched) {
+    add(candidate, candidate.unusualReasons?.length
+      ? `Unusual page: ${candidate.unusualReasons.join(", ")}`
+      : "Fills the deep-investigation shortlist");
+  }
+
+  const selectedUrls = new Set(ordered.map((candidate) => candidate.normalizedUrl));
+  const skipped = enriched
+    .filter((candidate) => !selectedUrls.has(candidate.normalizedUrl))
+    .map((candidate) => ({
+      url: candidate.url,
+      pageId: candidate.pageId,
+      familyId: candidate.familyId,
+      reason: ordered.length >= cap
+        ? `Initial Sitespeed cap of ${MAX_INITIAL_SITESPEED_PAGES} page(s) reached.`
+        : "Not selected by the evidence/family/unusual order."
+    }));
+
+  return {
+    selected: ordered,
+    skipped,
+    cap,
+    requested: request.limits.maxSitespeedPages,
+    capped: request.limits.maxSitespeedPages > MAX_INITIAL_SITESPEED_PAGES,
+    findingIndex: Object.fromEntries([...findingIndex.entries()].map(([pageId, entry]) => [pageId, {
+      total: entry.total,
+      observed: entry.observed,
+      resourceFindings: entry.resourceIds.size
+    }]))
+  };
+}

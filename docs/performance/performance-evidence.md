@@ -162,6 +162,10 @@ Imports compatibility findings and Project Wallace CSS quality/complexity as `ca
 
 New Lighthouse runs are not an adapter over a user-supplied source. The provider writes raw JSON to a bounded artifact directory and creates a source with `type: "lighthouse"`, `locationKind: "artifact"`, the Lighthouse version, fetch time and content digest. Metrics and findings carry `evidenceRef` anchors into that raw JSON. The raw artifact is not committed to Git. See [`PR-3-LIGHTHOUSE.md`](./PR-3-LIGHTHOUSE.md).
 
+### Sitespeed provider (PR 4)
+
+A targeted Sitespeed Docker run creates a source with `type: "sitespeed"`, `locationKind: "artifact"`, the pinned image/tool version and a digest over the analysisstorer JSON. Page metrics and findings carry evidence references into those files. CO2.js Sustainable Web Design v4 values are `gCO2e` with a `modelled-transfer` boundary and the source-declared model version; they are never converted to `mWh` or combined with Firefox energy. See [`PR-4-SITESPEED.md`](./PR-4-SITESPEED.md).
+
 ## 8. Reuse-only investigation
 
 ```bash
@@ -202,3 +206,4 @@ Coverage is not a score. `discoveredPages` is the maximum count reported by a so
 - Remote evidence fetch and the page preflight check DNS before the request but do not yet pin the resolved address at connect time. This is recorded and remains a hardening item.
 - Component instances are not merged across sources; only page/resource identity and identical component types are merged.
 - Lighthouse runs are Chromium lab evidence under simulated throttling; they are never converted to Firefox energy.
+- Sitespeed/Browsertime runs use native Docker connectivity; their metrics are kept separate from Lighthouse simulated throttling and from Firefox energy.

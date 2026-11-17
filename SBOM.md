@@ -37,6 +37,12 @@ This document tracks primary software components used by `open-scans`, including
 flags change between releases; performance evidence records its version with every
 measurement.
 
+## External runtime images
+
+| Image | Tag | Purpose | License | Notes |
+|---|---|---|---|---|
+| `sitespeedio/sitespeed.io` | `43.0.0` (pinned) | Optional targeted Sitespeed/Browsertime deep investigation | MIT | Docker image pulled at run time; image ID recorded in the run report; output-only volume mount and resource limits |
+
 ## Python dependencies
 
 | Package | Requested | Resolved | License |
