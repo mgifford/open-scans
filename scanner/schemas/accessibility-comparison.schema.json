@@ -228,6 +228,9 @@
     },
     "limitations": {
       "$ref": "#/$defs/stringArray"
+    },
+    "componentAssociations": {
+      "$ref": "#/$defs/componentAssociations"
     }
   },
   "$defs": {
@@ -587,6 +590,162 @@
             "object",
             "null"
           ]
+        },
+        "componentContext": {
+          "$ref": "#/$defs/componentContext"
+        },
+        "actRuleIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "componentContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "componentId",
+        "componentTypeId",
+        "componentLabel",
+        "semanticRegion",
+        "basis",
+        "confidence",
+        "ownershipEstablished",
+        "uncertainty"
+      ],
+      "properties": {
+        "componentId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "componentTypeId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "componentLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "semanticRegion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "explicit-component",
+            "selector-token",
+            "none"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "ownershipEstablished": {
+          "type": "boolean",
+          "const": false
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "componentAssociations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "bySemanticRegion",
+        "byComponentId",
+        "byPage",
+        "summary"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "const": "component-association/1"
+        },
+        "bySemanticRegion": {
+          "$ref": "#/$defs/idIndex"
+        },
+        "byComponentId": {
+          "$ref": "#/$defs/idIndex"
+        },
+        "byPage": {
+          "$ref": "#/$defs/idIndex"
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "findings",
+            "withSemanticRegion",
+            "withComponentId",
+            "unassociated",
+            "basisCounts",
+            "ownershipEstablished",
+            "note"
+          ],
+          "properties": {
+            "findings": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "withSemanticRegion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "withComponentId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unassociated": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "basisCounts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "ownershipEstablished": {
+              "type": "boolean",
+              "const": false
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "idIndex": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
         }
       }
     }

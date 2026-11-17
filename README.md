@@ -149,6 +149,7 @@ npm run compare:scans -- \
 - A finding that is no longer observed is **never automatically called fixed**. Missing pages, failed engines and changed test conditions remain visible.
 - The report includes browser, viewport, colour scheme, engine and release information, plus manual-testing limits.
 - Outputs are versioned JSON, Markdown, CSV and a self-contained accessible HTML report.
+- Findings preserve ACT Rule mappings and carry explicit component identifiers or low-confidence selector-derived semantic regions. Labels are never used as identity and no component ownership is inferred.
 
 Read the [comparison documentation](./docs/accessibility-comparison/comparison.md) and the [Phase 0 assessment](./docs/accessibility-comparison/PHASE-0-ASSESSMENT.md).
 
@@ -379,7 +380,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[SUSTAINABILITY.md](./SUSTAINABILITY.md)** — Digital sustainability policy
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
-- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, optimization investigation, schemas and limitations
+- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, component/region evidence, optimization investigation, schemas and limitations
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -470,6 +471,7 @@ Development of `open-scans` has used AI coding assistants for:
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase A baseline-to-comparison accessibility reports: comparison engine, identity matching, page mapping, conditions/coverage classifications, JSON/Markdown/CSV/HTML exports, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase B optimization accessibility investigation: scenarios, concern mapping, manual verification, no-conformance boundaries, schemas, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase C component and semantic-region evidence: explicit-id preservation, selector-derived region candidates, ACT Rule ids, indexes and exports | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

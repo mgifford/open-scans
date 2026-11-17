@@ -92,9 +92,9 @@ export function formatOptimizationMarkdown(value) {
       lines.push(`**Status:** ${concern.statusLabel}`, "");
       if (concern.qualification) lines.push(`> ${concern.qualification}`, "");
       if (concern.findings.length) {
-        lines.push("| Page | Engine | Rule | Finding | Confidence |", "| :--- | :--- | :--- | :--- | :--- |");
+        lines.push("| Page | Region | Engine | Rule | Finding | Confidence |", "| :--- | :--- | :--- | :--- | :--- | :--- |");
         for (const finding of concern.findings) {
-          lines.push(`| ${escapeMarkdown(finding.page.comparisonUrl ?? finding.page.baselineUrl)} | ${escapeMarkdown(finding.engineLabel)} | ${escapeMarkdown(finding.ruleId)} | ${escapeMarkdown(finding.title)} | ${finding.confidence} |`);
+          lines.push(`| ${escapeMarkdown(finding.page.comparisonUrl ?? finding.page.baselineUrl)} | ${escapeMarkdown(finding.componentContext?.semanticRegion ?? "unknown")} | ${escapeMarkdown(finding.engineLabel)} | ${escapeMarkdown(finding.ruleId)} | ${escapeMarkdown(finding.title)} | ${finding.confidence} |`);
         }
         lines.push("");
       } else {
@@ -123,7 +123,7 @@ export function formatOptimizationHtml(value) {
     const concernRows = scenario.concerns.map((concern) => `<tr><th scope="row">${escapeHtml(concern.title)}</th><td>${concern.automated ? "yes" : "no"}</td><td>${escapeHtml(concern.statusLabel)}</td><td>${concern.findings.length}</td><td>${concern.manualChecks.length}</td></tr>`).join("");
     const concernSections = scenario.concerns.map((concern) => {
       const findings = concern.findings.length
-        ? `<table><caption>Relevant automated findings for ${escapeHtml(concern.title)}</caption><thead><tr><th scope="col">Page</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th></tr></thead><tbody>${concern.findings.map((finding) => `<tr><th scope="row">${escapeHtml(finding.page.comparisonUrl ?? finding.page.baselineUrl)}</th><td>${escapeHtml(finding.engineLabel)}</td><td>${escapeHtml(finding.ruleId)}</td><td>${escapeHtml(finding.title)}</td><td>${escapeHtml(finding.confidence)}</td></tr>`).join("")}</tbody></table>`
+        ? `<table><caption>Relevant automated findings for ${escapeHtml(concern.title)}</caption><thead><tr><th scope="col">Page</th><th scope="col">Region</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th></tr></thead><tbody>${concern.findings.map((finding) => `<tr><th scope="row">${escapeHtml(finding.page.comparisonUrl ?? finding.page.baselineUrl)}</th><td>${escapeHtml(finding.componentContext?.semanticRegion ?? "unknown")}</td><td>${escapeHtml(finding.engineLabel)}</td><td>${escapeHtml(finding.ruleId)}</td><td>${escapeHtml(finding.title)}</td><td>${escapeHtml(finding.confidence)}</td></tr>`).join("")}</tbody></table>`
         : "<p><strong>No matching automated finding.</strong> This is not a pass.</p>";
       return `<section aria-labelledby="concern-${escapeHtml(scenario.kind)}-${escapeHtml(concern.id)}"><h3 id="concern-${escapeHtml(scenario.kind)}-${escapeHtml(concern.id)}">${escapeHtml(concern.title)}</h3><p>${escapeHtml(concern.description)}</p><p><strong>Status:</strong> ${escapeHtml(concern.statusLabel)}</p>${concern.qualification ? `<p class="notice">${escapeHtml(concern.qualification)}</p>` : ""}${findings}<h4>Manual checks</h4><ul>${concern.manualChecks.map((task) => `<li>${escapeHtml(task)}</li>`).join("")}</ul></section>`;
     }).join("");

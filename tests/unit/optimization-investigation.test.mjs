@@ -55,6 +55,9 @@ test("navigation replacement surfaces the new icon-only button as a potential re
   assert.equal(names.findings.some((finding) => finding.ruleId === "image-alt"), false);
   assert.equal(names.findings.some((finding) => finding.ruleId === "link-name"), true);
   assert.equal(value.summary.newFindings, 1);
+  assert.equal(names.findings.find((finding) => finding.ruleId === "link-name").componentContext.semanticRegion, "navigation");
+  assert.equal(names.findings.find((finding) => finding.ruleId === "link-name").componentContext.ownershipEstablished, false);
+  assert.ok(names.findings.find((finding) => finding.ruleId === "link-name").actRuleIds.includes("c487ae"));
   assert.equal(value.scenarios[0].humanReviewRequired, true);
   assert.equal(value.scenarios[0].conformanceClaim, false);
   assert.equal(value.summary.conformanceClaim, false);

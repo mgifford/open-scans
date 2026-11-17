@@ -3,6 +3,8 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { pathToFileURL } from "node:url";
 import { redactStringsDeep } from "./redact-secrets.mjs";
+import { associateFinding, buildComponentAssociations } from "./component-association.mjs";
+import { getActRuleIds } from "./act-mapping.mjs";
 
 export const ACCESSIBILITY_COMPARISON_SCHEMA_VERSION = "accessibility-comparison/1";
 
@@ -117,6 +119,7 @@ function makeFinding({
   const ruleId = text(failure.rule ?? failure.ruleId ?? failure.id ?? "unknown-rule");
   const engineKey = engine.toLowerCase();
   const title = text(failure.description ?? failure.ruleTitle ?? failure.message ?? ruleId);
+  const actRuleIds = getActRuleIds(engine, ruleId);
   const message = text(failure.message ?? failure.description ?? failure.suggestion ?? "");
   const html = failure.html ?? failure.element ?? null;
   const canonicalOccurrence = failure.a11yOccurrenceFingerprint ?? null;
@@ -160,6 +163,7 @@ function makeFinding({
     html,
     wcagSc: normalizeWcag(failure).scs,
     wcagLevel: normalizeWcag(failure).level,
+    actRuleIds,
     impact: failure.impact ?? failure.severity ?? null,
     colorScheme: failure.colorScheme ?? null,
     ruleUrl: failure.ruleUrl ?? null,
@@ -168,7 +172,11 @@ function makeFinding({
     sourceRef: `${report.sourcePath ?? "report.json"}#results[${index}].${engine}.failures[${ordinal}]`,
     pageUrl: page.url,
     normalizedPageUrl: page.normalizedUrl,
-    logicalPageId: page.logicalPageId ?? null
+    logicalPageId: page.logicalPageId ?? null,
+    componentId: failure.componentId ?? failure.component?.id ?? null,
+    componentTypeId: failure.componentTypeId ?? failure.component?.typeId ?? null,
+    componentLabel: failure.componentLabel ?? failure.component?.label ?? null,
+    semanticRegion: failure.semanticRegion ?? failure.component?.semanticRegion ?? null
   };
 }
 
@@ -442,14 +450,29 @@ function sourceFinding(finding) {
     locator: finding.locator,
     wcagSc: finding.wcagSc,
     wcagLevel: finding.wcagLevel,
+    actRuleIds: finding.actRuleIds ?? [],
     impact: finding.impact,
     firstSeenAt: finding.firstSeenAt,
+    componentId: finding.componentId ?? null,
+    componentTypeId: finding.componentTypeId ?? null,
+    componentLabel: finding.componentLabel ?? null,
+    semanticRegion: finding.semanticRegion ?? null,
     evidenceRef: finding.sourceRef
   };
 }
 
 function comparisonFinding({ baselineFinding, comparisonFinding: comparisonFindingValue, pagePair, classification, matchBasis, differences, conditionsCompatible, pageEvaluatedBoth, engineEvaluatedBoth }) {
   const representative = comparisonFindingValue ?? baselineFinding;
+  const componentContext = associateFinding({
+    ...representative,
+    componentId: comparisonFindingValue?.componentId ?? baselineFinding?.componentId ?? null,
+    componentTypeId: comparisonFindingValue?.componentTypeId ?? baselineFinding?.componentTypeId ?? null,
+    componentLabel: comparisonFindingValue?.componentLabel ?? baselineFinding?.componentLabel ?? null
+  });
+  if (baselineFinding?.componentId && comparisonFindingValue?.componentId
+    && baselineFinding.componentId !== comparisonFindingValue.componentId) {
+    componentContext.uncertainty.push("Baseline and comparison component identifiers differ; neither is treated as authoritative.");
+  }
   return {
     comparisonId: `${pagePair.logicalPageId}:${representative.engine}:${representative.ruleId}:${representative.comparisonKey}`,
     classification,
@@ -460,6 +483,7 @@ function comparisonFinding({ baselineFinding, comparisonFinding: comparisonFindi
     message: representative.message,
     wcagSc: representative.wcagSc,
     wcagLevel: representative.wcagLevel,
+    actRuleIds: representative.actRuleIds ?? [],
     impact: representative.impact,
     page: {
       logicalPageId: pagePair.logicalPageId,
@@ -467,6 +491,7 @@ function comparisonFinding({ baselineFinding, comparisonFinding: comparisonFindi
       comparisonUrl: pagePair.comparisonUrl,
       mapping: pagePair.source
     },
+    componentContext,
     matchBasis,
     confidence: conditionsCompatible && pageEvaluatedBoth && engineEvaluatedBoth
       ? (["exact", "absent-from-baseline", "absent-from-comparison"].includes(matchBasis) ? "high" : matchBasis === "pattern" ? "medium" : "low")
@@ -866,6 +891,7 @@ export function compareScanReports(baselineReport, comparisonReport, options = {
       identityFallbackCount: [...baseline.findings, ...comparison.findings].filter((finding) => finding.identitySource === "derived").length
     },
     findings,
+    componentAssociations: buildComponentAssociations(Object.values(findings).flat()),
     coverageGaps,
     limitations
   };
@@ -942,6 +968,34 @@ export function formatComparisonMarkdown(comparisonInput) {
   for (const page of comparison.pageMappings) {
     lines.push(`| ${escapeMarkdown(page.logicalPageId)} | ${escapeMarkdown(page.baselineUrl)} | ${escapeMarkdown(page.comparisonUrl)} | ${page.mapping} | ${page.baselineEvaluated ? "yes" : "no"} | ${page.comparisonEvaluated ? "yes" : "no"} |`);
   }
+  const allFindings = Object.values(comparison.findings).flat();
+  const findingsById = new Map(allFindings.map((finding) => [finding.comparisonId, finding]));
+  if (comparison.componentAssociations) {
+    lines.push("", "## Component and semantic-region evidence", "");
+    lines.push("_Regions are selector-derived candidates unless an explicit component identifier is present. This is not a component-ownership claim._", "");
+    const regions = Object.entries(comparison.componentAssociations.bySemanticRegion ?? {});
+    if (regions.length === 0) {
+      lines.push("_No semantic-region associations were available._");
+    } else {
+      lines.push("| Region | Findings | Pages | Basis | Confidence |", "| :--- | :--- | :--- | :--- | :--- |");
+      for (const [region, ids] of regions.sort(([a], [b]) => a.localeCompare(b))) {
+        const associated = ids.map((id) => findingsById.get(id)).filter(Boolean);
+        const pages = new Set(associated.map((finding) => finding.page.logicalPageId));
+        const explicit = associated.filter((finding) => finding.componentContext?.basis === "explicit-component").length;
+        lines.push(`| ${escapeMarkdown(region)} | ${ids.length} | ${pages.size} | ${explicit === associated.length ? "explicit-component" : "selector-token"} | ${explicit === associated.length ? "high" : "low"} |`);
+      }
+    }
+    if (Object.keys(comparison.componentAssociations.byComponentId ?? {}).length > 0) {
+      lines.push("", "### Explicit component identifiers", "");
+      lines.push("| Component ID | Findings |", "| :--- | :--- |");
+      for (const [componentId, ids] of Object.entries(comparison.componentAssociations.byComponentId).sort(([a], [b]) => a.localeCompare(b))) {
+        lines.push(`| ${escapeMarkdown(componentId)} | ${ids.length} |`);
+      }
+    }
+    lines.push("", `- Findings with a semantic region: ${comparison.componentAssociations.summary.withSemanticRegion}`);
+    lines.push(`- Findings with an explicit component identifier: ${comparison.componentAssociations.summary.withComponentId}`);
+    lines.push(`- Findings with no association: ${comparison.componentAssociations.summary.unassociated}`);
+  }
   const sections = [
     ["new", "New accessibility findings"],
     ["persistent", "Persistent findings"],
@@ -981,7 +1035,8 @@ export function comparisonToCsv(comparisonInput) {
   if (!comparison) return "";
   const header = [
     "logical_page_id", "baseline_url", "comparison_url", "classification", "engine", "rule_id",
-    "title", "confidence", "confirmed_remediation", "qualification", "baseline_occurrence_id", "comparison_occurrence_id"
+    "title", "confidence", "confirmed_remediation", "qualification", "baseline_occurrence_id", "comparison_occurrence_id",
+    "semantic_region", "component_id", "association_basis", "association_confidence", "act_rule_ids"
   ];
   const rows = [header];
   for (const [classification, list] of Object.entries(comparison.findings)) {
@@ -998,7 +1053,12 @@ export function comparisonToCsv(comparisonInput) {
         String(finding.confirmedRemediation),
         finding.qualification ?? "",
         finding.baseline?.occurrenceId ?? "",
-        finding.comparison?.occurrenceId ?? ""
+        finding.comparison?.occurrenceId ?? "",
+        finding.componentContext?.semanticRegion ?? "",
+        finding.componentContext?.componentId ?? "",
+        finding.componentContext?.basis ?? "none",
+        finding.componentContext?.confidence ?? "unknown",
+        (finding.actRuleIds ?? []).join(" ")
       ]);
     }
   }
@@ -1018,6 +1078,22 @@ export function formatComparisonHtml(comparisonInput) {
     ["not-evaluated", "Not evaluated"]
   ];
   const rowsFor = (findings) => findings.map((finding) => `<tr><th scope="row">${escapeHtml(finding.page.comparisonUrl ?? finding.page.baselineUrl)}</th><td>${escapeHtml(finding.engineLabel)}</td><td>${escapeHtml(finding.ruleId)}</td><td>${escapeHtml(finding.title)}</td><td>${escapeHtml(finding.confidence)}</td><td>${finding.confirmedRemediation ? "yes" : "no"}</td><td>${escapeHtml(finding.qualification ?? "None")}</td></tr>`).join("");
+  const allHtmlFindings = Object.values(comparison.findings).flat();
+  const htmlFindingsById = new Map(allHtmlFindings.map((finding) => [finding.comparisonId, finding]));
+  const componentSectionHtml = comparison.componentAssociations ? (() => {
+    const regionEntries = Object.entries(comparison.componentAssociations.bySemanticRegion ?? {}).sort(([a], [b]) => a.localeCompare(b));
+    const regionTable = regionEntries.length === 0
+      ? "<p>No semantic-region associations were available.</p>"
+      : `<table><caption>Component and semantic-region evidence</caption><thead><tr><th scope="col">Region</th><th scope="col">Findings</th><th scope="col">Pages</th><th scope="col">Basis</th><th scope="col">Confidence</th></tr></thead><tbody>${regionEntries.map(([region, ids]) => {
+        const associated = ids.map((id) => htmlFindingsById.get(id)).filter(Boolean);
+        const pages = new Set(associated.map((finding) => finding.page.logicalPageId));
+        const explicit = associated.filter((finding) => finding.componentContext?.basis === "explicit-component").length;
+        return `<tr><th scope="row">${escapeHtml(region)}</th><td>${ids.length}</td><td>${pages.size}</td><td>${explicit === associated.length ? "explicit-component" : "selector-token"}</td><td>${explicit === associated.length ? "high" : "low"}</td></tr>`;
+      }).join("")}</tbody></table>`;
+    const componentIdEntries = Object.entries(comparison.componentAssociations.byComponentId ?? {}).sort(([a], [b]) => a.localeCompare(b));
+    const componentIdTable = componentIdEntries.length === 0 ? "" : `<h3>Explicit component identifiers</h3><table><caption>Findings linked to explicit component identifiers</caption><thead><tr><th scope="col">Component ID</th><th scope="col">Findings</th></tr></thead><tbody>${componentIdEntries.map(([componentId, ids]) => `<tr><th scope="row">${escapeHtml(componentId)}</th><td>${ids.length}</td></tr>`).join("")}</tbody></table>`;
+    return `<section aria-labelledby="components-heading"><h2 id="components-heading">Component and semantic-region evidence</h2><p><strong>Regions are selector-derived candidates unless an explicit component identifier is present. This is not a component-ownership claim.</strong></p>${regionTable}${componentIdTable}<p>Findings with a semantic region: ${comparison.componentAssociations.summary.withSemanticRegion}. Findings with an explicit component identifier: ${comparison.componentAssociations.summary.withComponentId}. Findings with no association: ${comparison.componentAssociations.summary.unassociated}.</p></section>`;
+  })() : "";
   const sectionHtml = sections.map(([key, heading]) => `<section aria-labelledby="section-${key}"><h2 id="section-${key}">${heading}</h2>${(comparison.findings[key] ?? []).length === 0 ? "<p>None.</p>" : `<table><caption>${heading}</caption><thead><tr><th scope="col">Page</th><th scope="col">Engine</th><th scope="col">Rule</th><th scope="col">Finding</th><th scope="col">Confidence</th><th scope="col">Confirmed remediation</th><th scope="col">Qualification</th></tr></thead><tbody>${rowsFor(comparison.findings[key] ?? [])}</tbody></table>`}</section>`).join("");
   return `<!doctype html>
 <html lang="en">
@@ -1072,6 +1148,7 @@ ${comparison.conditions.differences.length ? `<p><strong>Condition differences:<
 <section aria-labelledby="pages-heading"><h2 id="pages-heading">Page coverage</h2>
 ${comparison.pageMappings.length === 0 ? "<p>No pages were paired. Different URLs require an explicit page mapping.</p>" : `<table><caption>Pages paired between the baseline and comparison scans</caption><thead><tr><th scope="col">Logical page</th><th scope="col">Baseline URL</th><th scope="col">Comparison URL</th><th scope="col">Mapping</th><th scope="col">Baseline evaluated</th><th scope="col">Comparison evaluated</th></tr></thead><tbody>${comparison.pageMappings.map((page) => `<tr><th scope="row">${escapeHtml(page.logicalPageId)}</th><td>${escapeHtml(page.baselineUrl)}</td><td>${escapeHtml(page.comparisonUrl)}</td><td>${escapeHtml(page.mapping)}</td><td>${page.baselineEvaluated ? "yes" : "no"}</td><td>${page.comparisonEvaluated ? "yes" : "no"}</td></tr>`).join("")}</tbody></table>`}
 </section>
+${componentSectionHtml}
 ${sectionHtml}
 <section aria-labelledby="coverage-heading"><h2 id="coverage-heading">Coverage gaps</h2>${comparison.coverageGaps.length === 0 ? "<p>None recorded.</p>" : `<ul>${comparison.coverageGaps.map((gap) => `<li>${escapeHtml(gap.kind)}: ${escapeHtml(gap.url ?? gap.logicalPageId ?? "")} ${escapeHtml(gap.reason ?? gap.baselineError ?? gap.comparisonError ?? "")}</li>`).join("")}</ul>`}</section>
 <section aria-labelledby="limitations-heading"><h2 id="limitations-heading">Limitations</h2><ul>${comparison.limitations.map((limitation) => `<li>${escapeHtml(limitation)}</li>`).join("")}</ul></section>
