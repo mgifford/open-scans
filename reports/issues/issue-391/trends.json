@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 3,
+  "scansAnalysed": 4,
   "diffs": [
     {
       "from": {
@@ -74,23 +74,47 @@
         "qualweb": 0,
         "accesslint": -273
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-11-17T17:25:00.396Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 1918,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2240,
+          "combined": 4158,
+          "scannedAt": "2026-11-17T17:25:00.396Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-17T19:11:54.869Z",
+        "totals": {
+          "alfa": 0,
+          "axe": 2481,
+          "equalAccess": 0,
+          "qualweb": 0,
+          "accesslint": 2682,
+          "combined": 5163,
+          "scannedAt": "2026-11-17T19:11:54.869Z",
+          "scannedCount": 20
+        }
+      },
+      "change": 1005,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 563,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 442
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-11-17T16:45:54.391Z",
-      "totals": {
-        "alfa": 0,
-        "axe": 2023,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 2513,
-        "combined": 4536,
-        "scannedAt": "2026-11-17T16:45:54.391Z",
-        "scannedCount": 20
-      }
-    },
-    "to": {
       "scannedAt": "2026-11-17T17:25:00.396Z",
       "totals": {
         "alfa": 0,
@@ -103,27 +127,40 @@
         "scannedCount": 20
       }
     },
-    "change": -378,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-11-17T19:11:54.869Z",
+      "totals": {
+        "alfa": 0,
+        "axe": 2481,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 2682,
+        "combined": 5163,
+        "scannedAt": "2026-11-17T19:11:54.869Z",
+        "scannedCount": 20
+      }
+    },
+    "change": 1005,
+    "trend": "worsening",
     "perScanner": {
       "alfa": 0,
-      "axe": -105,
+      "axe": 563,
       "equalAccess": 0,
       "qualweb": 0,
-      "accesslint": -273
+      "accesslint": 442
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 2,
-  "worseningCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
     "alfa": 0,
-    "axe": 1918,
+    "axe": 2481,
     "equalAccess": 0,
     "qualweb": 0,
-    "accesslint": 2240,
-    "combined": 4158,
-    "scannedAt": "2026-11-17T17:25:00.396Z",
+    "accesslint": 2682,
+    "combined": 5163,
+    "scannedAt": "2026-11-17T19:11:54.869Z",
     "scannedCount": 20
   },
   "baselineTotals": {
@@ -142,15 +179,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/docs/microsoft-azure/index",
-        "https://huggingface.co/blog/ray-rag"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark"
       ]
     },
     {
@@ -158,15 +195,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/docs/microsoft-azure/index",
-        "https://huggingface.co/blog/ray-rag"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark"
       ]
     },
     {
@@ -174,15 +211,15 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/docs/microsoft-azure/index",
-        "https://huggingface.co/blog/ray-rag"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark"
       ]
     },
     {
@@ -190,144 +227,160 @@
       "pageCount": 20,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/docs/microsoft-azure/index",
-        "https://huggingface.co/blog/ray-rag"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark"
       ]
     },
     {
       "ruleId": "axe:link-name",
-      "pageCount": 17,
+      "pageCount": 19,
       "pages": [
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/docs/microsoft-azure/index",
-        "https://huggingface.co/blog/ray-rag",
-        "https://huggingface.co/blog/amazon/higher-order-pruning-experts"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit"
       ]
     },
     {
       "ruleId": "axe:aria-required-attr",
-      "pageCount": 15,
+      "pageCount": 18,
       "pages": [
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/blog/ray-rag",
-        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
-        "https://huggingface.co/blog/falcon-180b"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit"
       ]
     },
     {
       "ruleId": "axe:nested-interactive",
-      "pageCount": 15,
+      "pageCount": 18,
       "pages": [
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/blog/ray-rag",
-        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
-        "https://huggingface.co/blog/falcon-180b"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit"
       ]
     },
     {
       "ruleId": "axe:heading-order",
-      "pageCount": 14,
+      "pageCount": 17,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/blog/ray-rag",
-        "https://huggingface.co/blog/falcon-180b"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit"
       ]
     },
     {
       "ruleId": "axe:landmark-unique",
-      "pageCount": 13,
+      "pageCount": 17,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/Hcompany/holotab",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/fireworks-ai",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/blog/falcon-180b",
-        "https://huggingface.co/blog/reflection-beam"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/trl-ddpo",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit"
       ]
     },
     {
       "ruleId": "axe:scrollable-region-focusable",
-      "pageCount": 11,
+      "pageCount": 14,
       "pages": [
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/1_58_llm_extreme_quantization",
-        "https://huggingface.co/blog/peft_merging",
-        "https://huggingface.co/blog/ray-rag",
-        "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
-        "https://huggingface.co/blog/falcon-180b",
-        "https://huggingface.co/blog/reflection-beam",
-        "https://huggingface.co/blog/wuerstchen",
-        "https://huggingface.co/blog/tiiuae/3lm-benchmark",
-        "https://huggingface.co/blog/llama31-on-vertex-ai"
+        "https://huggingface.co/blog/fine-tune-w2v2-bert",
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/swift-huggingface",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/fine-tune-vit",
+        "https://huggingface.co/blog/cost-efficient-rag-applications-with-intel",
+        "https://huggingface.co/blog/transformers-to-mlx"
       ]
     },
     {
       "ruleId": "axe:landmark-main-is-top-level",
-      "pageCount": 6,
+      "pageCount": 9,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/reflection-beam",
-        "https://huggingface.co/blog/wuerstchen",
-        "https://huggingface.co/blog/phonon-tts"
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/transformers-to-mlx",
+        "https://huggingface.co/blog/open-responses"
       ]
     },
     {
       "ruleId": "axe:landmark-no-duplicate-main",
-      "pageCount": 6,
+      "pageCount": 9,
       "pages": [
         "https://huggingface.co/",
-        "https://huggingface.co/blog/flux-3",
-        "https://huggingface.co/blog/open-asr-leaderboard",
-        "https://huggingface.co/blog/reflection-beam",
-        "https://huggingface.co/blog/wuerstchen",
-        "https://huggingface.co/blog/phonon-tts"
+        "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "https://huggingface.co/blog/run-musicgen-as-an-api",
+        "https://huggingface.co/blog/llama3",
+        "https://huggingface.co/blog/constitutional_ai",
+        "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/transformers-to-mlx",
+        "https://huggingface.co/blog/open-responses"
       ]
     },
     {
-      "ruleId": "axe:empty-table-header",
+      "ruleId": "axe:image-alt",
+      "pageCount": 4,
+      "pages": [
+        "https://huggingface.co/blog/cost-efficient-rag-applications-with-intel",
+        "https://huggingface.co/blog/assisted-generation",
+        "https://huggingface.co/blog/generative-ai-models-on-intel-cpu",
+        "https://huggingface.co/blog/intel-protein-language-model-protst"
+      ]
+    },
+    {
+      "ruleId": "axe:frame-title",
       "pageCount": 3,
       "pages": [
-        "https://huggingface.co/blog/open-llm-leaderboard-mmlu",
-        "https://huggingface.co/blog/falcon-180b",
-        "https://huggingface.co/blog/reflection-beam"
+        "https://huggingface.co/blog/benczechmark",
+        "https://huggingface.co/blog/matryoshka",
+        "https://huggingface.co/blog/generative-ai-models-on-intel-cpu"
       ]
     }
   ]
