@@ -48,7 +48,7 @@ node --test tests/unit/performance-investigation.test.mjs
 # 12 tests, 12 pass
 
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
-# 764 tests, 759 pass, 1 pre-existing timezone failure, 4 skipped
+# 765 tests, 760 pass, 1 pre-existing timezone failure, 4 skipped
 ```
 
 Coverage includes:

@@ -402,7 +402,9 @@
         "interventions",
         "existingExperimentIds",
         "possibleDuplicateOf",
-        "priority"
+        "priority",
+        "category",
+        "categoryBasis"
       ],
       "properties": {
         "id": {
@@ -572,6 +574,33 @@
         "media": {
           "type": "boolean",
           "description": "Resource candidate: media resource."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "site-header",
+            "primary-navigation",
+            "sidebar-navigation",
+            "footer",
+            "search-form",
+            "result-list",
+            "table",
+            "chart",
+            "dashboard",
+            "embedded-application",
+            "video-media",
+            "cookie-consent",
+            "shared-third-party",
+            "resource",
+            "page-evidence",
+            "other",
+            "unknown"
+          ]
+        },
+        "categoryBasis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
         }
       }
     }

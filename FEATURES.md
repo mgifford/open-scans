@@ -1630,8 +1630,8 @@ PR 5 adds `performance-investigation/1`, `scanner/performance-investigation.mjs`
 - Ranks by explicit separate keys (evidence tier, occurrences, pages, families, DOM/resource tie-breakers), never a summed score.
 - Builds bidirectional indexes: component type/page/family/resource to candidate ids.
 - `ownershipEstablished` is always false.
-- Tests: `tests/unit/performance-investigation.test.mjs` (12 tests).
-- Full suite: 764 tests, 759 pass, 1 pre-existing timezone failure, 4 skipped.
+- Tests: `tests/unit/performance-investigation.test.mjs` (13 tests).
+- Full suite: 765 tests, 760 pass, 1 pre-existing timezone failure, 4 skipped.
 
 ---
 

@@ -187,6 +187,8 @@ test("shared navigation on two pages becomes one candidate; sidebar navigation s
   assert.deepEqual(nav.pageIds.sort(), ["pg-home", "pg-services"]);
   assert.equal(sidebar.pageIds.length, 1);
   assert.notEqual(nav.id, sidebar.id);
+  assert.equal(nav.category, "primary-navigation");
+  assert.equal(sidebar.category, "sidebar-navigation");
   assert.ok(nav.observations.some((observation) => observation.kind === "endless-animation" && observation.phase === "idle"));
   assert.ok(sidebar.observations.some((observation) => observation.kind === "interaction-work" && observation.phase === "interaction"));
 });
@@ -209,6 +211,8 @@ test("shared resources appear as resource candidates without component ownership
   assert.equal(css.ownershipEstablished, false);
   assert.equal(css.pageIds.length, 2);
   assert.equal(chat.thirdParty, true);
+  assert.equal(chat.category, "shared-third-party");
+  assert.equal(css.category, "resource");
   assert.ok(css.uncertainty.some((uncertainty) => uncertainty.includes("not component-owned")));
   assert.ok(chat.interventions.some((intervention) => intervention.kind.includes("third-party")));
 });
@@ -219,7 +223,19 @@ test("Lighthouse page evidence without a component locator becomes a page candid
   assert.ok(pageCandidate);
   assert.equal(pageCandidate.ownershipEstablished, false);
   assert.ok(pageCandidate.uncertainty.some((uncertainty) => uncertainty.includes("no component ownership")));
+  assert.equal(pageCandidate.category, "page-evidence");
   assert.ok(pageCandidate.findingIds.some((id) => id.startsWith("fes-lh")));
+});
+
+test("known component categories are classified from source signatures, not class names", () => {
+  const result = investigation();
+  const chart = result.candidates.find((candidate) => candidate.kind === "component" && candidate.componentTypeIds.includes("ct-chart"));
+  const dialog = result.candidates.find((candidate) => candidate.kind === "component" && candidate.componentTypeIds.includes("ct-dialog"));
+  assert.ok(chart);
+  assert.ok(dialog);
+  assert.equal(chart.category, "chart");
+  assert.equal(dialog.category, "cookie-consent");
+  assert.ok(chart.categoryBasis.includes("signature"));
 });
 
 test("CSS candidate explanations are present but ranked below observed findings", () => {

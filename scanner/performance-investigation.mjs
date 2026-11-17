@@ -59,6 +59,37 @@ function confidenceRank(confidence) {
   return { high: 0, medium: 1, low: 2, unknown: 3 }[confidence] ?? 3;
 }
 
+function categorizeCandidate(candidate, resource = null) {
+  if (candidate.kind === "page") {
+    return { category: "page-evidence", categoryBasis: "page-level evidence without a component locator" };
+  }
+  if (candidate.kind === "resource") {
+    if (resource?.thirdParty === true) {
+      return { category: "shared-third-party", categoryBasis: "resource is source-declared third-party" };
+    }
+    return { category: "resource", categoryBasis: `resource kind: ${resource?.kind ?? "unknown"}` };
+  }
+  const text = `${candidate.label ?? ""} ${candidate.signature ?? ""}`.toLowerCase();
+  const rules = [
+    [/cookie|consent|gdpr|privacy/, "cookie-consent"],
+    [/sidebar/, "sidebar-navigation"],
+    [/\bnav\b|navigation|menu/, "primary-navigation"],
+    [/header|banner/, "site-header"],
+    [/footer|contentinfo/, "footer"],
+    [/search/, "search-form"],
+    [/chart|graph|plot/, "chart"],
+    [/dashboard/, "dashboard"],
+    [/iframe|embed|widget/, "embedded-application"],
+    [/video|player|media/, "video-media"],
+    [/\btable\b|datagrid/, "table"],
+    [/result|listing|\blist\b/, "result-list"]
+  ];
+  const match = rules.find(([pattern]) => pattern.test(text));
+  return match
+    ? { category: match[1], categoryBasis: `component signature/label: ${text.trim()}` }
+    : { category: "other", categoryBasis: `component signature/label did not match a known category: ${text.trim()}` };
+}
+
 function highestConfidence(findings, fallback = "unknown") {
   if (!findings.length) return fallback;
   return [...findings].sort((a, b) => confidenceRank(a.confidence) - confidenceRank(b.confidence))[0].confidence ?? fallback;
@@ -460,6 +491,7 @@ export function buildPerformanceInvestigation(evidence, { generatedAt = new Date
       label: type.label ? text(type.label).slice(0, 300) : null,
       signature: type.signature ? text(type.signature).slice(0, 300) : null,
       identificationMethod: type.identificationMethod ?? null,
+      ...categorizeCandidate({ kind: "component", label: type.label, signature: type.signature }),
       componentTypeIds: [type.id],
       pageIds,
       familyIds,
@@ -520,6 +552,7 @@ export function buildPerformanceInvestigation(evidence, { generatedAt = new Date
       label: text(resource.kind).slice(0, 300),
       signature: text(resource.normalizedUrl).slice(0, 300),
       identificationMethod: resource.attribution === "direct" ? "direct-resource" : resource.attribution === "inferred" ? "inferred" : "page-level",
+      ...categorizeCandidate({ kind: "resource" }, resource),
       componentTypeIds,
       pageIds,
       familyIds: familyIdsForPages(pageIds, maps),
@@ -556,6 +589,7 @@ export function buildPerformanceInvestigation(evidence, { generatedAt = new Date
       label: text(page.url).slice(0, 300),
       signature: text(page.normalizedUrl).slice(0, 300),
       identificationMethod: "page-level",
+      ...categorizeCandidate({ kind: "page" }),
       componentTypeIds: unique((evidence.componentInstances ?? []).filter((instance) => instance.pageId === page.id).map((instance) => instance.typeId)),
       pageIds: [page.id],
       familyIds: page.familyId ? [page.familyId] : [],

@@ -28,6 +28,8 @@ A candidate answers:
 | `resource` | A shared or notable resource, with the pages and component instances that load or declare it |
 | `page` | Page-level evidence that has no component locator (for example a Lighthouse audit) |
 
+Candidates also carry a `category` (site header, primary/sidebar navigation, footer, search form, result list, table, chart, dashboard, embedded application, video/media, cookie consent, shared third-party, resource, page-level evidence, other). It is derived from the source component signature/label or resource kind/third-party state, with `categoryBasis` stating the basis. It is a navigation aid, not an ownership claim.
+
 There is no `family` candidate: families are coverage/index dimensions, not performance causes. `byFamily` links candidates to the page families they touch.
 
 ## 3. Grouping rules
