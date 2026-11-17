@@ -142,6 +142,8 @@ Every scan now summarizes **unique accessibility patterns** using the existing P
 
 A pattern like `nav a.icon` is reported under **Navigation**; `form#search input` under **Forms**; `input#email` under **Forms → form controls**. The container is a candidate, not a component-ownership claim, and it is not derived from the Firefox Energy Scanner graph or Playwright MCP data.
 
+The inventory also reports locator coverage (`selector`, `mixed`, `html-only`, `none`) so missing XPath/selector evidence is visible. Equal Access `path.dom` is now retained; older reports need a re-scan to benefit.
+
 Read the [pattern inventory documentation](./docs/pattern-inventory.md).
 
 ## Compare Baseline and Optimized Scans
@@ -494,6 +496,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Phase E comparison report interface: section navigation, plain-language summary, evidence disclosures, manual verification and accessible styling | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase F complete comparison exports: appended CSV metadata, compatibility, formula-injection protection, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Accessibility pattern/container inventory for scan reports: unique-pattern grouping, semantic container candidates, JSON/Markdown/HTML/CSV outputs and tests | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Equal Access DOM locator retention and pattern locator-coverage metrics, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
