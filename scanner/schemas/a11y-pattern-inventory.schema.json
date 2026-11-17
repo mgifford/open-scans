@@ -5,34 +5,107 @@
   "description": "Unique accessibility patterns grouped by stable pattern identity and a conservative semantic-container candidate. It is not a component graph or an ownership claim.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "generatedAt", "summary", "categoryLabels", "patterns"],
+  "required": [
+    "schema",
+    "generatedAt",
+    "summary",
+    "categoryLabels",
+    "patterns"
+  ],
   "properties": {
-    "schema": { "type": "string", "const": "a11y-pattern-inventory/1" },
-    "generatedAt": { "type": "string", "format": "date-time" },
+    "schema": {
+      "type": "string",
+      "const": "a11y-pattern-inventory/1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
     "summary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["uniquePatterns", "occurrences", "pages", "categories", "byCategory", "byContainerElement", "byComponentId", "unassignedPatterns", "ownershipEstablished", "note"],
+      "required": [
+        "uniquePatterns",
+        "occurrences",
+        "pages",
+        "categories",
+        "byCategory",
+        "byContainerElement",
+        "byComponentId",
+        "unassignedPatterns",
+        "ownershipEstablished",
+        "note",
+        "patternsWithSelector",
+        "patternsWithMixedLocators",
+        "htmlOnlyPatterns",
+        "patternsWithoutLocator"
+      ],
       "properties": {
-        "uniquePatterns": { "type": "integer", "minimum": 0 },
-        "occurrences": { "type": "integer", "minimum": 0 },
-        "pages": { "type": "integer", "minimum": 0 },
-        "categories": { "type": "integer", "minimum": 0 },
-        "byCategory": { "$ref": "#/$defs/index" },
-        "byContainerElement": { "$ref": "#/$defs/index" },
-        "byComponentId": { "$ref": "#/$defs/index" },
-        "unassignedPatterns": { "type": "integer", "minimum": 0 },
-        "ownershipEstablished": { "type": "boolean", "const": false },
-        "note": { "type": "string" }
+        "uniquePatterns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "occurrences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "categories": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "byCategory": {
+          "$ref": "#/$defs/index"
+        },
+        "byContainerElement": {
+          "$ref": "#/$defs/index"
+        },
+        "byComponentId": {
+          "$ref": "#/$defs/index"
+        },
+        "unassignedPatterns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ownershipEstablished": {
+          "type": "boolean",
+          "const": false
+        },
+        "note": {
+          "type": "string"
+        },
+        "patternsWithSelector": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "patternsWithMixedLocators": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "htmlOnlyPatterns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "patternsWithoutLocator": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     },
     "categoryLabels": {
       "type": "object",
-      "additionalProperties": { "type": "string" }
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "patterns": {
       "type": "array",
-      "items": { "$ref": "#/$defs/pattern" }
+      "items": {
+        "$ref": "#/$defs/pattern"
+      }
     }
   },
   "$defs": {
@@ -41,12 +114,28 @@
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["patterns", "occurrences", "pages", "patternIds"],
+        "required": [
+          "patterns",
+          "occurrences",
+          "pages",
+          "patternIds"
+        ],
         "properties": {
-          "patterns": { "type": "integer" },
-          "occurrences": { "type": "integer" },
-          "pages": { "type": "integer" },
-          "patternIds": { "type": "array", "items": { "type": "string" } }
+          "patterns": {
+            "type": "integer"
+          },
+          "occurrences": {
+            "type": "integer"
+          },
+          "pages": {
+            "type": "integer"
+          },
+          "patternIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -54,60 +143,227 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "patternId", "displayId", "identitySource", "legacyPatternId", "canonicalPatternFingerprint",
-        "engine", "engineLabel", "rule", "wcagSc", "actRuleIds", "impact", "category",
-        "container", "occurrenceCount", "pageCount", "pages", "firstSeenAt", "lastSeenAt", "examples"
+        "patternId",
+        "displayId",
+        "identitySource",
+        "legacyPatternId",
+        "canonicalPatternFingerprint",
+        "engine",
+        "engineLabel",
+        "rule",
+        "wcagSc",
+        "actRuleIds",
+        "impact",
+        "category",
+        "container",
+        "occurrenceCount",
+        "pageCount",
+        "pages",
+        "firstSeenAt",
+        "lastSeenAt",
+        "examples",
+        "locatorCoverage",
+        "hasSelector"
       ],
       "properties": {
-        "patternId": { "type": "string" },
-        "displayId": { "type": "string" },
-        "identitySource": { "type": "string", "enum": ["canonical", "legacy", "derived"] },
-        "legacyPatternId": { "type": ["string", "null"] },
-        "canonicalPatternFingerprint": { "type": ["string", "null"] },
-        "engine": { "type": "string" },
-        "engineLabel": { "type": "string" },
-        "rule": { "type": "string" },
-        "wcagSc": { "type": "array", "items": { "type": "string" } },
-        "actRuleIds": { "type": "array", "items": { "type": "string" } },
-        "impact": { "type": ["string", "null"] },
-        "category": { "type": "string" },
-        "container": { "$ref": "#/$defs/container" },
-        "occurrenceCount": { "type": "integer", "minimum": 1 },
-        "pageCount": { "type": "integer", "minimum": 1 },
-        "pages": { "type": "array", "items": { "type": "string" } },
-        "firstSeenAt": { "type": ["string", "null"] },
-        "lastSeenAt": { "type": ["string", "null"] },
+        "patternId": {
+          "type": "string"
+        },
+        "displayId": {
+          "type": "string"
+        },
+        "identitySource": {
+          "type": "string",
+          "enum": [
+            "canonical",
+            "legacy",
+            "derived"
+          ]
+        },
+        "legacyPatternId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "canonicalPatternFingerprint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engine": {
+          "type": "string"
+        },
+        "engineLabel": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "wcagSc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actRuleIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "impact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "type": "string"
+        },
+        "container": {
+          "$ref": "#/$defs/container"
+        },
+        "occurrenceCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pageCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "firstSeenAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastSeenAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "examples": {
           "type": "array",
           "maxItems": 3,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["pageUrl", "locator", "html"],
+            "required": [
+              "pageUrl",
+              "locator",
+              "html"
+            ],
             "properties": {
-              "pageUrl": { "type": "string" },
-              "locator": { "type": "string" },
-              "html": { "type": ["string", "null"] }
+              "pageUrl": {
+                "type": "string"
+              },
+              "locator": {
+                "type": "string"
+              },
+              "html": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
             }
           }
+        },
+        "locatorCoverage": {
+          "type": "string",
+          "enum": [
+            "selector",
+            "mixed",
+            "html-only",
+            "none"
+          ]
+        },
+        "hasSelector": {
+          "type": "boolean"
         }
       }
     },
     "container": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["category", "label", "element", "componentId", "componentTypeId", "componentLabel", "basis", "confidence", "ownershipEstablished", "uncertainty"],
+      "required": [
+        "category",
+        "label",
+        "element",
+        "componentId",
+        "componentTypeId",
+        "componentLabel",
+        "basis",
+        "confidence",
+        "ownershipEstablished",
+        "uncertainty"
+      ],
       "properties": {
-        "category": { "type": "string" },
-        "label": { "type": "string" },
-        "element": { "type": ["string", "null"] },
-        "componentId": { "type": ["string", "null"] },
-        "componentTypeId": { "type": ["string", "null"] },
-        "componentLabel": { "type": ["string", "null"] },
-        "basis": { "type": "string", "enum": ["explicit-component", "selector-token", "none"] },
-        "confidence": { "type": "string", "enum": ["high", "low", "unknown"] },
-        "ownershipEstablished": { "type": "boolean", "const": false },
-        "uncertainty": { "type": "array", "items": { "type": "string" } }
+        "category": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "element": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "componentId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "componentTypeId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "componentLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "explicit-component",
+            "selector-token",
+            "none"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "low",
+            "unknown"
+          ]
+        },
+        "ownershipEstablished": {
+          "type": "boolean",
+          "const": false
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     }
   }

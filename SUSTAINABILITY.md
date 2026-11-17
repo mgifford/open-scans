@@ -233,6 +233,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 | Phase E comparison report interface, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Phase F complete comparison exports, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Accessibility pattern/container inventory, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
+| Equal Access locator retention and coverage metrics | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 
 ## Agent instruction snippet
 

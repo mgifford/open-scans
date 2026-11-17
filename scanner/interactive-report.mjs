@@ -322,6 +322,7 @@ function renderPatternInventorySection(inventory, esc) {
   return `<section class="priority-section" aria-labelledby="section-patterns">
       <h2 id="section-patterns" tabindex="-1">Pattern and container inventory</h2>
       <p><strong>${inventory.summary.uniquePatterns} unique patterns</strong> across ${inventory.summary.pages} page(s) and ${inventory.summary.occurrences} occurrence(s). Container categories are selector-derived candidates, not component ownership.</p>
+      <p>Locator coverage: ${inventory.summary.patternsWithSelector} with selectors, ${inventory.summary.patternsWithMixedLocators} mixed, ${inventory.summary.htmlOnlyPatterns} HTML-only, ${inventory.summary.patternsWithoutLocator} with no locator.</p>
       <div class="table-wrapper">
         <table class="priority-table">
           <caption>Unique accessibility patterns by semantic container category</caption>

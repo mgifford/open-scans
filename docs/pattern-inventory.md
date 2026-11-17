@@ -81,7 +81,20 @@ Inference order prefers a semantic ancestor in the selector/XPath:
 
 If the locator is missing, the first tag in the recorded HTML is used as a fallback. A `<meta>` or page-level finding maps to `document`.
 
-## 4. What it is not
+## 4. Locator coverage
+
+The inventory measures whether each pattern has a usable selector/XPath:
+
+- `selector` — every occurrence has one;
+- `mixed` — some do;
+- `html-only` — only an HTML snippet is available;
+- `none` — no element evidence.
+
+This metric is shown in JSON, Markdown, HTML and `patterns.csv`. It makes locator gaps visible instead of inventing a container.
+
+Equal Access reports its DOM path as `path.dom`; Open Scans now retains that instead of reading only `path.xpath`. Older reports remain unchanged until rescanned.
+
+## 5. What it is not
 
 - **Not component ownership.** A container is a candidate derived from a selector or explicit component id; it is not proof that the container causes the defect.
 - **Not the Firefox Energy Scanner component graph.** No component graph is copied or imported.
@@ -90,22 +103,23 @@ If the locator is missing, the first tag in the recorded HTML is used as a fallb
 - **Not a merged category by label.** Two components/regions with the same label remain separate; labels are not identity.
 - **Not a score.** Counts and categories only.
 
-## 5. Outputs
+## 6. Outputs
 
 - `report.json` — full `patternInventory` with every pattern, pages, first/last seen, examples, container and category indexes.
-- `report.md` — pattern counts by category and the first 20 patterns by container.
+- `report.md` — pattern counts by category, locator coverage, and the first 20 patterns by container.
 - `report.html` — accessible “Pattern and container inventory” section with category and pattern tables and a `patterns.csv` link.
-- `patterns.csv` — one row per pattern with category, container element/basis/confidence, component id/label, pattern/display id, identity source, rule, engine, WCAG/ACT, occurrences, pages, first/last seen and example page/locator.
+- `patterns.csv` — one row per pattern with category, container element/basis/confidence, component id/label, pattern/display id, identity source, rule, engine, WCAG/ACT, occurrences, pages, locator coverage, first/last seen and example page/locator.
 
 `patterns.csv` is generated next to the other report artifacts.
 
-## 6. Cross-scan awareness
+## 7. Cross-scan awareness
 
 Each scan writes its own inventory. Pattern identities are stable across scans, and `firstSeenAt`/`lastSeenAt` are retained, so future trend analysis can compare pattern counts without changing finding IDs. The current inventory is per-scan; it does not yet add a new cross-scan pattern store.
 
-## 7. Tests
+## 8. Tests
 
-- `tests/unit/pattern-inventory.test.mjs` — grouping, navigation/form/form-control/header/footer/table/unknown, canonical identity, duplicates, reflow/Semantica11y and CSV.
+- `tests/unit/pattern-inventory.test.mjs` — grouping, navigation/form/form-control/header/footer/table/unknown, canonical identity, duplicates, reflow/Semantica11y, locator coverage and CSV.
 - `tests/unit/component-association.test.mjs` — selector and HTML tag container inference.
+- `tests/unit/engine-locators.test.mjs` — Equal Access `path.dom`/`path.xpath` fallback.
 - `tests/unit/run-scan-output.test.mjs` — `patternInventory` in JSON and `patterns.csv` generated.
 - `tests/unit/interactive-report.test.mjs` — accessible inventory section.

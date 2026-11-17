@@ -1507,6 +1507,16 @@ async function runAccessLintAudit(url, pageLoadDelayMs = 2000, scanContext = bui
   }
 }
 
+/**
+ * Equal Access reports the DOM path as path.dom; older/alternate payloads may
+ * use path.xpath. Keep both so a usable locator is not discarded.
+ * @param {object} issue
+ * @returns {string|null}
+ */
+export function extractEqualAccessXPath(issue) {
+  return issue?.path?.dom || issue?.path?.xpath || issue?.xpath || null;
+}
+
 async function runEqualAccessAudit(url) {
   const base = createScannerBaseError(null);
 
@@ -1540,7 +1550,7 @@ async function runEqualAccessAudit(url) {
       failedRules.add(rule);
       failures.push({
         rule,
-        xpath: issue?.path?.xpath || null,
+        xpath: extractEqualAccessXPath(issue),
         html: issue?.snippet || null,
         message: issue?.message || null
       });
@@ -3080,6 +3090,8 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     lines.push("## 🧭 Pattern and Container Inventory");
     lines.push("");
     lines.push(`**${inventory.summary.uniquePatterns} unique patterns** across ${inventory.summary.pages} page(s) and ${inventory.summary.occurrences} occurrence(s). Container categories are selector-derived candidates, not component ownership.`);
+    lines.push("");
+    lines.push(`Locator coverage: ${inventory.summary.patternsWithSelector} pattern(s) with selectors, ${inventory.summary.patternsWithMixedLocators} mixed, ${inventory.summary.htmlOnlyPatterns} HTML-only, ${inventory.summary.patternsWithoutLocator} with no locator.`);
     lines.push("");
     lines.push("| Category | Unique patterns | Occurrences | Pages |");
     lines.push("|---|---:|---:|---:|");

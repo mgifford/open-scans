@@ -1791,7 +1791,8 @@ Every scan writes `patternInventory` in `report.json`, a section in `report.md`/
 - Falls back to the first recorded HTML tag when the locator is missing.
 - Maps page-level/meta/document evidence to `document`.
 - Categories: navigation, banner, contentinfo, main, complementary, search, form, form-control, table, list, heading, link, button, image, frame, dialog, live-region, document, unknown.
-- Reports category counts, unique patterns, occurrences, unique pages, and unassigned patterns.
+- Reports category counts, unique patterns, occurrences, unique pages, unassigned patterns and locator coverage (`selector`, `mixed`, `html-only`, `none`).
+- Equal Access `path.dom` is retained; older reports need a re-scan.
 
 ### 29.3 Boundaries
 
@@ -1810,7 +1811,7 @@ Every scan writes `patternInventory` in `report.json`, a section in `report.md`/
 
 ### 29.5 Tests
 
-`tests/unit/pattern-inventory.test.mjs` covers grouping, navigation/forms/header/footer/table/unknown categories, canonical identity, duplicates, reflow/Semantica11y and CSV. Run-scan and interactive-report tests cover the artifacts and HTML section.
+`tests/unit/pattern-inventory.test.mjs` covers grouping, navigation/forms/header/footer/table/unknown categories, canonical identity, duplicates, reflow/Semantica11y, locator coverage and CSV. `tests/unit/engine-locators.test.mjs` covers Equal Access `path.dom`/`path.xpath` fallback. Run-scan and interactive-report tests cover the artifacts and HTML section.
 
 ---
 
