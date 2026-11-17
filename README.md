@@ -20,6 +20,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [Quick Start](#quick-start)
 - [Choose Scanning Engines](#choose-scanning-engines)
 - [View Scan Results](#view-scan-results)
+- [Compare Baseline and Optimized Scans](#compare-baseline-and-optimized-scans)
 - [Managing Your Scans](#managing-your-scans)
 - [Scanning Triggers](#scanning-triggers)
 - [Security & Privacy](#security--privacy)
@@ -128,6 +129,27 @@ Visit the [Reports page](https://mgifford.github.io/open-scans/reports.html) to 
 - Scan timestamp and number of URLs scanned
 - Pass/fail/can't tell statistics
 - Links to detailed reports (Markdown, CSV, JSON)
+
+## Compare Baseline and Optimized Scans
+
+Open Scans can compare two **stored** scan reports without running another scan. This is useful when a performance or energy optimization changes navigation, scripts, images, CSS, or a third-party widget and you need to know whether accessibility changed.
+
+```bash
+npm run compare:scans -- \
+  reports/issues/issue-123/2026-11-01T.../report.json \
+  reports/issues/issue-123/2026-11-15T.../report.json \
+  --baseline-release v1.0.0 --comparison-release v1.1.0 \
+  --out comparison.json --summary comparison.md --csv comparison.csv --html comparison.html
+```
+
+- Same URLs are paired by default.
+- Staging or preview URLs require an explicit `--page-map "https://prod/page=https://staging/page"`.
+- Findings are classified as **new**, **persistent**, **details changed**, **not observed**, or **not evaluated**.
+- A finding that is no longer observed is **never automatically called fixed**. Missing pages, failed engines and changed test conditions remain visible.
+- The report includes browser, viewport, colour scheme, engine and release information, plus manual-testing limits.
+- Outputs are versioned JSON, Markdown, CSV and a self-contained accessible HTML report.
+
+Read the [comparison documentation](./docs/accessibility-comparison/comparison.md) and the [Phase 0 assessment](./docs/accessibility-comparison/PHASE-0-ASSESSMENT.md).
 
 ## Managing Your Scans
 
@@ -333,6 +355,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[SUSTAINABILITY.md](./SUSTAINABILITY.md)** — Digital sustainability policy
 - **[TIMEOUT-CONFIG.md](./TIMEOUT-CONFIG.md)** — Timeout configuration and tuning guide for scan optimization
 - **[scanner/README.md](./scanner/README.md)** — Scanner module documentation and CLI reference
+- **[docs/accessibility-comparison/](./docs/accessibility-comparison/)** — Baseline-to-comparison reports, schema and limitations
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -421,6 +444,7 @@ Development of `open-scans` has used AI coding assistants for:
 | Claude Code (claude-sonnet-5) | Completed a pre-existing, uncommitted `analyzeDuplicateTitles`/`normalizeTitle` implementation found unwired in `scanner/run-scan.mjs`: added it to the scan summary and to `toMarkdownReport()` as a "Duplicate Page Titles" (WCAG 2.4.2) report section, fixed a JSDoc return-type mismatch, and added unit test coverage | Development – July 2026 |
 | Claude Code (claude-sonnet-5) | Added `scanner/fingerprint-core.mjs` to dual-write the versioned, cross-project `a11y/pattern/v1`/`a11y/occurrence/v1` fingerprints from mgifford/ACCESSIBILITY.md alongside the existing `A11Y-xxxxxxxx` Instance ID and Pattern ID (verified against ACCESSIBILITY.md's published golden test vectors); renamed `computeChangeTracking`'s `resolvedCount`/`resolvedIssues` output fields to `notObservedCount`/`notObservedIssues` and updated both consumers so absence from a scan is no longer labelled as resolution | Development – July 2026 |
 | big-pickle (opencode) | Added `scanner/redact-secrets.mjs` secret-masking layer so report artifacts no longer carry credentials embedded in scanned pages (fixes GitHub push-protection blocks on report commit), plus unit tests and push-protection guard in `scan-request.yml` | Development – September 2026 |
+| DeepSeek Harness (deepseek-flash) | Phase A baseline-to-comparison accessibility reports: comparison engine, identity matching, page mapping, conditions/coverage classifications, JSON/Markdown/CSV/HTML exports, fixtures, tests and documentation | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

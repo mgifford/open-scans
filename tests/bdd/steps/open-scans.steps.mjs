@@ -4,7 +4,7 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
 
-const repoRoot = "/home/runner/work/open-scans/open-scans";
+const repoRoot = process.env.GITHUB_WORKSPACE || process.cwd();
 const workflowPath = path.join(repoRoot, ".github/workflows/scan-request.yml");
 
 const MIME_BY_EXT = new Map([

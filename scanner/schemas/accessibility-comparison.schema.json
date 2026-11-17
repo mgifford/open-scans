@@ -1,0 +1,594 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/accessibility-comparison.schema.json",
+  "title": "AccessibilityComparison",
+  "description": "Versioned baseline-versus-comparison accessibility report. It contains observed differences, never a combined accessibility/performance score and never a claim that absence proves remediation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "generatedAt",
+    "baseline",
+    "comparison",
+    "pageMappings",
+    "conditions",
+    "engines",
+    "summary",
+    "findings",
+    "coverageGaps",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "accessibility-comparison/1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseline": {
+      "$ref": "#/$defs/scan"
+    },
+    "comparison": {
+      "$ref": "#/$defs/scan"
+    },
+    "pageMappings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pageComparison"
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compatible",
+        "baseline",
+        "comparison",
+        "differences"
+      ],
+      "properties": {
+        "compatible": {
+          "type": "boolean"
+        },
+        "baseline": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "comparison": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "differences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/difference"
+          }
+        }
+      }
+    },
+    "engines": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline",
+        "comparison",
+        "common",
+        "onlyBaseline",
+        "onlyComparison",
+        "labels"
+      ],
+      "properties": {
+        "baseline": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "comparison": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "common": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "onlyBaseline": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "onlyComparison": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pagesCompared",
+        "pagesBaselineOnly",
+        "pagesComparisonOnly",
+        "baselineFindings",
+        "comparisonFindings",
+        "newCount",
+        "persistentCount",
+        "detailsChangedCount",
+        "notObservedCount",
+        "notEvaluatedCount",
+        "confirmedRemediations",
+        "conditionsCompatible",
+        "enginesChanged",
+        "identityFallbackCount"
+      ],
+      "properties": {
+        "pagesCompared": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pagesBaselineOnly": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pagesComparisonOnly": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baselineFindings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "comparisonFindings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "newCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "persistentCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detailsChangedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notObservedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notEvaluatedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "confirmedRemediations": {
+          "type": "integer",
+          "const": 0
+        },
+        "conditionsCompatible": {
+          "type": "boolean"
+        },
+        "enginesChanged": {
+          "type": "boolean"
+        },
+        "identityFallbackCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "new",
+        "persistent",
+        "details-changed",
+        "not-observed",
+        "not-evaluated"
+      ],
+      "properties": {
+        "new": {
+          "$ref": "#/$defs/findingList"
+        },
+        "persistent": {
+          "$ref": "#/$defs/findingList"
+        },
+        "details-changed": {
+          "$ref": "#/$defs/findingList"
+        },
+        "not-observed": {
+          "$ref": "#/$defs/findingList"
+        },
+        "not-evaluated": {
+          "$ref": "#/$defs/findingList"
+        }
+      }
+    },
+    "coverageGaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "$ref": "#/$defs/stringArray"
+    }
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scanId",
+        "issueNumber",
+        "issueUrl",
+        "scanTitle",
+        "scannedAt",
+        "release",
+        "sourcePath",
+        "engines",
+        "scanContext",
+        "coverage"
+      ],
+      "properties": {
+        "scanId": {
+          "type": "string"
+        },
+        "issueNumber": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "issueUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scanTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scannedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "release": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourcePath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engines": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "scanContext": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "coverage": {
+          "type": "object"
+        }
+      }
+    },
+    "pageComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logicalPageId",
+        "mapping",
+        "baselineUrl",
+        "comparisonUrl",
+        "baselineEvaluated",
+        "comparisonEvaluated",
+        "baselineError",
+        "comparisonError",
+        "conditionsDifferences",
+        "conditionsCompatible",
+        "counts",
+        "baselineStatusCode",
+        "comparisonStatusCode"
+      ],
+      "properties": {
+        "logicalPageId": {
+          "type": "string"
+        },
+        "mapping": {
+          "type": "string",
+          "enum": [
+            "url",
+            "explicit"
+          ]
+        },
+        "baselineUrl": {
+          "type": "string"
+        },
+        "comparisonUrl": {
+          "type": "string"
+        },
+        "baselineEvaluated": {
+          "type": "boolean"
+        },
+        "comparisonEvaluated": {
+          "type": "boolean"
+        },
+        "baselineError": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comparisonError": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditionsDifferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/difference"
+          }
+        },
+        "conditionsCompatible": {
+          "type": "boolean"
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baselineFindings",
+            "comparisonFindings",
+            "new",
+            "persistent",
+            "detailsChanged",
+            "notObserved",
+            "notEvaluated"
+          ],
+          "properties": {
+            "baselineFindings": {
+              "type": "integer"
+            },
+            "comparisonFindings": {
+              "type": "integer"
+            },
+            "new": {
+              "type": "integer"
+            },
+            "persistent": {
+              "type": "integer"
+            },
+            "detailsChanged": {
+              "type": "integer"
+            },
+            "notObserved": {
+              "type": "integer"
+            },
+            "notEvaluated": {
+              "type": "integer"
+            }
+          }
+        },
+        "baselineStatusCode": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "comparisonStatusCode": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "difference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "baseline",
+        "comparison"
+      ],
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "baseline": {},
+        "comparison": {}
+      }
+    },
+    "findingList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "comparisonId",
+        "classification",
+        "engine",
+        "engineLabel",
+        "ruleId",
+        "title",
+        "message",
+        "wcagSc",
+        "wcagLevel",
+        "impact",
+        "page",
+        "matchBasis",
+        "confidence",
+        "conditionsCompatible",
+        "pageEvaluatedInBoth",
+        "engineEvaluatedInBoth",
+        "confirmedRemediation",
+        "qualification",
+        "detailsChanged",
+        "baseline",
+        "comparison"
+      ],
+      "properties": {
+        "comparisonId": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "new",
+            "persistent",
+            "details-changed",
+            "not-observed",
+            "not-evaluated"
+          ]
+        },
+        "engine": {
+          "type": "string"
+        },
+        "engineLabel": {
+          "type": "string"
+        },
+        "ruleId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "wcagSc": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "wcagLevel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "impact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "logicalPageId",
+            "baselineUrl",
+            "comparisonUrl",
+            "mapping"
+          ],
+          "properties": {
+            "logicalPageId": {
+              "type": "string"
+            },
+            "baselineUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "comparisonUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mapping": {
+              "type": "string"
+            }
+          }
+        },
+        "matchBasis": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "conditionsCompatible": {
+          "type": "boolean"
+        },
+        "pageEvaluatedInBoth": {
+          "type": "boolean"
+        },
+        "engineEvaluatedInBoth": {
+          "type": "boolean"
+        },
+        "confirmedRemediation": {
+          "type": "boolean",
+          "const": false
+        },
+        "qualification": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "detailsChanged": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/difference"
+          }
+        },
+        "baseline": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "comparison": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

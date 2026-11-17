@@ -1,0 +1,139 @@
+{
+  "issueNumber": 9001,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/9001",
+  "scanTitle": "Example government baseline",
+  "engines": ["axe", "alfa"],
+  "scanContext": {
+    "browser": "chromium",
+    "viewport": { "width": 1280, "height": 800 },
+    "viewportPreset": "desktop",
+    "colorScheme": "light",
+    "pageLoadDelay": 0
+  },
+  "scannedAt": "2026-11-01T10:00:00.000Z",
+  "totalSubmitted": 3,
+  "acceptedCount": 3,
+  "scannedCount": 3,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "results": [
+    {
+      "submittedUrl": "https://example.gov/",
+      "finalUrl": "https://example.gov/",
+      "statusCode": 200,
+      "ok": true,
+      "scanContext": { "browser": "chromium", "viewport": { "width": 1280, "height": 800 }, "colorScheme": "light", "pageLoadDelay": 0 },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": { "passed": 10, "failed": 2, "cantTell": 0, "inapplicable": 0 },
+        "failures": [
+          {
+            "rule": "link-name",
+            "description": "Links must have discernible text",
+            "ruleUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name",
+            "impact": "serious",
+            "wcagSc": ["wcag2a", "wcag412", "wcag244"],
+            "xpath": "nav a.icon",
+            "html": "<a class=\"icon\" href=\"/\"><svg aria-hidden=\"true\"></svg><span>Home</span></a>",
+            "message": "Links must have discernible text",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "fingerprint": "aaaaaaaaaaaa",
+            "patternId": "A11Y-aaaaaaaa"
+          },
+          {
+            "rule": "image-alt",
+            "description": "Images must have alternate text",
+            "impact": "critical",
+            "wcagSc": ["wcag2a", "wcag111"],
+            "xpath": "img.hero",
+            "html": "<img class=\"hero\" src=\"hero.jpg\">",
+            "message": "Images must have alternate text",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "fingerprint": "bbbbbbbbbbbb",
+            "patternId": "A11Y-bbbbbbbb"
+          }
+        ]
+      },
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": { "passed": 5, "failed": 1, "cantTell": 0, "inapplicable": 0 },
+        "failures": [
+          {
+            "rule": "SIA-R2",
+            "description": "HTML page has a title",
+            "impact": "serious",
+            "wcagSc": ["wcag2a", "wcag242"],
+            "xpath": "html",
+            "html": "<html>",
+            "message": "The document has no title",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "fingerprint": "cccccccccccc",
+            "patternId": "A11Y-cccccccc"
+          }
+        ]
+      }
+    },
+    {
+      "submittedUrl": "https://example.gov/services",
+      "finalUrl": "https://example.gov/services",
+      "statusCode": 200,
+      "ok": true,
+      "scanContext": { "browser": "chromium", "viewport": { "width": 1280, "height": 800 }, "colorScheme": "light", "pageLoadDelay": 0 },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": { "passed": 12, "failed": 1, "cantTell": 0, "inapplicable": 0 },
+        "failures": [
+          {
+            "rule": "link-name",
+            "description": "Links must have discernible text",
+            "impact": "serious",
+            "wcagSc": ["wcag2a", "wcag412", "wcag244"],
+            "xpath": "nav a.icon",
+            "html": "<a class=\"icon\" href=\"/\"><svg aria-hidden=\"true\"></svg><span>Home</span></a>",
+            "message": "Links must have discernible text",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "fingerprint": "dddddddddddd",
+            "patternId": "A11Y-aaaaaaaa"
+          }
+        ]
+      },
+      "alfa": { "executed": true, "error": null, "counts": { "passed": 6, "failed": 0 }, "failures": [] }
+    },
+    {
+      "submittedUrl": "https://example.gov/about",
+      "finalUrl": "https://example.gov/about",
+      "statusCode": 200,
+      "ok": true,
+      "scanContext": { "browser": "chromium", "viewport": { "width": 1280, "height": 800 }, "colorScheme": "light", "pageLoadDelay": 0 },
+      "axe": {
+        "executed": true,
+        "error": null,
+        "counts": { "passed": 7, "failed": 1 },
+        "failures": [
+          {
+            "rule": "heading-order",
+            "description": "Heading levels should only increase by one",
+            "impact": "moderate",
+            "wcagSc": ["wcag2a", "wcag131"],
+            "xpath": "h3",
+            "html": "<h3>About</h3>",
+            "message": "Heading levels should only increase by one",
+            "colorScheme": "light",
+            "isDuplicate": false,
+            "fingerprint": "ffffffffffff",
+            "patternId": "A11Y-ffffffff"
+          }
+        ]
+      },
+      "alfa": { "executed": true, "error": null, "counts": { "passed": 6, "failed": 0 }, "failures": [] }
+    }
+  ]
+}
