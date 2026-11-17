@@ -245,6 +245,7 @@ jobs:
               markdownPath,
               htmlPath,
               csvPath,
+              patternsCsvPath: `${reportDir}/patterns.csv`,
               overlapMarkdownPath,
               scannedAt: meta.scannedAt || new Date().toISOString()
             }) + '\n', 'utf8');
@@ -326,6 +327,7 @@ jobs:
               const pagesMdUrl = `https://${owner}.github.io/${repo}/${item.markdownPath}`;
               const pagesHtmlUrl = `https://${owner}.github.io/${repo}/${item.htmlPath}`;
               const pagesCsvUrl = `https://${owner}.github.io/${repo}/${item.csvPath}`;
+              const pagesPatternsCsvUrl = `https://${owner}.github.io/${repo}/${item.patternsCsvPath}`;
               const pagesOverlapUrl = `https://${owner}.github.io/${repo}/${item.overlapMarkdownPath}`;
               const ghMdUrl = `https://github.com/${owner}/${repo}/blob/main/${item.markdownPath}`;
               const ghOverlapUrl = `https://github.com/${owner}/${repo}/blob/main/${item.overlapMarkdownPath}`;
@@ -349,6 +351,7 @@ jobs:
                 `Latest report (Pages, HTML): ${pagesHtmlUrl}`,
                 `Latest report (Pages, Markdown): ${pagesMdUrl}`,
                 `Latest CSV (Pages): ${pagesCsvUrl}`,
+                `Latest patterns CSV (Pages): ${pagesPatternsCsvUrl}`,
                 `Scanner overlap report (Pages): ${pagesOverlapUrl}`,
                 `Fallback (GitHub): ${ghMdUrl}`,
                 `Overlap fallback (GitHub): ${ghOverlapUrl}`,

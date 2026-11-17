@@ -259,6 +259,7 @@ jobs:
                 const markdownPath = `${reportDir}/report.md`;
                 const htmlPath = `${reportDir}/report.html`;
                 const csvPath = `${reportDir}/report.csv`;
+                const patternsCsvPath = `${reportDir}/patterns.csv`;
 
                 // Create report directory and copy files
                 fs.mkdirSync(reportDir, { recursive: true });
@@ -362,10 +363,13 @@ jobs:
                 const encodedMarkdownPath = markdownPath.split('/').map(encodeURIComponent).join('/');
                 const encodedHtmlPath = htmlPath.split('/').map(encodeURIComponent).join('/');
                 const encodedCsvPath = csvPath.split('/').map(encodeURIComponent).join('/');
+                const encodedPatternsCsvPath = patternsCsvPath.split('/').map(encodeURIComponent).join('/');
                 const pagesUrl = `https://${owner}.github.io/${repo}/${encodedHtmlPath}`;
                 const csvPagesUrl = `https://${owner}.github.io/${repo}/${encodedCsvPath}`;
+                const patternsCsvPagesUrl = `https://${owner}.github.io/${repo}/${encodedPatternsCsvPath}`;
                 const blobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedMarkdownPath}`;
                 const csvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedCsvPath}`;
+                const patternsCsvBlobUrl = `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(defaultBranch)}/${encodedPatternsCsvPath}`;
 
                 const body = [
                   `Scheduled scan complete for **${meta.scanTitle}**.`,
@@ -392,7 +396,9 @@ jobs:
                   `Report (Pages): ${pagesUrl}`,
                   `Fallback (GitHub): ${blobUrl}`,
                   `CSV (Pages): ${csvPagesUrl}`,
-                  `CSV Fallback (GitHub): ${csvBlobUrl}`
+                  `CSV Fallback (GitHub): ${csvBlobUrl}`,
+                  `Patterns CSV (Pages): ${patternsCsvPagesUrl}`,
+                  `Patterns CSV Fallback (GitHub): ${patternsCsvBlobUrl}`
                 );
                 
                 const commentBody = body.join("\n");

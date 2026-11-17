@@ -17,6 +17,8 @@ Equal Access reports a DOM path as `path.dom`. The scanner was reading only `pat
 2. `issue.path.xpath`;
 3. legacy `issue.xpath`.
 
+The pattern inventory now uses a stable `id` from the recorded HTML when no engine selector exists, and uses an explicit ARIA role (for example `role="button"` on an `<a>`) before the element's default role.
+
 The pattern inventory now reports locator coverage:
 
 - `selector` — all occurrences have a selector/XPath;
@@ -51,17 +53,21 @@ node --test tests/unit/engine-locators.test.mjs
 2 tests, 2 pass
 
 node --test tests/unit/pattern-inventory.test.mjs
-9 tests, 9 pass
+10 tests, 10 pass
 ```
 
 Full suite:
 
 ```text
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
-# 728 tests, 723 pass, 1 pre-existing timezone failure, 4 skipped
+# 730 tests, 725 pass, 1 pre-existing timezone failure, 4 skipped
 ```
 
-## 5. Next
+## 5. Scan comment links
+
+The scan-completion comments now include `patterns.csv` Pages and GitHub fallback links, in both the issue-request and scheduled queue workflows.
+
+## 6. Next
 
 - Re-scan selected reports so Equal Access `path.dom` values populate the inventory.
 - Review `locator_coverage=html-only/none` rows in `patterns.csv`.
