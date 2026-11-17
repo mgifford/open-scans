@@ -1952,6 +1952,21 @@ Boundaries:
 
 See [accessibility context](docs/accessibility-context.md) and [product direction](docs/PRODUCT-DIRECTION.md).
 
+### 30.10 Performance execution workflow
+
+`performance-request.yml` validates `PERF:` requests without launching a browser.
+`performance-scan.yml` executes a validated request:
+
+- triggers on `PERF:` issues;
+- `reuse` runs the no-browser reuse runner;
+- `light` installs Chromium and runs bounded Lighthouse;
+- `deep` pulls the pinned Sitespeed image and runs the bounded deep runner;
+- `combined` is validated but currently fails with a clear message;
+- raw provider artifacts are uploaded for 14 days and not committed;
+- `performance-result.json`, `performance-evidence.json`, `performance-run.json` and `performance-summary.md` are committed under `reports/performance/issue-<n>/<timestamp>/`;
+- the issue receives Pages/GitHub links and is closed on success;
+- failed or invalid runs receive a failure comment and no report.
+
 ---
 
 ## Related Documentation
