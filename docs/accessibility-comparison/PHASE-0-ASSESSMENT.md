@@ -147,3 +147,10 @@ npm run lint
 - Observed differences vs confirmed improvements: `confirmedRemediation: false` for all absences.
 - Fixture with an optimization regression and a no-regression fixture with automated-testing limitations.
 - JSON, CSV and accessible static HTML exports, versioned.
+
+
+---
+
+## 8. Update after Phase B
+
+Phase B adds `optimization-investigation/1` and an opt-in CLI that maps a completed comparison to ten optimization scenarios and fifteen accessibility concerns. It reuses existing findings, adds scenario-specific filters, page scoping and manual-verification tasks, and explicitly disclaims conformance, functional equivalence and savings. See [`optimization-investigation.md`](./optimization-investigation.md).
