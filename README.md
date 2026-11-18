@@ -525,6 +525,7 @@ npm run run:analyse-trends    # Analyse trend data
 - **[docs/pattern-inventory.md](./docs/pattern-inventory.md)** — Per-scan unique patterns by semantic container, JSON/Markdown/HTML/CSV outputs and limits
 - **[docs/accessibility-context.md](./docs/accessibility-context.md)** — Compact occurrence-level handoff for Firefox Energy Scanner
 - **[docs/PRODUCT-DIRECTION.md](./docs/PRODUCT-DIRECTION.md)** — Open Scans vs Vital Core vs FES boundaries
+- **[docs/AI-SESSION-HANDOFF.md](./docs/AI-SESSION-HANDOFF.md)** — Current cross-project state, test baseline and lessons for future AI sessions
 - **[.kittify/AGENTS.md](.kittify/AGENTS.md)** — Spec Kitty project management rules
 
 ## Current Status
@@ -624,6 +625,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Accessibility context handoff for FES: occurrence-level page/selector/pattern/container artifact, schema, workflow persistence and product-direction boundaries | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Issue-driven performance execution: dispatcher, GitHub Actions workflow, local end-to-end validation, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Explicit `selectorType` for accessibility-context and pattern-inventory records, engine-aware classification and tests | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Cross-project session handoff and learnings for future AI work | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 3: pinned Lighthouse provider, bounded page selection and family coverage, evidence reuse planning, DNS/redirect preflight, raw-artifact retention, cost reporting, tests and documentation | Development – November 2026 |

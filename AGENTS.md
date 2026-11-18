@@ -99,6 +99,18 @@ The `.github/prompts/` directory contains task-specific prompt files that give A
 
 These prompt files encode accessibility expertise — WCAG criteria, ARIA patterns, colour contrast rules, and project-specific conventions — so that AI agents generate correct, accessible output on the first attempt.
 
+## Session handoff and institutional memory
+
+Before starting a new AI session, read [`docs/AI-SESSION-HANDOFF.md`](./docs/AI-SESSION-HANDOFF.md). It records the current cross-repository state, contract versions, workflow distinctions, test baseline and known pitfalls.
+
+In particular:
+
+- a merged performance runner is not running until a `PERF:` issue triggers `performance-scan.yml`;
+- `SCAN:` and `PERF:` are separate paths;
+- accessibility, performance and energy evidence must not be combined into a score;
+- explicit `selectorType` must be preferred over engine-based CSS/XPath inference;
+- the pre-existing `generate-reports-html` timezone test failure is not a regression.
+
 ## Tool-Specific Instructions
 
 ### GitHub Copilot
