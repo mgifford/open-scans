@@ -1,8 +1,8 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-18
-**Open Scans main:** `8da23e1`
-**Firefox Energy Scanner main:** `be61c13`
+**Open Scans main:** `bb8dc2a` (this handoff)
+**Firefox Energy Scanner main:** `241e79d`
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
@@ -44,7 +44,8 @@ FES has already merged:
 - `fes-accessibility-join/1` sidecar;
 - accessible “Related accessibility evidence” section;
 - real #391 artifact regression;
-- selector type consumption and report URL support (PR #59).
+- selector type consumption and report URL support (PR #59);
+- report site map and run/viewport pairing (PR #60).
 
 Its CI is green. Do not describe FES as “not yet integrated”.
 
@@ -213,8 +214,8 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
 2. Run a real `PERF:` issue and review the committed report plus raw artifact.
 3. In FES, confirm explicit `selectorType` is preferred over inference and add
    DOM-validated ancestor matching only if needed.
-4. Define a same-run/same-viewport protocol before claiming component-level
-   accessibility/energy relationships.
+4. Use the new FES site map and run/viewport pairing; define a same-run/same-viewport
+   protocol before claiming component-level accessibility/energy relationships.
 5. Keep `combined` performance mode blocked until a merge layer exists.
 6. Do not claim release readiness until the P0/P1 FES evidence work is complete.
 
