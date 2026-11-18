@@ -79,6 +79,9 @@ test("run-scan.mjs outputs valid JSON to stdout", () => {
       const context = JSON.parse(readFileSync(join(outputDir, "accessibility-context.json"), "utf8"));
       assert.equal(context.schema, "a11y-accessibility-context/1");
       assert.ok(Array.isArray(context.observations));
+      if (context.observations.length > 0) {
+        assert.ok(["css", "xpath", "html", "none", "unknown"].includes(context.observations[0].selectorType));
+      }
       const report = JSON.parse(readFileSync(join(outputDir, "report.json"), "utf8"));
       assert.equal(report.accessibilityContext?.summary?.ownershipEstablished, false);
       assert.equal(report.patternInventory?.schema, "a11y-pattern-inventory/1");

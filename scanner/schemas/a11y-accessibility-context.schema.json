@@ -42,6 +42,7 @@
         "withSelector": { "type": "integer", "minimum": 0 },
         "htmlOnly": { "type": "integer", "minimum": 0 },
         "withoutLocator": { "type": "integer", "minimum": 0 },
+        "bySelectorType": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
         "byCategory": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
         "ownershipEstablished": { "type": "boolean", "const": false },
         "note": { "type": "string" }
@@ -70,6 +71,7 @@
           "impact": { "type": ["string", "null"] },
           "pageUrl": { "type": "string" },
           "selector": { "type": ["string", "null"] },
+          "selectorType": { "type": "string", "enum": ["css", "xpath", "html", "none", "unknown"] },
           "locator": { "type": "string" },
           "locatorSource": { "type": "string", "enum": ["selector", "html", "none"] },
           "container": { "type": "object" },

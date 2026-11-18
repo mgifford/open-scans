@@ -1937,13 +1937,14 @@ Open Scans publishes `a11y-accessibility-context/1` as a compact occurrence-leve
 - `accessibility-context.json` — one record per finding occurrence;
 - `accessibility-context.csv` — the same data for spreadsheets.
 
-Each occurrence contains page URL, selector/locator, locator source, pattern and display IDs, rule, engine, WCAG/ACT mappings, semantic container candidate, source reference and no ownership claim.
+Each occurrence contains page URL, selector/locator, explicit `selectorType`, locator source, pattern and display IDs, rule, engine, WCAG/ACT mappings, semantic container candidate, source reference and no ownership claim.
 
 FES can join page URL to `component-graph/1` pages and selector to component instance selectors. Matching must preserve unmatched evidence and must not use labels as identity.
 
 Boundaries:
 
 - accessibility evidence only;
+- explicit `selectorType` prevents CSS/XPath text comparisons;
 - no Lighthouse/Sitespeed/CO2/energy data in this artifact;
 - no component ownership;
 - no combined score;

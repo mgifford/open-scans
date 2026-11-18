@@ -92,6 +92,8 @@ The inventory measures whether each pattern has a usable selector/XPath:
 
 This metric is shown in JSON, Markdown, HTML and `patterns.csv`. It makes locator gaps visible instead of inventing a container.
 
+`selectorType` records the locator language: `css`, `xpath`, `html`, `mixed`, `none` or `unknown`. CSS and XPath are never treated as interchangeable. Older artifacts may omit it; consumers must fall back conservatively rather than inferring from the selector text.
+
 Equal Access reports its DOM path as `path.dom`; Open Scans now retains that instead of reading only `path.xpath`. Older reports remain unchanged until rescanned.
 
 ## 5. What it is not
