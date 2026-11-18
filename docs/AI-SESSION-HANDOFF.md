@@ -1,8 +1,8 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-18
-**Open Scans integration checkpoint:** `8da23e1` (selector type merged)
-**Firefox Energy Scanner main:** `241e79d` (report navigation merged)
+**Last updated:** 2026-11-18 (evening)
+**Open Scans integration checkpoint:** `96d0c67` (same-viewport protocol and component-attribution policy)
+**Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
@@ -27,7 +27,10 @@ Merged and on `main`:
 - occurrence-level accessibility context for FES;
 - explicit `selectorType` (`css`, `xpath`, `html`, `none`, `unknown`);
 - optional performance request, evidence, Lighthouse, Sitespeed and investigation stack;
-- issue-driven performance execution workflow.
+- issue-driven performance execution workflow;
+- the pairing decisions for FES:
+  [same-viewport protocol](same-viewport-protocol.md) and
+  [component-attribution policy](component-attribution-policy.md).
 
 Latest merged PRs:
 
@@ -44,23 +47,27 @@ FES has already merged:
 - `fes-accessibility-join/1` sidecar;
 - accessible “Related accessibility evidence” section;
 - real #391 artifact regression;
-- selector type consumption and report URL support (PR #59);
-- report site map and run/viewport pairing (PR #60).
+- selector type consumption and report URL support (PR #59, merged);
+- report site map and run/viewport pairing (PR #60, merged);
+- dispatch-only physical experiment workflow (PR #61, merged as `9642332`);
+- opt-in DOM-validated ancestors (PR #62, merged as `3f204e7`);
+- same-viewport gate for DOM ancestors (PR #63, merged as `8d0f913`);
+- honest exact/ancestor reporting (PR #64, merged as `34a1f65`).
 
-FES PR checks were green before #60 merged. The post-merge main run then hit an
-unrelated 5-second timeout in `tests/browser/dom-removal.test.ts` and a stuck
-Playwright Firefox install; that run was restarted. Do not treat either as a
-site-map regression without a fresh failure.
+`34a1f65` is the verification point for the accessibility integration. Main CI
+run `44419669422` passed `test`, `e2e` and `e2e-components` on that commit. The
+`8d0f913` run was cancelled by the `tests-main` concurrency group when #64
+merged; that is expected, not a failure.
 
-At handoff time, two FES PRs are open and green, both from other sessions:
+No open PRs remain in either repository.
 
-- #61 — dispatch-only physical experiment workflow;
-- #62 — opt-in DOM-validated accessibility ancestors.
-
-#61 is an operational safeguard; its self-hosted runner and approval environment
-are repository settings, not code. #62 turns many page-level observations into
-low-confidence ancestor associations; its own report says 4,838 of 5,486 are
-low confidence, so it must not be presented as component ownership.
+> **How #61 and #62 were merged matters.** A parallel review was in progress
+> when the repository owner merged both. The review comments are on the PRs:
+> #61 passes the dispatch-only checklist; #62 is accepted only as an opt-in
+> preview. That review also found that the rendered accessibility section still
+> said components were matched “only by exact CSS selector text” after a DOM
+> pass; #64 fixes that text. Re-check PR state before merging anything a
+> handoff lists as open — a handoff can go stale in minutes.
 
 Do not describe FES as “not yet integrated”.
 
@@ -81,6 +88,10 @@ Do not describe FES as “not yet integrated”.
 `selectorType` is additive and optional in schemas so old artifacts remain
 valid. New artifacts should still be rejected by a strict consumer until that
 consumer accepts the field. FES now does.
+
+The join sidecar gained `basis: ancestor-selector` and an optional
+`domValidated` boolean, also additively. Do not add another required field to a
+strict consumer without coordinating it first.
 
 ---
 
@@ -125,13 +136,16 @@ Keep these true:
 - Accessibility, performance and energy evidence stay separate.
 - No combined accessibility/performance/energy score.
 - No WCAG conformance claim from automated evidence.
-- No component ownership from a selector-derived container.
+- No component ownership from a selector-derived container, even after DOM
+  validation and even at the same viewport.
 - No accessibility engines in FES.
 - No Open Scans API or MCP in the scan runtime.
 - No automatic cross-project scan.
 - No label-based component matching.
 - No CSS/XPath text comparison.
 - No claiming a merged provider is running without checking the workflow and an issue.
+- Rendered report text is part of the evidence claim. Audit the report, not only
+  the docs, before calling a feature honest.
 
 ---
 
@@ -142,24 +156,38 @@ Keep these true:
 FES currently:
 
 - matches pages reliably;
-- matches components only on exact CSS selectors;
+- matches components only on exact CSS selectors by default;
 - keeps XPath, HTML-only, unknown and non-exact observations page-level;
-- does not do ancestor/descendant matching without DOM validation;
-- has low exact-match coverage on the real artifact (8 of 5,486 observations).
+- refuses DOM ancestor matching when the source and FES viewports differ, unless
+  `--dom-allow-different-viewport` is passed (PR #63);
+- with `--validate-dom`, opens each FES page once at the FES viewport, resolves
+  only a single-element selector, and walks to the nearest recorded ancestor
+  with at least `--dom-min-own-nodes` owned nodes;
+- records `basis: ancestor-selector`, `domValidated: true`, and confidence
+  (`medium` only when the viewports match);
+- keeps ambiguous, missing, invalid, page-load-failure and cap-exceeded
+  observations page-level with a reason;
+- splits exact and ancestor counts in the report (PR #64);
+- covers 8 of 5,486 observations by exact CSS on the real #391 artifact.
 
-Do not widen component attribution without one of:
-
-1. a shared explicit component id; or
-2. DOM-validated ancestor matching under a known `selectorType`.
+The DOM pass on that artifact (with the different-viewport override) associated
+4,838 observations at low confidence, mostly with structural class wrappers
+(`class:relative`, `class:not-prose`, `class:blog-content`). That is a broad
+association, not attribution. The rules and the route to a stronger claim are in
+[component-attribution-policy.md](component-attribution-policy.md).
 
 Open Scans and FES real-artifact checks also used different runs/viewports.
 Page-level evidence is reliable across runs; component-level conclusions are not.
+[Same-viewport protocol](same-viewport-protocol.md) defines the pair that would
+remove that objection.
 
 ---
 
 ## 6. Test baseline
 
-Last full run:
+### Open Scans
+
+Last full run (unchanged; the recent work is documentation only):
 
 ```text
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
@@ -191,6 +219,23 @@ Selector type:
 node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-context.test.mjs
 ```
 
+### Firefox Energy Scanner
+
+On `34a1f65`:
+
+```text
+npm ci
+npm test
+npm run typecheck
+898 tests passed, 61 files; typecheck clean
+```
+
+The local run used `WEB_ENERGY_TEST_ENGINE=chromium` because Playwright's
+Firefox cannot start inside a restricted file sandbox (`sandbox_init() failed`).
+CI's `e2e` job still runs real Firefox. Known FES flake:
+`tests/browser/dom-removal.test.ts` can hit its 5-second timeout, and the
+Playwright Firefox install can hang. Rerun before calling it a regression.
+
 ---
 
 ## 7. Lessons and pitfalls
@@ -209,7 +254,7 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
 6. **CSS and XPath are not interchangeable.** Do not infer from engine names if
    an explicit `selectorType` is available.
 7. **Exact CSS matching is a preview, not attribution.** Ancestor matching needs
-   DOM validation.
+   DOM validation, and DOM validation still does not create ownership.
 8. **Cross-run artifacts are not same-condition evidence.** Record browser,
    viewport and run differences.
 9. **Large contexts are large reports.** The real artifact produced multi-MB
@@ -221,21 +266,46 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
 11. **Do not add a score to make a report look decisive.** Preserve uncertainty.
 12. **No model calls in measurement loops.** Models can help review, not measure
     or silently adjudicate findings.
+13. **A handoff can go stale in minutes.** #61 and #62 were merged while an
+    independent review was running. Re-check `gh pr list` and the PR state
+    immediately before acting, and record who merged what.
+14. **Audit the rendered text, not just the docs.** #62 documented the
+    association boundary correctly but left the report asserting exact-CSS-only.
+    The report is what readers act on; #64 fixed it.
+15. **Concurrency cancels earlier main runs.** `tests-${github.ref}` cancelled
+    the #61 push run when #62 merged. Verify the last run for the final `main`
+    commit, not any intermediate one.
+16. **A same-viewport gate removes a caveat, not a boundary.** It makes ancestor
+    matching defensible as an association; it still does not make a component
+    the owner of a finding.
+17. **A restricted file sandbox can stop Firefox from launching.** Use
+    `WEB_ENERGY_TEST_ENGINE=chromium` for local FES runs, and let CI run the
+    Firefox e2e jobs.
 
 ---
 
 ## 8. Safe next steps
 
-1. Run a new accessibility scan after the selector type merge to produce the
-   first context containing `selectorType`.
-2. Run a real `PERF:` issue and review the committed report plus raw artifact.
-3. In FES, confirm explicit `selectorType` is preferred over inference and add
-   DOM-validated ancestor matching only if needed.
-4. Use the new FES site map and run/viewport pairing; define a same-run/same-viewport
-   protocol before claiming component-level accessibility/energy relationships.
-5. Keep `combined` performance mode blocked until a merge layer exists.
-6. Review/merge FES #61 and #62 after checking their evidence claims.
-7. Do not claim release readiness until the P0/P1 FES evidence work is complete.
+1. Run the [same-viewport protocol](same-viewport-protocol.md) once against a
+   real site and record the pair. This is the highest-value outstanding
+   accessibility evidence item.
+2. Decide on an explicit shared component id. If Open Scans publishes one,
+   FES can use `basis: component-id`; that is the only route to real ownership.
+   Coordinate the additive field with the FES parser first.
+3. Improve large-report usability: pagination, filtering or a smaller default
+   view for multi-MB contexts and sidecars.
+4. Keep `combined` performance mode blocked until a real merge layer exists;
+   do not silently run only Lighthouse or only Sitespeed.
+5. Complete the pending real-hardware measurements, replication and pilot
+   experiment before any production-readiness claim.
+6. Finish the `physical-energy` environment setup before using #61: register
+   the `firefox-energy` runner label, require reviewers, and restrict the
+   environment's deployment branches to `main`. A dispatch can select a branch,
+   and the runner builds that branch's code.
+7. Open Scans issues #360, #68 and #38 remain operations/trend work, not
+   blockers for the accessibility handoff.
+8. Do not delete the stale unmerged `copilot/fix-puppeteer-connection-error`
+   branch without checking whether its work is still wanted.
 
 ---
 
@@ -255,6 +325,20 @@ node scanner/run-performance-issue.mjs request.json --out .scan-output/performan
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
 npm run lint
 npm run test:bdd
+```
+
+FES (in the FES checkout):
+
+```bash
+npm ci
+npm test
+npm run typecheck
+WEB_ENERGY_TEST_ENGINE=chromium npm test   # local runs where Firefox cannot start
+
+# The join (see same-viewport-protocol.md)
+node dist/cli/index.js report results/<result>.json \
+  --accessibility-context accessibility-context.json \
+  --validate-dom --dom-semantic-only
 ```
 
 Use issue-driven workflows for published evidence; use local commands only for
