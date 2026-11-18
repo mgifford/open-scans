@@ -47,7 +47,14 @@ FES has already merged:
 - selector type consumption and report URL support (PR #59);
 - report site map and run/viewport pairing (PR #60).
 
-Its CI is green. Do not describe FES as “not yet integrated”.
+FES PR checks were green before #60 merged. The post-merge main run then hit an
+unrelated 5-second timeout in `tests/browser/dom-removal.test.ts` and a stuck
+Playwright Firefox install; that run was restarted. Do not treat either as a
+site-map regression without a fresh failure.
+
+At handoff time, FES PR #61 (“dispatch-only physical experiment workflow”) was
+open from another session and had not been reviewed here. Do not describe FES
+as “not yet integrated”.
 
 ---
 
@@ -199,8 +206,10 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
    viewport and run differences.
 9. **Large contexts are large reports.** The real artifact produced multi-MB
    sidecar and HTML output; keep per-page summaries and consider pagination.
-10. **Keep local branches short-lived.** All merged local feature branches were
-    deleted after this handoff. Only stale unmerged work remains remote.
+10. **Keep local branches short-lived.** All merged Open Scans feature branches
+    were deleted after this handoff. Only the stale unmerged
+    `copilot/fix-puppeteer-connection-error` reference remains remote; its PR
+    #44 is closed and WIP.
 11. **Do not add a score to make a report look decisive.** Preserve uncertainty.
 12. **No model calls in measurement loops.** Models can help review, not measure
     or silently adjudicate findings.
@@ -217,7 +226,8 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
 4. Use the new FES site map and run/viewport pairing; define a same-run/same-viewport
    protocol before claiming component-level accessibility/energy relationships.
 5. Keep `combined` performance mode blocked until a merge layer exists.
-6. Do not claim release readiness until the P0/P1 FES evidence work is complete.
+6. Review FES PR #61 before treating the manual physical-workflow gap as closed.
+7. Do not claim release readiness until the P0/P1 FES evidence work is complete.
 
 ---
 
