@@ -1,8 +1,8 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-18
-**Open Scans main:** `bb8dc2a` (this handoff)
-**Firefox Energy Scanner main:** `241e79d`
+**Open Scans integration checkpoint:** `8da23e1` (selector type merged)
+**Firefox Energy Scanner main:** `241e79d` (report navigation merged)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
