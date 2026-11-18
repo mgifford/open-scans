@@ -63,6 +63,7 @@ test("the same navigation pattern on two pages becomes one pattern with a naviga
   assert.equal(value.summary.patternsWithSelector, 1);
   assert.equal(value.summary.htmlOnlyPatterns, 0);
   assert.equal(value.patterns[0].locatorCoverage, "selector");
+  assert.equal(value.patterns[0].selectorType, "css");
   assert.equal(value.patterns[0].hasSelector, true);
   assert.ok(value.patterns[0].actRuleIds.includes("c487ae"));
 });
@@ -94,6 +95,7 @@ test("patterns without selectors are reported as HTML-only instead of inventing 
   ]);
   assert.equal(value.summary.htmlOnlyPatterns, 1);
   assert.equal(value.patterns[0].locatorCoverage, "html-only");
+  assert.equal(value.patterns[0].selectorType, "html");
   assert.equal(value.patterns[0].hasSelector, false);
   assert.equal(value.patterns[0].category, "form-control");
 });
@@ -103,6 +105,7 @@ test("a stable HTML id is used as a locator candidate when the engine provides n
     makeResult("https://example.gov/", [failure({ xpath: null, html: "<div id=\"map\" tabindex=\"0\">", patternId: "A11Y-id", fingerprint: "aaaa11111111" })])
   ]);
   assert.equal(value.patterns[0].locatorCoverage, "selector");
+  assert.equal(value.patterns[0].selectorType, "css");
   assert.equal(value.patterns[0].hasSelector, true);
   assert.equal(value.patterns[0].examples[0].locator, "#map");
 });
@@ -184,8 +187,67 @@ test("the pattern inventory schema is versioned and states no ownership", () => 
   const schema = JSON.parse(readFileSync(new URL("../../scanner/schemas/a11y-pattern-inventory.schema.json", import.meta.url), "utf8"));
   assert.equal(schema.properties.schema.const, PATTERN_INVENTORY_SCHEMA_VERSION);
   assert.equal(schema.additionalProperties, false);
+  assert.ok(schema.$defs.pattern.properties.selectorType.enum.includes("mixed"));
+  assert.ok(!schema.$defs.pattern.required.includes("selectorType"));
   assert.equal(schema.properties.summary.properties.ownershipEstablished.const, false);
   assert.equal(schema.$defs.container.properties.ownershipEstablished.const, false);
   assert.ok(schema.properties.summary.required.includes("patternsWithSelector"));
   assert.ok(schema.required.includes("patterns"));
+});
+
+
+test("selector language is explicit for CSS, XPath, HTML and page-level findings", () => {
+  const css = inventory([makeResult("https://example.gov/", [
+    failure({ rule: "css-rule", patternId: "A11Y-css", fingerprint: "111111111111" })
+  ])]);
+  assert.equal(css.patterns[0].selectorType, "css");
+
+  const xpath = inventory([makeResult("https://example.gov/", [], {
+    axe: { executed: true, failures: [] },
+    equalAccess: {
+      executed: true,
+      failures: [failure({ rule: "xpath-rule", xpath: "/html/body/nav/a", html: null, patternId: "A11Y-xpath", fingerprint: "222222222222" })]
+    }
+  })]);
+  assert.equal(xpath.patterns[0].selectorType, "xpath");
+
+  const alfaCss = inventory([makeResult("https://example.gov/", [], {
+    axe: { executed: true, failures: [] },
+    alfa: {
+      executed: true,
+      failures: [failure({ rule: "alfa-css", selector: "a.icon", xpath: "/html/body/a", patternId: "A11Y-alfa-css", fingerprint: "333333333333" })]
+    }
+  })]);
+  assert.equal(alfaCss.patterns[0].selectorType, "css");
+
+  const html = inventory([makeResult("https://example.gov/", [
+    failure({ rule: "html-rule", xpath: null, html: "<input>", patternId: "A11Y-html", fingerprint: "444444444444" })
+  ])]);
+  assert.equal(html.patterns[0].selectorType, "html");
+
+  const pageLevel = inventory([makeResult("https://example.gov/", [
+    failure({ rule: "reflow-risk", xpath: null, selector: "(page-level)", html: null, patternId: "A11Y-page", fingerprint: "555555555555" })
+  ])]);
+  assert.equal(pageLevel.patterns[0].selectorType, "none");
+});
+
+test("a pattern with both CSS and XPath occurrences is marked mixed, not guessed", () => {
+  const value = inventory([
+    makeResult("https://example.gov/one", [failure({ rule: "shared-rule", patternId: "A11Y-mixed", fingerprint: "666666666666" })]),
+    makeResult("https://example.gov/two", [], {
+      axe: { executed: true, failures: [] },
+      equalAccess: {
+        executed: true,
+        failures: [failure({ rule: "shared-rule", xpath: "/html/body/a", html: null, patternId: "A11Y-mixed", fingerprint: "666666666666" })]
+      }
+    })
+  ]);
+  assert.equal(value.patterns[0].selectorType, "mixed");
+});
+
+test("patterns.csv includes the selector type", () => {
+  const value = inventory([makeResult("https://example.gov/", [failure()])]);
+  const csv = patternInventoryToCsv(value);
+  assert.match(csv, /selector_type/);
+  assert.match(csv, /"css"/);
 });

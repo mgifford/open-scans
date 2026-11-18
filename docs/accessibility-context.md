@@ -41,6 +41,7 @@ It is **accessibility evidence only**. It contains no energy, performance, Light
       "actRuleIds": ["…"],
       "pageUrl": "https://fosdem.org/2027/",
       "selector": ".topnav",
+      "selectorType": "css",
       "locator": ".topnav",
       "locatorSource": "selector",
       "container": {
@@ -65,9 +66,11 @@ Suggested join order:
 
 1. Normalize and match `pageUrl` to `graph.pages[].url`.
 2. Within that page, match `selector` to `graph.instances[].selector`:
+   - only when `selectorType` is `css` (or the consumer validates the language independently);
    - exact match first;
    - a component instance selector that is an ancestor of the observation selector second;
    - otherwise keep the observation page-level and unmatched.
+   - never compare `xpath` text with a CSS component selector.
 3. If both sides carry an explicit component id, use it; never match by label.
 4. Keep matched and unmatched observations visible; do not drop unmatched accessibility evidence.
 5. Preserve `locatorSource` and `container.ownershipEstablished: false`.
@@ -87,10 +90,12 @@ FES can use its own browser DOM to validate ancestor relationships where a strin
 ## 5. Current limitations
 
 - `selector` is absent for some findings (`locatorSource: "html"` or `"none"`).
+- Older artifacts may omit `selectorType`; consumers must fall back conservatively, never infer CSS/XPath from the selector text alone.
 - Container candidates are selector/HTML-derived.
 - A pattern can occur on multiple pages; this artifact uses one record per occurrence.
 - The artifact is generated per scan; it does not yet provide a cross-scan trend store.
-- FES importing this file is not implemented in Open Scans; it is the next cross-repository step.
+- FES importing this file lives in the FES repository, not here.
+- Adding `selectorType` is additive; old artifacts remain readable, but strict consumers must accept the optional field before this change is merged.
 
 ## 6. Tests
 

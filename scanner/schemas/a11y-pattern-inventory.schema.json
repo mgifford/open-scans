@@ -287,6 +287,17 @@
             "none"
           ]
         },
+        "selectorType": {
+          "type": "string",
+          "enum": [
+            "css",
+            "xpath",
+            "html",
+            "mixed",
+            "none",
+            "unknown"
+          ]
+        },
         "hasSelector": {
           "type": "boolean"
         }

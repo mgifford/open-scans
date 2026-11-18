@@ -251,7 +251,7 @@ Read the [pattern inventory documentation](./docs/pattern-inventory.md).
 
 ### Accessibility context for FES
 
-Each scan also writes a compact `accessibility-context.json` (and CSV) with one record per finding occurrence: page URL, selector, pattern ID, WCAG/ACT mapping and a semantic-container candidate. This is the handoff Firefox Energy Scanner can join to its component graph. It contains accessibility evidence only—no energy, Lighthouse, Sitespeed or ownership claim.
+Each scan also writes a compact `accessibility-context.json` (and CSV) with one record per finding occurrence: page URL, selector, explicit `selectorType` (`css`/`xpath`/`html`/`none`/`unknown`), pattern ID, WCAG/ACT mapping and a semantic-container candidate. This is the handoff Firefox Energy Scanner can join to its component graph. It contains accessibility evidence only—no energy, Lighthouse, Sitespeed or ownership claim.
 
 See [accessibility context](./docs/accessibility-context.md) and [product direction](./docs/PRODUCT-DIRECTION.md).
 
@@ -623,6 +623,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Equal Access DOM locator retention and pattern locator-coverage metrics, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Accessibility context handoff for FES: occurrence-level page/selector/pattern/container artifact, schema, workflow persistence and product-direction boundaries | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Issue-driven performance execution: dispatcher, GitHub Actions workflow, local end-to-end validation, tests and documentation | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Explicit `selectorType` for accessibility-context and pattern-inventory records, engine-aware classification and tests | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Phase 0 repository/provider assessment and ADR; introduced the `PERF:` performance-request contract (`performance-request/1` schema, deterministic parser/validator, issue template, read-only validation workflow), added unit tests and documentation, and preserved all `SCAN:` behaviour | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 2: `performance-evidence/1` schema, assemble/merge/validate layer, Open Scans/Firefox Energy Scanner/Vital Core/Open Site Review adapters, safe evidence loader, reuse-only runner, fixtures, tests and documentation | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | PR 3: pinned Lighthouse provider, bounded page selection and family coverage, evidence reuse planning, DNS/redirect preflight, raw-artifact retention, cost reporting, tests and documentation | Development – November 2026 |

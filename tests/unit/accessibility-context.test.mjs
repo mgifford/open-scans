@@ -48,6 +48,8 @@ test("occurrence-level context exposes page, selector, pattern and container for
   assert.equal(value.summary.withSelector, 2);
   assert.equal(value.observations[0].pageUrl, "https://example.gov/");
   assert.equal(value.observations[0].selector, "nav a.icon");
+  assert.equal(value.observations[0].selectorType, "css");
+  assert.equal(value.summary.bySelectorType.css, 2);
   assert.equal(value.observations[0].container.category, "navigation");
   assert.equal(value.observations[0].container.ownershipEstablished, false);
   assert.equal(value.observations[0].patternDisplayId, "A11Y-aaaaaaaa");
@@ -64,6 +66,8 @@ test("HTML-only and page-level occurrences remain explicit in the handoff", () =
   ], { generatedAt: "2026-11-17T12:00:00.000Z" });
   assert.equal(value.summary.htmlOnly, 1);
   assert.equal(value.summary.withoutLocator, 1);
+  assert.equal(value.summary.bySelectorType.html, 1);
+  assert.equal(value.summary.bySelectorType.none, 1);
   assert.equal(value.observations.find((observation) => observation.rule === "reflow-risk").selector, null);
   assert.equal(value.observations.find((observation) => observation.rule === "reflow-risk").locatorSource, "none");
 });
@@ -73,6 +77,8 @@ test("context CSV is one row per occurrence and includes the join fields", () =>
   const csv = accessibilityContextToCsv(value);
   assert.match(csv, /"page_url"/);
   assert.match(csv, /"selector"/);
+  assert.match(csv, /"selector_type"/);
+  assert.match(csv, /"css"/);
   assert.match(csv, /"container_element"/);
   assert.match(csv, /"pattern_id"/);
   assert.match(csv, /"A11Y-aaaaaaaa"/);
@@ -95,4 +101,9 @@ test("the context artifact is schema-versioned and explicitly non-owning", () =>
   assert.equal(schema.additionalProperties, false);
   assert.equal(schema.properties.summary.properties.ownershipEstablished.const, false);
   assert.ok(schema.required.includes("observations"));
+  assert.deepEqual(
+    schema.properties.observations.items.properties.selectorType.enum,
+    ["css", "xpath", "html", "none", "unknown"]
+  );
+  assert.ok(!schema.properties.observations.items.required.includes("selectorType"), "selectorType stays additive for legacy artifacts");
 });

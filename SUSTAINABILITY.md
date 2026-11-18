@@ -236,6 +236,7 @@ This section documents actual AI usage in this project, separate from the AI usa
 | Equal Access locator retention and coverage metrics | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Accessibility context handoff for FES | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Issue-driven performance execution workflow | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
+| Explicit selector language in accessibility context | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | Phase 0 assessment and PR 1 performance-request contract, parser, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | PR 2 common performance-evidence model, adapters, reuse runner, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |
 | PR 3 bounded Lighthouse provider, page selection, reuse planning, tests and docs | DeepSeek Harness (deepseek-flash) | Development – November 2026 |

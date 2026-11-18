@@ -49,6 +49,7 @@ export function buildAccessibilityContext(results, { generatedAt = new Date().to
     impact: occurrence.impact,
     pageUrl: occurrence.pageUrl,
     selector: occurrence.selector,
+    selectorType: occurrence.selectorType ?? "unknown",
     locator: occurrence.locator,
     locatorSource: occurrence.locatorSource,
     container: occurrence.container,
@@ -74,6 +75,11 @@ export function buildAccessibilityContext(results, { generatedAt = new Date().to
       withSelector: observations.filter((observation) => observation.locatorSource === "selector").length,
       htmlOnly: observations.filter((observation) => observation.locatorSource === "html").length,
       withoutLocator: observations.filter((observation) => observation.locatorSource === "none").length,
+      bySelectorType: observations.reduce((counts, observation) => {
+        const type = observation.selectorType ?? "unknown";
+        counts[type] = (counts[type] ?? 0) + 1;
+        return counts;
+      }, {}),
       byCategory: observations.reduce((counts, observation) => {
         const category = observation.container?.category ?? "unknown";
         counts[category] = (counts[category] ?? 0) + 1;
@@ -102,7 +108,7 @@ export function buildAccessibilityContext(results, { generatedAt = new Date().to
 export function accessibilityContextToCsv(context) {
   if (!context || context.schema !== ACCESSIBILITY_CONTEXT_SCHEMA_VERSION) return "";
   const header = [
-    "page_url", "selector", "locator", "locator_source", "category", "container_element",
+    "page_url", "selector", "selector_type", "locator", "locator_source", "category", "container_element",
     "container_basis", "container_confidence", "component_id", "pattern_id", "pattern_display_id",
     "identity_source", "rule", "engine", "wcag_sc", "act_rule_ids", "impact", "source_ref"
   ];
@@ -116,6 +122,7 @@ export function accessibilityContextToCsv(context) {
     rows.push([
       observation.pageUrl,
       observation.selector ?? "",
+      observation.selectorType ?? "unknown",
       observation.locator,
       observation.locatorSource,
       observation.container?.category ?? "unknown",

@@ -138,6 +138,34 @@ function selectorFromHtml(html) {
   return `#${id}`;
 }
 
+
+const XPATH_ENGINES = new Set(["equalaccess", "alfa"]);
+const CSS_ENGINES = new Set(["axe", "accesslint"]);
+
+/**
+ * Classify the locator language instead of leaving consumers to infer it from
+ * the engine. A CSS selector and an XPath expression must never be compared
+ * as text. `failure.selector` is the explicit CSS field; `failure.xpath` is
+ * engine-dependent.
+ *
+ * @param {string} engine
+ * @param {object} failure
+ * @param {string} selector
+ * @returns {"css"|"xpath"|"html"|"none"|"unknown"}
+ */
+function selectorTypeFor(engine, failure, selector) {
+  if (!selector) return failure.html ? "html" : "none";
+  if (failure.selector) return "css";
+  const normalizedEngine = String(engine).toLowerCase();
+  if (failure.xpath) {
+    if (XPATH_ENGINES.has(normalizedEngine)) return "xpath";
+    if (CSS_ENGINES.has(normalizedEngine)) return "css";
+    return "unknown";
+  }
+  // The only remaining selector source is a recovered HTML id, which is CSS.
+  return "css";
+}
+
 function makePatternFinding({ result, pageUrl, engine, failure, sourceRef }) {
   const explicitSelector = text(failure.selector || failure.xpath || "");
   const selector = explicitSelector && explicitSelector !== "(page-level)"
@@ -145,6 +173,7 @@ function makePatternFinding({ result, pageUrl, engine, failure, sourceRef }) {
     : selectorFromHtml(failure.html) ?? "";
   const locator = selector || text(failure.html || failure.message || "(page-level)");
   const locatorSource = selector ? "selector" : failure.html ? "html" : "none";
+  const selectorType = selectorTypeFor(engine, failure, selector);
   const rule = text(failure.rule ?? failure.ruleId ?? "unknown-rule");
   const canonicalPattern = failure.a11yPatternFingerprint ?? null;
   const legacyPattern = failure.patternId ?? null;
@@ -174,6 +203,7 @@ function makePatternFinding({ result, pageUrl, engine, failure, sourceRef }) {
     impact: failure.impact ?? failure.severity ?? null,
     pageUrl,
     selector: selector || null,
+    selectorType,
     locator,
     locatorSource,
     sourceRef: sourceRef ?? null,
@@ -229,6 +259,7 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
       occurrenceCount: 0,
       selectorOccurrences: 0,
       htmlOccurrences: 0,
+      selectorTypes: new Set(),
       pages: new Set(),
       firstSeenAt: null,
       lastSeenAt: null,
@@ -236,6 +267,7 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
       container: finding.container
     };
     existing.occurrenceCount += 1;
+    if (finding.selectorType && finding.selectorType !== "none") existing.selectorTypes.add(finding.selectorType);
     if (finding.locatorSource === "selector") existing.selectorOccurrences += 1;
     else if (finding.locatorSource === "html") existing.htmlOccurrences += 1;
     existing.pages.add(finding.pageUrl);
@@ -274,6 +306,9 @@ export function buildPatternInventory(results, { generatedAt = new Date().toISOS
     actRuleIds: pattern.actRuleIds,
     impact: pattern.impact,
     category: pattern.container.category,
+    selectorType: pattern.selectorTypes.size === 0
+      ? "none"
+      : pattern.selectorTypes.size === 1 ? [...pattern.selectorTypes][0] : "mixed",
     locatorCoverage: pattern.selectorOccurrences === pattern.occurrenceCount
       ? "selector"
       : pattern.selectorOccurrences > 0
@@ -351,7 +386,7 @@ export function patternInventoryToCsv(inventory) {
     "category", "category_label", "container_element", "container_basis", "container_confidence",
     "component_id", "component_label", "pattern_id", "display_id", "identity_source",
     "rule", "engine", "wcag_sc", "act_rule_ids", "occurrences", "page_count",
-    "locator_coverage", "has_selector", "first_seen_at", "last_seen_at", "example_page", "example_locator"
+    "locator_coverage", "selector_type", "has_selector", "first_seen_at", "last_seen_at", "example_page", "example_locator"
   ];
   const cell = (value) => {
     let out = String(value ?? "");
@@ -378,6 +413,7 @@ export function patternInventoryToCsv(inventory) {
       pattern.occurrenceCount,
       pattern.pageCount,
       pattern.locatorCoverage,
+      pattern.selectorType ?? "none",
       String(pattern.hasSelector),
       pattern.firstSeenAt ?? "",
       pattern.lastSeenAt ?? "",

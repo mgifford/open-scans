@@ -68,7 +68,7 @@ imported.
 - `report.html` - Self-contained accessible interactive report.
 - `report.csv` - URL-level flat report export.
 - `patterns.csv` - Unique accessibility patterns by semantic container.
-- `accessibility-context.json` and `.csv` - Compact occurrence-level accessibility evidence for Firefox Energy Scanner joins.
+- `accessibility-context.json` and `.csv` - Compact occurrence-level accessibility evidence for Firefox Energy Scanner joins, including explicit `selectorType`.
 - `report-overlap.json` and `.md` - Cross-engine overlap evidence.
 
 Scans with more than `LARGE_SCAN_URL_WARNING_THRESHOLD` accepted URLs (default 150)
