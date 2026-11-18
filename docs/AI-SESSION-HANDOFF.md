@@ -52,9 +52,17 @@ unrelated 5-second timeout in `tests/browser/dom-removal.test.ts` and a stuck
 Playwright Firefox install; that run was restarted. Do not treat either as a
 site-map regression without a fresh failure.
 
-At handoff time, FES PR #61 (“dispatch-only physical experiment workflow”) was
-open from another session and had not been reviewed here. Do not describe FES
-as “not yet integrated”.
+At handoff time, two FES PRs are open and green, both from other sessions:
+
+- #61 — dispatch-only physical experiment workflow;
+- #62 — opt-in DOM-validated accessibility ancestors.
+
+#61 is an operational safeguard; its self-hosted runner and approval environment
+are repository settings, not code. #62 turns many page-level observations into
+low-confidence ancestor associations; its own report says 4,838 of 5,486 are
+low confidence, so it must not be presented as component ownership.
+
+Do not describe FES as “not yet integrated”.
 
 ---
 
@@ -226,7 +234,7 @@ node --test tests/unit/pattern-inventory.test.mjs tests/unit/accessibility-conte
 4. Use the new FES site map and run/viewport pairing; define a same-run/same-viewport
    protocol before claiming component-level accessibility/energy relationships.
 5. Keep `combined` performance mode blocked until a merge layer exists.
-6. Review FES PR #61 before treating the manual physical-workflow gap as closed.
+6. Review/merge FES #61 and #62 after checking their evidence claims.
 7. Do not claim release readiness until the P0/P1 FES evidence work is complete.
 
 ---
