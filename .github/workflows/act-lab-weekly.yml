@@ -124,11 +124,14 @@ jobs:
             mkdir -p ".scan-output-$VP"
             node scanner/run-scan.mjs \
               .tmp/act-lab/issue-event.json \
-              ".scan-output-$VP" > ".scan-output-$VP/meta.json"
+              ".scan-output-$VP" > ".scan-output-$VP/stdout.json"
 
+            # Summarise from report.json: it is the canonical artifact and the
+            # only one that carries per-result engine failures and the
+            # rendered HTML needed to resolve fixture targets.
             node scanner/act-lab/summarise.mjs \
               .tmp/act-lab/prepared.json \
-              ".scan-output-$VP/meta.json" \
+              ".scan-output-$VP/report.json" \
               "act-lab/latest-$VP.json" \
               act-lab/state.json \
               "$VP"

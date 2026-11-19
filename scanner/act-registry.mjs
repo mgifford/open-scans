@@ -68,6 +68,17 @@ export function getActRule(actRuleId) {
   return loadActRegistry().rules?.[actRuleId] ?? null;
 }
 
+/**
+ * Engine rules mapped to one ACT rule, optionally filtered by engine.
+ * Includes candidate mappings, because "is this rule mapped at all?" differs
+ * from "is the mapping verified?".
+ */
+export function getMappingsForActRule(actRuleId, engine = null) {
+  const rule = loadActRegistry().rules?.[actRuleId];
+  if (!rule) return [];
+  return (rule.mappings ?? []).filter((mapping) => !engine || mapping.engine === engine);
+}
+
 /** Only mappings backed by a published implementation report. */
 export function getVerifiedActRuleIds(engine, ruleId) {
   return getMappingsFor(engine, ruleId)

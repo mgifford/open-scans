@@ -145,6 +145,11 @@ jobs:
           cp .scan-output/accessibility-context.csv "${{ steps.meta.outputs.report_dir }}/accessibility-context.csv"
           cp .scan-output/report-overlap.json "${{ steps.meta.outputs.overlap_json_path }}"
           cp .scan-output/report-overlap.md "${{ steps.meta.outputs.overlap_markdown_path }}"
+          cp .scan-output/observations.json "${{ steps.meta.outputs.report_dir }}/observations.json"
+          cp .scan-output/correlation.json "${{ steps.meta.outputs.report_dir }}/correlation.json"
+          if [ -f .scan-output/history-comparison.json ]; then
+            cp .scan-output/history-comparison.json "${{ steps.meta.outputs.report_dir }}/history-comparison.json"
+          fi
           # Copy AI fix suggestions if they were generated (REMEDIATE mode only)
           if [ -f .scan-output/fix-suggestions.json ]; then
             cp .scan-output/fix-suggestions.json "${{ steps.meta.outputs.report_dir }}/fix-suggestions.json"

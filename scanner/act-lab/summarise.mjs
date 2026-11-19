@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
 import { getActRuleIds, loadActMapping } from '../act-mapping.mjs'
+import { getMappingsForActRule } from '../act-registry.mjs'
 import {
   classifyFailureOnTarget,
   compareExpectation,
@@ -21,6 +22,10 @@ import {
 const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint']
 
 function mappingExists (ruleId, engine) {
+  // Use the registry, not only the legacy mapping file: Equal Access and
+  // AccessLint rules are recorded there as candidate mappings, and calling
+  // them "unmapped" when a candidate exists would misdescribe the evidence.
+  if (getMappingsForActRule(ruleId, engine).length > 0) return true
   return Boolean(loadActMapping()?.byActRuleId?.[ruleId]?.[engine]?.length)
 }
 
@@ -300,7 +305,11 @@ function main () {
   }
 
   if (!Array.isArray(meta.results) || meta.results.length === 0) {
-    throw new Error('The scan produced no results; refusing to record observations or update state.')
+    throw new Error(
+      'The scan artifact produced no results; refusing to record observations or update state. ' +
+      'Pass report.json (it has a results array with per-engine failures and rendered HTML), ' +
+      'not run-scan stdout, which is only a summary.'
+    )
   }
 
   const summary = summarise(prepared, meta, viewport)

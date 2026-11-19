@@ -271,6 +271,11 @@ jobs:
                 fs.copyFileSync(`${scanOutputDir}/patterns.csv`, `${reportDir}/patterns.csv`);
                 fs.copyFileSync(`${scanOutputDir}/accessibility-context.json`, `${reportDir}/accessibility-context.json`);
                 fs.copyFileSync(`${scanOutputDir}/accessibility-context.csv`, `${reportDir}/accessibility-context.csv`);
+                fs.copyFileSync(`${scanOutputDir}/observations.json`, `${reportDir}/observations.json`);
+                fs.copyFileSync(`${scanOutputDir}/correlation.json`, `${reportDir}/correlation.json`);
+                if (fs.existsSync(`${scanOutputDir}/history-comparison.json`)) {
+                  fs.copyFileSync(`${scanOutputDir}/history-comparison.json`, `${reportDir}/history-comparison.json`);
+                }
 
                 const trendResult = spawnSync(
                   process.execPath,

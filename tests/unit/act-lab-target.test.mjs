@@ -1,4 +1,8 @@
 import test from "node:test";
+import { spawnSync } from "node:child_process";
+import { mkdtempSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import assert from "node:assert/strict";
 
 import { summarise } from "../../scanner/act-lab/summarise.mjs";
@@ -151,4 +155,53 @@ test("observations record the analysis version and target status counts", () => 
   assert.equal(summary.schemaVersion, "act-lab-observations/2");
   assert.equal(summary.algorithm.targetOutcome, "act-lab-target-outcome/1");
   assert.deepEqual(summary.targetStatuses, { resolved: 1, unresolved: 0, ambiguous: 0, unsupported: 0 });
+});
+
+test("the summariser reads report.json, not run-scan's stdout summary", () => {
+  const reportShaped = {
+    issueNumber: 1,
+    scanTitle: "lab",
+    results: [result({ failures: [{ rule: "image-alt", selector: "#missing-alt-a" }] })]
+  };
+  const summary = summarise(
+    { siteRoot: SITE, manifestUrl: `${SITE}lab/fixtures.json`, cohort: { key: "c" }, cases: [caseEntry()] },
+    reportShaped
+  );
+  assert.equal(summary.results.find((entry) => entry.engine === "axe").status, "failed");
+
+  // The CLI refuses a stdout-shaped artifact instead of recording nothing.
+  const dir = mkdtempSync(join(tmpdir(), "act-lab-guard-"));
+  const preparedPath = join(dir, "prepared.json");
+  const metaPath = join(dir, "meta.json");
+  writeFileSync(preparedPath, JSON.stringify({
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "c" },
+    cases: [caseEntry()]
+  }));
+  writeFileSync(metaPath, JSON.stringify({ skipped: false, acceptedCount: 1, scannedCount: 1 }));
+
+  const run = spawnSync(process.execPath, [
+    "scanner/act-lab/summarise.mjs",
+    preparedPath,
+    metaPath,
+    join(dir, "latest.json"),
+    join(dir, "state.json"),
+    "desktop"
+  ], { cwd: new URL("../..", import.meta.url).pathname, encoding: "utf8" });
+
+  assert.equal(run.status, 1);
+  assert.match(run.stderr, /Pass report\.json/);
+});
+
+test("candidate mappings count as mapped, not unmapped", () => {
+  // 23a2a8 maps to Equal Access img_alt_valid and AccessLint
+  // text-alternatives/img-alt as candidates in the ACT registry.
+  const summary = summariseOne({}, { failures: [] });
+  const equalAccess = summary.results.find((entry) => entry.engine === "equalAccess");
+  const accesslint = summary.results.find((entry) => entry.engine === "accesslint");
+
+  assert.equal(equalAccess.status, "notReported");
+  assert.equal(accesslint.status, "notReported");
+  assert.notEqual(equalAccess.status, "unmapped");
 });
