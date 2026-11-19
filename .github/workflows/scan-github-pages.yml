@@ -34,7 +34,7 @@ concurrency:
 
 jobs:
   scan-pages:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     # For workflow_run events, only proceed when the deployment succeeded.
     # Other conclusions (failure, cancelled, skipped, timed_out) are intentionally
     # excluded — there is no value in scanning a site whose deployment did not finish.
@@ -227,7 +227,7 @@ jobs:
   #
   # Reference: https://github.com/github/accessibility-scanner
   github-a11y-scanner:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     # For workflow_run events, only proceed when the deployment succeeded.
     # Other conclusions (failure, cancelled, skipped, timed_out) are intentionally
     # excluded — there is no value in scanning a site whose deployment did not finish.
