@@ -166,6 +166,15 @@ function main () {
 
   const prepared = JSON.parse(readFileSync(resolve(preparedPath), 'utf8'))
   const meta = JSON.parse(readFileSync(resolve(metaPath), 'utf8'))
+
+  if (meta.skipped) {
+    throw new Error('The scan was skipped; refusing to record observations or update state.')
+  }
+
+  if (!Array.isArray(meta.results) || meta.results.length === 0) {
+    throw new Error('The scan produced no results; refusing to record observations or update state.')
+  }
+
   const summary = summarise(prepared, meta)
 
   mkdirSync(dirname(resolve(outPath)), { recursive: true })
