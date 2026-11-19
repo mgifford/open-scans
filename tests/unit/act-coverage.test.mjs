@@ -83,8 +83,8 @@ test("rules with no registry mapping are surfaced without invented engines", () 
 test("a rule where every mapped engine reports is full coverage", () => {
   const coverage = buildActCoverage(artifact({
     observations: [
-      observation({ engine: "axe", rule: "document-title", actRuleIds: ["2779a5"] }),
-      observation({ engine: "alfa", rule: "sia-r1", actRuleIds: ["2779a5"] })
+      observation({ engine: "axe", rule: "aria-roles", actRuleIds: ["674b10"] }),
+      observation({ engine: "alfa", rule: "sia-r21", actRuleIds: ["674b10"] })
     ]
   }));
 
@@ -93,6 +93,22 @@ test("a rule where every mapped engine reports is full coverage", () => {
   assert.deepEqual(rule.enginesReporting, ["axe", "alfa"]);
   assert.equal(rule.coverage, "multiple-engines");
   assert.equal(rule.reviewSuggested, false);
+});
+
+test("a candidate mapping makes a silent engine visible rather than hidden", () => {
+  const coverage = buildActCoverage(artifact({
+    observations: [
+      observation({ engine: "axe", rule: "document-title", actRuleIds: ["2779a5"] }),
+      observation({ engine: "alfa", rule: "sia-r1", actRuleIds: ["2779a5"] })
+    ]
+  }));
+
+  const [rule] = coverage.rules;
+  // Equal Access page_title_exists is a candidate mapping for 2779a5.
+  assert.ok(rule.enginesMapped.includes("equalAccess"));
+  assert.deepEqual(rule.enginesSilentButExecuted, ["equalAccess"]);
+  assert.equal(rule.coverage, "multiple-engines-with-silence");
+  assert.equal(rule.reviewSuggested, true);
 });
 
 test("summary counts reconcile with the rule list", () => {

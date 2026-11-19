@@ -1,4 +1,5 @@
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 
 import {
@@ -62,7 +63,7 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   assert.equal(registry.coverage.withTitle, 9, "metadata is curated, not invented");
   assert.equal(registry.coverage.withTitle < rules.length, true);
   assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess"]);
-  assert.equal(registry.coverage.candidateMappings, 2);
+  assert.equal(registry.coverage.candidateMappings, 7);
 });
 
 test("verified mappings carry source, date and version evidence", () => {
@@ -169,4 +170,59 @@ test("ACT consensus comes from correlation and excludes candidates", () => {
   assert.equal(consensus.overlapEntryCount, 1);
   assert.equal(consensus.overlapEntries[0].actRuleId, "23a2a8");
   assert.deepEqual(consensus.overlapEntries[0].scanners, ["axe", "alfa"]);
+});
+
+test("candidate mappings extend comparison without claiming ACT support", () => {
+  const alfaContrast = getMappingEvidence("alfa", "sia-r66");
+  assert.equal(alfaContrast.status, "candidate");
+  assert.deepEqual(alfaContrast.verifiedActRuleIds, []);
+  assert.deepEqual(alfaContrast.candidateActRuleIds, ["09o5cg"]);
+
+  assert.deepEqual(getMappingEvidence("alfa", "sia-r69").candidateActRuleIds, ["afw4f7"]);
+  assert.deepEqual(getMappingEvidence("equalAccess", "text_contrast_sufficient").candidateActRuleIds, ["afw4f7"]);
+  assert.deepEqual(getMappingEvidence("equalAccess", "page_title_exists").candidateActRuleIds, ["2779a5"]);
+  assert.deepEqual(getMappingEvidence("accesslint", "distinguishable/color-contrast").candidateActRuleIds, ["afw4f7"]);
+});
+
+test("rules with no ACT counterpart are recorded with reasons, not mapped", () => {
+  const overlays = JSON.parse(
+    readFileSync(new URL("../../scanner/data/act-registry-overlays.json", import.meta.url), "utf8")
+  );
+  const keys = overlays.noActCounterpart.map((entry) => `${entry.engine}:${entry.ruleId}`);
+
+  assert.ok(keys.includes("alfa:sia-r73"));
+  assert.ok(keys.includes("alfa:sia-r111"));
+  for (const entry of overlays.noActCounterpart) {
+    assert.ok(entry.reason.length > 20, `${entry.ruleId} needs a reason`);
+  }
+
+  // The unmapped rules must not have acquired a mapping.
+  assert.deepEqual(getMappingsFor("alfa", "sia-r73"), []);
+  assert.deepEqual(getMappingsFor("alfa", "sia-r111"), []);
+});
+
+test("observations carry candidate ACT ids so coverage can compare engines", () => {
+  const artifact = imageArtifact();
+  const alfaContrast = {
+    engine: "alfa",
+    rule: "https://alfa.siteimprove.com/rules/sia-r66",
+    selector: "#missing-alt-a",
+    html: "<img id=\"missing-alt-a\">",
+    message: "contrast"
+  };
+  const withContrast = buildObservationArtifact({
+    results: [
+      {
+        finalUrl: "https://example.org/",
+        scanContext: {},
+        axe: { failures: [], renderedHtml: IMAGE_ALT_PAGE },
+        alfa: { failures: [alfaContrast] },
+        equalAccess: { failures: [] },
+        accesslint: { failures: [] }
+      }
+    ]
+  });
+  const observation = withContrast.observations.find((entry) => entry.engine.name === "alfa");
+  assert.ok(observation.actRuleIds.includes("09o5cg"));
+  assert.equal(artifact.observations.some((entry) => entry.actRuleIds.includes("23a2a8")), true);
 });

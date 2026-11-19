@@ -313,9 +313,19 @@ recorded as a verified false positive or a missed detection. It does not judge:
 silence can mean not applicable, not implemented, no target found, or a missed
 detection.
 
-On the 49-page #398 report: 9 ACT rules observed, 5 with multiple engines
-reporting, 1 with silence (`23a2a8`, where Equal Access and AccessLint are
-mapped but reported nothing), 3 single-engine, 4 suggesting review.
+The registry now carries candidate mappings for the rules that made engines
+look isolated: ALFA `sia-r66` → `09o5cg`, ALFA `sia-r69`,
+Equal Access `text_contrast_sufficient` and AccessLint
+`distinguishable/color-contrast` → `afw4f7`, and Equal Access
+`page_title_exists` → `2779a5`. Rules with no ACT counterpart (`sia-r73`,
+`sia-r111`, `element_attribute_deprecated`, `style_color_misuse`,
+`aria_role_redundant`) are recorded in `noActCounterpart` with reasons rather
+than mapped to something that means something else.
+
+With those candidates, recomputing the 49-page #398 evidence gives 9 ACT rules
+observed: 8 with multiple engines reporting, 1 single-engine
+(`m6b1q3`, which only axe maps), and 1 suggesting review. The four-engine
+image rule (`23a2a8`) now shows all four engines reporting.
 
 ## 4. Reprocessing historical evidence
 
