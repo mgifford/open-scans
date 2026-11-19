@@ -218,6 +218,11 @@ jobs:
             copyFileSync('.scan-output/accessibility-context.csv', `${reportDir}/accessibility-context.csv`);
             copyFileSync('.scan-output/report-overlap.json', overlapJsonPath);
             copyFileSync('.scan-output/report-overlap.md', overlapMarkdownPath);
+            copyFileSync('.scan-output/observations.json', `${reportDir}/observations.json`);
+            copyFileSync('.scan-output/correlation.json', `${reportDir}/correlation.json`);
+            if (existsSync('.scan-output/history-comparison.json')) {
+              copyFileSync('.scan-output/history-comparison.json', `${reportDir}/history-comparison.json`);
+            }
 
             // Copy AI fix suggestions if generated (REMEDIATE mode only)
             if (existsSync('.scan-output/fix-suggestions.json')) {
