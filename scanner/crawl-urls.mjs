@@ -284,7 +284,7 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
         const parsed = new URL(decodeHtmlEntities(match[1]), url);
         parsed.hash = "";
         const normalized = parsed.toString();
-        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
+        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip|md|txt|csv)$/i
           .test(parsed.pathname);
 
         if (
@@ -310,7 +310,7 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
         const parsed = new URL(decodeHtmlEntities(match[1]), url);
         parsed.hash = "";
         const normalized = parsed.toString();
-        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
+        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip|md|txt|csv)$/i
           .test(parsed.pathname);
 
         if (

@@ -271,3 +271,15 @@ test("crawlSiteForUrls is deterministic for the same site", async () => {
     globalThis.fetch = originalFetch;
   }
 });
+
+test("crawlPageLinks skips markdown and text documents discovered as links", async () => {
+  const html = '<a href="/lab/reviews/README.md">doc</a><a href="/notes.txt">notes</a><a href="/page/">page</a>';
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({ ok: true, status: 200, text: async () => html });
+  try {
+    const urls = await crawlPageLinks("https://example.com/", 1000);
+    assert.deepEqual(urls, ["https://example.com/page/"]);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
