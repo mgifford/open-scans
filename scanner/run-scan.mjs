@@ -625,7 +625,8 @@ function addDuplicateMetadata(result) {
     const seen = new Map();
 
     for (const failure of scanner.failures) {
-      const { nativeLocator, locatorType, htmlEvidence } = classifyLocator(failure);
+      const { nativeLocator, locatorType } = classifyLocator(failure);
+      const htmlEvidence = typeof failure.html === "string" ? failure.html : null;
       const specific = isSpecificLocator(locatorType, nativeLocator);
 
       failure.isDuplicate = false;

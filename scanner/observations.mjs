@@ -25,6 +25,8 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 
 import { getActRuleIds, getMappingStatus } from "./act-mapping.mjs";
+import { buildDomIndex } from "./dom-index.mjs";
+import { resolveTarget } from "./target-resolution.mjs";
 
 export const OBSERVATION_SCHEMA_VERSION = "a11y-observation/1";
 
@@ -74,21 +76,49 @@ export function getInstalledEngineVersions() {
  * @param {object} failure
  * @returns {{nativeLocator: string|null, locatorType: "xpath"|"css"|"html"|"none", htmlEvidence: string|null}}
  */
+/**
+ * Detect the locator dialect from the string, not from the field name.
+ *
+ * Engine adapters do not agree on field names: AccessLint writes CSS such as
+ * `div > img` into its `xpath` field. Treating that as XPath silently fails to
+ * resolve the target, so the string shape decides and the original field is
+ * recorded separately.
+ *
+ * @param {string} raw
+ * @returns {"xpath"|"css"}
+ */
+export function detectLocatorDialect(raw) {
+  const text = String(raw ?? "").trim();
+  if (text.startsWith("/") || text.startsWith("./") || text.startsWith("../")) return "xpath";
+  if (text.includes("::")) return "xpath";
+  return "css";
+}
+
 export function classifyLocator(failure) {
   const xpath = typeof failure?.xpath === "string" ? failure.xpath.trim() : "";
   const selector = typeof failure?.selector === "string" ? failure.selector.trim() : "";
   const html = typeof failure?.html === "string" ? failure.html.trim() : "";
 
   if (xpath) {
-    return { nativeLocator: xpath, locatorType: "xpath", htmlEvidence: html || null };
+    return {
+      nativeLocator: xpath,
+      locatorType: detectLocatorDialect(xpath),
+      nativeLocatorField: "xpath",
+      htmlEvidence: html || null
+    };
   }
   if (selector) {
-    return { nativeLocator: selector, locatorType: "css", htmlEvidence: html || null };
+    return {
+      nativeLocator: selector,
+      locatorType: detectLocatorDialect(selector),
+      nativeLocatorField: "selector",
+      htmlEvidence: html || null
+    };
   }
   if (html) {
-    return { nativeLocator: null, locatorType: "html", htmlEvidence: html };
+    return { nativeLocator: null, locatorType: "html", nativeLocatorField: "html", htmlEvidence: html };
   }
-  return { nativeLocator: null, locatorType: "none", htmlEvidence: null };
+  return { nativeLocator: null, locatorType: "none", nativeLocatorField: null, htmlEvidence: null };
 }
 
 /**
@@ -165,9 +195,10 @@ export function buildObservation({
   scanContext,
   rawEvidenceRef,
   engineVersion = null,
-  occurrence = 0
+  occurrence = 0,
+  domIndex = null
 }) {
-  const { nativeLocator, locatorType, htmlEvidence } = classifyLocator(failure);
+  const { nativeLocator, locatorType, nativeLocatorField, htmlEvidence } = classifyLocator(failure);
   const ruleId = typeof failure?.rule === "string" ? failure.rule : "unknown-rule";
   const message = typeof failure?.message === "string" ? failure.message : null;
   const context = contextKey(scanContext);
@@ -186,15 +217,22 @@ export function buildObservation({
 
   const specific = isSpecificLocator(locatorType, nativeLocator);
   const hasLocator = locatorType !== "none" && locatorType !== "html";
+  const resolved = resolveTarget(domIndex, { locator: nativeLocator, locatorType });
 
   let resolution = "unresolved";
   let ambiguity = "missing-locator";
-  if (hasLocator && specific) {
-    resolution = "unverified";
+  if (resolved.resolution === "resolved") {
+    resolution = "resolved";
     ambiguity = null;
+  } else if (resolved.resolution === "ambiguous") {
+    resolution = "ambiguous";
+    ambiguity = "ambiguous-or-shared-locator";
+  } else if (resolved.resolution === "unsupported") {
+    resolution = "unsupported";
+    ambiguity = "unsupported-dom-context";
   } else if (hasLocator) {
     resolution = "unverified";
-    ambiguity = "ambiguous-or-shared-locator";
+    ambiguity = resolved.note ? "unverified-locator" : "ambiguous-or-shared-locator";
   } else if (locatorType === "html" && htmlEvidence) {
     resolution = "unverified";
     ambiguity = "html-snippet-only";
@@ -222,13 +260,23 @@ export function buildObservation({
     },
     target: {
       nativeLocator,
+      nativeLocatorField,
       locatorType,
       specificLocator: specific,
       resolution,
-      resolutionMethod: hasLocator ? "native-locator-only" : "none",
-      matchedElements: null,
-      resolvedTargetId: null,
-      ambiguity
+      resolutionMethod: resolved.method,
+      matchedElements: resolved.matchedElements,
+      resolvedTargetId: resolved.resolvedTargetId,
+      candidates: resolved.candidates,
+      confidence: resolved.confidence,
+      ambiguity,
+      note: resolved.note
+    },
+    document: {
+      hash: resolved.documentHash ?? null,
+      available: Boolean(domIndex?.available),
+      source: domIndex?.available ? "axe.renderedHtml" : null,
+      comparableAcrossEngines: "unverified"
     },
     htmlEvidence,
     message,
@@ -264,9 +312,18 @@ export function buildObservationArtifact(summary) {
   const observations = [];
   const seen = new Map();
 
+  const documents = [];
+
   results.forEach((result, resultIndex) => {
     const url = result.finalUrl || result.submittedUrl || "(unknown-url)";
     const scanContext = result.scanContext || summary?.scanContext || {};
+    const index = buildDomIndex(result.axe?.renderedHtml ?? result.documentHtml ?? null, { url });
+    documents.push({
+      url,
+      available: index.available,
+      documentHash: index.documentHash,
+      nodes: index.available ? index.nodes.length : 0
+    });
 
     for (const engine of OBSERVATION_ENGINES) {
       const scanner = result?.[engine];
@@ -280,7 +337,8 @@ export function buildObservationArtifact(summary) {
           url,
           scanContext,
           rawEvidenceRef,
-          engineVersion: engineVersions[engine] || null
+          engineVersion: engineVersions[engine] || null,
+          domIndex: index
         });
 
         if (observation.target.specificLocator) {
@@ -307,13 +365,22 @@ export function buildObservationArtifact(summary) {
   let repeatedWithinEngine = 0;
   let unresolvedTargets = 0;
   let ambiguousLocators = 0;
+  let resolvedTargets = 0;
+  let resolvedUniqueTargets = 0;
+  const resolvedTargetIds = new Set();
 
   for (const observation of observations) {
     byEngine[observation.engine.name] = (byEngine[observation.engine.name] || 0) + 1;
     byLocatorType[observation.target.locatorType] = (byLocatorType[observation.target.locatorType] || 0) + 1;
     if (observation.repeatOf) repeatedWithinEngine += 1;
+    if (observation.target.resolution === "resolved") {
+      resolvedTargets += 1;
+      resolvedTargetIds.add(observation.target.resolvedTargetId);
+    }
     if (observation.target.resolution === "unresolved") unresolvedTargets += 1;
-    if (observation.target.ambiguity) ambiguousLocators += 1;
+    if (observation.target.resolution === "ambiguous" || observation.target.resolution === "unsupported") {
+      ambiguousLocators += 1;
+    }
   }
 
   const rawFailures = observations.length;
@@ -333,6 +400,7 @@ export function buildObservationArtifact(summary) {
       engineExecution: summary?.engineExecution ?? null,
       engineVersions
     },
+    documents,
     counts: {
       rawFailures,
       observations: observations.length,
@@ -340,6 +408,8 @@ export function buildObservationArtifact(summary) {
       crossEngineEquivalent,
       relatedFindings,
       correlatedIssues,
+      resolvedObservations: resolvedTargets,
+      distinctResolvedTargets: resolvedTargetIds.size,
       unresolvedTargets,
       ambiguousLocators,
       byEngine,

@@ -5,7 +5,15 @@
   "description": "Normalized, evidence-preserving engine observations for one scan. One observation is one thing one engine said about one target in one execution. Observations are never removed by grouping; cross-engine equivalence stays unclaimed until target resolution and rule semantics prove it.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "generatedAt", "scan", "counts", "reconciliation", "observations"],
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "scan",
+    "documents",
+    "counts",
+    "reconciliation",
+    "observations"
+  ],
   "properties": {
     "schemaVersion": {
       "type": "string",
@@ -15,20 +23,59 @@
       "type": "string",
       "format": "date-time"
     },
-    "issueNumber": { "type": ["integer", "null"] },
-    "scanTitle": { "type": ["string", "null"] },
+    "issueNumber": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "scanTitle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "scan": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["enginesRequested", "engineExecution", "engineVersions"],
+      "required": [
+        "enginesRequested",
+        "engineExecution",
+        "engineVersions"
+      ],
       "properties": {
-        "scannedAt": { "type": ["string", "null"] },
-        "scanContext": { "type": ["object", "null"] },
-        "enginesRequested": { "type": "array", "items": { "type": "string" } },
-        "engineExecution": { "type": ["object", "null"] },
+        "scannedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scanContext": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "enginesRequested": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "engineExecution": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
         "engineVersions": {
           "type": "object",
-          "additionalProperties": { "type": ["string", "null"] }
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         }
       }
     },
@@ -42,44 +89,129 @@
         "crossEngineEquivalent",
         "relatedFindings",
         "correlatedIssues",
+        "resolvedObservations",
+        "distinctResolvedTargets",
         "unresolvedTargets",
         "ambiguousLocators",
         "byEngine",
         "byLocatorType"
       ],
       "properties": {
-        "rawFailures": { "type": "integer", "minimum": 0 },
-        "observations": { "type": "integer", "minimum": 0 },
-        "repeatedWithinEngine": { "type": "integer", "minimum": 0 },
-        "crossEngineEquivalent": { "type": "integer", "minimum": 0 },
-        "relatedFindings": { "type": "integer", "minimum": 0 },
-        "correlatedIssues": { "type": "integer", "minimum": 0 },
-        "unresolvedTargets": { "type": "integer", "minimum": 0 },
-        "ambiguousLocators": { "type": "integer", "minimum": 0 },
+        "rawFailures": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "repeatedWithinEngine": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "crossEngineEquivalent": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relatedFindings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "correlatedIssues": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolvedTargets": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ambiguousLocators": {
+          "type": "integer",
+          "minimum": 0
+        },
         "byEngine": {
           "type": "object",
-          "additionalProperties": { "type": "integer", "minimum": 0 }
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
         },
         "byLocatorType": {
           "type": "object",
-          "additionalProperties": { "type": "integer", "minimum": 0 }
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "resolvedObservations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distinctResolvedTargets": {
+          "type": "integer",
+          "minimum": 0
         }
       }
     },
     "reconciliation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["rawFailuresEqualObservations", "groupingPreservesObservations", "crossEngineEquivalentVerified"],
+      "required": [
+        "rawFailuresEqualObservations",
+        "groupingPreservesObservations",
+        "crossEngineEquivalentVerified"
+      ],
       "properties": {
-        "rawFailuresEqualObservations": { "type": "boolean" },
-        "groupingPreservesObservations": { "type": "boolean" },
-        "crossEngineEquivalentVerified": { "type": "boolean" },
-        "note": { "type": "string" }
+        "rawFailuresEqualObservations": {
+          "type": "boolean"
+        },
+        "groupingPreservesObservations": {
+          "type": "boolean"
+        },
+        "crossEngineEquivalentVerified": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        }
       }
     },
     "observations": {
       "type": "array",
-      "items": { "$ref": "#/$defs/observation" }
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "available",
+          "documentHash",
+          "nodes"
+        ],
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "documentHash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nodes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -104,10 +236,13 @@
         "rawEvidenceRef",
         "executionStatus",
         "fixtureId",
-        "relations"
+        "relations",
+        "document"
       ],
       "properties": {
-        "schemaVersion": { "type": "string" },
+        "schemaVersion": {
+          "type": "string"
+        },
         "observationId": {
           "type": "string",
           "pattern": "^[a-f0-9]{64}$",
@@ -116,39 +251,97 @@
         "engine": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["name", "label", "version", "ruleId"],
+          "required": [
+            "name",
+            "label",
+            "version",
+            "ruleId"
+          ],
           "properties": {
-            "name": { "type": "string" },
-            "label": { "type": "string" },
-            "version": { "type": ["string", "null"] },
-            "ruleId": { "type": "string" }
+            "name": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ruleId": {
+              "type": "string"
+            }
           }
         },
-        "outcome": { "type": "string", "enum": ["failed", "passed", "cantTell", "inapplicable", "untested"] },
-        "nativeOutcome": { "type": ["string", "null"] },
-        "url": { "type": "string" },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "failed",
+            "passed",
+            "cantTell",
+            "inapplicable",
+            "untested"
+          ]
+        },
+        "nativeOutcome": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
         "testContext": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["browser", "viewport", "colorScheme", "contextKey"],
+          "required": [
+            "browser",
+            "viewport",
+            "colorScheme",
+            "contextKey"
+          ],
           "properties": {
-            "browser": { "type": ["string", "null"] },
+            "browser": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
             "viewport": {
               "anyOf": [
-                { "type": "null" },
+                {
+                  "type": "null"
+                },
                 {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["width", "height"],
+                  "required": [
+                    "width",
+                    "height"
+                  ],
                   "properties": {
-                    "width": { "type": "number" },
-                    "height": { "type": "number" }
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    }
                   }
                 }
               ]
             },
-            "colorScheme": { "type": ["string", "null"] },
-            "contextKey": { "type": "string" }
+            "colorScheme": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "contextKey": {
+              "type": "string"
+            }
           }
         },
         "target": {
@@ -162,47 +355,182 @@
             "resolutionMethod",
             "matchedElements",
             "resolvedTargetId",
-            "ambiguity"
+            "candidates",
+            "confidence",
+            "ambiguity",
+            "nativeLocatorField"
           ],
           "properties": {
-            "nativeLocator": { "type": ["string", "null"] },
-            "locatorType": { "type": "string", "enum": ["xpath", "css", "html", "none"] },
-            "specificLocator": { "type": "boolean" },
-            "resolution": { "type": "string", "enum": ["resolved", "unverified", "unresolved", "ambiguous"] },
-            "resolutionMethod": { "type": "string" },
-            "matchedElements": { "type": ["integer", "null"] },
-            "resolvedTargetId": { "type": ["string", "null"] },
-            "ambiguity": { "type": ["string", "null"] }
+            "nativeLocator": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "locatorType": {
+              "type": "string",
+              "enum": [
+                "xpath",
+                "css",
+                "html",
+                "none"
+              ]
+            },
+            "specificLocator": {
+              "type": "boolean"
+            },
+            "resolution": {
+              "type": "string",
+              "enum": [
+                "resolved",
+                "unverified",
+                "unresolved",
+                "ambiguous",
+                "unsupported"
+              ]
+            },
+            "resolutionMethod": {
+              "type": "string"
+            },
+            "matchedElements": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "resolvedTargetId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ambiguity": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "candidates": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low",
+                "none"
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "nativeLocatorField": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "xpath",
+                "selector",
+                "html",
+                null
+              ]
+            }
           }
         },
-        "htmlEvidence": { "type": ["string", "null"] },
-        "message": { "type": ["string", "null"] },
-        "actRuleIds": { "type": "array", "items": { "type": "string" } },
+        "htmlEvidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "message": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "actRuleIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "mapping": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["source", "status", "verified"],
+          "required": [
+            "source",
+            "status",
+            "verified"
+          ],
           "properties": {
-            "source": { "type": "string" },
-            "status": { "type": "string", "enum": ["mapped", "multi-mapped", "unmapped"] },
-            "verified": { "type": "boolean" }
+            "source": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "mapped",
+                "multi-mapped",
+                "unmapped"
+              ]
+            },
+            "verified": {
+              "type": "boolean"
+            }
           }
         },
-        "wcagSc": { "type": "array", "items": { "type": "string" } },
-        "severity": { "type": ["string", "null"] },
+        "wcagSc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "severity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "rawEvidenceRef": {
           "type": "string",
           "description": "Stable pointer into the preserved report.json, e.g. report.json#/results/0/alfa/failures/3"
         },
-        "executionStatus": { "type": "string", "enum": ["executed", "notRun", "unsupported", "error"] },
-        "fixtureId": { "type": ["string", "null"] },
-        "repeatOf": { "type": "string" },
+        "executionStatus": {
+          "type": "string",
+          "enum": [
+            "executed",
+            "notRun",
+            "unsupported",
+            "error"
+          ]
+        },
+        "fixtureId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "repeatOf": {
+          "type": "string"
+        },
         "relations": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["type", "reason"],
+            "required": [
+              "type",
+              "reason"
+            ],
             "properties": {
               "type": {
                 "type": "string",
@@ -213,10 +541,53 @@
                   "uncertain-match"
                 ]
               },
-              "of": { "type": "string" },
-              "to": { "type": "string" },
-              "reason": { "type": "string" },
-              "evidenceRef": { "type": "string" }
+              "of": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "evidenceRef": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hash",
+            "available",
+            "source",
+            "comparableAcrossEngines"
+          ],
+          "properties": {
+            "hash": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "available": {
+              "type": "boolean"
+            },
+            "source": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "comparableAcrossEngines": {
+              "type": "string",
+              "enum": [
+                "unverified",
+                "verified",
+                "incomparable"
+              ]
             }
           }
         }
