@@ -30,6 +30,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const PACKAGE_JSON_PATH = fileURLToPath(new URL("../package.json", import.meta.url));
+const LOCKFILE_PATH = fileURLToPath(new URL("../package-lock.json", import.meta.url));
 
 // The npm package names for each accessibility scanning engine this project uses.
 export const ENGINE_PACKAGES = [
@@ -49,6 +50,18 @@ export const ENGINE_PACKAGES = [
 export function getDeclaredRange(name) {
   const pkg = JSON.parse(readFileSync(PACKAGE_JSON_PATH, "utf8"));
   return pkg.dependencies?.[name] ?? pkg.devDependencies?.[name] ?? null;
+}
+
+/**
+ * Read the version that will actually be installed, from the lockfile.
+ * Declared ranges can be far behind the resolved version, and a range cannot
+ * tell you whether `npm ci` installed an old engine.
+ * @param {string} name
+ * @returns {string | null}
+ */
+export function getInstalledVersion(name) {
+  const lock = JSON.parse(readFileSync(LOCKFILE_PATH, "utf8"));
+  return lock.packages?.[`node_modules/${name}`]?.version ?? null;
 }
 
 /**
@@ -94,15 +107,16 @@ async function main() {
       errors.push({ name, error: "not found in package.json" });
       continue;
     }
-    const installed = declaredRange.replace(/^[\^~]/, "");
+
+    const installed = getInstalledVersion(name) ?? declaredRange.replace(/^[\^~]/, "");
 
     try {
-      process.stderr.write(`Checking ${name}...\n`);
+      process.stderr.write(`Checking ${name} (installed ${installed})...\n`);
       const latest = fetchLatestVersion(name);
       if (compareVersions(installed, latest) < 0) {
-        outdated.push({ name, installed, latest });
+        outdated.push({ name, declaredRange, installed, latest });
       } else {
-        upToDate.push({ name, installed, latest });
+        upToDate.push({ name, declaredRange, installed, latest });
       }
     } catch (err) {
       errors.push({ name, error: err.message });

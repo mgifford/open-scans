@@ -1,0 +1,143 @@
+name: ACT Laboratory (weekly)
+
+# Runs the ACT laboratory comparison every Sunday.
+#
+# The scan is skipped when none of the inputs that can change a result have
+# changed: installed engine versions, the ACT rule mapping, the upstream W3C
+# test-case data or the published fixture manifest. State is stored in
+# act-lab/state.json and updated only after a successful scan.
+#
+# Deliberately NOT on a daily schedule, and engine upgrades are never applied
+# automatically: a new engine version changes the cohort and is reviewed
+# separately.
+
+on:
+  schedule:
+    # Every Sunday at 06:00 UTC. GitHub may delay scheduled runs.
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Run even if engines, rules and fixtures are unchanged
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: act-lab-weekly
+  cancel-in-progress: false
+
+env:
+  SITE_ROOT: https://mgifford.github.io/record-a-goose-sighting/
+
+jobs:
+  compare:
+    name: Compare ACT fixtures
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Configure Puppeteer browser path for ALFA
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          import { chromium } from 'playwright';
+
+          appendFileSync(process.env.GITHUB_ENV, `PUPPETEER_EXECUTABLE_PATH=${chromium.executablePath()}\n`, 'utf8');
+          NODE
+
+      - name: Check installed engine versions against npm
+        continue-on-error: true
+        run: |
+          mkdir -p .tmp
+          node scanner/check-engine-versions.mjs > .tmp/engine-status.json
+
+      - name: Prepare cohort
+        id: prepare
+        run: |
+          FORCE=""
+          if [ "${{ inputs.force }}" = "true" ]; then FORCE="--force"; fi
+          node scanner/act-lab/prepare.mjs \
+            --site-root "$SITE_ROOT" \
+            --state act-lab/state.json \
+            --out .tmp/act-lab/prepared.json \
+            $FORCE
+
+      - name: Report skipped run
+        if: steps.prepare.outputs.changed != 'true'
+        run: |
+          {
+            echo "## ACT laboratory: skipped"
+            echo ""
+            echo "No change to engines, ACT rules, rule mapping or fixtures."
+            echo "Cohort: \`${{ steps.prepare.outputs.key }}\`"
+            echo "Reasons: \`${{ steps.prepare.outputs.reasons }}\`"
+            echo ""
+            echo "Use the manual **Run workflow** button with *force* to run anyway."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build scan event
+        if: steps.prepare.outputs.changed == 'true'
+        run: node scanner/act-lab/build-event.mjs .tmp/act-lab/prepared.json .tmp/act-lab/issue-event.json
+
+      - name: Run all engines against the fixtures
+        if: steps.prepare.outputs.changed == 'true'
+        run: |
+          mkdir -p .scan-output
+          node scanner/run-scan.mjs .tmp/act-lab/issue-event.json .scan-output > .scan-output/meta.json
+        env:
+          FETCH_TIMEOUT_MS: "30000"
+          PER_URL_TIMEOUT_MS: "120000"
+          TOTAL_SCAN_TIMEOUT_MS: "1800000"
+
+      - name: Summarise observations
+        if: steps.prepare.outputs.changed == 'true'
+        run: |
+          node scanner/act-lab/summarise.mjs \
+            .tmp/act-lab/prepared.json \
+            .scan-output/meta.json \
+            act-lab/latest.json \
+            act-lab/state.json
+
+      - name: Commit state and latest report
+        if: steps.prepare.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add act-lab
+
+          if git diff --cached --quiet; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore(act-lab): weekly comparison"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Add engine freshness to summary
+        if: always()
+        run: node scanner/act-lab/summary-freshness.mjs .tmp/engine-status.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish run summary
+        if: steps.prepare.outputs.changed == 'true'
+        run: node scanner/act-lab/summary-run.mjs act-lab/latest.json >> "$GITHUB_STEP_SUMMARY"

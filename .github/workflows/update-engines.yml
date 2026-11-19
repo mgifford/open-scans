@@ -1,0 +1,88 @@
+name: Update accessibility engines (manual)
+
+# Deliberate engine upgrade. This is NOT scheduled: upgrading an engine changes
+# the ACT laboratory cohort, so it must be a reviewed event followed by a fresh
+# weekly comparison.
+#
+# - within-ranges: `npm update --save` (patch/minor within package.json ranges)
+# - latest: installs the latest major of every engine package
+#
+# After the commit, the weekly ACT Laboratory workflow detects the new installed
+# versions and runs a fresh cohort. Old reports remain untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Update within declared ranges, or force the latest majors
+        type: choice
+        options:
+          - within-ranges
+          - latest
+        default: within-ranges
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-engines
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install current dependencies
+        run: npm ci
+
+      - name: Update engines within declared ranges
+        if: inputs.mode == 'within-ranges'
+        run: npm update --save
+
+      - name: Install latest engine majors
+        if: inputs.mode == 'latest'
+        run: |
+          npm install --save \
+            @siteimprove/alfa-cli@latest \
+            @siteimprove/alfa-formatter-earl@latest \
+            @siteimprove/alfa-formatter-json@latest \
+            @axe-core/playwright@latest \
+            accessibility-checker@latest \
+            @accesslint/core@latest
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Commit lockfile and package changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add package.json package-lock.json
+
+          if git diff --cached --quiet; then
+            echo "No engine updates available for the selected mode."
+            exit 0
+          fi
+
+          git commit -m "chore(engines): update accessibility scanners (${{ inputs.mode }})"
+          git push origin HEAD:main
+
+          {
+            echo "## Accessibility engines updated"
+            echo ""
+            echo "Mode: \`${{ inputs.mode }}\`"
+            echo ""
+            echo "The weekly ACT laboratory will treat this as a new cohort and run a fresh comparison."
+          } >> "$GITHUB_STEP_SUMMARY"
