@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, filterSameOriginUrls, randomSample, parseRobotsForSitemaps } from "../../scanner/crawl-urls.mjs";
+import { parseSitemapXml, filterSameOriginUrls, randomSample, parseRobotsForSitemaps, crawlPageLinks, crawlSiteForUrls } from "../../scanner/crawl-urls.mjs";
 
 // --- parseSitemapXml ---
 
@@ -179,4 +179,60 @@ test("parseRobotsForSitemaps ignores non-http sitemap entries", () => {
   const result = parseRobotsForSitemaps(robots);
   // Only the https URL should be returned
   assert.deepEqual(result, ["https://example.com/sitemap.xml"]);
+});
+
+test("crawlPageLinks follows anchors only, not stylesheet or icon links", async () => {
+  const html = `<!doctype html><html><head>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.ico">
+    <script src="/app.js"></script>
+  </head><body>
+    <a href="/about">About</a>
+    <a href="/contact#team">Contact</a>
+    <a href="#top">Top</a>
+    <a href="https://other.example/">Elsewhere</a>
+    <form action="/submit-step/"><button>Continue</button></form>
+  </body></html>`;
+
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({ ok: true, status: 200, text: async () => html });
+
+  try {
+    const links = await crawlPageLinks("https://example.com/", 1000);
+    assert.deepEqual(links.sort(), [
+      "https://example.com/about",
+      "https://example.com/contact",
+      "https://example.com/submit-step/"
+    ]);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("crawlSiteForUrls follows links beyond the landing page", async () => {
+  const pages = {
+    "https://example.com/": '<a href="/step-1/">one</a><a href="/extra/">extra</a>',
+    "https://example.com/step-1/": '<a href="/step-2/">two</a>',
+    "https://example.com/step-2/": "done",
+    "https://example.com/extra/": "done"
+  };
+
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => ({
+    ok: true,
+    status: 200,
+    text: async () => pages[String(url)] ?? "not found"
+  });
+
+  try {
+    const urls = await crawlSiteForUrls("https://example.com/", 10, 1000);
+    assert.deepEqual(urls, [
+      "https://example.com/",
+      "https://example.com/step-1/",
+      "https://example.com/extra/",
+      "https://example.com/step-2/"
+    ]);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });

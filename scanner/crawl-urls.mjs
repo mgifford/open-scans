@@ -254,10 +254,11 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
 
     const html = await response.text();
 
-    // Extract href values from anchor tags.
-    // The leading [^"'#] intentionally excludes pure fragment anchors (href="#section")
-    // which would resolve to the current page URL and add noise to the URL list.
-    const hrefPattern = /href=["']([^"'#][^"']*?)["']/gi;
+    // Extract href values from anchor tags only. Matching every href would also
+    // pick up stylesheet, preload and icon URLs, which are not pages to scan.
+    // The leading [^"'#] intentionally excludes pure fragment anchors
+    // (href="#section") which would resolve to the current page URL.
+    const hrefPattern = /<a\b[^>]*?\bhref=["']([^"'#][^"']*?)["']/gi;
     const seen = new Set();
     let match;
 
@@ -266,9 +267,39 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
         const parsed = new URL(match[1], url);
         parsed.hash = "";
         const normalized = parsed.toString();
+        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
+          .test(parsed.pathname);
+
         if (
           parsed.origin === origin &&
           !isNonWebDocument(parsed) &&
+          !assetLike &&
+          !seen.has(normalized)
+        ) {
+          seen.add(normalized);
+        }
+      } catch {
+        // Ignore invalid URLs
+      }
+    }
+
+    // Form actions are the only navigation on the exercise's step pages, so an
+    // anchor-only crawl stops before the later steps. Include same-origin form
+    // actions as page links.
+    const formPattern = /<form\b[^>]*?\baction=["']([^"'#][^"']*?)["']/gi;
+
+    while ((match = formPattern.exec(html)) !== null) {
+      try {
+        const parsed = new URL(match[1], url);
+        parsed.hash = "";
+        const normalized = parsed.toString();
+        const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
+          .test(parsed.pathname);
+
+        if (
+          parsed.origin === origin &&
+          !isNonWebDocument(parsed) &&
+          !assetLike &&
           !seen.has(normalized)
         ) {
           seen.add(normalized);
@@ -337,15 +368,29 @@ export async function crawlSiteForUrls(baseUrl, maxUrls = DEFAULT_MAX_URLS, time
     }
   }
 
-  // Step 3: Fall back to crawling the homepage for links
+  // Step 3: Breadth-first crawl from the homepage. Following links one level
+  // deep only finds pages linked from the landing page; the exercise's later
+  // steps are only reachable from earlier steps.
   console.error(`[crawl] Falling back to page crawl`);
-  const pageUrls = await crawlPageLinks(baseUrl, timeout);
+  const result = [baseUrl];
+  const seen = new Set([baseUrl]);
+  const queue = [baseUrl];
 
-  const others = pageUrls.filter((u) => u !== baseUrl);
-  const sampled = randomSample(others, maxUrls - 1);
-  const result = [baseUrl, ...sampled].slice(0, maxUrls);
-  console.error(`[crawl] Final URL list: ${result.length} URLs`);
-  return result;
+  while (queue.length > 0 && result.length < maxUrls) {
+    const current = queue.shift();
+    const pageUrls = await crawlPageLinks(current, timeout);
+
+    for (const url of pageUrls) {
+      if (seen.has(url)) continue;
+      seen.add(url);
+      result.push(url);
+      queue.push(url);
+      if (result.length >= maxUrls) break;
+    }
+  }
+
+  console.error(`[crawl] Final URL list: ${result.length} URLs after breadth-first crawl`);
+  return result.slice(0, maxUrls);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
