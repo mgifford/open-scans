@@ -21,6 +21,7 @@ import { redactStringsDeep } from "./redact-secrets.mjs";
 import { getEngineExecution, formatEngineExecution } from "./engine-execution.mjs";
 import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
 import { correlateObservations } from "./correlation.mjs";
+import { renderCorrelationMarkdown } from "./correlation-report.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -4319,6 +4320,7 @@ async function main() {
   // ─────────────────────────────────────────────────────────────────────────
 
   let markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
+  markdownContent += "\n" + renderCorrelationMarkdown({ correlation: correlationArtifact, observations: observationArtifact });
   if (remediationResult) {
     markdownContent += "\n" + formatRemediationMarkdown(remediationResult);
   }
@@ -4354,7 +4356,10 @@ async function main() {
   // ─────────────────────────────────────────────────────────────────────────
 
   writeFileSync(markdownPath, markdownContent, "utf8");
-  writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData), "utf8");
+  writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData, {
+    correlation: correlationArtifact,
+    observations: observationArtifact
+  }), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
   writeFileSync(patternsCsvPath, patternInventoryToCsv(patternInventory), "utf8");
   const contextRedaction = { changed: 0 };

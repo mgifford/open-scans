@@ -3,6 +3,7 @@ import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
 import { getActRuleIds } from "./act-mapping.mjs";
 import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
 import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
+import { renderCorrelationHtml } from "./correlation-report.mjs";
 
 /**
  * Escape a string for safe inclusion in HTML.
@@ -341,9 +342,10 @@ function renderPatternInventorySection(inventory, esc) {
     </section>`;
 }
 
-export function generateInteractiveHtml(summary, remediationResult = null, trendData = null) {
+export function generateInteractiveHtml(summary, remediationResult = null, trendData = null, correlationReport = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const scanContext = buildScanContext(summary.scanContext);
+  const correlationSection = correlationReport ? renderCorrelationHtml(correlationReport) : "";
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
   const rolesList = Object.values(ROLES);
@@ -1309,6 +1311,28 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .priority-section > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
     .table-wrapper { overflow-x: auto; }
     .priority-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+    /* ── Multi-engine evidence ── */
+    .corr-section { margin: 2rem 0; }
+    .corr-counts { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0.5rem 0 1.5rem; }
+    .corr-counts dt { font-weight: 600; }
+    .corr-counts dd { margin: 0; }
+    .table-scroll { overflow-x: auto; }
+    .corr-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.5rem 0 1.5rem; }
+    .corr-table caption { text-align: left; padding-bottom: 0.25rem; font-weight: 600; }
+    .corr-table th, .corr-table td { border: 1px solid var(--border); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+    .corr-table thead th { background: var(--surface); }
+    .corr-issues { list-style: none; padding-left: 0; }
+    .corr-issues > li { border: 1px solid var(--border); border-radius: 4px; margin-bottom: 0.75rem; padding: 0.5rem 0.75rem; }
+    .corr-issues summary { cursor: pointer; font-weight: 600; }
+    .corr-issues summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .corr-tag { font-weight: 400; font-size: 0.8rem; border: 1px solid var(--border); border-radius: 3px; padding: 0 0.3rem; margin-left: 0.35rem; }
+    .corr-filter { border: 1px solid var(--border); padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; }
+    .corr-filter-options { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .corr-filter-hint { margin: 0.25rem 0 0.5rem; }
+    @media (forced-colors: active) {
+      .corr-table th, .corr-table td, .corr-issues > li, .corr-filter { border-color: CanvasText; }
+    }
     .priority-table th { background: var(--bar-bg); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
     .show-all-pages-wrapper { margin-top: 0.75rem; text-align: center; }
     .btn-show-all-pages { background: var(--container-bg); color: var(--primary); border: 1px solid var(--primary); border-radius: 6px; padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
@@ -1727,6 +1751,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         </svg>
       </button>
     </header>
+    ${correlationSection}
 
     ${trendSectionHtml}
 

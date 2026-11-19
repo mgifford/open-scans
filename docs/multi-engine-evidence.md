@@ -1,8 +1,8 @@
 # Multi-engine evidence: assessment, model and plan
 
 Status: P0 (observation model + duplicate correction), P1 (target resolution),
-P2 (cross-engine correlation) and P3 (ACT registry + target-level consensus)
-shipped. Reporting is next.
+P2 (cross-engine correlation), P3 (ACT registry) and P4 (reporting + exports)
+shipped. Historical comparison is next.
 
 ## 1. What exists today
 
@@ -191,6 +191,32 @@ On the #398 evidence the observation mapping evidence splits as 5 verified,
 is the registry's honest state, not a correlation failure, and it is the next
 data-entry task.
 
+## 3e. Reporting and exports (P4, shipped)
+
+`scanner/correlation-report.mjs` renders the multi-engine section for both
+outputs, from `observations.json` + `correlation.json`:
+
+- **Markdown**: counts, page × engine matrix, correlated findings with a
+  per-engine evidence table (native rule, locator, resolution method,
+  `rawEvidenceRef`), target disagreements, related-but-distinct list.
+- **HTML**: a `<section aria-labelledby>` with `<h2>`/`<h3>` structure,
+  `<dl>` counts (no colour or position encoding), tables with `<caption>` and
+  scoped `<th>`, native `<details>/<summary>` per finding, and a `<fieldset>`
+  filter (radio buttons + `role="status" aria-live="polite"` count) that only
+  hides rows — it never changes the counts.
+- **Explicit empty states**: "no two engines reported the same failure
+  mechanism" and "no engine reported the same mechanism on different targets"
+  are stated, not left blank.
+- **Escaping**: engine-supplied URLs, rule ids, locators and messages are
+  HTML-escaped in the HTML fragment and Markdown-escaped in the Markdown
+  fragment, so a scanned page cannot inject markup.
+
+Exports stay static and versioned: `observations.json`
+(`a11y-observation/1`), `correlation.json` (`a11y-correlation/1`), plus the
+existing `report.json`/`.md`/`.html`/`.csv`, `patterns.csv` and
+`accessibility-context.json`. Every correlated issue carries the observation
+ids and `rawEvidenceRef` pointers back into `report.json`.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -212,9 +238,7 @@ evidence resolves without rerunning a browser.
 | **P1 ✅** | Target resolution: deterministic DOM index, CSS/XPath/HTML, document hashing, ambiguity and unsupported-context reporting | P0 |
 | **P2 ✅** | Correlation: rule-semantics families, agreement/related/uncertain dispositions, target disagreements, order-independent issue identity | P1 |
 | **P3 ✅** | ACT registry: verified vs candidate mappings, version alignment, metadata provenance, correlation-derived consensus | P2 |
-| **P2 ✅** | Correlation layer (`agreement-fail`, `detection-asymmetry`, `target-disagreement`, `insufficient-evidence`, `not-comparable`) and the four-engine image regression | P1 |
-| **P3 ✅** | ACT registry audit: verified vs candidate mappings, ACT 1.1 rule metadata, Equal Access + AccessLint candidate entries, correlation-derived consensus | P2 |
-| P4 | Reporting: evidence tables, disagreement view, accessible filters, versioned exports | P2 |
+| **P4 ✅** | Reporting: multi-engine evidence section in Markdown and HTML, page/engine matrix, per-engine evidence disclosures, accessible filter, explicit empty states | P2 |
 | P5 | Historical comparison + ACT lab target-specific outcomes, algorithm/schema versions in cohorts | P3, P4 |
 | P6 | Manual review format, unresolved-match UX | P4 |
 
