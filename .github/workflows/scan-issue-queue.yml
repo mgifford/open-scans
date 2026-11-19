@@ -77,7 +77,7 @@ jobs:
             });
 
             const scanIssues = issues.filter(issue =>
-              issue.title.startsWith('SCAN:') && !issue.pull_request
+              /^#?\s*SCAN:/i.test(issue.title) && !issue.pull_request
             );
 
             console.log(`Found ${scanIssues.length} open SCAN issues`);

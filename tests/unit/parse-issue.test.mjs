@@ -1314,3 +1314,41 @@ test("validateScanRequest accumulates multiple errors", () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.length > 1, "Should report multiple missing fields");
 });
+
+test("parseScanIssue accepts a leading hash on SCAN titles", () => {
+  const payload = {
+    issue: {
+      number: 397,
+      html_url: "https://github.com/example/repo/issues/397",
+      title: "#SCAN: ALL Goose sighting audit",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "### URLs\n\nhttps://example.com/"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.isScanIssue, true);
+  assert.deepEqual(result.engines, ["all"]);
+  assert.equal(result.value.scanTitle, "Goose sighting audit");
+});
+
+test("parseScanIssue accepts a leading hash on timed titles", () => {
+  const payload = {
+    issue: {
+      number: 398,
+      html_url: "https://github.com/example/repo/issues/398",
+      title: "#SUNDAY: ALL Goose sighting audit",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "### URLs\n\nhttps://example.com/"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.isTimedIssue, true);
+  assert.equal(result.triggerType, "SUNDAY");
+  assert.deepEqual(result.engines, ["all"]);
+});

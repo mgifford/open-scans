@@ -1,5 +1,9 @@
 # ACT laboratory reports
 
+This is a dedicated weekly workflow, not an issue-driven scan. It has no issue
+title syntax and always runs every operational engine; do not use `SCAN:` or a
+timed issue prefix to request it.
+
 `state.json` is the cohort of the last successful weekly comparison. The
 weekly workflow compares it with a freshly computed cohort and skips the scan
 when every component is unchanged.

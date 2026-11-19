@@ -19,6 +19,7 @@ Issue-driven accessibility scanning using GitHub Pages and GitHub Actions. This 
 - [How it works](#how-it-works)
 - [Quick Start](#quick-start)
 - [Choose Scanning Engines](#choose-scanning-engines)
+- [ACT Laboratory (weekly)](#act-laboratory-weekly)
 - [Performance Investigation (`PERF:`)](#performance-investigation-perf)
 - [View Scan Results](#view-scan-results)
 - [Pattern and Container Inventory](#pattern-and-container-inventory)
@@ -124,6 +125,36 @@ Engine: axe, alfa
 - `SCAN: ALL Complete audit` — Runs all four supported rule engines (axe, ALFA, Equal Access and AccessLint)
 - `SCAN: Homepage check` — Runs axe + one randomly chosen engine (default)
 - Body: `Engine: axe accesslint` — Runs axe and AccessLint regardless of title
+
+The leading `#` is accepted on any runnable prefix, so `SCAN:` and `#SCAN:` are
+equivalent, as are `SUNDAY:` and `#SUNDAY:`. Engine keywords work with timed
+prefixes too, for example `#SUNDAY: ALL`.
+
+> **ACT laboratory:** the weekly ACT comparison does **not** use an issue, a
+> title prefix or an engine keyword. See
+> [ACT Laboratory (weekly)](#act-laboratory-weekly).
+
+### ACT Laboratory (weekly)
+
+The ACT laboratory comparison is a separate workflow, not an issue-driven
+scan. It has no issue title syntax and never uses the engine selection above.
+
+- **Schedule:** every Sunday at 06:00 UTC
+  (`.github/workflows/act-lab-weekly.yml`).
+- **Targets:** all fixtures from the published
+  `https://mgifford.github.io/record-a-goose-sighting/lab/fixtures.json`
+  manifest, with **all operational engines**.
+- **Skip rule:** if the fixture manifest, installed engine versions, ACT rule
+  mapping and upstream W3C test-case data are all unchanged since the last
+  successful run, the workflow skips the scan and says why in the job summary.
+  A missing finding is never recorded as a pass.
+- **Manual run:** Actions → **ACT Laboratory (weekly)** → *Run workflow*.
+  Enable **force** to run even when the cohort is unchanged.
+- **Reports:** `act-lab/latest.json` (observations) and `act-lab/state.json`
+  (cohort), described in [`act-lab/README.md`](act-lab/README.md).
+
+Do not open a `SCAN:` or timed issue for the ACT laboratory: that would run a
+plain page scan instead of the fixture comparison.
 
 ## Performance Investigation (`PERF:`)
 
@@ -339,6 +370,11 @@ If you find the scan results useful and want to run the same scan regularly:
    - `MONTHLY:` — Runs on the 1st of each month
    - `QUARTERLY:` — Runs on Jan 1, Apr 1, Jul 1, Oct 1
 
+   The prefix must be the **first text** in the title. `SUNDAY:` and `#SUNDAY:`
+   both work; a trailing day word does not, so
+   `SCAN: https://example.com SUNDAY` remains a one-off scan. Engine keywords
+   may follow the prefix, for example `SUNDAY: ALL`, with the URL in the body.
+
 3. **Reopen the issue** if it was closed, so scheduled scans will run
 
 ### Updating Your URL List
@@ -360,7 +396,7 @@ To stop recurring scans:
 
 ### 1. Automatic On Issue Creation/Edit
 
-When an issue titled with `SCAN:` is created or edited, the "Scan Request" workflow triggers automatically. Multiple `SCAN:` issues are processed sequentially to prevent conflicts.
+When an issue titled with `SCAN:` or `#SCAN:` is created or edited, the "Scan Request" workflow triggers automatically. Multiple `SCAN:` issues are processed sequentially to prevent conflicts.
 
 ### 2. Daily Scheduled Scans
 
@@ -369,12 +405,20 @@ When an issue titled with `SCAN:` is created or edited, the "Scan Request" workf
 
 Engine keywords work with timed scans too (e.g., `WEEKLY: AXE Monday scan`).
 
-### 3. Manual Trigger
+### 3. Weekly ACT Laboratory
+
+The ACT laboratory runs separately from issue-driven scans, every Sunday at
+06:00 UTC. It targets the published fixture manifest with all operational
+engines and skips the run when nothing in its cohort has changed. See
+[ACT Laboratory (weekly)](#act-laboratory-weekly) for the details.
+
+### 4. Manual Trigger
 
 1. Go to the [Actions tab](https://github.com/mgifford/open-scans/actions)
 2. Select the appropriate workflow:
    - **"Scan All Open SCAN Issues"** — for pending `SCAN:` issues
    - **"Scan Timed Issues (WEEKLY, MONTHLY, etc.)"** — for recurring timed issues due today
+   - **"ACT Laboratory (weekly)"** — for the fixture comparison, with an optional force
    - **"AI Accessibility Review (weekly)"** — for an AI-powered WCAG 2.2 source-code review (see below)
 3. Click "Run workflow"
 

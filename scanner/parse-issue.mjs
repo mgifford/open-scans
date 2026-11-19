@@ -188,7 +188,7 @@ export function extractPageCount(text, defaultCount = 20) {
 
 function extractScanTitle(issueTitle) {
   const title = issueTitle ?? "";
-  const match = title.match(/^\s*(SCAN|WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):\s*(.+?)\s*$/i);
+  const match = title.match(/^\s*#?\s*(SCAN|WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):\s*(.+?)\s*$/i);
   if (!match || !match[2]) {
     return {
       isScanIssue: false,

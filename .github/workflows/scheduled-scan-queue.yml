@@ -103,7 +103,7 @@ jobs:
           };
 
           const parsePrefix = (title) => {
-            const match = String(title || '').match(/^\s*(WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):/i);
+            const match = String(title || '').match(/^\s*#?\s*(WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):/i);
             return match ? match[1].toUpperCase() : null;
           };
 
