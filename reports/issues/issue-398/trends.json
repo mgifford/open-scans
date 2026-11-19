@@ -1,7 +1,95 @@
 {
-  "error": "Insufficient history",
-  "message": "At least 2 scans are required for trend analysis",
+  "scansAnalysed": 2,
+  "diffs": [
+    {
+      "from": {
+        "scannedAt": "2026-11-19T10:45:02.414Z",
+        "totals": {
+          "alfa": 140,
+          "axe": 0,
+          "equalAccess": 86,
+          "qualweb": 0,
+          "accesslint": 0,
+          "combined": 226,
+          "scannedAt": "2026-11-19T10:45:02.414Z",
+          "scannedCount": 10
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-19T11:40:47.959Z",
+        "totals": {
+          "alfa": 140,
+          "axe": 6,
+          "equalAccess": 86,
+          "qualweb": 0,
+          "accesslint": 5,
+          "combined": 237,
+          "scannedAt": "2026-11-19T11:40:47.959Z",
+          "scannedCount": 10
+        }
+      },
+      "change": 11,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 6,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 5
+      }
+    }
+  ],
+  "latestDiff": {
+    "from": {
+      "scannedAt": "2026-11-19T10:45:02.414Z",
+      "totals": {
+        "alfa": 140,
+        "axe": 0,
+        "equalAccess": 86,
+        "qualweb": 0,
+        "accesslint": 0,
+        "combined": 226,
+        "scannedAt": "2026-11-19T10:45:02.414Z",
+        "scannedCount": 10
+      }
+    },
+    "to": {
+      "scannedAt": "2026-11-19T11:40:47.959Z",
+      "totals": {
+        "alfa": 140,
+        "axe": 6,
+        "equalAccess": 86,
+        "qualweb": 0,
+        "accesslint": 5,
+        "combined": 237,
+        "scannedAt": "2026-11-19T11:40:47.959Z",
+        "scannedCount": 10
+      }
+    },
+    "change": 11,
+    "trend": "worsening",
+    "perScanner": {
+      "alfa": 0,
+      "axe": 6,
+      "equalAccess": 0,
+      "qualweb": 0,
+      "accesslint": 5
+    }
+  },
+  "overallTrend": "worsening",
+  "improvingCount": 0,
+  "worseningCount": 1,
   "latestTotals": {
+    "alfa": 140,
+    "axe": 6,
+    "equalAccess": 86,
+    "qualweb": 0,
+    "accesslint": 5,
+    "combined": 237,
+    "scannedAt": "2026-11-19T11:40:47.959Z",
+    "scannedCount": 10
+  },
+  "baselineTotals": {
     "alfa": 140,
     "axe": 0,
     "equalAccess": 86,
