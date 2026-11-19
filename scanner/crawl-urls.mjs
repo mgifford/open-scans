@@ -1,7 +1,7 @@
 import { isNonWebDocument } from "./validate-targets.mjs";
 
 const DEFAULT_CRAWL_TIMEOUT = 30000; // 30 seconds
-const DEFAULT_MAX_URLS = 20;
+const DEFAULT_MAX_URLS = 50;
 const MAX_SITEMAP_URLS = 500;
 
 // Use a Googlebot-style user-agent so sites that block generic bots still allow crawling.
@@ -344,7 +344,7 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
  * Always includes the base URL itself as the first entry.
  *
  * @param {string} baseUrl - The base URL of the site to crawl
- * @param {number} maxUrls - Maximum number of URLs to return (default: 20)
+ * @param {number} maxUrls - Maximum number of URLs to return (default: 50)
  * @param {number} timeout - HTTP request timeout in milliseconds
  * @returns {Promise<string[]>} Array of discovered URLs
  */
@@ -418,7 +418,7 @@ export async function crawlSiteForUrls(baseUrl, maxUrls = DEFAULT_MAX_URLS, time
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const baseUrl = process.argv[2];
-  const maxUrls = parseInt(process.argv[3] || "20", 10);
+  const maxUrls = parseInt(process.argv[3] || "50", 10);
   if (!baseUrl) {
     console.error("Usage: node scanner/crawl-urls.mjs <base-url> [max-urls]");
     process.exitCode = 1;

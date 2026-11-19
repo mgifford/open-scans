@@ -81,7 +81,7 @@ const TIMEOUTS = {
   PER_URL_TIMEOUT: parseInt(process.env.PER_URL_TIMEOUT_MS || "60000", 10),
 
   // Maximum total time for the entire scan (default: 50 minutes to stay under 1 hour)
-  TOTAL_SCAN_TIMEOUT: parseInt(process.env.TOTAL_SCAN_TIMEOUT_MS || "3000000", 10),
+  TOTAL_SCAN_TIMEOUT: parseInt(process.env.TOTAL_SCAN_TIMEOUT_MS || "3600000", 10),
 
   // ALFA CLI page load timeout (default: 30s)
   ALFA_PAGE_TIMEOUT: parseInt(process.env.ALFA_PAGE_TIMEOUT_MS || "30000", 10),
@@ -3874,7 +3874,7 @@ async function main() {
     try {
       const crawledUrls = await crawlSiteForUrls(
         parsed.crawlBaseUrl,
-        parsed.crawlPageCount ?? 20,
+        parsed.crawlPageCount ?? 50,
         TIMEOUTS.FETCH_TIMEOUT
       );
       if (crawledUrls.length > 0) {
