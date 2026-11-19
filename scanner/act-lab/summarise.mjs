@@ -267,9 +267,23 @@ export function summarise (prepared, meta, viewport = null) {
     }
   }
 
+  const missingFixtures = [...new Set(
+    results
+      .filter((entry) => entry.status === 'notRun')
+      .map((entry) => entry.fixtureId)
+  )].sort()
+  const failedEngines = [...new Set(
+    results
+      .filter((entry) => entry.status === 'error')
+      .map((entry) => entry.engine)
+  )].sort()
+
   return {
     schemaVersion: 'act-lab-observations/2',
     generatedAt: new Date().toISOString(),
+    status: missingFixtures.length > 0 || failedEngines.length > 0 ? 'partial' : 'complete',
+    missingFixtures,
+    failedEngines,
     siteRoot: prepared.siteRoot,
     manifestUrl: prepared.manifestUrl,
     cohort: prepared.cohort,
@@ -314,22 +328,27 @@ function main () {
 
   const summary = summarise(prepared, meta, viewport)
 
-  // A requested engine that did not run, or crashed, makes the comparison
-  // invalid. Do not update cohort state in that case; the next run will retry.
-  const incomplete = summary.results.filter(
-    (entry) => entry.status === 'error' || entry.status === 'notRun'
-  )
+  // Partial runs still publish their evidence, labelled as partial, but they
+  // never become the baseline: state.json is only written for a complete run,
+  // so the next scheduled run retries the missing fixtures.
+  mkdirSync(dirname(resolve(outPath)), { recursive: true })
+  writeFileSync(resolve(outPath), JSON.stringify(summary, null, 2) + '\n')
 
-  if (incomplete.length > 0) {
-    const detail = incomplete
+  if (summary.status !== 'complete') {
+    const detail = summary.results
+      .filter((entry) => entry.status === 'error' || entry.status === 'notRun')
       .slice(0, 5)
       .map((entry) => `${entry.fixtureId}/${entry.engine}: ${entry.status} (${entry.evidence})`)
       .join('; ')
-    throw new Error(`Engine execution was incomplete, refusing to record state. ${detail}`)
+    process.stderr.write(
+      `ACT observations recorded as PARTIAL (${summary.missingFixtures.length} fixture(s) not scanned). ` +
+      `Cohort state not updated. ${detail}\n`
+    )
+    process.stderr.write(
+      `ACT observations: ${Object.entries(summary.counts).map(([key, value]) => `${key}=${value}`).join(', ')}\n`
+    )
+    return
   }
-
-  mkdirSync(dirname(resolve(outPath)), { recursive: true })
-  writeFileSync(resolve(outPath), JSON.stringify(summary, null, 2) + '\n')
 
   const state = {
     schemaVersion: 'act-lab-state/1',

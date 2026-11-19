@@ -205,3 +205,63 @@ test("candidate mappings count as mapped, not unmapped", () => {
   assert.equal(accesslint.status, "notReported");
   assert.notEqual(equalAccess.status, "unmapped");
 });
+
+test("a missing fixture marks the run partial without losing evidence", async () => {
+  const { existsSync, readFileSync: read } = await import("node:fs");
+  const dir = mkdtempSync(join(tmpdir(), "act-lab-partial-"));
+  const preparedPath = join(dir, "prepared.json");
+  const metaPath = join(dir, "meta.json");
+  const outPath = join(dir, "latest.json");
+  const statePath = join(dir, "state.json");
+
+  writeFileSync(preparedPath, JSON.stringify({
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "c" },
+    cases: [
+      caseEntry({ id: "present" }),
+      caseEntry({ id: "missing", url: `${SITE}lab/missing/` })
+    ]
+  }));
+  writeFileSync(metaPath, JSON.stringify({
+    results: [result({ failures: [{ rule: "image-alt", selector: "#missing-alt-a" }] })]
+  }));
+
+  const run = spawnSync(process.execPath, [
+    "scanner/act-lab/summarise.mjs", preparedPath, metaPath, outPath, statePath, "desktop"
+  ], { cwd: new URL("../..", import.meta.url).pathname, encoding: "utf8" });
+
+  assert.equal(run.status, 0, run.stderr);
+  assert.match(run.stderr, /PARTIAL/);
+  assert.equal(existsSync(outPath), true);
+  assert.equal(existsSync(statePath), false, "a partial run must not become the baseline");
+
+  const summary = JSON.parse(read(outPath, "utf8"));
+  assert.equal(summary.status, "partial");
+  assert.deepEqual(summary.missingFixtures, ["missing"]);
+  assert.equal(summary.results.find((entry) => entry.fixtureId === "present" && entry.engine === "axe").status, "failed");
+});
+
+test("a complete run is marked complete and updates the baseline", async () => {
+  const { existsSync } = await import("node:fs");
+  const dir = mkdtempSync(join(tmpdir(), "act-lab-complete-"));
+  const preparedPath = join(dir, "prepared.json");
+  const metaPath = join(dir, "meta.json");
+  const outPath = join(dir, "latest.json");
+  const statePath = join(dir, "state.json");
+
+  writeFileSync(preparedPath, JSON.stringify({
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "c" },
+    cases: [caseEntry({ id: "present" })]
+  }));
+  writeFileSync(metaPath, JSON.stringify({ results: [result()] }));
+
+  const run = spawnSync(process.execPath, [
+    "scanner/act-lab/summarise.mjs", preparedPath, metaPath, outPath, statePath, "desktop"
+  ], { cwd: new URL("../..", import.meta.url).pathname, encoding: "utf8" });
+
+  assert.equal(run.status, 0, run.stderr);
+  assert.equal(existsSync(statePath), true);
+});
