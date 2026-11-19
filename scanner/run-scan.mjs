@@ -2206,7 +2206,7 @@ export function extractRuleId(ruleUrl) {
   return match ? match[1] : null;
 }
 
-function buildOverlapReport(summary) {
+function buildOverlapReport(summary, correlation = null) {
   const scannerLabels = {
     axe: "axe",
     alfa: "ALFA",
@@ -2301,7 +2301,7 @@ function buildOverlapReport(summary) {
     .sort((a, b) => b.scanners.length - a.scanners.length)
     .slice(0, 100);
 
-  const actConsensus = collectActConsensusOverlaps(summary.results);
+  const actConsensus = collectActConsensusOverlaps(summary.results, { correlation });
 
   return {
     generatedAt: new Date().toISOString(),
@@ -4322,7 +4322,7 @@ async function main() {
   if (remediationResult) {
     markdownContent += "\n" + formatRemediationMarkdown(remediationResult);
   }
-  const overlapReport = buildOverlapReport(summary);
+  const overlapReport = buildOverlapReport(summary, correlationArtifact);
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");

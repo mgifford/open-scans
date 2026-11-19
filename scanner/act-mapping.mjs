@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 
+import { getMappingEvidence } from "./act-registry.mjs";
+
 const ACT_MAPPING_PATH = new URL("./data/act-mapping.json", import.meta.url);
 const QUALWEB_README_PATH = new URL("../node_modules/@qualweb/act-rules/README.md", import.meta.url);
 
@@ -97,7 +99,36 @@ export function getActRuleIds(engine, ruleId) {
 }
 
 
-export function collectActConsensusOverlaps(results) {
+export function collectActConsensusOverlaps(results, { correlation = null } = {}) {
+  // When correlation evidence is available, ACT consensus is derived from
+  // verified correlated issues only: same resolved target, compatible rule
+  // semantics, and every participating mapping backed by a published
+  // implementation report. Candidate mappings are excluded.
+  if (correlation) {
+    const overlapEntries = (correlation.issues ?? [])
+      .filter((issue) => issue.actVerified && issue.actRuleIds.length > 0)
+      .map((issue) => ({
+        key: issue.correlatedIssueId,
+        actRuleId: issue.actRuleIds[0],
+        url: issue.url,
+        locator: issue.targetId,
+        scanners: [...issue.engines],
+        scannerRules: Object.fromEntries(
+          issue.observations.map((observation) => [observation.engine, [observation.ruleId]])
+        ),
+        occurrences: issue.observationIds.length,
+        examples: issue.observations.slice(0, 3).map((observation) => ({
+          scanner: observation.engine,
+          rule: observation.ruleId,
+          message: null,
+          xpath: observation.nativeLocator
+        }))
+      }))
+      .sort((a, b) => b.scanners.length - a.scanners.length || a.actRuleId.localeCompare(b.actRuleId));
+
+    return { overlapEntryCount: overlapEntries.length, overlapEntries };
+  }
+
   const dedupeMap = new Map();
 
   for (const result of results ?? []) {
@@ -211,10 +242,17 @@ export function getActRuleConsistency(actRuleId, engine) {
 }
 
 export function getMappingStatus(engine, ruleId) {
-  const actRuleIds = getActRuleIds(engine, ruleId);
-  if (actRuleIds.length === 0) return "unmapped";
-  if (actRuleIds.length === 1) return "mapped";
-  return "multi-mapped";
+  const evidence = getMappingEvidence(engine, ruleId);
+  if (evidence.status === "verified") {
+    return evidence.verifiedActRuleIds.length === 1 ? "mapped" : "multi-mapped";
+  }
+  if (evidence.status === "candidate") return "candidate";
+
+  // Rules known only through an engine-side index (QualWeb's README) are not
+  // registry-verified either, but they are known.
+  const inferred = getActRuleIds(engine, ruleId);
+  if (inferred.length === 0) return "unmapped";
+  return inferred.length === 1 ? "inferred" : "multi-inferred";
 }
 
 export function computeActOutcomes(results) {
