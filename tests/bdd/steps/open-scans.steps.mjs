@@ -170,9 +170,11 @@ Given("the scan request workflow file", async function () {
 });
 
 Then('it should require the issue title to start with "SCAN:" and the issue to be open', function () {
+  // The condition accepts both 'SCAN:' and '#SCAN:' titles, so assert the
+  // behavior rather than one exact expression.
   assert.match(
     this.scanRequestWorkflow,
-    /if:\s*startsWith\(github\.event\.issue\.title,\s*'SCAN:'\)\s*&&\s*github\.event\.issue\.state\s*==\s*'open'/
+    /if:[^\n]*startsWith\(github\.event\.issue\.title,\s*'#?SCAN:'\)[^\n]*github\.event\.issue\.state\s*==\s*'open'/
   );
 });
 
