@@ -140,17 +140,19 @@ test("observations separate execution from outcomes and never infer a pass", () 
     manifestUrl: `${SITE}lab/fixtures.json`,
     cohort: { key: "cohort" },
     cases: [
-      { id: "role-valid", url: fixtureUrl(SITE, "lab/aria/role-valid/"), ruleId: "674b10", expected: "passed", review: "unreviewed", target: { scope: "light-dom" } },
-      { id: "role-invalid", url: fixtureUrl(SITE, "lab/aria/role-invalid/"), ruleId: "674b10", expected: "failed", review: "unreviewed", target: { scope: "light-dom" } },
+      { id: "role-valid", url: fixtureUrl(SITE, "lab/aria/role-valid/"), ruleId: "674b10", expected: "passed", review: "unreviewed", target: { scope: "light-dom", selector: "#target" } },
+      { id: "role-invalid", url: fixtureUrl(SITE, "lab/aria/role-invalid/"), ruleId: "674b10", expected: "failed", review: "unreviewed", target: { scope: "light-dom", selector: "#target" } },
       { id: "closed", url: fixtureUrl(SITE, "paca/?role=invalid&shadow=closed"), ruleId: "674b10", expected: null, review: "unreviewed", target: { scope: "closed-shadow" } }
     ]
   };
 
+  const validHtml = '<html><body><button id="target">ok</button></body></html>';
+  const invalidHtml = '<html><body><button id="target" role="nonsense">bad</button></body></html>';
   const meta = {
     results: [
-      { submittedUrl: prepared.cases[0].url, axe: { failures: [] }, alfa: { failures: [] }, equalAccess: { failures: [] } },
-      { submittedUrl: prepared.cases[1].url, axe: { failures: [{ rule: "aria-roles" }] }, alfa: { failures: [] } },
-      { submittedUrl: prepared.cases[2].url, axe: { failures: [] } }
+      { submittedUrl: prepared.cases[0].url, finalUrl: prepared.cases[0].url, axe: { failures: [], renderedHtml: validHtml }, alfa: { failures: [] }, equalAccess: { failures: [] } },
+      { submittedUrl: prepared.cases[1].url, finalUrl: prepared.cases[1].url, axe: { failures: [{ rule: "aria-roles", selector: "#target" }], renderedHtml: invalidHtml }, alfa: { failures: [] } },
+      { submittedUrl: prepared.cases[2].url, finalUrl: prepared.cases[2].url, axe: { failures: [] } }
     ]
   };
 
@@ -182,7 +184,7 @@ test("engine-specific findings are distinguished from ACT outcomes", () => {
         ruleId: "674b10",
         expected: "passed",
         review: "unreviewed",
-        target: { scope: "light-dom" }
+        target: { scope: "light-dom", selector: "#target" }
       }
     ]
   };
@@ -190,7 +192,8 @@ test("engine-specific findings are distinguished from ACT outcomes", () => {
   const summary = summarise(prepared, {
     results: [{
       submittedUrl: prepared.cases[0].url,
-      axe: { failures: [{ rule: "region" }] }
+      finalUrl: prepared.cases[0].url,
+      axe: { failures: [{ rule: "region" }], renderedHtml: '<html><body><button id="target">ok</button></body></html>' }
     }]
   }, "desktop");
 
@@ -241,14 +244,18 @@ test("findings mapped to a different ACT rule are not engine-specific", () => {
       ruleId: "674b10",
       expected: "passed",
       review: "unreviewed",
-      target: { scope: "light-dom" }
+      target: { scope: "light-dom", selector: "#target" }
     }]
   };
 
   const summary = summarise(prepared, {
     results: [{
       submittedUrl: prepared.cases[0].url,
-      axe: { failures: [{ rule: "color-contrast" }] }
+      finalUrl: prepared.cases[0].url,
+      axe: {
+        failures: [{ rule: "color-contrast", selector: "#target" }],
+        renderedHtml: '<html><body><button id="target">ok</button></body></html>'
+      }
     }]
   });
 
@@ -305,4 +312,40 @@ test("cohort tracks analysis versions and registry data, not only fixtures", () 
     semanticsVersion: "rule-semantics/99"
   });
   assert.deepEqual(compareCohorts(base, semanticsChange), ["rule-semantics-changed"]);
+});
+
+test("merging viewports preserves per-target comparisons from every viewport", () => {
+  const base = {
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "cohort" },
+    engines: ["axe"],
+    trigger: []
+  };
+  const desktop = {
+    ...base,
+    results: [
+      { fixtureId: "a", engine: "axe", status: "failed", viewport: "desktop", pageLevelFailures: 1 }
+    ],
+    comparisons: [
+      { fixtureId: "a", viewport: "desktop", targetStatus: "resolved", status: "matches-expected", expected: "failed" }
+    ]
+  };
+  const mobile = {
+    ...base,
+    results: [
+      { fixtureId: "a", engine: "axe", status: "page-level-only", viewport: "mobile", pageLevelFailures: 2 }
+    ],
+    comparisons: [
+      { fixtureId: "a", viewport: "mobile", targetStatus: "resolved", status: "no-failure-observed", expected: "failed" }
+    ]
+  };
+
+  const merged = mergeReports([desktop, mobile]);
+
+  assert.deepEqual(merged.viewports, ["desktop", "mobile"]);
+  assert.equal(merged.comparisons.length, 2);
+  assert.deepEqual(merged.comparisonCounts, { "matches-expected": 1, "no-failure-observed": 1 });
+  assert.deepEqual(merged.targetStatuses, { resolved: 2, unresolved: 0, ambiguous: 0, unsupported: 0 });
+  assert.equal(merged.pageLevelFindings, 3);
 });

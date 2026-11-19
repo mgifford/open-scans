@@ -12,6 +12,11 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
 import { getActRuleIds, loadActMapping } from '../act-mapping.mjs'
+import {
+  classifyFailureOnTarget,
+  compareExpectation,
+  resolveCaseTarget
+} from './target-outcomes.mjs'
 
 const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint']
 
@@ -25,50 +30,48 @@ function findResult (meta, url) {
     results.find((result) => String(result.submittedUrl || '').startsWith(url))
 }
 
-function outcomeFor (caseEntry, result, engine) {
-  if (caseEntry.target?.scope === 'closed-shadow') {
-    return {
-      engine,
-      execution: 'unsupported',
-      outcome: null,
-      status: 'unsupported',
-      mapping: 'none',
-      engineRuleIds: [],
-      engineSpecificRules: [], otherActRules: [],
-      evidence: 'Closed shadow root is not inspectable through engine public APIs.'
-    }
+function emptyOutcome (engine, status, evidence, extra = {}) {
+  return {
+    engine,
+    execution: status === 'unsupported' || status === 'notRun' || status === 'error' ? status : 'executed',
+    outcome: null,
+    status,
+    mapping: 'none',
+    engineRuleIds: [],
+    engineSpecificRules: [],
+    otherActRules: [],
+    onTargetFailures: 0,
+    pageLevelFailures: 0,
+    evidence,
+    ...extra
+  }
+}
+
+function outcomeFor (caseEntry, result, engine, caseResolution) {
+  if (caseResolution.status === 'unsupported') {
+    return emptyOutcome(engine, 'unsupported', caseResolution.reason)
   }
 
   if (!result) {
-    return { engine, execution: 'notRun', outcome: null, status: 'notRun', mapping: 'none', engineRuleIds: [], engineSpecificRules: [], otherActRules: [], evidence: 'No result for this URL.' }
+    return emptyOutcome(engine, 'notRun', 'No result for this URL.')
   }
 
   const scanner = result[engine]
 
   if (!scanner) {
-    return {
-      engine,
-      execution: 'notRun',
-      outcome: null,
-      status: 'notRun',
-      mapping: 'none',
-      engineRuleIds: [],
-      engineSpecificRules: [], otherActRules: [],
-      evidence: 'Engine did not run for this URL.'
-    }
+    return emptyOutcome(engine, 'notRun', 'Engine did not run for this URL.')
   }
 
   if (scanner.error || scanner.status === 'error') {
-    return {
+    return emptyOutcome(engine, 'error', String(scanner.error || 'Engine error').slice(0, 300))
+  }
+
+  if (caseResolution.status !== 'resolved') {
+    return emptyOutcome(
       engine,
-      execution: 'error',
-      outcome: null,
-      status: 'error',
-      mapping: 'none',
-      engineRuleIds: [],
-      engineSpecificRules: [], otherActRules: [],
-      evidence: String(scanner.error || 'Engine error').slice(0, 300)
-    }
+      caseResolution.status === 'ambiguous' ? 'target-ambiguous' : 'target-unresolved',
+      caseResolution.reason || 'The fixture target could not be resolved; findings are not attributed.'
+    )
   }
 
   const failures = Array.isArray(scanner.failures) ? scanner.failures : []
@@ -92,31 +95,57 @@ function outcomeFor (caseEntry, result, engine) {
     getActRuleIds(engine, pass.rule || pass.ruleId).includes(caseEntry.ruleId)
   )
 
-  if (mappedFailures.length > 0) {
+  const onTarget = []
+  const offTarget = []
+  for (const failure of mappedFailures) {
+    const placement = classifyFailureOnTarget(result, failure, caseResolution)
+    if (placement === 'on-target') onTarget.push(failure)
+    else if (placement === 'off-target') offTarget.push(failure)
+  }
+
+  const shared = {
+    engineRuleIds,
+    engineSpecificRules,
+    otherActRules,
+    onTargetFailures: onTarget.length,
+    pageLevelFailures: offTarget.length
+  }
+
+  if (onTarget.length > 0) {
     return {
       engine,
       execution: 'executed',
       outcome: 'failed',
       status: 'failed',
       mapping: 'act-target',
-      engineRuleIds,
-      engineSpecificRules,
-      otherActRules,
-      evidence: mappedFailures.map((failure) => failure.rule || failure.ruleId).join(', ')
+      ...shared,
+      evidence: onTarget.map((failure) => failure.rule || failure.ruleId).join(', ')
+    }
+  }
+
+  if (offTarget.length > 0) {
+    return {
+      engine,
+      execution: 'executed',
+      outcome: null,
+      status: 'page-level-only',
+      mapping: 'act-other-target',
+      ...shared,
+      evidence: `${offTarget.length} finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target.`
     }
   }
 
   if (mappedPasses.length > 0) {
+    // Pass lists carry no target locator, so a page-level pass cannot be
+    // attributed to the fixture target.
     return {
       engine,
       execution: 'executed',
-      outcome: 'passed',
-      status: 'passed',
+      outcome: null,
+      status: 'pass-not-attributed',
       mapping: 'act-target',
-      engineRuleIds,
-      engineSpecificRules,
-      otherActRules,
-      evidence: mappedPasses.map((pass) => pass.rule || pass.ruleId).join(', ')
+      ...shared,
+      evidence: 'The engine reported a pass for this rule without a target locator; a page-level pass cannot be attributed to the fixture target.'
     }
   }
 
@@ -127,10 +156,8 @@ function outcomeFor (caseEntry, result, engine) {
       outcome: null,
       status: 'unmapped',
       mapping: otherActRules.length > 0 ? 'act-other' : 'none',
-      engineRuleIds,
-      engineSpecificRules,
-      otherActRules,
-      evidence: 'No engine rule is mapped to this ACT rule in scanner/data/act-mapping.json.'
+      ...shared,
+      evidence: 'No engine rule is mapped to this ACT rule in scanner/data/act-registry.json.'
     }
   }
 
@@ -142,21 +169,25 @@ function outcomeFor (caseEntry, result, engine) {
     mapping: otherActRules.length > 0
       ? 'act-other'
       : engineSpecificRules.length > 0 ? 'engine-specific' : 'none',
-    engineRuleIds,
-    engineSpecificRules,
-    otherActRules,
+    ...shared,
     evidence: 'Engine reported no explicit ACT outcome for the target rule; silence is not a pass.'
   }
 }
 
 export function summarise (prepared, meta, viewport = null) {
   const results = []
+  const comparisons = []
+  const targetStatuses = { resolved: 0, unresolved: 0, ambiguous: 0, unsupported: 0 }
 
   for (const caseEntry of prepared.cases) {
     const result = findResult(meta, caseEntry.url)
+    const caseResolution = resolveCaseTarget(caseEntry, result)
+    targetStatuses[caseResolution.status] = (targetStatuses[caseResolution.status] || 0) + 1
 
+    const caseResults = []
     for (const engine of ENGINES) {
-      results.push({
+      const outcome = outcomeFor(caseEntry, result, engine, caseResolution)
+      const entry = {
         fixtureId: caseEntry.id,
         url: caseEntry.url,
         ruleId: caseEntry.ruleId,
@@ -164,9 +195,38 @@ export function summarise (prepared, meta, viewport = null) {
         review: caseEntry.review,
         scope: caseEntry.target?.scope ?? null,
         viewport,
-        ...outcomeFor(caseEntry, result, engine)
-      })
+        target: {
+          status: caseResolution.status,
+          targetId: caseResolution.targetId,
+          method: caseResolution.method,
+          matchedElements: caseResolution.matchedElements,
+          documentHash: caseResolution.documentHash,
+          reason: caseResolution.reason || null
+        },
+        ...outcome
+      }
+      results.push(entry)
+      caseResults.push(entry)
     }
+
+    const failedEngines = caseResults
+      .filter((entry) => entry.status === 'failed')
+      .map((entry) => entry.engine)
+    comparisons.push({
+      fixtureId: caseEntry.id,
+      url: caseEntry.url,
+      ruleId: caseEntry.ruleId,
+      expected: caseEntry.expected,
+      review: caseEntry.review,
+      viewport,
+      targetStatus: caseResolution.status,
+      ...compareExpectation({
+        expected: caseEntry.expected,
+        review: caseEntry.review,
+        failedEngines,
+        engineCount: ENGINES.length
+      })
+    })
   }
 
   const counts = {}
@@ -175,12 +235,21 @@ export function summarise (prepared, meta, viewport = null) {
     counts[entry.status] = (counts[entry.status] || 0) + 1
   }
 
+  const comparisonCounts = {}
+  for (const comparison of comparisons) {
+    comparisonCounts[comparison.status] = (comparisonCounts[comparison.status] || 0) + 1
+  }
+
   const engineSpecificFindings = results.reduce(
     (total, entry) => total + (entry.engineSpecificRules?.length || 0),
     0
   )
   const otherActFindings = results.reduce(
     (total, entry) => total + (entry.otherActRules?.length || 0),
+    0
+  )
+  const pageLevelFindings = results.reduce(
+    (total, entry) => total + (entry.pageLevelFailures || 0),
     0
   )
 
@@ -194,17 +263,24 @@ export function summarise (prepared, meta, viewport = null) {
   }
 
   return {
-    schemaVersion: 'act-lab-observations/1',
+    schemaVersion: 'act-lab-observations/2',
     generatedAt: new Date().toISOString(),
     siteRoot: prepared.siteRoot,
     manifestUrl: prepared.manifestUrl,
     cohort: prepared.cohort,
     trigger: prepared.reasons || [],
     engines: ENGINES,
+    algorithm: {
+      targetOutcome: 'act-lab-target-outcome/1'
+    },
     counts,
+    comparisonCounts,
+    targetStatuses,
     engineSpecificFindings,
     otherActFindings,
+    pageLevelFindings,
     byEngine,
+    comparisons,
     results
   }
 }
