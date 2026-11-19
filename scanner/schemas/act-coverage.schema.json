@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/act-coverage.schema.json",
+  "title": "ActRuleCoverage",
+  "description": "Per-ACT-rule view of which engines are mapped to the rule, which reported on it, and where one engine is alone. A silent engine is never a pass.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "generatedAt", "summary", "rules"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "act-coverage/1" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "issueNumber": { "type": ["integer", "null"] },
+    "scanTitle": { "type": ["string", "null"] },
+    "engineExecution": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actRulesObserved", "multipleEngines", "multipleEnginesWithSilence", "singleEngine", "reviewSuggested"],
+      "properties": {
+        "actRulesObserved": { "type": "integer", "minimum": 0 },
+        "multipleEngines": { "type": "integer", "minimum": 0 },
+        "multipleEnginesWithSilence": { "type": "integer", "minimum": 0 },
+        "singleEngine": { "type": "integer", "minimum": 0 },
+        "reviewSuggested": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["actRuleId", "url", "title", "ruleType", "ruleStatus", "wcag", "mappings", "enginesMapped", "enginesReporting", "enginesSilentButExecuted", "observations", "findings", "distinctTargets", "coverage", "reviewSuggested"],
+        "properties": {
+          "actRuleId": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "title": { "type": ["string", "null"] },
+          "ruleType": { "type": ["string", "null"] },
+          "ruleStatus": { "type": ["string", "null"] },
+          "wcag": { "type": "array", "items": { "type": "string" } },
+          "mappings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["engine", "ruleId", "status"],
+              "properties": {
+                "engine": { "type": "string" },
+                "ruleId": { "type": "string" },
+                "status": { "type": "string", "enum": ["verified", "candidate"] }
+              }
+            }
+          },
+          "enginesMapped": { "type": "array", "items": { "type": "string" } },
+          "enginesReporting": { "type": "array", "items": { "type": "string" } },
+          "enginesSilentButExecuted": { "type": "array", "items": { "type": "string" } },
+          "observations": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+          "findings": { "type": "integer", "minimum": 0 },
+          "distinctTargets": { "type": "integer", "minimum": 0 },
+          "coverage": { "type": "string", "enum": ["multiple-engines", "multiple-engines-with-silence", "single-engine"] },
+          "reviewSuggested": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

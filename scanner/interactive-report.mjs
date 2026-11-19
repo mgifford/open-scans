@@ -4,6 +4,7 @@ import { getActRuleIds } from "./act-mapping.mjs";
 import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
 import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 import { renderCorrelationHtml } from "./correlation-report.mjs";
+import { renderActCoverageHtml } from "./act-coverage.mjs";
 
 /**
  * Escape a string for safe inclusion in HTML.
@@ -346,6 +347,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const scanContext = buildScanContext(summary.scanContext);
   const correlationSection = correlationReport ? renderCorrelationHtml(correlationReport) : "";
+  const actCoverageSection = correlationReport?.actCoverage ? renderActCoverageHtml(correlationReport.actCoverage) : "";
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
   const rolesList = Object.values(ROLES);
@@ -1330,8 +1332,11 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .corr-filter { border: 1px solid var(--border); padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; }
     .corr-filter-options { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .corr-filter-hint { margin: 0.25rem 0 0.5rem; }
+    .act-tag { font-size: 0.8rem; border: 1px solid var(--border); border-radius: 3px; padding: 0 0.3rem; white-space: nowrap; }
+    .act-engine-list { margin: 0; padding-left: 1.1rem; }
+    .act-review { font-size: 0.8rem; border: 1px solid var(--border); border-radius: 3px; padding: 0 0.3rem; }
     @media (forced-colors: active) {
-      .corr-table th, .corr-table td, .corr-issues > li, .corr-filter { border-color: CanvasText; }
+      .corr-table th, .corr-table td, .corr-issues > li, .corr-filter, .act-tag, .act-review { border-color: CanvasText; }
     }
     .priority-table th { background: var(--bar-bg); padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
     .show-all-pages-wrapper { margin-top: 0.75rem; text-align: center; }
@@ -1752,6 +1757,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       </button>
     </header>
     ${correlationSection}
+    ${actCoverageSection}
 
     ${trendSectionHtml}
 

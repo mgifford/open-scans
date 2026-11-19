@@ -17,6 +17,7 @@ for (const relative of WORKFLOWS) {
     const workflow = readFileSync(new URL(relative, import.meta.url), "utf8");
     assert.match(workflow, /observations\.json/, "observations.json must be copied into the report directory");
     assert.match(workflow, /correlation\.json/, "correlation.json must be copied into the report directory");
+    assert.match(workflow, /act-coverage\.json/, "act-coverage.json must be copied into the report directory");
   });
 }
 

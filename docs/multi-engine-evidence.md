@@ -1,7 +1,8 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0–P7 shipped. The ACT laboratory now compares per declared target
-instead of attributing page-level findings.
+Status: P0–P7 shipped, plus P8 (ACT rule coverage in reports). The ACT
+laboratory compares per declared target instead of attributing page-level
+findings.
 
 ## 1. What exists today
 
@@ -289,6 +290,33 @@ because no engine publishes explicit per-target pass evidence.
 Per-viewport merging keeps every comparison and sums `pageLevelFindings`, so
 the merged report answers "what did this fixture actually show?" per target.
 
+## 3i. ACT rule coverage in reports (P8, shipped)
+
+`scanner/act-coverage.mjs` builds `act-coverage.json` (`act-coverage/1`) from
+the observation artifact plus the ACT registry, and renders it in Markdown and
+HTML as **ACT rule coverage**.
+
+One row per ACT rule observed in the scan:
+
+- the rule id links to its authoritative W3C page, labelled `W3C ACT <id>`;
+- WCAG criteria and rule type from the registry;
+- which engines are **mapped** to the rule (verified or candidate) and which
+  actually **reported** findings;
+- engines mapped and executed but **silent**, explicitly "not a pass";
+- findings and distinct resolved targets;
+- coverage: `multiple-engines`, `multiple-engines-with-silence` or
+  `single-engine`, with `review suggested` when only one engine reported or
+  when a mapped engine was silent.
+
+The section links to `reviews/README.md` so a single-engine finding can be
+recorded as a verified false positive or a missed detection. It does not judge:
+silence can mean not applicable, not implemented, no target found, or a missed
+detection.
+
+On the 49-page #398 report: 9 ACT rules observed, 5 with multiple engines
+reporting, 1 with silence (`23a2a8`, where Equal Access and AccessLint are
+mapped but reported nothing), 3 single-engine, 4 suggesting review.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -314,6 +342,7 @@ evidence resolves without rerunning a browser.
 | **P5 ✅** | Historical comparison with change attribution, `not-observed` instead of "fixed", ACT lab cohort tracks analysis versions | P3, P4 |
 | **P6 ✅** | Manual review format, validation, application CLI and unmatched-decision reporting | P4 |
 | **P7 ✅** | ACT laboratory per-target outcomes: target resolution, no page-level attribution, expectation comparison, browser-context limits | P3, P5 |
+| **P8 ✅** | ACT rule coverage section: per-rule engine mappings vs engines reporting, silence called out, W3C rule links, review flags | P3, P4 |
 
 | P6 | Manual review format, unresolved-match UX | P4 |
 
