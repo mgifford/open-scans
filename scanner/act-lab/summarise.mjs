@@ -229,6 +229,20 @@ function main () {
 
   const summary = summarise(prepared, meta, viewport)
 
+  // A requested engine that did not run, or crashed, makes the comparison
+  // invalid. Do not update cohort state in that case; the next run will retry.
+  const incomplete = summary.results.filter(
+    (entry) => entry.status === 'error' || entry.status === 'notRun'
+  )
+
+  if (incomplete.length > 0) {
+    const detail = incomplete
+      .slice(0, 5)
+      .map((entry) => `${entry.fixtureId}/${entry.engine}: ${entry.status} (${entry.evidence})`)
+      .join('; ')
+    throw new Error(`Engine execution was incomplete, refusing to record state. ${detail}`)
+  }
+
   mkdirSync(dirname(resolve(outPath)), { recursive: true })
   writeFileSync(resolve(outPath), JSON.stringify(summary, null, 2) + '\n')
 

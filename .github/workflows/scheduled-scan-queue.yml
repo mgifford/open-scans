@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Install Chromium for Playwright tests
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Configure Puppeteer browser path for ALFA
         run: |
@@ -184,12 +184,6 @@ jobs:
 
             writeFileSync('.tmp/issue-event.json', JSON.stringify(event), 'utf8');
           NODE
-
-            browser="$(node scanner/resolve-browser.mjs .tmp/issue-event.json)"
-            if ! grep -qxF "$browser" .tmp/installed-browsers.txt; then
-              npx playwright install --with-deps "$browser"
-              echo "$browser" >> .tmp/installed-browsers.txt
-            fi
 
             rm -rf .scan-output
             mkdir -p .scan-output

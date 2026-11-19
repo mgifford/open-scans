@@ -110,3 +110,15 @@ unreviewed hypotheses until a human records their evidence.
 - `latest.json` reports `engineSpecificFindings` and `otherActFindings`
   separately from ACT outcomes. Engine-specific findings are useful evidence,
   but they are not ACT outcomes and must not be counted as rule coverage.
+
+## Engine execution is part of the evidence
+
+A null ACT outcome is only meaningful when the engine actually ran. Each
+observation records `execution` (`executed`, `notRun`, `unsupported`, `error`)
+and the workflow refuses to update `state.json` when an engine did not run or
+errored. A later run retries the same cohort.
+
+This matters because a multi-engine scan can silently lose an engine: for
+example, a random browser that was not installed makes the Playwright-based
+engines fail while the other engines still return results. A report or
+comparison that counts those as clean results is invalid.

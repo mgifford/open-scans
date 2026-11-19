@@ -40,7 +40,7 @@ jobs:
           EOF
 
       - name: Install Chromium for Playwright tests
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Configure Puppeteer browser path for ALFA
         run: |
@@ -56,16 +56,6 @@ jobs:
 
       - name: Run BDD acceptance tests
         run: npm run test:bdd
-
-      - name: Resolve scan browser
-        id: browser
-        run: |
-          browser="$(node scanner/resolve-browser.mjs .tmp/issue-event.json)"
-          echo "browser=$browser" >> "$GITHUB_OUTPUT"
-
-      - name: Install scan browser
-        if: steps.browser.outputs.browser != 'chromium'
-        run: npx playwright install --with-deps ${{ steps.browser.outputs.browser }}
 
       # Timeout configuration (optional, defaults shown):
       # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
