@@ -19,6 +19,7 @@ import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11
 import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
 import { redactStringsDeep } from "./redact-secrets.mjs";
 import { getEngineExecution, formatEngineExecution } from "./engine-execution.mjs";
+import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -592,8 +593,27 @@ function normalizeRuleKey(failure) {
   return `msg:${message || "unknown"}|${colorScheme}`;
 }
 
+/**
+ * Flag repeated observations *within one engine*.
+ *
+ * This is deliberately conservative. A locator string is evidence, not
+ * identity: class-based XPath such as `/a[@class="govuk-link"]` matches many
+ * elements, and a missing locator identifies nothing. Only a specific locator
+ * (an id, or an indexed path) plus the same rule, the same HTML evidence and
+ * the same test context can prove that one engine reported the same node
+ * twice.
+ *
+ * Cross-engine equivalence is NOT decided here. It needs resolved targets and
+ * compatible rule semantics, and lives in the correlation layer. Previously
+ * this function also merged findings across engines through a key built from
+ * the URL, a normalized locator and a rule key that fell back from ACT rule to
+ * WCAG criterion to native rule. That collapsed distinct elements that shared
+ * an XPath, merged unrelated rules that shared a WCAG criterion, and labelled
+ * 105 independent ALFA observations as duplicates of each other.
+ *
+ * @param {object} result - Single per-URL scan result
+ */
 function addDuplicateMetadata(result) {
-  const seen = new Map();
   let duplicateCount = 0;
 
   for (const scannerName of SCANNER_ORDER) {
@@ -602,23 +622,33 @@ function addDuplicateMetadata(result) {
       continue;
     }
 
-    for (const failure of scanner.failures) {
-      const locator = normalizeFindingLocator(failure.xpath || failure.selector || failure.html);
-      const ruleKey = normalizeRuleKey(failure);
-      const dedupeKey = `${result.finalUrl}|${locator}|${ruleKey}`;
+    const seen = new Map();
 
-      if (seen.has(dedupeKey)) {
+    for (const failure of scanner.failures) {
+      const { nativeLocator, locatorType, htmlEvidence } = classifyLocator(failure);
+      const specific = isSpecificLocator(locatorType, nativeLocator);
+
+      failure.isDuplicate = false;
+      failure.duplicateOf = null;
+      failure.repeatOf = null;
+
+      if (!specific) {
+        // Ambiguous or absent locator: cannot prove a repeat. Keep separate.
+        continue;
+      }
+
+      const key = [failure.rule ?? "unknown", nativeLocator, htmlEvidence ?? ""].join("|");
+      if (seen.has(key)) {
         failure.isDuplicate = true;
-        failure.duplicateOf = seen.get(dedupeKey);
+        failure.duplicateOf = scannerName;
+        failure.repeatOf = seen.get(key);
         duplicateCount += 1;
       } else {
-        failure.isDuplicate = false;
-        failure.duplicateOf = null;
-        seen.set(dedupeKey, scannerName);
+        seen.set(key, `${scannerName}:${failure.fingerprint ?? nativeLocator}`);
       }
     }
 
-    scanner.duplicateFailedCount = scanner.failures.filter((failure) => failure.isDuplicate).length;
+    scanner.duplicateFailedCount = scanner.failures.filter((entry) => entry.isDuplicate).length;
     scanner.uniqueFailedCount = scanner.failures.length - scanner.duplicateFailedCount;
   }
 
@@ -2408,12 +2438,13 @@ function toOverlapMarkdown(overlap) {
   lines.push("");
   lines.push(`- Generated at: ${overlap.generatedAt}`);
   lines.push(`- Overlap entries: ${overlap.overlapEntryCount}`);
-  lines.push(`- Duplicate findings in later scanners: ${overlap.duplicateFindingTotals}`);
+  lines.push(`- Repeated observations within one engine: ${overlap.duplicateFindingTotals}`);
+  lines.push("- Verified cross-engine equivalent findings: 0 (target resolution + rule semantics not yet established)");
   lines.push("");
 
   lines.push("## Scanner Summary");
   lines.push("");
-  lines.push("| Scanner | Failed | Unique Failed | Duplicates |");
+  lines.push("| Scanner | Failed | Unique Failed | Repeated within engine |");
   lines.push("|---|---:|---:|---:|");
   for (const scannerName of overlap.scannersInUse) {
     const stats = overlap.scannerStats[scannerName];
@@ -2679,7 +2710,13 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     lines.push(`- Semantica11y outcomes (semantic HTML/ARIA suggestions, kept separate from WCAG violation counts): ${s.errors} errors, ${s.warnings} warnings, ${s.suggestions} suggestions, ${s.notExecuted} not executed`);
   }
   if (summary.duplicateFindingTotals !== undefined) {
-    lines.push(`- Duplicate findings caught by later scanners: ${summary.duplicateFindingTotals}`);
+    lines.push(`- Repeated observations within one engine: ${summary.duplicateFindingTotals} (never merged across engines)`);
+  }
+  if (summary.observationSummary) {
+    const obs = summary.observationSummary;
+    lines.push(`- Raw engine observations retained: ${obs.rawFailures}`);
+    lines.push(`- Correlated issues: ${obs.correlatedIssues} (cross-engine equivalents: ${obs.crossEngineEquivalent}, unverified)`);
+    lines.push(`- Observations with unresolved or ambiguous targets: ${obs.ambiguousLocators}`);
   }
   lines.push("");
 
@@ -3936,6 +3973,8 @@ async function main() {
   const alfaTotals = {
     passed: 0,
     failed: 0,
+    uniqueFailed: 0,
+    duplicates: 0,
     cantTell: 0,
     inapplicable: 0
   };
@@ -3943,6 +3982,8 @@ async function main() {
   const axeTotals = {
     passed: 0,
     failed: 0,
+    uniqueFailed: 0,
+    duplicates: 0,
     cantTell: 0,
     inapplicable: 0
   };
@@ -4003,11 +4044,15 @@ async function main() {
   for (const result of results) {
     alfaTotals.passed += result.alfa.counts.passed;
     alfaTotals.failed += result.alfa.counts.failed;
+    alfaTotals.uniqueFailed += result.alfa.uniqueFailedCount ?? result.alfa.counts.failed;
+    alfaTotals.duplicates += result.alfa.duplicateFailedCount ?? 0;
     alfaTotals.cantTell += result.alfa.counts.cantTell;
     alfaTotals.inapplicable += result.alfa.counts.inapplicable;
 
     axeTotals.passed += result.axe.counts.passed;
     axeTotals.failed += result.axe.counts.failed;
+    axeTotals.uniqueFailed += result.axe.uniqueFailedCount ?? result.axe.counts.failed;
+    axeTotals.duplicates += result.axe.duplicateFailedCount ?? 0;
     axeTotals.cantTell += result.axe.counts.cantTell;
     axeTotals.inapplicable += result.axe.counts.inapplicable;
 
@@ -4174,6 +4219,20 @@ async function main() {
     console.error(`[redact] Sanitized ${redactionStats.changed} string(s) containing potential secrets in report data`);
   }
 
+  // Normalized observation artifact: every failed native observation is kept,
+  // with an explicit target-resolution state. Grouping never removes records.
+  const observationArtifact = buildObservationArtifact(summary);
+  const observationRedaction = { changed: 0 };
+  redactStringsDeep(observationArtifact, observationRedaction);
+  if (observationRedaction.changed > 0) {
+    console.error(`[redact] Sanitized ${observationRedaction.changed} string(s) in observations.json`);
+  }
+  summary.observationSummary = {
+    schemaVersion: observationArtifact.schemaVersion,
+    artifact: "observations.json",
+    ...observationArtifact.counts
+  };
+
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
@@ -4192,6 +4251,7 @@ async function main() {
   console.error(`Successfully scanned: ${results.length}/${acceptedTargets.length} URLs`);
 
   const summaryPath = join(outputDir, "report.json");
+  const observationsPath = join(outputDir, "observations.json");
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
@@ -4244,6 +4304,7 @@ async function main() {
   const overlapReport = buildOverlapReport(summary);
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
+  writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");
 
   // ── Trend analysis (inline, based on historical reports now including this one) ──
   let trendData = null;
