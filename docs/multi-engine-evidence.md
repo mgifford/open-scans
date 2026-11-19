@@ -1,7 +1,7 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0 (observation model + duplicate correction) and P1 (target resolution)
-shipped. Cross-engine correlation is next.
+Status: P0 (observation model + duplicate correction), P1 (target resolution) and
+P2 (cross-engine correlation) shipped. Reporting/ACT-registry work is next.
 
 ## 1. What exists today
 
@@ -107,13 +107,57 @@ the missing `alt` image on `/steps/end/` through four different locator
 dialects (`img`, `/img`, an absolute XPath, `div > img`) and all four resolve to
 the **same** target id. They remain four observations until correlation (P2).
 
+## 3c. Cross-engine correlation (P2, shipped)
+
+`scanner/rule-semantics.mjs` states what a rule *means*, with two evidence
+levels that are never conflated: `act-verified` (a W3C ACT mapping exists in
+`scanner/data/act-mapping.json`) and `inferred-semantics` (the rule is placed in
+a failure-mechanism family by inspection, which makes it comparable but does
+not create an ACT mapping). Unknown rules get no family and cannot be
+correlated.
+
+`scanner/correlation.mjs` gives every observation exactly one disposition:
+
+| Disposition | Meaning |
+| :--- | :--- |
+| `repeated-observation` | proven repeat within one engine |
+| `correlated` | 2+ engines, same resolved target, compatible failure mechanism |
+| `single-engine` | one engine only → `detection-asymmetry` when others executed, silence is not a pass |
+| `insufficient-evidence` | unresolved/ambiguous target, or unmapped rule semantics |
+| `not-comparable` | same target but different test conditions |
+
+Correlated issue identity is a hash of `(url, family, resolvedTargetId)` — no
+engine owns it and scan order cannot change it. `target-disagreement` records
+when engines report the same mechanism on different elements. `related` records
+different mechanisms on one target and never merges them.
+
+On the #398 evidence:
+
+```
+raw observations                 237
+correlated observations            4   (1 issue: the four-engine image)
+single-engine observations         2   (2 findings, detection asymmetry)
+insufficient evidence            231   (mostly unmapped ALFA/EA rule semantics)
+not comparable                     0
+reconciliation                  complete
+```
+
+The single correlated issue lists all four engines, both ACT-mapped rules
+(`23a2a8` via axe `image-alt` and ALFA `sia-r2`) and the two inferred ones
+(Equal Access `img_alt_valid`, AccessLint `text-alternatives/img-alt`), with
+`mappingStatus: inferred-semantics` and every original observation id.
+
+That 231 figure is the next bottleneck: most ALFA and Equal Access rules in
+this scan have no semantic family, so they cannot be compared yet. Closing it
+is P3 (ACT registry audit), not a correlation bug.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
 node scanner/reprocess-evidence.mjs reports/issues/issue-398/2026-11-19T11-41-22-579Z/report.json --out /tmp/derived
 ```
 
-Writes `observations.json` only; the source report is never modified. On the
+Writes `observations.json` and `correlation.json`; the source report is never modified. On the
 #398 evidence: 237 raw failures → 237 observations, 0 repeats, 0 verified
 cross-engine equivalents, 237 correlated issues (one per observation), 107
 resolved observations over 82 targets, 73 targets ambiguous or unresolved.
@@ -126,7 +170,8 @@ evidence resolves without rerunning a browser.
 | :--- | :--- | :--- |
 | **P0 ✅** | Observation model, conservative duplicates, real ACT inputs, honest counts | — |
 | **P1 ✅** | Target resolution: deterministic DOM index, CSS/XPath/HTML, document hashing, ambiguity and unsupported-context reporting | P0 |
-| P2 | Correlation layer (`agreement-fail`, `direct-disagreement`, `target-disagreement`, `insufficient-evidence`, …) and the four-engine image regression | P1 |
+| **P2 ✅** | Correlation: rule-semantics families, agreement/related/uncertain dispositions, target disagreements, order-independent issue identity | P1 |
+| **P2 ✅** | Correlation layer (`agreement-fail`, `detection-asymmetry`, `target-disagreement`, `insufficient-evidence`, `not-comparable`) and the four-engine image regression | P1 |
 | P3 | ACT registry audit: verified vs candidate mappings, ACT 1.1 atomic/composite metadata, Equal Access + AccessLint entries | P2 |
 | P4 | Reporting: evidence tables, disagreement view, accessible filters, versioned exports | P2 |
 | P5 | Historical comparison + ACT lab target-specific outcomes, algorithm/schema versions in cohorts | P3, P4 |

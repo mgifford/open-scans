@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/a11y-correlation.schema.json",
+  "title": "AccessibilityCorrelation",
+  "description": "Cross-engine correlation over normalized observations. Each observation has exactly one disposition; correlation never deletes evidence, never merges on a shared WCAG criterion, ACT id, locator string or message, and never infers a pass from engine silence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "generatedAt", "algorithm", "counts", "reconciliation", "issues", "singles", "related", "disagreements", "notComparable"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "a11y-correlation/1" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "issueNumber": { "type": ["integer", "null"] },
+    "scanTitle": { "type": ["string", "null"] },
+    "algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correlationVersion", "semanticsVersion"],
+      "properties": {
+        "correlationVersion": { "type": "string" },
+        "semanticsVersion": { "type": "string" }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rawObservations",
+        "repeatedObservations",
+        "correlatedObservations",
+        "singleEngineObservations",
+        "insufficientEvidenceObservations",
+        "notComparableObservations",
+        "correlatedIssues",
+        "verifiedEquivalentFindings",
+        "inferredEquivalentFindings",
+        "singleEngineFindings",
+        "relatedFindings",
+        "targetDisagreements"
+      ],
+      "properties": {
+        "rawObservations": { "type": "integer", "minimum": 0 },
+        "repeatedObservations": { "type": "integer", "minimum": 0 },
+        "correlatedObservations": { "type": "integer", "minimum": 0 },
+        "singleEngineObservations": { "type": "integer", "minimum": 0 },
+        "insufficientEvidenceObservations": { "type": "integer", "minimum": 0 },
+        "notComparableObservations": { "type": "integer", "minimum": 0 },
+        "correlatedIssues": { "type": "integer", "minimum": 0 },
+        "verifiedEquivalentFindings": { "type": "integer", "minimum": 0 },
+        "inferredEquivalentFindings": { "type": "integer", "minimum": 0 },
+        "singleEngineFindings": { "type": "integer", "minimum": 0 },
+        "relatedFindings": { "type": "integer", "minimum": 0 },
+        "targetDisagreements": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observationsAccountedFor", "rawObservations", "complete"],
+      "properties": {
+        "observationsAccountedFor": { "type": "integer", "minimum": 0 },
+        "rawObservations": { "type": "integer", "minimum": 0 },
+        "complete": { "type": "boolean" },
+        "note": { "type": "string" }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["correlatedIssueId", "url", "family", "targetId", "classification", "mappingStatus", "engines", "observationIds", "observations"],
+        "properties": {
+          "correlatedIssueId": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "url": { "type": "string" },
+          "family": { "type": "string" },
+          "targetId": { "type": "string" },
+          "classification": { "type": "string", "enum": ["agreement-fail"] },
+          "mappingStatus": { "type": "string", "enum": ["act-verified", "inferred-semantics"] },
+          "engines": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+          "observationIds": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+          "observations": { "type": "array", "items": { "type": "object" }, "minItems": 2 }
+        }
+      }
+    },
+    "singles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["url", "family", "targetId", "classification", "observationIds"],
+        "properties": {
+          "classification": { "type": "string", "enum": ["detection-asymmetry", "single-engine"] },
+          "engines": { "type": "array", "items": { "type": "string" }, "minItems": 1, "maxItems": 1 }
+        }
+      }
+    },
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "targetId", "families", "correlatedIssueIds", "note"],
+        "properties": {
+          "url": { "type": "string" },
+          "targetId": { "type": "string" },
+          "families": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+          "correlatedIssueIds": { "type": "array", "items": { "type": "string" } },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["classification", "url", "family", "targets", "note"],
+        "properties": {
+          "classification": { "type": "string", "const": "target-disagreement" },
+          "url": { "type": "string" },
+          "family": { "type": "string" },
+          "targets": { "type": "array", "items": { "type": "object" }, "minItems": 2 },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "notComparable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "targetId", "contexts", "observationIds"],
+        "properties": {
+          "url": { "type": "string" },
+          "targetId": { "type": "string" },
+          "contexts": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+          "observationIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
