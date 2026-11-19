@@ -44,7 +44,7 @@ jobs:
   compare:
     name: Compare ACT fixtures
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
 
     steps:
       - name: Checkout repository
@@ -146,7 +146,7 @@ jobs:
         env:
           FETCH_TIMEOUT_MS: "30000"
           PER_URL_TIMEOUT_MS: "120000"
-          TOTAL_SCAN_TIMEOUT_MS: "900000"
+          TOTAL_SCAN_TIMEOUT_MS: "2400000"
 
       - name: Commit state and latest report
         if: steps.prepare.outputs.changed == 'true'
