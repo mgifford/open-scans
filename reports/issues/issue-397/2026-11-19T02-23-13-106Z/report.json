@@ -1,0 +1,2736 @@
+{
+  "issueNumber": 397,
+  "issueUrl": "https://github.com/mgifford/open-scans/issues/397",
+  "issueTitle": "SCAN: https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+  "scanTitle": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+  "submittedBy": "mgifford",
+  "engines": [
+    "all"
+  ],
+  "scanContext": {
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewportPreset": "desktop",
+    "colorScheme": "both",
+    "browser": "webkit"
+  },
+  "scannedAt": "2026-11-19T02:22:16.178Z",
+  "patternInventory": {
+    "schema": "a11y-pattern-inventory/1",
+    "generatedAt": "2026-11-19T02:22:16.178Z",
+    "summary": {
+      "uniquePatterns": 23,
+      "occurrences": 23,
+      "pages": 1,
+      "categories": 4,
+      "patternsWithSelector": 21,
+      "patternsWithMixedLocators": 0,
+      "htmlOnlyPatterns": 0,
+      "patternsWithoutLocator": 2,
+      "byCategory": {
+        "document": {
+          "patterns": 15,
+          "occurrences": 15,
+          "pages": 1,
+          "patternIds": [
+            "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+            "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+            "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+            "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+            "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+            "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+            "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+            "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+            "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+            "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+            "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+            "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+            "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+            "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+            "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0"
+          ]
+        },
+        "link": {
+          "patterns": 5,
+          "occurrences": 5,
+          "pages": 1,
+          "patternIds": [
+            "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+            "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+            "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+            "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+            "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238"
+          ]
+        },
+        "unknown": {
+          "patterns": 2,
+          "occurrences": 2,
+          "pages": 1,
+          "patternIds": [
+            "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+            "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763"
+          ]
+        },
+        "heading": {
+          "patterns": 1,
+          "occurrences": 1,
+          "pages": 1,
+          "patternIds": [
+            "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610"
+          ]
+        }
+      },
+      "byContainerElement": {
+        "document": {
+          "patterns": 15,
+          "occurrences": 15,
+          "pages": 1,
+          "patternIds": [
+            "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+            "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+            "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+            "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+            "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+            "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+            "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+            "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+            "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+            "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+            "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+            "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+            "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+            "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+            "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0"
+          ]
+        },
+        "link": {
+          "patterns": 5,
+          "occurrences": 5,
+          "pages": 1,
+          "patternIds": [
+            "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+            "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+            "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+            "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+            "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238"
+          ]
+        },
+        "unknown": {
+          "patterns": 2,
+          "occurrences": 2,
+          "pages": 1,
+          "patternIds": [
+            "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+            "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763"
+          ]
+        },
+        "heading": {
+          "patterns": 1,
+          "occurrences": 1,
+          "pages": 1,
+          "patternIds": [
+            "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610"
+          ]
+        }
+      },
+      "byComponentId": {},
+      "unassignedPatterns": 2,
+      "ownershipEstablished": false,
+      "note": "Container categories are selector-derived candidates, not component ownership. Labels are not used as identity."
+    },
+    "categoryLabels": {
+      "navigation": "Navigation",
+      "banner": "Header/banner",
+      "contentinfo": "Footer",
+      "main": "Main content",
+      "complementary": "Complementary content",
+      "search": "Search",
+      "form": "Forms",
+      "form-control": "Form controls",
+      "table": "Tables",
+      "list": "Lists",
+      "heading": "Headings",
+      "link": "Links",
+      "button": "Buttons",
+      "image": "Images",
+      "frame": "Frames and embeds",
+      "dialog": "Dialogs",
+      "live-region": "Live regions",
+      "document": "Document/page-level",
+      "unknown": "Unassigned"
+    },
+    "patterns": [
+      {
+        "patternId": "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+        "displayId": "A11Y-PAT-019FACD4D426",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-e2629d7c",
+        "canonicalPatternFingerprint": "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_block_heading",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[1]",
+            "html": "<p>"
+          }
+        ]
+      },
+      {
+        "patternId": "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+        "displayId": "A11Y-PAT-084FD6D96285",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-cb47fe15",
+        "canonicalPatternFingerprint": "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+        "engine": "alfa",
+        "engineLabel": "Siteimprove ALFA",
+        "rule": "https://alfa.siteimprove.com/rules/sia-r11",
+        "wcagSc": [],
+        "actRuleIds": [
+          "c487ae"
+        ],
+        "impact": null,
+        "category": "link",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "link",
+          "label": "Links",
+          "element": "link",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/a[@class=\"logo logo-img-1x\"]",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">...</a>"
+          }
+        ]
+      },
+      {
+        "patternId": "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+        "displayId": "A11Y-PAT-0D0110EFCFD7",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-b8a9d763",
+        "canonicalPatternFingerprint": "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[3]",
+            "html": "<p>"
+          }
+        ]
+      },
+      {
+        "patternId": "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+        "displayId": "A11Y-PAT-0FEDCD9932B4",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-b65ba3d3",
+        "canonicalPatternFingerprint": "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[3]/code[2]",
+            "html": "<code>"
+          }
+        ]
+      },
+      {
+        "patternId": "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+        "displayId": "A11Y-PAT-1431096E7CCE",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-f48000c7",
+        "canonicalPatternFingerprint": "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "skip_main_exists",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]",
+            "html": "<body>"
+          }
+        ]
+      },
+      {
+        "patternId": "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+        "displayId": "A11Y-PAT-219740CD3E0A",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-6f142159",
+        "canonicalPatternFingerprint": "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "a_text_purpose",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "link",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "link",
+          "label": "Links",
+          "element": "link",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/a[1]",
+            "html": "<a class=\"logo logo-img-1x\" href=\"/\">"
+          }
+        ]
+      },
+      {
+        "patternId": "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+        "displayId": "A11Y-PAT-388E34144811",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-99436ee0",
+        "canonicalPatternFingerprint": "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+        "engine": "alfa",
+        "engineLabel": "Siteimprove ALFA",
+        "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "unknown",
+        "selectorType": "none",
+        "locatorCoverage": "none",
+        "hasSelector": false,
+        "container": {
+          "category": "unknown",
+          "label": "Unassigned",
+          "element": null,
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "none",
+          "confidence": "unknown",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "No explicit component identifier or stable semantic selector was available."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "html": null
+          }
+        ]
+      },
+      {
+        "patternId": "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610",
+        "displayId": "A11Y-PAT-3C305F733BC8",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-1b3805d5",
+        "canonicalPatternFingerprint": "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "aria_content_in_landmark",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "heading",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "heading",
+          "label": "Headings",
+          "element": "heading",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/h1[1]",
+            "html": "<h1>"
+          }
+        ]
+      },
+      {
+        "patternId": "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+        "displayId": "A11Y-PAT-4341D0BD6C71",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-cd7720b2",
+        "canonicalPatternFingerprint": "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "aria_content_in_landmark",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "link",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "link",
+          "label": "Links",
+          "element": "link",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+            "html": "<a href=\"https://githubstatus.com\">"
+          }
+        ]
+      },
+      {
+        "patternId": "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+        "displayId": "A11Y-PAT-4C49EFFF32D4",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-b36c7baf",
+        "canonicalPatternFingerprint": "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "style_highcontrast_visible",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/head[1]/style[1]",
+            "html": "<style media=\"screen\" type=\"text/css\">"
+          }
+        ]
+      },
+      {
+        "patternId": "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+        "displayId": "A11Y-PAT-57F01B83D2B8",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-eecc0424",
+        "canonicalPatternFingerprint": "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "style_color_misuse",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/head[1]/style[1]",
+            "html": "<style media=\"screen\" type=\"text/css\">"
+          }
+        ]
+      },
+      {
+        "patternId": "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+        "displayId": "A11Y-PAT-6F88F4B66057",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-5318be7b",
+        "canonicalPatternFingerprint": "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[1]/strong[1]",
+            "html": "<strong>"
+          }
+        ]
+      },
+      {
+        "patternId": "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+        "displayId": "A11Y-PAT-816AD28F3956",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-e50c2a97",
+        "canonicalPatternFingerprint": "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[4]/strong[1]",
+            "html": "<strong>"
+          }
+        ]
+      },
+      {
+        "patternId": "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+        "displayId": "A11Y-PAT-89B179A6F7F8",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-9fe1eb13",
+        "canonicalPatternFingerprint": "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "aria_content_in_landmark",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "link",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "link",
+          "label": "Links",
+          "element": "link",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+            "html": "<a href=\"https://help.github.com/pages/\">"
+          }
+        ]
+      },
+      {
+        "patternId": "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+        "displayId": "A11Y-PAT-99C600E6BE99",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-27413326",
+        "canonicalPatternFingerprint": "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+        "engine": "alfa",
+        "engineLabel": "Siteimprove ALFA",
+        "rule": "https://alfa.siteimprove.com/rules/sia-r4",
+        "wcagSc": [],
+        "actRuleIds": [
+          "b5c3f8"
+        ],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html",
+            "html": "<html>...</html>"
+          }
+        ]
+      },
+      {
+        "patternId": "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+        "displayId": "A11Y-PAT-AC5E1F63119A",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-b2ff9c60",
+        "canonicalPatternFingerprint": "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "element_attribute_deprecated",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/head[1]/meta[2]",
+            "html": "<meta content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'\" http-equiv=\"Content-Security-Policy\">"
+          }
+        ]
+      },
+      {
+        "patternId": "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+        "displayId": "A11Y-PAT-B1ABB4EE350C",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-bedad88c",
+        "canonicalPatternFingerprint": "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "element_attribute_deprecated",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/head[1]/meta[1]",
+            "html": "<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-type\">"
+          }
+        ]
+      },
+      {
+        "patternId": "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+        "displayId": "A11Y-PAT-DBE7E76C9222",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-27459220",
+        "canonicalPatternFingerprint": "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[2]",
+            "html": "<p>"
+          }
+        ]
+      },
+      {
+        "patternId": "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+        "displayId": "A11Y-PAT-DC4606C015F2",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-e097dd19",
+        "canonicalPatternFingerprint": "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[4]",
+            "html": "<p>"
+          }
+        ]
+      },
+      {
+        "patternId": "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+        "displayId": "A11Y-PAT-DE614920AB4E",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-58541432",
+        "canonicalPatternFingerprint": "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[3]/code[1]",
+            "html": "<code>"
+          }
+        ]
+      },
+      {
+        "patternId": "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763",
+        "displayId": "A11Y-PAT-E5B527CCDF79",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-7e4df68e",
+        "canonicalPatternFingerprint": "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763",
+        "engine": "alfa",
+        "engineLabel": "Siteimprove ALFA",
+        "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "unknown",
+        "selectorType": "none",
+        "locatorCoverage": "none",
+        "hasSelector": false,
+        "container": {
+          "category": "unknown",
+          "label": "Unassigned",
+          "element": null,
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "none",
+          "confidence": "unknown",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "No explicit component identifier or stable semantic selector was available."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "html": null
+          }
+        ]
+      },
+      {
+        "patternId": "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0",
+        "displayId": "A11Y-PAT-F21CD228CC07",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-9cf44704",
+        "canonicalPatternFingerprint": "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "html_lang_exists",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "document",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "document",
+          "label": "Document/page-level",
+          "element": "document",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]",
+            "html": "<html>"
+          }
+        ]
+      },
+      {
+        "patternId": "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238",
+        "displayId": "A11Y-PAT-F592DFBDB85B",
+        "identitySource": "canonical",
+        "legacyPatternId": "A11Y-5005bbee",
+        "canonicalPatternFingerprint": "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238",
+        "engine": "equalAccess",
+        "engineLabel": "IBM Equal Access",
+        "rule": "text_contrast_sufficient",
+        "wcagSc": [],
+        "actRuleIds": [],
+        "impact": null,
+        "category": "link",
+        "selectorType": "xpath",
+        "locatorCoverage": "selector",
+        "hasSelector": true,
+        "container": {
+          "category": "link",
+          "label": "Links",
+          "element": "link",
+          "componentId": null,
+          "componentTypeId": null,
+          "componentLabel": null,
+          "basis": "selector-token",
+          "confidence": "low",
+          "ownershipEstablished": false,
+          "uncertainty": [
+            "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+          ]
+        },
+        "occurrenceCount": 1,
+        "pageCount": 1,
+        "pages": [
+          "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY"
+        ],
+        "firstSeenAt": "2026-11-19T02:22:16.178Z",
+        "lastSeenAt": "2026-11-19T02:22:16.178Z",
+        "examples": [
+          {
+            "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+            "locator": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+            "html": "<a href=\"https://help.github.com/pages/\">"
+          }
+        ]
+      }
+    ]
+  },
+  "totalElapsedMs": 4598,
+  "totalSubmitted": 1,
+  "acceptedCount": 1,
+  "scannedCount": 1,
+  "skippedDueToTimeout": 0,
+  "skippedDueToErrAborted": 0,
+  "rejectedCount": 0,
+  "rejected": [],
+  "alfaTotals": {
+    "passed": 43,
+    "failed": 30,
+    "cantTell": 3,
+    "inapplicable": 68
+  },
+  "axeTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "equalAccessTotals": {
+    "passed": 111,
+    "failed": 19,
+    "uniqueFailed": 19,
+    "duplicates": 0,
+    "cantTell": 3,
+    "inapplicable": 0
+  },
+  "accesslintTotals": {
+    "passed": 0,
+    "failed": 0,
+    "uniqueFailed": 0,
+    "duplicates": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "qualwebTotals": {
+    "passed": 0,
+    "failed": 0,
+    "cantTell": 0,
+    "inapplicable": 0
+  },
+  "reflowRiskTotals": {
+    "failed": 0,
+    "potential": 0,
+    "passed": 0,
+    "cantTell": 0,
+    "notExecuted": 1
+  },
+  "semantica11yTotals": {
+    "errors": 0,
+    "warnings": 0,
+    "suggestions": 0,
+    "notExecuted": 1
+  },
+  "duplicateFindingTotals": 26,
+  "darkModeUrlCount": 0,
+  "reducedMotionUrlCount": 0,
+  "highContrastUrlCount": 0,
+  "forcedColorsUrlCount": 0,
+  "reducedTransparencyUrlCount": 0,
+  "duplicateTitles": [],
+  "results": [
+    {
+      "submittedUrl": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+      "finalUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "redirected": false,
+      "statusCode": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "pageTitle": "Page not found &middot; GitHub Pages",
+      "elapsedMs": 4310,
+      "error": null,
+      "scanContext": {
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "viewportPreset": "desktop",
+        "colorScheme": "both",
+        "browser": "webkit"
+      },
+      "alfa": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 43,
+          "failed": 30,
+          "cantTell": 3,
+          "inapplicable": 68
+        },
+        "failedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r4",
+          "https://alfa.siteimprove.com/rules/sia-r66",
+          "https://alfa.siteimprove.com/rules/sia-r69"
+        ],
+        "passedRules": [
+          "https://alfa.siteimprove.com/rules/sia-r1",
+          "https://alfa.siteimprove.com/rules/sia-r11",
+          "https://alfa.siteimprove.com/rules/sia-r59",
+          "https://alfa.siteimprove.com/rules/sia-r61",
+          "https://alfa.siteimprove.com/rules/sia-r62",
+          "https://alfa.siteimprove.com/rules/sia-r64",
+          "https://alfa.siteimprove.com/rules/sia-r65",
+          "https://alfa.siteimprove.com/rules/sia-r67",
+          "https://alfa.siteimprove.com/rules/sia-r69",
+          "https://alfa.siteimprove.com/rules/sia-r70",
+          "https://alfa.siteimprove.com/rules/sia-r71",
+          "https://alfa.siteimprove.com/rules/sia-r72",
+          "https://alfa.siteimprove.com/rules/sia-r73",
+          "https://alfa.siteimprove.com/rules/sia-r75",
+          "https://alfa.siteimprove.com/rules/sia-r78",
+          "https://alfa.siteimprove.com/rules/sia-r80",
+          "https://alfa.siteimprove.com/rules/sia-r85",
+          "https://alfa.siteimprove.com/rules/sia-r86"
+        ],
+        "failures": [
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r11",
+            "xpath": "/a[@class=\"logo logo-img-1x\"]",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">...</a>",
+            "message": "The link does not have an accessible name",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "fd37f6325a02",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-cb47fe15",
+            "a11yPatternFingerprint": "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+            "a11yPatternDisplayId": "A11Y-PAT-084FD6D96285",
+            "a11yOccurrenceFingerprint": "059a1160d5205984d832fce84b798a568957dfa1edbbe9b685f90bd45f34e813",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-059A1160D520"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r4",
+            "xpath": "/html",
+            "html": "<html>...</html>",
+            "message": "The `lang` attribute is either missing, empty, or only whitespace",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "d82213385c1c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-27413326",
+            "a11yPatternFingerprint": "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+            "a11yPatternDisplayId": "A11Y-PAT-99C600E6BE99",
+            "a11yOccurrenceFingerprint": "ca145f019adf2ae462359836b53d4667f6db3fb47e76cedb8b612093274832bf",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-CA145F019ADF"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "4ab1a7726157",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-7e4df68e",
+            "a11yPatternFingerprint": "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763",
+            "a11yPatternDisplayId": "A11Y-PAT-E5B527CCDF79",
+            "a11yOccurrenceFingerprint": "7d447fa9ea7daa201b705cb85c601ed0bb629a0f1248029829e43d801aeb1378",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-7D447FA9EA7D"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.53:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.08:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 1.42:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 5.08:1 which is\n        below the required contrast of 7:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "caf40938ac3a",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-99436ee0",
+            "a11yPatternFingerprint": "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+            "a11yPatternDisplayId": "A11Y-PAT-388E34144811",
+            "a11yOccurrenceFingerprint": "acd5d008a0bf4e1ff98ad2c579ca226e77133802604f224a99b79857d2e90266",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-ACD5D008A0BF"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.53:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          },
+          {
+            "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+            "xpath": null,
+            "html": null,
+            "message": "The highest possible contrast of the text is 1.42:1 which is\n        below the required contrast of 4.5:1",
+            "isDuplicate": true,
+            "duplicateOf": "alfa"
+          }
+        ],
+        "outcomeCount": 144,
+        "duplicateFailedCount": 26,
+        "uniqueFailedCount": 4,
+        "crossEngineOverlapCount": 0
+      },
+      "axe": {
+        "executed": false,
+        "error": "Playwright browser 'webkit' could not be launched: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2370/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0
+      },
+      "equalAccess": {
+        "executed": true,
+        "error": null,
+        "counts": {
+          "passed": 111,
+          "failed": 19,
+          "cantTell": 3,
+          "inapplicable": 0
+        },
+        "failedRules": [
+          "a_text_purpose",
+          "aria_content_in_landmark",
+          "element_attribute_deprecated",
+          "html_lang_exists",
+          "skip_main_exists",
+          "style_color_misuse",
+          "style_highcontrast_visible",
+          "text_block_heading",
+          "text_contrast_sufficient"
+        ],
+        "passedRules": [],
+        "failures": [
+          {
+            "rule": "html_lang_exists",
+            "xpath": "/html[1]",
+            "html": "<html>",
+            "message": "Page detected as HTML, but does not have a 'lang' attribute",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f63360383405",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-9cf44704",
+            "a11yPatternFingerprint": "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0",
+            "a11yPatternDisplayId": "A11Y-PAT-F21CD228CC07",
+            "a11yOccurrenceFingerprint": "f5e0112d378139f1df5ab8815ae9118eaff2ae8fbb505a5c15c0244ada336626",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F5E0112D3781"
+          },
+          {
+            "rule": "element_attribute_deprecated",
+            "xpath": "/html[1]/head[1]/meta[1]",
+            "html": "<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-type\">",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8255821d0c3e",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-bedad88c",
+            "a11yPatternFingerprint": "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+            "a11yPatternDisplayId": "A11Y-PAT-B1ABB4EE350C",
+            "a11yOccurrenceFingerprint": "8d8ac44300e30e294dd62dad4e69a58767d83d5bfaedecd222fc155b615c76ce",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-8D8AC44300E3"
+          },
+          {
+            "rule": "element_attribute_deprecated",
+            "xpath": "/html[1]/head[1]/meta[2]",
+            "html": "<meta content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'\" http-equiv=\"Content-Security-Policy\">",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "8acc6e9f4e2c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b2ff9c60",
+            "a11yPatternFingerprint": "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+            "a11yPatternDisplayId": "A11Y-PAT-AC5E1F63119A",
+            "a11yOccurrenceFingerprint": "7ef1b276fc7b587ff4e6cb2b381e67c2d3ba2a07cb74a461860babe7f4244385",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-7EF1B276FC7B"
+          },
+          {
+            "rule": "style_color_misuse",
+            "xpath": "/html[1]/head[1]/style[1]",
+            "html": "<style media=\"screen\" type=\"text/css\">",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "9c80e056471c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-eecc0424",
+            "a11yPatternFingerprint": "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+            "a11yPatternDisplayId": "A11Y-PAT-57F01B83D2B8",
+            "a11yOccurrenceFingerprint": "af0ebda5fb8e7578f96965651fc45786d45cb3b3255a48de60f1b1ef5fc8027f",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-AF0EBDA5FB8E"
+          },
+          {
+            "rule": "style_highcontrast_visible",
+            "xpath": "/html[1]/head[1]/style[1]",
+            "html": "<style media=\"screen\" type=\"text/css\">",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "c14b39a81ee8",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b36c7baf",
+            "a11yPatternFingerprint": "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+            "a11yPatternDisplayId": "A11Y-PAT-4C49EFFF32D4",
+            "a11yOccurrenceFingerprint": "870f744f0237044227fbaa02e190847687816ecb7819b73445c459092829c20d",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-870F744F0237"
+          },
+          {
+            "rule": "skip_main_exists",
+            "xpath": "/html[1]/body[1]",
+            "html": "<body>",
+            "message": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "5cddf088622a",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-f48000c7",
+            "a11yPatternFingerprint": "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+            "a11yPatternDisplayId": "A11Y-PAT-1431096E7CCE",
+            "a11yOccurrenceFingerprint": "7ba6f8aacfc0ae8ff68e1198674633ee5584d9ad61e357338d396687e86ff511",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-7BA6F8AACFC0"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": "/html[1]/body[1]/div[1]/h1[1]",
+            "html": "<h1>",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "2607cf2d032b",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-1b3805d5",
+            "a11yPatternFingerprint": "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610",
+            "a11yPatternDisplayId": "A11Y-PAT-3C305F733BC8",
+            "a11yOccurrenceFingerprint": "b1ae087ac1b6afc44e8ab929f0132f9fc19f32a71ef6a644a8ce45278f1cf9b9",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-B1AE087AC1B6"
+          },
+          {
+            "rule": "text_block_heading",
+            "xpath": "/html[1]/body[1]/div[1]/p[1]",
+            "html": "<p>",
+            "message": "Confirm this text 'File not found File not found' is used as a heading and if so, modify to use a heading element or role",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "c09f614fdab9",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-e2629d7c",
+            "a11yPatternFingerprint": "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+            "a11yPatternDisplayId": "A11Y-PAT-019FACD4D426",
+            "a11yOccurrenceFingerprint": "d3ae7e267971704fc95b6137e46c79bb22c8263c03368a134b9fa28824a2e0a5",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-D3AE7E267971"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[1]/strong[1]",
+            "html": "<strong>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 700",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "39904aa65ae7",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-5318be7b",
+            "a11yPatternFingerprint": "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+            "a11yPatternDisplayId": "A11Y-PAT-6F88F4B66057",
+            "a11yOccurrenceFingerprint": "4ddf88abd0e6d390db795e89a855762dee04e986f1ce04b4d30693fe483b6638",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-4DDF88ABD0E6"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[2]",
+            "html": "<p>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "3d73aab952bd",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-27459220",
+            "a11yPatternFingerprint": "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+            "a11yPatternDisplayId": "A11Y-PAT-DBE7E76C9222",
+            "a11yOccurrenceFingerprint": "f25349209cf6615559a64293946e614da84675d2f4f65cb76c44b5f39e4fe301",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F25349209CF6"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]",
+            "html": "<p>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "c160c03a1c34",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b8a9d763",
+            "a11yPatternFingerprint": "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+            "a11yPatternDisplayId": "A11Y-PAT-0D0110EFCFD7",
+            "a11yOccurrenceFingerprint": "e6e536a72a70fe7db214eb781917995972d706b09a9706fc96b3cbf49b483c69",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-E6E536A72A70"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]/code[1]",
+            "html": "<code>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "f95f5fb37f6d",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-58541432",
+            "a11yPatternFingerprint": "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+            "a11yPatternDisplayId": "A11Y-PAT-DE614920AB4E",
+            "a11yOccurrenceFingerprint": "a4a7185553af0c95ed20bb9031e522f9b1db051132379b160e7f1e91b3a972bf",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-A4A7185553AF"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]/code[2]",
+            "html": "<code>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "dfc1fb48342b",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b65ba3d3",
+            "a11yPatternFingerprint": "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+            "a11yPatternDisplayId": "A11Y-PAT-0FEDCD9932B4",
+            "a11yOccurrenceFingerprint": "62342ecfe4b3719aec9ff5dff4c6ecc803818af5b257d4d5cc9b4b7f0d509369",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-62342ECFE4B3"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[4]",
+            "html": "<p>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "6d454773c8cf",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-e097dd19",
+            "a11yPatternFingerprint": "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+            "a11yPatternDisplayId": "A11Y-PAT-DC4606C015F2",
+            "a11yOccurrenceFingerprint": "0950154429f6357e103c60dda87cbc08cee3d23d9403b5023cecf6477c33f37f",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-0950154429F6"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+            "html": "<a href=\"https://help.github.com/pages/\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "16122628ef69",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-9fe1eb13",
+            "a11yPatternFingerprint": "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+            "a11yPatternDisplayId": "A11Y-PAT-89B179A6F7F8",
+            "a11yOccurrenceFingerprint": "88fabd579909b8d335ffdbef5e68483db7640bb862b7ea15859776f6b545ac6d",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-88FABD579909"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+            "html": "<a href=\"https://help.github.com/pages/\">",
+            "message": "Text contrast of 3.53 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "b1c96d9f531b",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-5005bbee",
+            "a11yPatternFingerprint": "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238",
+            "a11yPatternDisplayId": "A11Y-PAT-F592DFBDB85B",
+            "a11yOccurrenceFingerprint": "9f56553b6c86faa4cb8da6247b63caa53973697517c7022884f5aad386dab0d5",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-9F56553B6C86"
+          },
+          {
+            "rule": "text_contrast_sufficient",
+            "xpath": "/html[1]/body[1]/div[1]/p[4]/strong[1]",
+            "html": "<strong>",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 700",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "43281f190969",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-e50c2a97",
+            "a11yPatternFingerprint": "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+            "a11yPatternDisplayId": "A11Y-PAT-816AD28F3956",
+            "a11yOccurrenceFingerprint": "f782c1224e291855717f3284cf44eb8ef0e0e1db708743a8482943a1b2a05ece",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-F782C1224E29"
+          },
+          {
+            "rule": "aria_content_in_landmark",
+            "xpath": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+            "html": "<a href=\"https://githubstatus.com\">",
+            "message": "Content is not within a landmark element",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "ffc1063eb505",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-cd7720b2",
+            "a11yPatternFingerprint": "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+            "a11yPatternDisplayId": "A11Y-PAT-4341D0BD6C71",
+            "a11yOccurrenceFingerprint": "3162c15002b4033f1ff531cbe2e689e9471b7b7b680d1e048edb82ff49b68376",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-3162C15002B4"
+          },
+          {
+            "rule": "a_text_purpose",
+            "xpath": "/html[1]/body[1]/div[1]/a[1]",
+            "html": "<a class=\"logo logo-img-1x\" href=\"/\">",
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "isDuplicate": false,
+            "duplicateOf": null,
+            "fingerprint": "1ef847a070c1",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-6f142159",
+            "a11yPatternFingerprint": "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+            "a11yPatternDisplayId": "A11Y-PAT-219740CD3E0A",
+            "a11yOccurrenceFingerprint": "43cc1cc63d1987332fe0fa8ddc15bc5f45f579125ed44f6d8e5fdaf5620c7e07",
+            "a11yOccurrenceDisplayId": "A11Y-OCC-43CC1CC63D19"
+          }
+        ],
+        "outcomeCount": 130,
+        "uniqueFailedCount": 19,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "accesslint": {
+        "executed": false,
+        "error": "Playwright browser 'webkit' could not be launched: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2370/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "qualweb": {
+        "executed": false,
+        "error": "Skipped (not requested)",
+        "counts": {
+          "passed": 0,
+          "failed": 0,
+          "cantTell": 0,
+          "inapplicable": 0
+        },
+        "failedRules": [],
+        "passedRules": [],
+        "failures": [],
+        "outcomeCount": 0,
+        "uniqueFailedCount": 0,
+        "duplicateFailedCount": 0,
+        "crossEngineOverlapCount": 0
+      },
+      "reflowRisk": {
+        "executed": false,
+        "result": null,
+        "description": null,
+        "overflowAmountPx": null,
+        "helpUrl": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+        "error": "Playwright browser 'webkit' could not be launched: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/webkit-2370/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+      },
+      "semantica11y": {
+        "executed": false,
+        "summary": null,
+        "issues": [],
+        "error": "No rendered HTML available for analysis"
+      },
+      "duplicateFindingCount": 26,
+      "timings": {
+        "fetchMs": 18,
+        "pageNavigationMs": 0,
+        "pageLoadDelayMs": 2000,
+        "totalMs": 4310,
+        "scannerMs": {
+          "axe": null,
+          "accesslint": null
+        }
+      }
+    }
+  ],
+  "enhanced": {
+    "consolidatedFailures": [
+      {
+        "rule": "text_contrast_sufficient",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 8,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<strong>",
+            "xpath": "/html[1]/body[1]/div[1]/p[1]/strong[1]",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 700",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "39904aa65ae7",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-5318be7b",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<p>",
+            "xpath": "/html[1]/body[1]/div[1]/p[2]",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "3d73aab952bd",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-27459220",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<p>",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 16px and weight of 400",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "c160c03a1c34",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b8a9d763",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<code>",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]/code[1]",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "f95f5fb37f6d",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-58541432",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<code>",
+            "xpath": "/html[1]/body[1]/div[1]/p[3]/code[2]",
+            "message": "Text contrast of 3.88 with its background is less than the WCAG AA minimum requirements for text of size 13px and weight of 400",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "dfc1fb48342b",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b65ba3d3",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "aria_content_in_landmark",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 3,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<h1>",
+            "xpath": "/html[1]/body[1]/div[1]/h1[1]",
+            "message": "Content is not within a landmark element",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "2607cf2d032b",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-1b3805d5",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<a href=\"https://help.github.com/pages/\">",
+            "xpath": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+            "message": "Content is not within a landmark element",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "16122628ef69",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-9fe1eb13",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<a href=\"https://githubstatus.com\">",
+            "xpath": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+            "message": "Content is not within a landmark element",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "ffc1063eb505",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-cd7720b2",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "element_attribute_deprecated",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 2,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-type\">",
+            "xpath": "/html[1]/head[1]/meta[1]",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "8255821d0c3e",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-bedad88c",
+            "corroboratedBy": null
+          },
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<meta content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'\" http-equiv=\"Content-Security-Policy\">",
+            "xpath": "/html[1]/head[1]/meta[2]",
+            "message": "The HTML attribute(s) \"http-equiv\" is deprecated for the <meta> element in HTML 5",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "8acc6e9f4e2c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b2ff9c60",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r11",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Content Author",
+            "UX Designer"
+          ],
+          "severity": "Serious",
+          "blocking": true,
+          "wcagCriteria": [
+            "2.4.4",
+            "2.4.9",
+            "4.1.2"
+          ],
+          "conformanceLevel": "A"
+        },
+        "wcag": {
+          "scs": [
+            "2.4.4",
+            "2.4.9",
+            "4.1.2"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<a href=\"/\" class=\"logo logo-img-1x\">...</a>",
+            "xpath": "/a[@class=\"logo logo-img-1x\"]",
+            "message": "The link does not have an accessible name",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "fd37f6325a02",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-cb47fe15",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r4",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "3.1.1"
+          ],
+          "conformanceLevel": "A"
+        },
+        "wcag": {
+          "scs": [
+            "3.1.1"
+          ],
+          "level": "A"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<html>...</html>",
+            "xpath": "/html",
+            "message": "The `lang` attribute is either missing, empty, or only whitespace",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "d82213385c1c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-27413326",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Visual Designer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [
+            "1.4.6"
+          ],
+          "conformanceLevel": "AAA"
+        },
+        "wcag": {
+          "scs": [
+            "1.4.6"
+          ],
+          "level": "AAA"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": null,
+            "xpath": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "4ab1a7726157",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-7e4df68e",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+        "engine": "alfa",
+        "metadata": {
+          "roles": [
+            "Visual Designer"
+          ],
+          "severity": "Serious",
+          "blocking": false,
+          "wcagCriteria": [
+            "1.4.3",
+            "1.4.6"
+          ],
+          "conformanceLevel": "AA"
+        },
+        "wcag": {
+          "scs": [
+            "1.4.3",
+            "1.4.6"
+          ],
+          "level": "AA"
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": null,
+            "xpath": null,
+            "message": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "caf40938ac3a",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-99436ee0",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "html_lang_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<html>",
+            "xpath": "/html[1]",
+            "message": "Page detected as HTML, but does not have a 'lang' attribute",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "f63360383405",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-9cf44704",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "style_color_misuse",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<style media=\"screen\" type=\"text/css\">",
+            "xpath": "/html[1]/head[1]/style[1]",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "9c80e056471c",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-eecc0424",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "style_highcontrast_visible",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<style media=\"screen\" type=\"text/css\">",
+            "xpath": "/html[1]/head[1]/style[1]",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "c14b39a81ee8",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-b36c7baf",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "skip_main_exists",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<body>",
+            "xpath": "/html[1]/body[1]",
+            "message": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "5cddf088622a",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-f48000c7",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "text_block_heading",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<p>",
+            "xpath": "/html[1]/body[1]/div[1]/p[1]",
+            "message": "Confirm this text 'File not found File not found' is used as a heading and if so, modify to use a heading element or role",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "c09f614fdab9",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-e2629d7c",
+            "corroboratedBy": null
+          }
+        ]
+      },
+      {
+        "rule": "a_text_purpose",
+        "engine": "equalAccess",
+        "metadata": {
+          "roles": [
+            "Front-End Developer"
+          ],
+          "severity": "Moderate",
+          "blocking": false,
+          "wcagCriteria": [],
+          "conformanceLevel": null
+        },
+        "wcag": {
+          "scs": [],
+          "level": null
+        },
+        "ruleUrl": null,
+        "ruleTitle": null,
+        "pages": {},
+        "totalOccurrences": 1,
+        "examples": [
+          {
+            "url": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+            "html": "<a class=\"logo logo-img-1x\" href=\"/\">",
+            "xpath": "/html[1]/body[1]/div[1]/a[1]",
+            "message": "Hyperlink has no link text, label or image with a text alternative",
+            "viewport": "desktop",
+            "browser": "webkit",
+            "fingerprint": "1ef847a070c1",
+            "firstSeenAt": "2026-11-19T02:22:16.178Z",
+            "patternId": "A11Y-6f142159",
+            "corroboratedBy": null
+          }
+        ]
+      }
+    ],
+    "roleStats": {
+      "UX Designer": 1,
+      "Visual Designer": 2,
+      "Content Author": 1,
+      "Front-End Developer": 20
+    },
+    "severityStats": {
+      "Critical": 0,
+      "Serious": 3,
+      "Moderate": 20,
+      "Minor": 0
+    }
+  },
+  "accessibilityContext": {
+    "schema": "a11y-accessibility-context/1",
+    "generatedAt": "2026-11-19T02:22:16.178Z",
+    "summary": {
+      "observations": 23,
+      "pages": 1,
+      "patterns": 23,
+      "withSelector": 21,
+      "htmlOnly": 0,
+      "withoutLocator": 2,
+      "bySelectorType": {
+        "xpath": 21,
+        "none": 2
+      },
+      "byCategory": {
+        "link": 5,
+        "document": 15,
+        "unknown": 2,
+        "heading": 1
+      },
+      "ownershipEstablished": false,
+      "note": "Container categories are selector/HTML-derived candidates, not component ownership. This handoff is accessibility evidence only."
+    },
+    "artifact": "accessibility-context.json"
+  },
+  "changeTracking": {
+    "newCount": 23,
+    "notObservedCount": 0,
+    "newIssues": [
+      {
+        "fingerprint": "fd37f6325a02",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:https://alfa.siteimprove.com/rules/sia-r11|light",
+        "engine": "alfa"
+      },
+      {
+        "fingerprint": "d82213385c1c",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:https://alfa.siteimprove.com/rules/sia-r4|light",
+        "engine": "alfa"
+      },
+      {
+        "fingerprint": "4ab1a7726157",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:https://alfa.siteimprove.com/rules/sia-r66|light",
+        "engine": "alfa"
+      },
+      {
+        "fingerprint": "caf40938ac3a",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:https://alfa.siteimprove.com/rules/sia-r69|light",
+        "engine": "alfa"
+      },
+      {
+        "fingerprint": "f63360383405",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:html_lang_exists|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "8255821d0c3e",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:element_attribute_deprecated|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "8acc6e9f4e2c",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:element_attribute_deprecated|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "9c80e056471c",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:style_color_misuse|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "c14b39a81ee8",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:style_highcontrast_visible|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "5cddf088622a",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:skip_main_exists|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "2607cf2d032b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:aria_content_in_landmark|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "c09f614fdab9",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_block_heading|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "39904aa65ae7",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "3d73aab952bd",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "c160c03a1c34",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "f95f5fb37f6d",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "dfc1fb48342b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "6d454773c8cf",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "16122628ef69",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:aria_content_in_landmark|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "b1c96d9f531b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "43281f190969",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:text_contrast_sufficient|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "ffc1063eb505",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:aria_content_in_landmark|light",
+        "engine": "equalAccess"
+      },
+      {
+        "fingerprint": "1ef847a070c1",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+        "ruleKey": "rule:a_text_purpose|light",
+        "engine": "equalAccess"
+      }
+    ],
+    "notObservedIssues": []
+  }
+}
