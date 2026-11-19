@@ -99,50 +99,28 @@ export function getActRuleIds(engine, ruleId) {
 
 export function collectActConsensusOverlaps(results) {
   const dedupeMap = new Map();
-  const actCapableScanners = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
 
   for (const result of results ?? []) {
     const resultUrl = result.finalUrl || result.submittedUrl || "(unknown-url)";
 
-    for (const scannerName of actCapableScanners) {
-      let scanner;
-      let failures;
+    for (const scannerName of SUPPORTED_ENGINES) {
+      const scanner = result?.[scannerName];
+      if (!scanner || !Array.isArray(scanner.failures)) continue;
 
-      if (scannerName === "axe" || scannerName === "alfa" || scannerName === "qualweb") {
-        scanner = result?.[scannerName];
-        if (!scanner || !Array.isArray(scanner.failures)) continue;
-        failures = scanner.failures;
-      } else if (scannerName === "equalAccess") {
-        scanner = result?.[scannerName];
-        if (!scanner || !scanner.counts) continue;
-        // Convert counts to failure-like entries for ACT mapping
-        const { passed, failed, cantTell, inapplicable, uniqueFailedCount, duplicateFailedCount } = scanner.counts;
-        // Create synthetic failure entries for failed and inapplicable outcomes
-        if (failed > 0) {
-          failures = [{ rule: "eq-access-rule", outcome: "failed", count: failed }];
-        } else {
-          failures = [];
-        }
-      } else if (scannerName === "accesslint") {
-        scanner = result?.[scannerName];
-        if (!scanner || !scanner.counts) continue;
-        // Convert counts to failure-like entries for ACT mapping
-        const { passed, failed, cantTell, inapplicable, uniqueFailedCount, duplicateFailedCount } = scanner.counts;
-        // Create synthetic failure entries for failed and inapplicable outcomes
-        if (failed > 0) {
-          failures = [{ rule: "accesslint-rule", outcome: "failed", count: failed }];
-        } else {
-          failures = [];
-        }
-      }
-
-      for (const failure of failures ?? []) {
+      for (const failure of scanner.failures) {
+        // A proven within-engine repeat is the same node reported twice; it
+        // should not inflate occurrence counts. Everything else is evidence.
         if (failure.isDuplicate) continue;
 
         const actRuleIds = getActRuleIds(scannerName, failure.rule || "unknown");
         if (actRuleIds.length === 0) continue;
 
+        // Locator equality is weak evidence and will be replaced by resolved
+        // target identity. It is kept here only as a conservative key: two
+        // engines that report the identical specific locator on one page.
         const locator = normalizeLocator(failure.xpath || failure.selector || failure.html);
+        if (locator === "(no-locator)") continue;
+
         for (const actRuleId of actRuleIds) {
           const key = `${resultUrl}|${actRuleId}|${locator}`;
           if (!dedupeMap.has(key)) {
@@ -178,7 +156,6 @@ export function collectActConsensusOverlaps(results) {
       }
     }
   }
-
   const overlapEntries = [...dedupeMap.values()]
     .filter((entry) => entry.scanners.size > 1)
     .map((entry) => ({

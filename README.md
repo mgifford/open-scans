@@ -686,6 +686,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Cross-repository integration review: reviewed and merged FES #63 (same-viewport DOM gate) and #64 (honest ancestor reporting), accepted #62 as an opt-in preview, and documented the same-viewport protocol plus the component-attribution policy | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Root-caused the `ubuntu-26.04` Playwright `--with-deps` CI failure on the BDD acceptance job and recorded the runner-image pin plus sandbox-safe CI log triage in `docs/AI-SESSION-HANDOFF.md` | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Lifted the `ubuntu-24.04` browser-workflow pin after verifying chromium, firefox and webkit install and launch on the Ubuntu 26.04 runner image, and recorded the image-build trap in `docs/AI-SESSION-HANDOFF.md` | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Multi-engine evidence P0: normalized `a11y-observation/1` model, conservative repeat detection replacing false cross-engine duplicates, real Equal Access/AccessLint inputs for ACT consensus, evidence reprocessing CLI, schema and tests | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 
