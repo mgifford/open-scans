@@ -145,3 +145,38 @@ test("schema rejects an observation id that is not a full digest", () => {
   const errors = validate(artifact, schema, schema);
   assert.equal(errors.some((message) => message.includes("does not match")), true);
 });
+
+test("correlation artifact validates against its documented schema", async () => {
+  const { correlateObservations } = await import("../../scanner/correlation.mjs");
+  const correlationSchema = JSON.parse(
+    readFileSync(new URL("../../scanner/schemas/a11y-correlation.schema.json", import.meta.url), "utf8")
+  );
+
+  const artifact = buildObservationArtifact({
+    issueNumber: 1,
+    results: [
+      {
+        finalUrl: "https://example.org/",
+        scanContext: { browser: "chromium", viewport: { width: 1280, height: 800 }, colorScheme: "light" },
+        axe: {
+          failures: [
+            { rule: "image-alt", selector: "#goose-photo", html: "<img id=\"goose-photo\">", message: "alt" }
+          ],
+          renderedHtml: "<html><body><main><img id=\"goose-photo\"><a class=\"govuk-link\">A</a><a class=\"govuk-link\">B</a></main></body></html>"
+        },
+        alfa: {
+          failures: [
+            { rule: "https://alfa.siteimprove.com/rules/sia-r2", selector: "#goose-photo", html: "<img id=\"goose-photo\">", message: "alt" }
+          ]
+        },
+        equalAccess: { failures: [] },
+        accesslint: { failures: [] },
+        qualweb: { failures: [] }
+      }
+    ]
+  });
+
+  const correlation = correlateObservations(artifact);
+  assert.deepEqual(validate(correlation, correlationSchema, correlationSchema), []);
+  assert.equal(correlation.reconciliation.complete, true);
+});

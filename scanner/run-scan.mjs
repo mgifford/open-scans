@@ -20,6 +20,7 @@ import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from 
 import { redactStringsDeep } from "./redact-secrets.mjs";
 import { getEngineExecution, formatEngineExecution } from "./engine-execution.mjs";
 import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
+import { correlateObservations } from "./correlation.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -2716,8 +2717,13 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.observationSummary) {
     const obs = summary.observationSummary;
     lines.push(`- Raw engine observations retained: ${obs.rawFailures}`);
-    lines.push(`- Correlated issues: ${obs.correlatedIssues} (cross-engine equivalents: ${obs.crossEngineEquivalent}, unverified)`);
     lines.push(`- Observations with unresolved or ambiguous targets: ${obs.ambiguousLocators}`);
+  }
+  if (summary.correlationSummary) {
+    const corr = summary.correlationSummary;
+    lines.push(`- Correlated issues (2+ engines, same resolved target): ${corr.correlatedIssues} (${corr.verifiedEquivalentFindings} ACT-verified, ${corr.inferredEquivalentFindings} inferred)`);
+    lines.push(`- Single-engine findings: ${corr.singleEngineFindings}; target disagreements: ${corr.targetDisagreements}`);
+    lines.push(`- Related but distinct: ${corr.relatedFindings}; not comparable: ${corr.notComparableObservations}`);
   }
   lines.push("");
 
@@ -4234,6 +4240,19 @@ async function main() {
     ...observationArtifact.counts
   };
 
+  // Cross-engine correlation: groups equivalent failures on the same resolved
+  // target, and keeps related, uncertain and incomparable findings separate.
+  const correlationArtifact = correlateObservations(observationArtifact);
+  const correlationRedaction = { changed: 0 };
+  redactStringsDeep(correlationArtifact, correlationRedaction);
+  summary.correlationSummary = {
+    schemaVersion: correlationArtifact.schemaVersion,
+    artifact: "correlation.json",
+    algorithm: correlationArtifact.algorithm,
+    ...correlationArtifact.counts,
+    reconciliationComplete: correlationArtifact.reconciliation.complete
+  };
+
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
@@ -4253,6 +4272,7 @@ async function main() {
 
   const summaryPath = join(outputDir, "report.json");
   const observationsPath = join(outputDir, "observations.json");
+  const correlationPath = join(outputDir, "correlation.json");
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
@@ -4306,6 +4326,7 @@ async function main() {
   const overlapMarkdownContent = toOverlapMarkdown(overlapReport);
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");
+  writeFileSync(correlationPath, JSON.stringify(correlationArtifact, null, 2) + "\n", "utf8");
 
   // ── Trend analysis (inline, based on historical reports now including this one) ──
   let trendData = null;

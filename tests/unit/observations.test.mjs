@@ -123,7 +123,7 @@ test("no cross-engine equivalent is claimed without resolved targets", () => {
 
   assert.equal(artifact.counts.observations, 2);
   assert.equal(artifact.counts.crossEngineEquivalent, 0);
-  assert.equal(artifact.counts.correlatedIssues, 2);
+  assert.equal(artifact.counts.provisionalIssues, 2);
   assert.equal(artifact.observations[0].actRuleIds.length > 0, true);
 });
 
@@ -136,7 +136,7 @@ test("engine order does not change observation identity", () => {
 
   const ids = (artifact) => artifact.observations.map((entry) => entry.observationId).sort();
   assert.deepEqual(ids(first), ids(second));
-  assert.equal(first.counts.correlatedIssues, second.counts.correlatedIssues);
+  assert.equal(first.counts.provisionalIssues, second.counts.provisionalIssues);
 });
 
 test("reprocessing the same evidence is deterministic", () => {

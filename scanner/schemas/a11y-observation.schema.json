@@ -88,7 +88,7 @@
         "repeatedWithinEngine",
         "crossEngineEquivalent",
         "relatedFindings",
-        "correlatedIssues",
+        "provisionalIssues",
         "resolvedObservations",
         "distinctResolvedTargets",
         "unresolvedTargets",
@@ -114,10 +114,6 @@
           "minimum": 0
         },
         "relatedFindings": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "correlatedIssues": {
           "type": "integer",
           "minimum": 0
         },
@@ -148,6 +144,10 @@
           "minimum": 0
         },
         "distinctResolvedTargets": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "provisionalIssues": {
           "type": "integer",
           "minimum": 0
         }

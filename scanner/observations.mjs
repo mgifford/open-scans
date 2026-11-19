@@ -161,13 +161,17 @@ function contextKey(scanContext) {
   ].join("|");
 }
 
-function canonicalObservationKey({ engine, ruleId, url, context, locatorType, locator, html, message }) {
+/**
+ * Content key for one observation. Two observations with the same key are
+ * identical records; they still get distinct ids through an occurrence index.
+ */
+export function observationContentKey({ engine, ruleId, url, scanContext, locatorType, locator, html, message }) {
   return JSON.stringify([
     OBSERVATION_SCHEMA_VERSION,
     engine,
     ruleId,
     url,
-    context,
+    contextKey(scanContext),
     locatorType,
     locator || "",
     html || "",
@@ -203,17 +207,19 @@ export function buildObservation({
   const message = typeof failure?.message === "string" ? failure.message : null;
   const context = contextKey(scanContext);
 
-  const digestInput = canonicalObservationKey({
+  const digestInput = observationContentKey({
     engine,
     ruleId,
     url,
-    context,
+    scanContext,
     locatorType,
     locator: nativeLocator,
     html: htmlEvidence,
     message
   });
-  const observationId = occurrence === 0 ? stableDigest(digestInput) : stableDigest(`${digestInput}#${occurrence}`);
+  const observationId = occurrence === 0
+    ? stableDigest(digestInput)
+    : stableDigest(JSON.stringify([digestInput, occurrence]));
 
   const specific = isSpecificLocator(locatorType, nativeLocator);
   const hasLocator = locatorType !== "none" && locatorType !== "html";
@@ -311,6 +317,7 @@ export function buildObservationArtifact(summary) {
   const engineVersions = getInstalledEngineVersions();
   const observations = [];
   const seen = new Map();
+  const contentCounts = new Map();
 
   const documents = [];
 
@@ -341,17 +348,25 @@ export function buildObservationArtifact(summary) {
           domIndex: index
         });
 
+        // Identical records (same engine, rule, locator, evidence, message and
+        // context) are indistinguishable content; each still gets a unique id.
+        const contentKey = observation.observationId;
+        const occurrence = contentCounts.get(contentKey) ?? 0;
+        contentCounts.set(contentKey, occurrence + 1);
+        if (occurrence > 0) {
+          observation.observationId = stableDigest(JSON.stringify([contentKey, occurrence]));
+        }
+
         if (observation.target.specificLocator) {
-          const repeatKey = observation.observationId;
-          if (seen.has(repeatKey)) {
-            observation.repeatOf = seen.get(repeatKey);
+          if (seen.has(contentKey)) {
+            observation.repeatOf = seen.get(contentKey);
             observation.relations.push({
               type: "repeated-observation",
-              of: seen.get(repeatKey),
+              of: seen.get(contentKey),
               reason: "same engine, same specific locator, same rule, same evidence, same test context"
             });
           } else {
-            seen.set(repeatKey, observation.observationId);
+            seen.set(contentKey, observation.observationId);
           }
         }
 
@@ -386,7 +401,7 @@ export function buildObservationArtifact(summary) {
   const rawFailures = observations.length;
   const crossEngineEquivalent = 0;
   const relatedFindings = 0;
-  const correlatedIssues = rawFailures - repeatedWithinEngine - crossEngineEquivalent;
+  const provisionalIssues = rawFailures - repeatedWithinEngine - crossEngineEquivalent;
 
   return {
     schemaVersion: OBSERVATION_SCHEMA_VERSION,
@@ -407,7 +422,7 @@ export function buildObservationArtifact(summary) {
       repeatedWithinEngine,
       crossEngineEquivalent,
       relatedFindings,
-      correlatedIssues,
+      provisionalIssues,
       resolvedObservations: resolvedTargets,
       distinctResolvedTargets: resolvedTargetIds.size,
       unresolvedTargets,
