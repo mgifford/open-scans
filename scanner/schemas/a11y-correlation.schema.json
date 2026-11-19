@@ -51,6 +51,12 @@
         },
         "semanticsVersion": {
           "type": "string"
+        },
+        "mappingRegistryVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

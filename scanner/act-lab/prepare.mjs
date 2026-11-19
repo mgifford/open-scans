@@ -57,6 +57,7 @@ async function main () {
     fixtureHash: fixtureCohortHash(manifest),
     engineVersions: loadInstalledEngineVersions(ROOT),
     actMappingHash: fileHash(ROOT, 'scanner/data/act-mapping.json'),
+    actRegistryHash: fileHash(ROOT, 'scanner/data/act-registry.json'),
     actRulesHash,
     siteRoot
   })

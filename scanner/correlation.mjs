@@ -24,6 +24,7 @@
 import { createHash } from "node:crypto";
 
 import { getRuleSemantics, RULE_SEMANTICS_VERSION } from "./rule-semantics.mjs";
+import { loadActRegistry } from "./act-registry.mjs";
 
 export const CORRELATION_VERSION = "correlation/1";
 
@@ -307,7 +308,10 @@ export function correlateObservations(artifact) {
     scanTitle: artifact?.scanTitle ?? null,
     algorithm: {
       correlationVersion: CORRELATION_VERSION,
-      semanticsVersion: RULE_SEMANTICS_VERSION
+      semanticsVersion: RULE_SEMANTICS_VERSION,
+      // Registry generation time identifies the mapping data used, so a later
+      // comparison can tell a mapping change from a page or engine change.
+      mappingRegistryVersion: loadActRegistry().generatedAt ?? null
     },
     counts,
     reconciliation: {

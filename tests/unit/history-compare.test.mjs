@@ -1,0 +1,129 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+
+import { compareRuns, continuityKey, renderHistoryMarkdown } from "../../scanner/history-compare.mjs";
+
+const PATH = "/html[1]/body[1]/main[1]/img[1]";
+
+function issue({ id, url = "https://example.org/", family = "text-alternative", hash = "aaa" } = {}) {
+  return {
+    correlatedIssueId: id ?? `issue-${family}-${hash}`,
+    url,
+    family,
+    targetId: `dom:v1:${hash}:${PATH}`
+  };
+}
+
+function artifact({ issues = [], algorithm = {}, engineVersions = { axe: "4.12.1" }, scanContext = { browser: "chromium" } } = {}) {
+  return {
+    generatedAt: "2026-11-19T00:00:00.000Z",
+    algorithm: {
+      correlationVersion: "correlation/1",
+      semanticsVersion: "rule-semantics/1",
+      mappingRegistryVersion: "2026-11-19T00:00:00.000Z",
+      ...algorithm
+    },
+    scan: { engineVersions, scanContext },
+    issues
+  };
+}
+
+test("no previous artifact means no comparison, stated explicitly", () => {
+  const comparison = compareRuns({ previous: null, current: artifact({ issues: [issue()] }) });
+  assert.equal(comparison.comparable, false);
+  assert.match(comparison.reason, /no previous correlation artifact/);
+});
+
+test("identical runs persist and reconcile", () => {
+  const current = artifact({ issues: [issue({ id: "same" })] });
+  const comparison = compareRuns({ previous: current, current });
+
+  assert.equal(comparison.comparable, true);
+  assert.equal(comparison.counts.persisting, 1);
+  assert.equal(comparison.counts.new, 0);
+  assert.equal(comparison.counts.notObserved, 0);
+  assert.equal(comparison.reconciliation.complete, true);
+});
+
+test("a changed document is the same element with changed evidence", () => {
+  const previous = artifact({ issues: [issue({ id: "old", hash: "aaa" })] });
+  const current = artifact({ issues: [issue({ id: "new", hash: "bbb" })] });
+
+  const comparison = compareRuns({ previous, current });
+  assert.equal(comparison.counts.changed, 1);
+  assert.equal(comparison.counts.new, 0);
+  assert.equal(comparison.counts.notObserved, 0);
+  assert.equal(comparison.changes.changed[0].previousTargetId, `dom:v1:aaa:${PATH}`);
+  assert.equal(comparison.changes.changed[0].targetId, `dom:v1:bbb:${PATH}`);
+  assert.ok(comparison.changes.changed[0].attribution.some((reason) => reason.kind === "source-page-change"));
+});
+
+test("absence is not observed, never fixed", () => {
+  const previous = artifact({ issues: [issue({ id: "gone" })] });
+  const current = artifact({ issues: [] });
+
+  const comparison = compareRuns({ previous, current });
+  assert.equal(comparison.counts.notObserved, 1);
+  assert.match(comparison.changes.notObserved[0].note, /not evidence that the problem was fixed/i);
+
+  const markdown = renderHistoryMarkdown(comparison);
+  assert.match(markdown, /not the same as fixed/);
+  assert.match(markdown, /does not by itself mean the problem was fixed/);
+});
+
+test("engine version change is attributed", () => {
+  const previous = artifact({ issues: [], engineVersions: { axe: "4.11.0" } });
+  const current = artifact({ issues: [], engineVersions: { axe: "4.12.1" } });
+
+  const comparison = compareRuns({ previous, current });
+  const kinds = comparison.metadataDifferences.map((difference) => difference.kind);
+  assert.ok(kinds.includes("engine-version-change"));
+  assert.match(comparison.metadataDifferences.find((d) => d.kind === "engine-version-change").detail, /4\.11\.0 -> 4\.12\.1/);
+});
+
+test("correlation logic, semantics, registry and conditions changes are attributed", () => {
+  const previous = artifact({
+    issues: [],
+    algorithm: { correlationVersion: "correlation/0", semanticsVersion: "rule-semantics/0", mappingRegistryVersion: "a" },
+    scanContext: { browser: "chromium" }
+  });
+  const current = artifact({
+    issues: [],
+    algorithm: { correlationVersion: "correlation/1", semanticsVersion: "rule-semantics/1", mappingRegistryVersion: "b" },
+    scanContext: { browser: "firefox" }
+  });
+
+  const kinds = compareRuns({ previous, current }).metadataDifferences.map((difference) => difference.kind);
+  assert.ok(kinds.includes("correlation-logic-change"));
+  assert.ok(kinds.includes("mapping-data-change"));
+  assert.ok(kinds.includes("execution-condition-change"));
+});
+
+test("continuity keys ignore the document hash but keep the page and path", () => {
+  const a = issue({ id: "a", hash: "aaa" });
+  const b = issue({ id: "b", hash: "bbb" });
+  assert.equal(continuityKey(a), continuityKey(b));
+  assert.notEqual(continuityKey(a), continuityKey(issue({ id: "c", hash: "aaa", url: "https://example.org/other" })));
+  assert.notEqual(continuityKey(a), continuityKey(issue({ id: "d", hash: "aaa", family: "color-contrast" })));
+});
+
+test("new findings are counted without inventing continuity", () => {
+  const previous = artifact({ issues: [issue({ id: "keep" })] });
+  const current = artifact({
+    issues: [issue({ id: "keep" }), issue({ id: "brand-new", family: "color-contrast" })]
+  });
+
+  const comparison = compareRuns({ previous, current });
+  assert.equal(comparison.counts.persisting, 1);
+  assert.equal(comparison.counts.new, 1);
+  assert.equal(comparison.reconciliation.currentAccountedFor, 2);
+});
+
+test("comparison is deterministic for identical inputs", () => {
+  const previous = artifact({ issues: [issue({ id: "old", hash: "aaa" })] });
+  const current = artifact({ issues: [issue({ id: "new", hash: "bbb" })] });
+  const first = compareRuns({ previous, current });
+  const second = compareRuns({ previous, current });
+  assert.equal(first.comparisonId, second.comparisonId);
+  assert.deepEqual(first.counts, second.counts);
+});

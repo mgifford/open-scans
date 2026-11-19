@@ -1,8 +1,8 @@
 # Multi-engine evidence: assessment, model and plan
 
 Status: P0 (observation model + duplicate correction), P1 (target resolution),
-P2 (cross-engine correlation), P3 (ACT registry) and P4 (reporting + exports)
-shipped. Historical comparison is next.
+P2 (cross-engine correlation), P3 (ACT registry), P4 (reporting + exports) and
+P5 (historical comparison + cohort analysis versions) shipped.
 
 ## 1. What exists today
 
@@ -217,6 +217,33 @@ existing `report.json`/`.md`/`.html`/`.csv`, `patterns.csv` and
 `accessibility-context.json`. Every correlated issue carries the observation
 ids and `rawEvidenceRef` pointers back into `report.json`.
 
+## 3f. Historical comparison (P5, shipped)
+
+`scanner/history-compare.mjs` compares two correlation artifacts.
+
+A correlated issue id embeds the document hash, on purpose: the same finding on
+a page that changed is not the same evidence. So comparison uses two identities:
+
+- `correlatedIssueId` — exact evidence identity;
+- continuity key `(url, failure family, DOM path)` — the same element,
+  independent of the document version.
+
+Every change is attributed before it is named: `correlation-logic-change`,
+`mapping-data-change`, `engine-version-change`, `execution-condition-change`,
+`source-page-change`. A finding that is absent is reported as **`not-observed`**
+with the note that this is not evidence the problem was fixed — a rule can stop
+reporting because an engine changed, not because the page improved.
+
+`report.json` gains `historyComparison` counts and the run writes
+`history-comparison.json` next to the other artifacts when a previous
+`correlation.json` exists. `reprocess-evidence.mjs --previous <correlation.json>`
+does the same offline.
+
+The weekly ACT laboratory cohort now includes `act-registry.json`, the
+target-resolution version, the correlation version and the rule-semantics
+version, with distinct change reasons, so an analysis change cannot be mistaken
+for a page change.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -239,7 +266,8 @@ evidence resolves without rerunning a browser.
 | **P2 ✅** | Correlation: rule-semantics families, agreement/related/uncertain dispositions, target disagreements, order-independent issue identity | P1 |
 | **P3 ✅** | ACT registry: verified vs candidate mappings, version alignment, metadata provenance, correlation-derived consensus | P2 |
 | **P4 ✅** | Reporting: multi-engine evidence section in Markdown and HTML, page/engine matrix, per-engine evidence disclosures, accessible filter, explicit empty states | P2 |
-| P5 | Historical comparison + ACT lab target-specific outcomes, algorithm/schema versions in cohorts | P3, P4 |
+| **P5 ✅** | Historical comparison with change attribution, `not-observed` instead of "fixed", ACT lab cohort tracks analysis versions | P3, P4 |
+
 | P6 | Manual review format, unresolved-match UX | P4 |
 
 ## 6. Boundaries

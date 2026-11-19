@@ -257,3 +257,52 @@ test("findings mapped to a different ACT rule are not engine-specific", () => {
   assert.deepEqual(axe.engineSpecificRules, []);
   assert.ok(axe.otherActRules.includes("afw4f7"));
 });
+
+test("cohort tracks analysis versions and registry data, not only fixtures", () => {
+  const base = computeCohort({
+    fixtureHash: "a",
+    engineVersions: { axe: "1.0.0" },
+    actMappingHash: "b",
+    actRegistryHash: "r1",
+    actRulesHash: "c"
+  });
+
+  const registryChange = computeCohort({
+    fixtureHash: "a",
+    engineVersions: { axe: "1.0.0" },
+    actMappingHash: "b",
+    actRegistryHash: "r2",
+    actRulesHash: "c"
+  });
+  assert.deepEqual(compareCohorts(base, registryChange), ["act-registry-changed"]);
+
+  const correlationChange = computeCohort({
+    fixtureHash: "a",
+    engineVersions: { axe: "1.0.0" },
+    actMappingHash: "b",
+    actRegistryHash: "r1",
+    actRulesHash: "c",
+    correlationVersion: "correlation/99"
+  });
+  assert.deepEqual(compareCohorts(base, correlationChange), ["correlation-algorithm-changed"]);
+
+  const resolutionChange = computeCohort({
+    fixtureHash: "a",
+    engineVersions: { axe: "1.0.0" },
+    actMappingHash: "b",
+    actRegistryHash: "r1",
+    actRulesHash: "c",
+    targetResolutionVersion: "target-resolution/99"
+  });
+  assert.deepEqual(compareCohorts(base, resolutionChange), ["target-resolution-changed"]);
+
+  const semanticsChange = computeCohort({
+    fixtureHash: "a",
+    engineVersions: { axe: "1.0.0" },
+    actMappingHash: "b",
+    actRegistryHash: "r1",
+    actRulesHash: "c",
+    semanticsVersion: "rule-semantics/99"
+  });
+  assert.deepEqual(compareCohorts(base, semanticsChange), ["rule-semantics-changed"]);
+});
