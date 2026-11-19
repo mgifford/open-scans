@@ -1,0 +1,793 @@
+{
+  "schema": "a11y-accessibility-context/1",
+  "generatedAt": "2026-11-19T02:22:16.178Z",
+  "site": {
+    "origin": "https://mgifford.github.io",
+    "host": "mgifford.github.io"
+  },
+  "scan": {
+    "issueNumber": 397,
+    "issueUrl": "https://github.com/mgifford/open-scans/issues/397",
+    "scanTitle": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+    "scannedAt": "2026-11-19T02:22:16.178Z",
+    "engines": [
+      "all"
+    ],
+    "scanContext": {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "viewportPreset": "desktop",
+      "colorScheme": "both",
+      "browser": "webkit"
+    }
+  },
+  "summary": {
+    "observations": 23,
+    "pages": 1,
+    "patterns": 23,
+    "withSelector": 21,
+    "htmlOnly": 0,
+    "withoutLocator": 2,
+    "bySelectorType": {
+      "xpath": 21,
+      "none": 2
+    },
+    "byCategory": {
+      "link": 5,
+      "document": 15,
+      "unknown": 2,
+      "heading": 1
+    },
+    "ownershipEstablished": false,
+    "note": "Container categories are selector/HTML-derived candidates, not component ownership. This handoff is accessibility evidence only."
+  },
+  "categoryLabels": {
+    "navigation": "Navigation",
+    "banner": "Header/banner",
+    "contentinfo": "Footer",
+    "main": "Main content",
+    "complementary": "Complementary content",
+    "search": "Search",
+    "form": "Forms",
+    "form-control": "Form controls",
+    "table": "Tables",
+    "list": "Lists",
+    "heading": "Headings",
+    "link": "Links",
+    "button": "Buttons",
+    "image": "Images",
+    "frame": "Frames and embeds",
+    "dialog": "Dialogs",
+    "live-region": "Live regions",
+    "document": "Document/page-level",
+    "unknown": "Unassigned"
+  },
+  "observations": [
+    {
+      "observationId": "a11y-obs-d8bbc310e1ee",
+      "patternId": "084fd6d962855f702589f06ff951c9ed616c1f4c7c128d86bd47f882138ab356",
+      "patternDisplayId": "A11Y-PAT-084FD6D96285",
+      "identitySource": "canonical",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r11",
+      "engine": "alfa",
+      "wcagSc": [],
+      "actRuleIds": [
+        "c487ae"
+      ],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/a[@class=\"logo logo-img-1x\"]",
+      "selectorType": "xpath",
+      "locator": "/a[@class=\"logo logo-img-1x\"]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "link",
+        "label": "Links",
+        "element": "link",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].alfa.failures[0]"
+    },
+    {
+      "observationId": "a11y-obs-2f53f3b52cf0",
+      "patternId": "99c600e6be99b317f62d6176288e3d85cdea765369da57935a089f3a676be91c",
+      "patternDisplayId": "A11Y-PAT-99C600E6BE99",
+      "identitySource": "canonical",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r4",
+      "engine": "alfa",
+      "wcagSc": [],
+      "actRuleIds": [
+        "b5c3f8"
+      ],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html",
+      "selectorType": "xpath",
+      "locator": "/html",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].alfa.failures[1]"
+    },
+    {
+      "observationId": "a11y-obs-b821b06e59f9",
+      "patternId": "e5b527ccdf798d470adf4e1cbda2fcde850b0ce338d359902db63017dc4f5763",
+      "patternDisplayId": "A11Y-PAT-E5B527CCDF79",
+      "identitySource": "canonical",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r66",
+      "engine": "alfa",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": null,
+      "selectorType": "none",
+      "locator": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 7:1",
+      "locatorSource": "none",
+      "container": {
+        "category": "unknown",
+        "label": "Unassigned",
+        "element": null,
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "none",
+        "confidence": "unknown",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "No explicit component identifier or stable semantic selector was available."
+        ]
+      },
+      "sourceRef": "results[0].alfa.failures[2]"
+    },
+    {
+      "observationId": "a11y-obs-bd67b8a01883",
+      "patternId": "388e341448111c1743c22b9ae66fd567065bbbbeda02438d0c680c7be139f552",
+      "patternDisplayId": "A11Y-PAT-388E34144811",
+      "identitySource": "canonical",
+      "rule": "https://alfa.siteimprove.com/rules/sia-r69",
+      "engine": "alfa",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": null,
+      "selectorType": "none",
+      "locator": "The highest possible contrast of the text is 3.88:1 which is\n        below the required contrast of 4.5:1",
+      "locatorSource": "none",
+      "container": {
+        "category": "unknown",
+        "label": "Unassigned",
+        "element": null,
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "none",
+        "confidence": "unknown",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "No explicit component identifier or stable semantic selector was available."
+        ]
+      },
+      "sourceRef": "results[0].alfa.failures[17]"
+    },
+    {
+      "observationId": "a11y-obs-75e0e53e3cd2",
+      "patternId": "f21cd228cc07f76002ba9860c0c103e162cd9d17a06650e38d7380db2c2e63b0",
+      "patternDisplayId": "A11Y-PAT-F21CD228CC07",
+      "identitySource": "canonical",
+      "rule": "html_lang_exists",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[0]"
+    },
+    {
+      "observationId": "a11y-obs-633399d42473",
+      "patternId": "b1abb4ee350c9d6bebf94e1df76d85985bc27193c2b7810964b8e2bd33296a77",
+      "patternDisplayId": "A11Y-PAT-B1ABB4EE350C",
+      "identitySource": "canonical",
+      "rule": "element_attribute_deprecated",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/head[1]/meta[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/head[1]/meta[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[1]"
+    },
+    {
+      "observationId": "a11y-obs-05f0891c2584",
+      "patternId": "ac5e1f63119a89d8b46478168f35a4a9558a613b0b90157bfcd5475419e689d3",
+      "patternDisplayId": "A11Y-PAT-AC5E1F63119A",
+      "identitySource": "canonical",
+      "rule": "element_attribute_deprecated",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/head[1]/meta[2]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/head[1]/meta[2]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[2]"
+    },
+    {
+      "observationId": "a11y-obs-c96168134c6c",
+      "patternId": "57f01b83d2b89b10f2f551ca64c3c27ac66ea4bc2bf36ce517fb8fae22d4c14d",
+      "patternDisplayId": "A11Y-PAT-57F01B83D2B8",
+      "identitySource": "canonical",
+      "rule": "style_color_misuse",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/head[1]/style[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/head[1]/style[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[3]"
+    },
+    {
+      "observationId": "a11y-obs-660a39404ca9",
+      "patternId": "4c49efff32d41c50ec163de623675e97b9c58898289e62057d6178afc75f3556",
+      "patternDisplayId": "A11Y-PAT-4C49EFFF32D4",
+      "identitySource": "canonical",
+      "rule": "style_highcontrast_visible",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/head[1]/style[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/head[1]/style[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[4]"
+    },
+    {
+      "observationId": "a11y-obs-96d57dabc7ee",
+      "patternId": "1431096e7cce7a16ef0e3c55e7b0fede479740dff12faa7387253d049e0a4284",
+      "patternDisplayId": "A11Y-PAT-1431096E7CCE",
+      "identitySource": "canonical",
+      "rule": "skip_main_exists",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[5]"
+    },
+    {
+      "observationId": "a11y-obs-7f172cf49c6d",
+      "patternId": "3c305f733bc85997a061e3e4de734631863cda46233d5a66e3cf1a2ab1fda610",
+      "patternDisplayId": "A11Y-PAT-3C305F733BC8",
+      "identitySource": "canonical",
+      "rule": "aria_content_in_landmark",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/h1[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/h1[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "heading",
+        "label": "Headings",
+        "element": "heading",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[6]"
+    },
+    {
+      "observationId": "a11y-obs-449b7a7213bf",
+      "patternId": "019facd4d4260820d9cc73b72caf32c1276276b21eff6dcbe596055a086f55c7",
+      "patternDisplayId": "A11Y-PAT-019FACD4D426",
+      "identitySource": "canonical",
+      "rule": "text_block_heading",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[7]"
+    },
+    {
+      "observationId": "a11y-obs-c57880c2979c",
+      "patternId": "6f88f4b66057e53fee6086c8020b78ee91558c4c8546c184549fa1948120e4a7",
+      "patternDisplayId": "A11Y-PAT-6F88F4B66057",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[1]/strong[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[1]/strong[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[8]"
+    },
+    {
+      "observationId": "a11y-obs-625454dc14a5",
+      "patternId": "dbe7e76c92228165a50823ab88f02fabf668190616af583037ddb2b1010cf4fb",
+      "patternDisplayId": "A11Y-PAT-DBE7E76C9222",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[2]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[2]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[9]"
+    },
+    {
+      "observationId": "a11y-obs-c5e69dfa1651",
+      "patternId": "0d0110efcfd72019a4948c8ed0e73869979e3f33fdb4618d2427bb6cfd67360b",
+      "patternDisplayId": "A11Y-PAT-0D0110EFCFD7",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[3]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[3]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[10]"
+    },
+    {
+      "observationId": "a11y-obs-6d5e32aea9e5",
+      "patternId": "de614920ab4ec51622499e3e26d8697aa9b89c8fa26e1312b768cfdb3101d18a",
+      "patternDisplayId": "A11Y-PAT-DE614920AB4E",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[3]/code[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[3]/code[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[11]"
+    },
+    {
+      "observationId": "a11y-obs-49c667ee2c58",
+      "patternId": "0fedcd9932b45b8cd7203925de6050885f83a92deff5a026b42f8daa11902b70",
+      "patternDisplayId": "A11Y-PAT-0FEDCD9932B4",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[3]/code[2]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[3]/code[2]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[12]"
+    },
+    {
+      "observationId": "a11y-obs-628cdee1bae3",
+      "patternId": "dc4606c015f22df71ad09cfc78e460c32d1c4fd8a06f317595f2c446a7642113",
+      "patternDisplayId": "A11Y-PAT-DC4606C015F2",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[4]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[4]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[13]"
+    },
+    {
+      "observationId": "a11y-obs-4da9a000efc8",
+      "patternId": "89b179a6f7f852d502945eb72fa96ecf34b6230509c6d74e819ed612d094adc8",
+      "patternDisplayId": "A11Y-PAT-89B179A6F7F8",
+      "identitySource": "canonical",
+      "rule": "aria_content_in_landmark",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "link",
+        "label": "Links",
+        "element": "link",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[14]"
+    },
+    {
+      "observationId": "a11y-obs-3bc556356a73",
+      "patternId": "f592dfbdb85be88f4374f528aa8ac045f8cf1a941606f796269cbd51f4070238",
+      "patternDisplayId": "A11Y-PAT-F592DFBDB85B",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[4]/a[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "link",
+        "label": "Links",
+        "element": "link",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[15]"
+    },
+    {
+      "observationId": "a11y-obs-43d2594e18f0",
+      "patternId": "816ad28f3956498f27f75fe4866bd2bb5cb8cff779235dc9f291cac5708b5f9d",
+      "patternDisplayId": "A11Y-PAT-816AD28F3956",
+      "identitySource": "canonical",
+      "rule": "text_contrast_sufficient",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/p[4]/strong[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/p[4]/strong[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "document",
+        "label": "Document/page-level",
+        "element": "document",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[16]"
+    },
+    {
+      "observationId": "a11y-obs-8fbeac364c19",
+      "patternId": "4341d0bd6c7123307b280e07581c8c9ace89d58157f08dc622fe3de92e304163",
+      "patternDisplayId": "A11Y-PAT-4341D0BD6C71",
+      "identitySource": "canonical",
+      "rule": "aria_content_in_landmark",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/div[1]/a[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "link",
+        "label": "Links",
+        "element": "link",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[17]"
+    },
+    {
+      "observationId": "a11y-obs-d1d32b84b7ae",
+      "patternId": "219740cd3e0aadc8cddcb362e9a9c52b66c70728a80ba06244ca24ba13fa2485",
+      "patternDisplayId": "A11Y-PAT-219740CD3E0A",
+      "identitySource": "canonical",
+      "rule": "a_text_purpose",
+      "engine": "equalAccess",
+      "wcagSc": [],
+      "actRuleIds": [],
+      "impact": null,
+      "pageUrl": "https://mgifford.github.io/record-a-goose-sighting/%20SUNDAY",
+      "selector": "/html[1]/body[1]/div[1]/a[1]",
+      "selectorType": "xpath",
+      "locator": "/html[1]/body[1]/div[1]/a[1]",
+      "locatorSource": "selector",
+      "container": {
+        "category": "link",
+        "label": "Links",
+        "element": "link",
+        "componentId": null,
+        "componentTypeId": null,
+        "componentLabel": null,
+        "basis": "selector-token",
+        "confidence": "low",
+        "ownershipEstablished": false,
+        "uncertainty": [
+          "The semantic region is a selector-derived candidate, not a claim that a component owns this finding."
+        ]
+      },
+      "sourceRef": "results[0].equalAccess.failures[18]"
+    }
+  ],
+  "limitations": [
+    "This artifact is accessibility evidence, not a performance or energy measurement.",
+    "Container categories are candidates, not component ownership.",
+    "A selector match does not prove that a component caused the finding.",
+    "Unmatched or HTML-only observations must remain visible when joined to another graph.",
+    "No component graph is recreated here."
+  ]
+}

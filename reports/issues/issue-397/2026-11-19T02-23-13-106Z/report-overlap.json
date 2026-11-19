@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-19T02:22:16.212Z",
+  "issueNumber": 397,
+  "scanTitle": "https://mgifford.github.io/record-a-goose-sighting/ SUNDAY",
+  "scannersInUse": [
+    "alfa",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 30,
+      "uniqueFailed": 30,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 19,
+      "uniqueFailed": 19,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "alfa": {
+      "alfa": 4,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "alfa": 0,
+      "equalAccess": 19
+    }
+  },
+  "duplicateFindingTotals": 26,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
