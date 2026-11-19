@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-import { getMappingEvidence } from "./act-registry.mjs";
+import { getMappingEvidence, getMappingsFor } from "./act-registry.mjs";
 
 const ACT_MAPPING_PATH = new URL("./data/act-mapping.json", import.meta.url);
 const QUALWEB_README_PATH = new URL("../node_modules/@qualweb/act-rules/README.md", import.meta.url);
@@ -95,7 +95,15 @@ export function buildActRuleIndex() {
 }
 
 export function getActRuleIds(engine, ruleId) {
-  return [...(buildActRuleIndex().get(normalizeRuleKey(engine, ruleId)) || [])];
+  // Union of the generated mapping and the registry, so candidate mappings
+  // (semantic alignments without a published implementation report) are
+  // visible to observations and reports. Verification status is tracked
+  // separately; see getMappingEvidence.
+  const ids = new Set(buildActRuleIndex().get(normalizeRuleKey(engine, ruleId)) || []);
+  for (const mapping of getMappingsFor(engine, ruleId)) {
+    ids.add(mapping.actRuleId);
+  }
+  return [...ids].sort();
 }
 
 

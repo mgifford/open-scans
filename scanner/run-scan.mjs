@@ -21,6 +21,7 @@ import { redactStringsDeep } from "./redact-secrets.mjs";
 import { getEngineExecution, formatEngineExecution } from "./engine-execution.mjs";
 import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
 import { correlateObservations } from "./correlation.mjs";
+import { buildActCoverage, renderActCoverageMarkdown } from "./act-coverage.mjs";
 import { renderCorrelationMarkdown } from "./correlation-report.mjs";
 import { compareRuns, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
@@ -4247,12 +4248,20 @@ async function main() {
   const correlationArtifact = correlateObservations(observationArtifact);
   const correlationRedaction = { changed: 0 };
   redactStringsDeep(correlationArtifact, correlationRedaction);
+  const actCoverageArtifact = buildActCoverage(observationArtifact);
+  const actCoverageRedaction = { changed: 0 };
+  redactStringsDeep(actCoverageArtifact, actCoverageRedaction);
   summary.correlationSummary = {
     schemaVersion: correlationArtifact.schemaVersion,
     artifact: "correlation.json",
     algorithm: correlationArtifact.algorithm,
     ...correlationArtifact.counts,
     reconciliationComplete: correlationArtifact.reconciliation.complete
+  };
+  summary.actCoverageSummary = {
+    schemaVersion: actCoverageArtifact.schemaVersion,
+    artifact: "act-coverage.json",
+    ...actCoverageArtifact.summary
   };
 
   // Log warning if scan was incomplete
@@ -4275,6 +4284,7 @@ async function main() {
   const summaryPath = join(outputDir, "report.json");
   const observationsPath = join(outputDir, "observations.json");
   const correlationPath = join(outputDir, "correlation.json");
+  const actCoveragePath = join(outputDir, "act-coverage.json");
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
@@ -4322,6 +4332,7 @@ async function main() {
 
   let markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
   markdownContent += "\n" + renderCorrelationMarkdown({ correlation: correlationArtifact, observations: observationArtifact });
+  markdownContent += "\n" + renderActCoverageMarkdown(actCoverageArtifact);
 
   // Compare with the most recent sibling run that has a correlation artifact.
   // Old runs simply do not have one; absence of a comparison is reported, not
@@ -4357,6 +4368,7 @@ async function main() {
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");
   writeFileSync(correlationPath, JSON.stringify(correlationArtifact, null, 2) + "\n", "utf8");
+  writeFileSync(actCoveragePath, JSON.stringify(actCoverageArtifact, null, 2) + "\n", "utf8");
   if (historyComparison) {
     writeFileSync(join(outputDir, "history-comparison.json"), JSON.stringify(historyComparison, null, 2) + "\n", "utf8");
     summary.historyComparison = {
@@ -4394,7 +4406,8 @@ async function main() {
   writeFileSync(markdownPath, markdownContent, "utf8");
   writeFileSync(htmlPath, generateInteractiveHtml(summary, remediationResult, trendData, {
     correlation: correlationArtifact,
-    observations: observationArtifact
+    observations: observationArtifact,
+    actCoverage: actCoverageArtifact
   }), "utf8");
   writeFileSync(csvPath, toCsv(summary), "utf8");
   writeFileSync(patternsCsvPath, patternInventoryToCsv(patternInventory), "utf8");

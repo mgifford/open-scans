@@ -1,12 +1,14 @@
 {
   "schemaVersion": "act-registry-overlays/1",
-  "note": "Curated metadata for ACT rules, verified against W3C sources on the dates recorded. Absent fields stay null on purpose: the registry records what is known, not what is plausible.",
+  "note": "Curated metadata for ACT rules, verified against W3C sources on the dates recorded. Candidate mappings are semantic alignments without a published implementation report; they never count as ACT support. noActCounterpart records rules deliberately left unmapped, with reasons. Absent fields stay null on purpose.",
   "rules": {
     "23a2a8": {
       "title": "Image has non-empty accessible name",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/23a2a8/",
       "ruleType": "atomic",
-      "wcag": ["1.1.1"],
+      "wcag": [
+        "1.1.1"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -16,7 +18,9 @@
       "title": "Element marked as decorative is not exposed",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/46ca7f/",
       "ruleType": "atomic",
-      "wcag": ["1.1.1"],
+      "wcag": [
+        "1.1.1"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -26,7 +30,11 @@
       "title": "Link has non-empty accessible name",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/c487ae/",
       "ruleType": "atomic",
-      "wcag": ["1.1.1", "2.4.4", "4.1.2"],
+      "wcag": [
+        "1.1.1",
+        "2.4.4",
+        "4.1.2"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -36,7 +44,9 @@
       "title": "Text has enhanced contrast",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
       "ruleType": "atomic",
-      "wcag": ["1.4.6"],
+      "wcag": [
+        "1.4.6"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -46,7 +56,9 @@
       "title": "Text has minimum contrast",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
       "ruleType": "atomic",
-      "wcag": ["1.4.3"],
+      "wcag": [
+        "1.4.3"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -56,7 +68,9 @@
       "title": "Important letter spacing in style attributes is wide enough",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/24afc2/",
       "ruleType": "atomic",
-      "wcag": ["1.4.12"],
+      "wcag": [
+        "1.4.12"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -66,7 +80,10 @@
       "title": "Meta viewport allows for zoom",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/",
       "ruleType": "atomic",
-      "wcag": ["1.4.4", "1.4.10"],
+      "wcag": [
+        "1.4.4",
+        "1.4.10"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -76,7 +93,9 @@
       "title": "Autocomplete attribute has valid value",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/73f2c2/",
       "ruleType": "atomic",
-      "wcag": ["1.3.5"],
+      "wcag": [
+        "1.3.5"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -86,7 +105,9 @@
       "title": "Audio or video element avoids automatically playing audio",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/80f0bf/",
       "ruleType": "atomic",
-      "wcag": ["1.4.2"],
+      "wcag": [
+        "1.4.2"
+      ],
       "status": "proposed",
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
@@ -113,6 +134,99 @@
           "verifiedAt": "2026-11-19"
         }
       ]
+    },
+    "09o5cg": {
+      "alfa": [
+        {
+          "ruleId": "sia-r66",
+          "source": "https://alfa.siteimprove.com/rules",
+          "notes": "ALFA SIA-R66 tests the same mechanism as ACT 09o5cg: highest possible contrast of text against its background, 7:1 for normal text. W3C rule text checked 2026-11-19; no published ALFA implementation report for this rule, so candidate.",
+          "engineVersion": null,
+          "verifiedAt": "2026-11-19"
+        }
+      ]
+    },
+    "afw4f7": {
+      "alfa": [
+        {
+          "ruleId": "sia-r69",
+          "source": "https://alfa.siteimprove.com/rules",
+          "notes": "ALFA SIA-R69 tests minimum text contrast (4.5:1), matching ACT afw4f7. Candidate: no published implementation report.",
+          "engineVersion": null,
+          "verifiedAt": "2026-11-19"
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "text_contrast_sufficient",
+          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+          "notes": "Equal Access text_contrast_sufficient checks minimum text contrast (1.4.3), matching ACT afw4f7. Candidate.",
+          "engineVersion": null,
+          "verifiedAt": "2026-11-19"
+        }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/color-contrast",
+          "source": "https://github.com/accesslint/accesslint",
+          "notes": "AccessLint color-contrast checks 4.5:1 text contrast (1.4.3), matching ACT afw4f7. Candidate.",
+          "engineVersion": null,
+          "verifiedAt": "2026-11-19"
+        }
+      ]
+    },
+    "2779a5": {
+      "equalAccess": [
+        {
+          "ruleId": "page_title_exists",
+          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+          "notes": "Equal Access page_title_exists checks that the page has a title, matching ACT 2779a5 (axe document-title). Candidate.",
+          "engineVersion": null,
+          "verifiedAt": "2026-11-19"
+        }
+      ]
     }
-  }
+  },
+  "noActCounterpart": [
+    {
+      "engine": "alfa",
+      "ruleId": "sia-r73",
+      "wcag": [
+        "1.4.8"
+      ],
+      "reason": "WCAG 1.4.8 has no published ACT rule; do not map line-height checks to a spacing rule with different semantics."
+    },
+    {
+      "engine": "alfa",
+      "ruleId": "sia-r111",
+      "wcag": [
+        "2.5.5"
+      ],
+      "reason": "No ACT rule for enhanced target size; mapping it to a different target-size rule would claim equivalence that does not exist."
+    },
+    {
+      "engine": "equalAccess",
+      "ruleId": "element_attribute_deprecated",
+      "wcag": [
+        "4.1.1"
+      ],
+      "reason": "4.1.1 Parsing is obsolete in WCAG 2.2 and ACT has no deprecated-attribute rule."
+    },
+    {
+      "engine": "equalAccess",
+      "ruleId": "style_color_misuse",
+      "wcag": [
+        "1.4.1"
+      ],
+      "reason": "ACT has no rule for Use of Color."
+    },
+    {
+      "engine": "equalAccess",
+      "ruleId": "aria_role_redundant",
+      "wcag": [
+        "4.1.2"
+      ],
+      "reason": "Redundant-but-valid roles are not an ACT rule; role validity is a different test."
+    }
+  ]
 }

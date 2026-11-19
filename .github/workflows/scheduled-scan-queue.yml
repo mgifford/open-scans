@@ -220,6 +220,7 @@ jobs:
             copyFileSync('.scan-output/report-overlap.md', overlapMarkdownPath);
             copyFileSync('.scan-output/observations.json', `${reportDir}/observations.json`);
             copyFileSync('.scan-output/correlation.json', `${reportDir}/correlation.json`);
+            copyFileSync('.scan-output/act-coverage.json', `${reportDir}/act-coverage.json`);
             if (existsSync('.scan-output/history-comparison.json')) {
               copyFileSync('.scan-output/history-comparison.json', `${reportDir}/history-comparison.json`);
             }

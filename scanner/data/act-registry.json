@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-registry/1",
-  "generatedAt": "2026-11-19T15:00:08.360Z",
+  "generatedAt": "2026-11-19T19:31:09.951Z",
   "sources": {
     "actRulesIndex": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
     "engineMapping": {
@@ -18,7 +18,7 @@
     "withTitle": 9,
     "withRuleType": 9,
     "verifiedMappings": 96,
-    "candidateMappings": 2,
+    "candidateMappings": 7,
     "enginesWithMappings": [
       "accesslint",
       "alfa",
@@ -64,6 +64,17 @@
       "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
       "metadataVerifiedAt": "2026-11-19",
       "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r66",
+          "status": "candidate",
+          "source": "https://alfa.siteimprove.com/rules",
+          "verifiedAt": "2026-11-19",
+          "engineVersion": null,
+          "reportedEngineVersion": null,
+          "versionAligned": null,
+          "notes": "ALFA SIA-R66 tests the same mechanism as ACT 09o5cg: highest possible contrast of text against its background, 7:1 for normal text. W3C rule text checked 2026-11-19; no published ALFA implementation report for this rule, so candidate."
+        },
         {
           "engine": "axe",
           "ruleId": "color-contrast",
@@ -251,6 +262,17 @@
           "reportedEngineVersion": "4.10.2",
           "versionAligned": false,
           "notes": "Implementation report covers a different engine version; mapping is not version-verified."
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "page_title_exists",
+          "status": "candidate",
+          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+          "verifiedAt": "2026-11-19",
+          "engineVersion": null,
+          "reportedEngineVersion": null,
+          "versionAligned": null,
+          "notes": "Equal Access page_title_exists checks that the page has a title, matching ACT 2779a5 (axe document-title). Candidate."
         }
       ]
     },
@@ -1059,6 +1081,28 @@
       "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast",
+          "status": "candidate",
+          "source": "https://github.com/accesslint/accesslint",
+          "verifiedAt": "2026-11-19",
+          "engineVersion": null,
+          "reportedEngineVersion": null,
+          "versionAligned": null,
+          "notes": "AccessLint color-contrast checks 4.5:1 text contrast (1.4.3), matching ACT afw4f7. Candidate."
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r69",
+          "status": "candidate",
+          "source": "https://alfa.siteimprove.com/rules",
+          "verifiedAt": "2026-11-19",
+          "engineVersion": null,
+          "reportedEngineVersion": null,
+          "versionAligned": null,
+          "notes": "ALFA SIA-R69 tests minimum text contrast (4.5:1), matching ACT afw4f7. Candidate: no published implementation report."
+        },
+        {
           "engine": "axe",
           "ruleId": "color-contrast",
           "status": "verified",
@@ -1068,6 +1112,17 @@
           "reportedEngineVersion": "4.10.2",
           "versionAligned": false,
           "notes": "Implementation report covers a different engine version; mapping is not version-verified."
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_contrast_sufficient",
+          "status": "candidate",
+          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+          "verifiedAt": "2026-11-19",
+          "engineVersion": null,
+          "reportedEngineVersion": null,
+          "versionAligned": null,
+          "notes": "Equal Access text_contrast_sufficient checks minimum text contrast (1.4.3), matching ACT afw4f7. Candidate."
         }
       ]
     },

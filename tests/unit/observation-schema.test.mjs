@@ -180,3 +180,32 @@ test("correlation artifact validates against its documented schema", async () =>
   assert.deepEqual(validate(correlation, correlationSchema, correlationSchema), []);
   assert.equal(correlation.reconciliation.complete, true);
 });
+
+test("ACT coverage artifact validates against its documented schema", async () => {
+  const { buildActCoverage } = await import("../../scanner/act-coverage.mjs");
+  const coverageSchema = JSON.parse(
+    readFileSync(new URL("../../scanner/schemas/act-coverage.schema.json", import.meta.url), "utf8")
+  );
+
+  const coverage = buildActCoverage({
+    issueNumber: 1,
+    scanTitle: "fixture",
+    scan: { engineExecution: { axe: { status: "executed" }, alfa: { status: "executed" } } },
+    observations: [
+      {
+        observationId: "o1",
+        engine: { name: "axe", ruleId: "image-alt" },
+        actRuleIds: ["23a2a8"],
+        target: { resolvedTargetId: "dom:v1:h:/img[1]" }
+      },
+      {
+        observationId: "o2",
+        engine: { name: "alfa", ruleId: "sia-r2" },
+        actRuleIds: ["23a2a8"],
+        target: { resolvedTargetId: "dom:v1:h:/img[1]" }
+      }
+    ]
+  });
+
+  assert.deepEqual(validate(coverage, coverageSchema, coverageSchema), []);
+});
