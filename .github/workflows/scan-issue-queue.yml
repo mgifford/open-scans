@@ -39,7 +39,7 @@ jobs:
         run: npm ci
 
       - name: Install Chromium for Playwright tests
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Configure Puppeteer browser path for ALFA
         run: |

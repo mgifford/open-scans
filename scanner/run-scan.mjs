@@ -18,6 +18,7 @@ import { runReflowRisk } from "./reflow-risk.mjs";
 import { runSemantica11yAudit, createSemantica11yBaseError } from "./semantica11y-audit.mjs";
 import { computeA11yPatternFingerprint, computeA11yOccurrenceFingerprint } from "./fingerprint-core.mjs";
 import { redactStringsDeep } from "./redact-secrets.mjs";
+import { getEngineExecution, formatEngineExecution } from "./engine-execution.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -2588,12 +2589,9 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   lines.push(`- Submitted by: ${summary.submittedBy}`);
   lines.push(`- Scanned at: ${summary.scannedAt}`);
 
-  // Add engine information
+  // Add engine information with explicit execution status.
   if (summary.engines && Array.isArray(summary.engines)) {
-    const engineDisplay = summary.engines.includes("all")
-      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)"
-      : summary.engines.map(e => e.toUpperCase()).join(", ");
-    lines.push(`- Engines used: ${engineDisplay}`);
+    lines.push(...formatEngineExecution(summary));
   }
 
   // Add timing information
@@ -4162,7 +4160,8 @@ async function main() {
       summary: accessibilityContext.summary,
       artifact: "accessibility-context.json"
     },
-    changeTracking
+    changeTracking,
+    engineExecution: getEngineExecution({ results, engines })
   };
 
   // Sanitize the report before any artifact (JSON/Markdown/HTML/CSV/overlap)
