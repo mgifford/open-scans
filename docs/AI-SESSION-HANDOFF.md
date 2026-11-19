@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-18 (evening)
-**Open Scans integration checkpoint:** `96d0c67` (same-viewport protocol and component-attribution policy)
+**Last updated:** 2026-11-19
+**Open Scans integration checkpoint:** `e8d134b` (browser workflows pinned to `ubuntu-24.04`)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -37,7 +37,8 @@ Latest merged PRs:
 - #392 — accessibility context for FES;
 - #393 — performance execution;
 - #395 — corrected PERF issue-template text;
-- #396 — explicit selector type.
+- #396 — explicit selector type;
+- #399 — browser workflows pinned to `ubuntu-24.04`.
 
 ### Firefox Energy Scanner
 
@@ -113,6 +114,13 @@ strict consumer without coordinating it first.
 - Raw Lighthouse/Sitespeed artifacts are Actions artifacts, not committed.
 - Committed outputs live under `reports/performance/issue-<n>/<timestamp>/`.
 - No `PERF:` issue means no performance run. Do not assume a merged runner is running.
+
+### Runner image
+
+Every workflow that installs a browser pins `ubuntu-24.04`. `ubuntu-latest`
+resolved to Ubuntu 26.04 ("resolute") from mid-November 2026, where Playwright's
+`install --with-deps` package list does not resolve. See pitfall 18. Do not
+reintroduce `ubuntu-latest` on a job that runs `npx playwright install`.
 
 ### Accessibility context
 
@@ -281,6 +289,23 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
 17. **A restricted file sandbox can stop Firefox from launching.** Use
     `WEB_ENERGY_TEST_ENGINE=chromium` for local FES runs, and let CI run the
     Firefox e2e jobs.
+18. **`--with-deps` breaks on a runner image Playwright has not caught up with.**
+    `ubuntu-latest` became Ubuntu 26.04, and Playwright 1.64.1 ships an
+    `ubuntu26.04-x64` manifest copied from 24.04 that still asks for
+    `fonts-unifont`, `xfonts-cyrillic`, `xfonts-scalable`,
+    `fonts-ipafont-gothic`, `fonts-wqy-zenhei`, `fonts-tlwg-loma-otf` and
+    `fonts-freefont-ttf`. The 26.04 archive has none of them, so apt exits 100,
+    Playwright reports `Failed to install browsers`, and the test step is
+    **skipped** — the tests never ran, so their result says nothing about the
+    code. Pin browser jobs to `ubuntu-24.04` (#399) until Playwright publishes a
+    working 26.04 list, then lift the pin. The signature is a failed
+    "install browser" step followed by a skipped "run tests" step.
+19. **Read the job log, not the run log.** `gh run view --log` writes its cache
+    zip under `~/.cache/gh`, which a restricted sandbox blocks. Fetch the job
+    directly instead:
+    `gh api repos/mgifford/open-scans/actions/jobs/<job-id>/logs --allow-escape-sequences`.
+    `gh run view <id> --json jobs` gives the step numbers that the GitHub UI
+    `#step:N` anchor refers to.
 
 ---
 
@@ -325,6 +350,10 @@ node scanner/run-performance-issue.mjs request.json --out .scan-output/performan
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
 npm run lint
 npm run test:bdd
+
+# CI triage (sandbox-safe: skips the blocked ~/.cache/gh log cache)
+gh run view <run-id> --json jobs # step numbers for the UI #step:N anchor
+gh api repos/mgifford/open-scans/actions/jobs/<job-id>/logs --allow-escape-sequences
 ```
 
 FES (in the FES checkout):
