@@ -76,23 +76,40 @@ export function filterSameOriginUrls(urls, baseUrl) {
 }
 
 /**
- * Randomly sample up to maxCount items from an array using a Fisher-Yates shuffle.
- * Each call produces a non-deterministic result; a different random subset is
- * returned each time even for identical inputs.
+ * Decode the HTML entities that appear in href and action attributes.
+ *
+ * A crawl that keeps `&amp;` produces URLs such as
+ * `/paca/?role=valid&amp;shadow=open`, which the server treats as a different
+ * query string: the page is fetched, but the intended state is never applied.
+ * Only the entities that legitimately appear in URL attributes are decoded.
+ *
+ * @param {string} value
+ * @returns {string}
+ */
+export function decodeHtmlEntities(value) {
+  return String(value ?? "")
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+/**
+ * Take the first maxCount URLs in document order.
+ *
+ * Selection is deterministic on purpose: a scan that samples a random subset
+ * of a sitemap cannot be reproduced, cannot be compared with the previous run,
+ * and cannot back a "complete audit" claim.
+ *
  * @param {string[]} items
  * @param {number} maxCount
  * @returns {string[]}
  */
-export function randomSample(items, maxCount) {
-  if (items.length <= maxCount) return [...items];
-
-  // Fisher-Yates shuffle on a copy
-  const shuffled = [...items];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled.slice(0, maxCount);
+export function selectStableUrls(items, maxCount) {
+  return items.slice(0, Math.max(0, maxCount));
 }
 
 /**
@@ -264,7 +281,7 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
 
     while ((match = hrefPattern.exec(html)) !== null) {
       try {
-        const parsed = new URL(match[1], url);
+        const parsed = new URL(decodeHtmlEntities(match[1]), url);
         parsed.hash = "";
         const normalized = parsed.toString();
         const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
@@ -290,7 +307,7 @@ export async function crawlPageLinks(url, timeout = DEFAULT_CRAWL_TIMEOUT) {
 
     while ((match = formPattern.exec(html)) !== null) {
       try {
-        const parsed = new URL(match[1], url);
+        const parsed = new URL(decodeHtmlEntities(match[1]), url);
         parsed.hash = "";
         const normalized = parsed.toString();
         const assetLike = /\.(css|js|mjs|json|xml|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|pdf|zip)$/i
@@ -341,10 +358,13 @@ export async function crawlSiteForUrls(baseUrl, maxUrls = DEFAULT_MAX_URLS, time
     console.error(`[crawl] Sitemap: ${filtered.length} same-origin HTML URLs after filtering`);
 
     if (filtered.length > 0) {
-      // Ensure base URL is included; sample remaining slots from the rest
+      // Ensure base URL is included; take the remaining slots in sitemap order.
       const others = filtered.filter((u) => u !== baseUrl);
-      const sampled = randomSample(others, maxUrls - 1);
-      const result = [baseUrl, ...sampled].slice(0, maxUrls);
+      const selected = selectStableUrls(others, maxUrls - 1);
+      const result = [baseUrl, ...selected].slice(0, maxUrls);
+      if (filtered.length > result.length) {
+        console.error(`[crawl] Sitemap lists ${filtered.length} URLs; scanning ${result.length} (cap). Raise the URL limit to cover the rest.`);
+      }
       console.error(`[crawl] Selected ${result.length} URLs from sitemap`);
       return result;
     }
@@ -360,8 +380,11 @@ export async function crawlSiteForUrls(baseUrl, maxUrls = DEFAULT_MAX_URLS, time
       console.error(`[crawl] robots.txt sitemap ${robotsSitemapUrl}: ${filtered.length} same-origin URLs`);
       if (filtered.length > 0) {
         const others = filtered.filter((u) => u !== baseUrl);
-        const sampled = randomSample(others, maxUrls - 1);
-        const result = [baseUrl, ...sampled].slice(0, maxUrls);
+        const selected = selectStableUrls(others, maxUrls - 1);
+        const result = [baseUrl, ...selected].slice(0, maxUrls);
+        if (filtered.length > result.length) {
+          console.error(`[crawl] robots.txt sitemap lists ${filtered.length} URLs; scanning ${result.length} (cap). Raise the URL limit to cover the rest.`);
+        }
         console.error(`[crawl] Selected ${result.length} URLs from robots.txt sitemap`);
         return result;
       }

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseSitemapXml, filterSameOriginUrls, randomSample, parseRobotsForSitemaps, crawlPageLinks, crawlSiteForUrls } from "../../scanner/crawl-urls.mjs";
+import { parseSitemapXml, filterSameOriginUrls, decodeHtmlEntities, selectStableUrls, parseRobotsForSitemaps, crawlPageLinks, crawlSiteForUrls } from "../../scanner/crawl-urls.mjs";
 
 // --- parseSitemapXml ---
 
@@ -102,34 +102,35 @@ test("filterSameOriginUrls handles invalid URLs in the list", () => {
   ]);
 });
 
-// --- randomSample ---
+// --- selectStableUrls ---
 
-test("randomSample returns all items when count >= array length", () => {
+test("selectStableUrls returns all items when count >= array length", () => {
   const items = ["a", "b", "c"];
-  const result = randomSample(items, 10);
-  assert.deepEqual(result, ["a", "b", "c"]);
+  assert.deepEqual(selectStableUrls(items, 10), ["a", "b", "c"]);
 });
 
-test("randomSample returns exactly maxCount items when array is larger", () => {
+test("selectStableUrls takes the first maxCount items in order", () => {
   const items = Array.from({ length: 100 }, (_, i) => `https://example.com/page-${i}`);
-  const result = randomSample(items, 20);
+  const result = selectStableUrls(items, 20);
   assert.equal(result.length, 20);
-  // All returned items should be from the original array
-  for (const item of result) {
-    assert.ok(items.includes(item), `${item} should be in original array`);
-  }
+  assert.deepEqual(result, items.slice(0, 20));
 });
 
-test("randomSample returns a copy and does not modify original", () => {
-  const items = ["a", "b", "c"];
-  const result = randomSample(items, 2);
-  assert.equal(result.length, 2);
-  assert.deepEqual(items, ["a", "b", "c"]); // Original unchanged
+test("selectStableUrls is deterministic and does not modify the input", () => {
+  const items = ["a", "b", "c", "d"];
+  const first = selectStableUrls(items, 2);
+  const second = selectStableUrls(items, 2);
+  assert.deepEqual(first, second);
+  assert.deepEqual(items, ["a", "b", "c", "d"]);
 });
 
-test("randomSample returns empty array for empty input", () => {
-  const result = randomSample([], 5);
-  assert.deepEqual(result, []);
+// --- decodeHtmlEntities ---
+
+test("decodeHtmlEntities decodes entities that appear in URL attributes", () => {
+  assert.equal(decodeHtmlEntities("/paca/?role=valid&amp;shadow=open"), "/paca/?role=valid&shadow=open");
+  assert.equal(decodeHtmlEntities("?a=1&amp;b=2&#38;c=3"), "?a=1&b=2&c=3");
+  assert.equal(decodeHtmlEntities("&#x26;x"), "&x");
+  assert.equal(decodeHtmlEntities("plain"), "plain");
 });
 
 // --- parseRobotsForSitemaps ---
@@ -232,6 +233,40 @@ test("crawlSiteForUrls follows links beyond the landing page", async () => {
       "https://example.com/extra/",
       "https://example.com/step-2/"
     ]);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("crawlPageLinks decodes HTML entities in href and form actions", async () => {
+  const html = '<a href="/paca/?role=valid&amp;shadow=open">one</a><form action="/submit?a=1&amp;b=2"></form>';
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({ ok: true, status: 200, text: async () => html });
+  try {
+    const urls = await crawlPageLinks("https://example.com/", 1000);
+    assert.ok(urls.includes("https://example.com/paca/?role=valid&shadow=open"), urls.join(","));
+    assert.ok(urls.includes("https://example.com/submit?a=1&b=2"), urls.join(","));
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("crawlSiteForUrls is deterministic for the same site", async () => {
+  const pages = {
+    "https://example.com/": '<a href="/a/">a</a><a href="/b/">b</a>',
+    "https://example.com/a/": "done",
+    "https://example.com/b/": "done"
+  };
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => ({
+    ok: true,
+    status: 200,
+    text: async () => pages[String(url)] ?? "not found"
+  });
+  try {
+    const first = await crawlSiteForUrls("https://example.com/", 3, 1000);
+    const second = await crawlSiteForUrls("https://example.com/", 3, 1000);
+    assert.deepEqual(first, second);
   } finally {
     globalThis.fetch = originalFetch;
   }
