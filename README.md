@@ -691,6 +691,7 @@ Development of `open-scans` has used AI coding assistants for:
 | DeepSeek Harness (deepseek-flash) | Multi-engine evidence P2: rule-semantics registry with ACT-verified vs inferred provenance, cross-engine correlation with agreement/detection-asymmetry/target-disagreement/insufficient-evidence dispositions, order-independent issue identity, correlation schema and the four-engine image regression | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Multi-engine evidence P3: ACT registry with verified vs candidate mappings, engine-version alignment, metadata provenance, ACT 1.1 rule types, correlation-derived ACT consensus, schema and tests | Development – November 2026 |
 | DeepSeek Harness (deepseek-flash) | Multi-engine evidence P4: accessible Markdown/HTML evidence sections (engine matrix, per-engine disclosures, keyboard filter), explicit empty states, injection-safe rendering, and tests | Development – November 2026 |
+| DeepSeek Harness (deepseek-flash) | Multi-engine evidence P5: historical comparison with change attribution and `not-observed` semantics, plus ACT lab cohort tracking of registry and analysis versions | Development – November 2026 |
 
 > **For AI agents**: If you contribute to this project, add a row for your model/tool above. See the [AI Disclosure Requirement](./AGENTS.md) in AGENTS.md for instructions.
 

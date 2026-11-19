@@ -10,6 +10,10 @@ import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
+import { CORRELATION_VERSION } from '../correlation.mjs'
+import { RULE_SEMANTICS_VERSION } from '../rule-semantics.mjs'
+import { TARGET_RESOLUTION_SCHEMA_VERSION } from '../target-resolution.mjs'
+
 export const COHORT_VERSION = 'act-lab-cohort/1'
 export const ACT_TESTCASES_URL = 'https://www.w3.org/WAI/content-assets/wcag-act-rules/testcases.json'
 export const ENGINE_PACKAGES = [
@@ -151,15 +155,33 @@ export function fileHash (root, relativePath) {
   return sha256(readFileSync(join(root, relativePath)))
 }
 
-export function computeCohort ({ fixtureHash, engineVersions, actMappingHash, actRulesHash, browser = 'chromium', siteRoot = '' }) {
+export function computeCohort ({
+  fixtureHash,
+  engineVersions,
+  actMappingHash,
+  actRegistryHash = '',
+  actRulesHash,
+  browser = 'chromium',
+  siteRoot = '',
+  targetResolutionVersion = TARGET_RESOLUTION_SCHEMA_VERSION,
+  correlationVersion = CORRELATION_VERSION,
+  semanticsVersion = RULE_SEMANTICS_VERSION
+}) {
   const components = {
     cohortVersion: COHORT_VERSION,
     fixtures: fixtureHash,
     engines: engineVersions,
     actMapping: actMappingHash,
+    actRegistry: actRegistryHash,
     actRules: actRulesHash,
     browser,
-    siteRoot
+    siteRoot,
+    // Analysis changes are cohort inputs too: a different correlation or
+    // target-resolution algorithm can change a result without the page,
+    // engine or mapping changing at all.
+    targetResolution: targetResolutionVersion,
+    correlation: correlationVersion,
+    semantics: semanticsVersion
   }
 
   return {
@@ -184,9 +206,13 @@ export function compareCohorts (previous, current) {
           fixtures: 'fixtures-changed',
           engines: 'engine-versions-changed',
           actMapping: 'act-mapping-changed',
+          actRegistry: 'act-registry-changed',
           actRules: 'act-rules-changed',
           browser: 'browser-changed',
-          cohortVersion: 'cohort-format-changed'
+          targetResolution: 'target-resolution-changed',
+          correlation: 'correlation-algorithm-changed',
+          semantics: 'rule-semantics-changed',
+          cohortVersion: 'cohort-format-changed',
         }[key] || `${key}-changed`
       )
     }

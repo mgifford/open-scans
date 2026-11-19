@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { join } from "node:path";
@@ -22,6 +22,7 @@ import { getEngineExecution, formatEngineExecution } from "./engine-execution.mj
 import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
 import { correlateObservations } from "./correlation.mjs";
 import { renderCorrelationMarkdown } from "./correlation-report.mjs";
+import { compareRuns, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -4321,6 +4322,33 @@ async function main() {
 
   let markdownContent = toMarkdownReport(summary, axeCoreVersion || "4.11");
   markdownContent += "\n" + renderCorrelationMarkdown({ correlation: correlationArtifact, observations: observationArtifact });
+
+  // Compare with the most recent sibling run that has a correlation artifact.
+  // Old runs simply do not have one; absence of a comparison is reported, not
+  // guessed.
+  let historyComparison = null;
+  try {
+    const issueDir = join(outputDir, "..");
+    const currentName = outputDir.split("/").pop();
+    const siblings = readdirSync(issueDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && entry.name !== currentName)
+      .map((entry) => entry.name)
+      .sort();
+    for (const name of siblings.reverse()) {
+      const candidate = join(issueDir, name, "correlation.json");
+      if (!existsSync(candidate)) continue;
+      historyComparison = compareRuns({
+        previous: JSON.parse(readFileSync(candidate, "utf8")),
+        current: correlationArtifact
+      });
+      break;
+    }
+  } catch (error) {
+    console.error(`[history] comparison skipped: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  if (historyComparison) {
+    markdownContent += "\n" + renderHistoryMarkdown(historyComparison);
+  }
   if (remediationResult) {
     markdownContent += "\n" + formatRemediationMarkdown(remediationResult);
   }
@@ -4329,6 +4357,14 @@ async function main() {
   writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n", "utf8");
   writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");
   writeFileSync(correlationPath, JSON.stringify(correlationArtifact, null, 2) + "\n", "utf8");
+  if (historyComparison) {
+    writeFileSync(join(outputDir, "history-comparison.json"), JSON.stringify(historyComparison, null, 2) + "\n", "utf8");
+    summary.historyComparison = {
+      artifact: "history-comparison.json",
+      comparable: historyComparison.comparable,
+      ...(historyComparison.counts ?? {})
+    };
+  }
 
   // ── Trend analysis (inline, based on historical reports now including this one) ──
   let trendData = null;

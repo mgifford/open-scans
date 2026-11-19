@@ -15,14 +15,18 @@ import { dirname, join, resolve } from "node:path";
 
 import { buildObservationArtifact } from "./observations.mjs";
 import { correlateObservations } from "./correlation.mjs";
+import { compareRuns } from "./history-compare.mjs";
 import { redactStringsDeep } from "./redact-secrets.mjs";
 
 function parseArgs(argv) {
-  const args = { input: null, out: null };
+  const args = { input: null, out: null, previous: null };
   for (let index = 0; index < argv.length; index += 1) {
     const value = argv[index];
     if (value === "--out") {
       args.out = argv[index + 1];
+      index += 1;
+    } else if (value === "--previous") {
+      args.previous = argv[index + 1];
       index += 1;
     } else if (!args.input) {
       args.input = value;
@@ -61,6 +65,18 @@ function main() {
   const correlationPath = join(outDir, "correlation.json");
   writeFileSync(outPath, JSON.stringify(artifact, null, 2) + "\n", "utf8");
   writeFileSync(correlationPath, JSON.stringify(correlation, null, 2) + "\n", "utf8");
+
+  if (args.previous) {
+    const previous = JSON.parse(readFileSync(resolve(args.previous), "utf8"));
+    const comparison = compareRuns({ previous, current: correlation });
+    const comparisonPath = join(outDir, "history-comparison.json");
+    writeFileSync(comparisonPath, JSON.stringify(comparison, null, 2) + "\n", "utf8");
+    console.log(`Wrote ${comparisonPath}`);
+    if (comparison.comparable) {
+      console.log(`- persisting: ${comparison.counts.persisting}, changed: ${comparison.counts.changed}`);
+      console.log(`- new: ${comparison.counts.new}, not observed: ${comparison.counts.notObserved}`);
+    }
+  }
 
   const { counts } = artifact;
   console.log(`Wrote ${outPath}`);
