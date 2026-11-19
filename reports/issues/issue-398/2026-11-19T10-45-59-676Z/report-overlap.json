@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-11-19T10:45:02.522Z",
+  "issueNumber": 398,
+  "scanTitle": "Complete audit",
+  "scannersInUse": [
+    "alfa",
+    "equalAccess"
+  ],
+  "scannerStats": {
+    "axe": {
+      "label": "axe",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "alfa": {
+      "label": "ALFA",
+      "failed": 140,
+      "uniqueFailed": 140,
+      "duplicates": 0
+    },
+    "equalAccess": {
+      "label": "Equal Access",
+      "failed": 86,
+      "uniqueFailed": 86,
+      "duplicates": 0
+    },
+    "accesslint": {
+      "label": "AccessLint",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    },
+    "qualweb": {
+      "label": "QualWeb",
+      "failed": 0,
+      "uniqueFailed": 0,
+      "duplicates": 0
+    }
+  },
+  "matrix": {
+    "alfa": {
+      "alfa": 35,
+      "equalAccess": 0
+    },
+    "equalAccess": {
+      "alfa": 0,
+      "equalAccess": 86
+    }
+  },
+  "duplicateFindingTotals": 105,
+  "overlapEntryCount": 0,
+  "overlapEntries": [],
+  "actConsensusEntryCount": 0,
+  "actConsensusEntries": []
+}
