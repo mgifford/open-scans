@@ -1,8 +1,7 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0–P5 shipped (observation model, target resolution, correlation, ACT
-registry, reporting, historical comparison). P6 (manual review) is shipped as
-the review format and CLI; no review application UI is planned.
+Status: P0–P7 shipped. The ACT laboratory now compares per declared target
+instead of attributing page-level findings.
 
 ## 1. What exists today
 
@@ -263,6 +262,33 @@ document hash and evidence moves. A stale decision is reported, not dropped.
 The format is plain JSON in version control, so a review is a pull request.
 See [reviews/README.md](../reviews/README.md) for the workflow.
 
+## 3h. ACT laboratory per-target outcomes (P7, shipped)
+
+`scanner/act-lab/target-outcomes.mjs` resolves the fixture's declared target
+(`target.selector`) against the captured rendered HTML and classifies each
+mapped engine failure as on-target, off-target or unknown-target by resolving
+its own locator to the same canonical `dom:v1:<hash>:<path>` id.
+
+`scanner/act-lab/summarise.mjs` (now `act-lab-observations/2`) therefore:
+
+- attributes a failure to the fixture target only when it resolves to that
+  exact node;
+- reports mapped failures elsewhere on the page as `page-level-only` and
+  counts them in `pageLevelFindings` — never as the fixture's result;
+- reports `target-ambiguous` / `target-unresolved` instead of guessing;
+- reports iframe and shadow-root targets as `unsupported` with a reason,
+  because the top-level static snapshot cannot reach them;
+- never turns a page-level pass list into a target pass (`pass-not-attributed`).
+
+Expectation comparison is separate from execution. `compareExpectation()`
+returns `matches-expected` / `unexpected-failure` only when the expectation is
+`reviewed`; an `unreviewed` expectation yields `provisional-*` statuses, and a
+passing expectation with no failure observed yields `cannot-confirm-pass`
+because no engine publishes explicit per-target pass evidence.
+
+Per-viewport merging keeps every comparison and sums `pageLevelFindings`, so
+the merged report answers "what did this fixture actually show?" per target.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -287,6 +313,7 @@ evidence resolves without rerunning a browser.
 | **P4 ✅** | Reporting: multi-engine evidence section in Markdown and HTML, page/engine matrix, per-engine evidence disclosures, accessible filter, explicit empty states | P2 |
 | **P5 ✅** | Historical comparison with change attribution, `not-observed` instead of "fixed", ACT lab cohort tracks analysis versions | P3, P4 |
 | **P6 ✅** | Manual review format, validation, application CLI and unmatched-decision reporting | P4 |
+| **P7 ✅** | ACT laboratory per-target outcomes: target resolution, no page-level attribution, expectation comparison, browser-context limits | P3, P5 |
 
 | P6 | Manual review format, unresolved-match UX | P4 |
 

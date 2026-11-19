@@ -23,17 +23,34 @@ export function mergeReports (reports) {
 
   for (const engine of ENGINES) byEngine[engine] = byEngine[engine] || {}
 
+  const comparisons = reports.flatMap((report) => report.comparisons || [])
+  const comparisonCounts = {}
+  for (const comparison of comparisons) {
+    comparisonCounts[comparison.status] = (comparisonCounts[comparison.status] || 0) + 1
+  }
+  const targetStatuses = { resolved: 0, unresolved: 0, ambiguous: 0, unsupported: 0 }
+  for (const comparison of comparisons) {
+    if (comparison.targetStatus in targetStatuses) targetStatuses[comparison.targetStatus] += 1
+  }
+
   return {
     ...reports[0],
     generatedAt: new Date().toISOString(),
     viewports: [...new Set(results.map((entry) => entry.viewport).filter(Boolean))],
     counts,
+    comparisonCounts,
+    targetStatuses,
+    comparisons,
     engineSpecificFindings: results.reduce(
       (total, entry) => total + (entry.engineSpecificRules?.length || 0),
       0
     ),
     otherActFindings: results.reduce(
       (total, entry) => total + (entry.otherActRules?.length || 0),
+      0
+    ),
+    pageLevelFindings: results.reduce(
+      (total, entry) => total + (entry.pageLevelFailures || 0),
       0
     ),
     byEngine,
