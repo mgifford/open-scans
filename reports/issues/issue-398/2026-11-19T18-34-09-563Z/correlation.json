@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "a11y-correlation/1",
+  "generatedAt": "2026-11-19T18:33:38.001Z",
+  "issueNumber": 398,
+  "scanTitle": "Complete Audit - Record a Goose",
+  "algorithm": {
+    "correlationVersion": "correlation/1",
+    "semanticsVersion": "rule-semantics/1",
+    "mappingRegistryVersion": "2026-11-19T15:00:08.360Z"
+  },
+  "counts": {
+    "rawObservations": 639,
+    "repeatedObservations": 0,
+    "correlatedObservations": 0,
+    "singleEngineObservations": 11,
+    "insufficientEvidenceObservations": 628,
+    "notComparableObservations": 0,
+    "correlatedIssues": 0,
+    "verifiedEquivalentFindings": 0,
+    "versionMismatchedFindings": 0,
+    "inferredEquivalentFindings": 0,
+    "singleEngineFindings": 11,
+    "relatedFindings": 0,
+    "targetDisagreements": 0
+  },
+  "reconciliation": {
+    "observationsAccountedFor": 639,
+    "rawObservations": 639,
+    "complete": true,
+    "note": "Each observation has exactly one disposition. Correlation never removes evidence, and explicit pass evidence is not inferred from engine silence."
+  },
+  "issues": [],
+  "singles": [
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+      "family": "act:97a4e1+m6b1q3",
+      "familyLabel": null,
+      "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "97a4e1",
+        "m6b1q3"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "3173683abb160f8bd89b2d7eb8444ad486319debeb6fc7ab60ff78bc6c0e8050"
+      ],
+      "observations": [
+        {
+          "observationId": "3173683abb160f8bd89b2d7eb8444ad486319debeb6fc7ab60ff78bc6c0e8050",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "button-name",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/16/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
+      "family": "act:97a4e1+m6b1q3",
+      "familyLabel": null,
+      "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "97a4e1",
+        "m6b1q3"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "3d83a9dde9e75e168a06d3306c70b4b6610c62af3392022fb7bacf3bdc9f0eb3"
+      ],
+      "observations": [
+        {
+          "observationId": "3d83a9dde9e75e168a06d3306c70b4b6610c62af3392022fb7bacf3bdc9f0eb3",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "button-name",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+      "family": "act:97a4e1",
+      "familyLabel": null,
+      "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "alfa"
+      ],
+      "actRuleIds": [
+        "97a4e1"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "56a0172d74ccc256417b83dea088216d990f1308d0fbcc472aea65ac4f6d9c36"
+      ],
+      "observations": [
+        {
+          "observationId": "56a0172d74ccc256417b83dea088216d990f1308d0fbcc472aea65ac4f6d9c36",
+          "engine": "alfa",
+          "engineLabel": "ALFA",
+          "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+          "nativeLocator": "/button[@id=\"test-target\"]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-descendant-search",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/16/alfa/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+      "family": "act:97a4e1+m6b1q3",
+      "familyLabel": null,
+      "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "97a4e1",
+        "m6b1q3"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "6cf9aa38abd549850d497012267bcfd4f7d6af5c9dbeb5cd0f8451785bd990bc"
+      ],
+      "observations": [
+        {
+          "observationId": "6cf9aa38abd549850d497012267bcfd4f7d6af5c9dbeb5cd0f8451785bd990bc",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "button-name",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/14/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+      "family": "act:97a4e1",
+      "familyLabel": null,
+      "targetId": "dom:v1:f106beb7872548235adb453d8ab1db016e8fefe8939164cf64cee4a9382c5563:/html[1]/body[1]/main[1]/div[1]/button[1]",
+      "engines": [
+        "alfa"
+      ],
+      "actRuleIds": [
+        "97a4e1"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "822b3aaf3bf3e3f648f1241fa90122b42e2cabf43eb766f3cba90e2d19788f33"
+      ],
+      "observations": [
+        {
+          "observationId": "822b3aaf3bf3e3f648f1241fa90122b42e2cabf43eb766f3cba90e2d19788f33",
+          "engine": "alfa",
+          "engineLabel": "ALFA",
+          "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+          "nativeLocator": "/button[@id=\"test-target\"]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-descendant-search",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/13/alfa/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
+      "family": "act:674b10",
+      "familyLabel": null,
+      "targetId": "dom:v1:97a3225b3c69e993b5802364c30a1c4f64e2b2346f8aa22c5ef2e3a367eae0c8:/html[1]/body[1]/main[1]/div[1]/span[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "674b10"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "88ab2777c1c1a6fdcf58a1ce7e2684a25f9dbc64c008c2bb42dcb1c6a847d7b0"
+      ],
+      "observations": [
+        {
+          "observationId": "88ab2777c1c1a6fdcf58a1ce7e2684a25f9dbc64c008c2bb42dcb1c6a847d7b0",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "aria-roles",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/11/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+      "family": "act:97a4e1",
+      "familyLabel": null,
+      "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "alfa"
+      ],
+      "actRuleIds": [
+        "97a4e1"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "9a0014557b3912dbbd4ef89c5bcb592651b2dc32c4db0f9edec87a8dc3c59b72"
+      ],
+      "observations": [
+        {
+          "observationId": "9a0014557b3912dbbd4ef89c5bcb592651b2dc32c4db0f9edec87a8dc3c59b72",
+          "engine": "alfa",
+          "engineLabel": "ALFA",
+          "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+          "nativeLocator": "/button[@id=\"test-target\"]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-descendant-search",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/14/alfa/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+      "family": "act:97a4e1+m6b1q3",
+      "familyLabel": null,
+      "targetId": "dom:v1:f106beb7872548235adb453d8ab1db016e8fefe8939164cf64cee4a9382c5563:/html[1]/body[1]/main[1]/div[1]/button[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "97a4e1",
+        "m6b1q3"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "9deae63594d79ee658e366c3ad3a64f2c9bb85311b90388eee93e10f2fad082f"
+      ],
+      "observations": [
+        {
+          "observationId": "9deae63594d79ee658e366c3ad3a64f2c9bb85311b90388eee93e10f2fad082f",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "button-name",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/13/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/",
+      "family": "act:97a4e1",
+      "familyLabel": null,
+      "targetId": "dom:v1:b5b5b21e475f155c454a7bb91f04883403e2cf15a0e0ba3a172dee4d6ea7a5ef:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "alfa"
+      ],
+      "actRuleIds": [
+        "97a4e1"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "b222e44c5f6783a993868706be095484678c1f1adf8ce4a6229a975eb8fb4c01"
+      ],
+      "observations": [
+        {
+          "observationId": "b222e44c5f6783a993868706be095484678c1f1adf8ce4a6229a975eb8fb4c01",
+          "engine": "alfa",
+          "engineLabel": "ALFA",
+          "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+          "nativeLocator": "/button[@id=\"test-target\"]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-descendant-search",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/alfa/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
+      "family": "act:97a4e1",
+      "familyLabel": null,
+      "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "alfa"
+      ],
+      "actRuleIds": [
+        "97a4e1"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "f5892842d4092a5ff08ef45a73bf4296031ed0e7681f7d315e117b290853f692"
+      ],
+      "observations": [
+        {
+          "observationId": "f5892842d4092a5ff08ef45a73bf4296031ed0e7681f7d315e117b290853f692",
+          "engine": "alfa",
+          "engineLabel": "ALFA",
+          "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+          "nativeLocator": "/button[@id=\"test-target\"]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-descendant-search",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/alfa/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/",
+      "family": "act:97a4e1+m6b1q3",
+      "familyLabel": null,
+      "targetId": "dom:v1:b5b5b21e475f155c454a7bb91f04883403e2cf15a0e0ba3a172dee4d6ea7a5ef:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+      "engines": [
+        "axe"
+      ],
+      "actRuleIds": [
+        "97a4e1",
+        "m6b1q3"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "f6aa0b0e79f21b5d0247e940b712773c583438b13e1daad88f65ae07fdab0a0e"
+      ],
+      "observations": [
+        {
+          "observationId": "f6aa0b0e79f21b5d0247e940b712773c583438b13e1daad88f65ae07fdab0a0e",
+          "engine": "axe",
+          "engineLabel": "axe",
+          "ruleId": "button-name",
+          "nativeLocator": "#test-target",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/axe/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    }
+  ],
+  "related": [],
+  "disagreements": [],
+  "notComparable": []
+}
