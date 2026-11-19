@@ -21,6 +21,7 @@
  * @module rule-semantics
  */
 import { getActRuleIds } from "./act-mapping.mjs";
+import { getMappingEvidence } from "./act-registry.mjs";
 
 export const RULE_SEMANTICS_VERSION = "rule-semantics/1";
 
@@ -76,31 +77,39 @@ const RULE_INDEX = (() => {
 export function getRuleSemantics(engine, ruleId) {
   const key = `${engine}:${ruleId}`;
   const explicit = RULE_INDEX.get(key);
+  const evidence = getMappingEvidence(engine, ruleId);
   const actRuleIds = getActRuleIds(engine, ruleId);
+  const actMapped = evidence.status === "verified";
 
   if (explicit) {
     return {
       family: explicit.family,
       label: explicit.label,
       wcagSc: explicit.wcagSc,
-      provenance: explicit.provenance,
-      actMapped: explicit.actMapped,
+      // Explicit family membership is semantics, not ACT mapping. The
+      // provenance records the weaker of the two evidence levels.
+      provenance: explicit.provenance === "act-verified" && !actMapped ? "inferred-semantics" : explicit.provenance,
+      actMapped,
       actRuleIds,
+      mappingEvidence: evidence.status,
+      versionAligned: evidence.versionAligned,
       semanticsVersion: RULE_SEMANTICS_VERSION
     };
   }
 
-  if (actRuleIds.length > 0) {
-    // Fall back to the ACT rule itself as the family key. Verified mappings
-    // are the strongest evidence available, and grouping by ACT rule keeps
-    // rules that implement the same ACT rule comparable.
+  if (actMapped) {
+    // Fall back to the verified ACT rule as the family key. Grouping by ACT
+    // rule keeps rules that implement the same rule comparable. Candidate
+    // mappings are deliberately excluded: they are not proof of equivalence.
     return {
-      family: `act:${[...actRuleIds].sort().join("+")}`,
+      family: `act:${[...evidence.verifiedActRuleIds].sort().join("+")}`,
       label: null,
       wcagSc: [],
       provenance: "act-verified",
       actMapped: true,
       actRuleIds,
+      mappingEvidence: evidence.status,
+      versionAligned: evidence.versionAligned,
       semanticsVersion: RULE_SEMANTICS_VERSION
     };
   }
@@ -111,7 +120,9 @@ export function getRuleSemantics(engine, ruleId) {
     wcagSc: [],
     provenance: "unmapped",
     actMapped: false,
-    actRuleIds: [],
+    actRuleIds,
+    mappingEvidence: evidence.status,
+    versionAligned: evidence.versionAligned,
     semanticsVersion: RULE_SEMANTICS_VERSION
   };
 }

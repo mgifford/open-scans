@@ -146,7 +146,9 @@ export function correlateObservations(artifact) {
     }
 
     const engines = [...new Set(entries.map((entry) => entry.observation.engine.name))].sort();
-    const actVerified = entries.every((entry) => entry.semantics.actMapped);
+    const actMapped = entries.every((entry) => entry.semantics.actMapped);
+    const versionAligned = entries.every((entry) => entry.semantics.versionAligned === true);
+    const actVerified = actMapped && versionAligned;
     const actRuleIds = [...new Set(entries.flatMap((entry) => entry.semantics.actRuleIds ?? []))].sort();
     const wcagSc = [...new Set(entries.flatMap((entry) => entry.semantics.wcagSc ?? []))].sort();
 
@@ -159,7 +161,10 @@ export function correlateObservations(artifact) {
       actRuleIds,
       wcagSc,
       actVerified,
-      mappingStatus: actVerified ? "act-verified" : "inferred-semantics",
+      versionAligned,
+      mappingStatus: actMapped
+        ? (versionAligned ? "act-verified" : "act-verified-different-version")
+        : "inferred-semantics",
       observationIds: entries.map((entry) => entry.observation.observationId).sort(),
       observations: entries
         .map((entry) => ({
@@ -190,8 +195,10 @@ export function correlateObservations(artifact) {
           "Two or more engines reported the same failure mechanism on the same resolved DOM target " +
           "under the same test conditions." +
           (actVerified
-            ? " Every participating engine rule has an ACT mapping."
-            : " At least one engine rule is compared by inferred semantics, not by an ACT mapping."),
+            ? " Every participating engine rule has a version-aligned ACT mapping."
+            : actMapped
+              ? " Every participating engine rule has an ACT mapping, but at least one was published for a different engine version."
+              : " At least one engine rule is compared by inferred semantics, not by an ACT mapping."),
         note: "No engine owns the issue; the correlated identity does not depend on scan order."
       });
       for (const entry of entries) {
@@ -277,7 +284,10 @@ export function correlateObservations(artifact) {
     notComparableObservations: dispositionBucket(dispositions, "not-comparable"),
     correlatedIssues: issues.length,
     verifiedEquivalentFindings: issues.filter((issue) => issue.actVerified).length,
-    inferredEquivalentFindings: issues.filter((issue) => !issue.actVerified).length,
+    versionMismatchedFindings: issues.filter(
+      (issue) => issue.mappingStatus === "act-verified-different-version"
+    ).length,
+    inferredEquivalentFindings: issues.filter((issue) => issue.mappingStatus === "inferred-semantics").length,
     singleEngineFindings: singles.length,
     relatedFindings: related.length,
     targetDisagreements: disagreements.length

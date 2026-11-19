@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "act-registry-overlays/1",
+  "note": "Curated metadata for ACT rules, verified against W3C sources on the dates recorded. Absent fields stay null on purpose: the registry records what is known, not what is plausible.",
+  "rules": {
+    "23a2a8": {
+      "title": "Image has non-empty accessible name",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/23a2a8/",
+      "ruleType": "atomic",
+      "wcag": ["1.1.1"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "46ca7f": {
+      "title": "Element marked as decorative is not exposed",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/46ca7f/",
+      "ruleType": "atomic",
+      "wcag": ["1.1.1"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "c487ae": {
+      "title": "Link has non-empty accessible name",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/c487ae/",
+      "ruleType": "atomic",
+      "wcag": ["1.1.1", "2.4.4", "4.1.2"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "09o5cg": {
+      "title": "Text has enhanced contrast",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+      "ruleType": "atomic",
+      "wcag": ["1.4.6"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "afw4f7": {
+      "title": "Text has minimum contrast",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
+      "ruleType": "atomic",
+      "wcag": ["1.4.3"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "24afc2": {
+      "title": "Important letter spacing in style attributes is wide enough",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/24afc2/",
+      "ruleType": "atomic",
+      "wcag": ["1.4.12"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "b4f0c3": {
+      "title": "Meta viewport allows for zoom",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/",
+      "ruleType": "atomic",
+      "wcag": ["1.4.4", "1.4.10"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "73f2c2": {
+      "title": "Autocomplete attribute has valid value",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/73f2c2/",
+      "ruleType": "atomic",
+      "wcag": ["1.3.5"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "80f0bf": {
+      "title": "Audio or video element avoids automatically playing audio",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/80f0bf/",
+      "ruleType": "atomic",
+      "wcag": ["1.4.2"],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    }
+  },
+  "candidateMappings": {
+    "23a2a8": {
+      "equalAccess": [
+        {
+          "ruleId": "img_alt_valid",
+          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
+          "notes": "Same failure mechanism (image without a non-empty accessible name). No published ACT implementation report found; kept as a candidate.",
+          "engineVersion": "4.0.30",
+          "verifiedAt": "2026-11-19"
+        }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "text-alternatives/img-alt",
+          "source": "https://github.com/accesslint/accesslint",
+          "notes": "Same failure mechanism. No published ACT implementation report found; kept as a candidate.",
+          "engineVersion": "0.17.0",
+          "verifiedAt": "2026-11-19"
+        }
+      ]
+    }
+  }
+}

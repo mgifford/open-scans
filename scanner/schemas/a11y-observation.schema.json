@@ -469,7 +469,8 @@
           "required": [
             "source",
             "status",
-            "verified"
+            "verified",
+            "evidence"
           ],
           "properties": {
             "source": {
@@ -480,11 +481,23 @@
               "enum": [
                 "mapped",
                 "multi-mapped",
-                "unmapped"
+                "candidate",
+                "unmapped",
+                "inferred",
+                "multi-inferred"
               ]
             },
             "verified": {
               "type": "boolean"
+            },
+            "evidence": {
+              "type": "string",
+              "enum": [
+                "verified",
+                "candidate",
+                "unmapped",
+                "inferred"
+              ]
             }
           }
         },

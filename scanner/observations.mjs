@@ -25,6 +25,7 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 
 import { getActRuleIds, getMappingStatus } from "./act-mapping.mjs";
+import { getMappingEvidence } from "./act-registry.mjs";
 import { buildDomIndex } from "./dom-index.mjs";
 import { resolveTarget } from "./target-resolution.mjs";
 
@@ -288,9 +289,10 @@ export function buildObservation({
     message,
     actRuleIds,
     mapping: {
-      source: "scanner/data/act-mapping.json",
+      source: "scanner/data/act-registry.json",
       status: getMappingStatus(engine, ruleId),
-      verified: false
+      verified: getMappingEvidence(engine, ruleId).status === "verified",
+      evidence: getMappingEvidence(engine, ruleId).status
     },
     wcagSc: Array.isArray(failure?.wcagSc) ? [...failure.wcagSc] : [],
     severity: failure?.impact || null,
