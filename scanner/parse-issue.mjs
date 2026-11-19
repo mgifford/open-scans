@@ -176,7 +176,7 @@ function extractBodyScanContext(body) {
  * @param {number} defaultCount - Default count if not found
  * @returns {number}
  */
-export function extractPageCount(text, defaultCount = 20) {
+export function extractPageCount(text, defaultCount = 50) {
   if (!text) return defaultCount;
   const match = text.match(/\bpages?:\s*(\d+)/i);
   if (match) {

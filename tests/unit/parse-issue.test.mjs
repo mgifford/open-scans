@@ -928,7 +928,7 @@ test("parseScanIssue crawl mode uses default page count when Page: not specified
   assert.equal(result.ok, true);
   assert.equal(result.needsCrawl, true);
   assert.equal(result.crawlBaseUrl, "https://example.com/");
-  assert.equal(result.crawlPageCount, 20, "should use default page count of 20");
+  assert.equal(result.crawlPageCount, 50, "should use default page count of 50");
 });
 
 test("parseScanIssue crawl mode works with HTTPS and HTTP base URLs", () => {
@@ -965,9 +965,9 @@ test("extractPageCount is case-insensitive", () => {
 });
 
 test("extractPageCount returns default when not found", () => {
-  assert.equal(extractPageCount("No page spec here"), 20);
-  assert.equal(extractPageCount(""), 20);
-  assert.equal(extractPageCount(null), 20);
+  assert.equal(extractPageCount("No page spec here"), 50);
+  assert.equal(extractPageCount(""), 50);
+  assert.equal(extractPageCount(null), 50);
 });
 
 test("extractPageCount returns custom default", () => {
@@ -975,8 +975,8 @@ test("extractPageCount returns custom default", () => {
 });
 
 test("extractPageCount clamps to valid range (1-500)", () => {
-  assert.equal(extractPageCount("Page: 0"), 20); // below minimum, returns default
-  assert.equal(extractPageCount("Page: 501"), 20); // above maximum, returns default
+  assert.equal(extractPageCount("Page: 0"), 50); // below minimum, returns default
+  assert.equal(extractPageCount("Page: 501"), 50); // above maximum, returns default
   assert.equal(extractPageCount("Page: 500"), 500); // at maximum
   assert.equal(extractPageCount("Page: 1"), 1); // at minimum
 });

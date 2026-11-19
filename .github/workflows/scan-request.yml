@@ -60,7 +60,7 @@ jobs:
       # Timeout configuration (optional, defaults shown):
       # - FETCH_TIMEOUT_MS: Maximum time for initial HTTP fetch (default: 30000ms = 30s)
       # - PER_URL_TIMEOUT_MS: Maximum time per URL including fetch and all audits (default: 60000ms = 60s)
-      # - TOTAL_SCAN_TIMEOUT_MS: Maximum total scan time (default: 3000000ms = 50min)
+      # - TOTAL_SCAN_TIMEOUT_MS: Maximum total scan time (default: 3600000ms = 60min)
       # - ALFA_PAGE_TIMEOUT_MS: ALFA CLI page load timeout (default: 30000ms = 30s)
       # - ALFA_COMMAND_TIMEOUT_MS: ALFA command execution timeout (default: 180000ms = 3min)
       # - PLAYWRIGHT_NAV_TIMEOUT_MS: Playwright page navigation timeout (default: 30000ms = 30s)
@@ -78,7 +78,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # FETCH_TIMEOUT_MS: "30000"           # 30s for initial HTTP fetch
           # PER_URL_TIMEOUT_MS: "60000"         # 60s per URL total
-          # TOTAL_SCAN_TIMEOUT_MS: "3000000"    # 50min total scan time
+          # TOTAL_SCAN_TIMEOUT_MS: "3600000"    # 60min total scan time
           # ALFA_PAGE_TIMEOUT_MS: "30000"       # 30s ALFA page load
           # ALFA_COMMAND_TIMEOUT_MS: "180000"   # 3min ALFA command execution
           # PLAYWRIGHT_NAV_TIMEOUT_MS: "30000"  # 30s Playwright navigation
