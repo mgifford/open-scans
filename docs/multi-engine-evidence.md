@@ -1,7 +1,7 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0 shipped (observation model + duplicate correction). Target resolution
-and cross-engine correlation are next.
+Status: P0 (observation model + duplicate correction) and P1 (target resolution)
+shipped. Cross-engine correlation is next.
 
 ## 1. What exists today
 
@@ -74,6 +74,39 @@ Cross-engine equivalence is reported as `0` by construction, with
 `reconciliation.crossEngineEquivalentVerified: false`, until target resolution
 lands. That is honest, not a regression: the previous number was wrong.
 
+## 3b. Target resolution (P1, shipped)
+
+`scanner/dom-index.mjs` + `scanner/target-resolution.mjs` build a deterministic
+index over one HTML snapshot and answer: does this locator identify exactly one
+element, several, or none?
+
+- Structural paths such as `/html[1]/body[1]/div[1]/main[1]/img[1]`, with
+  same-tag sibling indices.
+- CSS subset: tag, `*`, `#id`, `.class`, `[attr]`, `[attr=v]`, `~=`, `^=`, `$=`,
+  `*=`, descendant and `>` combinators.
+- XPath subset: absolute paths, descendant `//`, positional `[n]`, `[@attr]`,
+  `[@attr="v"]`, `contains()`.
+- Engine paths like `/a[@class="govuk-link"]` are not valid absolute paths; they
+  are evaluated as a descendant search and the method says so
+  (`xpath-descendant-search`, confidence `medium`).
+- Dialect is detected from the string, not the field name. AccessLint writes
+  `div > img` into its `xpath` field; treating that as XPath silently failed to
+  resolve the image target.
+- `documentHash` makes DOM-state comparability checkable. Two snapshots with
+  different hashes never share a target id.
+- Shadow-root locators are reported `unsupported` with a reason — never as a
+  WCAG failure. Static HTML cannot reach inside a shadow root.
+
+Resolution outcomes: `resolved` (one match, target id), `ambiguous` (several
+matches, candidate ids, no target id), `unresolved` (no match or no snapshot),
+`unsupported` (shadow root). Confidence: `high`, `medium`, `low`, `none`.
+
+On the #398 evidence, 237 observations now yield 107 resolved observations over
+82 distinct targets, with 73 ambiguous or unresolved. All four engines report
+the missing `alt` image on `/steps/end/` through four different locator
+dialects (`img`, `/img`, an absolute XPath, `div > img`) and all four resolve to
+the **same** target id. They remain four observations until correlation (P2).
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -82,15 +115,17 @@ node scanner/reprocess-evidence.mjs reports/issues/issue-398/2026-11-19T11-41-22
 
 Writes `observations.json` only; the source report is never modified. On the
 #398 evidence: 237 raw failures → 237 observations, 0 repeats, 0 verified
-cross-engine equivalents, 237 correlated issues (one per observation), 151
-targets unresolved or ambiguous.
+cross-engine equivalents, 237 correlated issues (one per observation), 107
+resolved observations over 82 targets, 73 targets ambiguous or unresolved.
+Saved reports already contain the captured `renderedHtml`, so historical
+evidence resolves without rerunning a browser.
 
 ## 5. Remaining plan
 
 | Phase | Work | Depends on |
 | :--- | :--- | :--- |
-| P0 (done) | Observation model, conservative duplicates, real ACT inputs, honest counts | — |
-| P1 | Target resolution (DOM snapshot, node indexing, CSS/XPath/HTML/iframe/shadow, ambiguity reporting) | P0 |
+| **P0 ✅** | Observation model, conservative duplicates, real ACT inputs, honest counts | — |
+| **P1 ✅** | Target resolution: deterministic DOM index, CSS/XPath/HTML, document hashing, ambiguity and unsupported-context reporting | P0 |
 | P2 | Correlation layer (`agreement-fail`, `direct-disagreement`, `target-disagreement`, `insufficient-evidence`, …) and the four-engine image regression | P1 |
 | P3 | ACT registry audit: verified vs candidate mappings, ACT 1.1 atomic/composite metadata, Equal Access + AccessLint entries | P2 |
 | P4 | Reporting: evidence tables, disagreement view, accessible filters, versioned exports | P2 |

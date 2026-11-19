@@ -203,8 +203,88 @@ test("observation records carry provenance and resolution state", () => {
   assert.match(observation.observationId, /^[a-f0-9]{64}$/);
   assert.equal(observation.rawEvidenceRef, "report.json#/results/0/alfa/failures/0");
   assert.equal(observation.target.resolution, "unverified");
-  assert.equal(observation.target.resolutionMethod, "native-locator-only");
+  assert.equal(observation.target.resolutionMethod, "none");
   assert.equal(observation.target.resolvedTargetId, null);
+  assert.equal(observation.document.available, false);
   assert.equal(observation.engine.name, "alfa");
   assert.equal(observation.outcome, "failed");
+});
+
+test("observations resolve targets when the scan captured rendered HTML", () => {
+  const html = `<!doctype html><html><body><main><img id="goose-photo" src="goose.jpg"><a class="govuk-link" href="/a/">A</a><a class="govuk-link" href="/b/">B</a></main></body></html>`;
+
+  const result = makeResult({
+    axe: {
+      failures: [
+        { rule: "image-alt", selector: "#goose-photo", html: "<img id=\"goose-photo\">", message: "alt" }
+      ],
+      renderedHtml: html
+    },
+    alfa: {
+      failures: [
+        {
+          rule: "https://alfa.siteimprove.com/rules/sia-r2",
+          xpath: "/html[1]/body[1]/main[1]/img[1]",
+          html: "<img id=\"goose-photo\">",
+          message: "image name"
+        },
+        {
+          rule: "https://alfa.siteimprove.com/rules/sia-r111",
+          xpath: "/a[@class=\"govuk-link\"]",
+          html: "<a class=\"govuk-link\" href=\"/a/\">A</a>",
+          message: "target size"
+        }
+      ]
+    }
+  });
+
+  const artifact = buildObservationArtifact({ results: [result] });
+  const byEngine = (name) => artifact.observations.filter((entry) => entry.engine.name === name);
+
+  const axeImage = byEngine("axe")[0];
+  const alfaImage = byEngine("alfa")[0];
+  const alfaLinks = byEngine("alfa")[1];
+
+  assert.equal(axeImage.target.resolution, "resolved");
+  assert.equal(alfaImage.target.resolution, "resolved");
+  assert.equal(axeImage.target.resolvedTargetId, alfaImage.target.resolvedTargetId);
+
+  assert.equal(alfaLinks.target.resolution, "ambiguous");
+  assert.equal(alfaLinks.target.matchedElements, 2);
+  assert.equal(alfaLinks.target.resolvedTargetId, null);
+
+  assert.equal(artifact.counts.resolvedObservations, 2);
+  assert.equal(artifact.counts.distinctResolvedTargets, 1);
+  assert.equal(artifact.documents[0].available, true);
+  assert.match(artifact.documents[0].documentHash, /^[a-f0-9]{64}$/);
+});
+
+test("issue #398: the four-engine missing-alt image resolves to one target", () => {
+  const report = JSON.parse(readFileSync(ISSUE_398_REPORT, "utf8"));
+  const artifact = buildObservationArtifact(report);
+
+  const endPage = artifact.observations.filter(
+    (entry) => entry.url.includes("/steps/end/") && entry.target.resolvedTargetId
+  );
+
+  const byRule = {
+    axe: "image-alt",
+    alfa: "https://alfa.siteimprove.com/rules/sia-r2",
+    equalAccess: "img_alt_valid",
+    accesslint: "text-alternatives/img-alt"
+  };
+
+  const imageObservations = endPage.filter((entry) => entry.engine.ruleId === byRule[entry.engine.name]);
+  assert.equal(imageObservations.length, 4, "one observation per engine is retained");
+
+  const targetIds = new Set(imageObservations.map((entry) => entry.target.resolvedTargetId));
+  assert.equal(targetIds.size, 1, "all four locators resolve to the same DOM node");
+
+  // Different locator dialects, one target.
+  const locators = imageObservations.map((entry) => entry.target.nativeLocator);
+  assert.equal(new Set(locators).size, 4);
+  assert.equal(new Set(imageObservations.map((entry) => entry.target.locatorType)).size >= 1, true);
+
+  // Four observations, still four correlated issues: correlation is P2.
+  assert.equal(artifact.counts.crossEngineEquivalent, 0);
 });
