@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { join } from "node:path";
@@ -23,7 +23,7 @@ import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./
 import { correlateObservations } from "./correlation.mjs";
 import { buildActCoverage, renderActCoverageMarkdown } from "./act-coverage.mjs";
 import { renderCorrelationMarkdown } from "./correlation-report.mjs";
-import { compareRuns, renderHistoryMarkdown } from "./history-compare.mjs";
+import { compareRuns, findPreviousCorrelationPath, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 
@@ -4339,20 +4339,18 @@ async function main() {
   // guessed.
   let historyComparison = null;
   try {
-    const issueDir = join(outputDir, "..");
-    const currentName = outputDir.split("/").pop();
-    const siblings = readdirSync(issueDir, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory() && entry.name !== currentName)
-      .map((entry) => entry.name)
-      .sort();
-    for (const name of siblings.reverse()) {
-      const candidate = join(issueDir, name, "correlation.json");
-      if (!existsSync(candidate)) continue;
+    const previousPath = findPreviousCorrelationPath({
+      issueNumber: summary.issueNumber ?? null,
+      outputDir
+    });
+    if (previousPath) {
       historyComparison = compareRuns({
-        previous: JSON.parse(readFileSync(candidate, "utf8")),
+        previous: JSON.parse(readFileSync(previousPath, "utf8")),
         current: correlationArtifact
       });
-      break;
+      console.error(`[history] compared with ${previousPath}`);
+    } else {
+      console.error("[history] no previous correlation artifact found; skipping comparison");
     }
   } catch (error) {
     console.error(`[history] comparison skipped: ${error instanceof Error ? error.message : String(error)}`);

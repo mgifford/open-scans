@@ -127,3 +127,45 @@ test("comparison is deterministic for identical inputs", () => {
   assert.equal(first.comparisonId, second.comparisonId);
   assert.deepEqual(first.counts, second.counts);
 });
+
+test("previous correlation is found in the report tree, not beside the output dir", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { findPreviousCorrelationPath } = await import("../../scanner/history-compare.mjs");
+
+  const root = mkdtempSync(join(tmpdir(), "history-lookup-"));
+  const issueDir = join(root, "reports", "issues", "issue-7");
+  mkdirSync(join(issueDir, "2026-11-19T10-00-00-000Z"), { recursive: true });
+  mkdirSync(join(issueDir, "2026-11-19T12-00-00-000Z"), { recursive: true });
+  mkdirSync(join(issueDir, "2026-11-19T13-00-00-000Z"), { recursive: true });
+  writeFileSync(join(issueDir, "2026-11-19T10-00-00-000Z", "correlation.json"), "{}");
+  writeFileSync(join(issueDir, "2026-11-19T12-00-00-000Z", "correlation.json"), "{}");
+  // newest has no correlation yet: it is the run being written now
+  const outputDir = join(root, ".scan-output");
+
+  const found = findPreviousCorrelationPath({ issueNumber: 7, outputDir, cwd: root });
+  assert.equal(found, join(issueDir, "2026-11-19T12-00-00-000Z", "correlation.json"));
+
+  const none = findPreviousCorrelationPath({ issueNumber: 999, outputDir, cwd: root });
+  assert.equal(none, null);
+});
+
+test("the run being written is excluded even when it sits in the report tree", async () => {
+  const { mkdtempSync, mkdirSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { findPreviousCorrelationPath } = await import("../../scanner/history-compare.mjs");
+
+  const root = mkdtempSync(join(tmpdir(), "history-lookup-"));
+  const issueDir = join(root, "reports", "issues", "issue-7");
+  const older = join(issueDir, "2026-11-19T10-00-00-000Z");
+  const current = join(issueDir, "2026-11-19T12-00-00-000Z");
+  mkdirSync(older, { recursive: true });
+  mkdirSync(current, { recursive: true });
+  writeFileSync(join(older, "correlation.json"), "{}");
+  writeFileSync(join(current, "correlation.json"), "{}");
+
+  const found = findPreviousCorrelationPath({ issueNumber: 7, outputDir: current, cwd: root });
+  assert.equal(found, join(older, "correlation.json"));
+});

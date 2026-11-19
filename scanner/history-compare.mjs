@@ -19,6 +19,8 @@
  * @module history-compare
  */
 import { createHash } from "node:crypto";
+import { readdirSync, existsSync } from "node:fs";
+import { dirname, join } from "node:path";
 
 export const HISTORY_COMPARISON_VERSION = "history-comparison/1";
 
@@ -273,6 +275,44 @@ function summarize(artifact) {
       : null,
     counts: artifact.counts ?? null
   };
+}
+
+/**
+ * Find the most recent previous correlation artifact for an issue.
+ *
+ * The scan writes into a working directory such as `.scan-output`, not into
+ * the report tree, so the previous run cannot be inferred from the output
+ * path alone. Look in `reports/issues/issue-<n>/` from the repository root
+ * (and beside the output directory as a fallback), newest first.
+ *
+ * @param {{issueNumber?: number|null, outputDir?: string|null, cwd?: string}} options
+ * @returns {string|null} path to a correlation.json, or null
+ */
+export function findPreviousCorrelationPath({ issueNumber = null, outputDir = null, cwd = process.cwd() } = {}) {
+  const directories = [];
+  const currentName = outputDir ? outputDir.split(/[\\/]/).filter(Boolean).pop() : null;
+
+  if (issueNumber) {
+    directories.push(join(cwd, "reports", "issues", `issue-${issueNumber}`));
+  }
+  if (outputDir) {
+    directories.push(dirname(outputDir));
+  }
+
+  for (const directory of directories) {
+    if (!existsSync(directory)) continue;
+    const names = readdirSync(directory, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && entry.name !== currentName)
+      .map((entry) => entry.name)
+      .sort()
+      .reverse();
+    for (const name of names) {
+      const candidate = join(directory, name, "correlation.json");
+      if (existsSync(candidate)) return candidate;
+    }
+  }
+
+  return null;
 }
 
 /** Markdown fragment for a history comparison. */

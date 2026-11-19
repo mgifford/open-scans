@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-registry/1",
-  "generatedAt": "2026-11-19T19:31:09.951Z",
+  "generatedAt": "2026-11-19T21:54:43.247Z",
   "sources": {
     "actRulesIndex": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
     "engineMapping": {
@@ -15,8 +15,8 @@
   },
   "coverage": {
     "actRules": 53,
-    "withTitle": 9,
-    "withRuleType": 9,
+    "withTitle": 14,
+    "withRuleType": 14,
     "verifiedMappings": 96,
     "candidateMappings": 7,
     "enginesWithMappings": [
@@ -232,14 +232,16 @@
     },
     "2779a5": {
       "actRuleId": "2779a5",
-      "title": null,
+      "title": "HTML page has non-empty title",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2779a5/",
-      "ruleType": null,
-      "wcag": [],
+      "ruleType": "atomic",
+      "wcag": [
+        "2.4.2"
+      ],
       "status": null,
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
           "engine": "alfa",
@@ -656,14 +658,14 @@
     },
     "674b10": {
       "actRuleId": "674b10",
-      "title": null,
+      "title": "Role attribute has valid value",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/",
-      "ruleType": null,
+      "ruleType": "atomic",
       "wcag": [],
       "status": null,
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
           "engine": "alfa",
@@ -929,14 +931,16 @@
     },
     "97a4e1": {
       "actRuleId": "97a4e1",
-      "title": null,
+      "title": "Button has non-empty accessible name",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/",
-      "ruleType": null,
-      "wcag": [],
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
       "status": null,
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
           "engine": "alfa",
@@ -1638,14 +1642,16 @@
     },
     "e086e5": {
       "actRuleId": "e086e5",
-      "title": null,
+      "title": "Form field has non-empty accessible name",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
-      "ruleType": null,
-      "wcag": [],
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
       "status": null,
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
           "engine": "alfa",
@@ -1824,14 +1830,16 @@
     },
     "m6b1q3": {
       "actRuleId": "m6b1q3",
-      "title": null,
+      "title": "Menuitem has non-empty accessible name",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/m6b1q3/",
-      "ruleType": null,
-      "wcag": [],
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
       "status": null,
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
           "engine": "axe",

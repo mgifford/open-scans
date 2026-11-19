@@ -60,7 +60,7 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   const rules = Object.keys(registry.rules);
 
   assert.equal(rules.length, 53);
-  assert.equal(registry.coverage.withTitle, 9, "metadata is curated, not invented");
+  assert.equal(registry.coverage.withTitle, 14, "metadata is curated, not invented");
   assert.equal(registry.coverage.withTitle < rules.length, true);
   assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess"]);
   assert.equal(registry.coverage.candidateMappings, 7);
@@ -225,4 +225,15 @@ test("observations carry candidate ACT ids so coverage can compare engines", () 
   const observation = withContrast.observations.find((entry) => entry.engine.name === "alfa");
   assert.ok(observation.actRuleIds.includes("09o5cg"));
   assert.equal(artifact.observations.some((entry) => entry.actRuleIds.includes("23a2a8")), true);
+});
+
+test("rule titles and WCAG mappings come from the W3C rule pages", () => {
+  assert.equal(getActRule("97a4e1").title, "Button has non-empty accessible name");
+  assert.deepEqual(getActRule("97a4e1").wcag, ["4.1.2"]);
+  assert.equal(getActRule("2779a5").title, "HTML page has non-empty title");
+  assert.deepEqual(getActRule("2779a5").wcag, ["2.4.2"]);
+  assert.equal(getActRule("m6b1q3").title, "Menuitem has non-empty accessible name");
+  assert.equal(getActRule("e086e5").title, "Form field has non-empty accessible name");
+  assert.equal(getActRule("674b10").title, "Role attribute has valid value");
+  assert.deepEqual(getActRule("674b10").wcag, [], "674b10 is an ARIA rule with no WCAG criterion");
 });
