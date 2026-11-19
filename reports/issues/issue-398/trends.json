@@ -1,5 +1,5 @@
 {
-  "scansAnalysed": 4,
+  "scansAnalysed": 5,
   "diffs": [
     {
       "from": {
@@ -111,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-11-19T18:33:37.850Z",
+        "totals": {
+          "alfa": 453,
+          "axe": 10,
+          "equalAccess": 170,
+          "qualweb": 0,
+          "accesslint": 6,
+          "combined": 639,
+          "scannedAt": "2026-11-19T18:33:37.850Z",
+          "scannedCount": 20
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-19T19:07:40.555Z",
+        "totals": {
+          "alfa": 727,
+          "axe": 34,
+          "equalAccess": 314,
+          "qualweb": 0,
+          "accesslint": 24,
+          "combined": 1099,
+          "scannedAt": "2026-11-19T19:07:40.555Z",
+          "scannedCount": 49
+        }
+      },
+      "change": 460,
+      "trend": "worsening",
+      "perScanner": {
+        "alfa": 274,
+        "axe": 24,
+        "equalAccess": 144,
+        "qualweb": 0,
+        "accesslint": 18
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-11-19T16:32:14.422Z",
-      "totals": {
-        "alfa": 440,
-        "axe": 11,
-        "equalAccess": 186,
-        "qualweb": 0,
-        "accesslint": 6,
-        "combined": 643,
-        "scannedAt": "2026-11-19T16:32:14.422Z",
-        "scannedCount": 20
-      }
-    },
-    "to": {
       "scannedAt": "2026-11-19T18:33:37.850Z",
       "totals": {
         "alfa": 453,
@@ -140,28 +164,41 @@
         "scannedCount": 20
       }
     },
-    "change": -4,
-    "trend": "improving",
+    "to": {
+      "scannedAt": "2026-11-19T19:07:40.555Z",
+      "totals": {
+        "alfa": 727,
+        "axe": 34,
+        "equalAccess": 314,
+        "qualweb": 0,
+        "accesslint": 24,
+        "combined": 1099,
+        "scannedAt": "2026-11-19T19:07:40.555Z",
+        "scannedCount": 49
+      }
+    },
+    "change": 460,
+    "trend": "worsening",
     "perScanner": {
-      "alfa": 13,
-      "axe": -1,
-      "equalAccess": -16,
+      "alfa": 274,
+      "axe": 24,
+      "equalAccess": 144,
       "qualweb": 0,
-      "accesslint": 0
+      "accesslint": 18
     }
   },
-  "overallTrend": "improving",
+  "overallTrend": "worsening",
   "improvingCount": 1,
-  "worseningCount": 2,
+  "worseningCount": 3,
   "latestTotals": {
-    "alfa": 453,
-    "axe": 10,
-    "equalAccess": 170,
+    "alfa": 727,
+    "axe": 34,
+    "equalAccess": 314,
     "qualweb": 0,
-    "accesslint": 6,
-    "combined": 639,
-    "scannedAt": "2026-11-19T18:33:37.850Z",
-    "scannedCount": 20
+    "accesslint": 24,
+    "combined": 1099,
+    "scannedAt": "2026-11-19T19:07:40.555Z",
+    "scannedCount": 49
   },
   "baselineTotals": {
     "alfa": 140,
@@ -176,7 +213,7 @@
   "latestSystemicPatterns": [
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r66",
-      "pageCount": 20,
+      "pageCount": 49,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/",
         "https://mgifford.github.io/record-a-goose-sighting/lab/catalogue/",
@@ -192,7 +229,7 @@
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r111",
-      "pageCount": 19,
+      "pageCount": 44,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/",
         "https://mgifford.github.io/record-a-goose-sighting/lab/catalogue/",
@@ -207,63 +244,115 @@
       ]
     },
     {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
+      "pageCount": 11,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
+        "https://mgifford.github.io/record-a-goose-sighting/wombat/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+        "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/nested-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/"
+      ]
+    },
+    {
+      "ruleId": "axe:button-name",
+      "pageCount": 11,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
+        "https://mgifford.github.io/record-a-goose-sighting/wombat/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+        "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/nested-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/"
+      ]
+    },
+    {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r73",
-      "pageCount": 5,
+      "pageCount": 8,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/",
         "https://mgifford.github.io/record-a-goose-sighting/steps/worksheet/",
         "https://mgifford.github.io/record-a-goose-sighting/steps/start/",
         "https://mgifford.github.io/record-a-goose-sighting/steps/keyboard-practice/",
-        "https://mgifford.github.io/record-a-goose-sighting/steps/answers/"
-      ]
-    },
-    {
-      "ruleId": "https://alfa.siteimprove.com/rules/sia-r12",
-      "pageCount": 5,
-      "pages": [
-        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
-        "https://mgifford.github.io/record-a-goose-sighting/wombat/",
-        "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
-        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
-        "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial"
-      ]
-    },
-    {
-      "ruleId": "axe:button-name",
-      "pageCount": 5,
-      "pages": [
-        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
-        "https://mgifford.github.io/record-a-goose-sighting/wombat/",
-        "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
-        "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
-        "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial"
+        "https://mgifford.github.io/record-a-goose-sighting/steps/answers/",
+        "https://mgifford.github.io/record-a-goose-sighting/steps/end/",
+        "https://mgifford.github.io/record-a-goose-sighting/blind-spots/",
+        "https://mgifford.github.io/record-a-goose-sighting/steps/check-your-answers/"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r110",
-      "pageCount": 3,
+      "pageCount": 4,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/paca/",
         "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
-        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open"
+        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/"
       ]
     },
     {
       "ruleId": "https://alfa.siteimprove.com/rules/sia-r21",
-      "pageCount": 3,
+      "pageCount": 4,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/paca/",
         "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
-        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open"
+        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/"
       ]
     },
     {
       "ruleId": "axe:aria-roles",
-      "pageCount": 3,
+      "pageCount": 4,
       "pages": [
         "https://mgifford.github.io/record-a-goose-sighting/paca/",
         "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
-        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open"
+        "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r2",
+      "pageCount": 3,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/single-image/",
+        "https://mgifford.github.io/record-a-goose-sighting/steps/end/"
+      ]
+    },
+    {
+      "ruleId": "axe:image-alt",
+      "pageCount": 3,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/single-image/",
+        "https://mgifford.github.io/record-a-goose-sighting/steps/end/"
+      ]
+    },
+    {
+      "ruleId": "https://alfa.siteimprove.com/rules/sia-r56",
+      "pageCount": 3,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/nested-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 3,
+      "pages": [
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/nested-frame/",
+        "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/"
       ]
     }
   ]
