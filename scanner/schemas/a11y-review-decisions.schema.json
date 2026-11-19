@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/scanner/schemas/a11y-review-decisions.schema.json",
+  "title": "AccessibilityReviewDecisions",
+  "description": "Human review decisions recorded in version control. Reviews never modify engine evidence; they document what a person concluded about ambiguous correlation, and why.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "decisions"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "a11y-review-decisions/1" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reviewId", "target", "decision", "rationale", "author", "date"],
+        "properties": {
+          "reviewId": { "type": "string", "minLength": 1 },
+          "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "id"],
+            "properties": {
+              "kind": { "type": "string", "enum": ["correlated-issue", "observation"] },
+              "id": { "type": "string", "minLength": 1 }
+            }
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "confirmed-same-target",
+              "confirmed-equivalent",
+              "confirmed-separate",
+              "incorrect-observation",
+              "insufficient-evidence",
+              "reviewed-expectation"
+            ]
+          },
+          "rationale": { "type": "string", "minLength": 10 },
+          "author": { "type": "string", "minLength": 1 },
+          "date": { "type": "string", "format": "date" },
+          "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+          "supersedes": { "type": "string" }
+        }
+      }
+    }
+  }
+}
