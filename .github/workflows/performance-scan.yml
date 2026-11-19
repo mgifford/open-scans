@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run-performance-request:
     if: startsWith(github.event.issue.title, 'PERF:') && github.event.issue.state == 'open'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
 
     steps:
