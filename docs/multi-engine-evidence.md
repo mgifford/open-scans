@@ -1,8 +1,8 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0 (observation model + duplicate correction), P1 (target resolution),
-P2 (cross-engine correlation), P3 (ACT registry), P4 (reporting + exports) and
-P5 (historical comparison + cohort analysis versions) shipped.
+Status: P0–P5 shipped (observation model, target resolution, correlation, ACT
+registry, reporting, historical comparison). P6 (manual review) is shipped as
+the review format and CLI; no review application UI is planned.
 
 ## 1. What exists today
 
@@ -244,6 +244,25 @@ target-resolution version, the correlation version and the rule-semantics
 version, with distinct change reasons, so an analysis change cannot be mistaken
 for a page change.
 
+## 3g. Manual review (P6, shipped)
+
+`reviews/decisions.json` (`a11y-review-decisions/1`) records human decisions
+about correlation that automation cannot settle: same target, equivalent
+failure, separate failures, incorrect observation, insufficient evidence, or a
+reviewed fixture expectation. Each decision needs an id, a target
+(`correlated-issue` or `observation`), a decision value, a rationale of at
+least 10 characters, an author and a date.
+
+Reviews are separate from evidence. `node scanner/apply-reviews.mjs
+<correlation.json> [--reviews reviews/decisions.json]` writes
+`review-status.json` (`a11y-review-status/1`) and never modifies the
+correlation artifact. The status lists matched decisions, unreviewed issues
+and — importantly — decisions that matched nothing, because ids embed the
+document hash and evidence moves. A stale decision is reported, not dropped.
+
+The format is plain JSON in version control, so a review is a pull request.
+See [reviews/README.md](../reviews/README.md) for the workflow.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -267,6 +286,7 @@ evidence resolves without rerunning a browser.
 | **P3 ✅** | ACT registry: verified vs candidate mappings, version alignment, metadata provenance, correlation-derived consensus | P2 |
 | **P4 ✅** | Reporting: multi-engine evidence section in Markdown and HTML, page/engine matrix, per-engine evidence disclosures, accessible filter, explicit empty states | P2 |
 | **P5 ✅** | Historical comparison with change attribution, `not-observed` instead of "fixed", ACT lab cohort tracks analysis versions | P3, P4 |
+| **P6 ✅** | Manual review format, validation, application CLI and unmatched-decision reporting | P4 |
 
 | P6 | Manual review format, unresolved-match UX | P4 |
 
