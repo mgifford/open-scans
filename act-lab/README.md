@@ -47,3 +47,66 @@ state does not trigger the Pages deployment or the Pages accessibility scan.
 - **No change, no scan:** if fixtures, installed engines, mapping and upstream
   rule data all match the last successful run, the workflow skips the scan and
   says why in the job summary.
+
+## Viewports and colour schemes
+
+Every weekly run scans the fixtures at three viewports, each with
+`colorScheme: both` (light and dark):
+
+| Viewport | Size |
+| :--- | :--- |
+| `desktop` | 1280 × 800 |
+| `tablet-portrait` | 768 × 1024 |
+| `mobile-portrait` | 390 × 844 |
+
+Per-viewport reports are stored as `latest-<viewport>.json`; `latest.json`
+merges them and lists `viewports` plus a `viewport` field on every result.
+
+## Using a different test bed
+
+The workflow accepts two manual inputs:
+
+- `site_root` — for example `https://example.org/my-lab/`
+- `manifest_path` — relative to the root, default `lab/fixtures.json`
+
+The fixture site must be public HTTPS and serve a manifest conforming to
+`act-lab-fixture/2`, with fixtures on the same origin. Each case needs a stable
+ID, a relative URL, a target scope and selector (or host for shadow roots), a
+readiness selector, the ACT rule ID, an expected outcome and a review status.
+A minimal manifest:
+
+```json
+{
+  "schemaVersion": "act-lab-fixture/2",
+  "cases": [{
+    "id": "my-button",
+    "urlPath": "fixtures/button/",
+    "act": { "ruleId": "97a4e1" },
+    "expected": "failed",
+    "review": "unreviewed",
+    "target": { "scope": "light-dom", "selector": "#target" },
+    "readySelector": "[data-ready='true']"
+  }]
+}
+```
+
+Use `expected: null` plus `execution: "unsupported"` for a condition no engine
+can expose (for example a closed shadow root). Expected outcomes remain
+unreviewed hypotheses until a human records their evidence.
+
+## ACT rules versus engine-specific rules
+
+- `scanner/data/act-mapping.json` maps **engine rule IDs** to **ACT rule IDs**
+  (many-to-many). ACT rule IDs are the six-character W3C identifiers
+  (`674b10`, `97a4e1`); engine IDs are tool-specific (`aria-roles`,
+  `sia-r21`).
+- Each result records `mapping`:
+  - `act-target` — a finding for the fixture's declared ACT rule.
+  - `act-other` — a finding mapped to a different ACT rule
+    (`otherActRules` lists them).
+  - `engine-specific` — a finding whose engine rule has **no** ACT mapping
+    (`engineSpecificRules` lists them).
+  - `none` — no finding.
+- `latest.json` reports `engineSpecificFindings` and `otherActFindings`
+  separately from ACT outcomes. Engine-specific findings are useful evidence,
+  but they are not ACT outcomes and must not be counted as rule coverage.

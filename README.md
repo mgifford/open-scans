@@ -144,14 +144,22 @@ scan. It has no issue title syntax and never uses the engine selection above.
 - **Targets:** all fixtures from the published
   `https://mgifford.github.io/record-a-goose-sighting/lab/fixtures.json`
   manifest, with **all operational engines**.
+- **Viewports:** desktop 1280×800, tablet portrait 768×1024 and mobile portrait
+  390×844, each with light and dark colour schemes.
+- **Other test beds:** the manual run accepts `site_root` and `manifest_path`,
+  so a team can point it at their own fixture manifest. See
+  [`act-lab/README.md`](act-lab/README.md) for the contract and a minimal
+  manifest.
 - **Skip rule:** if the fixture manifest, installed engine versions, ACT rule
   mapping and upstream W3C test-case data are all unchanged since the last
   successful run, the workflow skips the scan and says why in the job summary.
   A missing finding is never recorded as a pass.
 - **Manual run:** Actions → **ACT Laboratory (weekly)** → *Run workflow*.
   Enable **force** to run even when the cohort is unchanged.
-- **Reports:** `act-lab/latest.json` (observations) and `act-lab/state.json`
-  (cohort), described in [`act-lab/README.md`](act-lab/README.md).
+- **Reports:** `act-lab/latest.json` (merged observations), per-viewport files
+  and `act-lab/state.json` (cohort), described in
+  [`act-lab/README.md`](act-lab/README.md). Results classify findings as
+  target ACT rule, another ACT rule, or engine-specific.
 
 Do not open a `SCAN:` or timed issue for the ACT laboratory: that would run a
 plain page scan instead of the fixture comparison.

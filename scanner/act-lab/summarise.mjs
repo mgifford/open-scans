@@ -32,12 +32,15 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'unsupported',
       outcome: null,
       status: 'unsupported',
+      mapping: 'none',
+      engineRuleIds: [],
+      engineSpecificRules: [], otherActRules: [],
       evidence: 'Closed shadow root is not inspectable through engine public APIs.'
     }
   }
 
   if (!result) {
-    return { engine, execution: 'notRun', outcome: null, status: 'notRun', evidence: 'No result for this URL.' }
+    return { engine, execution: 'notRun', outcome: null, status: 'notRun', mapping: 'none', engineRuleIds: [], engineSpecificRules: [], otherActRules: [], evidence: 'No result for this URL.' }
   }
 
   const scanner = result[engine]
@@ -48,6 +51,9 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'notRun',
       outcome: null,
       status: 'notRun',
+      mapping: 'none',
+      engineRuleIds: [],
+      engineSpecificRules: [], otherActRules: [],
       evidence: 'Engine did not run for this URL.'
     }
   }
@@ -58,15 +64,30 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'error',
       outcome: null,
       status: 'error',
+      mapping: 'none',
+      engineRuleIds: [],
+      engineSpecificRules: [], otherActRules: [],
       evidence: String(scanner.error || 'Engine error').slice(0, 300)
     }
   }
 
   const failures = Array.isArray(scanner.failures) ? scanner.failures : []
   const passes = Array.isArray(scanner.passes) ? scanner.passes : []
+  const engineRuleIds = [...new Set(failures.map((failure) => failure.rule || failure.ruleId).filter(Boolean))]
   const mappedFailures = failures.filter((failure) =>
     getActRuleIds(engine, failure.rule || failure.ruleId).includes(caseEntry.ruleId)
   )
+  const engineSpecificRules = [...new Set(
+    failures
+      .filter((failure) => getActRuleIds(engine, failure.rule || failure.ruleId).length === 0)
+      .map((failure) => failure.rule || failure.ruleId)
+      .filter(Boolean)
+  )]
+  const otherActRules = [...new Set(
+    failures
+      .flatMap((failure) => getActRuleIds(engine, failure.rule || failure.ruleId))
+      .filter((ruleId) => ruleId !== caseEntry.ruleId)
+  )]
   const mappedPasses = passes.filter((pass) =>
     getActRuleIds(engine, pass.rule || pass.ruleId).includes(caseEntry.ruleId)
   )
@@ -77,6 +98,10 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'executed',
       outcome: 'failed',
       status: 'failed',
+      mapping: 'act-target',
+      engineRuleIds,
+      engineSpecificRules,
+      otherActRules,
       evidence: mappedFailures.map((failure) => failure.rule || failure.ruleId).join(', ')
     }
   }
@@ -87,6 +112,10 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'executed',
       outcome: 'passed',
       status: 'passed',
+      mapping: 'act-target',
+      engineRuleIds,
+      engineSpecificRules,
+      otherActRules,
       evidence: mappedPasses.map((pass) => pass.rule || pass.ruleId).join(', ')
     }
   }
@@ -97,6 +126,10 @@ function outcomeFor (caseEntry, result, engine) {
       execution: 'executed',
       outcome: null,
       status: 'unmapped',
+      mapping: otherActRules.length > 0 ? 'act-other' : 'none',
+      engineRuleIds,
+      engineSpecificRules,
+      otherActRules,
       evidence: 'No engine rule is mapped to this ACT rule in scanner/data/act-mapping.json.'
     }
   }
@@ -106,11 +139,17 @@ function outcomeFor (caseEntry, result, engine) {
     execution: 'executed',
     outcome: null,
     status: 'notReported',
-    evidence: 'Engine reported no explicit outcome for the target rule; silence is not a pass.'
+    mapping: otherActRules.length > 0
+      ? 'act-other'
+      : engineSpecificRules.length > 0 ? 'engine-specific' : 'none',
+    engineRuleIds,
+    engineSpecificRules,
+    otherActRules,
+    evidence: 'Engine reported no explicit ACT outcome for the target rule; silence is not a pass.'
   }
 }
 
-export function summarise (prepared, meta) {
+export function summarise (prepared, meta, viewport = null) {
   const results = []
 
   for (const caseEntry of prepared.cases) {
@@ -124,6 +163,7 @@ export function summarise (prepared, meta) {
         expected: caseEntry.expected,
         review: caseEntry.review,
         scope: caseEntry.target?.scope ?? null,
+        viewport,
         ...outcomeFor(caseEntry, result, engine)
       })
     }
@@ -134,6 +174,15 @@ export function summarise (prepared, meta) {
   for (const entry of results) {
     counts[entry.status] = (counts[entry.status] || 0) + 1
   }
+
+  const engineSpecificFindings = results.reduce(
+    (total, entry) => total + (entry.engineSpecificRules?.length || 0),
+    0
+  )
+  const otherActFindings = results.reduce(
+    (total, entry) => total + (entry.otherActRules?.length || 0),
+    0
+  )
 
   const byEngine = {}
 
@@ -153,6 +202,8 @@ export function summarise (prepared, meta) {
     trigger: prepared.reasons || [],
     engines: ENGINES,
     counts,
+    engineSpecificFindings,
+    otherActFindings,
     byEngine,
     results
   }
@@ -163,6 +214,7 @@ function main () {
   const metaPath = process.argv[3] || '.scan-output/meta.json'
   const outPath = process.argv[4] || 'act-lab/latest.json'
   const statePath = process.argv[5] || 'act-lab/state.json'
+  const viewport = process.argv[6] || null
 
   const prepared = JSON.parse(readFileSync(resolve(preparedPath), 'utf8'))
   const meta = JSON.parse(readFileSync(resolve(metaPath), 'utf8'))
@@ -175,7 +227,7 @@ function main () {
     throw new Error('The scan produced no results; refusing to record observations or update state.')
   }
 
-  const summary = summarise(prepared, meta)
+  const summary = summarise(prepared, meta, viewport)
 
   mkdirSync(dirname(resolve(outPath)), { recursive: true })
   writeFileSync(resolve(outPath), JSON.stringify(summary, null, 2) + '\n')

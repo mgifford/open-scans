@@ -12,6 +12,14 @@ import { fixtureUrl } from './lib.mjs'
 const preparedPath = process.argv[2] || '.tmp/act-lab/prepared.json'
 const outPath = process.argv[3] || '.tmp/act-lab/issue-event.json'
 
+function flag (name) {
+  const index = process.argv.indexOf(name)
+  return index === -1 ? null : process.argv[index + 1]
+}
+
+const viewport = flag('--viewport')
+const colorScheme = flag('--color-scheme')
+
 const prepared = JSON.parse(readFileSync(resolve(preparedPath), 'utf8'))
 const urls = prepared.cases.map((entry) => fixtureUrl(prepared.siteRoot, entry.urlPath))
 
@@ -26,6 +34,8 @@ const event = {
     user: { login: 'github-actions[bot]' },
     body: [
       'Engine: all',
+      ...(viewport ? [`Viewport: ${viewport}`] : []),
+      ...(colorScheme ? [`Color scheme: ${colorScheme}`] : []),
       '',
       '### URLs',
       '',

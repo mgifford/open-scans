@@ -38,10 +38,11 @@ function argument (name, fallback = null) {
 async function main () {
   const siteRoot = normalizeSiteRoot(argument('--site-root', 'https://mgifford.github.io/record-a-goose-sighting/'))
   const statePath = argument('--state', 'act-lab/state.json')
+  const manifestPath = argument('--manifest-path', 'lab/fixtures.json')
   const outPath = argument('--out', '.tmp/act-lab/prepared.json')
   const force = process.argv.includes('--force')
 
-  const manifestUrl = fixtureUrl(siteRoot, 'lab/fixtures.json')
+  const manifestUrl = fixtureUrl(siteRoot, manifestPath)
   const manifest = await fetchJson(manifestUrl)
   const errors = validateFixtureManifest(manifest, siteRoot)
 
@@ -56,7 +57,8 @@ async function main () {
     fixtureHash: fixtureCohortHash(manifest),
     engineVersions: loadInstalledEngineVersions(ROOT),
     actMappingHash: fileHash(ROOT, 'scanner/data/act-mapping.json'),
-    actRulesHash
+    actRulesHash,
+    siteRoot
   })
 
   const previous = existsSync(statePath)
@@ -71,6 +73,7 @@ async function main () {
     evaluatedAt: new Date().toISOString(),
     siteRoot,
     manifestUrl,
+    manifestPath,
     changed,
     reasons,
     cohort,

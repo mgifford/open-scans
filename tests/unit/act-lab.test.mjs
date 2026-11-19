@@ -14,6 +14,7 @@ import {
   validateFixtureManifest
 } from "../../scanner/act-lab/lib.mjs";
 import { summarise } from "../../scanner/act-lab/summarise.mjs";
+import { mergeReports } from "../../scanner/act-lab/merge-observations.mjs";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const SITE = "https://mgifford.github.io/record-a-goose-sighting/";
@@ -167,4 +168,92 @@ test("observations separate execution from outcomes and never infer a pass", () 
   assert.equal(summary.counts.failed, 1);
   assert.ok(summary.counts.notReported >= 1);
   assert.ok(summary.counts.unsupported >= 1);
+});
+
+test("engine-specific findings are distinguished from ACT outcomes", () => {
+  const prepared = {
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "cohort" },
+    cases: [
+      {
+        id: "role-valid",
+        url: fixtureUrl(SITE, "lab/aria/role-valid/"),
+        ruleId: "674b10",
+        expected: "passed",
+        review: "unreviewed",
+        target: { scope: "light-dom" }
+      }
+    ]
+  };
+
+  const summary = summarise(prepared, {
+    results: [{
+      submittedUrl: prepared.cases[0].url,
+      axe: { failures: [{ rule: "region" }] }
+    }]
+  }, "desktop");
+
+  const axe = summary.results.find((entry) => entry.engine === "axe");
+  assert.equal(axe.outcome, null);
+  assert.equal(axe.status, "notReported");
+  assert.equal(axe.mapping, "engine-specific");
+  assert.deepEqual(axe.engineSpecificRules, ["region"]);
+  assert.equal(axe.viewport, "desktop");
+  assert.equal(summary.engineSpecificFindings, 1);
+});
+
+test("merging viewport reports keeps one result set per viewport", () => {
+  const base = {
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "cohort" },
+    engines: ["axe"],
+    trigger: ["fixtures-changed"]
+  };
+  const desktop = {
+    ...base,
+    viewport: "desktop",
+    results: [{ fixtureId: "a", engine: "axe", status: "failed", viewport: "desktop", engineSpecificRules: [] }]
+  };
+  const mobile = {
+    ...base,
+    viewport: "mobile-portrait",
+    results: [{ fixtureId: "a", engine: "axe", status: "notReported", viewport: "mobile-portrait", engineSpecificRules: ["color-contrast"] }]
+  };
+
+  const merged = mergeReports([desktop, mobile]);
+  assert.deepEqual(merged.viewports, ["desktop", "mobile-portrait"]);
+  assert.equal(merged.results.length, 2);
+  assert.equal(merged.counts.failed, 1);
+  assert.equal(merged.counts.notReported, 1);
+  assert.equal(merged.engineSpecificFindings, 1);
+});
+
+test("findings mapped to a different ACT rule are not engine-specific", () => {
+  const prepared = {
+    siteRoot: SITE,
+    manifestUrl: `${SITE}lab/fixtures.json`,
+    cohort: { key: "cohort" },
+    cases: [{
+      id: "role-valid",
+      url: fixtureUrl(SITE, "lab/aria/role-valid/"),
+      ruleId: "674b10",
+      expected: "passed",
+      review: "unreviewed",
+      target: { scope: "light-dom" }
+    }]
+  };
+
+  const summary = summarise(prepared, {
+    results: [{
+      submittedUrl: prepared.cases[0].url,
+      axe: { failures: [{ rule: "color-contrast" }] }
+    }]
+  });
+
+  const axe = summary.results.find((entry) => entry.engine === "axe");
+  assert.equal(axe.mapping, "act-other");
+  assert.deepEqual(axe.engineSpecificRules, []);
+  assert.ok(axe.otherActRules.includes("afw4f7"));
 });

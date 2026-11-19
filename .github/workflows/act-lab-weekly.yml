@@ -21,6 +21,14 @@ on:
         description: Run even if engines, rules and fixtures are unchanged
         type: boolean
         default: false
+      site_root:
+        description: Fixture site root (must end with /)
+        type: string
+        default: ''
+      manifest_path:
+        description: Path to the fixture manifest, relative to the site root
+        type: string
+        default: 'lab/fixtures.json'
 
 permissions:
   contents: write
@@ -36,7 +44,7 @@ jobs:
   compare:
     name: Compare ACT fixtures
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
 
     steps:
       - name: Checkout repository
@@ -76,8 +84,14 @@ jobs:
         run: |
           FORCE=""
           if [ "${{ inputs.force }}" = "true" ]; then FORCE="--force"; fi
+          SITE="${{ inputs.site_root }}"
+          if [ -z "$SITE" ]; then SITE="$SITE_ROOT"; fi
+          MANIFEST="${{ inputs.manifest_path }}"
+          if [ -z "$MANIFEST" ]; then MANIFEST="lab/fixtures.json"; fi
+
           node scanner/act-lab/prepare.mjs \
-            --site-root "$SITE_ROOT" \
+            --site-root "$SITE" \
+            --manifest-path "$MANIFEST" \
             --state act-lab/state.json \
             --out .tmp/act-lab/prepared.json \
             $FORCE
@@ -95,28 +109,41 @@ jobs:
             echo "Use the manual **Run workflow** button with *force* to run anyway."
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Build scan event
-        if: steps.prepare.outputs.changed == 'true'
-        run: node scanner/act-lab/build-event.mjs .tmp/act-lab/prepared.json .tmp/act-lab/issue-event.json
-
-      - name: Run all engines against the fixtures
+      - name: Run all engines at three viewports
         if: steps.prepare.outputs.changed == 'true'
         run: |
-          mkdir -p .scan-output
-          node scanner/run-scan.mjs .tmp/act-lab/issue-event.json .scan-output > .scan-output/meta.json
+          set -e
+          for VP in desktop tablet-portrait mobile-portrait; do
+            echo "::group::Viewport $VP"
+            node scanner/act-lab/build-event.mjs \
+              .tmp/act-lab/prepared.json \
+              .tmp/act-lab/issue-event.json \
+              --viewport "$VP" \
+              --color-scheme both
+
+            mkdir -p ".scan-output-$VP"
+            node scanner/run-scan.mjs \
+              .tmp/act-lab/issue-event.json \
+              ".scan-output-$VP" > ".scan-output-$VP/meta.json"
+
+            node scanner/act-lab/summarise.mjs \
+              .tmp/act-lab/prepared.json \
+              ".scan-output-$VP/meta.json" \
+              "act-lab/latest-$VP.json" \
+              act-lab/state.json \
+              "$VP"
+            echo "::endgroup::"
+          done
+
+          node scanner/act-lab/merge-observations.mjs \
+            act-lab/latest.json \
+            act-lab/latest-desktop.json \
+            act-lab/latest-tablet-portrait.json \
+            act-lab/latest-mobile-portrait.json
         env:
           FETCH_TIMEOUT_MS: "30000"
           PER_URL_TIMEOUT_MS: "120000"
-          TOTAL_SCAN_TIMEOUT_MS: "1800000"
-
-      - name: Summarise observations
-        if: steps.prepare.outputs.changed == 'true'
-        run: |
-          node scanner/act-lab/summarise.mjs \
-            .tmp/act-lab/prepared.json \
-            .scan-output/meta.json \
-            act-lab/latest.json \
-            act-lab/state.json
+          TOTAL_SCAN_TIMEOUT_MS: "900000"
 
       - name: Commit state and latest report
         if: steps.prepare.outputs.changed == 'true'

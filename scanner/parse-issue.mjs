@@ -186,6 +186,12 @@ export function extractPageCount(text, defaultCount = 20) {
   return defaultCount;
 }
 
+
+function extractFirstUrl(text) {
+  const match = String(text ?? "").match(/https?:\/\/[^\s<>"']+/i);
+  return match ? match[0].replace(/[),.;]+$/, "") : null;
+}
+
 function extractScanTitle(issueTitle) {
   const title = issueTitle ?? "";
   const match = title.match(/^\s*#?\s*(SCAN|WEEKLY|MONTHLY|QUARTERLY|MONDAYS?|TUESDAYS?|WEDNESDAYS?|THURSDAYS?|FRIDAYS?|SATURDAYS?|SUNDAYS?):\s*(.+?)\s*$/i);
@@ -341,9 +347,14 @@ export function parseScanIssue(issueEvent) {
   //   2. Exactly one valid URL is provided in the body (new: expand single-URL submissions).
   // When multiple URLs are provided in the body, the user has explicitly chosen the URL list
   // and crawl mode does not apply.
-  const scanTitleIsUrl = validateUriLike(titleInfo.scanTitle);
+  // A title may contain display text after the URL (for example
+  // "SCAN: https://example.com/ SUNDAY"). Strip that text before using the URL
+  // as a crawl target so the crawler never receives a malformed value such as
+  // "https://example.com/ SUNDAY".
+  const titleUrl = extractFirstUrl(titleInfo.scanTitle);
+  const scanTitleIsUrl = Boolean(titleUrl) && titleUrl === String(titleInfo.scanTitle).trim();
   const validBodyUrls = requestedUrls.filter((v) => validateUriLike(v));
-  const needsCrawl = validBodyUrls.length <= 1 && (scanTitleIsUrl || validBodyUrls.length === 1);
+  const needsCrawl = validBodyUrls.length <= 1 && (scanTitleIsUrl || validBodyUrls.length === 1 || Boolean(titleUrl));
 
   let crawlBaseUrl = null;
   let crawlPageCount = null;
@@ -352,7 +363,7 @@ export function parseScanIssue(issueEvent) {
   if (needsCrawl) {
     // Prefer the title URL as the crawl base when the title is a URL (it represents the
     // site root); otherwise fall back to the single body URL.
-    crawlBaseUrl = scanTitleIsUrl ? titleInfo.scanTitle : validBodyUrls[0];
+    crawlBaseUrl = validBodyUrls[0] || titleUrl;
     crawlPageCount = extractPageCount(urlsSection);
     // Use the base URL as the sole requested URL so schema validation passes.
     // run-scan.mjs will replace this list with the crawled URLs before scanning.

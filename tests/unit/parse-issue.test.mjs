@@ -1352,3 +1352,22 @@ test("parseScanIssue accepts a leading hash on timed titles", () => {
   assert.equal(result.triggerType, "SUNDAY");
   assert.deepEqual(result.engines, ["all"]);
 });
+
+test("a title URL is not contaminated by trailing words", () => {
+  const payload = {
+    issue: {
+      number: 397,
+      html_url: "https://github.com/example/repo/issues/397",
+      title: "SCAN: https://example.com/docs/ SUNDAY",
+      created_at: "2026-02-20T20:00:00Z",
+      user: { login: "octocat" },
+      body: "### URLs\n\nhttps://example.com/docs/"
+    }
+  };
+
+  const result = parseScanIssue(payload);
+  assert.equal(result.ok, true);
+  assert.equal(result.needsCrawl, true);
+  assert.equal(result.crawlBaseUrl, "https://example.com/docs/");
+  assert.deepEqual(result.value.requestedUrls, ["https://example.com/docs/"]);
+});

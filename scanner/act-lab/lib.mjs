@@ -151,14 +151,15 @@ export function fileHash (root, relativePath) {
   return sha256(readFileSync(join(root, relativePath)))
 }
 
-export function computeCohort ({ fixtureHash, engineVersions, actMappingHash, actRulesHash, browser = 'chromium' }) {
+export function computeCohort ({ fixtureHash, engineVersions, actMappingHash, actRulesHash, browser = 'chromium', siteRoot = '' }) {
   const components = {
     cohortVersion: COHORT_VERSION,
     fixtures: fixtureHash,
     engines: engineVersions,
     actMapping: actMappingHash,
     actRules: actRulesHash,
-    browser
+    browser,
+    siteRoot
   }
 
   return {
