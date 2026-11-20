@@ -2652,7 +2652,7 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   const enginesSpec = summary.engines || ["all"];
   const isAllEngines = enginesSpec.includes("all");
   const activeEngineKeys = isAllEngines
-    ? ["axe", "alfa", "equalaccess", "accesslint", "qualweb"]
+    ? ["axe", "alfa", "equalaccess", "accesslint"]
     : [...new Set([...enginesSpec.map(e => e.toLowerCase()), "axe"])]; // axe always included
 
   const PRIORITY_COLUMNS = [
@@ -2679,12 +2679,6 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
       label: "AccessLint Errors",
       getValue: r => r.accesslint?.counts?.failed ?? 0,
       getOverlap: r => r.accesslint?.crossEngineOverlapCount ?? 0
-    },
-    {
-      key: "qualweb",
-      label: "QualWeb Errors",
-      getValue: r => r.qualweb?.counts?.failed ?? 0,
-      getOverlap: r => r.qualweb?.crossEngineOverlapCount ?? 0
     },
   ];
   const activeColumns = PRIORITY_COLUMNS.filter(col => activeEngineKeys.includes(col.key));
