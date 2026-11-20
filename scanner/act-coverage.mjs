@@ -133,7 +133,9 @@ export function renderActCoverageMarkdown(coverage) {
   lines.push(
     "Grouped by W3C ACT rule, so engines can be compared on the same test. " +
     "An engine that reports nothing is silent, not passing; single-engine findings " +
-    "are candidates for either a false positive or a missed detection and need review."
+    "are candidates for either a false positive or a missed detection and need review. " +
+    "Findings include observations whose target could not be resolved; the target count " +
+    "includes only resolved targets."
   );
   lines.push("");
 
@@ -206,7 +208,8 @@ export function renderActCoverageHtml(coverage) {
       so engines are compared on the same test. Every rule links to its authoritative W3C page —
       check the rule text before treating a single-engine finding as a false positive or a missed detection.</p>
       <p>An engine that reports nothing is <strong>silent</strong>, not passing. Silence can mean not applicable,
-      not implemented, no target found, or a missed detection; only a human can tell them apart.</p>
+      not implemented, no target found, or a missed detection; only a human can tell them apart.
+      Findings include observations whose target could not be resolved; the target count includes only resolved targets.</p>
       <div class="table-scroll">
         <table class="corr-table" aria-labelledby="act-coverage-heading">
           <caption>ACT rules observed in this scan, with engine mappings and findings.</caption>

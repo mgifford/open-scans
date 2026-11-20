@@ -112,6 +112,64 @@
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
       "verifiedAt": "2026-11-19"
+    },
+    "97a4e1": {
+      "title": "Button has non-empty accessible name",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/",
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
+      "status": null,
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "674b10": {
+      "title": "Role attribute has valid value",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/",
+      "ruleType": "atomic",
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "2779a5": {
+      "title": "HTML page has non-empty title",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2779a5/",
+      "ruleType": "atomic",
+      "wcag": [
+        "2.4.2"
+      ],
+      "status": null,
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "e086e5": {
+      "title": "Form field has non-empty accessible name",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/",
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
+      "status": null,
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
+    },
+    "m6b1q3": {
+      "title": "Menuitem has non-empty accessible name",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/m6b1q3/",
+      "ruleType": "atomic",
+      "wcag": [
+        "4.1.2"
+      ],
+      "status": null,
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-19"
     }
   },
   "candidateMappings": {
