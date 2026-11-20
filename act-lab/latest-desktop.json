@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-lab-observations/2",
-  "generatedAt": "2026-11-19T18:41:02.303Z",
+  "generatedAt": "2026-11-20T16:05:39.985Z",
   "status": "complete",
   "missingFixtures": [],
   "failedEngines": [],
@@ -8,7 +8,7 @@
   "manifestUrl": "https://mgifford.github.io/record-a-goose-sighting/lab/fixtures.json",
   "cohort": {
     "cohortVersion": "act-lab-cohort/1",
-    "key": "390e2c3f2d1ff4f31878a54baafa5dcc8c9ab1e9e45de8e7763d9fa1fa564373",
+    "key": "2eeab41e37681c0d8848a4f8815650f391a51714fb8db241ece8d73d617f8ce8",
     "components": {
       "cohortVersion": "act-lab-cohort/1",
       "fixtures": "e6d983026d1e0ef06db73cdebb2163b4f1dd0972a0be495c1cd781bb846c5d06",
@@ -19,7 +19,7 @@
         "@accesslint/core": "0.17.0"
       },
       "actMapping": "6f9e00a7aae1c11980aaf258981347affebb151d4470d30f913a86b68419fc29",
-      "actRegistry": "ad4d44ee3b60769c88f117351717b0b0ad6dd07f29eef98f787414959fc8aa13",
+      "actRegistry": "a4876705928bf1a7028249b61572ff6a75f68777cae132184d6defd738d772a2",
       "actRules": "49051da603afa6d28b94ef3e758146dafcbe72bade7202a24636bab3ea4c0036",
       "browser": "chromium",
       "siteRoot": "https://mgifford.github.io/record-a-goose-sighting/",
@@ -29,7 +29,7 @@
     }
   },
   "trigger": [
-    "no-previous-state"
+    "act-registry-changed"
   ],
   "engines": [
     "axe",
@@ -41,11 +41,10 @@
     "targetOutcome": "act-lab-target-outcome/1"
   },
   "counts": {
-    "notReported": 28,
-    "unmapped": 46,
-    "failed": 28,
+    "notReported": 41,
+    "failed": 55,
     "unsupported": 32,
-    "page-level-only": 6,
+    "page-level-only": 12,
     "target-unresolved": 8
   },
   "comparisonCounts": {
@@ -62,9 +61,9 @@
     "ambiguous": 0,
     "unsupported": 8
   },
-  "engineSpecificFindings": 175,
-  "otherActFindings": 15,
-  "pageLevelFindings": 32,
+  "engineSpecificFindings": 135,
+  "otherActFindings": 28,
+  "pageLevelFindings": 64,
   "byEngine": {
     "axe": {
       "notReported": 9,
@@ -81,15 +80,17 @@
       "target-unresolved": 2
     },
     "equalAccess": {
-      "unmapped": 23,
+      "notReported": 12,
+      "failed": 12,
       "unsupported": 8,
-      "notReported": 4,
+      "page-level-only": 3,
       "target-unresolved": 2
     },
     "accesslint": {
-      "unmapped": 23,
+      "notReported": 9,
+      "failed": 15,
       "unsupported": 8,
-      "notReported": 4,
+      "page-level-only": 3,
       "target-unresolved": 2
     }
   },
@@ -120,7 +121,9 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
-        "axe"
+        "accesslint",
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -152,8 +155,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -170,6 +175,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
         "axe"
       ],
@@ -203,6 +209,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
         "axe"
       ],
@@ -281,8 +288,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -299,8 +308,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -332,8 +343,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -350,8 +363,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -368,7 +383,9 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
-        "axe"
+        "accesslint",
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -385,8 +402,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -403,8 +422,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -421,8 +442,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -544,6 +567,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
         "axe"
       ],
@@ -652,8 +676,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -685,8 +711,10 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [
+        "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "equalAccess"
       ],
       "engineCount": 4,
       "status": "provisional-match",
@@ -775,8 +803,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible"
@@ -788,7 +816,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "html-valid-role",
@@ -809,14 +837,14 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "html-invalid-role",
@@ -876,7 +904,6 @@
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
       "engineSpecificRules": [
-        "https://alfa.siteimprove.com/rules/sia-r110",
         "https://alfa.siteimprove.com/rules/sia-r111",
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
@@ -903,9 +930,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -913,13 +940,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "aria_role_allowed"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "aria_role_allowed"
     },
     {
       "fixtureId": "html-invalid-role",
@@ -939,19 +965,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "aria/aria-roles"
       ],
-      "engineSpecificRules": [
-        "aria/aria-roles"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "aria/aria-roles"
     },
     {
       "fixtureId": "html-button-named",
@@ -1034,8 +1058,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1051,7 +1075,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "html-button-named",
@@ -1072,14 +1096,14 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "html-button-unnamed",
@@ -1166,9 +1190,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1178,13 +1202,14 @@
       "engineSpecificRules": [
         "style_color_misuse",
         "style_highcontrast_visible",
-        "style_focus_visible",
-        "input_label_exists"
+        "style_focus_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "html-button-unnamed",
@@ -1204,19 +1229,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "react-button-initial",
@@ -1228,10 +1251,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d",
+        "documentHash": "64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55",
         "reason": null
       },
       "engine": "axe",
@@ -1260,10 +1283,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d",
+        "documentHash": "64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55",
         "reason": null
       },
       "engine": "alfa",
@@ -1295,17 +1318,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d",
+        "documentHash": "64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1319,7 +1342,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "react-button-initial",
@@ -1331,27 +1354,25 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "4a42aa38bd07afd33b661a33e70d70ef2799d4ce372b3f8a11057efca3e8854d",
+        "documentHash": "64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "react-button-updated",
@@ -1363,10 +1384,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5",
+        "documentHash": "88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd",
         "reason": null
       },
       "engine": "axe",
@@ -1391,10 +1412,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5",
+        "documentHash": "88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd",
         "reason": null
       },
       "engine": "alfa",
@@ -1425,17 +1446,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5",
+        "documentHash": "88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1449,7 +1470,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "react-button-updated",
@@ -1461,23 +1482,23 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "36fe12ead0682e39c010c917a9dfe2e9b1fc94063642555d3095fd0bacf5d4e5",
+        "documentHash": "88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "vue-button-initial",
@@ -1489,10 +1510,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5",
+        "documentHash": "9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc",
         "reason": null
       },
       "engine": "axe",
@@ -1521,10 +1542,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5",
+        "documentHash": "9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc",
         "reason": null
       },
       "engine": "alfa",
@@ -1556,17 +1577,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5",
+        "documentHash": "9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1580,7 +1601,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "vue-button-initial",
@@ -1592,27 +1613,25 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "9909075a010d3db9d8af9d837d034c0566ba9a2d27b2565c468fe01acb9cd9d5",
+        "documentHash": "9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "vue-button-updated",
@@ -1624,10 +1643,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268",
+        "documentHash": "c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3",
         "reason": null
       },
       "engine": "axe",
@@ -1652,10 +1671,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268",
+        "documentHash": "c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3",
         "reason": null
       },
       "engine": "alfa",
@@ -1686,17 +1705,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268",
+        "documentHash": "c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -1710,7 +1729,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "vue-button-updated",
@@ -1722,23 +1741,23 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "132fe8bd9e4bd56018f32382b10a9fe148c91c21e12ce6162e65c7b1f1905268",
+        "documentHash": "c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "paca-valid-open",
@@ -2159,9 +2178,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2169,13 +2188,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "img_alt_valid"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "img_alt_valid"
     },
     {
       "fixtureId": "correlation-two-images-a",
@@ -2195,19 +2213,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "text-alternatives/img-alt"
       ],
-      "engineSpecificRules": [
-        "text-alternatives/img-alt"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "text-alternatives/img-alt"
     },
     {
       "fixtureId": "correlation-two-images-b",
@@ -2292,9 +2308,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2302,13 +2318,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "img_alt_valid"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "img_alt_valid"
     },
     {
       "fixtureId": "correlation-two-images-b",
@@ -2328,19 +2343,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "text-alternatives/img-alt"
       ],
-      "engineSpecificRules": [
-        "text-alternatives/img-alt"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "text-alternatives/img-alt"
     },
     {
       "fixtureId": "correlation-two-images-control",
@@ -2426,8 +2439,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2435,13 +2448,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "img_alt_valid"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "pageLevelFailures": 2,
+      "evidence": "2 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "correlation-two-images-control",
@@ -2462,18 +2474,16 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "text-alternatives/img-alt"
       ],
-      "engineSpecificRules": [
-        "text-alternatives/img-alt"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "pageLevelFailures": 2,
+      "evidence": "2 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "correlation-single-image",
@@ -2558,9 +2568,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2568,13 +2578,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "img_alt_valid"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "evidence": "img_alt_valid"
     },
     {
       "fixtureId": "correlation-single-image",
@@ -2594,19 +2603,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "notReported",
-      "mapping": "engine-specific",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "text-alternatives/img-alt"
       ],
-      "engineSpecificRules": [
-        "text-alternatives/img-alt"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+      "evidence": "text-alternatives/img-alt"
     },
     {
       "fixtureId": "correlation-multi-rule-button-name",
@@ -2671,7 +2678,6 @@
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
       "engineSpecificRules": [
-        "https://alfa.siteimprove.com/rules/sia-r110",
         "https://alfa.siteimprove.com/rules/sia-r111",
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
@@ -2700,9 +2706,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2713,14 +2719,15 @@
       "engineSpecificRules": [
         "style_color_misuse",
         "style_highcontrast_visible",
-        "aria_role_allowed",
-        "style_focus_visible",
-        "input_label_exists"
+        "style_focus_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "674b10",
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "correlation-multi-rule-button-name",
@@ -2740,23 +2747,23 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name",
         "aria/aria-roles",
         "aria/aria-allowed-role"
       ],
       "engineSpecificRules": [
-        "labels-and-names/button-name",
-        "aria/aria-roles",
         "aria/aria-allowed-role"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "674b10"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "correlation-multi-rule-role-value",
@@ -2821,7 +2828,6 @@
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
       "engineSpecificRules": [
-        "https://alfa.siteimprove.com/rules/sia-r110",
         "https://alfa.siteimprove.com/rules/sia-r111",
         "https://alfa.siteimprove.com/rules/sia-r66"
       ],
@@ -2850,9 +2856,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -2863,14 +2869,15 @@
       "engineSpecificRules": [
         "style_color_misuse",
         "style_highcontrast_visible",
-        "aria_role_allowed",
-        "style_focus_visible",
-        "input_label_exists"
+        "style_focus_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "97a4e1",
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "aria_role_allowed"
     },
     {
       "fixtureId": "correlation-multi-rule-role-value",
@@ -2890,23 +2897,23 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name",
         "aria/aria-roles",
         "aria/aria-allowed-role"
       ],
       "engineSpecificRules": [
-        "labels-and-names/button-name",
-        "aria/aria-roles",
         "aria/aria-allowed-role"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "97a4e1"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "aria/aria-roles"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-a",
@@ -2993,9 +3000,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -3007,13 +3014,14 @@
         "style_color_misuse",
         "style_highcontrast_visible",
         "style_focus_visible",
-        "input_label_exists",
         "input_label_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "otherActRules": [
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-a",
@@ -3033,19 +3041,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-b",
@@ -3132,9 +3138,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -3146,13 +3152,14 @@
         "style_color_misuse",
         "style_highcontrast_visible",
         "style_focus_visible",
-        "input_label_exists",
         "input_label_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "otherActRules": [
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-b",
@@ -3172,19 +3179,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-c",
@@ -3271,9 +3276,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -3285,13 +3290,14 @@
         "style_color_misuse",
         "style_highcontrast_visible",
         "style_focus_visible",
-        "input_label_exists",
         "input_label_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "otherActRules": [
+        "e086e5"
+      ],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "correlation-repeated-unnamed-c",
@@ -3311,19 +3317,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "correlation-repeated-named-a",
@@ -3411,8 +3415,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -3424,13 +3428,14 @@
         "style_color_misuse",
         "style_highcontrast_visible",
         "style_focus_visible",
-        "input_label_exists",
         "input_label_visible"
       ],
-      "otherActRules": [],
+      "otherActRules": [
+        "e086e5"
+      ],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "correlation-repeated-named-a",
@@ -3451,18 +3456,16 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "correlation-repeated-named-b",
@@ -3550,8 +3553,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -3563,13 +3566,14 @@
         "style_color_misuse",
         "style_highcontrast_visible",
         "style_focus_visible",
-        "input_label_exists",
         "input_label_visible"
       ],
-      "otherActRules": [],
+      "otherActRules": [
+        "e086e5"
+      ],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "correlation-repeated-named-b",
@@ -3590,18 +3594,16 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "page-level-only",
+      "mapping": "act-other-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
-      "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
       "fixtureId": "frame-single-target",
@@ -4061,10 +4063,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619",
+        "documentHash": "dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0",
         "reason": null
       },
       "engine": "axe",
@@ -4089,10 +4091,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619",
+        "documentHash": "dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0",
         "reason": null
       },
       "engine": "alfa",
@@ -4123,17 +4125,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619",
+        "documentHash": "dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -4147,7 +4149,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "react-button-async",
@@ -4159,23 +4161,23 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "14254f4b3d0b832174605b9cad43ed6150448bec56019497e595b7cdd5599619",
+        "documentHash": "dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "react-button-replaced",
@@ -4187,10 +4189,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904",
+        "documentHash": "c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26",
         "reason": null
       },
       "engine": "axe",
@@ -4219,10 +4221,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904",
+        "documentHash": "c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26",
         "reason": null
       },
       "engine": "alfa",
@@ -4254,17 +4256,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904",
+        "documentHash": "c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -4278,7 +4280,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "react-button-replaced",
@@ -4290,27 +4292,25 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "3cb0753c5ee233c10cce3f7b569bfe32355460eab60a6ed189c21bb1c46d7904",
+        "documentHash": "c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/button-name"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/button-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/button-name"
     },
     {
       "fixtureId": "vue-button-async",
@@ -4322,10 +4322,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d",
+        "documentHash": "c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766",
         "reason": null
       },
       "engine": "axe",
@@ -4350,10 +4350,10 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d",
+        "documentHash": "c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766",
         "reason": null
       },
       "engine": "alfa",
@@ -4384,17 +4384,17 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d",
+        "documentHash": "c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766",
         "reason": null
       },
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -4408,7 +4408,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "vue-button-async",
@@ -4420,23 +4420,23 @@
       "viewport": "desktop",
       "target": {
         "status": "resolved",
-        "targetId": "dom:v1:e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "targetId": "dom:v1:c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
         "method": "css",
         "matchedElements": 1,
-        "documentHash": "e6f57070d301b0c63af4fc0587a5d9687698227ba6c7aa8a058f3e569640706d",
+        "documentHash": "c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766",
         "reason": null
       },
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "paca-valid-nested",
@@ -4631,8 +4631,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -4646,7 +4646,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "interaction-reveal-target",
@@ -4667,14 +4667,14 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "applicability-no-buttons",
@@ -4981,8 +4981,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible"
@@ -4994,7 +4994,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "link-named",
@@ -5015,14 +5015,14 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "link-unnamed",
@@ -5107,9 +5107,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -5117,13 +5117,12 @@
       ],
       "engineSpecificRules": [
         "style_color_misuse",
-        "style_highcontrast_visible",
-        "a_text_purpose"
+        "style_highcontrast_visible"
       ],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "a_text_purpose"
     },
     {
       "fixtureId": "link-unnamed",
@@ -5143,19 +5142,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "navigable/link-name"
       ],
-      "engineSpecificRules": [
-        "navigable/link-name"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "navigable/link-name"
     },
     {
       "fixtureId": "field-named",
@@ -5238,8 +5235,8 @@
       "engine": "equalAccess",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "status": "notReported",
+      "mapping": "engine-specific",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -5253,7 +5250,7 @@
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "field-named",
@@ -5274,14 +5271,14 @@
       "engine": "accesslint",
       "execution": "executed",
       "outcome": null,
-      "status": "unmapped",
+      "status": "notReported",
       "mapping": "none",
       "engineRuleIds": [],
       "engineSpecificRules": [],
       "otherActRules": [],
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
       "fixtureId": "field-unnamed",
@@ -5366,9 +5363,9 @@
       },
       "engine": "equalAccess",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "style_color_misuse",
         "style_highcontrast_visible",
@@ -5378,13 +5375,14 @@
       "engineSpecificRules": [
         "style_color_misuse",
         "style_highcontrast_visible",
-        "style_focus_visible",
-        "input_label_exists"
+        "style_focus_visible"
       ],
-      "otherActRules": [],
-      "onTargetFailures": 0,
+      "otherActRules": [
+        "97a4e1"
+      ],
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "input_label_exists"
     },
     {
       "fixtureId": "field-unnamed",
@@ -5404,19 +5402,17 @@
       },
       "engine": "accesslint",
       "execution": "executed",
-      "outcome": null,
-      "status": "unmapped",
-      "mapping": "none",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
       "engineRuleIds": [
         "labels-and-names/form-label"
       ],
-      "engineSpecificRules": [
-        "labels-and-names/form-label"
-      ],
+      "engineSpecificRules": [],
       "otherActRules": [],
-      "onTargetFailures": 0,
+      "onTargetFailures": 1,
       "pageLevelFailures": 0,
-      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+      "evidence": "labels-and-names/form-label"
     }
   ]
 }

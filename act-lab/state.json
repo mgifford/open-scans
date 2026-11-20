@@ -1,9 +1,9 @@
 {
   "schemaVersion": "act-lab-state/1",
-  "updatedAt": "2026-11-19T19:05:38.693Z",
+  "updatedAt": "2026-11-20T16:31:52.710Z",
   "cohort": {
     "cohortVersion": "act-lab-cohort/1",
-    "key": "390e2c3f2d1ff4f31878a54baafa5dcc8c9ab1e9e45de8e7763d9fa1fa564373",
+    "key": "2eeab41e37681c0d8848a4f8815650f391a51714fb8db241ece8d73d617f8ce8",
     "components": {
       "cohortVersion": "act-lab-cohort/1",
       "fixtures": "e6d983026d1e0ef06db73cdebb2163b4f1dd0972a0be495c1cd781bb846c5d06",
@@ -14,7 +14,7 @@
         "@accesslint/core": "0.17.0"
       },
       "actMapping": "6f9e00a7aae1c11980aaf258981347affebb151d4470d30f913a86b68419fc29",
-      "actRegistry": "ad4d44ee3b60769c88f117351717b0b0ad6dd07f29eef98f787414959fc8aa13",
+      "actRegistry": "a4876705928bf1a7028249b61572ff6a75f68777cae132184d6defd738d772a2",
       "actRules": "49051da603afa6d28b94ef3e758146dafcbe72bade7202a24636bab3ea4c0036",
       "browser": "chromium",
       "siteRoot": "https://mgifford.github.io/record-a-goose-sighting/",
@@ -24,16 +24,15 @@
     }
   },
   "trigger": [
-    "no-previous-state"
+    "act-registry-changed"
   ],
   "lastRun": {
-    "generatedAt": "2026-11-19T19:05:38.693Z",
+    "generatedAt": "2026-11-20T16:31:52.710Z",
     "counts": {
-      "notReported": 28,
-      "unmapped": 46,
-      "failed": 28,
+      "notReported": 41,
+      "failed": 55,
       "unsupported": 32,
-      "page-level-only": 6,
+      "page-level-only": 12,
       "target-unresolved": 8
     },
     "report": "act-lab/latest-mobile-portrait.json"
