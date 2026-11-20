@@ -386,6 +386,44 @@ element is the meaningful comparison target for cross-engine work.
 Trade-off: EARL does not carry an HTML snippet, so ALFA failures now have
 `html: null`; the element XPath and the engine message remain.
 
+## 3k. Sa11y (shipped)
+
+Sa11y and Editoria11y share one checking engine and one rule set. Open Scans
+adds a single engine identifier, `sa11y` (display name **Sa11y**); there is no
+separate `editoria11y` engine. The adapter loads the pinned `sa11y` npm package
+(5.1.0) UMD bundle and language bundle in a headless Playwright page, waits for
+the `sa11y-check-complete` event, and returns native results. It needs no
+Drupal installation, CMS, authentication, or Editoria11y reporting database.
+
+Native evidence is preserved:
+
+- native test keys (`MISSING_ALT`, `HEADING_EMPTY`, `LINK_EMPTY`, `BTN_EMPTY`, …);
+- native classification: `error`, `warning`, `good`;
+- absolute XPath computed from the reported element, plus the engine's HTML
+  snippet when present;
+- the configured check root and the runtime configuration.
+
+`developerChecksOnByDefault` is enabled because Sa11y 5.1.0 hides several
+ACT-mapped checks (for example `BTN_EMPTY`) behind it; the upstream conformance
+suite enables it too. `formLabelsPlugin` is not enabled, so checks that depend on
+it are absent from this profile. Warnings are counted and retained in the raw
+result but are not treated as WCAG failures. A successful empty result is
+distinct from an execution error or timeout: the former has `executed: true` and
+zero findings, the latter has `executed: false` with an error.
+
+ACT mappings come from Sa11y's published
+`conformance/mapping/act-rule-mapping.js`. Entries marked `todo` by upstream are
+not imported, and mappings whose required plugin is not enabled are omitted. Each
+mapping records `source`, `verifiedAt` and the installed engine version, and
+`versionAligned` stays false because the upstream file is not a version-aligned
+implementation report. **Mapping provenance is not a conformance claim**; Open
+Scans does not certify Sa11y against ACT.
+
+Comparison uses the existing pipeline unchanged. On a local three-engine scan of
+two Goose fixtures (`axe`, ALFA, Sa11y), the missing-alt images and the empty
+button formed three issues, each with all three engines on the same resolved
+target and `act-verified-different-version` status.
+
 ## 4. Reprocessing historical evidence
 
 ```bash

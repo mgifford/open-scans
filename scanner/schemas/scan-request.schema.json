@@ -45,7 +45,14 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["all", "axe", "alfa", "accesslint", "equalaccess"]
+        "enum": [
+          "all",
+          "axe",
+          "alfa",
+          "accesslint",
+          "equalaccess",
+          "sa11y"
+        ]
       },
       "minItems": 1
     },
@@ -66,16 +73,27 @@
           "minimum": 1
         }
       },
-      "required": ["width", "height"],
+      "required": [
+        "width",
+        "height"
+      ],
       "additionalProperties": false
     },
     "colorScheme": {
       "type": "string",
-      "enum": ["light", "dark", "both"]
+      "enum": [
+        "light",
+        "dark",
+        "both"
+      ]
     },
     "browser": {
       "type": "string",
-      "enum": ["chromium", "firefox", "webkit"]
+      "enum": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ]
     },
     "requestedUrls": {
       "type": "array",

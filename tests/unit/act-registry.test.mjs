@@ -59,10 +59,10 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   const registry = loadActRegistry();
   const rules = Object.keys(registry.rules);
 
-  assert.equal(rules.length, 58, "includes ACT rules known only from implementation reports");
+  assert.equal(rules.length, 59, "includes ACT rules known only from implementation reports");
   assert.equal(registry.coverage.withTitle, 14, "metadata is curated, not invented");
   assert.equal(registry.coverage.withTitle < rules.length, true);
-  assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess"]);
+  assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess", "sa11y"]);
   assert.equal(registry.coverage.candidateMappings, 0, "every mapping now comes from a published report");
 });
 

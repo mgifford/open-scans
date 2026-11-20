@@ -20,7 +20,8 @@ export const ENGINE_PACKAGES = [
   '@axe-core/playwright',
   '@siteimprove/alfa-cli',
   'accessibility-checker',
-  '@accesslint/core'
+  '@accesslint/core',
+  'sa11y'
 ]
 
 export function canonicalize (value) {

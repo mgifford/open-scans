@@ -46,6 +46,7 @@
     "lighthouse": "13.6.0",
     "parse5": "^7.3.0",
     "playwright": "^1.64.1",
+    "sa11y": "5.1.0",
     "semantica11y": "^1.0.1"
   },
   "devDependencies": {

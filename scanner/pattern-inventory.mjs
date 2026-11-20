@@ -12,7 +12,7 @@ import { getActRuleIds } from "./act-mapping.mjs";
 
 export const PATTERN_INVENTORY_SCHEMA_VERSION = "a11y-pattern-inventory/1";
 
-const ENGINES = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
+const ENGINES = ["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"];
 
 export const CATEGORY_LABELS = Object.freeze({
   navigation: "Navigation",
@@ -62,6 +62,7 @@ function engineLabel(engine) {
     alfa: "Siteimprove ALFA",
     equalAccess: "IBM Equal Access",
     accesslint: "AccessLint",
+    sa11y: "Sa11y",
     qualweb: "QualWeb (historical)",
     reflowRisk: "Reflow risk indicator",
     semantica11y: "Semantica11y"

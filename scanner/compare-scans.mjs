@@ -9,12 +9,13 @@ import { getActRuleIds } from "./act-mapping.mjs";
 
 export const ACCESSIBILITY_COMPARISON_SCHEMA_VERSION = "accessibility-comparison/1";
 
-const ENGINE_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "qualweb", "reflowRisk", "semantica11y"];
+const ENGINE_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb", "reflowRisk", "semantica11y"];
 const ENGINE_LABEL = {
   axe: "axe-core",
   alfa: "Siteimprove ALFA",
   equalAccess: "IBM Equal Access",
   accesslint: "AccessLint",
+  sa11y: "Sa11y",
   qualweb: "QualWeb (historical)",
   reflowRisk: "Reflow risk indicator",
   semantica11y: "Semantica11y"
@@ -226,7 +227,7 @@ export function normalizeReportForComparison(report, { sourcePath = null, logica
     pages.set(normalizedUrl, page);
     page.ok = page.ok && result.ok !== false;
     page.error = page.error ?? result.error ?? null;
-    for (const engine of ENGINE_ORDER.slice(0, 5)) {
+    for (const engine of ENGINE_ORDER.filter((name) => name !== "reflowRisk" && name !== "semantica11y")) {
       if (!result[engine]) continue;
       addPageEngineStatus(page, engine, result[engine]);
       const failures = Array.isArray(result[engine].failures) ? result[engine].failures : [];

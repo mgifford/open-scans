@@ -123,7 +123,8 @@ function combinedViolations(data) {
     + (data.axeTotals?.failed ?? 0)
     + (data.equalAccessTotals?.failed ?? 0)
     + (data.qualwebTotals?.failed ?? 0)
-    + (data.accesslintTotals?.failed ?? 0);
+    + (data.accesslintTotals?.failed ?? 0)
+    + (data.sa11yTotals?.failed ?? 0);
 }
 
 /**

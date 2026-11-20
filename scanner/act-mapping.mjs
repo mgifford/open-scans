@@ -8,7 +8,7 @@ const QUALWEB_README_PATH = new URL("../node_modules/@qualweb/act-rules/README.m
 let cachedMapping = null;
 let cachedRuleIndex = null;
 
-const SUPPORTED_ENGINES = new Set(["axe", "alfa", "equalAccess", "accesslint", "qualweb"]);
+const SUPPORTED_ENGINES = new Set(["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"]);
 export { SUPPORTED_ENGINES };
 
 function normalizeRuleKey(engine, ruleId) {

@@ -396,6 +396,17 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_REFRESH",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "2t702h": {
@@ -531,6 +542,17 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "EMBED_UNFOCUSABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "24afc2": {
@@ -640,6 +662,26 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "BTN_EMPTY",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "BTN_EMPTY_LABELLEDBY",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "46ca7f": {
@@ -712,6 +754,26 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_LANG",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "META_LANG_VALID",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "2779a5": {
@@ -735,6 +797,17 @@
           "reportedEngineVersion": "3.1.42-rc.0",
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_TITLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
         }
       ]
     },
@@ -784,6 +857,53 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "MISSING_ALT",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "MISSING_ALT_LINK",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "MISSING_ALT_LINK_HAS_TEXT",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "ALT_UNPRONOUNCEABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "LINK_ALT_UNPRONOUNCEABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "c487ae": {
@@ -807,6 +927,53 @@
           "reportedEngineVersion": "3.1.42-rc.0",
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "LINK_EMPTY",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "LINK_EMPTY_NO_LABEL",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "LINK_EMPTY_LABELLEDBY",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "LINK_IMAGE_NO_ALT_TEXT",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "LINK_UNPRONOUNCEABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
         }
       ]
     },
@@ -858,6 +1025,17 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "HIDDEN_FOCUSABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "bc659a": {
@@ -882,6 +1060,17 @@
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_REFRESH",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
       ]
     },
     "b4f0c3": {
@@ -894,6 +1083,26 @@
           "reportedEngineVersion": "0.21.0",
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_SCALABLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "META_MAX",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
         }
       ]
     },
@@ -942,6 +1151,17 @@
           "reportedEngineVersion": "3.1.42-rc.0",
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "sa11y": [
+        {
+          "ruleId": "META_LANG",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
         }
       ]
     },
@@ -1079,6 +1299,54 @@
           "reportedEngineVersion": "3.1.42-rc.0",
           "versionAligned": false,
           "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "ffd0e9": {
+      "sa11y": [
+        {
+          "ruleId": "HEADING_EMPTY",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        },
+        {
+          "ruleId": "HEADING_EMPTY_WITH_IMAGE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (full coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
+      ]
+    },
+    "cae760": {
+      "sa11y": [
+        {
+          "ruleId": "EMBED_MISSING_TITLE",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
+        }
+      ]
+    },
+    "5effbb": {
+      "sa11y": [
+        {
+          "ruleId": "LINK_STOPWORD",
+          "source": "https://github.com/ryersondmp/sa11y/blob/master/conformance/mapping/act-rule-mapping.js",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "5.1.0",
+          "reportedEngineVersion": null,
+          "versionAligned": false,
+          "notes": "Upstream Sa11y ACT mapping (partial coverage). This is mapping provenance, not an Open Scans conformance claim."
         }
       ]
     }

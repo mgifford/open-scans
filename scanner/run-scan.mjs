@@ -27,10 +27,11 @@ import { renderCorrelationMarkdown } from "./correlation-report.mjs";
 import { compareRuns, findPreviousCorrelationPath, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
+import { runSa11yAudit } from "./sa11y.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
-const SCANNER_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
+const SCANNER_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"];
 
 /**
  * Determine which scanners should run based on the engines specification
@@ -38,13 +39,27 @@ const SCANNER_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
  * @returns {Object} Object with boolean flags for each scanner
  */
 export function determineScannersToRun(engines) {
-  // Default to all if not specified or if "all" is in the list
-  if (!engines || engines.length === 0 || engines.includes("all")) {
+  // With no engine information at all, keep the historical four-engine
+  // behaviour so existing scheduled scans do not silently grow. An explicit
+  // "all" (the issue template's ALL option) includes Sa11y.
+  if (!engines || engines.length === 0) {
     return {
       runAxe: true,
       runAlfa: true,
       runEqualAccess: true,
       runAccesslint: true,
+      runSa11y: false,
+      runQualWeb: false
+    };
+  }
+
+  if (engines.includes("all")) {
+    return {
+      runAxe: true,
+      runAlfa: true,
+      runEqualAccess: true,
+      runAccesslint: true,
+      runSa11y: true,
       runQualWeb: false
     };
   }
@@ -57,6 +72,7 @@ export function determineScannersToRun(engines) {
     runAlfa: engines.includes("alfa"),
     runEqualAccess: engines.includes("equalaccess"),
     runAccesslint: engines.includes("accesslint"),
+    runSa11y: engines.includes("sa11y"),
     runQualWeb: false
   };
 }
@@ -1018,9 +1034,11 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
     let browser;
     try {
       const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
+      const localExecutable = process.env.PLAYWRIGHT_EXECUTABLE_PATH || process.env.PUPPETEER_EXECUTABLE_PATH;
       browser = await browserType.launch({
         headless: true,
-        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT
+        timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT,
+        ...(localExecutable ? { executablePath: localExecutable } : {})
       });
     } catch (error) {
       return {
@@ -1774,6 +1792,11 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         : scannersToRun.runAccesslint
           ? await runAccessLintAudit(finalUrl, pageLoadDelayMs, scanContext)
           : createScannerBaseError("Skipped (not requested)");
+      const sa11y = browserSkipReason
+        ? createScannerBaseError(browserSkipReason)
+        : scannersToRun.runSa11y
+          ? await runSa11yAudit(finalUrl, { pageLoadDelayMs, scanContext })
+          : createScannerBaseError("Skipped (not requested)");
       const qualweb = browserSkipReason
         ? createScannerBaseError(browserSkipReason)
         : scannersToRun.runQualWeb
@@ -1810,6 +1833,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         axe,
         equalAccess,
         accesslint,
+        sa11y,
         qualweb,
         reflowRisk,
         semantica11y,
@@ -1849,6 +1873,7 @@ async function scanOneUrl(target, engines = ["all"], pageLoadDelayMs = 2000, raw
         axe: baseErrorResult,
         equalAccess: baseErrorResult,
         accesslint: baseErrorResult,
+        sa11y: baseErrorResult,
         qualweb: baseErrorResult,
         reflowRisk: createReflowRiskBaseError(error instanceof Error ? error.message : String(error)),
         semantica11y: createSemantica11yBaseError(error instanceof Error ? error.message : String(error)),
@@ -2549,6 +2574,9 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   }
   if (summary.accesslintTotals) {
     lines.push(`- AccessLint outcomes: ${summary.accesslintTotals.passed} passed, ${summary.accesslintTotals.failed} failed (${summary.accesslintTotals.uniqueFailed} unique, ${summary.accesslintTotals.duplicates} duplicate), ${summary.accesslintTotals.cantTell} cantTell, ${summary.accesslintTotals.inapplicable} inapplicable`);
+  }
+  if (summary.sa11yTotals) {
+    lines.push(`- Sa11y outcomes: ${summary.sa11yTotals.passed} passed, ${summary.sa11yTotals.failed} failed (${summary.sa11yTotals.uniqueFailed} unique, ${summary.sa11yTotals.duplicates} duplicate), ${summary.sa11yTotals.warnings} warnings, ${summary.sa11yTotals.cantTell} cantTell, ${summary.sa11yTotals.inapplicable} inapplicable`);
   }
   if (summary.reflowRiskTotals) {
     const r = summary.reflowRiskTotals;
@@ -3862,6 +3890,16 @@ async function main() {
     inapplicable: 0
   };
 
+  const sa11yTotals = {
+    passed: 0,
+    failed: 0,
+    uniqueFailed: 0,
+    duplicates: 0,
+    cantTell: 0,
+    inapplicable: 0,
+    warnings: 0
+  };
+
   const qualwebTotals = {
     passed: 0,
     failed: 0,
@@ -3943,6 +3981,14 @@ async function main() {
     accesslintTotals.duplicates += result.accesslint.duplicateFailedCount ?? 0;
     accesslintTotals.cantTell += result.accesslint.counts.cantTell;
     accesslintTotals.inapplicable += result.accesslint.counts.inapplicable;
+
+    sa11yTotals.passed += result.sa11y.counts.passed;
+    sa11yTotals.failed += result.sa11y.counts.failed;
+    sa11yTotals.uniqueFailed += result.sa11y.uniqueFailedCount ?? result.sa11y.counts.failed;
+    sa11yTotals.duplicates += result.sa11y.duplicateFailedCount ?? 0;
+    sa11yTotals.cantTell += result.sa11y.counts.cantTell;
+    sa11yTotals.inapplicable += result.sa11y.counts.inapplicable;
+    sa11yTotals.warnings += result.sa11y.counts.warnings ?? 0;
 
     qualwebTotals.passed += result.qualweb?.counts?.passed ?? 0;
     qualwebTotals.failed += result.qualweb?.counts?.failed ?? 0;
@@ -4042,6 +4088,7 @@ async function main() {
     axeTotals,
     equalAccessTotals,
     accesslintTotals,
+    sa11yTotals,
     qualwebTotals,
     reflowRiskTotals,
     semantica11yTotals,

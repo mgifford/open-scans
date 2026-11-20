@@ -39,6 +39,12 @@
       "publishedW3CVersion": "0.8.5",
       "versionMatch": false,
       "consistency": "partial"
+    },
+    "sa11y": {
+      "scannedVersion": "5.1.0",
+      "publishedW3CVersion": null,
+      "versionMatch": null,
+      "consistency": null
     }
   },
   "byActRuleId": {

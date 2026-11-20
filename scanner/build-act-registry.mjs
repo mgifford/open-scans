@@ -23,7 +23,7 @@ const OUTPUT_PATH = new URL("./data/act-registry.json", import.meta.url);
 const mapping = JSON.parse(readFileSync(MAPPING_PATH, "utf8"));
 const overlay = JSON.parse(readFileSync(OVERLAY_PATH, "utf8"));
 
-const ENGINES = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
+const ENGINES = ["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"];
 
 function engineMappings(actRuleId, overlayRule) {
   const fromMapping = mapping.byActRuleId?.[actRuleId] ?? {};

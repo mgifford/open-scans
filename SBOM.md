@@ -30,6 +30,7 @@ This document tracks primary software components used by `open-scans`, including
 | `accessibility-checker` | `^4.0.30` | `4.0.30` | Apache-2.0 |
 | `lighthouse` | `13.6.0` (exact) | `13.6.0` | Apache-2.0 |
 | `playwright` | `^1.64.1` | `1.64.1` | Apache-2.0 |
+| `sa11y` | `5.1.0` | `5.1.0` | GPL-2.0-or-later |
 | `semantica11y` | `^1.0.1` | `1.0.1` | MIT |
 | `@playwright/test` | `^1.64.1` | `1.64.1` | Apache-2.0 |
 

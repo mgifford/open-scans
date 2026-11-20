@@ -17,7 +17,7 @@ import { loadActRegistry } from "./act-registry.mjs";
 
 export const ACT_COVERAGE_VERSION = "act-coverage/1";
 
-const ENGINE_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "qualweb"];
+const ENGINE_ORDER = ["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"];
 
 function actRuleUrl(actRuleId) {
   return `https://www.w3.org/WAI/standards-guidelines/act/rules/${actRuleId}/`;

@@ -30,6 +30,10 @@ Open Scans supports several open-source accessibility testing engines:
 - [Siteimprove ALFA](https://github.com/Siteimprove/alfa)
 - [IBM Equal Access](https://github.com/IBMa/equal-access)
 - [AccessLint](https://github.com/marketplace/actions/accesslint)
+- [Sa11y](https://sa11y.netlify.app/) — the checking technology shared with [Editoria11y](https://editoria11y.com/)
+
+Sa11y is run as a headless content-focused checker on the same public pages as the
+other engines. It does not require Drupal, a CMS, or Editoria11y's reporting layer.
 
 Different engines implement different rules, interpret standards differently, and identify different problems.
 

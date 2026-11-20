@@ -46,6 +46,7 @@ function labelForEngine(engine, observationsArtifact) {
     alfa: "ALFA",
     equalAccess: "Equal Access",
     accesslint: "AccessLint",
+    sa11y: "Sa11y",
     qualweb: "QualWeb"
   };
   return labels[engine] ?? engine;
