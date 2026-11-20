@@ -60,7 +60,8 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   const rules = Object.keys(registry.rules);
 
   assert.equal(rules.length, 59, "includes ACT rules known only from implementation reports");
-  assert.equal(registry.coverage.withTitle, 14, "metadata is curated, not invented");
+  assert.equal(registry.coverage.withTitle, 15, "metadata is curated, not invented");
+  assert.equal(registry.rules["5effbb"].title, "Link in context is descriptive");
   assert.equal(registry.coverage.withTitle < rules.length, true);
   assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess", "sa11y"]);
   assert.equal(registry.coverage.candidateMappings, 0, "every mapping now comes from a published report");

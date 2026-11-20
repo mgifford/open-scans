@@ -354,6 +354,9 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     ["#section-summary", "Summary"],
     ...(correlationSection ? [["#multi-engine-evidence", "Multi-engine evidence"]] : []),
     ...(actCoverageSection ? [["#act-rule-coverage", "ACT rule coverage"]] : []),
+    ...((summary.results ?? []).some((result) => Object.values(result ?? {}).some((scanner) => Array.isArray(scanner?.warnings) && scanner.warnings.length > 0))
+      ? [["#engine-warnings", "Native warnings"]]
+      : []),
     ["#section-issues", "Issues"],
     ...(summary.patternInventory && Array.isArray(summary.patternInventory.patterns)
       ? [["#section-patterns", "Pattern and container inventory"]]
@@ -813,6 +816,45 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       `;
     })
     .join('');
+
+  // Native warnings are real engine evidence, but they are not WCAG failures
+  // and do not take part in correlation. Show them as their own table.
+  const warningRows = (() => {
+    const counts = new Map();
+    for (const result of summary.results ?? []) {
+      for (const engine of Object.keys(result ?? {})) {
+        const scanner = result[engine];
+        if (!scanner || !Array.isArray(scanner.warnings)) continue;
+        for (const warning of scanner.warnings) {
+          if (!warning?.rule) continue;
+          const key = `${engine}|${warning.rule}`;
+          counts.set(key, (counts.get(key) ?? 0) + 1);
+        }
+      }
+    }
+    return [...counts.entries()]
+      .map(([key, count]) => {
+        const [engine, rule] = key.split("|");
+        return { engine, label: ENGINE_ACCORDION_LABELS[engine] ?? engine, rule, count };
+      })
+      .sort((a, b) => b.count - a.count || a.engine.localeCompare(b.engine) || a.rule.localeCompare(b.rule));
+  })();
+
+  const engineWarningsHtml = warningRows.length === 0 ? "" : `
+    <section class="priority-section" aria-labelledby="engine-warnings">
+      <h2 id="engine-warnings" tabindex="-1">Native warnings (not counted as failures)</h2>
+      <p>These are the engines' own warning classifications. They are retained as native evidence, are not treated as WCAG failures, and do not take part in cross-engine correlation.</p>
+      <div class="table-wrapper">
+        <table class="priority-table">
+          <caption>Native warning findings by engine and rule</caption>
+          <thead><tr><th scope="col">Engine</th><th scope="col">Native rule</th><th scope="col">Occurrences</th></tr></thead>
+          <tbody>
+            ${warningRows.map((row) => `<tr><th scope="row">${escapeHtml(row.label)}</th><td><code>${escapeHtml(row.rule)}</code></td><td class="count-cell">${row.count}</td></tr>`).join("\n            ")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
 
   // Engine filter options for the filter bar
   const engineFilterOptions = [
@@ -1883,6 +1925,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       ${filterControlsHtml}
 
       ${engineAccordionHtml}
+
+      ${engineWarningsHtml}
     </section>
 
     ${remediationHtml}

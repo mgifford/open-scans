@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-registry/1",
-  "generatedAt": "2026-11-20T16:55:39.783Z",
+  "generatedAt": "2026-11-20T19:19:10.807Z",
   "sources": {
     "actRulesIndex": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
     "engineMapping": {
@@ -15,8 +15,8 @@
   },
   "coverage": {
     "actRules": 59,
-    "withTitle": 14,
-    "withRuleType": 14,
+    "withTitle": 15,
+    "withRuleType": 15,
     "verifiedMappings": 192,
     "candidateMappings": 0,
     "enginesWithMappings": [
@@ -890,14 +890,16 @@
     },
     "5effbb": {
       "actRuleId": "5effbb",
-      "title": null,
+      "title": "Link in context is descriptive",
       "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/5effbb/",
-      "ruleType": null,
-      "wcag": [],
-      "status": null,
+      "ruleType": "atomic",
+      "wcag": [
+        "2.4.4"
+      ],
+      "status": "proposed",
       "revision": null,
-      "metadataSource": null,
-      "metadataVerifiedAt": null,
+      "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "metadataVerifiedAt": "2026-11-20",
       "mappings": [
         {
           "engine": "sa11y",

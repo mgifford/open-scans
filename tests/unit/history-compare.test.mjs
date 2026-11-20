@@ -169,3 +169,20 @@ test("the run being written is excluded even when it sits in the report tree", a
   const found = findPreviousCorrelationPath({ issueNumber: 7, outputDir: current, cwd: root });
   assert.equal(found, join(older, "correlation.json"));
 });
+
+test("a family rename keeps continuity when the ACT rule is unchanged", () => {
+  const before = issue({ id: "before", family: "text-alternative" });
+  before.actRuleIds = ["23a2a8"];
+  const after = issue({ id: "after", family: "act:23a2a8" });
+  after.actRuleIds = ["23a2a8"];
+
+  assert.equal(continuityKey(before), continuityKey(after), "ACT rule identity outranks the family label");
+
+  const comparison = compareRuns({
+    previous: artifact({ issues: [before] }),
+    current: artifact({ issues: [after] })
+  });
+  assert.equal(comparison.counts.new, 0, "a renamed family must not look like a new issue");
+  assert.equal(comparison.counts.notObserved, 0, "a renamed family must not look resolved");
+  assert.equal(comparison.counts.changed, 1);
+});

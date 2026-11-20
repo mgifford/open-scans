@@ -170,6 +170,18 @@
       "revision": null,
       "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
       "verifiedAt": "2026-11-19"
+    },
+    "5effbb": {
+      "title": "Link in context is descriptive",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/5effbb/",
+      "ruleType": "atomic",
+      "wcag": [
+        "2.4.4"
+      ],
+      "status": "proposed",
+      "revision": null,
+      "source": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
+      "verifiedAt": "2026-11-20"
     }
   },
   "candidateMappings": {},
