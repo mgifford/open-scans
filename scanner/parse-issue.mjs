@@ -14,7 +14,7 @@ const scanRequestSchema = JSON.parse(readFileSync(schemaPath, "utf8"));
 export const NON_AXE_ENGINES = ["alfa", "equalaccess", "accesslint"];
 
 /** All valid engine names accepted by the scanner (including the "all" alias). */
-const KNOWN_ENGINES = new Set(["axe", "alfa", "equalaccess", "accesslint", "all"]);
+const KNOWN_ENGINES = new Set(["axe", "alfa", "equalaccess", "accesslint", "sa11y", "all"]);
 
 /**
  * Returns the default engines to use when none are specified:

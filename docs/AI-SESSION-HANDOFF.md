@@ -10,6 +10,29 @@ schemas or tests.
 
 ---
 
+## 0. Sa11y integration (2026-11-20)
+
+A Sa11y engine (`sa11y`, display name **Sa11y**) is on branch
+`feat/sa11y-engine`, pending review. It runs the pinned `sa11y@5.1.0` UMD
+bundle headlessly through Playwright and feeds native findings through the
+existing observation, target-resolution, correlation and reporting pipeline.
+
+Things a future session must know:
+
+- the completion event is `sa11y-check-complete` (the upstream conformance
+  spec's older `sa11yCheckComplete` name does not fire in 5.1.0);
+- `developerChecksOnByDefault: true` is required for several ACT-mapped
+  checks (for example `BTN_EMPTY`); `formLabelsPlugin` stays off;
+- Sa11y needs `sessionStorage`, so it cannot run on `data:` URLs;
+- Sa11y does not require Drupal or Editoria11y; there is deliberately no
+  `editoria11y` engine identifier;
+- the actor's ACT mappings come from Sa11y's published mapping file and are
+  mapping provenance, not a conformance claim;
+- scans with no engine information keep the historical four-engine default;
+  `ALL` and explicit engine lists include Sa11y.
+
+---
+
 ## 1. Current state
 
 ### Open Scans

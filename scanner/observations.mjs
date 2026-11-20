@@ -32,13 +32,14 @@ import { resolveTarget } from "./target-resolution.mjs";
 export const OBSERVATION_SCHEMA_VERSION = "a11y-observation/1";
 
 /** Engine keys in report order. */
-export const OBSERVATION_ENGINES = Object.freeze(["axe", "alfa", "equalAccess", "accesslint", "qualweb"]);
+export const OBSERVATION_ENGINES = Object.freeze(["axe", "alfa", "equalAccess", "accesslint", "sa11y", "qualweb"]);
 
 export const ENGINE_LABELS = Object.freeze({
   axe: "axe",
   alfa: "ALFA",
   equalAccess: "Equal Access",
   accesslint: "AccessLint",
+  sa11y: "Sa11y",
   qualweb: "QualWeb"
 });
 
@@ -47,6 +48,7 @@ const ENGINE_PACKAGES = Object.freeze({
   alfa: "@siteimprove/alfa-cli",
   equalAccess: "accessibility-checker",
   accesslint: "@accesslint/core",
+  sa11y: "sa11y",
   axe: "axe-core"
 });
 

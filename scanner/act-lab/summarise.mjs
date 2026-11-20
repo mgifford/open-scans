@@ -19,7 +19,7 @@ import {
   resolveCaseTarget
 } from './target-outcomes.mjs'
 
-const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint']
+const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint', 'sa11y']
 
 function mappingExists (ruleId, engine) {
   // Use the registry, not only the legacy mapping file: Equal Access and
@@ -269,7 +269,7 @@ export function summarise (prepared, meta, viewport = null) {
 
   const missingFixtures = [...new Set(
     results
-      .filter((entry) => entry.status === 'notRun')
+      .filter((entry) => entry.status === 'notRun' && entry.evidence === 'No result for this URL.')
       .map((entry) => entry.fixtureId)
   )].sort()
   const failedEngines = [...new Set(

@@ -43,6 +43,33 @@ Playwright/CLI process), plus two always-on page-level indicators that are kept
 separate from WCAG violation counts: `reflowRisk` and `semantica11y`. QualWeb is
 retired and is not selectable; legacy report fields remain readable.
 
+### Sa11y
+
+`sa11y` is an additional rule-based engine (display name **Sa11y**), selectable
+through the issue form (`ALL` or an explicit `Engine: axe, sa11y` line) or the
+`engines` request array. It is the shared checking technology behind Sa11y and
+Editoria11y; Open Scans runs the published browser bundle headlessly on public
+pages and does not need Drupal, a CMS, or Editoria11y's sync layer.
+
+- Adapter: `scanner/sa11y.mjs`, pinned to the `sa11y` npm package (5.1.0).
+- Findings: native test keys (`MISSING_ALT`, `HEADING_EMPTY`, …), native
+  `error`/`warning`/`good` classification, absolute XPath and HTML evidence.
+- Configuration: `{headless: true, checkRoot: "body", developerChecksOnByDefault: true}`.
+  Developer checks are enabled because Sa11y 5.1.0 hides several ACT-mapped
+  checks (for example `BTN_EMPTY`) behind that option; the upstream conformance
+  suite does the same. `formLabelsPlugin` is **not** enabled, so form-label
+  checks that need it do not run.
+- ACT mappings: taken from Sa11y's published conformance mapping file and
+  stored in the existing registry with `source` and version provenance. They are
+  mapping evidence, not an Open Scans conformance claim.
+- Default rollout: `ALL` and explicit engine lists include Sa11y; scans with no
+  engine information keep the historical four-engine default until the
+  integration has been validated in production.
+
+A successful empty result (`executed: true`, zero findings) is different from an
+engine error or timeout (`executed: false`, `error` set). Warnings are retained
+in the raw result and counted, but are not treated as WCAG failures.
+
 ## Usage
 
 - `npm run run:parse`

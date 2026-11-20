@@ -42,6 +42,7 @@ body:
         - alfa
         - equalaccess
         - accesslint
+        - sa11y
       default: 0
     validations:
       required: false
@@ -50,7 +51,7 @@ body:
     attributes:
       value: |
         ---
-        **Supported engines:** axe-core · Siteimprove ALFA · IBM Equal Access Checker · AccessLint
+        **Supported engines:** axe-core · Siteimprove ALFA · IBM Equal Access Checker · AccessLint · Sa11y
 
         Once this issue is saved the scan starts automatically. Results will be posted as a comment on this issue and published to [GitHub Pages](https://mgifford.github.io/open-scans/reports.html).
 

@@ -165,6 +165,7 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 | P9 | ALFA EARL parsing for absolute XPath targets, text-node resolution, engine messages, and tests against the actual ALFA CLI |
 | P10 | Retired QualWeb from reports, added an accessible on-this-page navigation, and reordered the evidence sections after the summary |
 | P11 | Verified ACT mappings from the W3C implementation reports for Alfa, AccessLint, and Equal Access, registered report-only ACT rules, and removed candidate mappings contradicted by those reports |
+| P12 | Sa11y engine integration: pinned headless adapter, native rule and classification preservation, engine selection, report and ACT-mapping integration, tests and limitations documentation |
 
 ## Accountability and verification
 

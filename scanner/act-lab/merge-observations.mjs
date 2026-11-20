@@ -6,7 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint']
+const ENGINES = ['axe', 'alfa', 'equalAccess', 'accesslint', 'sa11y']
 
 export function mergeReports (reports) {
   if (!reports.length) throw new Error('No reports to merge')

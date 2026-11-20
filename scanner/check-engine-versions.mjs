@@ -39,7 +39,8 @@ export const ENGINE_PACKAGES = [
   "@siteimprove/alfa-formatter-json",
   "@axe-core/playwright",
   "accessibility-checker",
-  "@accesslint/core"
+  "@accesslint/core",
+  "sa11y"
 ];
 
 /**

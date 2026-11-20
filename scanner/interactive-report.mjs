@@ -258,7 +258,7 @@ function renderBugIdDisplay(fingerprint, patternId) {
   return `<span class="bug-id-display" title="${escapeHtml(title)}">\u{1F511} Pattern ID: <code class="bug-id-code">${visibleId}</code></span>`;
 }
 
-const CORROBORATION_ENGINE_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb', semantica11y: 'Semantica11y' };
+const CORROBORATION_ENGINE_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', sa11y: 'Sa11y', qualweb: 'QualWeb', semantica11y: 'Semantica11y' };
 
 /**
  * Render a badge when this finding was flagged by another independent tool on
@@ -378,12 +378,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     axe: "AXE",
     alfa: "ALFA",
     equalaccess: "Equal Access",
-    accesslint: "AccessLint"
+    accesslint: "AccessLint",
+    sa11y: "Sa11y"
   };
   const requestedEngines = Array.isArray(summary.engines) ? summary.engines : [];
   const enginesDisplay = requestedEngines.length > 0
     ? (requestedEngines.includes("all")
-      ? "All engines (AXE, ALFA, Equal Access, AccessLint)"
+      ? "All engines (AXE, ALFA, Equal Access, AccessLint, Sa11y)"
       : requestedEngines.map((engine) => ENGINE_DISPLAY_NAMES[engine.toLowerCase()] || engine.toUpperCase()).join(", "))
     : "Unknown";
   let knownErrorCount = 0;
@@ -433,10 +434,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   ];
 
   // Build priority table data (top 10 pages by total unique errors)
-  const ALL_SCANNERS = ['axe', 'alfa', 'equalAccess', 'accesslint'];
-  const SCANNER_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint' };
+  const ALL_SCANNERS = ['axe', 'alfa', 'equalAccess', 'accesslint', 'sa11y'];
+  const SCANNER_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', sa11y: 'Sa11y' };
   // Mapping from lowercase engine key (as stored in summary.engines) to SCANNERS key
-  const ENGINE_KEY_MAP = { axe: 'axe', alfa: 'alfa', equalaccess: 'equalAccess', accesslint: 'accesslint' };
+  const ENGINE_KEY_MAP = { axe: 'axe', alfa: 'alfa', equalaccess: 'equalAccess', accesslint: 'accesslint', sa11y: 'sa11y' };
 
   // Determine which scanners to show columns for based on which engines were run
   const enginesSpec = summary.engines || ["all"];
@@ -455,6 +456,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     if (engine === 'alfa') return result.alfa?.uniqueFailedCount ?? result.alfa?.counts?.failed ?? 0;
     if (engine === 'equalAccess') return result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
     if (engine === 'accesslint') return result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
+    if (engine === 'sa11y') return result.sa11y?.uniqueFailedCount ?? result.sa11y?.counts?.failed ?? 0;
     return 0;
   }
 
@@ -463,6 +465,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     if (engine === 'alfa') return result.alfa?.crossEngineOverlapCount ?? 0;
     if (engine === 'equalAccess') return result.equalAccess?.crossEngineOverlapCount ?? 0;
     if (engine === 'accesslint') return result.accesslint?.crossEngineOverlapCount ?? 0;
+    if (engine === 'sa11y') return result.sa11y?.crossEngineOverlapCount ?? 0;
     return 0;
   }
 
@@ -587,10 +590,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   `;
 
   // Engine order and labels for accordion sections
-  const ENGINE_ORDER = ['alfa', 'axe', 'equalAccess', 'accesslint'];
+  const ENGINE_ORDER = ['alfa', 'axe', 'equalAccess', 'accesslint', 'sa11y'];
   const ENGINE_ACCORDION_LABELS = {
     alfa: 'ALFA', axe: 'axe', equalAccess: 'Equal Access',
-    accesslint: 'AccessLint'
+    accesslint: 'AccessLint', sa11y: 'Sa11y'
   };
 
   const actAlignmentIndex = new Map();
@@ -2120,7 +2123,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
     // ── Copy failure details ──
     const SCAN_TITLE = ${JSON.stringify(scanTitle || `Issue #${issueNumber}`)};
-    const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint' };
+    const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', sa11y: 'Sa11y' };
 
     function getEnvironment() {
       const ua = navigator.userAgent;
