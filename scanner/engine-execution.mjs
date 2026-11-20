@@ -9,8 +9,7 @@ export const ENGINE_DISPLAY_NAMES = Object.freeze({
   axe: 'axe',
   alfa: 'ALFA',
   equalAccess: 'Equal Access',
-  accesslint: 'AccessLint',
-  qualweb: 'QualWeb'
+  accesslint: 'AccessLint'
 })
 
 export function getEngineExecution (summary) {

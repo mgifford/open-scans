@@ -21,7 +21,6 @@ test("reports failed engines instead of counting them as clean", () => {
   assert.equal(execution.accesslint.status, "failed");
   assert.equal(execution.alfa.status, "executed");
   assert.equal(execution.equalAccess.status, "executed");
-  assert.equal(execution.qualweb.status, "notRun");
 });
 
 test("markdown lists only engines that executed and warns about failures", () => {

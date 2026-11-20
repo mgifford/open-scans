@@ -207,7 +207,7 @@ test("Priority table uses raw scanner failure counts", () => {
 
   assert.ok(report.includes("axe Errors"), "Priority table should label axe as raw errors");
   assert.ok(report.includes("ALFA Errors"), "Priority table should label ALFA as raw errors");
-  assert.ok(report.includes("| [View Page](https://example.com/raw-counts) | 7 | 9 | 0 | 0 | 0 | **16** |"),
+  assert.ok(report.includes("| [View Page](https://example.com/raw-counts) | 7 | 9 | 0 | 0 | **16** |"),
     "Priority table should show raw axe/ALFA counts with a unique total");
   assert.ok(report.includes("Raw Counts Page"), "Priority table should include the page title");
 });
