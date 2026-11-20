@@ -207,6 +207,7 @@ export function correlateObservations(artifact) {
           nativeLocator: entry.observation.target?.nativeLocator ?? null,
           locatorType: entry.observation.target?.locatorType ?? "none",
           resolutionMethod: entry.observation.target?.resolutionMethod ?? "none",
+          framePath: entry.observation.target?.framePath ?? null,
           semanticsProvenance: entry.semantics.provenance,
           rawEvidenceRef: entry.observation.rawEvidenceRef
         }))
