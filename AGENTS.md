@@ -107,6 +107,19 @@ The `.github/prompts/` directory contains task-specific prompt files that give A
 
 These prompt files encode accessibility expertise — WCAG criteria, ARIA patterns, colour contrast rules, and project-specific conventions — so that AI agents generate correct, accessible output on the first attempt.
 
+## Session wrap-up
+
+When a session is ending — an agreed checkpoint time arrives, the user says
+"wrap up", context is nearly exhausted, or a meaningful unit of work is
+finished — follow [`docs/SESSION-WRAP-UP.md`](./docs/SESSION-WRAP-UP.md).
+
+At a minimum: run `npm run wrap-up`, record the real test result, commit and
+push on a branch, open or update a pull request, update
+[`docs/AI-SESSION-HANDOFF.md`](./docs/AI-SESSION-HANDOFF.md) with verified and
+unverified work plus the next safe step, and leave the working tree clean.
+
+Do not invent test results, do not auto-merge, and do not force-push `main`.
+
 ## Session handoff and institutional memory
 
 Before starting a new AI session, read [`docs/AI-SESSION-HANDOFF.md`](./docs/AI-SESSION-HANDOFF.md). It records the current cross-repository state, contract versions, workflow distinctions, test baseline and known pitfalls.
