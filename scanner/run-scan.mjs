@@ -2550,9 +2550,6 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.accesslintTotals) {
     lines.push(`- AccessLint outcomes: ${summary.accesslintTotals.passed} passed, ${summary.accesslintTotals.failed} failed (${summary.accesslintTotals.uniqueFailed} unique, ${summary.accesslintTotals.duplicates} duplicate), ${summary.accesslintTotals.cantTell} cantTell, ${summary.accesslintTotals.inapplicable} inapplicable`);
   }
-  if (summary.qualwebTotals) {
-    lines.push(`- QualWeb outcomes: ${summary.qualwebTotals.passed} passed, ${summary.qualwebTotals.failed} failed, ${summary.qualwebTotals.cantTell} cantTell, ${summary.qualwebTotals.inapplicable} inapplicable`);
-  }
   if (summary.reflowRiskTotals) {
     const r = summary.reflowRiskTotals;
     lines.push(`- Reflow risk outcomes (WCAG 1.4.10, indicator only — not a conformance verdict): ${r.failed} failed, ${r.potential} potential, ${r.passed} passed, ${r.cantTell} cantTell, ${r.notExecuted} not executed`);
