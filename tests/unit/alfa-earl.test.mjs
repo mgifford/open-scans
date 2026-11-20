@@ -121,3 +121,23 @@ test("handles the compacted key shape ALFA actually emits", () => {
   assert.equal(parsed.failures[0].xpath, "/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/p[2]/a[1]");
   assert.match(parsed.failures[0].message, /5\.17:1/);
 });
+
+test("EARL rule URI strings survive engine normalisation", async () => {
+  const { normalizeRuleReference } = await import("../../scanner/run-scan.mjs");
+
+  assert.equal(normalizeRuleReference("https://alfa.siteimprove.com/rules/sia-r66"), "https://alfa.siteimprove.com/rules/sia-r66");
+  assert.equal(normalizeRuleReference({ uri: "https://alfa.siteimprove.com/rules/sia-r2" }), "https://alfa.siteimprove.com/rules/sia-r2");
+  assert.equal(normalizeRuleReference("   "), "unknown-rule");
+  assert.equal(normalizeRuleReference(null), "unknown-rule");
+
+  // Integration: parse a real-shaped EARL assertion and normalise its rule.
+  const parsed = parseAlfaEarl({
+    "@graph": [
+      {
+        result: { outcome: "earl:failed", "earl:pointer": { "ptr:expression": "/html[1]" }, info: "x" },
+        test: { "@id": "https://alfa.siteimprove.com/rules/sia-r2" }
+      }
+    ]
+  });
+  assert.equal(normalizeRuleReference(parsed.failures[0].rule), "https://alfa.siteimprove.com/rules/sia-r2");
+});
