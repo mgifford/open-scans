@@ -264,3 +264,33 @@ test("issue #398: the four-engine image correlates without losing raw evidence",
   assert.equal(correlation.reconciliation.complete, true);
   assert.equal(correlation.counts.rawObservations, 237);
 });
+
+test("a rule mapped to two ACT rules correlates on the rule the engines share", () => {
+  const correlation = correlateObservations(
+    artifactOf([
+      observation({ engine: "axe", rule: "button-name" }),
+      observation({ engine: "alfa", rule: "https://alfa.siteimprove.com/rules/sia-r12" })
+    ])
+  );
+
+  assert.equal(correlation.issues.length, 1);
+  assert.equal(correlation.issues[0].family, "act:97a4e1");
+  assert.deepEqual(correlation.issues[0].engines, ["alfa", "axe"]);
+  assert.equal(correlation.counts.singleEngineFindings, 0, "the axe observation is not counted twice");
+  assert.equal(correlation.reconciliation.complete, true);
+});
+
+test("the union of ACT ids is never used as a family key", () => {
+  const correlation = correlateObservations(
+    artifactOf([
+      observation({ engine: "axe", rule: "button-name" }),
+      observation({ engine: "equalAccess", rule: "aria_widget_labelled" })
+    ])
+  );
+
+  // axe button-name maps 97a4e1 and m6b1q3; Equal Access maps m6b1q3, so they
+  // agree on m6b1q3 - not on a synthetic "97a4e1+m6b1q3" family.
+  assert.equal(correlation.issues.length, 1);
+  assert.equal(correlation.issues[0].family, "act:m6b1q3");
+  assert.doesNotMatch(correlation.issues[0].family, /\+/);
+});

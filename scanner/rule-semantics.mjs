@@ -98,11 +98,11 @@ export function getRuleSemantics(engine, ruleId) {
   }
 
   if (actMapped) {
-    // Fall back to the verified ACT rule as the family key. Grouping by ACT
-    // rule keeps rules that implement the same rule comparable. Candidate
-    // mappings are deliberately excluded: they are not proof of equivalence.
+    // ACT rules are the comparison unit, but an engine rule may implement
+    // several. Correlation therefore builds one candidate per actRuleId
+    // instead of using a union family here, which no other engine could share.
     return {
-      family: `act:${[...evidence.verifiedActRuleIds].sort().join("+")}`,
+      family: null,
       label: null,
       wcagSc: [],
       provenance: "act-verified",
