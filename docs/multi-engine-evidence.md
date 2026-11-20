@@ -1,6 +1,6 @@
 # Multi-engine evidence: assessment, model and plan
 
-Status: P0–P7 shipped, plus P8 (ACT rule coverage in reports). The ACT
+Status: P0–P8 shipped, plus P9 (ALFA target extraction via EARL). The ACT
 laboratory compares per declared target instead of attributing page-level
 findings.
 
@@ -327,6 +327,34 @@ observed: 8 with multiple engines reporting, 1 single-engine
 (`m6b1q3`, which only axe maps), and 1 suggesting review. The four-engine
 image rule (`23a2a8`) now shows all four engines reporting.
 
+## 3j. ALFA target extraction (P9, shipped)
+
+ALFA's JSON formatter serializes only the target's subtree, with no ancestors.
+That produced two problems: element targets became single-segment paths
+(`/img`, `/p`, `/a[@class="govuk-link"]`) that resolve ambiguously, and
+text-node targets — most contrast failures — serialized as `{type:"text"}`
+with **no locator at all**. On the 49-page #398 scan that left 511 unresolved
+observations and 221 ambiguous ones, all ALFA.
+
+ALFA also ships an EARL formatter, and each assertion carries
+`ptr:expression`, an absolute XPath for the target (text nodes included) plus
+`earl:info`, the expectation message. `scanner/alfa-earl.mjs` parses that
+output, and run-scan now asks ALFA for EARL instead of JSON.
+
+Verified on the Goose end page with the real CLI:
+
+| Formatter | Failed targets with a usable locator | Contrast text targets |
+|---|---|---|
+| JSON | 5 of 7 (single-segment `/img`, `/p` paths) | 2 with **no locator** |
+| EARL | **7 of 7** absolute XPaths | 2 resolved (`…/p[2]/a[1]`) |
+
+Text-node pointers ending in `/node()[n]` resolve to their containing element
+with method `xpath-text-parent`, medium confidence, and an explicit note — the
+element is the meaningful comparison target for cross-engine work.
+
+Trade-off: EARL does not carry an HTML snippet, so ALFA failures now have
+`html: null`; the element XPath and the engine message remain.
+
 ## 4. Reprocessing historical evidence
 
 ```bash
@@ -353,6 +381,7 @@ evidence resolves without rerunning a browser.
 | **P6 ✅** | Manual review format, validation, application CLI and unmatched-decision reporting | P4 |
 | **P7 ✅** | ACT laboratory per-target outcomes: target resolution, no page-level attribution, expectation comparison, browser-context limits | P3, P5 |
 | **P8 ✅** | ACT rule coverage section: per-rule engine mappings vs engines reporting, silence called out, W3C rule links, review flags | P3, P4 |
+| **P9 ✅** | ALFA EARL parsing: absolute XPath pointers for every target including text nodes, expectation messages retained | P1 |
 
 | P6 | Manual review format, unresolved-match UX | P4 |
 

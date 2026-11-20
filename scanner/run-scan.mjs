@@ -8,6 +8,7 @@ import { parseScanIssue } from "./parse-issue.mjs";
 import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 import { validateTargets } from "./validate-targets.mjs";
 import { formatAlfaRule } from "./alfa-rule-metadata.mjs";
+import { parseAlfaEarl } from "./alfa-earl.mjs";
 import { getRuleMetadata, ROLES, SEVERITY, formatWcagFromTags, wcagScUrl } from "./rule-metadata.mjs";
 import { generateInteractiveHtml } from "./interactive-report.mjs";
 import { collectActConsensusOverlaps, SUPPORTED_ENGINES, getEngineVersionInfo, computeActOutcomes, getActRuleConsistency } from "./act-mapping.mjs";
@@ -337,133 +338,6 @@ async function retryOnNavigationError(fn, maxRetries = 2, baseDelay = 1000) {
   
   // All retries exhausted, throw the last error
   throw lastError;
-}
-
-function extractXPath(element) {
-  if (!element || element.type !== "element") {
-    return null;
-  }
-
-  // Build XPath with parent hierarchy and element position for unique identification
-  const pathSegments = [];
-  let current = element;
-
-  while (current && current.type === "element") {
-    const name = current.name || "unknown";
-    let segment = name;
-
-    // Add id attribute if present for more specific identification
-    const id = getAttributeValue(current, "id");
-    if (id) {
-      segment += `[@id="${escapeXPathValue(id)}"]`;
-    } else {
-      // Calculate position among siblings with the same name
-      const position = getElementPosition(current);
-      if (position !== null) {
-        segment += `[${position}]`;
-      }
-
-      // Add class attribute if present and no id
-      const className = getAttributeValue(current, "class");
-      if (className) {
-        segment += `[@class="${escapeXPathValue(className)}"]`;
-      }
-    }
-
-    pathSegments.unshift(segment);
-    current = current.parent;
-  }
-
-  return pathSegments.length > 0 ? "/" + pathSegments.join("/") : null;
-}
-
-function getAttributeValue(element, attrName) {
-  if (!element || !Array.isArray(element.attributes)) {
-    return null;
-  }
-
-  for (const attr of element.attributes) {
-    if (attr && attr.name === attrName && attr.value !== undefined) {
-      return attr.value;
-    }
-  }
-
-  return null;
-}
-
-function getElementPosition(element) {
-  // Get parent to calculate position among siblings
-  const parent = element.parent;
-  if (!parent || !Array.isArray(parent.children)) {
-    return null;
-  }
-
-  const elementName = element.name;
-  let position = 1;
-
-  for (const sibling of parent.children) {
-    if (sibling === element) {
-      return position;
-    }
-    if (sibling && sibling.type === "element" && sibling.name === elementName) {
-      position++;
-    }
-  }
-
-  return null;
-}
-
-function escapeXPathValue(value) {
-  // Escape double quotes in XPath attribute values
-  return String(value).replace(/"/g, '&quot;');
-}
-
-function extractHtmlSnippet(target) {
-  if (!target || target.type !== "element") {
-    return null;
-  }
-
-  const attrs = [];
-  if (Array.isArray(target.attributes)) {
-    for (const attr of target.attributes) {
-      if (attr && attr.name && attr.value !== undefined) {
-        attrs.push(`${attr.name}="${attr.value}"`);
-      }
-    }
-  }
-
-  const attrStr = attrs.length > 0 ? " " + attrs.join(" ") : "";
-  const hasChildren = Array.isArray(target.children) && target.children.length > 0;
-
-  if (!hasChildren) {
-    return `<${target.name}${attrStr} />`;
-  }
-
-  // For elements with text content, show it
-  if (target.children.length === 1 && target.children[0].type === "text") {
-    const text = target.children[0].data || "";
-    const truncated = text.length > 50 ? text.substring(0, 50) + "..." : text;
-    return `<${target.name}${attrStr}>${truncated}</${target.name}>`;
-  }
-
-  return `<${target.name}${attrStr}>...</${target.name}>`;
-}
-
-function extractFailureMessage(expectations) {
-  if (!Array.isArray(expectations) || expectations.length === 0) {
-    return null;
-  }
-
-  for (const expectation of expectations) {
-    if (Array.isArray(expectation) && expectation.length >= 2) {
-      const result = expectation[1];
-      if (result && result.type === "err" && result.error && result.error.message) {
-        return result.error.message;
-      }
-    }
-  }
-
-  return null;
 }
 
 function createScannerBaseError(errorMessage = null) {
@@ -980,7 +854,7 @@ async function runAlfaAudit(url) {
     alfaCliPath,
     "audit",
     "--format",
-    "@siteimprove/alfa-formatter-json",
+    "@siteimprove/alfa-formatter-earl",
     "--timeout",
     String(TIMEOUTS.ALFA_PAGE_TIMEOUT),
     url
@@ -1026,49 +900,18 @@ async function runAlfaAudit(url) {
     };
   }
 
-  const outcomes = Array.isArray(parsed?.outcomes) ? parsed.outcomes : [];
-  const failedRules = new Set();
-  const passedRules = new Set();
-  const counts = {
-    passed: 0,
-    failed: 0,
-    cantTell: 0,
-    inapplicable: 0
-  };
-  const failures = [];
-
-  for (const outcome of outcomes) {
-    const value = outcome?.outcome;
-    if (value === "passed") {
-      counts.passed += 1;
-      passedRules.add(normalizeRuleReference(outcome.rule));
-      continue;
-    }
-
-    if (value === "failed") {
-      counts.failed += 1;
-      const ruleUri = normalizeRuleReference(outcome.rule);
-      failedRules.add(ruleUri);
-
-      // Capture detailed failure information
-      failures.push({
-        rule: ruleUri,
-        xpath: extractXPath(outcome.target),
-        html: extractHtmlSnippet(outcome.target),
-        message: extractFailureMessage(outcome.expectations)
-      });
-      continue;
-    }
-
-    if (value === "cantTell") {
-      counts.cantTell += 1;
-      continue;
-    }
-
-    if (value === "inapplicable") {
-      counts.inapplicable += 1;
-    }
-  }
+  // ALFA's JSON formatter drops ancestors, so element targets lose their
+  // document position and text-node targets (most contrast failures) carry no
+  // locator at all. The EARL formatter emits an absolute XPath pointer for
+  // every target, plus the expectation message.
+  const earl = parseAlfaEarl(parsed);
+  const failedRules = new Set(earl.failedRules.map(normalizeRuleReference));
+  const passedRules = new Set(earl.passedRules.map(normalizeRuleReference));
+  const counts = earl.counts;
+  const failures = earl.failures.map((failure) => ({
+    ...failure,
+    rule: normalizeRuleReference(failure.rule)
+  }));
 
   return {
     executed: true,
@@ -1077,7 +920,7 @@ async function runAlfaAudit(url) {
     failedRules: [...failedRules].sort(),
     passedRules: [...passedRules].sort(),
     failures,
-    outcomeCount: outcomes.length
+    outcomeCount: earl.outcomeCount
   };
 }
 
