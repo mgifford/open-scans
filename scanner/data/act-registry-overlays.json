@@ -193,27 +193,7 @@
         }
       ]
     },
-    "09o5cg": {
-      "alfa": [
-        {
-          "ruleId": "sia-r66",
-          "source": "https://alfa.siteimprove.com/rules",
-          "notes": "ALFA SIA-R66 tests the same mechanism as ACT 09o5cg: highest possible contrast of text against its background, 7:1 for normal text. W3C rule text checked 2026-11-19; no published ALFA implementation report for this rule, so candidate.",
-          "engineVersion": null,
-          "verifiedAt": "2026-11-19"
-        }
-      ]
-    },
     "afw4f7": {
-      "alfa": [
-        {
-          "ruleId": "sia-r69",
-          "source": "https://alfa.siteimprove.com/rules",
-          "notes": "ALFA SIA-R69 tests minimum text contrast (4.5:1), matching ACT afw4f7. Candidate: no published implementation report.",
-          "engineVersion": null,
-          "verifiedAt": "2026-11-19"
-        }
-      ],
       "equalAccess": [
         {
           "ruleId": "text_contrast_sufficient",
@@ -285,6 +265,141 @@
         "4.1.2"
       ],
       "reason": "Redundant-but-valid roles are not an ACT rule; role validity is a different test."
+    },
+    {
+      "engine": "alfa",
+      "ruleId": "sia-r66",
+      "wcag": [
+        "1.4.6"
+      ],
+      "reason": "The W3C Alfa implementation report does not list ACT 09o5cg (enhanced contrast); do not claim an ACT mapping for it."
+    },
+    {
+      "engine": "alfa",
+      "ruleId": "sia-r69",
+      "wcag": [
+        "1.4.3"
+      ],
+      "reason": "The W3C Alfa implementation report does not list ACT afw4f7 (minimum contrast); do not claim an ACT mapping for it."
     }
-  ]
+  ],
+  "verifiedMappings": {
+    "674b10": {
+      "alfa": [
+        {
+          "ruleId": "sia-r110",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "m6b1q3": {
+      "alfa": [
+        {
+          "ruleId": "sia-r94",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "307n5z": {
+      "alfa": [
+        {
+          "ruleId": "sia-r90",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "c4a8a4": {
+      "alfa": [
+        {
+          "ruleId": "sia-r114",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "oj04fd": {
+      "alfa": [
+        {
+          "ruleId": "sia-r65",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "bisz58": {
+      "alfa": [
+        {
+          "ruleId": "sia-r96",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "2t702h": {
+      "alfa": [
+        {
+          "ruleId": "sia-r116",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "kb1m8s": {
+      "alfa": [
+        {
+          "ruleId": "sia-r18",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "b49b2e": {
+      "alfa": [
+        {
+          "ruleId": "sia-r115",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    }
+  }
 }
