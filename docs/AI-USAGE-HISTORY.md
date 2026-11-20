@@ -163,6 +163,8 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 | P7 | ACT laboratory per-target outcomes, declared-target resolution, reviewed/unreviewed distinctions, browser-context limitations, and tests |
 | P8 | ACT rule coverage reports, W3C rule links, engine mappings, missing observations, review flags, and `act-coverage.json` |
 | P9 | ALFA EARL parsing for absolute XPath targets, text-node resolution, engine messages, and tests against the actual ALFA CLI |
+| P10 | Retired QualWeb from reports, added an accessible on-this-page navigation, and reordered the evidence sections after the summary |
+| P11 | Verified ACT mappings from the W3C implementation reports for Alfa, AccessLint, and Equal Access, registered report-only ACT rules, and removed candidate mappings contradicted by those reports |
 
 ## Accountability and verification
 
