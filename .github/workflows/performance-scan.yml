@@ -61,6 +61,9 @@ jobs:
           echo "Parsed performance request in '$mode' mode."
 
       - name: Install Chromium for Lighthouse
+        timeout-minutes: 10
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: "120000"
         if: steps.parse.outputs.valid == 'true' && steps.parse.outputs.mode == 'light'
         run: npx playwright install --with-deps chromium
 

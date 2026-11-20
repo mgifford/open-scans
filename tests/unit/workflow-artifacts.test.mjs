@@ -26,3 +26,21 @@ test("ACT laboratory summarises from report.json, not run-scan stdout", () => {
   assert.match(workflow, /summarise\.mjs[\s\S]{0,400}report\.json/, "summarise must read report.json");
   assert.doesNotMatch(workflow, /summarise\.mjs[\s\S]{0,200}meta\.json/, "summarise must not read the stdout summary");
 });
+
+test("browser installs cannot hang the queue indefinitely", () => {
+  const fs = readFileSync;
+  const workflows = [
+    "../../.github/workflows/act-lab-weekly.yml",
+    "../../.github/workflows/bdd-acceptance-tests.yml",
+    "../../.github/workflows/performance-scan.yml",
+    "../../.github/workflows/scan-github-pages.yml",
+    "../../.github/workflows/scan-issue-queue.yml",
+    "../../.github/workflows/scan-request.yml",
+    "../../.github/workflows/scheduled-scan-queue.yml"
+  ];
+  for (const relative of workflows) {
+    const workflow = fs(new URL(relative, import.meta.url), "utf8");
+    assert.match(workflow, /Install Chromium[\s\S]{0,200}timeout-minutes: 10/, `${relative} needs an install timeout`);
+    assert.match(workflow, /PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT/, `${relative} needs a download timeout`);
+  }
+});
