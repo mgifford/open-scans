@@ -166,6 +166,7 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 | P10 | Retired QualWeb from reports, added an accessible on-this-page navigation, and reordered the evidence sections after the summary |
 | P11 | Verified ACT mappings from the W3C implementation reports for Alfa, AccessLint, and Equal Access, registered report-only ACT rules, and removed candidate mappings contradicted by those reports |
 | P12 | Sa11y engine integration: pinned headless adapter, native rule and classification preservation, engine selection, report and ACT-mapping integration, tests and limitations documentation |
+| P13 | Evidence reporting for silence and scope: mapped-but-silent engines, single-engine findings, unmapped native rules, preserved axe frame paths, and the frame-scope caveat |
 
 ## Accountability and verification
 

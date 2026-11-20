@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-19
-**Open Scans integration checkpoint:** `7cf2884` (engine execution reporting; browser pin lifted next)
+**Last updated:** 2026-11-20
+**Open Scans checkpoint:** `a63a8a4` (pending #430; last merged `83e5ca8`)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -10,26 +10,62 @@ schemas or tests.
 
 ---
 
-## 0. Sa11y integration (2026-11-20)
+## 0. Session state (2026-11-20)
 
-A Sa11y engine (`sa11y`, display name **Sa11y**) is on branch
-`feat/sa11y-engine`, pending review. It runs the pinned `sa11y@5.1.0` UMD
-bundle headlessly through Playwright and feeds native findings through the
-existing observation, target-resolution, correlation and reporting pipeline.
+Merged this session, all on `main`:
 
-Things a future session must know:
+- #424 — portable session wrap-up protocol (`docs/SESSION-WRAP-UP.md`, `npm run wrap-up`);
+- #425 — unknown-rule regression guard in observation counts and reports;
+- #426 — QualWeb removed from the Markdown table and execution summary;
+- #427 — correlation compares engines per ACT rule, not per union of ids;
+- #428 — Sa11y engine (`sa11y`) with native keys, classifications and ACT mapping provenance;
+- #429 — history continuity across family renames and a native-warnings report section.
 
-- the completion event is `sa11y-check-complete` (the upstream conformance
-  spec's older `sa11yCheckComplete` name does not fire in 5.1.0);
-- `developerChecksOnByDefault: true` is required for several ACT-mapped
-  checks (for example `BTN_EMPTY`); `formLabelsPlugin` stays off;
-- Sa11y needs `sessionStorage`, so it cannot run on `data:` URLs;
-- Sa11y does not require Drupal or Editoria11y; there is deliberately no
-  `editoria11y` engine identifier;
-- the actor's ACT mappings come from Sa11y's published mapping file and are
-  mapping provenance, not a conformance claim;
-- scans with no engine information keep the historical four-engine default;
-  `ALL` and explicit engine lists include Sa11y.
+Pending review: **#430** (`feat/silence-highlights`) — reports name
+mapped-but-silent engines, list single-engine findings and unmapped native
+rules, and mark frame-scoped findings; axe frame paths are preserved as
+`target.framePath`.
+
+### Production evidence
+
+The 2026-11-20T18:55:19Z #398 scan is the first with all five engines:
+
+- 49 pages, 1172 observations, 634 resolved, 0 unresolved/ambiguous;
+- 20 correlated issues, 86 correlated observations, 7 single-engine findings;
+- 10 ACT rules observed (7 multiple-engine, 3 single-engine);
+- history: 16 persisting, 4 changed, 0 new, 0 not observed after #429;
+- Sa11y: 49/49 executed, 25 failures, 2 recorded passes, 85 native warnings.
+
+### Known limitations to carry forward
+
+- Frame-scoped axe findings resolve to the frame element in the top document,
+  not the element inside the nested frame. #430 keeps the frame path and says
+  so in the report; resolving inside frames needs a per-frame DOM index.
+- Sa11y warnings are shown and counted but not normalised into observations.
+- `formLabelsPlugin` is off, so Sa11y mappings that need it are omitted.
+- The ACT laboratory now includes Sa11y in its engine list and cohort, but no
+  lab run has executed it yet.
+- Version alignment is still false for every engine, so no issue is
+  `act-verified`; `verifiedEquivalentFindings` remains 0 by design.
+- Record a Goose expectations remain unreviewed, so laboratory comparisons are
+  provisional.
+
+### Next safe steps
+
+1. Merge #430, then run #398 once so the published report picks up the new
+   evidence sections and the corrected history comparison.
+2. Manually dispatch the ACT laboratory (or wait for the weekly run) to
+   exercise Sa11y on the fixtures and see the new `unmapped` counts.
+3. Curate non-ACT semantic families for the dominant unmapped rules:
+   ALFA `sia-r66`, `sia-r111`, `sia-r73`; Equal Access `style_focus_visible`,
+   `style_color_misuse`, `style_highcontrast_visible`.
+4. Decide the version-alignment policy (exact / compatible / divergent).
+5. Get Record a Goose expectations reviewed so lab comparisons stop being
+   provisional.
+
+Test baseline at this checkpoint: `npm run lint` exit 0;
+`node --test tests/unit/*.test.mjs` = 1008 pass, 2 fail (ISO-week timezone;
+network scan test flaky under parallel load, passes standalone), 5 skipped.
 
 ---
 
