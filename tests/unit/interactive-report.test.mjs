@@ -528,7 +528,6 @@ test("priority table contains correct error counts", () => {
   assert.ok(html.includes("Filter: 6 axe errors on"), "axe unique count for page1 should be in button aria-label");
   assert.ok(html.includes("Filter: 14 ALFA errors on"), "alfa unique count for page1 should be in button aria-label");
   assert.ok(html.includes("Filter: 24 Equal Access errors on"), "equalAccess unique count for page1 should be in button aria-label");
-  assert.ok(html.includes("Filter: 25 QualWeb errors on"), "qualweb unique count for page1 should be in button aria-label");
 });
 
 test("priority table count buttons have correct data attributes", () => {
@@ -1436,9 +1435,9 @@ test("disability icons have aria-hidden SVGs with visible text labels", () => {
   );
 });
 
-// ── QualWeb rule titles ────────────────────────────────────────────────────────
+// ── Retired engine ────────────────────────────────────────────────────────────
 
-test("QualWeb rule title is displayed with rule ID in rule card", () => {
+test("QualWeb is not displayed in reports", () => {
   const summary = makeSummary({
     enhanced: {
       consolidatedFailures: [
@@ -1451,7 +1450,7 @@ test("QualWeb rule title is displayed with rule ID in rule card", () => {
           metadata: {
             severity: "Moderate",
             roles: ["Front-End Developer"],
-            blocking: false,
+            blocking: false
           },
           examples: [
             {
@@ -1459,56 +1458,19 @@ test("QualWeb rule title is displayed with rule ID in rule card", () => {
               message: "Element has insufficient contrast",
               colorScheme: "light",
               html: "<p>Low contrast</p>",
-              xpath: "/html/body/p",
-            },
-          ],
-        },
+              xpath: "/html/body/p"
+            }
+          ]
+        }
       ],
       roleStats: { "Front-End Developer": 3 },
-      severityStats: { Moderate: 3 },
-    },
+      severityStats: { Moderate: 3 }
+    }
   });
 
   const html = generateInteractiveHtml(summary);
-
-  assert.ok(
-    html.includes("QW-ACT-R76"),
-    "Rule ID should be present in the report"
-  );
-  assert.ok(
-    html.includes("Text has enhanced contrast"),
-    "Rule title from ruleTitle field should be shown in the report"
-  );
-});
-
-test("QualWeb rule card shows only rule ID when ruleTitle is absent", () => {
-  const summary = makeSummary({
-    enhanced: {
-      consolidatedFailures: [
-        {
-          rule: "QW-ACT-R2",
-          engine: "qualweb",
-          totalOccurrences: 1,
-          pages: new Map([["https://example.com/page1", 1]]),
-          metadata: {
-            severity: "Moderate",
-            roles: ["Front-End Developer"],
-            blocking: false,
-          },
-          examples: [],
-        },
-      ],
-      roleStats: { "Front-End Developer": 1 },
-      severityStats: { Moderate: 1 },
-    },
-  });
-
-  const html = generateInteractiveHtml(summary);
-
-  assert.ok(
-    html.includes("QW-ACT-R2"),
-    "Rule ID should be present even without a ruleTitle"
-  );
+  assert.equal(html.includes("QualWeb"), false, "QualWeb must not appear in the report");
+  assert.equal(html.includes("QW-ACT-R76"), false, "Retired engine findings must not be listed");
 });
 
 test("generateInteractiveHtml includes openDetailsByHash function for anchor navigation", () => {
@@ -1828,4 +1790,42 @@ test("pattern inventory section groups unique patterns by semantic container", (
   assert.match(html, /A11Y-aaaaaaaa/);
   assert.match(html, /patterns\.csv/);
   assert.match(html, /not component ownership/);
+});
+
+test("table of contents links resolve to real sections", () => {
+  const html = generateInteractiveHtml(makeSummary());
+  const nav = html.match(/<nav class="toc"[\s\S]*?<\/nav>/);
+  assert.ok(nav, "report should have a table of contents");
+
+  const hrefs = [...nav[0].matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
+  assert.ok(hrefs.length >= 3, "table of contents should list the rendered sections");
+  for (const id of hrefs) {
+    assert.ok(html.includes(`id="${id}"`), `ToC link #${id} must resolve to an element id`);
+  }
+  assert.ok(hrefs.includes("section-summary"));
+  assert.ok(hrefs.includes("section-issues"));
+});
+
+test("summary precedes the evidence sections", () => {
+  const correlation = {
+    counts: {
+      rawObservations: 0, correlatedIssues: 0, verifiedEquivalentFindings: 0,
+      versionMismatchedFindings: 0, inferredEquivalentFindings: 0, singleEngineFindings: 0,
+      relatedFindings: 0, targetDisagreements: 0, notComparableObservations: 0,
+      insufficientEvidenceObservations: 0
+    },
+    issues: [], disagreements: [], related: []
+  };
+  const actCoverage = {
+    rules: [{ actRuleId: "23a2a8", url: "https://www.w3.org/WAI/standards-guidelines/act/rules/23a2a8/", title: "Image has non-empty accessible name", ruleType: "atomic", ruleStatus: "approved", wcag: ["1.1.1"], mappings: [], enginesMapped: [], enginesReporting: [], enginesSilentButExecuted: [], observations: {}, findings: 0, distinctTargets: 0, coverage: "single-engine", reviewSuggested: true }],
+    summary: { actRulesObserved: 1, multipleEngines: 0, multipleEnginesWithSilence: 0, singleEngine: 1, reviewSuggested: 1 }
+  };
+  const html = generateInteractiveHtml(makeSummary(), null, null, {
+    correlation,
+    observations: { observations: [] },
+    actCoverage
+  });
+  assert.ok(html.indexOf('id="section-summary"') < html.indexOf('id="multi-engine-evidence"'));
+  assert.ok(html.indexOf('id="multi-engine-evidence"') < html.indexOf('id="act-rule-coverage"'));
+  assert.ok(html.indexOf('id="act-rule-coverage"') < html.indexOf('id="section-issues"'));
 });

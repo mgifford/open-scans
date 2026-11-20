@@ -310,7 +310,7 @@ ColorScheme: ${escapeHtml(context.colorScheme)}
 Browser: ${escapeHtml(context.browser)}</div>
         </div>
       </div>
-      ${context.browser !== "chromium" ? `<p class="scan-context-note">Browser selection currently applies to Playwright-based scans. ALFA, Equal Access, and QualWeb keep their existing browser implementations.</p>` : ""}
+      ${context.browser !== "chromium" ? `<p class="scan-context-note">Browser selection currently applies to Playwright-based scans. ALFA and Equal Access keep their existing browser implementations.</p>` : ""}
     </section>`;
 }
 
@@ -348,6 +348,25 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   const scanContext = buildScanContext(summary.scanContext);
   const correlationSection = correlationReport ? renderCorrelationHtml(correlationReport) : "";
   const actCoverageSection = correlationReport?.actCoverage ? renderActCoverageHtml(correlationReport.actCoverage) : "";
+  // Only list sections that this report actually renders, so every link has
+  // a target. Evidence sections depend on the correlation artifacts.
+  const tocEntries = [
+    ["#section-summary", "Summary"],
+    ...(correlationSection ? [["#multi-engine-evidence", "Multi-engine evidence"]] : []),
+    ...(actCoverageSection ? [["#act-rule-coverage", "ACT rule coverage"]] : []),
+    ["#section-issues", "Issues"],
+    ...(summary.patternInventory && Array.isArray(summary.patternInventory.patterns)
+      ? [["#section-patterns", "Pattern and container inventory"]]
+      : []),
+    ["#section-replication", "Replicate this scan"]
+  ];
+  const tocHtml = `
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">On this page</h2>
+      <ul>
+        ${tocEntries.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("\n        ")}
+      </ul>
+    </nav>`;
   const { consolidatedFailures, roleStats, severityStats } = enhanced;
 
   const rolesList = Object.values(ROLES);
@@ -359,13 +378,12 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     axe: "AXE",
     alfa: "ALFA",
     equalaccess: "Equal Access",
-    accesslint: "AccessLint",
-    qualweb: "QualWeb"
+    accesslint: "AccessLint"
   };
   const requestedEngines = Array.isArray(summary.engines) ? summary.engines : [];
   const enginesDisplay = requestedEngines.length > 0
     ? (requestedEngines.includes("all")
-      ? "All engines (AXE, ALFA, Equal Access, AccessLint, QualWeb)"
+      ? "All engines (AXE, ALFA, Equal Access, AccessLint)"
       : requestedEngines.map((engine) => ENGINE_DISPLAY_NAMES[engine.toLowerCase()] || engine.toUpperCase()).join(", "))
     : "Unknown";
   let knownErrorCount = 0;
@@ -415,10 +433,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   ];
 
   // Build priority table data (top 10 pages by total unique errors)
-  const ALL_SCANNERS = ['axe', 'alfa', 'equalAccess', 'accesslint', 'qualweb'];
-  const SCANNER_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb' };
+  const ALL_SCANNERS = ['axe', 'alfa', 'equalAccess', 'accesslint'];
+  const SCANNER_LABELS = { axe: 'axe', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint' };
   // Mapping from lowercase engine key (as stored in summary.engines) to SCANNERS key
-  const ENGINE_KEY_MAP = { axe: 'axe', alfa: 'alfa', equalaccess: 'equalAccess', accesslint: 'accesslint', qualweb: 'qualweb' };
+  const ENGINE_KEY_MAP = { axe: 'axe', alfa: 'alfa', equalaccess: 'equalAccess', accesslint: 'accesslint' };
 
   // Determine which scanners to show columns for based on which engines were run
   const enginesSpec = summary.engines || ["all"];
@@ -437,7 +455,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     if (engine === 'alfa') return result.alfa?.uniqueFailedCount ?? result.alfa?.counts?.failed ?? 0;
     if (engine === 'equalAccess') return result.equalAccess?.uniqueFailedCount ?? result.equalAccess?.counts?.failed ?? 0;
     if (engine === 'accesslint') return result.accesslint?.uniqueFailedCount ?? result.accesslint?.counts?.failed ?? 0;
-    if (engine === 'qualweb') return result.qualweb?.counts?.failed ?? 0;
     return 0;
   }
 
@@ -446,7 +463,6 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     if (engine === 'alfa') return result.alfa?.crossEngineOverlapCount ?? 0;
     if (engine === 'equalAccess') return result.equalAccess?.crossEngineOverlapCount ?? 0;
     if (engine === 'accesslint') return result.accesslint?.crossEngineOverlapCount ?? 0;
-    if (engine === 'qualweb') return result.qualweb?.crossEngineOverlapCount ?? 0;
     return 0;
   }
 
@@ -571,10 +587,10 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   `;
 
   // Engine order and labels for accordion sections
-  const ENGINE_ORDER = ['alfa', 'axe', 'equalAccess', 'accesslint', 'qualweb'];
+  const ENGINE_ORDER = ['alfa', 'axe', 'equalAccess', 'accesslint'];
   const ENGINE_ACCORDION_LABELS = {
     alfa: 'ALFA', axe: 'axe', equalAccess: 'Equal Access',
-    accesslint: 'AccessLint', qualweb: 'QualWeb'
+    accesslint: 'AccessLint'
   };
 
   const actAlignmentIndex = new Map();
@@ -1314,6 +1330,12 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     .table-wrapper { overflow-x: auto; }
     .priority-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 
+    /* ── Table of contents ── */
+    .toc { margin: 1.5rem 0; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+    .toc h2 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+    .toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; }
+    .toc a { display: inline-block; padding: 0.15rem 0; }
+
     /* ── Multi-engine evidence ── */
     .corr-section { margin: 2rem 0; }
     .corr-counts { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0.5rem 0 1.5rem; }
@@ -1756,8 +1778,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         </svg>
       </button>
     </header>
-    ${correlationSection}
-    ${actCoverageSection}
+    ${tocHtml}
 
     ${trendSectionHtml}
 
@@ -1838,6 +1859,9 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
         </div>
       </div>
     </section>
+
+    ${correlationSection}
+    ${actCoverageSection}
 
     ${patternInventoryHtml}
 
@@ -2096,7 +2120,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
     // ── Copy failure details ──
     const SCAN_TITLE = ${JSON.stringify(scanTitle || `Issue #${issueNumber}`)};
-    const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', qualweb: 'QualWeb' };
+    const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint' };
 
     function getEnvironment() {
       const ua = navigator.userAgent;
