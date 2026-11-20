@@ -112,10 +112,21 @@ the **same** target id. They remain four observations until correlation (P2).
 
 `scanner/rule-semantics.mjs` states what a rule *means*, with two evidence
 levels that are never conflated: `act-verified` (a W3C ACT mapping exists in
-`scanner/data/act-mapping.json`) and `inferred-semantics` (the rule is placed in
-a failure-mechanism family by inspection, which makes it comparable but does
+`scanner/data/act-registry.json`) and `inferred-semantics` (the rule is placed
+in a failure-mechanism family by inspection, which makes it comparable but does
 not create an ACT mapping). Unknown rules get no family and cannot be
 correlated.
+
+An engine rule can implement **several** ACT rules (axe `button-name` maps both
+`97a4e1` and `m6b1q3`). Correlation therefore treats each verified ACT rule as
+its own comparison candidate instead of using the union of ids as a family key:
+a union key is unique to that engine rule and no other engine can ever share
+it, which used to manufacture single-engine findings. Each observation also
+keeps its explicit semantic family when one exists. Groups are formed per
+`(url, family, resolvedTargetId)`; groups with two or more engines become
+issues, and observations are assigned to the strongest matching group only
+once, so no observation is counted twice. Explicit semantic families win ties
+over an ACT key because they encode the mechanism across rules.
 
 `scanner/correlation.mjs` gives every observation exactly one disposition:
 
@@ -132,25 +143,28 @@ engine owns it and scan order cannot change it. `target-disagreement` records
 when engines report the same mechanism on different elements. `related` records
 different mechanisms on one target and never merges them.
 
-On the #398 evidence:
+On the #398 evidence after EARL targets and report-verified mappings
+(2026-11-20T15:01:55Z, 49 pages):
 
 ```
-raw observations                 237
-correlated observations            4   (1 issue: the four-engine image)
-single-engine observations         2   (2 findings, detection asymmetry)
-insufficient evidence            231   (mostly unmapped ALFA/EA rule semantics)
-not comparable                     0
-reconciliation                  complete
+raw observations               1147
+correlated observations          71   (20 issues)
+single-engine observations        4   (4 findings, detection asymmetry)
+insufficient evidence          1071   (unmapped ALFA/EA rule semantics)
+not comparable                    0
+target disagreements              3
+reconciliation                 complete
 ```
 
-The single correlated issue lists all four engines, both ACT-mapped rules
-(`23a2a8` via axe `image-alt` and ALFA `sia-r2`) and the two inferred ones
-(Equal Access `img_alt_valid`, AccessLint `text-alternatives/img-alt`), with
-`mappingStatus: inferred-semantics` and every original observation id.
+Eleven issues involve all four engines; the rest are three-engine agreements
+(AccessLint/ALFA/axe and AccessLint/axe/Equal Access). Every issue is
+`act-verified-different-version`: all mappings are published, none is
+version-aligned.
 
-That 231 figure is the next bottleneck: most ALFA and Equal Access rules in
-this scan have no semantic family, so they cannot be compared yet. Closing it
-is P3 (ACT registry audit), not a correlation bug.
+The 1071 figure is the next bottleneck: most ALFA (744) and Equal Access (295)
+observations are on rules with no semantic family, so they cannot be compared
+yet. Closing it means curating non-ACT failure-mechanism families (contrast,
+spacing, target size) that never claim ACT support.
 
 ## 3d. ACT registry (P3, shipped)
 
