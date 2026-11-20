@@ -91,12 +91,13 @@ test("four engines on one image become one correlated issue with four observatio
   assert.equal(issue.observationIds.length, 4);
   assert.equal(issue.observations.length, 4);
   assert.equal(issue.classification, "agreement-fail");
-  assert.equal(issue.mappingStatus, "inferred-semantics");
+  assert.equal(issue.mappingStatus, "act-verified-different-version");
   assert.deepEqual(issue.actRuleIds, ["23a2a8"]);
   assert.equal(issue.actVerified, false);
   assert.equal(correlation.counts.correlatedIssues, 1);
   assert.equal(correlation.counts.verifiedEquivalentFindings, 0);
-  assert.equal(correlation.counts.inferredEquivalentFindings, 1);
+  assert.equal(correlation.counts.versionMismatchedFindings, 1);
+  assert.equal(correlation.counts.inferredEquivalentFindings, 0);
 });
 
 test("correlated issue identity does not depend on engine order", () => {
