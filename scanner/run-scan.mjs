@@ -2565,6 +2565,14 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     const obs = summary.observationSummary;
     lines.push(`- Raw engine observations retained: ${obs.rawFailures}`);
     lines.push(`- Observations with unresolved or ambiguous targets: ${obs.ambiguousLocators}`);
+    if (obs.unknownRuleObservations > 0) {
+      const byEngine = Object.entries(obs.unknownRuleByEngine || {})
+        .map(([engine, count]) => `${engine}: ${count}`)
+        .join(", ");
+      lines.push(
+        `- ⚠️ Observations with no engine rule id: ${obs.unknownRuleObservations} (${byEngine}) — an adapter may have changed shape; these cannot be mapped to ACT rules.`
+      );
+    }
   }
   if (summary.correlationSummary) {
     const corr = summary.correlationSummary;
