@@ -256,7 +256,11 @@ function runCommand(command, args, timeoutMs = 120000) {
   });
 }
 
-function normalizeRuleReference(rule) {
+export function normalizeRuleReference(rule) {
+  // EARL carries the rule as a URI string; other engines pass objects.
+  if (typeof rule === "string") {
+    return rule.trim() === "" ? "unknown-rule" : rule;
+  }
   if (!rule || typeof rule !== "object") {
     return "unknown-rule";
   }
@@ -4200,6 +4204,11 @@ async function main() {
   }
   if (historyComparison) {
     markdownContent += "\n" + renderHistoryMarkdown(historyComparison);
+    summary.historyComparison = {
+      artifact: "history-comparison.json",
+      comparable: historyComparison.comparable,
+      ...(historyComparison.counts ?? {})
+    };
   }
   if (remediationResult) {
     markdownContent += "\n" + formatRemediationMarkdown(remediationResult);
@@ -4212,11 +4221,6 @@ async function main() {
   writeFileSync(actCoveragePath, JSON.stringify(actCoverageArtifact, null, 2) + "\n", "utf8");
   if (historyComparison) {
     writeFileSync(join(outputDir, "history-comparison.json"), JSON.stringify(historyComparison, null, 2) + "\n", "utf8");
-    summary.historyComparison = {
-      artifact: "history-comparison.json",
-      comparable: historyComparison.comparable,
-      ...(historyComparison.counts ?? {})
-    };
   }
 
   // ── Trend analysis (inline, based on historical reports now including this one) ──
