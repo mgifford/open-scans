@@ -33,6 +33,9 @@ jobs:
         run: npm ci
 
       - name: Install Chromium for Playwright tests
+        timeout-minutes: 10
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: "120000"
         run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Configure Puppeteer browser path for ALFA
