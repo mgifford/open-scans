@@ -213,3 +213,46 @@ test("browser integration: Sa11y runs headless against a public fixture", { skip
   assert.ok(result.failedRules.includes("MISSING_ALT"), "the fixture has two images without alternative text");
   assert.ok(result.failures.every((failure) => failure.xpath), "Sa11y findings carry a DOM locator");
 });
+
+test("native warnings are visible in the report without becoming failures", () => {
+  const summary = {
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    scanTitle: "Warning report test",
+    scannedAt: "2026-11-20T00:00:00.000Z",
+    totalElapsedMs: 1,
+    totalSubmitted: 1,
+    acceptedCount: 1,
+    scannedCount: 1,
+    engines: ["axe", "sa11y"],
+    results: [
+      {
+        submittedUrl: "https://example.com/",
+        finalUrl: "https://example.com/",
+        statusCode: 200,
+        ok: true,
+        pageTitle: "Example",
+        elapsedMs: 1,
+        axe: { executed: true, error: null, counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0 }, failures: [], failedRules: [] },
+        sa11y: {
+          executed: true,
+          error: null,
+          counts: { passed: 0, failed: 0, cantTell: 0, inapplicable: 0, warnings: 2 },
+          failures: [],
+          failedRules: [],
+          warnings: [
+            { rule: "LINK_IDENTICAL_NAME", type: "warning", message: "Warning", xpath: "/html[1]/body[1]/main[1]/a[1]" },
+            { rule: "LINK_IDENTICAL_NAME", type: "warning", message: "Warning", xpath: "/html[1]/body[1]/main[1]/a[2]" }
+          ]
+        }
+      }
+    ],
+    enhanced: { consolidatedFailures: [], roleStats: {}, severityStats: {} }
+  };
+
+  const html = generateInteractiveHtml(summary);
+  assert.ok(html.includes("Native warnings (not counted as failures)"));
+  assert.ok(html.includes("LINK_IDENTICAL_NAME"));
+  assert.ok(html.includes("not treated as WCAG failures") || html.includes("do not take part in cross-engine correlation"));
+  assert.ok(html.includes('href="#engine-warnings"'), "the table of contents links to the warnings section");
+});

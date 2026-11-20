@@ -7,8 +7,11 @@
  * two identities:
  *
  * - `correlatedIssueId`: exact evidence identity (document version included).
- * - continuity key `(url, failure family, DOM path)`: the same problem on the
- *   same element, independent of the document version.
+ * - continuity key `(url, ACT rules or failure family, DOM path)`: the same
+ *   problem on the same element, independent of the document version. When an
+ *   issue carries ACT ids they take precedence over the family label, so a
+ *   family rename (for example `text-alternative` becoming `act:23a2a8`) does
+ *   not make every issue look new.
  *
  * Changes are attributed to a cause before anything is called new or gone:
  * correlation logic, test conditions, engine versions, mapping data, or the
@@ -51,7 +54,9 @@ function documentHashOfTargetId(targetId) {
 export function continuityKey(issue) {
   const path = pathOfTargetId(issue?.targetId);
   if (!path) return null;
-  return JSON.stringify([issue.url, issue.family, path]);
+  const actRuleIds = Array.isArray(issue?.actRuleIds) ? [...issue.actRuleIds].sort() : [];
+  const mechanism = actRuleIds.length > 0 ? `act:${actRuleIds.join("+")}` : issue.family;
+  return JSON.stringify([issue.url, mechanism, path]);
 }
 
 function compareMetadata(previous, current) {

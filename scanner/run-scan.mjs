@@ -2578,6 +2578,23 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
   if (summary.sa11yTotals) {
     lines.push(`- Sa11y outcomes: ${summary.sa11yTotals.passed} passed, ${summary.sa11yTotals.failed} failed (${summary.sa11yTotals.uniqueFailed} unique, ${summary.sa11yTotals.duplicates} duplicate), ${summary.sa11yTotals.warnings} warnings, ${summary.sa11yTotals.cantTell} cantTell, ${summary.sa11yTotals.inapplicable} inapplicable`);
   }
+  const warningCounts = new Map();
+  for (const result of summary.results ?? []) {
+    for (const [engine, scanner] of Object.entries(result ?? {})) {
+      if (!Array.isArray(scanner?.warnings)) continue;
+      for (const warning of scanner.warnings) {
+        if (!warning?.rule) continue;
+        const key = `${engine}|${warning.rule}`;
+        warningCounts.set(key, (warningCounts.get(key) ?? 0) + 1);
+      }
+    }
+  }
+  if (warningCounts.size > 0) {
+    const parts = [...warningCounts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([key, count]) => `${key.split("|")[1]} (${count})`);
+    lines.push(`- Native warnings (not counted as WCAG failures): ${parts.join(", ")}`);
+  }
   if (summary.reflowRiskTotals) {
     const r = summary.reflowRiskTotals;
     lines.push(`- Reflow risk outcomes (WCAG 1.4.10, indicator only — not a conformance verdict): ${r.failed} failed, ${r.potential} potential, ${r.passed} passed, ${r.cantTell} cantTell, ${r.notExecuted} not executed`);
