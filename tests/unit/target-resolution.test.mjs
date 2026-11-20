@@ -144,3 +144,21 @@ test("document hashes are deterministic for identical html", () => {
   assert.equal(buildDomIndex(PAGE).documentHash, buildDomIndex(PAGE).documentHash);
   assert.equal(buildDomIndex(PAGE).documentHash === buildDomIndex(`${PAGE} `).documentHash, false);
 });
+
+test("ALFA text-node pointers resolve to their containing element", () => {
+  const index = buildDomIndex(PAGE);
+  const textTarget = resolveTarget(index, {
+    locator: "/html[1]/body[1]/div[1]/main[1]/h1[1]/node()[1]",
+    locatorType: "xpath"
+  });
+  const elementTarget = resolveTarget(index, {
+    locator: "/html[1]/body[1]/div[1]/main[1]/h1[1]",
+    locatorType: "xpath"
+  });
+
+  assert.equal(textTarget.resolution, "resolved");
+  assert.equal(textTarget.method, "xpath-text-parent");
+  assert.equal(textTarget.confidence, "medium");
+  assert.match(textTarget.note, /containing element/);
+  assert.equal(textTarget.resolvedTargetId, elementTarget.resolvedTargetId);
+});

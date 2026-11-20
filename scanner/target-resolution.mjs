@@ -72,14 +72,27 @@ export function resolveTarget(index, { locator = null, locatorType = "none" } = 
 
   let matches = [];
   let method = "none";
+  let textNodeTarget = false;
+  let effectiveLocator = locator;
+
+  // ALFA's EARL pointers address text nodes directly, e.g.
+  // /html[1]/body[1]/p[2]/node()[3]. The element that contains the text is the
+  // meaningful target, so resolve the parent element and say so.
+  if (locatorType === "xpath") {
+    const textNode = /^(.*)\/node\(\)\[\d+\]$/.exec(String(locator).trim());
+    if (textNode && textNode[1]) {
+      effectiveLocator = textNode[1];
+      textNodeTarget = true;
+    }
+  }
 
   if (locatorType === "css") {
     matches = queryCss(index, locator);
     method = "css";
   } else if (locatorType === "xpath") {
-    const result = queryXPath(index, locator);
+    const result = queryXPath(index, effectiveLocator);
     matches = result.nodes;
-    method = result.method;
+    method = textNodeTarget ? "xpath-text-parent" : result.method;
   } else if (locatorType === "html") {
     matches = queryHtmlSnippet(index, locator);
     method = "html-snippet";
@@ -114,8 +127,14 @@ export function resolveTarget(index, { locator = null, locatorType = "none" } = 
     matchedElements: 1,
     resolvedTargetId: targetIdFor(index, matches[0]),
     candidates: [targetIdFor(index, matches[0])],
-    confidence: method === "html-snippet" ? "low" : method === "xpath-descendant-search" ? "medium" : "high",
-    note: null,
+    confidence: method === "html-snippet"
+      ? "low"
+      : (method === "xpath-text-parent" || method === "xpath-descendant-search")
+        ? "medium"
+        : "high",
+    note: textNodeTarget
+      ? "text-node target resolved to its containing element"
+      : null,
     documentHash: index.documentHash
   };
 }
