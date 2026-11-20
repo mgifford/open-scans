@@ -89,7 +89,7 @@
         "crossEngineEquivalent",
         "relatedFindings",
         "provisionalIssues",
-        "resolvedObservations",
+        "unknownRuleObservations",
         "distinctResolvedTargets",
         "unresolvedTargets",
         "ambiguousLocators",
@@ -133,6 +133,17 @@
           }
         },
         "byLocatorType": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "unknownRuleObservations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknownRuleByEngine": {
           "type": "object",
           "additionalProperties": {
             "type": "integer",

@@ -288,3 +288,33 @@ test("issue #398: the four-engine missing-alt image resolves to one target", () 
   // Four observations, still four correlated issues: correlation is P2.
   assert.equal(artifact.counts.crossEngineEquivalent, 0);
 });
+
+test("failures without a native rule id are counted, not hidden", () => {
+  const artifact = buildObservationArtifact({
+    results: [
+      makeResult({
+        axe: {
+          failures: [
+            { rule: null, selector: "#a", html: "<a id=\"a\">", message: "no rule id" },
+            { rule: "image-alt", selector: "#img", html: "<img id=\"img\">", message: "alt" }
+          ]
+        },
+        alfa: {
+          failures: [{ rule: undefined, xpath: "/html[1]", message: "missing rule" }]
+        }
+      })
+    ]
+  });
+
+  assert.equal(artifact.counts.unknownRuleObservations, 2);
+  assert.deepEqual(artifact.counts.unknownRuleByEngine, { axe: 1, alfa: 1 });
+  assert.equal(artifact.counts.observations, 3, "the records are still retained");
+});
+
+test("a clean scan reports zero unknown rules", () => {
+  const artifact = buildObservationArtifact({
+    results: [makeResult({ axe: { failures: [{ rule: "image-alt", selector: "#img", message: "alt" }] } })]
+  });
+  assert.equal(artifact.counts.unknownRuleObservations, 0);
+  assert.deepEqual(artifact.counts.unknownRuleByEngine, {});
+});

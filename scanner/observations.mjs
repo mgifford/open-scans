@@ -401,6 +401,19 @@ export function buildObservationArtifact(summary) {
   }
 
   const rawFailures = observations.length;
+
+  // A failure without a native rule id is a data-quality signal: it usually
+  // means an adapter changed shape. Count it instead of letting it disappear
+  // into the "unknown-rule" bucket.
+  const unknownRuleObservations = observations.filter(
+    (observation) => observation.engine.ruleId === "unknown-rule"
+  ).length;
+  const unknownRuleByEngine = {};
+  for (const observation of observations) {
+    if (observation.engine.ruleId !== "unknown-rule") continue;
+    unknownRuleByEngine[observation.engine.name] = (unknownRuleByEngine[observation.engine.name] || 0) + 1;
+  }
+
   const crossEngineEquivalent = 0;
   const relatedFindings = 0;
   const provisionalIssues = rawFailures - repeatedWithinEngine - crossEngineEquivalent;
@@ -425,6 +438,8 @@ export function buildObservationArtifact(summary) {
       crossEngineEquivalent,
       relatedFindings,
       provisionalIssues,
+      unknownRuleObservations,
+      unknownRuleByEngine,
       resolvedObservations: resolvedTargets,
       distinctResolvedTargets: resolvedTargetIds.size,
       unresolvedTargets,
