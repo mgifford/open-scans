@@ -63,28 +63,36 @@ npm run run:scan
 - Secrets or credentials
 - Agent-specific directories (`.claude/`, `.cursor/`, `.gemini/`, etc.)
 
-### AI Disclosure Requirement
+### AI Transparency and Accountability
 
-When you contribute to this project, you **must** update the **AI Disclosure** section of `README.md` to record your involvement. Add or update the row for your model/tool in the table, specifying:
+Generative AI is used to assist with the development and maintenance of this repository. AI-assisted changes must meet the same quality, security, accessibility, and review requirements as human-authored changes.
 
-- **Model / tool**: the name and version (if known) of the LLM or AI assistant
-- **Purpose**: what you were used for (e.g., code generation, documentation, policy drafting)
-- **When used**: the date or phase (e.g., "Development – March 2026")
+#### Disclosure requirements
 
-Do not add rows for tools that were not actually used. Each AI tool or model should disclose only its own use. This keeps the disclosure honest and traceable.
+1. Disclose substantive AI assistance in the pull request description, including the tool or model used, its purpose, and any relevant limitations.
+2. Keep the `README.md` AI disclosure concise. Do not add individual AI sessions, model versions, or development tasks to the README.
+3. Preserve the existing AI development history in `docs/AI-USAGE-HISTORY.md`. Update it when documenting significant AI-assisted development or a material change in how AI is used.
+4. Do not invent model names, versions, review activities, test results, or verification evidence.
+5. Human maintainers remain responsible for reviewing and accepting contributions.
 
-## Accessibility Standards
+#### Verification requirements
 
-**IMPORTANT**: All AI agents must read and follow accessibility requirements.
+- Verify generated code against the repository's actual APIs, dependencies, schemas, and tests.
+- Run relevant tests and report results accurately.
+- Do not claim WCAG conformance based solely on automated testing or AI analysis.
+- Do not classify accessibility findings as verified failures or false positives without appropriate evidence.
+- Preserve original scanner results, provenance, and uncertainty when generating summaries.
+- Never modify expected test outcomes simply to make tests pass.
 
-📋 **[ACCESSIBILITY.md](./ACCESSIBILITY.md)** - Accessibility commitment, WCAG 2.2 AA requirements, and best practices
+#### Runtime AI
 
-This document defines:
-- WCAG 2.2 Level AA compliance requirements
-- Development best practices for accessible code
-- Security patterns (avoid command injection)
-- Testing requirements and quality gates
-- Trusted accessibility resources
+Distinguish AI used to develop the repository from AI used during its operation.
+
+Normal accessibility scanning must not silently invoke an LLM. Optional AI-powered features must remain explicitly activated and documented.
+
+AI-generated explanations and remediation suggestions must be distinguishable from scanner observations and independently reviewed conclusions.
+
+See `README.md` for the public AI disclosure and `docs/AI-USAGE-HISTORY.md` for the development history.
 
 ## Prompt Files for Common Tasks
 
