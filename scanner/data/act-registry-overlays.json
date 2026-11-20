@@ -172,59 +172,7 @@
       "verifiedAt": "2026-11-19"
     }
   },
-  "candidateMappings": {
-    "23a2a8": {
-      "equalAccess": [
-        {
-          "ruleId": "img_alt_valid",
-          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
-          "notes": "Same failure mechanism (image without a non-empty accessible name). No published ACT implementation report found; kept as a candidate.",
-          "engineVersion": "4.0.30",
-          "verifiedAt": "2026-11-19"
-        }
-      ],
-      "accesslint": [
-        {
-          "ruleId": "text-alternatives/img-alt",
-          "source": "https://github.com/accesslint/accesslint",
-          "notes": "Same failure mechanism. No published ACT implementation report found; kept as a candidate.",
-          "engineVersion": "0.17.0",
-          "verifiedAt": "2026-11-19"
-        }
-      ]
-    },
-    "afw4f7": {
-      "equalAccess": [
-        {
-          "ruleId": "text_contrast_sufficient",
-          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
-          "notes": "Equal Access text_contrast_sufficient checks minimum text contrast (1.4.3), matching ACT afw4f7. Candidate.",
-          "engineVersion": null,
-          "verifiedAt": "2026-11-19"
-        }
-      ],
-      "accesslint": [
-        {
-          "ruleId": "distinguishable/color-contrast",
-          "source": "https://github.com/accesslint/accesslint",
-          "notes": "AccessLint color-contrast checks 4.5:1 text contrast (1.4.3), matching ACT afw4f7. Candidate.",
-          "engineVersion": null,
-          "verifiedAt": "2026-11-19"
-        }
-      ]
-    },
-    "2779a5": {
-      "equalAccess": [
-        {
-          "ruleId": "page_title_exists",
-          "source": "https://github.com/IBMa/equal-access/blob/master/accessibility-checker-engine/src/v4/rulesets.ts",
-          "notes": "Equal Access page_title_exists checks that the page has a title, matching ACT 2779a5 (axe document-title). Candidate.",
-          "engineVersion": null,
-          "verifiedAt": "2026-11-19"
-        }
-      ]
-    }
-  },
+  "candidateMappings": {},
   "noActCounterpart": [
     {
       "engine": "alfa",
@@ -295,6 +243,28 @@
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "aria/aria-roles",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_role_allowed",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
       ]
     },
     "m6b1q3": {
@@ -308,6 +278,28 @@
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "labels-and-names/aria-command-name",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_widget_labelled",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
       ]
     },
     "307n5z": {
@@ -320,6 +312,28 @@
           "reportedEngineVersion": "0.118.0",
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "aria/presentational-children-focusable",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_descendant_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
       ]
     },
@@ -347,6 +361,17 @@
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "keyboard-accessible/focus-visible",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
       ]
     },
     "bisz58": {
@@ -360,6 +385,17 @@
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "enough-time/meta-refresh-no-exception",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
       ]
     },
     "2t702h": {
@@ -372,6 +408,17 @@
           "reportedEngineVersion": "0.118.0",
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ],
+      "accesslint": [
+        {
+          "ruleId": "labels-and-names/summary-name",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
       ]
     },
@@ -398,6 +445,640 @@
           "reportedEngineVersion": "0.118.0",
           "versionAligned": false,
           "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
+    "6a7281": {
+      "accesslint": [
+        {
+          "ruleId": "aria/aria-valid-attr-value",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_attribute_value_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "5f99a7": {
+      "accesslint": [
+        {
+          "ruleId": "aria/aria-valid-attr",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_attribute_allowed",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "de46e4": {
+      "accesslint": [
+        {
+          "ruleId": "readable/valid-lang",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "element_lang_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "akn7bn": {
+      "accesslint": [
+        {
+          "ruleId": "labels-and-names/frame-focusable-content",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "24afc2": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/letter-spacing",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "text_spacing_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "9e45ec": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/word-spacing",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "text_spacing_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "78fd32": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/line-height",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "text_spacing_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "73f2c2": {
+      "accesslint": [
+        {
+          "ruleId": "adaptable/autocomplete-valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "97a4e1": {
+      "accesslint": [
+        {
+          "ruleId": "labels-and-names/button-name",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "input_label_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "46ca7f": {
+      "accesslint": [
+        {
+          "ruleId": "aria/presentation-role-conflict",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_attribute_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "e086e5": {
+      "accesslint": [
+        {
+          "ruleId": "labels-and-names/form-label",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "input_label_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "bf051a": {
+      "accesslint": [
+        {
+          "ruleId": "readable/html-lang-valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "html_lang_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "2779a5": {
+      "accesslint": [
+        {
+          "ruleId": "navigable/document-title",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "page_title_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "59796f": {
+      "accesslint": [
+        {
+          "ruleId": "text-alternatives/input-image-alt",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "imagebutton_alt_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "23a2a8": {
+      "accesslint": [
+        {
+          "ruleId": "text-alternatives/img-alt",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "img_alt_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "c487ae": {
+      "accesslint": [
+        {
+          "ruleId": "navigable/link-name",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "a_text_purpose",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "7d6734": {
+      "accesslint": [
+        {
+          "ruleId": "text-alternatives/svg-img-alt",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "a25f45": {
+      "accesslint": [
+        {
+          "ruleId": "adaptable/td-headers-attr",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "table_headers_ref_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "6cfa84": {
+      "accesslint": [
+        {
+          "ruleId": "aria/aria-hidden-focus",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "bc659a": {
+      "accesslint": [
+        {
+          "ruleId": "enough-time/meta-refresh",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "meta_refresh_delay",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "b4f0c3": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/meta-viewport",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "8fc3b6": {
+      "accesslint": [
+        {
+          "ruleId": "text-alternatives/object-alt",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "object_text_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "b5c3f8": {
+      "accesslint": [
+        {
+          "ruleId": "readable/html-has-lang",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "html_lang_exists",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "0ssw9k": {
+      "accesslint": [
+        {
+          "ruleId": "keyboard-accessible/scrollable-region",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "afw4f7": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/color-contrast",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "text_contrast_sufficient",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "09o5cg": {
+      "accesslint": [
+        {
+          "ruleId": "distinguishable/color-contrast-enhanced",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "b33eff": {
+      "accesslint": [
+        {
+          "ruleId": "adaptable/orientation-lock",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "element_orientation_unlocked",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "4e8ab6": {
+      "accesslint": [
+        {
+          "ruleId": "aria/aria-required-attr",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "0.21.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ],
+      "equalAccess": [
+        {
+          "ruleId": "aria_attribute_required",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "ff89c9": {
+      "equalAccess": [
+        {
+          "ruleId": "aria_parent_required",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "5c01ea": {
+      "equalAccess": [
+        {
+          "ruleId": "aria_attribute_valid",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
+        }
+      ]
+    },
+    "2ee8b8": {
+      "equalAccess": [
+        {
+          "ruleId": "label_name_visible",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": null,
+          "reportedEngineVersion": "3.1.42-rc.0",
+          "versionAligned": false,
+          "notes": "W3C ACT implementation report lists this mapping; the report covers a different engine version."
         }
       ]
     }

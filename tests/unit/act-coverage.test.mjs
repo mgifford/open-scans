@@ -54,7 +54,7 @@ test("a mapped engine that stays silent is listed, not treated as a pass", () =>
   assert.deepEqual(rule.enginesSilentButExecuted, ["alfa", "equalAccess", "accesslint"]);
   // Candidate mappings still count as mapped.
   assert.ok(rule.enginesMapped.includes("equalAccess"));
-  assert.ok(rule.mappings.some((mapping) => mapping.engine === "equalAccess" && mapping.status === "candidate"));
+  assert.ok(rule.mappings.some((mapping) => mapping.engine === "equalAccess" && mapping.status === "verified"));
 });
 
 test("silence from an engine that did not execute is not coverage evidence", () => {
@@ -83,8 +83,8 @@ test("rules with no registry mapping are surfaced without invented engines", () 
 test("a rule where every mapped engine reports is full coverage", () => {
   const coverage = buildActCoverage(artifact({
     observations: [
-      observation({ engine: "axe", rule: "aria-roles", actRuleIds: ["674b10"] }),
-      observation({ engine: "alfa", rule: "sia-r21", actRuleIds: ["674b10"] })
+      observation({ engine: "axe", rule: "frame-title-unique", actRuleIds: ["4b1c6c"] }),
+      observation({ engine: "alfa", rule: "sia-r15", actRuleIds: ["4b1c6c"] })
     ]
   }));
 
@@ -95,7 +95,7 @@ test("a rule where every mapped engine reports is full coverage", () => {
   assert.equal(rule.reviewSuggested, false);
 });
 
-test("a candidate mapping makes a silent engine visible rather than hidden", () => {
+test("a report-derived mapping makes a silent engine visible rather than hidden", () => {
   const coverage = buildActCoverage(artifact({
     observations: [
       observation({ engine: "axe", rule: "document-title", actRuleIds: ["2779a5"] }),
@@ -104,9 +104,9 @@ test("a candidate mapping makes a silent engine visible rather than hidden", () 
   }));
 
   const [rule] = coverage.rules;
-  // Equal Access page_title_exists is a candidate mapping for 2779a5.
+  // Equal Access page_title_exists is verified for 2779a5 by the W3C report.
   assert.ok(rule.enginesMapped.includes("equalAccess"));
-  assert.deepEqual(rule.enginesSilentButExecuted, ["equalAccess"]);
+  assert.deepEqual(rule.enginesSilentButExecuted, ["equalAccess", "accesslint"]);
   assert.equal(rule.coverage, "multiple-engines-with-silence");
   assert.equal(rule.reviewSuggested, true);
 });

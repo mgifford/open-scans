@@ -63,7 +63,7 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   assert.equal(registry.coverage.withTitle, 14, "metadata is curated, not invented");
   assert.equal(registry.coverage.withTitle < rules.length, true);
   assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess"]);
-  assert.equal(registry.coverage.candidateMappings, 5);
+  assert.equal(registry.coverage.candidateMappings, 0, "every mapping now comes from a published report");
 });
 
 test("verified mappings carry source, date and version evidence", () => {
@@ -87,16 +87,20 @@ test("ALFA rule ids resolve in both short and URL form", () => {
   assert.deepEqual(fromUrl.verifiedActRuleIds, ["23a2a8"]);
 });
 
-test("candidate mappings are comparable but never verified ACT support", () => {
+test("Equal Access and AccessLint mappings are verified from W3C reports", () => {
   const equalAccess = getMappingEvidence("equalAccess", "img_alt_valid");
-  assert.equal(equalAccess.status, "candidate");
-  assert.deepEqual(equalAccess.candidateActRuleIds, ["23a2a8"]);
-  assert.deepEqual(equalAccess.verifiedActRuleIds, []);
-  assert.equal(equalAccess.versionAligned, null);
+  assert.equal(equalAccess.status, "verified");
+  assert.deepEqual(equalAccess.verifiedActRuleIds, ["23a2a8"]);
+  assert.equal(equalAccess.versionAligned, false, "the report covers a different engine version");
 
   const accesslint = getMappingEvidence("accesslint", "text-alternatives/img-alt");
-  assert.equal(accesslint.status, "candidate");
-  assert.equal(getMappingStatus("accesslint", "text-alternatives/img-alt"), "candidate");
+  assert.equal(accesslint.status, "verified");
+  assert.deepEqual(accesslint.verifiedActRuleIds, ["23a2a8"]);
+
+  const rule = getActRule("23a2a8");
+  const sources = rule.mappings.map((mapping) => mapping.source);
+  assert.ok(sources.some((source) => /implementations\/accesslint-core/.test(source)));
+  assert.ok(sources.some((source) => /implementations\/equal-access/.test(source)));
 });
 
 test("unmapped rules stay unmapped rather than being assumed unsupported", () => {
@@ -128,8 +132,8 @@ test("observations record mapping evidence per rule", () => {
 
   assert.equal(byEngine.axe.mapping.verified, true);
   assert.equal(byEngine.axe.mapping.evidence, "verified");
-  assert.equal(byEngine.equalAccess.mapping.verified, false);
-  assert.equal(byEngine.equalAccess.mapping.evidence, "candidate");
+  assert.equal(byEngine.equalAccess.mapping.verified, true);
+  assert.equal(byEngine.equalAccess.mapping.evidence, "verified");
 });
 
 test("correlation never claims ACT verification across a version mismatch", () => {
@@ -138,7 +142,7 @@ test("correlation never claims ACT verification across a version mismatch", () =
 
   assert.equal(issue.engines.length, 4);
   assert.equal(issue.actVerified, false);
-  assert.equal(issue.mappingStatus, "inferred-semantics", "two candidate mappings take part");
+  assert.equal(issue.mappingStatus, "act-verified-different-version", "all four mappings are verified but not version-aligned");
   assert.equal(correlation.counts.verifiedEquivalentFindings, 0);
 });
 
@@ -172,15 +176,14 @@ test("ACT consensus comes from correlation and excludes candidates", () => {
   assert.deepEqual(consensus.overlapEntries[0].scanners, ["axe", "alfa"]);
 });
 
-test("candidate mappings extend comparison without claiming ACT support", () => {
-  // Alfa's contrast procedures are not listed in the W3C report, so they are
-  // deliberately unmapped rather than guessed.
+test("implementation reports cover contrast and title rules, Alfa contrast stays unmapped", () => {
+  assert.deepEqual(getMappingEvidence("equalAccess", "text_contrast_sufficient").verifiedActRuleIds, ["afw4f7"]);
+  assert.deepEqual(getMappingEvidence("equalAccess", "page_title_exists").verifiedActRuleIds, ["2779a5"]);
+  assert.deepEqual(getMappingEvidence("accesslint", "distinguishable/color-contrast").verifiedActRuleIds, ["afw4f7"]);
+
+  // Alfa's contrast procedures are not listed in its W3C report.
   assert.equal(getMappingEvidence("alfa", "sia-r66").status, "unmapped");
   assert.equal(getMappingEvidence("alfa", "sia-r69").status, "unmapped");
-
-  assert.deepEqual(getMappingEvidence("equalAccess", "text_contrast_sufficient").candidateActRuleIds, ["afw4f7"]);
-  assert.deepEqual(getMappingEvidence("equalAccess", "page_title_exists").candidateActRuleIds, ["2779a5"]);
-  assert.deepEqual(getMappingEvidence("accesslint", "distinguishable/color-contrast").candidateActRuleIds, ["afw4f7"]);
 });
 
 test("rules with no ACT counterpart are recorded with reasons, not mapped", () => {
@@ -200,7 +203,7 @@ test("rules with no ACT counterpart are recorded with reasons, not mapped", () =
   assert.deepEqual(getMappingsFor("alfa", "sia-r111"), []);
 });
 
-test("observations carry candidate ACT ids so coverage can compare engines", () => {
+test("observations carry report-derived ACT ids so coverage can compare engines", () => {
   const artifact = imageArtifact();
   const alfaContrast = {
     engine: "alfa",

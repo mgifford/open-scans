@@ -171,16 +171,26 @@ covers, and whether they align:
 | `candidate` | plausible semantic alignment; comparable, never ACT support |
 | `unmapped` | no mapping in the registry — not a statement that the engine lacks support |
 
-Coverage today: 58 ACT rules, 14 with curated titles/rule types, 105 verified
-engine mappings and 5 candidate mappings. Nine of the verified ALFA mappings
-come from the W3C Alfa implementation report (for example `sia-r94` →
-`m6b1q3`), and five ACT rules are registered only because that report names
-them (no invented titles: their metadata stays `null`).
+Coverage today: 58 ACT rules, 14 with curated titles/rule types, 166 verified
+engine mappings and **no candidate mappings**. Every mapping now comes from a
+published source:
 
-Two earlier ALFA candidates were **removed** because the W3C report contradicts
-them: it does not list `09o5cg` (enhanced contrast) or `afw4f7` (minimum
-contrast), so `sia-r66` and `sia-r69` are recorded in `noActCounterpart`
-instead of being compared as ACT rules.
+- the generated axe/ALFA mapping file;
+- the W3C [Alfa implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/)
+  (nine verified mappings, for example `sia-r94` → `m6b1q3`, plus five ACT
+  rules registered only because that report names them);
+- the W3C [AccessLint implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/)
+  (34 mappings, for example `labels-and-names/button-name` → `97a4e1`);
+- the W3C [Equal Access implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/)
+  (27 mappings, for example `aria_role_allowed` → `674b10`).
+
+Report-only ACT rules keep `null` metadata rather than invented titles. Two
+earlier ALFA candidates were removed because the W3C report contradicts them:
+it does not list `09o5cg` (enhanced contrast) or `afw4f7` (minimum contrast),
+so `sia-r66` and `sia-r69` are recorded in `noActCounterpart` instead of being
+compared as ACT rules. Because every report covers a different engine version
+than the one we run, `versionAligned` stays `false` and no verified-equivalence
+claim is made.
 
 Version alignment is explicit. The axe implementation report covers 4.10.2
 while 4.12.1 runs, and the ALFA report covers 0.111.0 while 0.84.2 runs, so

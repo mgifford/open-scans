@@ -162,7 +162,7 @@ test("observations separate execution from outcomes and never infer a pass", () 
 
   assert.equal(find("role-valid", "axe").outcome, null);
   assert.equal(find("role-valid", "axe").status, "notReported");
-  assert.equal(find("role-valid", "equalAccess").status, "unmapped");
+  assert.equal(find("role-valid", "equalAccess").status, "notReported", "Equal Access maps 674b10 via the W3C report");
   assert.equal(find("role-invalid", "axe").outcome, "failed");
   assert.equal(find("role-invalid", "axe").status, "failed");
   assert.equal(find("closed", "axe").execution, "unsupported");
