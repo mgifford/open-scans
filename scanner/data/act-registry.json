@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-registry/1",
-  "generatedAt": "2026-11-19T21:54:43.247Z",
+  "generatedAt": "2026-11-20T13:12:02.547Z",
   "sources": {
     "actRulesIndex": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
     "engineMapping": {
@@ -14,11 +14,11 @@
     }
   },
   "coverage": {
-    "actRules": 53,
+    "actRules": 58,
     "withTitle": 14,
     "withRuleType": 14,
-    "verifiedMappings": 96,
-    "candidateMappings": 7,
+    "verifiedMappings": 105,
+    "candidateMappings": 5,
     "enginesWithMappings": [
       "accesslint",
       "alfa",
@@ -64,17 +64,6 @@
       "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
       "metadataVerifiedAt": "2026-11-19",
       "mappings": [
-        {
-          "engine": "alfa",
-          "ruleId": "sia-r66",
-          "status": "candidate",
-          "source": "https://alfa.siteimprove.com/rules",
-          "verifiedAt": "2026-11-19",
-          "engineVersion": null,
-          "reportedEngineVersion": null,
-          "versionAligned": null,
-          "notes": "ALFA SIA-R66 tests the same mechanism as ACT 09o5cg: highest possible contrast of text against its background, 7:1 for normal text. W3C rule text checked 2026-11-19; no published ALFA implementation report for this rule, so candidate."
-        },
         {
           "engine": "axe",
           "ruleId": "color-contrast",
@@ -337,6 +326,30 @@
         }
       ]
     },
+    "2t702h": {
+      "actRuleId": "2t702h",
+      "title": null,
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2t702h/",
+      "ruleType": null,
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "metadataSource": null,
+      "metadataVerifiedAt": null,
+      "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r116",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
     "307n5z": {
       "actRuleId": "307n5z",
       "title": null,
@@ -348,6 +361,17 @@
       "metadataSource": null,
       "metadataVerifiedAt": null,
       "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r90",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        },
         {
           "engine": "axe",
           "ruleId": "nested-interactive",
@@ -667,6 +691,17 @@
       "metadataSource": "https://www.w3.org/WAI/standards-guidelines/act/rules/",
       "metadataVerifiedAt": "2026-11-19",
       "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r110",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        },
         {
           "engine": "alfa",
           "ruleId": "sia-r21",
@@ -1096,17 +1131,6 @@
           "notes": "AccessLint color-contrast checks 4.5:1 text contrast (1.4.3), matching ACT afw4f7. Candidate."
         },
         {
-          "engine": "alfa",
-          "ruleId": "sia-r69",
-          "status": "candidate",
-          "source": "https://alfa.siteimprove.com/rules",
-          "verifiedAt": "2026-11-19",
-          "engineVersion": null,
-          "reportedEngineVersion": null,
-          "versionAligned": null,
-          "notes": "ALFA SIA-R69 tests minimum text contrast (4.5:1), matching ACT afw4f7. Candidate: no published implementation report."
-        },
-        {
           "engine": "axe",
           "ruleId": "color-contrast",
           "status": "verified",
@@ -1245,6 +1269,30 @@
           "reportedEngineVersion": "4.10.2",
           "versionAligned": false,
           "notes": "Implementation report covers a different engine version; mapping is not version-verified."
+        }
+      ]
+    },
+    "b49b2e": {
+      "actRuleId": "b49b2e",
+      "title": null,
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b49b2e/",
+      "ruleType": null,
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "metadataSource": null,
+      "metadataVerifiedAt": null,
+      "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r115",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
       ]
     },
@@ -1438,6 +1486,17 @@
       "metadataVerifiedAt": null,
       "mappings": [
         {
+          "engine": "alfa",
+          "ruleId": "sia-r96",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        },
+        {
           "engine": "axe",
           "ruleId": "meta-refresh",
           "status": "verified",
@@ -1508,6 +1567,30 @@
           "reportedEngineVersion": "4.10.2",
           "versionAligned": false,
           "notes": "Implementation report covers a different engine version; mapping is not version-verified."
+        }
+      ]
+    },
+    "c4a8a4": {
+      "actRuleId": "c4a8a4",
+      "title": null,
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/c4a8a4/",
+      "ruleType": null,
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "metadataSource": null,
+      "metadataVerifiedAt": null,
+      "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r114",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
       ]
     },
@@ -1828,6 +1911,30 @@
         }
       ]
     },
+    "kb1m8s": {
+      "actRuleId": "kb1m8s",
+      "title": null,
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/kb1m8s/",
+      "ruleType": null,
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "metadataSource": null,
+      "metadataVerifiedAt": null,
+      "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r18",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        }
+      ]
+    },
     "m6b1q3": {
       "actRuleId": "m6b1q3",
       "title": "Menuitem has non-empty accessible name",
@@ -1842,6 +1949,17 @@
       "metadataVerifiedAt": "2026-11-19",
       "mappings": [
         {
+          "engine": "alfa",
+          "ruleId": "sia-r94",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
+        },
+        {
           "engine": "axe",
           "ruleId": "button-name",
           "status": "verified",
@@ -1851,6 +1969,30 @@
           "reportedEngineVersion": "4.10.2",
           "versionAligned": false,
           "notes": "Implementation report covers a different engine version; mapping is not version-verified."
+        }
+      ]
+    },
+    "oj04fd": {
+      "actRuleId": "oj04fd",
+      "title": null,
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/oj04fd/",
+      "ruleType": null,
+      "wcag": [],
+      "status": null,
+      "revision": null,
+      "metadataSource": null,
+      "metadataVerifiedAt": null,
+      "mappings": [
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r65",
+          "status": "verified",
+          "source": "https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/",
+          "verifiedAt": "2026-11-20",
+          "engineVersion": "0.84.2",
+          "reportedEngineVersion": "0.118.0",
+          "versionAligned": false,
+          "notes": "W3C Alfa implementation report states this ACT rule is implemented by Alfa using this procedure; the report covers Alfa 0.118.0 while 0.84.2 runs."
         }
       ]
     },

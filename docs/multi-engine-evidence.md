@@ -171,9 +171,16 @@ covers, and whether they align:
 | `candidate` | plausible semantic alignment; comparable, never ACT support |
 | `unmapped` | no mapping in the registry — not a statement that the engine lacks support |
 
-Coverage today: 53 ACT rules, 9 with curated titles/rule types, 96 verified
-engine mappings (axe, ALFA), 2 candidate mappings (Equal Access
-`img_alt_valid` and AccessLint `text-alternatives/img-alt` → `23a2a8`).
+Coverage today: 58 ACT rules, 14 with curated titles/rule types, 105 verified
+engine mappings and 5 candidate mappings. Nine of the verified ALFA mappings
+come from the W3C Alfa implementation report (for example `sia-r94` →
+`m6b1q3`), and five ACT rules are registered only because that report names
+them (no invented titles: their metadata stays `null`).
+
+Two earlier ALFA candidates were **removed** because the W3C report contradicts
+them: it does not list `09o5cg` (enhanced contrast) or `afw4f7` (minimum
+contrast), so `sia-r66` and `sia-r69` are recorded in `noActCounterpart`
+instead of being compared as ACT rules.
 
 Version alignment is explicit. The axe implementation report covers 4.10.2
 while 4.12.1 runs, and the ALFA report covers 0.111.0 while 0.84.2 runs, so

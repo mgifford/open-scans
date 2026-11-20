@@ -31,8 +31,8 @@ function engineMappings(actRuleId, overlayRule) {
   const entries = [];
 
   for (const engine of ENGINES) {
+    const versionInfo = mapping.engineVersions?.[engine] ?? null;
     for (const ruleId of fromMapping[engine] ?? []) {
-      const versionInfo = mapping.engineVersions?.[engine] ?? null;
       entries.push({
         engine,
         ruleId,
@@ -47,6 +47,20 @@ function engineMappings(actRuleId, overlayRule) {
         notes: versionInfo && versionInfo.versionMatch === false
           ? "Implementation report covers a different engine version; mapping is not version-verified."
           : null
+      });
+    }
+
+    for (const verified of (overlay?.verifiedMappings?.[actRuleId]?.[engine] ?? [])) {
+      entries.push({
+        engine,
+        ruleId: verified.ruleId,
+        status: "verified",
+        source: verified.source ?? null,
+        verifiedAt: verified.verifiedAt ?? null,
+        engineVersion: verified.engineVersion ?? versionInfo?.scannedVersion ?? null,
+        reportedEngineVersion: verified.reportedEngineVersion ?? null,
+        versionAligned: verified.versionAligned ?? null,
+        notes: verified.notes ?? null
       });
     }
 
@@ -77,8 +91,17 @@ function engineMappings(actRuleId, overlayRule) {
   return [...byKey.values()].sort((a, b) => `${a.engine}:${a.ruleId}`.localeCompare(`${b.engine}:${b.ruleId}`));
 }
 
+// ACT rules can be known from the mapping file, from curated candidate
+// mappings, or from a published implementation report (verified mappings).
+const actRuleIds = [...new Set([
+  ...Object.keys(mapping.byActRuleId ?? {}),
+  ...Object.keys(overlay.candidateMappings ?? {}),
+  ...Object.keys(overlay.verifiedMappings ?? {}),
+  ...Object.keys(overlay.rules ?? {})
+])].sort();
+
 const rules = {};
-for (const actRuleId of Object.keys(mapping.byActRuleId ?? {}).sort()) {
+for (const actRuleId of actRuleIds) {
   const meta = overlay.rules?.[actRuleId] ?? {};
   rules[actRuleId] = {
     actRuleId,

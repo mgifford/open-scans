@@ -59,11 +59,11 @@ test("registry covers all mapped ACT rules and records metadata gaps", () => {
   const registry = loadActRegistry();
   const rules = Object.keys(registry.rules);
 
-  assert.equal(rules.length, 53);
+  assert.equal(rules.length, 58, "includes ACT rules known only from implementation reports");
   assert.equal(registry.coverage.withTitle, 14, "metadata is curated, not invented");
   assert.equal(registry.coverage.withTitle < rules.length, true);
   assert.deepEqual(registry.coverage.enginesWithMappings, ["accesslint", "alfa", "axe", "equalAccess"]);
-  assert.equal(registry.coverage.candidateMappings, 7);
+  assert.equal(registry.coverage.candidateMappings, 5);
 });
 
 test("verified mappings carry source, date and version evidence", () => {
@@ -173,12 +173,11 @@ test("ACT consensus comes from correlation and excludes candidates", () => {
 });
 
 test("candidate mappings extend comparison without claiming ACT support", () => {
-  const alfaContrast = getMappingEvidence("alfa", "sia-r66");
-  assert.equal(alfaContrast.status, "candidate");
-  assert.deepEqual(alfaContrast.verifiedActRuleIds, []);
-  assert.deepEqual(alfaContrast.candidateActRuleIds, ["09o5cg"]);
+  // Alfa's contrast procedures are not listed in the W3C report, so they are
+  // deliberately unmapped rather than guessed.
+  assert.equal(getMappingEvidence("alfa", "sia-r66").status, "unmapped");
+  assert.equal(getMappingEvidence("alfa", "sia-r69").status, "unmapped");
 
-  assert.deepEqual(getMappingEvidence("alfa", "sia-r69").candidateActRuleIds, ["afw4f7"]);
   assert.deepEqual(getMappingEvidence("equalAccess", "text_contrast_sufficient").candidateActRuleIds, ["afw4f7"]);
   assert.deepEqual(getMappingEvidence("equalAccess", "page_title_exists").candidateActRuleIds, ["2779a5"]);
   assert.deepEqual(getMappingEvidence("accesslint", "distinguishable/color-contrast").candidateActRuleIds, ["afw4f7"]);
@@ -223,7 +222,7 @@ test("observations carry candidate ACT ids so coverage can compare engines", () 
     ]
   });
   const observation = withContrast.observations.find((entry) => entry.engine.name === "alfa");
-  assert.ok(observation.actRuleIds.includes("09o5cg"));
+  assert.deepEqual(observation.actRuleIds, [], "Alfa contrast has no ACT mapping");
   assert.equal(artifact.observations.some((entry) => entry.actRuleIds.includes("23a2a8")), true);
 });
 
@@ -236,4 +235,28 @@ test("rule titles and WCAG mappings come from the W3C rule pages", () => {
   assert.equal(getActRule("e086e5").title, "Form field has non-empty accessible name");
   assert.equal(getActRule("674b10").title, "Role attribute has valid value");
   assert.deepEqual(getActRule("674b10").wcag, [], "674b10 is an ARIA rule with no WCAG criterion");
+});
+
+test("verified mappings come from the W3C Alfa implementation report", () => {
+  const m6b1q3 = getMappingEvidence("alfa", "sia-r94");
+  assert.equal(m6b1q3.status, "verified");
+  assert.deepEqual(m6b1q3.verifiedActRuleIds, ["m6b1q3"]);
+
+  const rule = getActRule("m6b1q3");
+  assert.equal(rule.mappings.some((mapping) => mapping.engine === "alfa" && mapping.ruleId === "sia-r94" && mapping.status === "verified"), true);
+  assert.match(
+    rule.mappings.find((mapping) => mapping.engine === "alfa").source,
+    /implementations\/alfa/
+  );
+
+  // The Alfa report does not list the contrast rules, so they stay unmapped.
+  assert.equal(getMappingEvidence("alfa", "sia-r66").status, "unmapped");
+  assert.equal(getMappingEvidence("alfa", "sia-r69").status, "unmapped");
+});
+
+test("ACT rules known only from a report are registered without invented metadata", () => {
+  const rule = getActRule("2t702h");
+  assert.ok(rule, "rule from the Alfa report should exist in the registry");
+  assert.equal(rule.title, null, "no title is invented");
+  assert.equal(rule.mappings.some((mapping) => mapping.engine === "alfa" && mapping.status === "verified"), true);
 });
