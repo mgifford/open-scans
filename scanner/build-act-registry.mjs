@@ -31,8 +31,8 @@ function engineMappings(actRuleId, overlayRule) {
   const entries = [];
 
   for (const engine of ENGINES) {
+    const versionInfo = mapping.engineVersions?.[engine] ?? null;
     for (const ruleId of fromMapping[engine] ?? []) {
-      const versionInfo = mapping.engineVersions?.[engine] ?? null;
       entries.push({
         engine,
         ruleId,
