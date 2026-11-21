@@ -1133,12 +1133,18 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
                 }
               }
             }
+            const targetPath = Array.isArray(node.target) ? node.target : [];
             allResults.failures.push({
               rule: violation.id,
               ruleUrl: violation.helpUrl,
               impact: violation.impact,
               wcagSc,
-              xpath: node.target?.[0] || null,
+              xpath: targetPath[0] || null,
+              // axe returns ["iframe", "#button"] for nodes inside a frame.
+              // The first entry resolves to the frame element in this document;
+              // the rest identify the element inside the nested document, which
+              // the top-level DOM index cannot resolve.
+              framePath: targetPath.length > 1 ? targetPath : null,
               html: node.html || null,
               message: violation.help || null,
               fixSummary: node.failureSummary || null,

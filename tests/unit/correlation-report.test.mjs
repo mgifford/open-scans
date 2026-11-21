@@ -228,3 +228,94 @@ test("empty correlation states are explicit rather than silent", () => {
   assert.match(html, /No two engines reported the same failure mechanism/);
   assert.match(html, /No engine reported the same failure mechanism on different targets/);
 });
+
+test("single-engine findings name the engines that map the rule but stayed silent", () => {
+  const correlation = {
+    counts: {
+      rawObservations: 1, correlatedIssues: 0, correlatedObservations: 0,
+      singleEngineFindings: 1, singleEngineObservations: 1, insufficientEvidenceObservations: 0,
+      repeatedObservations: 0, notComparableObservations: 0, targetDisagreements: 0,
+      relatedFindings: 0, verifiedEquivalentFindings: 0, versionMismatchedFindings: 0,
+      inferredEquivalentFindings: 0
+    },
+    issues: [],
+    singles: [
+      {
+        family: "act:97a4e1",
+        familyLabel: "ACT 97a4e1",
+        url: "https://example.org/frame/",
+        targetId: "dom:v1:abc:/html[1]/body[1]/main[1]/iframe[1]",
+        engines: ["axe"],
+        actRuleIds: ["97a4e1"],
+        mappingStatus: "act-verified-different-version",
+        classification: "detection-asymmetry",
+        rationale: "Only one engine reported this failure on this target.",
+        observations: [
+          {
+            engine: "axe",
+            ruleId: "button-name",
+            nativeLocator: "iframe",
+            resolutionMethod: "css",
+            framePath: ["iframe", "#target"],
+            rawEvidenceRef: "report.json#/results/0/axe/failures/0"
+          }
+        ]
+      }
+    ],
+    disagreements: [],
+    related: []
+  };
+  const observations = {
+    scan: {
+      engineExecution: {
+        axe: { status: "executed" },
+        alfa: { status: "executed" },
+        equalAccess: { status: "executed" },
+        accesslint: { status: "executed" },
+        sa11y: { status: "executed" }
+      }
+    },
+    observations: []
+  };
+
+  const markdown = renderCorrelationMarkdown({ correlation, observations });
+  assert.match(markdown, /### Single-engine findings/);
+  assert.match(markdown, /Mapped to the same ACT rule but silent here: ALFA, Equal Access, AccessLint, Sa11y/);
+  assert.match(markdown, /candidate for review/);
+  assert.match(markdown, /Frame-scoped: reported inside a nested document/);
+
+  const html = renderCorrelationHtml({ correlation, observations });
+  assert.match(html, /corr-singles-heading/);
+  assert.match(html, /Mapped to the same ACT rule but silent here:/);
+  assert.match(html, /Frame-scoped:/);
+});
+
+test("unmapped native rules are listed so silence is not read as a pass", () => {
+  const correlation = {
+    counts: {
+      rawObservations: 2, correlatedIssues: 0, correlatedObservations: 0,
+      singleEngineFindings: 0, singleEngineObservations: 0, insufficientEvidenceObservations: 2,
+      repeatedObservations: 0, notComparableObservations: 0, targetDisagreements: 0,
+      relatedFindings: 0, verifiedEquivalentFindings: 0, versionMismatchedFindings: 0,
+      inferredEquivalentFindings: 0
+    },
+    issues: [],
+    singles: [],
+    disagreements: [],
+    related: []
+  };
+  const observations = {
+    scan: { engineExecution: { alfa: { status: "executed" }, axe: { status: "executed" } } },
+    observations: [
+      { engine: { name: "alfa", ruleId: "https://alfa.siteimprove.com/rules/sia-r66" }, actRuleIds: [] },
+      { engine: { name: "alfa", ruleId: "https://alfa.siteimprove.com/rules/sia-r66" }, actRuleIds: [] }
+    ]
+  };
+
+  const markdown = renderCorrelationMarkdown({ correlation, observations });
+  assert.match(markdown, /### Native rules without an ACT mapping/);
+  assert.match(markdown, /sia-r66/);
+
+  const html = renderCorrelationHtml({ correlation, observations });
+  assert.match(html, /corr-unmapped-heading/);
+});

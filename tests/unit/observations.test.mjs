@@ -318,3 +318,30 @@ test("a clean scan reports zero unknown rules", () => {
   assert.equal(artifact.counts.unknownRuleObservations, 0);
   assert.deepEqual(artifact.counts.unknownRuleByEngine, {});
 });
+
+test("axe frame-scoped failures keep the frame path as evidence", () => {
+  const html = '<!DOCTYPE html><html lang="en"><body><main><iframe id="frame" src="inner.html"></iframe></main></body></html>';
+  const artifact = buildObservationArtifact({
+    results: [
+      makeResult({
+        axe: {
+          renderedHtml: html,
+          failures: [
+            {
+              rule: "button-name",
+              selector: "iframe",
+              framePath: ["iframe", "#target"],
+              html: '<button id="target"></button>',
+              message: "Buttons must have discernible text"
+            }
+          ]
+        }
+      })
+    ]
+  });
+
+  const observation = artifact.observations.find((entry) => entry.engine.name === "axe");
+  assert.deepEqual(observation.target.framePath, ["iframe", "#target"]);
+  assert.equal(observation.target.resolution, "resolved", "the frame element itself resolves in the top document");
+  assert.match(observation.target.nativeLocator, /iframe/);
+});

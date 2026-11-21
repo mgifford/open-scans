@@ -16,6 +16,8 @@
  * @module correlation-report
  */
 
+import { getMappingsForActRule } from "./act-registry.mjs";
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -38,6 +40,62 @@ function escapeMarkdown(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll("|", "\\|");
+}
+
+
+/**
+ * Engines that actually executed in this scan. Silence from an engine that did
+ * not run says nothing about the page.
+ */
+function executedEngines(observations) {
+  const execution = observations?.scan?.engineExecution ?? {};
+  const executed = Object.entries(execution)
+    .filter(([, info]) => info?.status === "executed")
+    .map(([engine]) => engine);
+  if (executed.length > 0) return executed;
+  return ["axe", "alfa", "equalAccess", "accesslint"];
+}
+
+/**
+ * For one issue, separate engines that implement the same ACT rule but stayed
+ * silent on this target from engines that have no comparable rule at all.
+ */
+export function issueSilence(issue, observations) {
+  const reported = new Set(issue?.engines ?? []);
+  const executed = executedEngines(observations).filter((engine) => !reported.has(engine));
+  const actRuleIds = Array.isArray(issue?.actRuleIds) ? issue.actRuleIds : [];
+
+  if (actRuleIds.length === 0) {
+    return { mappedSilent: [], noComparableRule: executed, basis: "inferred" };
+  }
+
+  const mappedEngines = new Set();
+  for (const actRuleId of actRuleIds) {
+    for (const mapping of getMappingsForActRule(actRuleId)) mappedEngines.add(mapping.engine);
+  }
+
+  return {
+    mappedSilent: executed.filter((engine) => mappedEngines.has(engine)),
+    noComparableRule: executed.filter((engine) => !mappedEngines.has(engine)),
+    basis: "act"
+  };
+}
+
+/** Native rules that have no ACT mapping, so their silence is uninterpretable. */
+export function unmappedRuleRows(observations) {
+  const counts = new Map();
+  for (const observation of observations?.observations ?? []) {
+    if (observation.repeatOf) continue;
+    if ((observation.actRuleIds ?? []).length > 0) continue;
+    const key = `${observation.engine.name}|${observation.engine.ruleId}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([key, count]) => {
+      const [engine, rule] = key.split("|");
+      return { engine, rule, count };
+    })
+    .sort((a, b) => b.count - a.count || a.engine.localeCompare(b.engine) || a.rule.localeCompare(b.rule));
 }
 
 function labelForEngine(engine, observationsArtifact) {
@@ -101,6 +159,7 @@ function enginesOf(document) {
  */
 export function renderCorrelationMarkdown({ correlation, observations }) {
   if (!correlation) return "";
+  const singles = Array.isArray(correlation.singles) ? correlation.singles : [];
 
   const lines = [];
   lines.push("## 🔗 Multi-engine evidence");
@@ -137,6 +196,17 @@ export function renderCorrelationMarkdown({ correlation, observations }) {
       lines.push(`- ACT rules: ${issue.actRuleIds.length > 0 ? issue.actRuleIds.map(escapeMarkdown).join(", ") : "none verified"}`);
       lines.push(`- Mapping status: ${escapeMarkdown(issue.mappingStatus)}`);
       lines.push(`- Correlation rationale: ${escapeMarkdown(issue.rationale)}`);
+      const silence = issueSilence(issue, observations);
+      if (silence.mappedSilent.length > 0) {
+        lines.push(`- Mapped to this ACT rule but silent on this target: ${silence.mappedSilent.map((engine) => escapeMarkdown(labelForEngine(engine))).join(", ")}. Silence is not a pass.`);
+      }
+      if (silence.noComparableRule.length > 0) {
+        lines.push(`- No comparable rule: ${silence.noComparableRule.map((engine) => escapeMarkdown(labelForEngine(engine))).join(", ")}.`);
+      }
+      const framePath = issue.observations?.find((observation) => observation.framePath)?.framePath;
+      if (framePath) {
+        lines.push(`- Frame-scoped: reported inside a nested document (${escapeMarkdown(framePath.join(" > "))}). Engines that do not scan frames are not expected to report it, so their silence is not a missed detection.`);
+      }
       lines.push("");
       lines.push("| Engine | Native rule | Locator | Resolution | Raw evidence |");
       lines.push("|---|---|---|---|---|");
@@ -151,6 +221,49 @@ export function renderCorrelationMarkdown({ correlation, observations }) {
     lines.push("### Correlated findings");
     lines.push("");
     lines.push("No two engines reported the same failure mechanism on the same resolved target in this scan.");
+    lines.push("");
+  }
+
+  lines.push("### Single-engine findings");
+  lines.push("");
+  if (singles.length === 0) {
+    lines.push("No finding was reported by only one engine.");
+  } else {
+    lines.push("One engine reported each of these on a target no other engine reported at the same time. Silence is not a pass; these are review candidates, not confirmed misses.");
+    lines.push("");
+    for (const single of singles) {
+      const silence = issueSilence(single, observations);
+      lines.push(`- ${escapeMarkdown(single.familyLabel || single.family)} — ${escapeMarkdown(single.url)}`);
+      lines.push(`  - Target: \`${escapeMarkdown(single.targetId)}\``);
+      lines.push(`  - Only engine: ${escapeMarkdown(labelForEngine(single.engines[0]))} (${escapeMarkdown(single.observations?.[0]?.ruleId ?? "unknown")})`);
+      if (silence.mappedSilent.length > 0) {
+        lines.push(`  - Mapped to the same ACT rule but silent here: ${silence.mappedSilent.map((engine) => escapeMarkdown(labelForEngine(engine))).join(", ")} — a candidate for review.`);
+      }
+      if (silence.noComparableRule.length > 0) {
+        lines.push(`  - No comparable rule: ${silence.noComparableRule.map((engine) => escapeMarkdown(labelForEngine(engine))).join(", ")}.`);
+      }
+      const framePath = single.observations?.[0]?.framePath;
+      if (framePath) {
+        lines.push(`  - Frame-scoped: reported inside a nested document (${escapeMarkdown(framePath.join(" > "))}). Other engines may not scan frames, so their silence is not a missed detection.`);
+      }
+    }
+  }
+  lines.push("");
+
+  const unmapped = unmappedRuleRows(observations);
+  if (unmapped.length > 0) {
+    lines.push("### Native rules without an ACT mapping");
+    lines.push("");
+    lines.push("These rules cannot be compared across engines yet. An engine that stays silent on an unmapped rule is not evidence that it passed.");
+    lines.push("");
+    lines.push("| Engine | Native rule | Observations |");
+    lines.push("|---|---|---:|");
+    for (const row of unmapped.slice(0, 15)) {
+      lines.push(`| ${escapeMarkdown(labelForEngine(row.engine))} | \`${escapeMarkdown(row.rule)}\` | ${row.count} |`);
+    }
+    if (unmapped.length > 15) {
+      lines.push(`| … | ${unmapped.length - 15} more engine/rule pairs | |`);
+    }
     lines.push("");
   }
 
@@ -187,6 +300,7 @@ export function renderCorrelationMarkdown({ correlation, observations }) {
  */
 export function renderCorrelationHtml({ correlation, observations }) {
   if (!correlation) return "";
+  const singles = Array.isArray(correlation.singles) ? correlation.singles : [];
 
   const parts = [];
   const esc = escapeHtml;
@@ -261,6 +375,21 @@ export function renderCorrelationHtml({ correlation, observations }) {
             <p><strong>Resolved target:</strong> <code>${esc(issue.targetId)}</code></p>
             <p><strong>Engines:</strong> ${esc(issue.engines.map((engine) => labelForEngine(engine)).join(", "))}</p>
             <p><strong>ACT rules:</strong> ${esc(issue.actRuleIds.length > 0 ? issue.actRuleIds.join(", ") : "none verified")}</p>
+            ${(() => {
+              const silence = issueSilence(issue, observations);
+              const bits = [];
+              if (silence.mappedSilent.length > 0) {
+                bits.push(`<p><strong>Mapped to this ACT rule but silent on this target:</strong> ${esc(silence.mappedSilent.map((engine) => labelForEngine(engine)).join(", "))}. Silence is not a pass.</p>`);
+              }
+              if (silence.noComparableRule.length > 0) {
+                bits.push(`<p><strong>No comparable rule:</strong> ${esc(silence.noComparableRule.map((engine) => labelForEngine(engine)).join(", "))}</p>`);
+              }
+              const framePath = issue.observations?.find((observation) => observation.framePath)?.framePath;
+              if (framePath) {
+                bits.push(`<p><strong>Frame-scoped:</strong> reported inside a nested document (${esc(framePath.join(" > "))}). Engines that do not scan frames are not expected to report it, so their silence is not a missed detection.</p>`);
+              }
+              return bits.join("");
+            })()}
             <p>${esc(issue.rationale)}</p>
             <table class="corr-table">
               <caption>Evidence from each engine for this correlated finding</caption>
@@ -281,6 +410,42 @@ export function renderCorrelationHtml({ correlation, observations }) {
                   .join("\n                ")}
               </tbody>
             </table>
+          </details>
+        </li>`;
+          })
+          .join("\n        ")}
+      </ul>`);
+  }
+
+  parts.push(`
+      <h3 id="corr-singles-heading">Single-engine findings</h3>`);
+
+  if (singles.length === 0) {
+    parts.push(`<p>No finding was reported by only one engine.</p>`);
+  } else {
+    parts.push(`
+      <p>One engine reported each of these. Silence is not a pass; a finding where another
+      engine implements the same ACT rule is a review candidate, not a confirmed miss.</p>
+      <ul class="corr-singles">
+        ${singles
+          .map((single) => {
+            const silence = issueSilence(single, observations);
+            return `<li>
+          <details>
+            <summary>${esc(single.familyLabel || single.family)} — ${esc(single.url)}</summary>
+            <p><strong>Resolved target:</strong> <code>${esc(single.targetId)}</code></p>
+            <p><strong>Engine:</strong> ${esc(labelForEngine(single.engines[0]))} — <code>${esc(single.observations?.[0]?.ruleId ?? "unknown")}</code></p>
+            <p><strong>Classification:</strong> ${esc(single.classification)}</p>
+            ${silence.mappedSilent.length > 0
+              ? `<p><strong>Mapped to the same ACT rule but silent here:</strong> ${esc(silence.mappedSilent.map((engine) => labelForEngine(engine)).join(", "))} — a candidate for review.</p>`
+              : ""}
+            ${silence.noComparableRule.length > 0
+              ? `<p><strong>No comparable rule:</strong> ${esc(silence.noComparableRule.map((engine) => labelForEngine(engine)).join(", "))}</p>`
+              : ""}
+            ${single.observations?.[0]?.framePath
+              ? `<p><strong>Frame-scoped:</strong> reported inside a nested document (${esc(single.observations[0].framePath.join(" > "))}). Other engines may not scan frames, so their silence is not a missed detection.</p>`
+              : ""}
+            <p>${esc(single.rationale)}</p>
           </details>
         </li>`;
           })
@@ -327,6 +492,28 @@ export function renderCorrelationHtml({ correlation, observations }) {
           )
           .join("\n        ")}
       </ul>`);
+  }
+
+  const unmapped = unmappedRuleRows(observations);
+  if (unmapped.length > 0) {
+    parts.push(`
+      <h3 id="corr-unmapped-heading">Native rules without an ACT mapping</h3>
+      <p>These rules cannot be compared across engines yet. An engine that stays silent on an
+      unmapped rule is not evidence that it passed.</p>
+      <div class="table-scroll">
+        <table class="corr-table" aria-labelledby="corr-unmapped-heading">
+          <caption>Native rules with no ACT mapping, by engine and observation count</caption>
+          <thead><tr><th scope="col">Engine</th><th scope="col">Native rule</th><th scope="col">Observations</th></tr></thead>
+          <tbody>
+            ${unmapped.slice(0, 15).map((row) => `<tr>
+              <th scope="row">${esc(labelForEngine(row.engine))}</th>
+              <td><code>${esc(row.rule)}</code></td>
+              <td>${esc(row.count)}</td>
+            </tr>`).join("\n            ")}
+            ${unmapped.length > 15 ? `<tr><td colspan="3">… ${unmapped.length - 15} more engine/rule pairs</td></tr>` : ""}
+          </tbody>
+        </table>
+      </div>`);
   }
 
   parts.push(`

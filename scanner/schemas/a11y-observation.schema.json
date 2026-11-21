@@ -453,6 +453,16 @@
                 "html",
                 null
               ]
+            },
+            "framePath": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "description": "Selector path reported inside a nested frame, first entry being the frame element in the top document."
             }
           }
         },

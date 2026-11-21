@@ -279,6 +279,7 @@ export function buildObservation({
       candidates: resolved.candidates,
       confidence: resolved.confidence,
       ambiguity,
+      framePath: Array.isArray(failure.framePath) && failure.framePath.length > 1 ? failure.framePath : null,
       note: resolved.note
     },
     document: {
