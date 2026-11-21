@@ -1,0 +1,894 @@
+{
+  "schemaVersion": "act-coverage/1",
+  "generatedAt": "2026-11-21T07:47:11.758Z",
+  "issueNumber": 68,
+  "scanTitle": "London DARKMODE",
+  "engineExecution": {
+    "axe": {
+      "status": "partial",
+      "error": "Skipped (non-HTML content type: application/pdf)",
+      "executedRuns": 98,
+      "failedRuns": 2
+    },
+    "alfa": {
+      "status": "partial",
+      "error": "Skipped because initial URL fetch failed",
+      "executedRuns": 99,
+      "failedRuns": 1
+    }
+  },
+  "summary": {
+    "actRulesObserved": 17,
+    "multipleEngines": 6,
+    "multipleEnginesWithSilence": 0,
+    "singleEngine": 11,
+    "reviewSuggested": 11
+  },
+  "rules": [
+    {
+      "actRuleId": "7d6734",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/7d6734/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "svg-img-alt",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r43",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "text-alternatives/svg-img-alt",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 65,
+        "alfa": 65
+      },
+      "findings": 130,
+      "distinctTargets": 63,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "bc659a",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/bc659a/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "meta-refresh",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r9",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "meta_refresh_delay",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "enough-time/meta-refresh",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_REFRESH",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 52,
+        "alfa": 26
+      },
+      "findings": 78,
+      "distinctTargets": 26,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "bisz58",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/bisz58/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "meta-refresh",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "meta-refresh-no-exceptions",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r96",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "enough-time/meta-refresh-no-exception",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_REFRESH",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 52,
+        "alfa": 26
+      },
+      "findings": 78,
+      "distinctTargets": 26,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "2ee8b8",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "label-content-name-mismatch",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r14",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "label_name_visible",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 10,
+        "alfa": 11
+      },
+      "findings": 21,
+      "distinctTargets": 11,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "bc4a75",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/bc4a75/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-required-children",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r68",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 4
+      },
+      "findings": 4,
+      "distinctTargets": 3,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "09o5cg",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+      "title": "Text has enhanced contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.6"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast-enhanced",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast-enhanced",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 3
+      },
+      "findings": 3,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "46ca7f",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/46ca7f/",
+      "title": "Element marked as decorative is not exposed",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.1.1"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "presentation-role-conflict",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r86",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_attribute_valid",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/presentation-role-conflict",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 3
+      },
+      "findings": 3,
+      "distinctTargets": 3,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "afw4f7",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
+      "title": "Text has minimum contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.3"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_contrast_sufficient",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 3
+      },
+      "findings": 3,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "23a2a8",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/23a2a8/",
+      "title": "Image has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.1.1"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "image-alt",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "role-img-alt",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r2",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "img_alt_valid",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "text-alternatives/img-alt",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "ALT_UNPRONOUNCEABLE",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_ALT_UNPRONOUNCEABLE",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "MISSING_ALT",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "MISSING_ALT_LINK",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "MISSING_ALT_LINK_HAS_TEXT",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1,
+        "alfa": 1
+      },
+      "findings": 2,
+      "distinctTargets": 1,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "5c01ea",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/5c01ea/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-allowed-attr",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "aria-prohibited-attr",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r18",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_attribute_valid",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 2
+      },
+      "findings": 2,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "b4f0c3",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/",
+      "title": "Meta viewport allows for zoom",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.4",
+        "1.4.10"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "meta-viewport",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r47",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/meta-viewport",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_MAX",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_SCALABLE",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe",
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1,
+        "alfa": 1
+      },
+      "findings": 2,
+      "distinctTargets": 1,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "2779a5",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2779a5/",
+      "title": "HTML page has non-empty title",
+      "ruleType": "atomic",
+      "ruleStatus": null,
+      "wcag": [
+        "2.4.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "document-title",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r1",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "page_title_exists",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "navigable/document-title",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_TITLE",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 1
+      },
+      "findings": 1,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "6cfa84",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/6cfa84/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-hidden-focus",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r17",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/aria-hidden-focus",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "HIDDEN_FOCUSABLE",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 1
+      },
+      "findings": 1,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "78fd32",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/78fd32/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "avoid-inline-spacing",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r93",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_spacing_valid",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/line-height",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 1
+      },
+      "findings": 1,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "97a4e1",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/",
+      "title": "Button has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": null,
+      "wcag": [
+        "4.1.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-command-name",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r12",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "input_label_exists",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "labels-and-names/button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "BTN_EMPTY",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "BTN_EMPTY_LABELLEDBY",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1
+      },
+      "findings": 1,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "b5c3f8",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b5c3f8/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "html-has-lang",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r4",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "html_lang_exists",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "readable/html-has-lang",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_LANG",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "alfa"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "alfa": 1
+      },
+      "findings": 1,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "m6b1q3",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/m6b1q3/",
+      "title": "Menuitem has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": null,
+      "wcag": [
+        "4.1.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r94",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_widget_labelled",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "labels-and-names/aria-command-name",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1
+      },
+      "findings": 1,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    }
+  ]
+}
