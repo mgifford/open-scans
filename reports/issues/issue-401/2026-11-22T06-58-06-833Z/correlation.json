@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "a11y-correlation/1",
+  "generatedAt": "2026-11-22T06:57:25.039Z",
+  "issueNumber": 401,
+  "scanTitle": "Complete audit - Report a Goose",
+  "algorithm": {
+    "correlationVersion": "correlation/1",
+    "semanticsVersion": "rule-semantics/1",
+    "mappingRegistryVersion": "2026-11-20T19:19:10.807Z"
+  },
+  "counts": {
+    "rawObservations": 1113,
+    "repeatedObservations": 1,
+    "correlatedObservations": 0,
+    "singleEngineObservations": 0,
+    "insufficientEvidenceObservations": 1112,
+    "notComparableObservations": 0,
+    "correlatedIssues": 0,
+    "verifiedEquivalentFindings": 0,
+    "versionMismatchedFindings": 0,
+    "inferredEquivalentFindings": 0,
+    "singleEngineFindings": 0,
+    "relatedFindings": 0,
+    "targetDisagreements": 0
+  },
+  "reconciliation": {
+    "observationsAccountedFor": 1113,
+    "rawObservations": 1113,
+    "complete": true,
+    "note": "Each observation has exactly one disposition. Correlation never removes evidence, and explicit pass evidence is not inferred from engine silence."
+  },
+  "issues": [],
+  "singles": [],
+  "related": [],
+  "disagreements": [],
+  "notComparable": []
+}
