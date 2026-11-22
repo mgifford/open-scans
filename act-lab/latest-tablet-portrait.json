@@ -1,6 +1,6 @@
 {
   "schemaVersion": "act-lab-observations/2",
-  "generatedAt": "2026-11-20T16:18:44.959Z",
+  "generatedAt": "2026-11-22T14:32:58.276Z",
   "status": "complete",
   "missingFixtures": [],
   "failedEngines": [],
@@ -8,7 +8,7 @@
   "manifestUrl": "https://mgifford.github.io/record-a-goose-sighting/lab/fixtures.json",
   "cohort": {
     "cohortVersion": "act-lab-cohort/1",
-    "key": "2eeab41e37681c0d8848a4f8815650f391a51714fb8db241ece8d73d617f8ce8",
+    "key": "7eabb4e78aa4f1fabff4452fb12bc3b66ac052767a80ca0a8c00db3136bdbced",
     "components": {
       "cohortVersion": "act-lab-cohort/1",
       "fixtures": "e6d983026d1e0ef06db73cdebb2163b4f1dd0972a0be495c1cd781bb846c5d06",
@@ -16,10 +16,11 @@
         "@axe-core/playwright": "4.14.0",
         "@siteimprove/alfa-cli": "0.84.2",
         "accessibility-checker": "4.0.30",
-        "@accesslint/core": "0.17.0"
+        "@accesslint/core": "0.17.0",
+        "sa11y": "5.1.0"
       },
-      "actMapping": "6f9e00a7aae1c11980aaf258981347affebb151d4470d30f913a86b68419fc29",
-      "actRegistry": "a4876705928bf1a7028249b61572ff6a75f68777cae132184d6defd738d772a2",
+      "actMapping": "5f3d19683b7fb20d5653738fc254f4aec17e542368256b8d3b3b04b09ed11d6f",
+      "actRegistry": "343b793506147eb125ae82abcecc5fd15e6ff416851b7375be616df0b3176036",
       "actRules": "49051da603afa6d28b94ef3e758146dafcbe72bade7202a24636bab3ea4c0036",
       "browser": "chromium",
       "siteRoot": "https://mgifford.github.io/record-a-goose-sighting/",
@@ -29,28 +30,32 @@
     }
   },
   "trigger": [
+    "engine-versions-changed",
+    "act-mapping-changed",
     "act-registry-changed"
   ],
   "engines": [
     "axe",
     "alfa",
     "equalAccess",
-    "accesslint"
+    "accesslint",
+    "sa11y"
   ],
   "algorithm": {
     "targetOutcome": "act-lab-target-outcome/1"
   },
   "counts": {
-    "notReported": 41,
-    "failed": 55,
-    "unsupported": 32,
-    "page-level-only": 12,
-    "target-unresolved": 8
+    "notReported": 47,
+    "unmapped": 5,
+    "failed": 68,
+    "unsupported": 40,
+    "page-level-only": 15,
+    "target-unresolved": 10
   },
   "comparisonCounts": {
     "cannot-confirm-pass": 13,
-    "provisional-match": 14,
-    "provisional-no-failure": 6,
+    "provisional-match": 15,
+    "provisional-no-failure": 5,
     "no-expectation": 1,
     "provisional-unexpected-failure": 1,
     "unsupported-expectation": 2
@@ -61,9 +66,9 @@
     "ambiguous": 0,
     "unsupported": 8
   },
-  "engineSpecificFindings": 135,
-  "otherActFindings": 28,
-  "pageLevelFindings": 64,
+  "engineSpecificFindings": 136,
+  "otherActFindings": 29,
+  "pageLevelFindings": 80,
   "byEngine": {
     "axe": {
       "notReported": 9,
@@ -92,6 +97,14 @@
       "unsupported": 8,
       "page-level-only": 3,
       "target-unresolved": 2
+    },
+    "sa11y": {
+      "unmapped": 5,
+      "notReported": 6,
+      "failed": 13,
+      "unsupported": 8,
+      "page-level-only": 3,
+      "target-unresolved": 2
     }
   },
   "comparisons": [
@@ -106,7 +119,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -125,7 +138,7 @@
         "axe",
         "equalAccess"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -140,7 +153,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -158,9 +171,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -177,9 +191,10 @@
       "failedEngines": [
         "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -194,7 +209,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -211,9 +226,10 @@
       "failedEngines": [
         "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -228,7 +244,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -243,7 +259,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -258,7 +274,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-no-failure",
       "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
     },
@@ -273,7 +289,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "no-expectation",
       "note": "This fixture declares no expected outcome."
     },
@@ -291,9 +307,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -311,9 +328,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -328,7 +346,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -346,9 +364,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -366,9 +385,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -387,7 +407,7 @@
         "axe",
         "equalAccess"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -405,9 +425,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -425,9 +446,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -445,9 +467,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -462,7 +485,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -477,7 +500,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -492,7 +515,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-no-failure",
       "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
     },
@@ -507,7 +530,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-no-failure",
       "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
     },
@@ -522,7 +545,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-no-failure",
       "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
     },
@@ -537,7 +560,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-no-failure",
       "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
     },
@@ -552,7 +575,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -569,9 +592,10 @@
       "failedEngines": [
         "accesslint",
         "alfa",
-        "axe"
+        "axe",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-unexpected-failure",
       "note": "An engine reported a failure on the declared target although the fixture expects a pass."
     },
@@ -586,7 +610,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -601,7 +625,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -615,10 +639,12 @@
       "targetStatus": "resolved",
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
-      "failedEngines": [],
-      "engineCount": 4,
-      "status": "provisional-no-failure",
-      "note": "No engine reported a failure on the declared target. Silence is not a pass, and an unreviewed expectation is not ground truth."
+      "failedEngines": [
+        "sa11y"
+      ],
+      "engineCount": 5,
+      "status": "provisional-match",
+      "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
     {
       "fixtureId": "applicability-no-buttons",
@@ -631,7 +657,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "unsupported-expectation",
       "note": "Expected outcome 'inapplicable' is not compared here."
     },
@@ -646,7 +672,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "unsupported-expectation",
       "note": "Expected outcome 'inapplicable' is not compared here."
     },
@@ -661,7 +687,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -679,9 +705,10 @@
         "accesslint",
         "alfa",
         "axe",
-        "equalAccess"
+        "equalAccess",
+        "sa11y"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     },
@@ -696,7 +723,7 @@
       "version": "act-lab-target-outcome/1",
       "authoritative": false,
       "failedEngines": [],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "cannot-confirm-pass",
       "note": "No engine reported a failure on the target, but no engine supplied explicit target-level pass evidence. This does not confirm the expectation."
     },
@@ -716,7 +743,7 @@
         "axe",
         "equalAccess"
       ],
-      "engineCount": 4,
+      "engineCount": 5,
       "status": "provisional-match",
       "note": "At least one engine reported the failure on the declared target, but the expectation is unreviewed and therefore a hypothesis."
     }
@@ -845,6 +872,34 @@
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
       "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "html-valid-role",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-valid/",
+      "ruleId": "674b10",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:f78a759444e00eccd38998ce6bf9e410fca67c27a4348c0c498e4b80c50effc2:/html[1]/body[1]/main[1]/div[1]/span[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "f78a759444e00eccd38998ce6bf9e410fca67c27a4348c0c498e4b80c50effc2",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "unmapped",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
     },
     {
       "fixtureId": "html-invalid-role",
@@ -978,6 +1033,34 @@
       "evidence": "aria/aria-roles"
     },
     {
+      "fixtureId": "html-invalid-role",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
+      "ruleId": "674b10",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:97a3225b3c69e993b5802364c30a1c4f64e2b2346f8aa22c5ef2e3a367eae0c8:/html[1]/body[1]/main[1]/div[1]/span[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "97a3225b3c69e993b5802364c30a1c4f64e2b2346f8aa22c5ef2e3a367eae0c8",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "unmapped",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+    },
+    {
       "fixtureId": "html-button-named",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-named/",
       "ruleId": "97a4e1",
@@ -1094,6 +1177,34 @@
         "reason": null
       },
       "engine": "accesslint",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "html-button-named",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-named/",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:c31400173661da2d8f5b6cd63f929f90b5da459e39cfe502b74ea40b6971abbf:/html[1]/body[1]/main[1]/div[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "c31400173661da2d8f5b6cd63f929f90b5da459e39cfe502b74ea40b6971abbf",
+        "reason": null
+      },
+      "engine": "sa11y",
       "execution": "executed",
       "outcome": null,
       "status": "notReported",
@@ -1242,6 +1353,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "html-button-unnamed",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:f106beb7872548235adb453d8ab1db016e8fefe8939164cf64cee4a9382c5563:/html[1]/body[1]/main[1]/div[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "f106beb7872548235adb453d8ab1db016e8fefe8939164cf64cee4a9382c5563",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "react-button-initial",
       "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
       "ruleId": "97a4e1",
@@ -1375,6 +1516,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "react-button-initial",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "react-button-updated",
       "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=updated",
       "ruleId": "97a4e1",
@@ -1489,6 +1660,34 @@
         "reason": null
       },
       "engine": "accesslint",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "react-button-updated",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=updated",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "88adc1d13528700951ac9e237ca96b2cab2c0bd96775802a48bfe0c13eee71bd",
+        "reason": null
+      },
+      "engine": "sa11y",
       "execution": "executed",
       "outcome": null,
       "status": "notReported",
@@ -1634,6 +1833,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "vue-button-initial",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "vue-button-updated",
       "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=updated",
       "ruleId": "97a4e1",
@@ -1760,6 +1989,34 @@
       "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
+      "fixtureId": "vue-button-updated",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=updated",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "c32c5ef27e9a3e6abab9f986b878ec628c2fb01db5ed67811522a6ff061b6bb3",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
       "fixtureId": "paca-valid-open",
       "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=valid&shadow=open",
       "ruleId": "674b10",
@@ -1872,6 +2129,34 @@
       "evidence": "shadow-root targets cannot be resolved from the top-level static snapshot"
     },
     {
+      "fixtureId": "paca-valid-open",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=valid&shadow=open",
+      "ruleId": "674b10",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "open-shadow",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "shadow-root targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "shadow-root targets cannot be resolved from the top-level static snapshot"
+    },
+    {
       "fixtureId": "paca-invalid-open",
       "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open",
       "ruleId": "674b10",
@@ -1984,6 +2269,34 @@
       "evidence": "shadow-root targets cannot be resolved from the top-level static snapshot"
     },
     {
+      "fixtureId": "paca-invalid-open",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=open",
+      "ruleId": "674b10",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "open-shadow",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "shadow-root targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "shadow-root targets cannot be resolved from the top-level static snapshot"
+    },
+    {
       "fixtureId": "paca-invalid-closed",
       "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=closed",
       "ruleId": "674b10",
@@ -2084,6 +2397,34 @@
         "reason": "a closed shadow root is not inspectable through engine public APIs"
       },
       "engine": "accesslint",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "a closed shadow root is not inspectable through engine public APIs"
+    },
+    {
+      "fixtureId": "paca-invalid-closed",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=invalid&shadow=closed",
+      "ruleId": "674b10",
+      "expected": null,
+      "review": "unreviewed",
+      "scope": "closed-shadow",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "a closed shadow root is not inspectable through engine public APIs"
+      },
+      "engine": "sa11y",
       "execution": "unsupported",
       "outcome": null,
       "status": "unsupported",
@@ -2226,6 +2567,36 @@
       "evidence": "text-alternatives/img-alt"
     },
     {
+      "fixtureId": "correlation-two-images-a",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+      "ruleId": "23a2a8",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a:/html[1]/body[1]/main[1]/section[1]/img[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "MISSING_ALT"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "MISSING_ALT"
+    },
+    {
       "fixtureId": "correlation-two-images-b",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
       "ruleId": "23a2a8",
@@ -2356,6 +2727,36 @@
       "evidence": "text-alternatives/img-alt"
     },
     {
+      "fixtureId": "correlation-two-images-b",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+      "ruleId": "23a2a8",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a:/html[1]/body[1]/main[1]/section[1]/img[2]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "MISSING_ALT"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 1,
+      "evidence": "MISSING_ALT"
+    },
+    {
       "fixtureId": "correlation-two-images-control",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
       "ruleId": "23a2a8",
@@ -2478,6 +2879,36 @@
       "mapping": "act-other-target",
       "engineRuleIds": [
         "text-alternatives/img-alt"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 2,
+      "evidence": "2 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
+    },
+    {
+      "fixtureId": "correlation-two-images-control",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+      "ruleId": "23a2a8",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a:/html[1]/body[1]/main[1]/section[1]/img[3]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "page-level-only",
+      "mapping": "act-other-target",
+      "engineRuleIds": [
+        "MISSING_ALT"
       ],
       "engineSpecificRules": [],
       "otherActRules": [],
@@ -2614,6 +3045,36 @@
       "onTargetFailures": 1,
       "pageLevelFailures": 0,
       "evidence": "text-alternatives/img-alt"
+    },
+    {
+      "fixtureId": "correlation-single-image",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/single-image/",
+      "ruleId": "23a2a8",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:583ee9e5f31f0a5c01c97a6a7514e6d2f5f97d167a4fcfd8353137d44e5f3015:/html[1]/body[1]/main[1]/section[1]/img[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "583ee9e5f31f0a5c01c97a6a7514e6d2f5f97d167a4fcfd8353137d44e5f3015",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "MISSING_ALT"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "MISSING_ALT"
     },
     {
       "fixtureId": "correlation-multi-rule-button-name",
@@ -2764,6 +3225,36 @@
       "onTargetFailures": 1,
       "pageLevelFailures": 0,
       "evidence": "labels-and-names/button-name"
+    },
+    {
+      "fixtureId": "correlation-multi-rule-button-name",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee:/html[1]/body[1]/main[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
     },
     {
       "fixtureId": "correlation-multi-rule-role-value",
@@ -2916,6 +3407,38 @@
       "evidence": "aria/aria-roles"
     },
     {
+      "fixtureId": "correlation-multi-rule-role-value",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+      "ruleId": "674b10",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee:/html[1]/body[1]/main[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "unmapped",
+      "mapping": "act-other",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [
+        "97a4e1"
+      ],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
+    },
+    {
       "fixtureId": "correlation-repeated-unnamed-a",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
       "ruleId": "97a4e1",
@@ -3054,6 +3577,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "correlation-repeated-unnamed-a",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "correlation-repeated-unnamed-b",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
       "ruleId": "97a4e1",
@@ -3192,6 +3745,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "correlation-repeated-unnamed-b",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[2]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "correlation-repeated-unnamed-c",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
       "ruleId": "97a4e1",
@@ -3330,6 +3913,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "correlation-repeated-unnamed-c",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[3]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 2,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "correlation-repeated-named-a",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
       "ruleId": "97a4e1",
@@ -3468,6 +4081,36 @@
       "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
+      "fixtureId": "correlation-repeated-named-a",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[4]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "page-level-only",
+      "mapping": "act-other-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
+    },
+    {
       "fixtureId": "correlation-repeated-named-b",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
       "ruleId": "97a4e1",
@@ -3606,6 +4249,36 @@
       "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
     },
     {
+      "fixtureId": "correlation-repeated-named-b",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[5]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "page-level-only",
+      "mapping": "act-other-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 3,
+      "evidence": "3 finding(s) for this ACT rule were reported elsewhere on the page and are not attributed to the fixture target."
+    },
+    {
       "fixtureId": "frame-single-target",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
       "ruleId": "97a4e1",
@@ -3706,6 +4379,34 @@
         "reason": "iframe targets cannot be resolved from the top-level static snapshot"
       },
       "engine": "accesslint",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
+    },
+    {
+      "fixtureId": "frame-single-target",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/single-frame/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "iframe targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
       "execution": "unsupported",
       "outcome": null,
       "status": "unsupported",
@@ -3830,6 +4531,34 @@
       "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
     },
     {
+      "fixtureId": "frame-nested-target",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/nested-frame/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "iframe targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
+    },
+    {
       "fixtureId": "frame-two-first",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/",
       "ruleId": "97a4e1",
@@ -3942,6 +4671,34 @@
       "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
     },
     {
+      "fixtureId": "frame-two-first",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "iframe targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
+    },
+    {
       "fixtureId": "frame-two-second",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/",
       "ruleId": "97a4e1",
@@ -4042,6 +4799,34 @@
         "reason": "iframe targets cannot be resolved from the top-level static snapshot"
       },
       "engine": "accesslint",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "iframe targets cannot be resolved from the top-level static snapshot"
+    },
+    {
+      "fixtureId": "frame-two-second",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/frames/two-frames/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "iframe targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
       "execution": "unsupported",
       "outcome": null,
       "status": "unsupported",
@@ -4168,6 +4953,34 @@
         "reason": null
       },
       "engine": "accesslint",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "react-button-async",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=async",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "dc6e1e73359ee0a91f2010fb7fd1de083485319611a61f2a6dc373c1beb34da0",
+        "reason": null
+      },
+      "engine": "sa11y",
       "execution": "executed",
       "outcome": null,
       "status": "notReported",
@@ -4313,6 +5126,36 @@
       "evidence": "labels-and-names/button-name"
     },
     {
+      "fixtureId": "react-button-replaced",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=replaced",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "vue-button-async",
       "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=async",
       "ruleId": "97a4e1",
@@ -4439,6 +5282,34 @@
       "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
+      "fixtureId": "vue-button-async",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=async",
+      "ruleId": "97a4e1",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "c69074ce184e70bc08e0e87a105a69c8fd6936c6dd4b8c2f1bf5f4c4e987b766",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
       "fixtureId": "paca-valid-nested",
       "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=valid&shadow=nested",
       "ruleId": "674b10",
@@ -4539,6 +5410,34 @@
         "reason": "shadow-root targets cannot be resolved from the top-level static snapshot"
       },
       "engine": "accesslint",
+      "execution": "unsupported",
+      "outcome": null,
+      "status": "unsupported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "shadow-root targets cannot be resolved from the top-level static snapshot"
+    },
+    {
+      "fixtureId": "paca-valid-nested",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/paca/?role=valid&shadow=nested",
+      "ruleId": "674b10",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "open-shadow",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unsupported",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "shadow-root targets cannot be resolved from the top-level static snapshot"
+      },
+      "engine": "sa11y",
       "execution": "unsupported",
       "outcome": null,
       "status": "unsupported",
@@ -4677,6 +5576,36 @@
       "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
     },
     {
+      "fixtureId": "interaction-reveal-target",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/interaction/reveal-target/",
+      "ruleId": "97a4e1",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:929be598022fbee18635114b9d5b54eeac03783e53f869dc99bd5ee097fa357d:/html[1]/body[1]/main[1]/section[1]/div[1]/button[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "929be598022fbee18635114b9d5b54eeac03783e53f869dc99bd5ee097fa357d",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "BTN_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "BTN_EMPTY"
+    },
+    {
       "fixtureId": "applicability-no-buttons",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/applicability/no-buttons/",
       "ruleId": "97a4e1",
@@ -4789,6 +5718,34 @@
       "evidence": "the fixture declares no target selector"
     },
     {
+      "fixtureId": "applicability-no-buttons",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/applicability/no-buttons/",
+      "ruleId": "97a4e1",
+      "expected": "inapplicable",
+      "review": "unreviewed",
+      "scope": "document",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unresolved",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "the fixture declares no target selector"
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "target-unresolved",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "the fixture declares no target selector"
+    },
+    {
       "fixtureId": "applicability-no-images",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/applicability/no-images/",
       "ruleId": "23a2a8",
@@ -4889,6 +5846,34 @@
         "reason": "the fixture declares no target selector"
       },
       "engine": "accesslint",
+      "execution": "executed",
+      "outcome": null,
+      "status": "target-unresolved",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "the fixture declares no target selector"
+    },
+    {
+      "fixtureId": "applicability-no-images",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/applicability/no-images/",
+      "ruleId": "23a2a8",
+      "expected": "inapplicable",
+      "review": "unreviewed",
+      "scope": "document",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "unresolved",
+        "targetId": null,
+        "method": "none",
+        "matchedElements": 0,
+        "documentHash": null,
+        "reason": "the fixture declares no target selector"
+      },
+      "engine": "sa11y",
       "execution": "executed",
       "outcome": null,
       "status": "target-unresolved",
@@ -5013,6 +5998,34 @@
         "reason": null
       },
       "engine": "accesslint",
+      "execution": "executed",
+      "outcome": null,
+      "status": "notReported",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "link-named",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/link-named/",
+      "ruleId": "c487ae",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:ca58e371cb7938381352ac2e47af48555fed542842f4e32288851bed092b0a19:/html[1]/body[1]/main[1]/section[1]/p[1]/a[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "ca58e371cb7938381352ac2e47af48555fed542842f4e32288851bed092b0a19",
+        "reason": null
+      },
+      "engine": "sa11y",
       "execution": "executed",
       "outcome": null,
       "status": "notReported",
@@ -5155,6 +6168,36 @@
       "evidence": "navigable/link-name"
     },
     {
+      "fixtureId": "link-unnamed",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/link-unnamed/",
+      "ruleId": "c487ae",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:70bf7a32e96c074b967a068503172a3ae17f576e4e2b89aeb98eda63523e47f1:/html[1]/body[1]/main[1]/section[1]/p[1]/a[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "70bf7a32e96c074b967a068503172a3ae17f576e4e2b89aeb98eda63523e47f1",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": "failed",
+      "status": "failed",
+      "mapping": "act-target",
+      "engineRuleIds": [
+        "LINK_EMPTY"
+      ],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 1,
+      "pageLevelFailures": 0,
+      "evidence": "LINK_EMPTY"
+    },
+    {
       "fixtureId": "field-named",
       "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/field-named/",
       "ruleId": "e086e5",
@@ -5279,6 +6322,34 @@
       "onTargetFailures": 0,
       "pageLevelFailures": 0,
       "evidence": "Engine reported no explicit ACT outcome for the target rule; silence is not a pass."
+    },
+    {
+      "fixtureId": "field-named",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/field-named/",
+      "ruleId": "e086e5",
+      "expected": "passed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:fc8af6318f6ae1a5afc82b2cf73dfc4f7a49623b926a50d2d7a094f91a7c40e3:/html[1]/body[1]/main[1]/section[1]/p[1]/input[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "fc8af6318f6ae1a5afc82b2cf73dfc4f7a49623b926a50d2d7a094f91a7c40e3",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "unmapped",
+      "mapping": "none",
+      "engineRuleIds": [],
+      "engineSpecificRules": [],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
     },
     {
       "fixtureId": "field-unnamed",
@@ -5413,6 +6484,38 @@
       "onTargetFailures": 1,
       "pageLevelFailures": 0,
       "evidence": "labels-and-names/form-label"
+    },
+    {
+      "fixtureId": "field-unnamed",
+      "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/field-unnamed/",
+      "ruleId": "e086e5",
+      "expected": "failed",
+      "review": "unreviewed",
+      "scope": "light-dom",
+      "viewport": "tablet-portrait",
+      "target": {
+        "status": "resolved",
+        "targetId": "dom:v1:af0453d8a42588bfa3b72837c2a319e914e12554ef528ecfec61ef4bcc0ae918:/html[1]/body[1]/main[1]/section[1]/p[1]/input[1]",
+        "method": "css",
+        "matchedElements": 1,
+        "documentHash": "af0453d8a42588bfa3b72837c2a319e914e12554ef528ecfec61ef4bcc0ae918",
+        "reason": null
+      },
+      "engine": "sa11y",
+      "execution": "executed",
+      "outcome": null,
+      "status": "unmapped",
+      "mapping": "none",
+      "engineRuleIds": [
+        "LABELS_NO_FOR_ATTRIBUTE"
+      ],
+      "engineSpecificRules": [
+        "LABELS_NO_FOR_ATTRIBUTE"
+      ],
+      "otherActRules": [],
+      "onTargetFailures": 0,
+      "pageLevelFailures": 0,
+      "evidence": "No engine rule is mapped to this ACT rule in scanner/data/act-registry.json."
     }
   ]
 }

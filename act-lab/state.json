@@ -1,9 +1,9 @@
 {
   "schemaVersion": "act-lab-state/1",
-  "updatedAt": "2026-11-20T16:31:52.710Z",
+  "updatedAt": "2026-11-22T14:50:00.340Z",
   "cohort": {
     "cohortVersion": "act-lab-cohort/1",
-    "key": "2eeab41e37681c0d8848a4f8815650f391a51714fb8db241ece8d73d617f8ce8",
+    "key": "7eabb4e78aa4f1fabff4452fb12bc3b66ac052767a80ca0a8c00db3136bdbced",
     "components": {
       "cohortVersion": "act-lab-cohort/1",
       "fixtures": "e6d983026d1e0ef06db73cdebb2163b4f1dd0972a0be495c1cd781bb846c5d06",
@@ -11,10 +11,11 @@
         "@axe-core/playwright": "4.14.0",
         "@siteimprove/alfa-cli": "0.84.2",
         "accessibility-checker": "4.0.30",
-        "@accesslint/core": "0.17.0"
+        "@accesslint/core": "0.17.0",
+        "sa11y": "5.1.0"
       },
-      "actMapping": "6f9e00a7aae1c11980aaf258981347affebb151d4470d30f913a86b68419fc29",
-      "actRegistry": "a4876705928bf1a7028249b61572ff6a75f68777cae132184d6defd738d772a2",
+      "actMapping": "5f3d19683b7fb20d5653738fc254f4aec17e542368256b8d3b3b04b09ed11d6f",
+      "actRegistry": "343b793506147eb125ae82abcecc5fd15e6ff416851b7375be616df0b3176036",
       "actRules": "49051da603afa6d28b94ef3e758146dafcbe72bade7202a24636bab3ea4c0036",
       "browser": "chromium",
       "siteRoot": "https://mgifford.github.io/record-a-goose-sighting/",
@@ -24,16 +25,19 @@
     }
   },
   "trigger": [
+    "engine-versions-changed",
+    "act-mapping-changed",
     "act-registry-changed"
   ],
   "lastRun": {
-    "generatedAt": "2026-11-20T16:31:52.710Z",
+    "generatedAt": "2026-11-22T14:50:00.340Z",
     "counts": {
-      "notReported": 41,
-      "failed": 55,
-      "unsupported": 32,
-      "page-level-only": 12,
-      "target-unresolved": 8
+      "notReported": 47,
+      "unmapped": 5,
+      "failed": 68,
+      "unsupported": 40,
+      "page-level-only": 15,
+      "target-unresolved": 10
     },
     "report": "act-lab/latest-mobile-portrait.json"
   }
