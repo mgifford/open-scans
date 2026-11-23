@@ -40,7 +40,9 @@ jobs:
           EOF
 
       - name: Install Chromium for Playwright tests
-        timeout-minutes: 10
+        # Firefox and WebKit add many apt packages; a slow Ubuntu mirror can
+        # exceed 10 minutes. Keep the step bounded but allow for that.
+        timeout-minutes: 20
         env:
           PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: "120000"
         run: npx playwright install --with-deps chromium firefox webkit

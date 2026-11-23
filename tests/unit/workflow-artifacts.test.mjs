@@ -40,7 +40,13 @@ test("browser installs cannot hang the queue indefinitely", () => {
   ];
   for (const relative of workflows) {
     const workflow = fs(new URL(relative, import.meta.url), "utf8");
-    assert.match(workflow, /Install Chromium[\s\S]{0,200}timeout-minutes: 10/, `${relative} needs an install timeout`);
+    const install = /Install Chromium[\s\S]{0,300}?timeout-minutes: (\d+)/.exec(workflow);
+    assert.ok(install, `${relative} needs an install timeout`);
+    const minutes = Number(install[1]);
+    assert.ok(
+      minutes >= 1 && minutes <= 30,
+      `${relative} needs a bounded install timeout, got ${minutes}`
+    );
     assert.match(workflow, /PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT/, `${relative} needs a download timeout`);
   }
 });
