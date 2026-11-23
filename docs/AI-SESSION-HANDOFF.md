@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-23
-**Open Scans checkpoint:** `ee75ff6` (#430 merged); PR #431 (`feat/act-mapping-build`) pending
+**Open Scans checkpoint:** `3b664c9` (#431 merged); PR #432 (`ci/playwright-install-timeout`) pending
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -12,7 +12,7 @@ schemas or tests.
 
 ### 2026-11-23: reproducible ACT mapping step
 
-PR #431 (`feat/act-mapping-build`) adds
+PR #431 (`feat/act-mapping-build`, merged as `3b664c9`) adds
 `scanner/build-act-mappings-from-reports.mjs`, which refetches the Alfa,
 AccessLint and Equal Access W3C implementation reports and rewrites the
 report-derived `verifiedMappings` in
@@ -34,7 +34,12 @@ extractor records the first (`text-alternatives/img-alt`); the refresh needs
 network access and is not run by CI, so counts can drift when W3C updates a
 report.
 
-Next safe step: review and merge #431, then decide whether to record
+A separate scan-request run failed after 10 minutes in the Playwright browser
+install while apt downloads from the Ubuntu 26.04 mirror were slow. The failed
+job was re-run and completed the scan; PR #432 raises the install step timeout
+to 20 minutes in the three workflows that install chromium, firefox and webkit.
+
+Next safe step: review and merge #432, then decide whether to record
 `text-alternatives/role-img-alt` as a second verified mapping for `23a2a8`.
 
 ---
