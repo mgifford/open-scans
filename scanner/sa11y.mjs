@@ -15,6 +15,7 @@
 import { createRequire } from "node:module";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { resolvePlaywrightExecutable } from "./playwright-executable.mjs";
 
 const require = createRequire(import.meta.url);
 
@@ -183,9 +184,7 @@ export async function runSa11yAudit(url, { pageLoadDelayMs = 2000, scanContext =
 
     const executablePath =
       process.env.SA11Y_BROWSER_EXECUTABLE_PATH ||
-      process.env.PLAYWRIGHT_EXECUTABLE_PATH ||
-      process.env.PUPPETEER_EXECUTABLE_PATH ||
-      undefined;
+      resolvePlaywrightExecutable(scanContext.browser);
 
     browser = await browserType.launch({
       headless: true,

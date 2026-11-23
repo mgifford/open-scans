@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-23
-**Open Scans checkpoint:** `3b664c9` (#431 merged); PR #432 (`ci/playwright-install-timeout`) pending
+**Open Scans checkpoint:** `87af43d` (#432 merged); PR #433 (`fix/playwright-executable-scope`) pending
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -36,10 +36,20 @@ report.
 
 A separate scan-request run failed after 10 minutes in the Playwright browser
 install while apt downloads from the Ubuntu 26.04 mirror were slow. The failed
-job was re-run and completed the scan; PR #432 raises the install step timeout
-to 20 minutes in the three workflows that install chromium, firefox and webkit.
+job was re-run and completed the scan; PR #432 (merged as `eb1d857`) raises the
+install step timeout to 20 minutes in the three workflows that install
+chromium, firefox and webkit.
 
-Next safe step: review and merge #432, then decide whether to record
+A 2026-11-23T19-01 webkit scan silently lost axe and Sa11y: the workflow's
+Chromium `PUPPETEER_EXECUTABLE_PATH` was passed to Playwright's webkit launcher,
+which closed immediately. Reflow risk and AccessLint ran on the same webkit
+browser, so the browser itself worked. PR #433 scopes that path to Chromium;
+`PLAYWRIGHT_EXECUTABLE_PATH` remains an explicit override for any browser.
+Locally verified with `PUPPETEER_EXECUTABLE_PATH=/nonexistent/chrome` and
+`scanContext.browser=webkit`: `runAxeAudit` and `runSa11yAudit` both executed.
+
+Next safe step: review and merge #433, run a targeted `BROWSER: webkit` scan to
+confirm axe and Sa11y are `executed`, then decide whether to record
 `text-alternatives/role-img-alt` as a second verified mapping for `23a2a8`.
 
 ---

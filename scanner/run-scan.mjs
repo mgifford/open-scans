@@ -28,6 +28,7 @@ import { compareRuns, findPreviousCorrelationPath, renderHistoryMarkdown } from 
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
 import { buildAccessibilityContext, accessibilityContextToCsv } from "./accessibility-context.mjs";
 import { runSa11yAudit } from "./sa11y.mjs";
+import { resolvePlaywrightExecutable } from "./playwright-executable.mjs";
 
 const alfaCliPath = fileURLToPath(new URL("../node_modules/@siteimprove/alfa-cli/bin/alfa.js", import.meta.url));
 const accessLintIifePath = fileURLToPath(new URL("../node_modules/@accesslint/core/dist/index.iife.js", import.meta.url));
@@ -1034,7 +1035,7 @@ export async function runAxeAudit(url, pageLoadDelayMs = 2000, scanContext = bui
     let browser;
     try {
       const browserType = getPlaywrightBrowserType(pw, scanContext.browser);
-      const localExecutable = process.env.PLAYWRIGHT_EXECUTABLE_PATH || process.env.PUPPETEER_EXECUTABLE_PATH;
+      const localExecutable = resolvePlaywrightExecutable(scanContext.browser);
       browser = await browserType.launch({
         headless: true,
         timeout: TIMEOUTS.PLAYWRIGHT_LAUNCH_TIMEOUT,

@@ -168,6 +168,7 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 | P12 | Sa11y engine integration: pinned headless adapter, native rule and classification preservation, engine selection, report and ACT-mapping integration, tests and limitations documentation |
 | P13 | Evidence reporting for silence and scope: mapped-but-silent engines, single-engine findings, unmapped native rules, preserved axe frame paths, and the frame-scope caveat |
 | P14 | Committed, reproducible extraction of W3C report-derived ACT mappings: fail-closed refresh, deterministic sorted overlays, added/removed diff summary, offline HTML fixtures, and refresh documentation |
+| P15 | Browser-executable scoping: Chromium's Puppeteer path no longer leaks into WebKit/Firefox Playwright launches, restoring axe-core and Sa11y for random-browser scans |
 
 ## Accountability and verification
 
