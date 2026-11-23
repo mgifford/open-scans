@@ -45,6 +45,8 @@ Chromium `PUPPETEER_EXECUTABLE_PATH` was passed to Playwright's webkit launcher,
 which closed immediately. Reflow risk and AccessLint ran on the same webkit
 browser, so the browser itself worked. PR #433 scopes that path to Chromium;
 `PLAYWRIGHT_EXECUTABLE_PATH` remains an explicit override for any browser.
+Locally verified with `PUPPETEER_EXECUTABLE_PATH=/nonexistent/chrome` and
+`scanContext.browser=webkit`: `runAxeAudit` and `runSa11yAudit` both executed.
 
 Next safe step: review and merge #433, run a targeted `BROWSER: webkit` scan to
 confirm axe and Sa11y are `executed`, then decide whether to record
