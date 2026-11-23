@@ -1,12 +1,41 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-20
-**Open Scans checkpoint:** `a63a8a4` (pending #430; last merged `83e5ca8`)
+**Last updated:** 2026-11-23
+**Open Scans checkpoint:** `ee75ff6` (#430 merged); PR #431 (`feat/act-mapping-build`) pending
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-23: reproducible ACT mapping step
+
+PR #431 (`feat/act-mapping-build`) adds
+`scanner/build-act-mappings-from-reports.mjs`, which refetches the Alfa,
+AccessLint and Equal Access W3C implementation reports and rewrites the
+report-derived `verifiedMappings` in
+`scanner/data/act-registry-overlays.json`. It is fail-closed: a failed fetch or
+a report with no recognisable mappings writes nothing and exits non-zero.
+Existing entries keep their provenance, Sa11y mappings are preserved, keys are
+sorted, and the added/removed counts are printed. Refresh with
+`npm run build:act-mappings` and then `npm run build:act-registry`.
+
+Verified on 2026-11-23: `npm run lint` exit 0; the unit suite ran 1028 tests
+with 1022 pass, 1 pre-existing `generate-reports-html` ISO-week failure and 5
+skipped; the refresh reports 0 added / 0 removed for all three engines; the
+registry has 59 ACT rules, 192 verified mappings and 0 candidates. The 58/166
+figure quoted in older notes is the pre-Sa11y subset: Sa11y adds `5effbb` and 26
+mappings.
+
+Known gaps: the AccessLint report names two procedures for `23a2a8` and the
+extractor records the first (`text-alternatives/img-alt`); the refresh needs
+network access and is not run by CI, so counts can drift when W3C updates a
+report.
+
+Next safe step: review and merge #431, then decide whether to record
+`text-alternatives/role-img-alt` as a second verified mapping for `23a2a8`.
 
 ---
 
@@ -21,10 +50,10 @@ Merged this session, all on `main`:
 - #428 — Sa11y engine (`sa11y`) with native keys, classifications and ACT mapping provenance;
 - #429 — history continuity across family renames and a native-warnings report section.
 
-Pending review: **#430** (`feat/silence-highlights`) — reports name
-mapped-but-silent engines, list single-engine findings and unmapped native
-rules, and mark frame-scoped findings; axe frame paths are preserved as
-`target.framePath`.
+Pending review at this checkpoint: **#430** (`feat/silence-highlights`) — now
+merged as `ee75ff6` — reports name mapped-but-silent engines, list single-engine
+findings and unmapped native rules, and mark frame-scoped findings; axe frame
+paths are preserved as `target.framePath`.
 
 ### Production evidence
 
