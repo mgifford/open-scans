@@ -3,43 +3,6 @@
   "diffs": [
     {
       "from": {
-        "scannedAt": "2026-11-19T20:03:21.251Z",
-        "totals": {
-          "alfa": 773,
-          "axe": 34,
-          "equalAccess": 316,
-          "qualweb": 0,
-          "accesslint": 24,
-          "combined": 1147,
-          "scannedAt": "2026-11-19T20:03:21.251Z",
-          "scannedCount": 49
-        }
-      },
-      "to": {
-        "scannedAt": "2026-11-20T11:17:42.588Z",
-        "totals": {
-          "alfa": 773,
-          "axe": 34,
-          "equalAccess": 316,
-          "qualweb": 0,
-          "accesslint": 24,
-          "combined": 1147,
-          "scannedAt": "2026-11-20T11:17:42.588Z",
-          "scannedCount": 49
-        }
-      },
-      "change": 0,
-      "trend": "stable",
-      "perScanner": {
-        "alfa": 0,
-        "axe": 0,
-        "equalAccess": 0,
-        "qualweb": 0,
-        "accesslint": 0
-      }
-    },
-    {
-      "from": {
         "scannedAt": "2026-11-20T11:17:42.588Z",
         "totals": {
           "alfa": 773,
@@ -148,23 +111,47 @@
         "qualweb": 0,
         "accesslint": 0
       }
+    },
+    {
+      "from": {
+        "scannedAt": "2026-11-20T18:54:59.549Z",
+        "totals": {
+          "alfa": 773,
+          "axe": 34,
+          "equalAccess": 316,
+          "qualweb": 0,
+          "accesslint": 24,
+          "combined": 1147,
+          "scannedAt": "2026-11-20T18:54:59.549Z",
+          "scannedCount": 49
+        }
+      },
+      "to": {
+        "scannedAt": "2026-11-23T17:30:24.543Z",
+        "totals": {
+          "alfa": 773,
+          "axe": 34,
+          "equalAccess": 316,
+          "qualweb": 0,
+          "accesslint": 24,
+          "combined": 1147,
+          "scannedAt": "2026-11-23T17:30:24.543Z",
+          "scannedCount": 49
+        }
+      },
+      "change": 0,
+      "trend": "stable",
+      "perScanner": {
+        "alfa": 0,
+        "axe": 0,
+        "equalAccess": 0,
+        "qualweb": 0,
+        "accesslint": 0
+      }
     }
   ],
   "latestDiff": {
     "from": {
-      "scannedAt": "2026-11-20T15:01:24.564Z",
-      "totals": {
-        "alfa": 773,
-        "axe": 34,
-        "equalAccess": 316,
-        "qualweb": 0,
-        "accesslint": 24,
-        "combined": 1147,
-        "scannedAt": "2026-11-20T15:01:24.564Z",
-        "scannedCount": 49
-      }
-    },
-    "to": {
       "scannedAt": "2026-11-20T18:54:59.549Z",
       "totals": {
         "alfa": 773,
@@ -174,6 +161,19 @@
         "accesslint": 24,
         "combined": 1147,
         "scannedAt": "2026-11-20T18:54:59.549Z",
+        "scannedCount": 49
+      }
+    },
+    "to": {
+      "scannedAt": "2026-11-23T17:30:24.543Z",
+      "totals": {
+        "alfa": 773,
+        "axe": 34,
+        "equalAccess": 316,
+        "qualweb": 0,
+        "accesslint": 24,
+        "combined": 1147,
+        "scannedAt": "2026-11-23T17:30:24.543Z",
         "scannedCount": 49
       }
     },
@@ -197,7 +197,7 @@
     "qualweb": 0,
     "accesslint": 24,
     "combined": 1147,
-    "scannedAt": "2026-11-20T18:54:59.549Z",
+    "scannedAt": "2026-11-23T17:30:24.543Z",
     "scannedCount": 49
   },
   "baselineTotals": {
@@ -207,7 +207,7 @@
     "qualweb": 0,
     "accesslint": 24,
     "combined": 1147,
-    "scannedAt": "2026-11-19T20:03:21.251Z",
+    "scannedAt": "2026-11-20T11:17:42.588Z",
     "scannedCount": 49
   },
   "latestSystemicPatterns": [
