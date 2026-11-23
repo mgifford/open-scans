@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "act-coverage/1",
+  "generatedAt": "2026-11-23T21:03:20.689Z",
+  "issueNumber": 398,
+  "scanTitle": "Complete Audit - Record a Goose",
+  "engineExecution": {
+    "axe": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    },
+    "alfa": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    },
+    "equalAccess": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    },
+    "accesslint": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    },
+    "sa11y": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    }
+  },
+  "summary": {
+    "actRulesObserved": 2,
+    "multipleEngines": 0,
+    "multipleEnginesWithSilence": 0,
+    "singleEngine": 2,
+    "reviewSuggested": 2
+  },
+  "rules": [
+    {
+      "actRuleId": "afw4f7",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
+      "title": "Text has minimum contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.3"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_contrast_sufficient",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [
+        "axe",
+        "accesslint"
+      ],
+      "observations": {
+        "equalAccess": 9
+      },
+      "findings": 9,
+      "distinctTargets": 9,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "2ee8b8",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/2ee8b8/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "label-content-name-mismatch",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r14",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "label_name_visible",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [
+        "alfa",
+        "equalAccess"
+      ],
+      "observations": {
+        "axe": 2
+      },
+      "findings": 2,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    }
+  ]
+}

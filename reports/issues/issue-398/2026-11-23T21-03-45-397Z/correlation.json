@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "a11y-correlation/1",
+  "generatedAt": "2026-11-23T21:03:20.687Z",
+  "issueNumber": 398,
+  "scanTitle": "Complete Audit - Record a Goose",
+  "algorithm": {
+    "correlationVersion": "correlation/1",
+    "semanticsVersion": "rule-semantics/1",
+    "mappingRegistryVersion": "2026-11-23T14:04:19.263Z"
+  },
+  "counts": {
+    "rawObservations": 1484,
+    "repeatedObservations": 0,
+    "correlatedObservations": 0,
+    "singleEngineObservations": 9,
+    "insufficientEvidenceObservations": 1475,
+    "notComparableObservations": 0,
+    "correlatedIssues": 0,
+    "verifiedEquivalentFindings": 0,
+    "versionMismatchedFindings": 0,
+    "inferredEquivalentFindings": 0,
+    "singleEngineFindings": 9,
+    "relatedFindings": 0,
+    "targetDisagreements": 1
+  },
+  "reconciliation": {
+    "observationsAccountedFor": 1484,
+    "rawObservations": 1484,
+    "complete": true,
+    "note": "Each observation has exactly one disposition. Correlation never removes evidence, and explicit pass evidence is not inferred from engine silence."
+  },
+  "issues": [],
+  "singles": [
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "1d9c1dff45294f1940b42548a6e7ca8b3ce9b98334696e39b30ecb9664dc9bc3"
+      ],
+      "observations": [
+        {
+          "observationId": "1d9c1dff45294f1940b42548a6e7ca8b3ce9b98334696e39b30ecb9664dc9bc3",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/6"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "2339f7dd482fa1bb35e40574dae40247d887b8d310d41ac64e51849f82cae6be"
+      ],
+      "observations": [
+        {
+          "observationId": "2339f7dd482fa1bb35e40574dae40247d887b8d310d41ac64e51849f82cae6be",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/8"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[2]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "283a08f4ec90e025abbdbb60a89d8f02cf9bae88b0bda592c2b3f8001ff044fa"
+      ],
+      "observations": [
+        {
+          "observationId": "283a08f4ec90e025abbdbb60a89d8f02cf9bae88b0bda592c2b3f8001ff044fa",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/p[2]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/19"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "4b41b8dd89d7fa7407dcc30d5740a72aeaf9470401ca48f9524838d568bd9741"
+      ],
+      "observations": [
+        {
+          "observationId": "4b41b8dd89d7fa7407dcc30d5740a72aeaf9470401ca48f9524838d568bd9741",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[4]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/10"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "6b4604901c1e64f93103fe232b0c68b2ee8fc68a4de88f5b5cfcea148c10b67b"
+      ],
+      "observations": [
+        {
+          "observationId": "6b4604901c1e64f93103fe232b0c68b2ee8fc68a4de88f5b5cfcea148c10b67b",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "6d33996b38ce279f27c4539d89adc9a6f3003e2d266bf807d907434d03b6d43a"
+      ],
+      "observations": [
+        {
+          "observationId": "6d33996b38ce279f27c4539d89adc9a6f3003e2d266bf807d907434d03b6d43a",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[5]/a[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/12"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/h1[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "8f2e8bd1246a2bcbf5f3807a4567355b47acb91dcd002c7718ee820235c96758"
+      ],
+      "observations": [
+        {
+          "observationId": "8f2e8bd1246a2bcbf5f3807a4567355b47acb91dcd002c7718ee820235c96758",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/h1[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/17"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[1]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "97b52aefcaeaffa81c0e87b9d1ab4eeb1ff819378082d09b8412a72fa2dc5a72"
+      ],
+      "observations": [
+        {
+          "observationId": "97b52aefcaeaffa81c0e87b9d1ab4eeb1ff819378082d09b8412a72fa2dc5a72",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/p[1]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/16"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[2]",
+      "engines": [
+        "equalAccess"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "b6114a316b89b02819f02eebe76c81806d96406b180c150a14c83e14969c3905"
+      ],
+      "observations": [
+        {
+          "observationId": "b6114a316b89b02819f02eebe76c81806d96406b180c150a14c83e14969c3905",
+          "engine": "equalAccess",
+          "engineLabel": "Equal Access",
+          "ruleId": "text_contrast_sufficient",
+          "nativeLocator": "/html[1]/body[1]/header[1]/div[2]/p[2]",
+          "locatorType": "xpath",
+          "resolutionMethod": "xpath-absolute",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/equalAccess/failures/18"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    }
+  ],
+  "related": [],
+  "disagreements": [
+    {
+      "classification": "target-disagreement",
+      "url": "https://mgifford.github.io/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "6b4604901c1e64f93103fe232b0c68b2ee8fc68a4de88f5b5cfcea148c10b67b"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "1d9c1dff45294f1940b42548a6e7ca8b3ce9b98334696e39b30ecb9664dc9bc3"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "2339f7dd482fa1bb35e40574dae40247d887b8d310d41ac64e51849f82cae6be"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "4b41b8dd89d7fa7407dcc30d5740a72aeaf9470401ca48f9524838d568bd9741"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/div[1]/nav[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "6d33996b38ce279f27c4539d89adc9a6f3003e2d266bf807d907434d03b6d43a"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/h1[1]",
+          "observationIds": [
+            "8f2e8bd1246a2bcbf5f3807a4567355b47acb91dcd002c7718ee820235c96758"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[1]",
+          "observationIds": [
+            "97b52aefcaeaffa81c0e87b9d1ab4eeb1ff819378082d09b8412a72fa2dc5a72"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[2]",
+          "observationIds": [
+            "b6114a316b89b02819f02eebe76c81806d96406b180c150a14c83e14969c3905"
+          ]
+        },
+        {
+          "targetId": "dom:v1:eb2144c165f4c74e6f97765e386b129f014742a3aa8d089c38361072625aafd3:/html[1]/body[1]/header[1]/div[2]/p[2]/a[1]",
+          "observationIds": [
+            "283a08f4ec90e025abbdbb60a89d8f02cf9bae88b0bda592c2b3f8001ff044fa"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    }
+  ],
+  "notComparable": []
+}
