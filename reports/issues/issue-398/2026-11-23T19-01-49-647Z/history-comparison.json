@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "history-comparison/1",
+  "generatedAt": "2026-11-23T19:01:06.816Z",
+  "previous": {
+    "generatedAt": "2026-11-23T17:30:24.900Z",
+    "issueNumber": 398,
+    "scanTitle": "Complete Audit - Record a Goose",
+    "algorithm": {
+      "correlationVersion": "correlation/1",
+      "semanticsVersion": "rule-semantics/1",
+      "mappingRegistryVersion": "2026-11-20T19:19:10.807Z"
+    },
+    "scan": null,
+    "counts": {
+      "rawObservations": 1172,
+      "repeatedObservations": 1,
+      "correlatedObservations": 86,
+      "singleEngineObservations": 7,
+      "insufficientEvidenceObservations": 1078,
+      "notComparableObservations": 0,
+      "correlatedIssues": 20,
+      "verifiedEquivalentFindings": 0,
+      "versionMismatchedFindings": 20,
+      "inferredEquivalentFindings": 0,
+      "singleEngineFindings": 7,
+      "relatedFindings": 1,
+      "targetDisagreements": 3
+    }
+  },
+  "current": {
+    "generatedAt": "2026-11-23T19:01:06.762Z",
+    "issueNumber": 398,
+    "scanTitle": "Complete Audit - Record a Goose",
+    "algorithm": {
+      "correlationVersion": "correlation/1",
+      "semanticsVersion": "rule-semantics/1",
+      "mappingRegistryVersion": "2026-11-23T14:04:19.263Z"
+    },
+    "scan": null,
+    "counts": {
+      "rawObservations": 1113,
+      "repeatedObservations": 1,
+      "correlatedObservations": 0,
+      "singleEngineObservations": 0,
+      "insufficientEvidenceObservations": 1112,
+      "notComparableObservations": 0,
+      "correlatedIssues": 0,
+      "verifiedEquivalentFindings": 0,
+      "versionMismatchedFindings": 0,
+      "inferredEquivalentFindings": 0,
+      "singleEngineFindings": 0,
+      "relatedFindings": 0,
+      "targetDisagreements": 0
+    }
+  },
+  "comparable": true,
+  "comparisonId": "bce828d4751abdd5e6dfe65933050ce29c46c2fa3f0a82293b11e91d00e9e4e6",
+  "metadataDifferences": [
+    {
+      "kind": "mapping-data-change",
+      "detail": "ACT registry 2026-11-20T19:19:10.807Z -> 2026-11-23T14:04:19.263Z"
+    }
+  ],
+  "counts": {
+    "previousIssues": 20,
+    "currentIssues": 0,
+    "persisting": 0,
+    "changed": 0,
+    "new": 0,
+    "notObserved": 20
+  },
+  "reconciliation": {
+    "currentAccountedFor": 0,
+    "currentIssues": 0,
+    "previousAccountedFor": 20,
+    "previousIssues": 20,
+    "complete": true
+  },
+  "changes": {
+    "persisting": [],
+    "changed": [],
+    "new": [],
+    "notObserved": [
+      {
+        "correlatedIssueId": "f7993d1e069cbc8483de8dc588e28ee958c82862f18845d25af520ff30d43d6b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee:/html[1]/body[1]/main[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "ea28c5f6bb20b0148838b331d1f3625484fd3e6b5fb86eef8e48ce5f253b83bc",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "879e8b7c0588fee8ee6a417de64945153eb06699799b976fe72673cb49a74db7",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[2]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "424f45f99b51a6722b61b475ef8420aae15870227e6d6f9694d336bfe399f65e",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/repeated-controls/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:b6c4c162ad9938a08c4878d15ffab7af8f2126e3fcfc103709af8c0418b8c759:/html[1]/body[1]/main[1]/section[1]/p[1]/button[3]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "a30d165c463d69eb485121a6586ad185f8b2da5e8bf13214a2bdd19266d28b87",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/single-image/",
+        "family": "act:23a2a8",
+        "targetId": "dom:v1:583ee9e5f31f0a5c01c97a6a7514e6d2f5f97d167a4fcfd8353137d44e5f3015:/html[1]/body[1]/main[1]/section[1]/img[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "f2f3c599482d3fd04c64ee4683de3582952175e80d4f4e85e08d59ec359bb0d8",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+        "family": "act:23a2a8",
+        "targetId": "dom:v1:5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a:/html[1]/body[1]/main[1]/section[1]/img[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "18292bc3af25c0701f150435579e9bb4053d24cd896427a10c26c008a63d2c05",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/two-images/",
+        "family": "act:23a2a8",
+        "targetId": "dom:v1:5902db9591809f6ed9f1f3ca52802a9d437f206a602937e4aa7c9b424785f57a:/html[1]/body[1]/main[1]/section[1]/img[2]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "8947393a0ab2507975789a0b0979e20274ed72175446f6798bdcbd28629f9269",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/button-unnamed/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:f106beb7872548235adb453d8ab1db016e8fefe8939164cf64cee4a9382c5563:/html[1]/body[1]/main[1]/div[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "784c2138ccc1a72d60f0d1a85da0a2b844f3ddbc14374cbb15a0a3465d54f1e8",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/link-unnamed/",
+        "family": "act:c487ae",
+        "targetId": "dom:v1:70bf7a32e96c074b967a068503172a3ae17f576e4e2b89aeb98eda63523e47f1:/html[1]/body[1]/main[1]/section[1]/p[1]/a[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "743961eb5daf59f519e6e63a877eb7bd470999fbb5ec95e66ceada82fb5257b8",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/steps/end/",
+        "family": "act:23a2a8",
+        "targetId": "dom:v1:27a16d6ec40331bacab9664388443fa747b5ecda652f19746972e575ea5be20d:/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/img[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "32339c00df79f63746df2f071884230b4a96b07c8a650994a630614bd06a3689",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=initial",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "a628b98d41e4295bad92e271e35266d43bc24b108ed952616a1183cbdadc1a28",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/?state=replaced",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:c7a6396f1b865d1e4e5fb6b1c042732d5635a07b2ca84e5eeec77fa2522b9b26:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "6409ea2310164af488a7f4ddf5ea3e1f38febd5f0fa73998610b9b49252a8aef",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/hedgehog/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:64e8ce8f0aa7593af968172dd413afdd4c8383f6f2ff6723f3c1a07843c24c55:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "e9cf18af7f3e0b18c1ae7f5e5a887f4350864235dc3b5ff2724089ba6ee6490b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/names/field-unnamed/",
+        "family": "act:e086e5",
+        "targetId": "dom:v1:af0453d8a42588bfa3b72837c2a319e914e12554ef528ecfec61ef4bcc0ae918:/html[1]/body[1]/main[1]/section[1]/p[1]/input[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "42868a01ca7fa05cb54f65213aa7eac42462e10999b4ddee26fdceafa0726115",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/?state=initial",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "2084a49e8151b1aa044d6ade5191a5b917081880854d581ac0b45f0ba24507fd",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/wombat/",
+        "family": "act:97a4e1",
+        "targetId": "dom:v1:9d8725732d1b725f10a2b6f81bcb7835f4727b4bff30d44ead5eb85db3793adc:/html[1]/body[1]/main[1]/div[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "a0820ff18f1a25d090ef52a29074cf7aad9d81b7ba48624a4da81befe706f765",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/aria/role-invalid/",
+        "family": "act:674b10",
+        "targetId": "dom:v1:97a3225b3c69e993b5802364c30a1c4f64e2b2346f8aa22c5ef2e3a367eae0c8:/html[1]/body[1]/main[1]/div[1]/span[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "2170fe5906e47984204253e1fac42c70a234bb983c419bdfd7434b3b1b0f7007",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/lab/correlation/multiple-rules-one-target/",
+        "family": "act:674b10",
+        "targetId": "dom:v1:8083378303a3d3bcaa6800bb6b17e5951fcd37e197369b7d8a4ee2f02531bdee:/html[1]/body[1]/main[1]/section[1]/button[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "da6dc5844b709735e91974d5f60a6fd4481a5e1985676d0019366f30b392e23b",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/steps/geese-liked/",
+        "family": "act:2779a5",
+        "targetId": "dom:v1:6e2744781cbfea895177b152042fbfc8091448eefaeb70ba3e18fa3945ab5708:/html[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      },
+      {
+        "correlatedIssueId": "0b2195d11ce499f96f12ba44ba0ba93e15947f6deb96d659a254ffd51f852579",
+        "url": "https://mgifford.github.io/record-a-goose-sighting/steps/geese-liked/",
+        "family": "act:afw4f7",
+        "targetId": "dom:v1:6e2744781cbfea895177b152042fbfc8091448eefaeb70ba3e18fa3945ab5708:/html[1]/body[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/fieldset[1]/div[1]",
+        "note": "Not observed in this run. This is not evidence that the problem was fixed."
+      }
+    ]
+  },
+  "attribution": [
+    {
+      "kind": "mapping-data-change",
+      "detail": "ACT registry 2026-11-20T19:19:10.807Z -> 2026-11-23T14:04:19.263Z"
+    }
+  ]
+}
