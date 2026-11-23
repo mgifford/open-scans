@@ -199,18 +199,25 @@ covers, and whether they align:
 | `candidate` | plausible semantic alignment; comparable, never ACT support |
 | `unmapped` | no mapping in the registry — not a statement that the engine lacks support |
 
-Coverage today: 58 ACT rules, 14 with curated titles/rule types, 166 verified
+Coverage today: 59 ACT rules, 15 with curated titles/rule types, 192 verified
 engine mappings and **no candidate mappings**. Every mapping now comes from a
 published source:
 
-- the generated axe/ALFA mapping file;
+- the generated axe/ALFA mapping file (96 mappings);
 - the W3C [Alfa implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/alfa/)
   (nine verified mappings, for example `sia-r94` → `m6b1q3`, plus five ACT
   rules registered only because that report names them);
 - the W3C [AccessLint implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/accesslint-core/)
   (34 mappings, for example `labels-and-names/button-name` → `97a4e1`);
 - the W3C [Equal Access implementation report](https://www.w3.org/WAI/standards-guidelines/act/implementations/equal-access/)
-  (27 mappings, for example `aria_role_allowed` → `674b10`).
+  (27 mappings, for example `aria_role_allowed` → `674b10`);
+- Sa11y's published `conformance/mapping/act-rule-mapping.js` (26 mappings,
+  added with the Sa11y engine and not derived from a W3C report).
+
+The three W3C reports therefore contribute 70 verified mappings; the generated
+axe/ALFA file contributes 96 and Sa11y 26. The 58-rule / 166-mapping figure
+quoted before the Sa11y engine landed is the same data without Sa11y's one
+additional rule (`5effbb`) and 26 mappings.
 
 Report-only ACT rules keep `null` metadata rather than invented titles. Two
 earlier ALFA candidates were removed because the W3C report contradicts them:
@@ -221,10 +228,42 @@ than the one we run, `versionAligned` stays `false` and no verified-equivalence
 claim is made.
 
 Version alignment is explicit. The axe implementation report covers 4.10.2
-while 4.12.1 runs, and the ALFA report covers 0.111.0 while 0.84.2 runs, so
+while 4.12.1 runs, the generated ALFA mapping records 0.111.0, and the current
+ALFA implementation report covers 0.118.0, while 0.84.2 runs, so
 `versionAligned` is `false` for those mappings. A correlated issue whose
 participants are all mapped but not version-aligned is reported as
 `act-verified-different-version`, not as verified equivalence.
+
+### Refreshing the report-derived mappings
+
+`scanner/data/act-registry-overlays.json` is not hand-edited for the three W3C
+reports. Refresh the mappings and then the registry:
+
+```bash
+npm run build:act-mappings   # fetch the three reports, update verifiedMappings
+npm run build:act-registry   # regenerate scanner/data/act-registry.json
+node --test tests/unit/build-act-mappings-from-reports.test.mjs
+```
+
+The extractor reads the `breakdown-<rule>` section of each report, takes the
+first procedure named in the implementation sentence, strips Equal Access
+`:Pass_0,...` test lists, and for Alfa only adds procedures that the generated
+axe/ALFA mapping file does not already list. Existing entries keep their source,
+reported engine version, `verifiedAt` date and `versionAligned: false`; new
+entries are dated when first recorded. Keys and mapping lists are sorted, and
+the script prints added/removed/unchanged counts per engine.
+
+It fails closed. A failed fetch (30-second timeout) or a report with no
+recognisable mappings exits non-zero and writes nothing, so a W3C markup change
+cannot erase verified data. Sa11y mappings come from a different source and are
+left untouched. `--dry-run` prints the diff without writing. This is a manual,
+network-dependent build step; it is not run by the scanner or by CI.
+
+The AccessLint report currently names two procedures for `23a2a8`
+(`text-alternatives/img-alt` and `text-alternatives/role-img-alt`). The
+extractor records the first, matching the committed mapping. Recording both
+would add one verified mapping and is a deliberate data decision, not a silent
+extraction change.
 
 ACT consensus is now derived from correlation (`collectActConsensusOverlaps(results,
 { correlation })`): only `actVerified` issues produce entries, so candidate
