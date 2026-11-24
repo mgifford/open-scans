@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-23
-**Open Scans checkpoint:** `87af43d` (#432 merged); PR #433 (`fix/playwright-executable-scope`) pending
+**Last updated:** 2026-11-24
+**Open Scans checkpoint:** `6dcf832` (#433 merged as `f434535`; PR #434, this handoff, open)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -40,17 +40,68 @@ job was re-run and completed the scan; PR #432 (merged as `eb1d857`) raises the
 install step timeout to 20 minutes in the three workflows that install
 chromium, firefox and webkit.
 
-A 2026-11-23T19-01 webkit scan silently lost axe and Sa11y: the workflow's
-Chromium `PUPPETEER_EXECUTABLE_PATH` was passed to Playwright's webkit launcher,
-which closed immediately. Reflow risk and AccessLint ran on the same webkit
-browser, so the browser itself worked. PR #433 scopes that path to Chromium;
-`PLAYWRIGHT_EXECUTABLE_PATH` remains an explicit override for any browser.
-Locally verified with `PUPPETEER_EXECUTABLE_PATH=/nonexistent/chrome` and
-`scanContext.browser=webkit`: `runAxeAudit` and `runSa11yAudit` both executed.
+A 2026-11-23T19-01 webkit scan lost axe and Sa11y: the workflow's Chromium
+`PUPPETEER_EXECUTABLE_PATH` was handed to Playwright's webkit launcher, so the
+launcher started the Chromium binary without Chromium's own sandbox flags and it
+aborted with `No usable sandbox!`. The report did not hide it — it printed
+`⚠️ axe did not run` and `⚠️ Sa11y did not run`, and every page carried the
+launch error. Reflow risk and AccessLint, which pass no executable, ran on the
+same webkit browser, so the browser itself worked. PR #433 (merged as
+`f434535`) scopes that path to Chromium; `PLAYWRIGHT_EXECUTABLE_PATH` remains an
+explicit override for any browser.
 
-Next safe step: review and merge #433, run a targeted `BROWSER: webkit` scan to
-confirm axe and Sa11y are `executed`, then decide whether to record
+Next safe step: run a targeted `BROWSER: webkit` scan to confirm axe and Sa11y
+are `executed` in production, then decide whether to record
 `text-alternatives/role-img-alt` as a second verified mapping for `23a2a8`.
+
+---
+
+### 2026-11-24: post-merge review of the executable scoping
+
+Reviewed #433 against `main` = `6dcf832`. Verified on 2026-11-24:
+
+- `npm run lint` — exit 0;
+- `node --test tests/unit/playwright-executable.test.mjs` — 4 pass;
+- full suite — 1032 tests, 1026 pass, 1 pre-existing `generate-reports-html`
+  ISO-week failure, 5 skipped. That is the 2026-11-23 run of 1028/1022 plus the
+  four new helper tests;
+- webkit end-to-end — Playwright webkit installed into `.tmp/pw-browsers`
+  (`PLAYWRIGHT_BROWSERS_PATH`, because the file sandbox blocks
+  `~/Library/Caches`), a local page served over `127.0.0.1`, then
+  `runAxeAudit` and `runSa11yAudit` called with
+  `PUPPETEER_EXECUTABLE_PATH=/nonexistent/chrome` and
+  `scanContext.browser = "webkit"`: both returned `executed: true`. Control:
+  `webkit.launch({ executablePath: "/nonexistent/chrome" })` still fails with
+  `executable doesn't exist`, which is the pre-fix behaviour.
+
+Corrections to the 2026-11-23 entry:
+
+- the failure was reported, not silent — the engine-execution lines named axe and
+  Sa11y as "did not run";
+- the earlier "locally verified … both executed" claim could not be reproduced as
+  written: Playwright's webkit build was not installed on this machine, so a
+  webkit launch failed before any engine ran. The check above reproduces the fix
+  honestly, with a browser install and an explicit `PLAYWRIGHT_BROWSERS_PATH`.
+
+Open code nits from the review (not changed):
+
+- `getPlaywrightBrowserType` and Sa11y both fall back to Chromium when the
+  browser name is unknown, but `resolvePlaywrightExecutable` honours
+  `PUPPETEER_EXECUTABLE_PATH` only for the exact string `"chromium"`, so the
+  fallback launch ignores it;
+- reflow risk and AccessLint never pass an executable path, so
+  `PLAYWRIGHT_EXECUTABLE_PATH` is honoured by two of the four Playwright call
+  sites;
+- nothing stops a future call site from reading `PUPPETEER_EXECUTABLE_PATH`
+  directly again. A guard test over `scanner/*.mjs` would.
+- `npm test` dirties the tree: `.achecker.yml` sets `outputFolder: results`, so
+  the Equal Access test writes `results/scan-*.json` and `results/summary_*.json`
+  into a tracked directory. The two files from this run were removed; pointing
+  the test at a gitignored folder would be the durable fix.
+- Local Node is v22.20.0 while `engines` requires >= 24. The suite still ran
+  here; CI uses 24, so do not draw conclusions from a local engine mismatch.
+
+
 
 ---
 
@@ -302,15 +353,17 @@ remove that objection.
 
 ### Open Scans
 
-Last full run (unchanged; the recent work is documentation only):
+Last full run (2026-11-24, `main` = `6dcf832`):
 
 ```text
 PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
-853 tests, 848 pass, 1 pre-existing failure, 4 skipped
+1032 tests, 1026 pass, 1 pre-existing failure, 5 skipped
 ```
 
 The one failure is the existing timezone-dependent `generate-reports-html`
-test. Do not describe it as a regression unless the failure changes.
+test. Do not describe it as a regression unless the failure changes. Older
+notes quote 853 tests; that figure predates the Sa11y and evidence work and is
+stale.
 
 Other gates:
 
@@ -413,6 +466,21 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
     `gh api repos/mgifford/open-scans/actions/jobs/<job-id>/logs --allow-escape-sequences`.
     `gh run view <id> --json jobs` gives the step numbers that the GitHub UI
     `#step:N` anchor refers to.
+20. **An engine that did not launch is reported, not silent.** A failed browser
+    launch appears as `⚠️ <engine> did not run` in the report and in
+    `engineStatus`. Read those lines before calling a scan complete; the
+    2026-11-23 webkit scan reported the axe and Sa11y failures accurately even
+    though two engines never ran.
+21. **`PUPPETEER_EXECUTABLE_PATH` is not a Playwright override.** Playwright
+    launchers read `PLAYWRIGHT_EXECUTABLE_PATH`; a Chromium binary handed to the
+    webkit or firefox launcher aborts with `No usable sandbox!` before any page
+    loads. Use `resolvePlaywrightExecutable` rather than reading either variable
+    at a call site.
+22. **A local browser check needs a browser.** Playwright's browsers were not in
+    `~/Library/Caches/ms-playwright`, and the file sandbox blocks writing there.
+    Install into the workspace with
+    `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npx playwright install webkit`
+    and pass the same variable when running the check.
 
 ---
 
