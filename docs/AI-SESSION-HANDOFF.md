@@ -1,7 +1,7 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-24
-**Open Scans checkpoint:** `6dcf832` (#433 merged as `f434535`; no open PRs)
+**Open Scans checkpoint:** `6dcf832` (#433 merged as `f434535`; PR #434, this handoff, open)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
