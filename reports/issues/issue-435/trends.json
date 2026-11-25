@@ -1,0 +1,74 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 619,
+    "equalAccess": 0,
+    "qualweb": 0,
+    "accesslint": 261,
+    "combined": 880,
+    "scannedAt": "2026-11-25T13:41:53.539Z",
+    "scannedCount": 6
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:landmark-banner-is-top-level",
+      "pageCount": 6,
+      "pages": [
+        "https://turismoriomijares.com/",
+        "https://turismoriomijares.com/descubre/",
+        "https://turismoriomijares.com/planificate/",
+        "https://turismoriomijares.com/eventos/",
+        "https://turismoriomijares.com/blog/",
+        "https://turismoriomijares.com/contacto/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-no-duplicate-banner",
+      "pageCount": 6,
+      "pages": [
+        "https://turismoriomijares.com/",
+        "https://turismoriomijares.com/descubre/",
+        "https://turismoriomijares.com/planificate/",
+        "https://turismoriomijares.com/eventos/",
+        "https://turismoriomijares.com/blog/",
+        "https://turismoriomijares.com/contacto/"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 6,
+      "pages": [
+        "https://turismoriomijares.com/",
+        "https://turismoriomijares.com/descubre/",
+        "https://turismoriomijares.com/planificate/",
+        "https://turismoriomijares.com/eventos/",
+        "https://turismoriomijares.com/blog/",
+        "https://turismoriomijares.com/contacto/"
+      ]
+    },
+    {
+      "ruleId": "axe:region",
+      "pageCount": 6,
+      "pages": [
+        "https://turismoriomijares.com/",
+        "https://turismoriomijares.com/descubre/",
+        "https://turismoriomijares.com/planificate/",
+        "https://turismoriomijares.com/eventos/",
+        "https://turismoriomijares.com/blog/",
+        "https://turismoriomijares.com/contacto/"
+      ]
+    },
+    {
+      "ruleId": "axe:heading-order",
+      "pageCount": 4,
+      "pages": [
+        "https://turismoriomijares.com/descubre/",
+        "https://turismoriomijares.com/planificate/",
+        "https://turismoriomijares.com/eventos/",
+        "https://turismoriomijares.com/contacto/"
+      ]
+    }
+  ]
+}

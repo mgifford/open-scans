@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "act-coverage/1",
+  "generatedAt": "2026-11-25T13:41:54.417Z",
+  "issueNumber": 435,
+  "scanTitle": "accesibildiad turismo rio mijares",
+  "engineExecution": {
+    "axe": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    },
+    "accesslint": {
+      "status": "executed",
+      "error": null,
+      "executedRuns": 6,
+      "failedRuns": 0
+    }
+  },
+  "summary": {
+    "actRulesObserved": 2,
+    "multipleEngines": 0,
+    "multipleEnginesWithSilence": 0,
+    "singleEngine": 2,
+    "reviewSuggested": 2
+  },
+  "rules": [
+    {
+      "actRuleId": "afw4f7",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
+      "title": "Text has minimum contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.3"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_contrast_sufficient",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "accesslint"
+      ],
+      "enginesSilentButExecuted": [
+        "axe"
+      ],
+      "observations": {
+        "accesslint": 195
+      },
+      "findings": 195,
+      "distinctTargets": 30,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "6cfa84",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/6cfa84/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-hidden-focus",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r17",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/aria-hidden-focus",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "HIDDEN_FOCUSABLE",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "accesslint"
+      ],
+      "enginesSilentButExecuted": [
+        "axe"
+      ],
+      "observations": {
+        "accesslint": 1
+      },
+      "findings": 1,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    }
+  ]
+}

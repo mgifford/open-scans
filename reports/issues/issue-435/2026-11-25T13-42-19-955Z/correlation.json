@@ -1,0 +1,1347 @@
+{
+  "schemaVersion": "a11y-correlation/1",
+  "generatedAt": "2026-11-25T13:41:54.415Z",
+  "issueNumber": 435,
+  "scanTitle": "accesibildiad turismo rio mijares",
+  "algorithm": {
+    "correlationVersion": "correlation/1",
+    "semanticsVersion": "rule-semantics/1",
+    "mappingRegistryVersion": "2026-11-23T14:04:19.263Z"
+  },
+  "counts": {
+    "rawObservations": 880,
+    "repeatedObservations": 2,
+    "correlatedObservations": 0,
+    "singleEngineObservations": 30,
+    "insufficientEvidenceObservations": 848,
+    "notComparableObservations": 0,
+    "correlatedIssues": 0,
+    "verifiedEquivalentFindings": 0,
+    "versionMismatchedFindings": 0,
+    "inferredEquivalentFindings": 0,
+    "singleEngineFindings": 30,
+    "relatedFindings": 0,
+    "targetDisagreements": 6
+  },
+  "reconciliation": {
+    "observationsAccountedFor": 880,
+    "rawObservations": 880,
+    "complete": true,
+    "note": "Each observation has exactly one disposition. Correlation never removes evidence, and explicit pass evidence is not inferred from engine silence."
+  },
+  "issues": [],
+  "singles": [
+    {
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "0235844c0aa33e9f3b2db9580334ad35ee809af73b9f64f1fe52703b1c3cdc32"
+      ],
+      "observations": [
+        {
+          "observationId": "0235844c0aa33e9f3b2db9580334ad35ee809af73b9f64f1fe52703b1c3cdc32",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/5/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "043d5170d89cf4e23c29c07c0e21354415b2566727767ed2c21e903c41490aed"
+      ],
+      "observations": [
+        {
+          "observationId": "043d5170d89cf4e23c29c07c0e21354415b2566727767ed2c21e903c41490aed",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "084de3efd9f24a9b750786b845a6d483fa71ed36df7fea66d42f45a6195160e3"
+      ],
+      "observations": [
+        {
+          "observationId": "084de3efd9f24a9b750786b845a6d483fa71ed36df7fea66d42f45a6195160e3",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "0fd7b288ac683e5377edc68f15f0a6923d32dd6e0a29b0d9cdbbe004b35750dd"
+      ],
+      "observations": [
+        {
+          "observationId": "0fd7b288ac683e5377edc68f15f0a6923d32dd6e0a29b0d9cdbbe004b35750dd",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/4/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "110fcecaf56f0c28504d1e2370c6970e350f2544797bcb9ff59334d3936a5227"
+      ],
+      "observations": [
+        {
+          "observationId": "110fcecaf56f0c28504d1e2370c6970e350f2544797bcb9ff59334d3936a5227",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/5/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "15475b6b17a33a1248fe9bc7c432d4b734c1e00dcc8ad0595dcba9be09d4f438"
+      ],
+      "observations": [
+        {
+          "observationId": "15475b6b17a33a1248fe9bc7c432d4b734c1e00dcc8ad0595dcba9be09d4f438",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "22ebb4d75fa82df9165950005038baf2c758b2ebc986929ea82ec70a3c254597"
+      ],
+      "observations": [
+        {
+          "observationId": "22ebb4d75fa82df9165950005038baf2c758b2ebc986929ea82ec70a3c254597",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "278684c26173c418bc184432f1c5573f9241923fdb62d5c48e5d0d5c8ba8a6ce"
+      ],
+      "observations": [
+        {
+          "observationId": "278684c26173c418bc184432f1c5573f9241923fdb62d5c48e5d0d5c8ba8a6ce",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "3ffe13cfa0e772cc92ec8e81c609af202615c727fb4b147fcb5e6382dd14cc6e"
+      ],
+      "observations": [
+        {
+          "observationId": "3ffe13cfa0e772cc92ec8e81c609af202615c727fb4b147fcb5e6382dd14cc6e",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "43cdde5b71e33b2e0932bb3839249c814d73dd8e19d0d7a209b271cd858d75e2"
+      ],
+      "observations": [
+        {
+          "observationId": "43cdde5b71e33b2e0932bb3839249c814d73dd8e19d0d7a209b271cd858d75e2",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "4b0e58c6eda90d944cab54c38da523cf033b29aa75748cb3dc498ceec13fae1d"
+      ],
+      "observations": [
+        {
+          "observationId": "4b0e58c6eda90d944cab54c38da523cf033b29aa75748cb3dc498ceec13fae1d",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/4/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "4f17e8bd1d60b57be8751fef0748323594e8fe55947c25506d13810702236801"
+      ],
+      "observations": [
+        {
+          "observationId": "4f17e8bd1d60b57be8751fef0748323594e8fe55947c25506d13810702236801",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/5/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "4fda1b567da250d4eff98d326388eec666d478578486e4f950572d23de278646"
+      ],
+      "observations": [
+        {
+          "observationId": "4fda1b567da250d4eff98d326388eec666d478578486e4f950572d23de278646",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "5831ad07343c3369a67267a801861d32fd78dcd790f84269ce707d5096996831"
+      ],
+      "observations": [
+        {
+          "observationId": "5831ad07343c3369a67267a801861d32fd78dcd790f84269ce707d5096996831",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/0/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "69f2e54e9f289ce69de41ad5b8fa5813bf15b94f2741c93432ea1399e0d271ef"
+      ],
+      "observations": [
+        {
+          "observationId": "69f2e54e9f289ce69de41ad5b8fa5813bf15b94f2741c93432ea1399e0d271ef",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "6acc9e3d21e5c4bd85749821b396ab663fec14b9363dee94c503d0c7b35a5c81"
+      ],
+      "observations": [
+        {
+          "observationId": "6acc9e3d21e5c4bd85749821b396ab663fec14b9363dee94c503d0c7b35a5c81",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/0/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "88e478eef0970c5fa0f86bba2d7e1499eee86386b96fd488c3ac73dd28541f7d"
+      ],
+      "observations": [
+        {
+          "observationId": "88e478eef0970c5fa0f86bba2d7e1499eee86386b96fd488c3ac73dd28541f7d",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/5/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "a3862c58ff621458c2d05f984f94cb7283baec408b79af9e6d1615d68a4dc1fb"
+      ],
+      "observations": [
+        {
+          "observationId": "a3862c58ff621458c2d05f984f94cb7283baec408b79af9e6d1615d68a4dc1fb",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/5/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "a8010b256f518f0ee38bd33895152c9facbbd799542454882e5565965e75c0e5"
+      ],
+      "observations": [
+        {
+          "observationId": "a8010b256f518f0ee38bd33895152c9facbbd799542454882e5565965e75c0e5",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/0/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "b5e8ecad54ce6102d4ae49708c94529cfa3a4773b1afd1471ba1520a412f0c50"
+      ],
+      "observations": [
+        {
+          "observationId": "b5e8ecad54ce6102d4ae49708c94529cfa3a4773b1afd1471ba1520a412f0c50",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "c033fddb51fd73f0c1754c7cbcbbfa1f6f9cfec4f68c749fd8e17597f6914906"
+      ],
+      "observations": [
+        {
+          "observationId": "c033fddb51fd73f0c1754c7cbcbbfa1f6f9cfec4f68c749fd8e17597f6914906",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/4/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "c0ca44c374aaeaedf730d684b0fadc8222e9c18e03dde70ef4456a2862b17e66"
+      ],
+      "observations": [
+        {
+          "observationId": "c0ca44c374aaeaedf730d684b0fadc8222e9c18e03dde70ef4456a2862b17e66",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/4/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "c388e180e2da304b8ae539d6dd9884753194ce6702c8f81418ae5b257ea5efbc"
+      ],
+      "observations": [
+        {
+          "observationId": "c388e180e2da304b8ae539d6dd9884753194ce6702c8f81418ae5b257ea5efbc",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "d194ecd55124141a190c5d312b56e5f0ea7bbdd65c6c9a94f103fbb547825837"
+      ],
+      "observations": [
+        {
+          "observationId": "d194ecd55124141a190c5d312b56e5f0ea7bbdd65c6c9a94f103fbb547825837",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/3/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "d3958929f686cced25027c63137828bcd4945c2fb21e0ea451c95f54aa10d061"
+      ],
+      "observations": [
+        {
+          "observationId": "d3958929f686cced25027c63137828bcd4945c2fb21e0ea451c95f54aa10d061",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16922 > a[href=\"https://turismoriomijares.com/eventos/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/4/accesslint/failures/2"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "d4fdeb797935f9debcba6b1ea1aa28b6070cbf5e8071d4458b23e5a6e3d29881"
+      ],
+      "observations": [
+        {
+          "observationId": "d4fdeb797935f9debcba6b1ea1aa28b6070cbf5e8071d4458b23e5a6e3d29881",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16035 > a[href=\"https://turismoriomijares.com/contacto/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/1/accesslint/failures/4"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "e3c7dcb6f85801f489cade2ee6cc10887763d7a68e37c2afc9cfb9a4da0671f6"
+      ],
+      "observations": [
+        {
+          "observationId": "e3c7dcb6f85801f489cade2ee6cc10887763d7a68e37c2afc9cfb9a4da0671f6",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-16020 > a[href=\"https://turismoriomijares.com/descubre/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/accesslint/failures/0"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "e75486da41d99b8024a4137caf328d003900e837a8b12a618179f7ea725b4f7a"
+      ],
+      "observations": [
+        {
+          "observationId": "e75486da41d99b8024a4137caf328d003900e837a8b12a618179f7ea725b4f7a",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/2/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "eb35d0dc932e5cf26e09588f5e4feabf42f9477f7c116ef077b0ef6fbbb21fe1"
+      ],
+      "observations": [
+        {
+          "observationId": "eb35d0dc932e5cf26e09588f5e4feabf42f9477f7c116ef077b0ef6fbbb21fe1",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-15963 > a[href=\"https://turismoriomijares.com/planificate/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/0/accesslint/failures/1"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    },
+    {
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "familyLabel": "ACT afw4f7",
+      "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+      "engines": [
+        "accesslint"
+      ],
+      "actRuleIds": [
+        "afw4f7"
+      ],
+      "wcagSc": [],
+      "actVerified": false,
+      "versionAligned": false,
+      "mappingStatus": "act-verified-different-version",
+      "observationIds": [
+        "ed231159f69a36ea3ded2f816d53e9704561662c3cb000657719e5aceabc9681"
+      ],
+      "observations": [
+        {
+          "observationId": "ed231159f69a36ea3ded2f816d53e9704561662c3cb000657719e5aceabc9681",
+          "engine": "accesslint",
+          "engineLabel": "AccessLint",
+          "ruleId": "distinguishable/color-contrast",
+          "nativeLocator": "#menu-item-295 > a[href=\"https://turismoriomijares.com/blog/\"]",
+          "locatorType": "css",
+          "resolutionMethod": "css",
+          "framePath": null,
+          "semanticsProvenance": "act-verified",
+          "rawEvidenceRef": "report.json#/results/0/accesslint/failures/3"
+        }
+      ],
+      "classification": "detection-asymmetry",
+      "confidence": "medium",
+      "rationale": "Only one engine reported this failure on this target. Other engines produced no target-level outcome for this rule; silence is not a pass."
+    }
+  ],
+  "related": [],
+  "disagreements": [
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/contacto/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "88e478eef0970c5fa0f86bba2d7e1499eee86386b96fd488c3ac73dd28541f7d"
+          ]
+        },
+        {
+          "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "0235844c0aa33e9f3b2db9580334ad35ee809af73b9f64f1fe52703b1c3cdc32"
+          ]
+        },
+        {
+          "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "110fcecaf56f0c28504d1e2370c6970e350f2544797bcb9ff59334d3936a5227"
+          ]
+        },
+        {
+          "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "4f17e8bd1d60b57be8751fef0748323594e8fe55947c25506d13810702236801"
+          ]
+        },
+        {
+          "targetId": "dom:v1:2e758e2537214a7013b9f5ce3650789e6456ec258f3ad99d4d034ace5e40b11a:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "a3862c58ff621458c2d05f984f94cb7283baec408b79af9e6d1615d68a4dc1fb"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    },
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/eventos/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "043d5170d89cf4e23c29c07c0e21354415b2566727767ed2c21e903c41490aed"
+          ]
+        },
+        {
+          "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "c388e180e2da304b8ae539d6dd9884753194ce6702c8f81418ae5b257ea5efbc"
+          ]
+        },
+        {
+          "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "43cdde5b71e33b2e0932bb3839249c814d73dd8e19d0d7a209b271cd858d75e2"
+          ]
+        },
+        {
+          "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "22ebb4d75fa82df9165950005038baf2c758b2ebc986929ea82ec70a3c254597"
+          ]
+        },
+        {
+          "targetId": "dom:v1:08a7ef583c6b0e2a8e72198ff5d750e71b405b363f87c2330b23b2f13a026aa3:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "d194ecd55124141a190c5d312b56e5f0ea7bbdd65c6c9a94f103fbb547825837"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    },
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/descubre/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "4fda1b567da250d4eff98d326388eec666d478578486e4f950572d23de278646"
+          ]
+        },
+        {
+          "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "69f2e54e9f289ce69de41ad5b8fa5813bf15b94f2741c93432ea1399e0d271ef"
+          ]
+        },
+        {
+          "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "3ffe13cfa0e772cc92ec8e81c609af202615c727fb4b147fcb5e6382dd14cc6e"
+          ]
+        },
+        {
+          "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "084de3efd9f24a9b750786b845a6d483fa71ed36df7fea66d42f45a6195160e3"
+          ]
+        },
+        {
+          "targetId": "dom:v1:82471f15cfdfce0500f26adf1cfacd42eee34d4805fad5d8cf4f6d194bb7fad7:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "d4fdeb797935f9debcba6b1ea1aa28b6070cbf5e8071d4458b23e5a6e3d29881"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    },
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/blog/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "c0ca44c374aaeaedf730d684b0fadc8222e9c18e03dde70ef4456a2862b17e66"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "4b0e58c6eda90d944cab54c38da523cf033b29aa75748cb3dc498ceec13fae1d"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "d3958929f686cced25027c63137828bcd4945c2fb21e0ea451c95f54aa10d061"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "0fd7b288ac683e5377edc68f15f0a6923d32dd6e0a29b0d9cdbbe004b35750dd"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a359d5dbdd72f72b1eafc8f050b16168d5a8be3deab750d8ae36a919d0f162c0:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "c033fddb51fd73f0c1754c7cbcbbfa1f6f9cfec4f68c749fd8e17597f6914906"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    },
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/planificate/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "e3c7dcb6f85801f489cade2ee6cc10887763d7a68e37c2afc9cfb9a4da0671f6"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "278684c26173c418bc184432f1c5573f9241923fdb62d5c48e5d0d5c8ba8a6ce"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "b5e8ecad54ce6102d4ae49708c94529cfa3a4773b1afd1471ba1520a412f0c50"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "e75486da41d99b8024a4137caf328d003900e837a8b12a618179f7ea725b4f7a"
+          ]
+        },
+        {
+          "targetId": "dom:v1:a76d459b4afb13a0b1802e219773e62218326582c6dee32ca341401b21cf7434:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "15475b6b17a33a1248fe9bc7c432d4b734c1e00dcc8ad0595dcba9be09d4f438"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    },
+    {
+      "classification": "target-disagreement",
+      "url": "https://turismoriomijares.com/",
+      "family": "act:afw4f7",
+      "targets": [
+        {
+          "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[1]/a[1]",
+          "observationIds": [
+            "a8010b256f518f0ee38bd33895152c9facbbd799542454882e5565965e75c0e5"
+          ]
+        },
+        {
+          "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[2]/a[1]",
+          "observationIds": [
+            "eb35d0dc932e5cf26e09588f5e4feabf42f9477f7c116ef077b0ef6fbbb21fe1"
+          ]
+        },
+        {
+          "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[3]/a[1]",
+          "observationIds": [
+            "5831ad07343c3369a67267a801861d32fd78dcd790f84269ce707d5096996831"
+          ]
+        },
+        {
+          "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[4]/a[1]",
+          "observationIds": [
+            "ed231159f69a36ea3ded2f816d53e9704561662c3cb000657719e5aceabc9681"
+          ]
+        },
+        {
+          "targetId": "dom:v1:dd1e28592067a285682ae4cf6445c4d7410eafe105d39e6a2ad55dfa0f3ef9f4:/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/header[1]/div[1]/header[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[5]/a[1]",
+          "observationIds": [
+            "6acc9e3d21e5c4bd85749821b396ab663fec14b9363dee94c503d0c7b35a5c81"
+          ]
+        }
+      ],
+      "note": "Engines reported the same failure mechanism on different elements; equivalence is not claimed."
+    }
+  ],
+  "notComparable": []
+}
