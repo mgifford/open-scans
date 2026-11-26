@@ -38,12 +38,12 @@ design entry below. The default scan still runs no collector:
 Verified on 2026-11-26:
 
 - `npm run lint` — exit 0.
-- `node --test tests/unit/assessment-collectors.test.mjs` — 14 pass, 0 fail.
+- `node --test tests/unit/assessment-collectors.test.mjs` — 15 pass, 0 fail.
 - `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm run validate:assisted-collectors -- tests/fixtures/assessment-collectors --browser=webkit`
   — 2 pages, 7 headings, 6 images, 7 links, 13 signals; ids stable across two
   captures; artifact validated. The file mode also accepted a real `complete`
   artifact and a `not-run` artifact produced without the browser path.
-- Full suite — 1108 tests, 1102 pass, 1 fail, 5 skipped. The failure is the known
+- Full suite — 1109 tests, 1103 pass, 1 fail, 5 skipped. The failure is the known
   `generate-reports-html` "should group reports by ISO week" timezone case
   (25 !== 37); it is not a regression.
 
