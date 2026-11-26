@@ -663,6 +663,33 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
     Install into the workspace with
     `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npx playwright install webkit`
     and pass the same variable when running the check.
+23. **Correct the design in the same change as the code.** The collector design first
+    said open shadow roots would be traversed. A document-level CSS locator cannot
+    address a shadow root unambiguously, so the implementation counts open hosts and
+    skips them, and the design was corrected before review. A design that promises
+    more than the capture does is worse than no design.
+24. **A default-path guarantee needs two proofs.** The gate is proven behaviourally
+    (`maybeRunAssistedCollectors` returns before capture, and writes nothing) and by a
+    source test (run-scan uses only the gated helper, and the call stays behind
+    `if (assistedRequested)`). Either proof alone can pass while the other regresses.
+25. **`aria-labelledby` needs native name inputs on the referenced node.** An image-only
+    link resolved to an empty name until the link's name node carried the child image's
+    `alt`. `textContent` alone is not a name input.
+26. **Keep traversal branches when a name resolves to empty.** A cycle returned an empty
+    name with no branches, so the test could not see that a cycle had been hit. Returning
+    the accumulated branches makes cycle and depth stops observable and testable.
+27. **Content-derived item ids collide on redirects.** Two submitted URLs that resolve to
+    the same final URL produce identical element ids. The capture dedupes by final URL
+    and records the duplicate as `not-captured` rather than inventing a second page
+    identity; do not "fix" that by adding the submitted URL to the id.
+28. **A PR can merge mid-task, again.** #437 merged at 22:07Z while the Phase 3 design was
+    being written, which invalidated a stacked base and three "unmerged" statements.
+    Re-check `gh pr view` before building on a branch or claiming merge state, and
+    retarget to `main` rather than a deleted base.
+29. **`npm test` still leaves new untracked result files.** This run wrote
+    `results/scan-*.json` and `results/summary_*.json`. They are not part of a change;
+    remove them before committing. The durable fix is still to point the Equal Access
+    test at a gitignored directory.
 
 ---
 
