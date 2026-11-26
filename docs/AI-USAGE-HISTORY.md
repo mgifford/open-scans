@@ -202,9 +202,8 @@ Limitations recorded in this work:
 
 #### Assisted collectors (Phase 3a)
 
-Design and implementation opened in draft PR #438 on `docs/assessment-phase-3-design`;
-not merged at the time of writing. The work is opt-in and does not change the default
-scan.
+Design and implementation in PR #438 on `docs/assessment-phase-3-design`. The work is
+opt-in and does not change the default scan.
 
 | Work | Contribution |
 |---|---|

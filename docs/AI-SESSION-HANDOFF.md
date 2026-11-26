@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-26
 **Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3a assisted
-collectors on `docs/assessment-phase-3-design` (PR #438, draft; opt-in only)
+collectors in PR #438 (opt-in only)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
