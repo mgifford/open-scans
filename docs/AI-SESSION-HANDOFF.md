@@ -1,12 +1,39 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-26
-**Open Scans checkpoint:** `ca5e9ef9` on `main`; Phase 1 assessment work on `feat/assessment-phase-1` (PR #437, unmerged; see the dated entries below)
+**Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3 collector
+design on `docs/assessment-phase-3-design` (PR #438, draft)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26: Phase 3 collector design (docs only)
+
+`docs/ASSESSMENT-ASSISTED-COLLECTORS.md` (PR #438, draft) specifies the assisted
+collector layer for headings, images and links, on `main` = `6d8fbdc9` after #437
+merged. It fixes the non-negotiable rules before any code exists: a collector
+inventories and never evaluates; no signal is a finding; no record is created
+from a signal; coverage counts do not change when collectors run; the default
+scan keeps its no-extra-browser, no-extra-navigation contract unless an operator
+passes `--assisted` or `OPEN_SCANS_ASSISTED=1`.
+
+It also defines `a11y-assisted-collectors/1` (caps, truncation flags, item ids,
+banned outcome/severity fields), the AccName 1.2 subset with its stated
+limitations, a starter signal catalogue with a "does not mean" line per signal,
+the report surface and record prefill, budget targets to measure, the failure
+and exit-code split, the test layers and a 3a/3b/3c rollout.
+
+Verified at `b0ead947`: `npm run lint` exit 0. Not run: `npm test` — no scanner
+source, schema or test changed. Nothing in the design is implemented or
+measured; every row of its status table says so.
+
+Next safe step: review the artifact contract (sections 5–7) and the accname
+subset before writing 3a code, then build 3a with a test proving the default
+scan still launches no collector and writes no artifact.
 
 ---
 
@@ -27,8 +54,9 @@ tests/unit/assessment-records.test.mjs tests/unit/assessment-report.test.mjs` =
 full-suite figure in the Phase 1 entry below is a local run, not CI evidence.
 
 Not run at this checkpoint: `npm test` — no code changed since that local run,
-so that figure still stands. PR #437 still needs human review; do not merge it
-or rebase it on the reviewer's behalf.
+so that figure still stands. **Correction, 22:07Z:** PR #437 was merged by the
+repository owner as `6d8fbdc9`; the "unmerged" statements above describe the
+21:30 checkpoint only.
 
 ---
 
