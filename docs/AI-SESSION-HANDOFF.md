@@ -1,12 +1,33 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-26
-**Open Scans checkpoint:** `a760fe8` on `main`; Phase 1 assessment work on `feat/assessment-phase-1` (unmerged)
+**Open Scans checkpoint:** `ca5e9ef9` on `main`; Phase 1 assessment work on `feat/assessment-phase-1` (head `7d1ab3f0`, PR #437, unmerged)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26 (later checkpoint): nothing uncommitted
+
+The weekday wrap-up checkpoint ran at 21:30 local on `feat/assessment-phase-1`
+at `7d1ab3f0`. Working tree clean, no stashes, no rebase, merge or conflict
+markers. The branch is 2 commits ahead of `main`. `main` later gained
+`ca5e9ef9`, which only merges `8aa41595` (already in this branch), so no content
+is missing and no rebase is needed.
+
+Verified at this checkpoint: `npm run lint` exit 0; `node --test
+tests/unit/assessment-catalogue.test.mjs tests/unit/assessment-coverage.test.mjs
+tests/unit/assessment-records.test.mjs tests/unit/assessment-report.test.mjs` =
+62 pass, 0 fail, 0 skipped. PR #437 checks at check time: `bdd-acceptance` and
+`AccessLint` pass. No workflow runs the unit suite on pull requests, so the
+full-suite figure in the Phase 1 entry below is a local run, not CI evidence.
+
+Not run at this checkpoint: `npm test` — no code changed since that local run,
+so that figure still stands. PR #437 still needs human review; do not merge it
+or rebase it on the reviewer's behalf.
 
 ---
 
