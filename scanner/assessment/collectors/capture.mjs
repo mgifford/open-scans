@@ -14,7 +14,6 @@ import { join } from "node:path";
 import { resolvePlaywrightExecutable } from "../../playwright-executable.mjs";
 import {
   ARTIFACT_FILE,
-  DEFAULT_CAPS,
   buildCollectorArtifact,
   buildFailedPage,
   buildNotCapturedPage,
@@ -85,7 +84,7 @@ function viewportOf(scanContext) {
   };
 }
 
-function navigationTimeoutMs(env) {
+function timeoutMs(env) {
   const parsed = Number(env?.BROWSER_NAV_TIMEOUT_MS ?? env?.PLAYWRIGHT_NAV_TIMEOUT_MS);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 30000;
 }
@@ -98,11 +97,11 @@ function writeArtifact(outputDir, artifact) {
   return path;
 }
 
-function notRunCapture({ startedAt, finishedAt, durationMs, caps, browser, viewport, colorScheme, pagesRequested, reason }) {
+function notRunCapture({ startedAt, finishedAt, durationMs, caps, browser, browserVersion, viewport, colorScheme, pagesRequested, reason }) {
   return {
     status: "not-run",
     browser: browser ?? "unknown",
-    browserVersion: null,
+    browserVersion: browserVersion ?? null,
     viewport: viewport ?? { width: 0, height: 0 },
     colorScheme: colorScheme ?? "light",
     startedAt,
@@ -189,7 +188,7 @@ export async function runAssistedCapture({
     );
   }
 
-  const launchTimeout = navigationTimeoutMs(env);
+  const launchTimeout = timeoutMs(env);
   const browserType = playwright?.[browser] ?? playwright?.chromium;
   let launched;
   try {
@@ -334,15 +333,4 @@ export async function runAssistedCapture({
   );
 
   return result;
-}
-
-/** Validate a collector artifact read from disk without touching a browser. */
-export function describeArtifactLimits(artifact) {
-  return {
-    pages: artifact?.pages?.length ?? 0,
-    truncatedPages: (artifact?.pages ?? []).filter(
-      (page) => page.truncated?.headings || page.truncated?.images || page.truncated?.links
-    ).length,
-    caps: artifact?.capture?.caps ?? DEFAULT_CAPS
-  };
 }

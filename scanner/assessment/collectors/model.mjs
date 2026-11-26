@@ -369,7 +369,7 @@ function buildItem(rawItem, { reportId, pageUrl, kind, caps, graph }) {
     locatorType: "css",
     htmlSnippet: truncate(normaliseText(rawItem.htmlSnippet), caps.maxSnippetChars),
     text: {
-      raw: String(rawItem.text ?? ""),
+      raw: truncate(String(rawItem.text ?? ""), caps.maxNameChars),
       normalised: text,
       length: Array.from(text).length
     },
@@ -687,6 +687,9 @@ export function validateCollectorArtifact(artifact) {
     if (capture.navigationCount !== captured + failed) fail("capture.navigationCount must equal captured + failed pages");
     if (capture.status === "complete" && (failed > 0 || pages.some((page) => page?.status === "not-captured"))) {
       fail("capture.status is complete but some pages were not captured");
+    }
+    if (capture.status === "complete" && pages.length !== capture.pagesRequested) {
+      fail("capture.status is complete but the page count does not match pagesRequested");
     }
     if (capture.status === "not-run" && (pages.length > 0 || !capture.reason)) {
       fail("capture.status is not-run but pages exist or no reason was recorded");

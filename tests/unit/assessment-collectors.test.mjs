@@ -437,6 +437,45 @@ test("the validator rejects verdict fields, unknown signals, bad ids and false c
   notRunWithPages.capture.status = "not-run";
   notRunWithPages.capture.reason = "browser missing";
   assert.throws(() => validateCollectorArtifact(notRunWithPages), /not-run but pages exist/);
+
+  const completeWithMissingPages = structuredClone(artifact);
+  completeWithMissingPages.capture.pagesRequested += 2;
+  assert.throws(
+    () => validateCollectorArtifact(completeWithMissingPages),
+    /page count does not match pagesRequested/
+  );
+});
+
+test("long text is truncated while the original length is kept", () => {
+  const longText = "A".repeat(400);
+  const page = rawPage({
+    nameGraph: [{ id: "n0", ...nameNode({ text: longText }) }],
+    links: [
+      {
+        ordinal: 0,
+        locator: "html > body > a",
+        htmlSnippet: `<a href="/x">${longText}</a>`,
+        href: "https://example.com/x",
+        target: null,
+        rel: null,
+        imageOnly: false,
+        nativeAlt: null,
+        text: longText,
+        nameNodeId: "n0",
+        attributes: attributes()
+      }
+    ],
+    headings: [],
+    images: []
+  });
+  const built = buildPageInventory(page, {
+    reportId: REPORT_ASSOCIATION.reportId,
+    caps: resolveCaps({ maxNameChars: 20, maxSnippetChars: 40 })
+  });
+  assert.equal(built.links[0].text.raw.length, 20);
+  assert.equal(built.links[0].text.length, 400);
+  assert.equal(built.links[0].accessibleName.value.length, 20);
+  assert.ok(built.links[0].htmlSnippet.length <= 40);
 });
 
 test("resolveScanArgs keeps positional arguments and gates on flag or environment", () => {
