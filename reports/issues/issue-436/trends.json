@@ -1,0 +1,47 @@
+{
+  "error": "Insufficient history",
+  "message": "At least 2 scans are required for trend analysis",
+  "latestTotals": {
+    "alfa": 0,
+    "axe": 79,
+    "equalAccess": 16672,
+    "qualweb": 0,
+    "accesslint": 0,
+    "combined": 16751,
+    "scannedAt": "2026-11-26T18:41:29.769Z",
+    "scannedCount": 50
+  },
+  "latestSystemicPatterns": [
+    {
+      "ruleId": "axe:region",
+      "pageCount": 43,
+      "pages": [
+        "https://designsystem.gov.ae/",
+        "https://designsystem.gov.ae/docs/blocks/accordion",
+        "https://designsystem.gov.ae/docs/blocks/auth",
+        "https://designsystem.gov.ae/docs/blocks/checkbox-radio",
+        "https://designsystem.gov.ae/docs/blocks/content",
+        "https://designsystem.gov.ae/docs/blocks/features",
+        "https://designsystem.gov.ae/docs/blocks/statistics-metrics",
+        "https://designsystem.gov.ae/docs/blocks/drawers",
+        "https://designsystem.gov.ae/docs/blocks/modals",
+        "https://designsystem.gov.ae/docs/blocks/dropdowns"
+      ]
+    },
+    {
+      "ruleId": "axe:landmark-unique",
+      "pageCount": 9,
+      "pages": [
+        "https://designsystem.gov.ae/docs/blocks/accordion",
+        "https://designsystem.gov.ae/docs/blocks/auth",
+        "https://designsystem.gov.ae/docs/blocks/checkbox-radio",
+        "https://designsystem.gov.ae/docs/blocks/content",
+        "https://designsystem.gov.ae/docs/blocks/features",
+        "https://designsystem.gov.ae/docs/blocks/statistics-metrics",
+        "https://designsystem.gov.ae/docs/blocks/drawers",
+        "https://designsystem.gov.ae/docs/blocks/modals",
+        "https://designsystem.gov.ae/docs/blocks/dropdowns"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,556 @@
+{
+  "schemaVersion": "act-coverage/1",
+  "generatedAt": "2026-11-26T18:41:36.106Z",
+  "issueNumber": 436,
+  "scanTitle": "https://designsystem.gov.ae/",
+  "engineExecution": {
+    "axe": {
+      "status": "partial",
+      "error": "Skipped because initial URL fetch failed",
+      "executedRuns": 44,
+      "failedRuns": 6
+    },
+    "equalaccess": {
+      "status": "notRun",
+      "error": null,
+      "executedRuns": 0,
+      "failedRuns": 0
+    }
+  },
+  "summary": {
+    "actRulesObserved": 10,
+    "multipleEngines": 2,
+    "multipleEnginesWithSilence": 0,
+    "singleEngine": 8,
+    "reviewSuggested": 8
+  },
+  "rules": [
+    {
+      "actRuleId": "afw4f7",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/afw4f7/",
+      "title": "Text has minimum contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.3"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "text_contrast_sufficient",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe",
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 22,
+        "equalAccess": 11966
+      },
+      "findings": 11988,
+      "distinctTargets": 11749,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "5c01ea",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/5c01ea/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-allowed-attr",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "aria-prohibited-attr",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r18",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_attribute_valid",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess"
+      ],
+      "enginesReporting": [
+        "axe",
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 2,
+        "equalAccess": 194
+      },
+      "findings": 196,
+      "distinctTargets": 88,
+      "coverage": "multiple-engines",
+      "reviewSuggested": false
+    },
+    {
+      "actRuleId": "46ca7f",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/46ca7f/",
+      "title": "Element marked as decorative is not exposed",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.1.1"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "presentation-role-conflict",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r86",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_attribute_valid",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/presentation-role-conflict",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "equalAccess": 194
+      },
+      "findings": 194,
+      "distinctTargets": 87,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "c487ae",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/c487ae/",
+      "title": "Link has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.1.1",
+        "2.4.4",
+        "4.1.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "area-alt",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "link-name",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r11",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "a_text_purpose",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "navigable/link-name",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_EMPTY",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_EMPTY_LABELLEDBY",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_EMPTY_NO_LABEL",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_IMAGE_NO_ALT_TEXT",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "LINK_UNPRONOUNCEABLE",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "equalAccess": 45
+      },
+      "findings": 45,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "09o5cg",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/09o5cg/",
+      "title": "Text has enhanced contrast",
+      "ruleType": "atomic",
+      "ruleStatus": "proposed",
+      "wcag": [
+        "1.4.6"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "color-contrast-enhanced",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "distinguishable/color-contrast-enhanced",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 22
+      },
+      "findings": 22,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "5f99a7",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/5f99a7/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-valid-attr",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r20",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_attribute_allowed",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/aria-valid-attr",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "equalAccess": 12
+      },
+      "findings": 12,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "b5c3f8",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/b5c3f8/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "html-has-lang",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r4",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "html_lang_exists",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "readable/html-has-lang",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "META_LANG",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "equalAccess": 12
+      },
+      "findings": 12,
+      "distinctTargets": 0,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "307n5z",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/307n5z/",
+      "title": null,
+      "ruleType": null,
+      "ruleStatus": null,
+      "wcag": [],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "nested-interactive",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r90",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_descendant_valid",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "aria/presentational-children-focusable",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "equalAccess"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "equalAccess": 3
+      },
+      "findings": 3,
+      "distinctTargets": 3,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "97a4e1",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/",
+      "title": "Button has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": null,
+      "wcag": [
+        "4.1.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "aria-command-name",
+          "status": "verified"
+        },
+        {
+          "engine": "axe",
+          "ruleId": "button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r12",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "input_label_exists",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "labels-and-names/button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "BTN_EMPTY",
+          "status": "verified"
+        },
+        {
+          "engine": "sa11y",
+          "ruleId": "BTN_EMPTY_LABELLEDBY",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint",
+        "sa11y"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1
+      },
+      "findings": 1,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    },
+    {
+      "actRuleId": "m6b1q3",
+      "url": "https://www.w3.org/WAI/standards-guidelines/act/rules/m6b1q3/",
+      "title": "Menuitem has non-empty accessible name",
+      "ruleType": "atomic",
+      "ruleStatus": null,
+      "wcag": [
+        "4.1.2"
+      ],
+      "mappings": [
+        {
+          "engine": "axe",
+          "ruleId": "button-name",
+          "status": "verified"
+        },
+        {
+          "engine": "alfa",
+          "ruleId": "sia-r94",
+          "status": "verified"
+        },
+        {
+          "engine": "equalAccess",
+          "ruleId": "aria_widget_labelled",
+          "status": "verified"
+        },
+        {
+          "engine": "accesslint",
+          "ruleId": "labels-and-names/aria-command-name",
+          "status": "verified"
+        }
+      ],
+      "enginesMapped": [
+        "axe",
+        "alfa",
+        "equalAccess",
+        "accesslint"
+      ],
+      "enginesReporting": [
+        "axe"
+      ],
+      "enginesSilentButExecuted": [],
+      "observations": {
+        "axe": 1
+      },
+      "findings": 1,
+      "distinctTargets": 1,
+      "coverage": "single-engine",
+      "reviewSuggested": true
+    }
+  ]
+}
