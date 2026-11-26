@@ -194,6 +194,12 @@ modified.
       "title": "Image has no alt attribute",
       "definition": "An img element has no alt attribute, no role of presentation or none, and is not aria-hidden.",
       "doesNotMean": "That the image lacks a text alternative: a background image, an inline SVG or an ancestor label may provide one, and none of those is captured."
+    },
+    {
+      "id": "image-alt-filename-like",
+      "title": "Image alternative looks like a file name",
+      "definition": "A non-empty alt attribute matches a file-extension pattern.",
+      "doesNotMean": "That the author intended a file name, or that the alternative is useless in context."
     }
   ],
   "pages": [
@@ -225,10 +231,10 @@ modified.
   "ordinal": 4,
   "locator": "main > figure:nth-of-type(2) > img",
   "locatorType": "css",
-  "htmlSnippet": "<img src=\"/rates.png\" alt=\"Rate card for 2026\">",
+  "htmlSnippet": "<img src=\"/rates.png\" alt=\"rates.png\">",
   "text": { "raw": "", "normalised": "", "length": 0 },
   "accessibleName": {
-    "value": "Rate card for 2026",
+    "value": "rates.png",
     "source": "img-alt",
     "branches": ["img-alt"],
     "empty": false
@@ -276,7 +282,7 @@ subset of AccName 1.2, not an implementation of it.
 | :--- | :--- | :--- |
 | 1 | `aria-labelledby`, ids resolved in the top document, recursion depth ≤ 5, cycle-safe | `aria-labelledby` |
 | 2 | `aria-label` with non-empty trimmed value | `aria-label` |
-| 3 | Native: image `alt`; link and heading text content | `img-alt`, `text-content` |
+| 3 | Native: image `alt`; heading text content; link text content, or the `alt` of a sole image child when the link has no text | `img-alt`, `text-content`, `img-alt-descendant` |
 | 4 | `title` attribute | `title` |
 | 5 | Nothing | `none`, with `empty: true` |
 
@@ -315,7 +321,6 @@ a definition, a false-positive note and a test.
 | `link-new-window-unannounced` | `target="_blank"` and the name does not mention a new window or tab | That the behaviour must be announced |
 | `heading-empty` | Heading has no non-whitespace text and no computed name | That the heading was intended to be empty |
 | `heading-level-skip` | Level jumps by more than one from the previous heading in DOM order | That the outline is broken; visual structure may not follow the outline |
-| `heading-single-h1` | Exactly one heading, of level 1, on the page | Nothing on its own — recorded for outline context only |
 | `aria-label-overrides-visible-text` | `aria-label` exists, visible text is non-empty, and the label does not contain the visible text case-insensitively | That the label is wrong; it is a candidate for a 2.5.3 review |
 
 The report shows a signal as a neutral chip with its title, and a tooltip or inline
@@ -372,12 +377,14 @@ must not fall back to a different scan's inventory.
 Phase 3b adds one optional field, additively, on top of the merged Phase 1 schema:
 
 ```json
-"elementIdentity": {
-  "locator": "main > figure:nth-of-type(2) > img",
-  "locatorType": "css",
-  "accessibleName": "Rate card for 2026",
-  "htmlSnippet": "<img …>",
-  "collectorItemId": "col_6ec2a1f0b3d44e21"
+{
+  "elementIdentity": {
+    "locator": "main > figure:nth-of-type(2) > img",
+    "locatorType": "css",
+    "accessibleName": "rates.png",
+    "htmlSnippet": "<img …>",
+    "collectorItemId": "col_6ec2a1f0b3d44e21"
+  }
 }
 ```
 
