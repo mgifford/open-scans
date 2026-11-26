@@ -12,7 +12,7 @@ schemas or tests.
 
 ### 2026-11-26: assessment coverage and manual assessment (Phase 1)
 
-Branch `feat/assessment-phase-1`, based on `main` = `a760fe8`. Not merged.
+Branch `feat/assessment-phase-1`, based on `main` = `a760fe8`, commit `ba0e343`, PR #437. Not merged.
 
 **What exists now**
 
