@@ -1,12 +1,95 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-24
-**Open Scans checkpoint:** `6dcf832` (#433 merged as `f434535`; PR #434, this handoff, open)
+**Last updated:** 2026-11-26
+**Open Scans checkpoint:** `a760fe8` on `main`; Phase 1 assessment work on `feat/assessment-phase-1` (unmerged)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26: assessment coverage and manual assessment (Phase 1)
+
+Branch `feat/assessment-phase-1`, based on `main` = `a760fe8`. Not merged.
+
+**What exists now**
+
+- Every generated report (including automated-only scans) has an **Accessibility
+  assessment coverage** section, a non-dismissible **missing-evidence notice**, and a
+  local **Manual assessment** workspace.
+- Coverage is derived from artifacts the scan already produced. No extra browser
+  launch, navigation, screenshot, network request or model call. `report.json` gains an
+  additive `assessmentCoverage`, and `assessment-coverage.json` is written next to
+  `act-coverage.json`.
+- `report.md` gains a short coverage summary with the same denominators and no
+  conformance claim.
+- A per-criterion rule execution manifest states engine status, outcome counts,
+  observed/failing rule ids, and — for Equal Access, AccessLint and Sa11y — that rule
+  execution is unknown unless the rule failed.
+- 20 independently authored manual procedures in three pathways. Records can be saved
+  locally, exported, imported, merged (conflicts preserved), reset per report, and
+  turned into Markdown/JSON developer issues.
+- Catalogue: vendored WCAG Spine snapshot `wcag-spine-2.2-2026-11-26`, sha256
+  `0fa9693e…bbf`, validated and hashed; refresh with `npm run build:assessment-catalogue`.
+
+**Verified on 2026-11-26** (local, Node v22.20.0 while `engines` requires ≥24):
+
+- `npm run lint` exit 0.
+- Full suite: 1094 tests, 1088 pass, 1 fail, 5 skipped. The failure is the known
+  `generate-reports-html` "should group reports by ISO week" timezone failure — it is
+  not a regression from this branch.
+- `node scripts/validate-assessment-report.mjs reports/issues/issue-398/2026-11-23T21-03-45-397Z/report.json --browser=webkit`
+  with `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers`: report opened from `file://`,
+  assessment runtime initialised, localStorage available, record saved and restored after
+  reload, no-JavaScript contract held, **0 axe violations**, 0 console errors.
+- `npm run validate:assessment-report <report.json> --browser=webkit` is the committed,
+  repeatable version of that check (`scripts/validate-assessment-report.mjs`).
+- Manual Chromium check over `http://127.0.0.1`: record save, coverage cell update,
+  review filter, issue preview and copy, export download, compatible import with
+  conflict preservation, foreign import blocked, invalid import rejected, two-step reset
+  that leaves unrelated storage alone.
+
+**Measured overhead** (reference scan, 6 pages, 1,484 observations, 233,572 ms total)
+
+- Report generation: 23.88 ms → 29.79 ms median (+5.91 ms ≈ 0.002% of the scan).
+- Report size: 805,911 → 1,064,498 bytes (+258,587 raw, +45,363 gzip).
+- See `docs/ASSESSMENT-RESOURCE-BUDGET.md`.
+
+**Changed existing behaviour**
+
+- The report container changed from `<div class="container" id="main-content">` to
+  `<main class="container" id="main-content">`. This fixes the `landmark-one-main` and
+  `region` axe violations the report had; no test asserted the old tag.
+- `scanTitle` is now HTML-escaped in the page and `<`-escaped inside the inline JSON.
+  The report previously embedded it with `JSON.stringify`, which let a `</script>` in a
+  title break out of the script block. This was a pre-existing injection path, not a
+  new feature.
+- No rule selection, engine configuration or automated-only scan step was changed.
+
+**Not done / not verified**
+
+- Accessibility Insights assessment-definition and injected-keyboard code was **not**
+  inspected; only the licence, axe-config package purpose and the 23 registered custom
+  rule modules were reviewed. No upstream code was copied.
+- The axe tag comparison (whether omitting `wcag22aa` is a real gap) was not performed.
+- Chromium and Firefox were not validated for the assessment workspace from `file://`;
+  only WebKit was.
+- The report's own axe scan returns two *incomplete* checks that were not manually
+  resolved: `aria-prohibited-attr` on `.span.stat-inline` and `color-contrast` on short
+  count text.
+- Assisted collectors (headings/images/links), keyboard/focus sequences, user journeys
+  and Accessibility Insights JSON import are not implemented.
+- Two counter-intuitive behaviours are documented rather than fixed: saving the default
+  "Not evaluated" outcome is allowed, and coverage filters do not include page or
+  component (coverage is scan-level in Phase 1).
+
+**Next safe step**
+
+Get a human review of `docs/ASSESSMENT-ARCHITECTURE.md` and
+`docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md`, then start Phase 3 collector work behind
+an explicit `--assisted` profile. Do not switch the default scan to assisted.
 
 ---
 

@@ -377,9 +377,24 @@ AI coding assistants (GitHub Copilot, Cursor, Claude, etc.) working in this repo
 - ✅ Four-engine validation (axe-core, ALFA, Equal Access, AccessLint); QualWeb is retired
 
 ### Known Limitations
-- Manual screen reader testing not yet performed
+- Manual screen reader testing not yet performed for the Open Scans interface itself
 - Limited assistive technology coverage in testing
 - Focus on automated testing over manual evaluation
+- Assessment coverage reports what automated testing did and did not evaluate; it is not
+  a measure of accessibility and does not establish conformance
+- Assisted collectors, keyboard interaction assessment and user journey testing are not
+  yet implemented
+- The report interface's own accessibility has automated coverage (axe, zero violations
+  in WebKit) but only limited manual review
+
+### Manual Assessment (new)
+
+Every generated report now includes an accessibility assessment coverage section and a
+local manual assessment workspace, including automated-only reports. See
+[docs/MANUAL-ASSESSMENT.md](./docs/MANUAL-ASSESSMENT.md) and
+[docs/ASSESSMENT-ARCHITECTURE.md](./docs/ASSESSMENT-ARCHITECTURE.md). Validation of a
+generated report in a real browser from `file://` can be reproduced with
+`npm run validate:assessment-report <report.json> --browser=webkit`.
 
 ### Ongoing Improvements
 - Expanding test coverage for edge cases

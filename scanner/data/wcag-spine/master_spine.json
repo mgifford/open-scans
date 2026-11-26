@@ -1,0 +1,5039 @@
+{
+  "meta": {
+    "generated": "2026-11-26",
+    "wcag_version": "2.2",
+    "sources": {
+      "act_rules": "https://raw.githubusercontent.com/w3c/wcag-act-rules/main/wcag-mapping.json",
+      "arrm": "https://raw.githubusercontent.com/w3c/wai-arrm/draft/_data/arrm/arrm-all-tasks.csv",
+      "axe_core": "https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md",
+      "alfa": "https://github.com/siteimprove/alfa/blob/main/packages/alfa-rules/README.md",
+      "trusted_tester": "https://section508coordinators.github.io/TrustedTester/index.html",
+      "section508_coordinators": "https://github.com/Section508Coordinators",
+      "act_testcases": "https://www.w3.org/WAI/content-assets/wcag-act-rules/testcases.json",
+      "alfa_rules_index": "https://raw.githubusercontent.com/Siteimprove/alfa/main/packages/alfa-rules/src/index.ts",
+      "axe_rules_api": "https://api.github.com/repos/dequelabs/axe-core/contents/lib/rules",
+      "alfa_earl": "https://raw.githubusercontent.com/Siteimprove/alfa-act-r/main/reports/alfa-automated-report.json",
+      "fpc_mapping": "https://raw.githubusercontent.com/CivicActions/accessibility-data-reference/main/mapping-wcag-to-fpc.csv"
+    },
+    "axe_version": "4.14",
+    "act_implementations": {
+      "23a2a8": {
+        "axe": [
+          "input-image-alt"
+        ],
+        "alfa": [
+          "SIA-R26"
+        ],
+        "equal_access": [],
+        "qualweb": [
+          "QW-ACT-R27"
+        ],
+        "consistency": {}
+      },
+      "3ea0c8": {
+        "axe": [
+          "image-alt"
+        ],
+        "alfa": [
+          "SIA-R2"
+        ],
+        "equal_access": [],
+        "qualweb": [
+          "QW-ACT-R2"
+        ],
+        "consistency": {}
+      },
+      "59796f": {
+        "axe": [],
+        "alfa": [],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "cae760": {
+        "axe": [
+          "image-alt"
+        ],
+        "alfa": [
+          "SIA-R2"
+        ],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "b5c3f8": {
+        "axe": [
+          "html-has-lang"
+        ],
+        "alfa": [
+          "SIA-R4"
+        ],
+        "equal_access": [],
+        "qualweb": [
+          "QW-ACT-R3"
+        ],
+        "consistency": {}
+      },
+      "5b7ae0": {
+        "axe": [
+          "html-lang-valid"
+        ],
+        "alfa": [
+          "SIA-R5"
+        ],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "bf051a": {
+        "axe": [
+          "document-title"
+        ],
+        "alfa": [
+          "SIA-R1"
+        ],
+        "equal_access": [],
+        "qualweb": [
+          "QW-ACT-R1"
+        ],
+        "consistency": {}
+      },
+      "2779a5": {
+        "axe": [
+          "document-title"
+        ],
+        "alfa": [],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "e086e5": {
+        "axe": [
+          "label"
+        ],
+        "alfa": [
+          "SIA-R8"
+        ],
+        "equal_access": [],
+        "qualweb": [
+          "QW-ACT-R4"
+        ],
+        "consistency": {}
+      },
+      "cc0f0a": {
+        "axe": [],
+        "alfa": [],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "09o5cg": {
+        "axe": [
+          "color-contrast"
+        ],
+        "alfa": [
+          "SIA-R66",
+          "SIA-R69"
+        ],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      },
+      "afw4f7": {
+        "axe": [
+          "color-contrast"
+        ],
+        "alfa": [
+          "SIA-R69"
+        ],
+        "equal_access": [],
+        "qualweb": [],
+        "consistency": {}
+      }
+    },
+    "alfa_version": "0.120.0",
+    "data_quality": {
+      "ai_generated_fields": [
+        "manual.tt_steps",
+        "manual.arrm_tasks",
+        "manual.roles"
+      ],
+      "ai_generated_note": "Manual testing procedures (Trusted Tester steps, ARRM tasks, and role assignments) were initially generated with AI assistance and require human validation before use in production.",
+      "upstream_sourced_fields": [
+        "automation.act",
+        "automation.axe",
+        "automation.alfa"
+      ],
+      "upstream_sourced_note": "Automation rule mappings (ACT, Axe-core, Alfa) are sourced directly from upstream repositories and are updated by the daily sync workflow.",
+      "known_corrections": [
+        {
+          "sc": "1.3.5",
+          "field": "automation.alfa",
+          "correction": "Removed SIA-R8 (belongs in 4.1.2), added SIA-R10",
+          "reported_by": "ACT/Alfa maintainers",
+          "date": "2026-03-12"
+        },
+        {
+          "sc": "2.4.7",
+          "field": "automation.alfa",
+          "correction": "Added SIA-R65 (semi-automated, was missing)",
+          "reported_by": "ACT/Alfa maintainers",
+          "date": "2026-03-12"
+        },
+        {
+          "sc": "3.1.1",
+          "field": "automation.alfa",
+          "correction": "Added SIA-R5 (was incorrectly placed in 3.1.2)",
+          "reported_by": "ACT/Alfa maintainers",
+          "date": "2026-03-12"
+        },
+        {
+          "sc": "3.1.2",
+          "field": "automation.alfa",
+          "correction": "Removed SIA-R5 (belongs in 3.1.1), added SIA-R7",
+          "reported_by": "ACT/Alfa maintainers",
+          "date": "2026-03-12"
+        },
+        {
+          "sc": "4.1.2",
+          "field": "automation.alfa",
+          "correction": "Added SIA-R17 (imperfect implementation of act:6cfa84) and SIA-R90",
+          "reported_by": "ACT/Alfa maintainers",
+          "date": "2026-03-12"
+        }
+      ]
+    }
+  },
+  "success_criteria": {
+    "1.1.1": {
+      "title": "Non-text Content",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
+      "automation": {
+        "act": [
+          "23a2a8",
+          "3ea0c8",
+          "46ca7f",
+          "59796f",
+          "7d6734",
+          "8fc3b6",
+          "9eb3f6",
+          "a25f45",
+          "c3232f",
+          "c487ae",
+          "de46e4",
+          "e88epe",
+          "qt1vmo"
+        ],
+        "axe": [
+          "area-alt",
+          "aria-meter-name",
+          "aria-progressbar-name",
+          "image-alt",
+          "input-button-name",
+          "input-image-alt",
+          "object-alt",
+          "role-img-alt",
+          "svg-img-alt"
+        ],
+        "alfa": [
+          "SIA-R2",
+          "SIA-R25",
+          "SIA-R26",
+          "SIA-R3",
+          "SIA-R41"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "7.A - Meaningful Image Name",
+          "7.B - Decorative Image",
+          "7.D - Captcha Alternative"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "IMG-001",
+            "task": "Informative alternate text is provided for images (i.e. not \"spacer\" or image file name).",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-002",
+            "task": "Informative images are described with a clear and meaningful text equivalent (alt attribute or other equivalent means).",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-003",
+            "task": "Purely decorative images are provided with null alt attribute values (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-004",
+            "task": "Null alt attribute values are used for images that are already described in text in adjacent page content.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-005",
+            "task": "Adjacent linked images and text links pointing the same URL are combined into single links.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-006",
+            "task": "Alt text used for images of text include all relevant text found in the image.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-007",
+            "task": "Informative images are marked up as foreground images, and not embedded as part of the CSS.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-008",
+            "task": "The purpose or function of complex images is accurately described in text.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-009",
+            "task": "The purpose or function of complex images is conveyed using a text description, via an alt attribute.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-010",
+            "task": "The full explanation of complex images is accurately described in text.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-011",
+            "task": "A mechanism that conveys the way through which the full explanation of complex images is defined.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "IMG-012",
+            "task": "The full explanation of complex images is provided through the longdesc attribute (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-013",
+            "task": "Images primarily conveying function use alternative text to describe their purpose, rather than what they look like.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-014",
+            "task": "Text alternatives of static and linked images do not replicate any information that is already being conveyed by screen reader technology.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "Front End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-015",
+            "task": "Text alternatives of dynamically updated images are simultaneously updated as the images change.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-016",
+            "task": "Alternate means of accessing CAPTCHA information are provided, such as audio CAPTCHA, logical question, or other equivalent means.",
+            "primary_ownership": "Business Analyst",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": ""
+          },
+          {
+            "id": "IMG-017",
+            "task": "Images which do not convey information are defined as decorative.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "IMG-018",
+            "task": "Charts, graphs, infographics and other visual representations of information don't rely on color alone to convey information.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-001",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "CSS-002",
+            "task": "The meaning of icon fonts is determined programmatically using the aria-label attribute (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "CSS-003",
+            "task": "Icon fonts whose default accessible name do not represent what the icon is, are overwritten using an aria-hidden attribute (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "CSS-004",
+            "task": "Background images identified as decorative are implemented as such.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-001",
+            "task": "Emoticons, emojis, ASCII art, and other non-markup language constructs are supported with equivalent text alternatives and conveyed to assistive technologies.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.2.1": {
+      "title": "Audio-only and Video-only (Prerecorded)",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html",
+      "automation": {
+        "act": [
+          "1a02b0",
+          "c3232f",
+          "e7aa44",
+          "ee13b5",
+          "f51b46"
+        ],
+        "axe": [
+          "audio-caption"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "16.A - Audio Transcript Text"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-001",
+            "task": "Text transcripts are provided for prerecorded audio-only files.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-002",
+            "task": "Text transcripts are provided for prerecorded video-only files.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-003",
+            "task": "Links to transcript files are provided in close proximity to the audio-only files.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-004",
+            "task": "The relationship between multimedia files and their associated transcript is clearly communicated through content sequence or focus order.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-005",
+            "task": "Copy on the page identifies when video content has no sound.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-006",
+            "task": "When appropriate, further information about the multimedia file is provided in proximity to the multimedia file.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.2.2": {
+      "title": "Captions (Prerecorded)",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html",
+      "automation": {
+        "act": [
+          "eac66b"
+        ],
+        "axe": [
+          "video-caption"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "17.A - Captions Equivalent"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-007",
+            "task": "Synchronized captions are provided for all prerecorded video content.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-008",
+            "task": "Captions do not skip dialogues or important sounds.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-009",
+            "task": "Multimedia player controls are provided to turn captions on or off.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.2.3": {
+      "title": "Audio Description or Media Alternative (Prerecorded)",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html",
+      "automation": {
+        "act": [
+          "c5a4ea"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.2.3.A - Audio Description or Media Alternative"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-010",
+            "task": "Text transcripts report all significant information from the audio track.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-011",
+            "task": "Text transcripts or audio descriptions report all significant information from the visual track.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "1.2.4": {
+      "title": "Captions (Live)",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "17.C - Captions Live Equivalent"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-012",
+            "task": "Synchronized captions are provided for all live video content.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-013",
+            "task": "Captions for live audio content are generated using real-time text transcription services.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.2.5": {
+      "title": "Audio Description (Prerecorded)",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html",
+      "automation": {
+        "act": [
+          "1ec09b",
+          "c5a4ea"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "17.B - Audio Description Equivalent"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-014",
+            "task": "Prerecorded videos have audio descriptions that captures all significant information from the visual track.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-015",
+            "task": "Controls to toggle audio descriptions features are provided as part of the media player controls.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-016",
+            "task": "Multimedia player controls are provided to access a version of the video with audio description.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "1.2.6": {
+      "title": "Sign Language (Prerecorded)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/sign-language-prerecorded.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.2.6.A - Sign Language Interpretation"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-017",
+            "task": "Sign language interpretation is provided for all prerecorded audio content in synchronized media.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.2.7": {
+      "title": "Extended Audio Description (Prerecorded)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/extended-audio-description-prerecorded.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.2.7.A - Extended Audio Description"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-018",
+            "task": "Extended audio description is provided for all prerecorded synchronized video content when pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.2.8": {
+      "title": "Media Alternative (Prerecorded)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/media-alternative-prerecorded.html",
+      "automation": {
+        "act": [
+          "1a02b0",
+          "c5a4ea"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.2.8.A - Full Media Alternative"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-019",
+            "task": "Text alternatives are provided for all prerecorded audio and video files.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "ANM-020",
+            "task": "Brief descriptions summarizing multimedia content are provided in close proximity to the audio and video files.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.2.9": {
+      "title": "Audio-only (Live)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.2.9.A - Live Audio Alternative"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-021",
+            "task": "Live transcripts are provided for all audio content happening in real-time.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.3.1": {
+      "title": "Info and Relationships",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+      "automation": {
+        "act": [
+          "1a02b0",
+          "307n5z",
+          "3e12e1",
+          "4e8ab6",
+          "5c01ea",
+          "5f99a7",
+          "674b10",
+          "6a7281",
+          "78fd32",
+          "7d6734",
+          "a25f45",
+          "b49b2e",
+          "bc4a75",
+          "d0f69e",
+          "d9e9d9",
+          "e086e5",
+          "eba20a",
+          "ee13b5",
+          "f51b46",
+          "ff89c9",
+          "kb1m8s"
+        ],
+        "axe": [
+          "aria-hidden-body",
+          "aria-required-children",
+          "aria-required-parent",
+          "definition-list",
+          "dlitem",
+          "label",
+          "landmark-one-main",
+          "list",
+          "listitem",
+          "p-as-heading",
+          "table-duplicate-name",
+          "table-fake-caption",
+          "td-has-header",
+          "td-headers-attr",
+          "th-has-data-cells"
+        ],
+        "alfa": [
+          "SIA-R1",
+          "SIA-R13",
+          "SIA-R16",
+          "SIA-R39",
+          "SIA-R4",
+          "SIA-R53",
+          "SIA-R7",
+          "SIA-R8"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Content Authoring",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "10.B - Heading Determinable",
+          "10.C - Heading Level",
+          "10.D - List Type"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-001",
+            "task": "Informative content is provided through HTML markup.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design\r\n Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-002",
+            "task": "HTML elements are used according to the HTML specification.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-003",
+            "task": "Navigation groupings are marked up using HTML list or nav elements (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-004",
+            "task": "Header sections are marked up using HTML header elements (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-005",
+            "task": "The main section of a page is marked up using a HTML main element (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-006",
+            "task": "The footer of the page is marked up using a HTML footer element (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-007",
+            "task": "Content that is complementary to the main section is marked up using HTML aside elements (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-008",
+            "task": "HTML elements are used based on the semantics they provide, not based on what they look like.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-009",
+            "task": "Decorative elements are embedded through the CSS presentation layer (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-010",
+            "task": "All scripting behaviors are handled through JavaScript.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-011",
+            "task": "Elements that act as headings are marked up as such.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-012",
+            "task": "Headings follow a hierarchical sequence without skipping any levels.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SEM-013",
+            "task": "Headings are marked up using h1 to h6 elements or other equivalent means.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design\r\n Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-014",
+            "task": "Page contains a level 1 heading that describes the page content.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design\r\n Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-015",
+            "task": "Whitespace or pre-formatted text is not used to render content to appear as multiple columns or tabular information.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SEM-016",
+            "task": "Use of native, semantic HTML elements are prioritized over other methods.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-001",
+            "task": "Text labels are marked up using the label element or other equivalent means.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-002",
+            "task": "Text labels and form controls are programmatically associated (using the FOR and ID attributes, or equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-003",
+            "task": "Submit buttons in forms rely on a submit input type, a button element, or other equivalent means.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-004",
+            "task": "Related form controls are programmatically associated using fieldset and legend elements or other equivalent means.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-005",
+            "task": "Long option lists in select elements are grouped semantically (using the optgroup element, or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-006",
+            "task": "Common group label text is informative, meaningful and provides context for the grouping.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "FRM-007",
+            "task": "Instructions and messages are programmatically conveyed to assistive technologies.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-008",
+            "task": "Use of native HTML controls are prioritized over other methods.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-009",
+            "task": "Required fields are programmatically conveyed as such to assistive technologies.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-010",
+            "task": "Instructions on how to use forms are programmatically conveyed to assistive technologies.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "CSS-005",
+            "task": "CSS pseudo-selectors such as :before and :after are not used to integrate informative content.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-001",
+            "task": "Active objects and other calls to action are visually identifiable as such.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "TAB-001",
+            "task": "Tables are only to be used to lay out tabular information or data.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-002",
+            "task": "Table row and/or column headers provide context for data within the table.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "TAB-003",
+            "task": "Data table structure is appropriate for the data being included.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "TAB-004",
+            "task": "Tabular data and corresponding header cells for that data are part of the same table.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-005",
+            "task": "Header cells for rows are marked up using THEAD elements.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-006",
+            "task": "Header cells for columns are marked up using TH elements.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-007",
+            "task": "The relationship between table header rows and table header columns with data cells in simple data tables is provided through the SCOPE attributes.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-008",
+            "task": "The relationship between table header rows and table header columns with data cells in complex data tables is provided through the HEADERS and ID attributes.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-009",
+            "task": "Caption elements are used to associate caption information with data tables.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-010",
+            "task": "Large, complex data tables are broken into smaller, simpler data tables (when possible).",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design\r\nContent Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "TAB-011",
+            "task": "Unrelated data is not included in the same data table.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "TAB-012",
+            "task": "Tables are not used for layout purposes.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-013",
+            "task": "Tables are not used to layout lists.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-014",
+            "task": "Caption elements, aria-labelledby attributes or other equivalent means are used to explain the structure of data tables.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "TAB-015",
+            "task": "A meaningful description of the structure of data tables is provided.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SCT-002",
+            "task": "Emoticons, emojis, ASCII art, and other non-markup language constructs are not used as the only way to structure content or convey information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-003",
+            "task": "Proper markup is used to render emphasized, bolded text and other stylistic or presentational effects.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-004",
+            "task": "Proper markup is used to structure quotes, blockquotes and citations.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-005",
+            "task": "Heading markup is only used for text which acts as a section heading.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-006",
+            "task": "Heading markup is not used for formatting effects.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-007",
+            "task": "The headings used in a page provide a logical outline for the document.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "1.3.2": {
+      "title": "Meaningful Sequence",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "15.B - Content Order Meaning Css Position"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-017",
+            "task": "The source code (or DOM) order matches the suggested visual order of the design.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-011",
+            "task": "Information that is relevant to a form does not appear after the submit button.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "TAB-016",
+            "task": "The programmatic order of the table content matches the intended reading order, so not to affect its meaning.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-008",
+            "task": "The intended reading order of the content remains logical when CSS and images are turned off.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-009",
+            "task": "The source code order reflects the intended reading order of the document.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "1.3.3": {
+      "title": "Sensory Characteristics",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html",
+      "automation": {
+        "act": [
+          "9bd38c"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "13.B - Sensory Info"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-006",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-007",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-002",
+            "task": "Instructions are conveyed through more than shape, size, position, or sound alone.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SCT-010",
+            "task": "Site supports internationalization with multiple languages, including right-to-left languages.",
+            "primary_ownership": "Business Analysis",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": ""
+          },
+          {
+            "id": "SCT-011",
+            "task": "Text direction is properly marked up as such, especially for right-to-left languages.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-012",
+            "task": "Objects that rely on shape to be properly perceived are supported with additional text information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-013",
+            "task": "Objects that rely on size to be properly perceived are supported with additional text information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-014",
+            "task": "Objects that rely on visual location to be properly perceived are supported with additional text information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-015",
+            "task": "Objects that rely on orientation to be properly perceived are supported with additional text information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-016",
+            "task": "Objects that rely on sound to be properly perceived are supported with additional text information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.3.4": {
+      "title": "Orientation",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/orientation.html",
+      "automation": {
+        "act": [
+          "b33eff"
+        ],
+        "axe": [
+          "css-orientation-lock"
+        ],
+        "alfa": [
+          "SIA-R9"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "1.3.4.A - Orientation Lock Restriction"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-008",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.3.5": {
+      "title": "Identify Input Purpose",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html",
+      "automation": {
+        "act": [
+          "135hje",
+          "73f2c2"
+        ],
+        "axe": [
+          "autocomplete-valid"
+        ],
+        "alfa": [
+          "SIA-R10"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "1.3.5.A - Autocomplete Attribute on Personal Data Fields"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-012",
+            "task": "Data entry fields are designed to autofill previously entered user information when that information is available.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-013",
+            "task": "Data entry fields using the autocomplete attribute for previously entered information are set to the appropriate value.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.3.6": {
+      "title": "Identify Purpose",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "1.3.6.A - Semantic Markup for UI Components"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-014",
+            "task": "The purpose of user interface components, icons, and regions is implemented using markup languages, in a way that can be programmatically determined.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.1": {
+      "title": "Use of Color",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+      "automation": {
+        "act": [],
+        "axe": [
+          "link-in-text-block"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "13.A - Color Meaning"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-009",
+            "task": "Color is never used as the only way to convey information, context, indicate selection or the presence of errors.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-010",
+            "task": "For a link that is not underlined and in a paragraph text, its text color is sufficiently contrasted by providing a luminosity ratio of at least 3:1 against its surrounding text.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "NAV-003",
+            "task": "Additional visual and/or textual cues are provided when color is used to convey information.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design \r\nContent Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "IMG-018",
+            "task": "Charts, graphs, infographics and other visual representations of information don't rely on color alone to convey information.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WPC",
+        "LLCLA"
+      ]
+    },
+    "1.4.2": {
+      "title": "Audio Control",
+      "level": "A",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html",
+      "automation": {
+        "act": [
+          "80f0bf"
+        ],
+        "axe": [
+          "no-autoplay-audio"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.A - Audio Control"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-022",
+            "task": "Multimedia player controls are provided to turn sound on and off.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-023",
+            "task": "Volume controls for page-level multimedia files are independent from general computer audio controls.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "ANM-024",
+            "task": "Volume controls for page-level multimedia files are visually located at the top of the page.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-025",
+            "task": "Audio content that automatically starts on page load lasts no longer than 3 seconds.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "ANM-026",
+            "task": "Prerecorded or live video content is not set to auto-play.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "1.4.3": {
+      "title": "Contrast (Minimum)",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "automation": {
+        "act": [
+          "09o5cg",
+          "afw4f7"
+        ],
+        "axe": [
+          "color-contrast"
+        ],
+        "alfa": [
+          "SIA-R66",
+          "SIA-R69"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "13.C - Contrast"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-011",
+            "task": "Regular-sized text is sufficiently contrasted against its background, with a luminosity ratio of at least 4.5:1.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-012",
+            "task": "Large-sized text is sufficiently contrasted against its background, with a luminosity ratio of at least 3:1.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LV",
+        "WPC"
+      ]
+    },
+    "1.4.4": {
+      "title": "Resize Text",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+      "automation": {
+        "act": [
+          "59br37",
+          "b4f0c3"
+        ],
+        "axe": [
+          "meta-viewport"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "18.A - Resize Text"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-013",
+            "task": "Users can resize the text on the page up to 200% without any loss of content or functionality.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "Front End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-014",
+            "task": "CSS techniques are used to ensure that content doesn't overflow, overlap or get truncated as a result of increasing the text size.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LV"
+      ]
+    },
+    "1.4.5": {
+      "title": "Images of Text",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html",
+      "automation": {
+        "act": [
+          "0va7u6"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "7.E - Image Of Text"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "IMG-019",
+            "task": "Text content that conveys information is not part of images.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "IMG-020",
+            "task": "Text that is placed on top of an image is handled semantically through HTML and CSS instead.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "IMG-021",
+            "task": "Unless a particular presentation of text is essential to the information being conveyed, all images that contain text are only used for purely decorative purposes.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-015",
+            "task": "CSS background sprites don't include images of text, unless equivalent text alternatives are also provided as part of the HTML.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring\r\n Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-017",
+            "task": "Mathematical formulas are marked up using MathML.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-015",
+            "task": "Mathematical formulas are marked up using MathML.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "1.4.6": {
+      "title": "Contrast (Enhanced)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+      "automation": {
+        "act": [
+          "09o5cg",
+          "afw4f7"
+        ],
+        "axe": [
+          "color-contrast",
+          "color-contrast-enhanced"
+        ],
+        "alfa": [
+          "SIA-R66",
+          "SIA-R69"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-016",
+            "task": "Regular-sized text is sufficiently contrasted against its background, with a luminosity ratio of at least 7:1.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-017",
+            "task": "Large-sized text is sufficiently contrasted against its background, with a luminosity ratio of at least 4.5:1.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.7": {
+      "title": "Low or No Background Audio",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/low-or-no-background-audio.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "1.4.7.A - Background Audio Level"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-027",
+            "task": "Prerecorded audio-only background sounds can be controlled by the user.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-028",
+            "task": "Prerecorded audio-only speeches contain no background sound, or if they do, must be at least 20 decibels lower than the foreground speech content.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.8": {
+      "title": "Visual Presentation",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "1.4.8.A - Text Block Formatting Controls"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-018",
+            "task": "Text content in design assets such as content blocks is left-aligned in left-to-right languages.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "SCT-019",
+            "task": "Fully justified text can easily be changed to ragged right text with a simple action.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-016",
+            "task": "Text content in design assets such as content blocks is left-aligned in left-to-right languages.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "SCT-017",
+            "task": "Fully justified text can easily be changed to ragged right text with a simple action.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.9": {
+      "title": "Images of Text (No Exception)",
+      "level": "AAA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/images-of-text-no-exception.html",
+      "automation": {
+        "act": [
+          "0va7u6"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "1.4.9.A - Pure Images of Text"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "IMG-022",
+            "task": "With the exception of logos, all images that contain text are only used for purely decorative purposes.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#images-and-graphs",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.10": {
+      "title": "Reflow",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+      "automation": {
+        "act": [
+          "b4f0c3"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "1.4.10.A - Content Reflow at 320px Width"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-018",
+            "task": "The design makes it possible for end users to enlarge the text so that it reflows into a single column without any loss of information or functionality.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-019",
+            "task": "Displaying content on narrower screens or magnifying it does not cause multidirectional scrolling.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.11": {
+      "title": "Non-text Contrast",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "automation": {
+        "act": [
+          "4c31df"
+        ],
+        "axe": [
+          "non-text-color-contrast"
+        ],
+        "alfa": [
+          "SIA-R70"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "1.4.11.A - UI Component Contrast 3:1",
+          "1.4.11.B - Graphical Object Contrast"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-020",
+            "task": "All non-text user interface components and graphical objects are sufficiently contrasted against their background, with a luminosity ratio of at least 3:1.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.12": {
+      "title": "Text Spacing",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+      "automation": {
+        "act": [
+          "24afc2",
+          "78fd32",
+          "9e45ec"
+        ],
+        "axe": [
+          "avoid-inline-spacing"
+        ],
+        "alfa": [
+          "SIA-R86"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "1.4.12.A - Text Spacing Override"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-021",
+            "task": "Adjusting spacing between letters, words, or paragraphs, or adjusting line height does not cause a loss of content or functionality.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "1.4.13": {
+      "title": "Content on Hover or Focus",
+      "level": "AA",
+      "principle": "Perceivable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "1.4.13.A - Hoverable Tooltip Dismissal",
+          "1.4.13.B - Tooltip Persistence"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-001",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-002",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-003",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.1.1": {
+      "title": "Keyboard",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html",
+      "automation": {
+        "act": [
+          "0ssw9k",
+          "akn7bn"
+        ],
+        "axe": [
+          "frame-focusable-content",
+          "scrollable-region-focusable",
+          "server-side-image-map"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "4.A - Keyboard Access",
+          "4.B - No Keystroke Timing"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-004",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-005",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-006",
+            "task": "Device-specific programmatic event handlers are not used as the only way to trigger interactions.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-007",
+            "task": "Behaviors for hover and focus states are planned and included with the design assets.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-008",
+            "task": "Keyboard focus states are planned for every active element.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-009",
+            "task": "Keyboard focus is not applied to non-active or static elements.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-010",
+            "task": "Custom active elements replicate all inherent keyboard behaviors of native active HTML elements.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-011",
+            "task": "Non-interactive elements are not assigned JavaScript event handlers.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "ANM-029",
+            "task": "Multimedia player controls can be fully operated using only the keyboard.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.1.2": {
+      "title": "No Keyboard Trap",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html",
+      "automation": {
+        "act": [
+          "80af7b"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "4.C - No Keyboard Trap"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-012",
+            "task": "Users can navigate away from all active elements, using only the keyboard.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM"
+      ]
+    },
+    "2.1.3": {
+      "title": "Keyboard (No Exception)",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard-no-exception.html",
+      "automation": {
+        "act": [
+          "0ssw9k",
+          "akn7bn"
+        ],
+        "axe": [
+          "scrollable-region-focusable"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.1.3.A - All Functionality via Keyboard"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-013",
+            "task": "All actionable elements can be reached using only the keyboard without requiring specific timings for individual keystrokes.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.1.4": {
+      "title": "Character Key Shortcuts",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html",
+      "automation": {
+        "act": [
+          "ffbc54"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.1.4.A - Single Character Shortcut Override"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-014",
+            "task": "Single-key keyboard shortcuts can be disabled or remapped, unless they are only active on keyboard focus.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.2.1": {
+      "title": "Timing Adjustable",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html",
+      "automation": {
+        "act": [
+          "bc659a",
+          "bisz58"
+        ],
+        "axe": [
+          "meta-refresh"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "8.A - Timing Adjustable"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-004",
+            "task": "Users are notified when time limits are about to expire.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Business",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-005",
+            "task": "Options to extend, or even turn off time limits are provided.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Business",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.2.2": {
+      "title": "Pause, Stop, Hide",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+      "automation": {
+        "act": [
+          "efbfc7"
+        ],
+        "axe": [
+          "blink",
+          "marquee"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.B - Blinking Moving Scrolling",
+          "2.C - Auto Updating"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-006",
+            "task": "Users are given means to pause, stop or hide content that automatically updates.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-030",
+            "task": "Multimedia player controls are provided to pause or play the multimedia file.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LLCLA"
+      ]
+    },
+    "2.2.3": {
+      "title": "No Timing",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/no-timing.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Business"
+        ],
+        "tt_steps": [
+          "2.2.3.A - No Time Limits on Content"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-031",
+            "task": "Timing is not an essential part of the event or activity presented by the content.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.2.4": {
+      "title": "Interruptions",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/interruptions.html",
+      "automation": {
+        "act": [
+          "bc659a",
+          "bisz58"
+        ],
+        "axe": [
+          "meta-refresh-no-exceptions"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.2.4.A - Interruption Control Mechanism"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-007",
+            "task": "Users are provided with means to turn off all updates, except in case of emergencies.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.2.5": {
+      "title": "Re-authenticating",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/re-authenticating.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Business"
+        ],
+        "tt_steps": [
+          "2.2.5.A - Data Preservation After Re-auth"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-008",
+            "task": "Users are provided with means to re-authenticate sessions without loss of data.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.2.6": {
+      "title": "Timeouts",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/timeouts.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Business"
+        ],
+        "tt_steps": [
+          "2.2.6.A - Timeout Warning Display"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-032",
+            "task": "Users are warned that more than 20 hours of inactivity could lead to data loss.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.3.1": {
+      "title": "Three Flashes or Below Threshold",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "3.A - Flashing"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-033",
+            "task": "Content on the screen does not flash or blink more than three times in any one-second period, or the flash is below the general flash and red flash thresholds.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": []
+    },
+    "2.3.2": {
+      "title": "Three Flashes",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "2.3.2.A - No Three Flashes"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-034",
+            "task": "Content on the screen does not flash or blink at a rate that is higher than three times in any one-second period.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.3.3": {
+      "title": "Animation from Interactions",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.3.3.A - Disable Non-Essential Animation"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "ANM-035",
+            "task": "Animation features that create the illusion of movement are defined so that users can disable them.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Developement",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "ANM-036",
+            "task": "Animation features that create the illusion of movement support prefers-reduced-motion (or other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.4.1": {
+      "title": "Bypass Blocks",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html",
+      "automation": {
+        "act": [
+          "3e11da",
+          "cf77f2"
+        ],
+        "axe": [
+          "bypass"
+        ],
+        "alfa": [
+          "SIA-R87"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "9.A - Bypass Function"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-018",
+            "task": "iFrames displaying content are provided with a clear, informative title attribute value.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-009",
+            "task": "Users can bypass blocks of content using skip links or similar mechanisms.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-010",
+            "task": "Skip links (and similar mechanisms) for main content and navigation are provided at the most effective location in the interface (such as the very first tab stop).",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-011",
+            "task": "The functionality and expected destination of skip links and similar mechanisms is clearly defined.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-012",
+            "task": "Skip links and similar mechanisms point to the expected destination.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.2": {
+      "title": "Page Titled",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html",
+      "automation": {
+        "act": [
+          "2779a5",
+          "c4a8a4"
+        ],
+        "axe": [
+          "document-title"
+        ],
+        "alfa": [
+          "SIA-R1"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "12.A - Page Title Defined",
+          "12.B - Page Title Purpose"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-019",
+            "task": "Page title text matches the level 1 heading text.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SEM-020",
+            "task": "Pages are described using unique and descriptive page title values.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.3": {
+      "title": "Focus Order",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "4.F - Focus Order Meaning",
+          "4.G - Focus Order Reveal",
+          "4.H - Focus Order Return"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-021",
+            "task": "The tab order logically and predictably follows the expected interaction order of the visual design.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-015",
+            "task": "Users can tab through active elements in an order that reflects the intended interaction order of the design.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design\r\n Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "INP-016",
+            "task": "Tabindex attributes are not assigned positive integer values.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-015",
+            "task": "Keyboard focus is dynamically moved to the error message when errors are returned.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-013",
+            "task": "All active elements receive focus in a logical and predictable order that is prescribed by the visual presentation.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-014",
+            "task": "A logical and predictable focus order is defined for complex interactions.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-015",
+            "task": "Objects that are not actionable are not part of the tabbing order.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-016",
+            "task": "Focus is sent back to the initiating point when modal dialogs and controls are dismissed.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "NAV-017",
+            "task": "Event handlers do not unexpectedly send the focus somewhere else on the page.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.4": {
+      "title": "Link Purpose (In Context)",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+      "automation": {
+        "act": [
+          "5effbb",
+          "c487ae",
+          "fd3a94"
+        ],
+        "axe": [
+          "area-alt",
+          "link-name"
+        ],
+        "alfa": [
+          "SIA-R10"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "6.A - Link Purpose"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-018",
+            "task": "Link text and alternate text for images, when used as links, describe the destination or purpose of the link.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "NAV-019",
+            "task": "Links are marked up using the anchor element and have a valid href attribute value (or use other equivalent means).",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.5": {
+      "title": "Multiple Ways",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Business"
+        ],
+        "tt_steps": [
+          "19.A - Multiple Ways"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-020",
+            "task": "Multiple mechanisms are provided for wayfinding, such as navigation menus, breadcrumbs, search features, site map, progress bar, steps, etc.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.6": {
+      "title": "Headings and Labels",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html",
+      "automation": {
+        "act": [
+          "b49b2e",
+          "cc0f0a"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "10.A - Heading Purpose"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-022",
+            "task": "Heading text meaningfully describes the content's topic or purpose.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SEM-023",
+            "task": "The main heading of the page describes the content of the page.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "FRM-016",
+            "task": "The purpose of the form control is clearly described in text.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "TAB-017",
+            "task": "All data table header cells are identified.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#data-tables",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.7": {
+      "title": "Focus Visible",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html",
+      "automation": {
+        "act": [
+          "oj04fd"
+        ],
+        "axe": [],
+        "alfa": [
+          "SIA-R65"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "4.D - Focus Visible"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-017",
+            "task": "Every element that receives keyboard focus is designed to display a visible focus indicator.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "INP-018",
+            "task": "Every element that receives keyboard focus displays a visible focus indicator.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "CSS-022",
+            "task": "The CSS outline property of objects that receive keyboard focus are not set to zero or none.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "2.4.8": {
+      "title": "Location",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/location.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "2.4.8.A - User Location Indicator"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-021",
+            "task": "Indications are provided to help users identify their current location within the site.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.4.9": {
+      "title": "Link Purpose (Link Only)",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html",
+      "automation": {
+        "act": [
+          "5effbb",
+          "aizyf1",
+          "b20e66",
+          "c487ae",
+          "fd3a94"
+        ],
+        "axe": [
+          "identical-links-same-purpose"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "2.4.9.A - Standalone Link Purpose"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-022",
+            "task": "The purpose of each link can be identified in its immediate context, or from the link text alone.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.4.10": {
+      "title": "Section Headings",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/section-headings.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "2.4.10.A - Section Organization with Headings"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-023",
+            "task": "Content is logically organized using section headings.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.4.11": {
+      "title": "Focus Not Obscured (Minimum)",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html",
+      "automation": {
+        "act": [
+          "04639e"
+        ],
+        "axe": [
+          "focus-not-obscured"
+        ],
+        "alfa": [
+          "SIA-R109"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.4.11.A - Focus Visibility with Sticky Headers",
+          "2.4.11.B - Focus with Overlays"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "CSS-023",
+            "task": "Elements that receive keyboard focus are at least partially visible in the viewport, without being covered by other content.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "DYN-001",
+            "task": "Fixed-position content does not fully cover focused elements.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "2.4.12": {
+      "title": "Focus Not Obscured (Enhanced)",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.4.12.A - Total Focus Ring Visibility"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "CSS-024",
+            "task": "Elements that receive keyboard focus are fully visible within the viewport, without being covered by other content.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "DYN-002",
+            "task": "Fixed-position content does not cover any part of focused elements.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "2.4.13": {
+      "title": "Focus Appearance",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html",
+      "automation": {
+        "act": [
+          "674b10"
+        ],
+        "axe": [
+          "focus-appearance"
+        ],
+        "alfa": [
+          "SIA-R110"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "2.4.13.A - Contrast of Focus Indicator",
+          "2.4.13.B - Focus Indicator Area"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "CSS-025",
+            "task": "The keyboard focus indicator is clearly visible and has a minimum area equivalent to a 2 CSS pixel thick border around the focused element, except situations where no visible change is required.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-026",
+            "task": "The focus indicator has a contrast ratio of at least 3:1 between the same pixels in the focused and unfocused states.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "2.5.1": {
+      "title": "Pointer Gestures",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.5.1.A - Single Pointer Alternative for Multipoint Gestures"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-019",
+            "task": "Non-essential multipoint, path- or gesture-based functions have single-pointer alternatives.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.2": {
+      "title": "Pointer Cancellation",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.5.2.A - Pointer Event Up-Event Activation"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-020",
+            "task": "Non-essential single pointer functionality is not triggered on down events, unless the functionality can be canceled, undone, or reversed.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.3": {
+      "title": "Label in Name",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+      "automation": {
+        "act": [
+          "2ee8b8",
+          "e086e5"
+        ],
+        "axe": [
+          "label",
+          "label-content-name-mismatch"
+        ],
+        "alfa": [
+          "SIA-R14",
+          "SIA-R8"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "2.5.3.A - Visible Label Included in Accessible Name"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-021",
+            "task": "Text or images of text that is usually included in a user interface control is part of its accessible name.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.4": {
+      "title": "Motion Actuation",
+      "level": "A",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html",
+      "automation": {
+        "act": [
+          "7677a9",
+          "c249d5"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "2.5.4.A - Motion Alternative Mechanism"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-022",
+            "task": "All non-essential motion-related functionalities have alternative user interface controls that allow for equivalent actions.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-023",
+            "task": "All non-essential motion-related functionality can be turned off to prevent accidental actuation.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.5": {
+      "title": "Target Size (Enhanced)",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Visual Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.5.5.A - 44x44 CSS Pixel Target Size"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "CSS-023",
+            "task": "Unless the interactive element is part of a sentence or a block of text, its size must be at least 44 x 44 pixels.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-027",
+            "task": "Unless the interactive element is part of a sentence or a block of text, its size must be at least 44 x 44 pixels.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.6": {
+      "title": "Concurrent Input Mechanisms",
+      "level": "AAA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/concurrent-input-mechanisms.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.5.6.A - Input Method Non-Restriction"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-017",
+            "task": "The content is designed in a way that does not restrict input modalities available.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "2.5.7": {
+      "title": "Dragging Movements",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
+      "automation": {
+        "act": [],
+        "axe": [
+          "dragging-movements"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "2.5.7.A - Single Pointer Alternative for Dragging"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "INP-024",
+            "task": "All functionality requiring dragging movements can also be operated using single-pointer alternatives.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "2.5.8": {
+      "title": "Target Size (Minimum)",
+      "level": "AA",
+      "principle": "Operable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+      "automation": {
+        "act": [
+          "a25f45"
+        ],
+        "axe": [
+          "target-size"
+        ],
+        "alfa": [
+          "SIA-R101"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Visual Design"
+        ],
+        "tt_steps": [
+          "2.5.8.A - 24x24 CSS Pixel Verification"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "INP-025",
+            "task": "Any programmatic grouping of controls has a target area of at least 24 by 24 CSS pixels.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "CSS-028",
+            "task": "A minimum height and width of 24 CSS pixels is provided for each interactive target that is not an inline link or control.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-029",
+            "task": "For any control that is less than 24 by 24 CSS pixels, add padding so that the target area is at least 24 by 24 CSS pixels.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "CSS-030",
+            "task": "Controls with the same functionality or destination are combined within a single target area that is at least 24 by 24 CSS pixels.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#css-and-presentation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "3.1.1": {
+      "title": "Language of Page",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html",
+      "automation": {
+        "act": [
+          "b5c3f8",
+          "bf051a",
+          "ucwvc8"
+        ],
+        "axe": [
+          "document-title",
+          "html-has-lang",
+          "html-lang-valid",
+          "html-xml-lang-mismatch"
+        ],
+        "alfa": [
+          "SIA-R1",
+          "SIA-R4",
+          "SIA-R5"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "11.A - Page Language Defined"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-020",
+            "task": "The primary language used in the document is properly identified using the lang attribute.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-021",
+            "task": "The language definition of the document uses the correct value for language and locale.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SCT-018",
+            "task": "The primary language used in the document is properly identified using the lang attribute.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-019",
+            "task": "The language definition of the document uses the correct value for language and locale.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "3.1.2": {
+      "title": "Language of Parts",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
+      "automation": {
+        "act": [
+          "de46e4",
+          "off6ek"
+        ],
+        "axe": [
+          "valid-lang"
+        ],
+        "alfa": [
+          "SIA-R7"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "11.B - Part Language Defined"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-022",
+            "task": "Content passages that differ from the default are identified with the correct value for language and locale.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SCT-020",
+            "task": "Content passages that differ from the default are identified with the correct value for language and locale.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WH",
+        "LH",
+        "LLCLA"
+      ]
+    },
+    "3.1.3": {
+      "title": "Unusual Words",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/unusual-words.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "3.1.3.A - Definitions for Unusual Words"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-023",
+            "task": "Unusual words, phrases, and abbreviations are organized into a glossary.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-024",
+            "task": "Unusual words found in the content are linked to their definitions in a glossary.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-021",
+            "task": "Unusual words, phrases, and abbreviations are organized into a glossary.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-022",
+            "task": "Unusual words found in the content are linked to their definitions in a glossary.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.1.4": {
+      "title": "Abbreviations",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/abbreviations.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "3.1.4.A - Abbreviation Expansion"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-025",
+            "task": "Abbreviations are programmatically associated with their definition.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "SCT-023",
+            "task": "Abbreviations are programmatically associated with their definition.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.1.5": {
+      "title": "Reading Level",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "3.1.5.A - Lower Secondary Level Supplement"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-026",
+            "task": "Content is written in plain language using everyday words, to help users with different literacy levels and access needs.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "SCT-027",
+            "task": "Ideas conveyed through text are supported with illustrations or other visuals.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design \r\nContent Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "SCT-028",
+            "task": "Content is displayed and structured in a way that makes it easier to read.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SCT-024",
+            "task": "Content is written in plain language using everyday words, to help users with different literacy levels and access needs.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.1.6": {
+      "title": "Pronunciation",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pronunciation.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "3.1.6.A - Pronunciation Mechanism"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SCT-029",
+            "task": "Ambiguous words are supported by a mechanism that helps users identify their specific pronunciation.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#static-content",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.2.1": {
+      "title": "On Focus",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "4.E - On Focus"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-018",
+            "task": "Changes of context are not initiated automatically as user interface components receive focus.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-024",
+            "task": "Setting the focus to a new element doesn't automatically trigger a context change, such as content updates or the opening of new windows.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "3.2.2": {
+      "title": "On Input",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/on-input.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "5.D - On Input"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "INP-024",
+            "task": "Keyboard focus does not move automatically from one form control to the next.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-019",
+            "task": "Event handlers are not used to automatically trigger a change of context upon input that would otherwise require explicit user action unless previously communicated.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-020",
+            "task": "Form interactions are not designed to include automatic changes of context upon input that would otherwise require explicit user action unless previously communicated.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-025",
+            "task": "Interacting with input controls or other equivalent elements doesn't automatically trigger a change of context, unless the user has been notified ahead of time.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "INP-026",
+            "task": "Keyboard focus does not move automatically from one form control to the next.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#input-modalities",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "3.2.3": {
+      "title": "Consistent Navigation",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "3.2.3.A - Navigation Consistency Across Pages"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-026",
+            "task": "Navigation mechanisms are repeated consistently throughout the site or application in the same relative order.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "3.2.4": {
+      "title": "Consistent Identification",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "9.C - Consistent Identification"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-021",
+            "task": "Error messages and alerts are visually displayed across the site in a consistent manner.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-022",
+            "task": "Visual indicators are presented to support error messages when errors are returned.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "NAV-027",
+            "task": "Navigational graphics and icons used throughout the site or application are designed to always serve the same function and or meaning.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "NAV-028",
+            "task": "The accessible name of user interface components used across the site or application are defined consistently.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "NAV-029",
+            "task": "Users can consistently distinguish between links internal to a page and links going to different locations.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "3.2.5": {
+      "title": "Change on Request",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/change-on-request.html",
+      "automation": {
+        "act": [
+          "bc659a",
+          "bisz58"
+        ],
+        "axe": [
+          "meta-refresh-no-exceptions"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "3.2.5.A - Context Change on User Request Only"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "NAV-030",
+            "task": "Links that open new windows visually indicate they will do so.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "NAV-031",
+            "task": "Links that open new windows indicate they will do so, either as part of the link text, or using aria-label or equivalent means.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.2.6": {
+      "title": "Consistent Help",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html",
+      "automation": {
+        "act": [
+          "30b328"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "Business"
+        ],
+        "tt_steps": [
+          "3.2.6.A - Relative Location of Help Mechanisms"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "NAV-032",
+            "task": "Help mechanisms are repeated consistently throughout the site or application in the same relative order.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#navigation",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "3.3.1": {
+      "title": "Error Identification",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html",
+      "automation": {
+        "act": [
+          "36b590"
+        ],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "5.F - Error Identification"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-023",
+            "task": "Inline error messages are displayed next to their related form controls.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-024",
+            "task": "Error messages are grouped as a list at the top of the form.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WPC",
+        "LLCLA"
+      ]
+    },
+    "3.3.2": {
+      "title": "Labels or Instructions",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html",
+      "automation": {
+        "act": [],
+        "axe": [
+          "form-field-multiple-labels"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Content Authoring",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "5.A - Label Provided"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-025",
+            "task": "Radio buttons and checkbox labels are positioned to the right of their respective form controls (for left-to-right languages).",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-026",
+            "task": "Related form controls and their respective labels are grouped together visually.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-027",
+            "task": "Instructions are in close visual proximity to their related controls.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-028",
+            "task": "Form controls are coded to have persistent visual labels.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-029",
+            "task": "Form controls are designed to have persistent visual labels.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Visual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-030",
+            "task": "Clear text-based instructions are provided on how to use the form controls.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "FRM-031",
+            "task": "Instructions provided in forms are displayed in a clear and unambiguous way.",
+            "primary_ownership": "Visual Design",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/visual-designer/"
+          },
+          {
+            "id": "FRM-032",
+            "task": "Placeholder text is not used in lieu of regular text label elements.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-034",
+            "task": "Instructions intending to prevent errors are provided in text and available.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "LV",
+        "LLCLA"
+      ]
+    },
+    "3.3.3": {
+      "title": "Error Suggestion",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "5.G - Error Suggestion"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-033",
+            "task": "Error messages returned provide clear instructions on how to fix them.",
+            "primary_ownership": "Content Authoring",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/content-author/"
+          },
+          {
+            "id": "FRM-034",
+            "task": "Instructions intending to prevent errors are provided in text and available.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "FRM-035",
+            "task": "Text-based instructions are provided to help users correct errors.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring\r\nVisual Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "3.3.4": {
+      "title": "Error Prevention (Legal, Financial, Data)",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Business"
+        ],
+        "tt_steps": [
+          "5.H - Error Prevention"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-036",
+            "task": "Users are provided with means to prevent and correct form errors when legal, financial, or data information is involved.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Business",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "FRM-037",
+            "task": "When legal, financial, or data information is involved, confirmation screens are provided prior to any final form submission.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Business",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "WPC",
+        "WH",
+        "LH",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "3.3.5": {
+      "title": "Help",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/help.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Content Authoring"
+        ],
+        "tt_steps": [
+          "3.3.5.A - Context-Sensitive Help Availability"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-038",
+            "task": "Context-sensitive help text is available.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.3.6": {
+      "title": "Error Prevention (All)",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Business"
+        ],
+        "tt_steps": [
+          "3.3.6.A - Reversible or Confirmable All Submissions"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "FRM-039",
+            "task": "Users are provided with means to prevent and correct form errors.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Business",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    },
+    "3.3.7": {
+      "title": "Redundant Entry",
+      "level": "A",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html",
+      "automation": {
+        "act": [],
+        "axe": [
+          "no-redundant-entry"
+        ],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "UX Design",
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "3.3.7.A - Form Data Persistence Check"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "FRM-040",
+            "task": "Except when it is essential for users to re-enter information in the same session, previously entered information is made available through auto-population or user selection.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "3.3.8": {
+      "title": "Accessible Authentication (Minimum)",
+      "level": "AA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Business",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "3.3.8.A - Cognitive Function Test Audit"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "FRM-041",
+            "task": "Cognitive function tests that do not rely on object recognition or personal content must provide an alternative non-cognitive method or an assistive mechanism.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "3.3.9": {
+      "title": "Accessible Authentication (Enhanced)",
+      "level": "AAA",
+      "principle": "Understandable",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html",
+      "automation": {
+        "act": [],
+        "axe": [],
+        "alfa": []
+      },
+      "manual": {
+        "roles": [
+          "Business"
+        ],
+        "tt_steps": [
+          "3.3.9.A - No-test Authentication Verification"
+        ],
+        "tt_source": "Summarized by AI",
+        "arrm_tasks": [
+          {
+            "id": "FRM-042",
+            "task": "A cognitive function test during authentication is not required unless an alternative non-cognitive method or an assistive mechanism is provided.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#form-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          }
+        ]
+      },
+      "fpc": []
+    },
+    "4.1.2": {
+      "title": "Name, Role, Value",
+      "level": "A",
+      "principle": "Robust",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+      "automation": {
+        "act": [
+          "07b338",
+          "1a02b0",
+          "2e1954",
+          "2t702h",
+          "307n5z",
+          "3e12e1",
+          "4b1c6c",
+          "4e8ab6",
+          "59796f",
+          "5c01ea",
+          "5f99a7",
+          "674b10",
+          "6a7281",
+          "6cfa84",
+          "97a4e1",
+          "c487ae",
+          "cae760",
+          "e086e5",
+          "eac66b",
+          "m6b1q3",
+          "rs8a50",
+          "sm249k"
+        ],
+        "axe": [
+          "area-alt",
+          "aria-allowed-attr",
+          "aria-braille-equivalent",
+          "aria-command-name",
+          "aria-conditional-attr",
+          "aria-deprecated-role",
+          "aria-hidden-body",
+          "aria-hidden-focus",
+          "aria-input-field-name",
+          "aria-meter-name",
+          "aria-progressbar-name",
+          "aria-prohibited-attr",
+          "aria-required-attr",
+          "aria-required-children",
+          "aria-required-parent",
+          "aria-roledescription",
+          "aria-roles",
+          "aria-tab-name",
+          "aria-toggle-field-name",
+          "aria-tooltip-name",
+          "aria-valid-attr",
+          "aria-valid-attr-value",
+          "button-name",
+          "duplicate-id-aria",
+          "frame-title",
+          "frame-title-unique",
+          "image-alt",
+          "input-button-name",
+          "input-image-alt",
+          "label",
+          "link-name",
+          "nested-interactive",
+          "select-name",
+          "summary-name"
+        ],
+        "alfa": [
+          "SIA-R11",
+          "SIA-R12",
+          "SIA-R13",
+          "SIA-R15",
+          "SIA-R17",
+          "SIA-R2",
+          "SIA-R20",
+          "SIA-R21",
+          "SIA-R22",
+          "SIA-R23",
+          "SIA-R24",
+          "SIA-R28",
+          "SIA-R29",
+          "SIA-R30",
+          "SIA-R31",
+          "SIA-R8",
+          "SIA-R90"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development"
+        ],
+        "tt_steps": [
+          "5.E - Change Notify Form"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "SEM-028",
+            "task": "iFrames are given a title that describes their content or purpose.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "SEM-029",
+            "task": "iFrames are implemented using title attribute values that describe their content or purpose.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "Content Authoring",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#semantic-structure",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "ANM-037",
+            "task": "Information conveyed by multimedia player controls are programmatically announced through assistive technologies.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#animation-and-movement",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "DHS Trusted Tester v5"
+      },
+      "fpc": [
+        "WV",
+        "LV",
+        "LM",
+        "LLCLA"
+      ]
+    },
+    "4.1.3": {
+      "title": "Status Messages",
+      "level": "AA",
+      "principle": "Robust",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html",
+      "automation": {
+        "act": [
+          "0sstp9"
+        ],
+        "axe": [
+          "status-messages"
+        ],
+        "alfa": [
+          "SIA-R90"
+        ]
+      },
+      "manual": {
+        "roles": [
+          "Front-End Development",
+          "UX Design"
+        ],
+        "tt_steps": [
+          "4.1.3.A - Status Message Role Assignment",
+          "4.1.3.B - Dynamic Content Announcements"
+        ],
+        "arrm_tasks": [
+          {
+            "id": "DYN-001",
+            "task": "Information conveyed by multimedia player controls are programmatically announced through assistive technologies.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "DYN-002",
+            "task": "Status messages are announced by assistive technologies without affecting the focus.",
+            "primary_ownership": "User Experience (UX) Design",
+            "secondary_ownership": "Front-End Development",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/user-experience/"
+          },
+          {
+            "id": "DYN-003",
+            "task": "Status, toast, or similar messages are programmatically determined through WAI-ARIA roles or properties, so they can be presented to assistive technology users without receiving focus.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          },
+          {
+            "id": "DYN-004",
+            "task": "Status, toast, or similar messages are programmatically determined through WAI-ARIA roles or properties, so they can be presented to assistive technology users without receiving focus.",
+            "primary_ownership": "Front-End Development",
+            "secondary_ownership": "User Experience (UX) Design",
+            "category_url": "https://www.w3.org/WAI/planning/arrm/tasks/#dynamic-interactions",
+            "role_url": "https://www.w3.org/WAI/planning/arrm/front-end/"
+          }
+        ],
+        "tt_source": "Summarized by AI"
+      },
+      "fpc": []
+    }
+  }
+}

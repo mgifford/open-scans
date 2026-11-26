@@ -170,6 +170,36 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 | P14 | Committed, reproducible extraction of W3C report-derived ACT mappings: fail-closed refresh, deterministic sorted overlays, added/removed diff summary, offline HTML fixtures, and refresh documentation |
 | P15 | Browser-executable scoping: Chromium's Puppeteer path no longer leaks into WebKit/Firefox Playwright launches, restoring axe-core and Sa11y for random-browser scans |
 
+### November 2026: Assessment coverage and manual assessment (Phase 1)
+
+The following development was attributed to DeepSeek Harness (`deepseek-flash`).
+
+| Work | Contribution |
+|---|---|
+| Phase 0 | Audit of the existing scanner and report pipeline, engine evidence, ACT registry and baseline performance; upstream Accessibility Insights licence and rule-configuration review at commit `97ad835`; reuse manifest and outstanding-review list |
+| Catalogue | Vendored, versioned and content-hashed WCAG Spine snapshot, strict validation, fail-closed refresh script, provenance record, catalogue projection |
+| Rule execution manifest | Per-engine execution status, outcome counts, observed and failing rule identifiers, rule-granularity limits, frame and resource limitations, built from existing artifacts only |
+| Coverage | Per-criterion coverage model, automation limitations, explicit-denominator counts, report section with filters and target-level rows |
+| Manual assessment | 20 independently authored procedures across three pathways, manual barrier recording, professional and experiential evaluation records |
+| Portability | `a11y-assessment-document/1` schema and validator, local storage adapter with honest failure states, JSON export, validated import, merge with conflict preservation, per-report reset |
+| Issue reporting | Record-to-Markdown and JSON issue reports with explicit placeholders, snippet redaction, clipboard and fallback actions |
+| Report integrity | One `<main>` landmark fix, escaped scan title in both HTML and inline JSON, `<`-escaped embedded JSON |
+| Verification | 1092 unit tests, 1 pre-existing ISO-week failure; real `file://` WebKit validation with axe (0 violations after the landmark fix), save/restore, and no-JavaScript contract |
+| Documentation | Architecture, data schema, manual assessment, resource budget, attribution and VITAL handoff documents |
+
+Limitations recorded in this work:
+
+- No Accessibility Insights code was imported, and the assessment definitions and
+  injected keyboard modules were not inspected.
+- Assisted collectors, keyboard/focus assessment and user journey UI are not
+  implemented.
+- The axe-tag comparison (`wcag22aa`) has not been performed.
+- The report's own axe scan still returns two *incomplete* checks that were not manually
+  verified: `aria-prohibited-attr` on `.stat-inline`, and `color-contrast` on short count
+  text.
+- Chromium and Firefox were not validated for the assessment workspace; only WebKit was
+  exercised from `file://`.
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

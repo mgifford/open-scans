@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mgifford.github.io/open-scans/schemas/a11y-assessment-coverage.schema.json",
+  "title": "Open Scans accessibility assessment coverage",
+  "description": "What automated testing did and did not evaluate, per WCAG success criterion, for one scan. Counts always carry an explicit denominator; no field is a percentage of accessibility.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "catalogue", "report", "manifest", "counts", "criteria"],
+  "properties": {
+    "schema": { "const": "a11y-assessment-coverage/1" },
+    "generatedAt": { "type": ["string", "null"] },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["catalogueVersion", "contentSha256"],
+      "properties": {
+        "schema": { "type": "string" },
+        "catalogueVersion": { "type": "string" },
+        "contentSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "generated": { "type": ["string", "null"] },
+        "wcagVersion": { "type": ["string", "null"] },
+        "sourceUrl": { "type": ["string", "null"] },
+        "sourceRepository": { "type": ["string", "null"] },
+        "transitional": { "type": "boolean" }
+      }
+    },
+    "report": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reportId"],
+      "properties": {
+        "reportId": { "type": "string" },
+        "issueNumber": { "type": ["integer", "null"] },
+        "issueUrl": { "type": ["string", "null"] },
+        "scanTitle": { "type": ["string", "null"] },
+        "scannedAt": { "type": ["string", "null"] },
+        "engines": { "type": "array", "items": { "type": "string" } },
+        "pageCount": { "type": "integer", "minimum": 0 },
+        "submittedBy": { "type": ["string", "null"] }
+      }
+    },
+    "conformanceTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wcagVersion": { "type": "string" },
+        "level": { "enum": ["A", "AA", "AAA"] },
+        "source": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "engines"],
+      "properties": {
+        "schema": { "const": "rule-execution-manifest/1" },
+        "requestedEngines": { "type": "array", "items": { "type": "string" } },
+        "executionUnknownNote": { "type": "string" },
+        "engines": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["engine", "status", "ruleGranularity", "observedRules"],
+            "properties": {
+              "engine": { "type": "string" },
+              "label": { "type": "string" },
+              "status": { "enum": ["executed", "partial", "failed", "not-run"] },
+              "pagesExecuted": { "type": "integer", "minimum": 0 },
+              "pagesFailed": { "type": "integer", "minimum": 0 },
+              "firstError": { "type": ["string", "null"] },
+              "ruleGranularity": { "enum": ["rule-outcomes", "failure-only"] },
+              "observedRules": { "type": "array", "items": { "type": "string" } },
+              "rulesWithFailures": { "type": "array", "items": { "type": "string" } },
+              "outcomeCounts": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "passed": { "type": "integer", "minimum": 0 },
+                  "failed": { "type": "integer", "minimum": 0 },
+                  "cantTell": { "type": "integer", "minimum": 0 },
+                  "inapplicable": { "type": "integer", "minimum": 0 }
+                }
+              },
+              "limitations": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "frames": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "note": { "type": "string" },
+            "limitation": { "type": "string" }
+          }
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "skippedDueToTimeout": { "type": "integer", "minimum": 0 },
+            "skippedDueToErrAborted": { "type": "integer", "minimum": 0 },
+            "note": { "type": "string" }
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["criteriaTotal", "criteriaByLevel", "withAutomatedRuleMapped", "withAutomatedRuleObserved", "noAutomatedRuleMapped", "withManualProcedure", "withRecordedHumanReview"],
+      "properties": {
+        "criteriaTotal": { "type": "integer", "minimum": 0 },
+        "criteriaByLevel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "A": { "type": "integer", "minimum": 0 },
+            "AA": { "type": "integer", "minimum": 0 },
+            "AAA": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "withAutomatedRuleMapped": { "type": "integer", "minimum": 0 },
+        "withAutomatedRuleObserved": { "type": "integer", "minimum": 0 },
+        "observedWithoutViolation": { "type": "integer", "minimum": 0 },
+        "observedWithViolation": { "type": "integer", "minimum": 0 },
+        "noAutomatedRuleMapped": { "type": "integer", "minimum": 0 },
+        "withManualProcedure": { "type": "integer", "minimum": 0 },
+        "withRecordedHumanReview": { "type": "integer", "minimum": 0 },
+        "humanReviewNote": { "type": "string" }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "automationLimitations": { "type": "array", "items": { "type": "string" } },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "level", "automated", "manual"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^\\d\\.\\d\\.\\d+$" },
+          "title": { "type": "string" },
+          "level": { "enum": ["A", "AA", "AAA"] },
+          "principle": { "type": ["string", "null"] },
+          "url": { "type": "string" },
+          "automated": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "potential": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "act": { "type": "array", "items": { "type": "string" } },
+                  "axe": { "type": "array", "items": { "type": "string" } },
+                  "alfa": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "observed": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "act": { "type": "array", "items": { "type": "string" } },
+                  "axe": { "type": "array", "items": { "type": "string" } },
+                  "alfa": { "type": "array", "items": { "type": "string" } }
+                }
+              },
+              "failed": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "engine": { "type": "string" },
+                    "ruleId": { "type": "string" }
+                  }
+                }
+              },
+              "engines": { "type": "array", "items": { "type": "string" } },
+              "state": { "enum": ["observed", "not-observed", "no-automated-rules"] }
+            }
+          },
+          "manual": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "procedures": { "type": "array", "items": { "type": "string" } },
+              "roles": { "type": "array", "items": { "type": "string" } },
+              "catalogueRoles": { "type": "array", "items": { "type": "string" } },
+              "arrmTaskIds": { "type": "array", "items": { "type": "string" } },
+              "ttSteps": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "functionalPerformance": { "type": "array", "items": { "type": "string" } },
+          "gaps": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

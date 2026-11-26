@@ -5,6 +5,18 @@ import { getEqualAccessRuleName } from "./equalaccess-rule-metadata.mjs";
 import { buildScanContext, formatViewportSummary, formatViewportToken } from "../scan-context.js";
 import { renderCorrelationHtml } from "./correlation-report.mjs";
 import { renderActCoverageHtml } from "./act-coverage.mjs";
+import { loadCatalogue } from "./assessment/catalogue.mjs";
+import { buildAssessmentCoverage, buildReportIdentity } from "./assessment/coverage.mjs";
+import {
+  ASSESSMENT_CSS,
+  renderAssessmentCoverage,
+  renderAssessmentWorkspace,
+  renderMissingAssessmentNotice,
+  renderAssessmentContextScript,
+  renderAssessmentNoScript
+} from "./assessment/render.mjs";
+import { renderAssessmentRuntimeScript } from "./assessment/bundle.mjs";
+import { ASSESSMENT_SCHEMA_VERSION } from "./assessment/records.mjs";
 
 /**
  * Escape a string for safe inclusion in HTML.
@@ -18,6 +30,17 @@ function escapeHtml(text) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+/**
+ * Serialise a value for safe inclusion inside an inline <script>.
+ *
+ * JSON.stringify alone is not enough: a string containing `</script>` still
+ * closes the script element in HTML. Escaping `<` as \u003c keeps the JSON
+ * value identical while making the sequence inert in the document.
+ */
+function jsonForScript(value) {
+  return JSON.stringify(value ?? null).replace(/</g, "\\u003c");
 }
 
 /**
@@ -348,10 +371,40 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   const scanContext = buildScanContext(summary.scanContext);
   const correlationSection = correlationReport ? renderCorrelationHtml(correlationReport) : "";
   const actCoverageSection = correlationReport?.actCoverage ? renderActCoverageHtml(correlationReport.actCoverage) : "";
+
+  // ── Assessment coverage ───────────────────────────────────────────────────
+  // Derived only from artifacts the scan already produced: no extra browser
+  // launch, navigation or network request. The catalogue is read from the
+  // vendored, content-hashed snapshot so report generation works offline.
+  const assessmentCatalogue = loadCatalogue();
+  const assessmentCoverage = summary.assessmentCoverage?.criteria?.length
+    ? summary.assessmentCoverage
+    : buildAssessmentCoverage({ summary, catalogue: assessmentCatalogue, generatedAt: scannedAt });
+  const assessmentReport = buildReportIdentity(summary);
+  const assessmentPages = [...new Set(
+    (summary.results ?? [])
+      .map((result) => result?.finalUrl || result?.submittedUrl)
+      .filter(Boolean)
+  )].slice(0, 200);
+  const assessmentWorkspaceReport = { ...assessmentReport, pages: assessmentPages };
+  const assessmentCoverageSection = renderAssessmentCoverage(assessmentCoverage);
+  const assessmentWorkspaceSection = renderAssessmentWorkspace({
+    coverage: assessmentCoverage,
+    report: assessmentWorkspaceReport,
+    pages: assessmentPages
+  });
+  const assessmentContextScript = renderAssessmentContextScript({
+    report: assessmentWorkspaceReport,
+    catalogue: assessmentCatalogue.identity,
+    schemaVersion: ASSESSMENT_SCHEMA_VERSION
+  });
+  const assessmentRuntimeScript = renderAssessmentRuntimeScript();
   // Only list sections that this report actually renders, so every link has
   // a target. Evidence sections depend on the correlation artifacts.
   const tocEntries = [
     ["#section-summary", "Summary"],
+    ["#assessment-coverage", "Assessment coverage"],
+    ["#manual-assessment", "Manual assessment"],
     ...(correlationSection ? [["#multi-engine-evidence", "Multi-engine evidence"]] : []),
     ...(actCoverageSection ? [["#act-rule-coverage", "ACT rule coverage"]] : []),
     ...((summary.results ?? []).some((result) => Object.values(result ?? {}).some((scanner) => Array.isArray(scanner?.warnings) && scanner.warnings.length > 0))
@@ -930,7 +983,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Report: ${scanTitle || `Issue #${issueNumber}`}</title>
+  <title>Accessibility Report: ${escapeHtml(scanTitle || `Issue #${issueNumber}`)}</title>
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     /* ── Color tokens ── */
     :root {
@@ -1784,17 +1838,18 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       summary { background: none; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
       .container { box-shadow: none; max-width: none; width: 100%; padding: 0; }
     }
+${ASSESSMENT_CSS}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="container" id="main-content" tabindex="-1">
+  <main class="container" id="main-content" tabindex="-1">
     <header>
       <div class="header-content">
         <h1>Accessibility Scan Report</h1>
         <div class="meta">
-          <span><strong>Title:</strong> ${scanTitle || `Issue #${issueNumber}`}</span>
-          <span><strong>Issue:</strong> <a href="${issueUrl}" target="_blank">#${issueNumber}</a></span>
+          <span><strong>Title:</strong> ${escapeHtml(scanTitle || `Issue #${issueNumber}`)}</span>
+          <span><strong>Issue:</strong> <a href="${escapeHtml(issueUrl)}" target="_blank">#${escapeHtml(issueNumber)}</a></span>
           <span><strong>Date:</strong> ${new Date(scannedAt).toLocaleString()}</span>
           <span><strong>Duration:</strong> ${(totalElapsedMs / 60000).toFixed(1)}m</span>
           <span><strong>URLs:</strong> ${acceptedCount} / ${totalSubmitted}</span>
@@ -1824,6 +1879,9 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       </button>
     </header>
     ${tocHtml}
+
+    ${renderMissingAssessmentNotice()}
+    ${renderAssessmentNoScript()}
 
     ${trendSectionHtml}
 
@@ -1905,6 +1963,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       </div>
     </section>
 
+    ${assessmentCoverageSection}
+
     ${correlationSection}
     ${actCoverageSection}
 
@@ -1931,10 +1991,13 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
 
     ${remediationHtml}
 
+    ${assessmentWorkspaceSection}
+    ${assessmentContextScript}
+
     <footer>
       <p>Generated by <a href="https://github.com/mgifford/open-scans" target="_blank" rel="noopener noreferrer">open-scans</a> — an open-source accessibility scanning tool.</p>
     </footer>
-  </div>
+  </main>
 
   <script>
     // ── Theme toggle ──
@@ -2166,7 +2229,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
     });
 
     // ── Copy failure details ──
-    const SCAN_TITLE = ${JSON.stringify(scanTitle || `Issue #${issueNumber}`)};
+    const SCAN_TITLE = ${jsonForScript(scanTitle || `Issue #${issueNumber}`)};
     const ENGINE_DISPLAY_LABELS = { axe: 'axe-core', alfa: 'ALFA', equalAccess: 'Equal Access', accesslint: 'AccessLint', sa11y: 'Sa11y' };
 
     function getEnvironment() {
@@ -2403,6 +2466,7 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
       }
     });
   </script>
+  ${assessmentRuntimeScript}
 </body>
 </html>`;
 
