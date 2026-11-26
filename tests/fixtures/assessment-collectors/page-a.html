@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fixture A</title>
+  </head>
+  <body>
+    <main>
+      <h1>Page A title</h1>
+
+      <span id="labelled-heading">Labelled heading</span>
+      <h3 aria-labelledby="labelled-heading">Visible fallback</h3>
+
+      <span id="cycle-a" aria-labelledby="cycle-b">A</span>
+      <span id="cycle-b" aria-labelledby="cycle-a">B</span>
+      <h3 aria-labelledby="cycle-a">Cycle heading</h3>
+
+      <h2>Section heading</h2>
+      <h4>Jumped level</h4>
+
+      <img src="rates.png" alt="rates.png">
+      <img src="decorative.png" alt="">
+      <img src="no-alt.png">
+
+      <figure>
+        <img src="caption.png" alt="Caption text">
+        <figcaption>Caption text</figcaption>
+      </figure>
+
+      <nav aria-label="Fixture links">
+        <a href="/more">Read more</a>
+        <a href="/icon"><img src="icon.png" alt="Icon label"></a>
+        <a href="/download" target="_blank">Download</a>
+        <a href="/docs" aria-label="Open documentation">Docs</a>
+        <a href="/empty"><span></span></a>
+      </nav>
+
+      <iframe title="Not captured"></iframe>
+
+      <div id="shadow-host"></div>
+      <script>
+        const host = document.getElementById("shadow-host");
+        const root = host.attachShadow({ mode: "open" });
+        root.innerHTML = "<h2>Shadow heading</h2>";
+      </script>
+    </main>
+  </body>
+</html>
