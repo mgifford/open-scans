@@ -200,6 +200,20 @@ Limitations recorded in this work:
 - Chromium and Firefox were not validated for the assessment workspace; only WebKit was
   exercised from `file://`.
 
+#### Assisted collectors (Phase 3a)
+
+Design and implementation in PR #438 on `docs/assessment-phase-3-design`. The work is
+opt-in and does not change the default scan.
+
+| Work | Contribution |
+|---|---|
+| Design | `docs/ASSESSMENT-ASSISTED-COLLECTORS.md`: why capture is a separate pass, the `a11y-assisted-collectors/1` contract, the AccName 1.2 subset, a signal catalogue with "does not mean" lines, caps, budget targets, failure and exit-code rules, and the 3a/3b/3c rollout |
+| Capture | Browser extractor for headings, images, links and the `aria-labelledby` graph; sequential capture; duplicate-final-URL handling; `assessment-collectors.json` written beside the Phase 1 artifacts |
+| Gate | `--assisted` / `OPEN_SCANS_ASSISTED` opt-in with positional arguments preserved; no browser, navigation or artifact without it |
+| Validation | Contract validator that rejects verdict fields, unknown signal ids, malformed or duplicate ids and false completion; fixture runner asserting names, signals, caps and id stability |
+| Verification | 15 unit tests; two-page WebKit fixture run (7 headings, 6 images, 7 links, 13 signals); full suite 1109 tests with the known ISO-week failure unchanged |
+| Boundaries | No report surface (3b), no workflow opt-in (3c), no overhead measurement, WebKit only |
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

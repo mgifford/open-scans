@@ -1,8 +1,10 @@
 # Assessment architecture
 
 **Status:** Phase 1 implemented on `feat/assessment-phase-1`. Phases 2–7 are planned,
-not implemented. See the status table at the end of this document before assuming a
-capability exists.
+not implemented. Phase 3 collectors are specified in
+[`ASSESSMENT-ASSISTED-COLLECTORS.md`](ASSESSMENT-ASSISTED-COLLECTORS.md) as a design
+only. See the status table at the end of this document before assuming a capability
+exists.
 
 This document explains how Open Scans adds automated, assisted and human
 accessibility assessment without changing the default automated scan, and where the
@@ -281,7 +283,7 @@ Passing results are never transferred between unrelated scans.
 | Capability | Phase | Why not now |
 | :--- | :--- | :--- |
 | Accessibility Insights JSON import | 2 | needs real sample exports and a documented version matrix |
-| Heading, image and link collectors | 3 | needs a DOM collector layer and accessible-name computation |
+| Heading, image and link collectors | 3 | needs a DOM collector layer and accessible-name computation; designed in [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
 | Additional custom rules | 4 | needs the Phase 3 collector contract |
 | Keyboard and focus interaction assessment | 5 | needs bounded interaction budgets and real key events |
 | User journey records and UI | 6 | schema is ready (`journey`), UI and task definitions are not |
@@ -309,7 +311,7 @@ Passing results are never transferred between unrelated scans.
 | Reproducible `file://` browser check | Implemented | `npm run validate:assessment-report <report.json> --browser=webkit` (needs a Playwright browser) |
 | `file://` storage and clipboard behaviour | **Not verified** | needs manual validation; documented in the resource budget |
 | Accessibility Insights import | Not implemented | Phase 2 |
-| Assistive collectors | Not implemented | Phase 3 |
+| Assistive collectors | Partially (Phase 3a) | Opt-in `--assisted` capture and `assessment-collectors.json`; no report surface yet. Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
 | Keyboard/focus assessment | Not implemented | Phase 5 |
 | User journey UI | Not implemented | Phase 6 |
 | Automated accessibility test of the new UI | Partially | structural tests only; no axe run against a generated report yet |

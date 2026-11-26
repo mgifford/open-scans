@@ -239,7 +239,7 @@ implemented; copying and downloading are.
 | Per-record issue Markdown and JSON | Implemented |
 | Clipboard fallback | Implemented in code; `file://` behaviour needs manual validation |
 | Accessibility Insights JSON import | Not implemented (Phase 2) |
-| Heading / image / link collectors | Not implemented (Phase 3) |
+| Heading / image / link collectors | Not implemented (Phase 3; design in [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md)) |
 | Keyboard focus sequence recording | Not implemented (Phase 5) |
 | User journey tasks | Not implemented (Phase 6) |
 | Screenshots / recordings as evidence | Not implemented |

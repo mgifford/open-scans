@@ -1,12 +1,88 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-26
-**Open Scans checkpoint:** `ca5e9ef9` on `main`; Phase 1 assessment work on `feat/assessment-phase-1` (PR #437, unmerged; see the dated entries below)
+**Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3a assisted
+collectors in PR #438 (opt-in only)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26: Phase 3a assisted collectors (opt-in)
+
+Implemented on `docs/assessment-phase-3-design` (PR #438, draft) on top of the
+design entry below. The default scan still runs no collector:
+
+- `scanner/assessment/collectors/model.mjs` — accessible-name subset, signals,
+  stable `col_` ids, caps and total-cap trimming, artifact validation. The
+  validator rejects verdict fields (`outcome`, `severity`, `wcag`, …), unknown
+  signal ids, duplicate or malformed item ids, count mismatches and a false
+  `complete` status.
+- `scanner/assessment/collectors/extract.mjs` — browser-side facts (headings,
+  images, links, name graph). Top document only: iframes and open shadow hosts
+  are counted and skipped; closed shadow roots cannot be detected.
+- `scanner/assessment/collectors/capture.mjs` — `--assisted` /
+  `OPEN_SCANS_ASSISTED` gate, sequential capture with the per-page settle delay
+  the engines used, duplicate final URLs recorded as not-captured, artifact
+  written as `assessment-collectors.json`.
+- `scanner/run-scan.mjs` — positional arguments preserved, unknown flags warned
+  about, collectors run only after every automated artifact is written and never
+  touch `report.json`.
+- `scripts/validate-assisted-collectors.mjs` — validates an artifact file, or
+  captures `tests/fixtures/assessment-collectors` and asserts names, signals and
+  item-id stability.
+
+Verified on 2026-11-26:
+
+- `npm run lint` — exit 0.
+- `node --test tests/unit/assessment-collectors.test.mjs` — 15 pass, 0 fail.
+- `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm run validate:assisted-collectors -- tests/fixtures/assessment-collectors --browser=webkit`
+  — 2 pages, 7 headings, 6 images, 7 links, 13 signals; ids stable across two
+  captures; artifact validated. The file mode also accepted a real `complete`
+  artifact and a `not-run` artifact produced without the browser path.
+- Full suite — 1109 tests, 1103 pass, 1 fail, 5 skipped. The failure is the known
+  `generate-reports-html` "should group reports by ISO week" timezone case
+  (25 !== 37); it is not a regression.
+
+Not verified: no end-to-end `--assisted` scan against a live site; no Chromium
+or Firefox fixture run; no measured overhead; nothing renders the inventory in a
+report yet (3b), so the artifact is the only surface.
+
+Next safe step: 3b — inventory section, record prefill and the optional
+`collectorItemId` — then measure the assisted overhead on the 6-page reference
+scan. Do not enable 3c before both.
+
+---
+
+### 2026-11-26: Phase 3 collector design (docs only)
+
+`docs/ASSESSMENT-ASSISTED-COLLECTORS.md` (PR #438, draft) specifies the assisted
+collector layer for headings, images and links, on `main` = `6d8fbdc9` after #437
+merged. It fixes the non-negotiable rules before any code exists: a collector
+inventories and never evaluates; no signal is a finding; no record is created
+from a signal; coverage counts do not change when collectors run; the default
+scan keeps its no-extra-browser, no-extra-navigation contract unless an operator
+passes `--assisted` or `OPEN_SCANS_ASSISTED=1`.
+
+It also defines `a11y-assisted-collectors/1` (caps, truncation flags, item ids,
+banned outcome/severity fields), the AccName 1.2 subset with its stated
+limitations, a starter signal catalogue with a "does not mean" line per signal,
+the report surface and record prefill, budget targets to measure, the failure
+and exit-code split, the test layers and a 3a/3b/3c rollout.
+
+Verified at `b0ead947`: `npm run lint` exit 0. Not run: `npm test` — no scanner
+source, schema or test changed. Nothing in the design is implemented or
+measured; every row of its status table says so.
+
+Next safe step: review the artifact contract (sections 5–7) and the accname
+subset before writing 3a code, then build 3a with a test proving the default
+scan still launches no collector and writes no artifact.
+
+**Update, later on 2026-11-26:** 3a was implemented on the same branch; see the
+entry above. The design note is no longer code-free.
 
 ---
 
@@ -27,8 +103,9 @@ tests/unit/assessment-records.test.mjs tests/unit/assessment-report.test.mjs` =
 full-suite figure in the Phase 1 entry below is a local run, not CI evidence.
 
 Not run at this checkpoint: `npm test` — no code changed since that local run,
-so that figure still stands. PR #437 still needs human review; do not merge it
-or rebase it on the reviewer's behalf.
+so that figure still stands. **Correction, 22:07Z:** PR #437 was merged by the
+repository owner as `6d8fbdc9`; the "unmerged" statements above describe the
+21:30 checkpoint only.
 
 ---
 
@@ -586,6 +663,33 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
     Install into the workspace with
     `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npx playwright install webkit`
     and pass the same variable when running the check.
+23. **Correct the design in the same change as the code.** The collector design first
+    said open shadow roots would be traversed. A document-level CSS locator cannot
+    address a shadow root unambiguously, so the implementation counts open hosts and
+    skips them, and the design was corrected before review. A design that promises
+    more than the capture does is worse than no design.
+24. **A default-path guarantee needs two proofs.** The gate is proven behaviourally
+    (`maybeRunAssistedCollectors` returns before capture, and writes nothing) and by a
+    source test (run-scan uses only the gated helper, and the call stays behind
+    `if (assistedRequested)`). Either proof alone can pass while the other regresses.
+25. **`aria-labelledby` needs native name inputs on the referenced node.** An image-only
+    link resolved to an empty name until the link's name node carried the child image's
+    `alt`. `textContent` alone is not a name input.
+26. **Keep traversal branches when a name resolves to empty.** A cycle returned an empty
+    name with no branches, so the test could not see that a cycle had been hit. Returning
+    the accumulated branches makes cycle and depth stops observable and testable.
+27. **Content-derived item ids collide on redirects.** Two submitted URLs that resolve to
+    the same final URL produce identical element ids. The capture dedupes by final URL
+    and records the duplicate as `not-captured` rather than inventing a second page
+    identity; do not "fix" that by adding the submitted URL to the id.
+28. **A PR can merge mid-task, again.** #437 merged at 22:07Z while the Phase 3 design was
+    being written, which invalidated a stacked base and three "unmerged" statements.
+    Re-check `gh pr view` before building on a branch or claiming merge state, and
+    retarget to `main` rather than a deleted base.
+29. **`npm test` still leaves new untracked result files.** This run wrote
+    `results/scan-*.json` and `results/summary_*.json`. They are not part of a change;
+    remove them before committing. The durable fix is still to point the Equal Access
+    test at a gitignored directory.
 
 ---
 

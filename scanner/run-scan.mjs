@@ -24,7 +24,8 @@ import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./
 import { correlateObservations } from "./correlation.mjs";
 import { buildActCoverage, renderActCoverageMarkdown } from "./act-coverage.mjs";
 import { loadCatalogue } from "./assessment/catalogue.mjs";
-import { buildAssessmentCoverage, formatAssessmentCoverageMarkdown } from "./assessment/coverage.mjs";
+import { buildAssessmentCoverage, buildReportIdentity, formatAssessmentCoverageMarkdown } from "./assessment/coverage.mjs";
+import { maybeRunAssistedCollectors, resolveScanArgs } from "./assessment/collectors/capture.mjs";
 import { renderCorrelationMarkdown } from "./correlation-report.mjs";
 import { compareRuns, findPreviousCorrelationPath, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
@@ -3725,10 +3726,17 @@ export function markdownToHtml(markdown, summary) {
 
 async function main() {
   const scanStartTime = Date.now();
-  const issueEventPath = process.argv[2];
-  const outputDir = process.argv[3] || ".scan-output";
+  // Positional arguments keep their meaning; --assisted is additive and the
+  // default scan behaves exactly as before when it is absent.
+  const scanArgs = resolveScanArgs(process.argv.slice(2));
+  for (const warning of scanArgs.warnings) {
+    console.error(`[args] ${warning}`);
+  }
+  const issueEventPath = scanArgs.issueEventPath;
+  const outputDir = scanArgs.outputDir;
+  const assistedRequested = scanArgs.assisted;
   if (!issueEventPath) {
-    console.error("Usage: node scanner/run-scan.mjs <issue-event-json-file> [output-dir]");
+    console.error("Usage: node scanner/run-scan.mjs <issue-event-json-file> [output-dir] [--assisted]");
     process.exit(1);
   }
 
@@ -4358,6 +4366,46 @@ async function main() {
   writeFileSync(accessibilityContextCsvPath, accessibilityContextToCsv(accessibilityContext), "utf8");
   writeFileSync(overlapJsonPath, JSON.stringify(overlapReport, null, 2) + "\n", "utf8");
   writeFileSync(overlapMarkdownPath, overlapMarkdownContent, "utf8");
+
+  // Assisted collectors are opt-in and run after every automated artifact is
+  // written, so a collector failure can never unpublish a valid scan. This is
+  // the only place in the default path that may open another browser, and only
+  // when --assisted or OPEN_SCANS_ASSISTED is set.
+  if (assistedRequested) {
+    try {
+      const collectorOutcome = await maybeRunAssistedCollectors({
+        requested: true,
+        pages: results
+          .filter((result) => !result.error && result.finalUrl)
+          .map((result) => ({
+            url: result.submittedUrl,
+            finalUrl: result.finalUrl,
+            statusCode: result.statusCode,
+            title: result.pageTitle,
+            pageLoadDelayMs: result.timings?.pageLoadDelayMs
+          })),
+        scanContext,
+        catalogue: assessmentCatalogue,
+        reportAssociation: buildReportIdentity(summary),
+        outputDir,
+        pageLoadDelayMs
+      });
+      const collectorStatus = collectorOutcome?.artifact?.capture?.status ?? collectorOutcome?.status;
+      const collectorReason = collectorOutcome?.artifact?.capture?.reason ?? collectorOutcome?.reason;
+      if (collectorStatus === "complete" || collectorStatus === "partial") {
+        console.error(
+          `[collectors] ${collectorStatus}: ${collectorOutcome.artifact.capture.pagesCaptured}/${collectorOutcome.artifact.capture.pagesRequested} pages captured → ${collectorOutcome.artifactPath}`
+        );
+      }
+      if (collectorStatus === "partial") {
+        console.error(`⚠️ assisted collectors incomplete: ${collectorReason ?? "some pages were not captured"}`);
+      } else if (collectorStatus !== "complete") {
+        console.error(`⚠️ assisted collectors did not run: ${collectorReason ?? "unknown reason"}`);
+      }
+    } catch (error) {
+      console.error(`⚠️ assisted collectors failed: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
 
   console.log(JSON.stringify({
     skipped: false,
