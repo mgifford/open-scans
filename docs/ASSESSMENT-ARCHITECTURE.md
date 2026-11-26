@@ -311,7 +311,7 @@ Passing results are never transferred between unrelated scans.
 | Reproducible `file://` browser check | Implemented | `npm run validate:assessment-report <report.json> --browser=webkit` (needs a Playwright browser) |
 | `file://` storage and clipboard behaviour | **Not verified** | needs manual validation; documented in the resource budget |
 | Accessibility Insights import | Not implemented | Phase 2 |
-| Assistive collectors | Not implemented | Phase 3; design in [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
+| Assistive collectors | Partially (Phase 3a) | Opt-in `--assisted` capture and `assessment-collectors.json`; no report surface yet. Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
 | Keyboard/focus assessment | Not implemented | Phase 5 |
 | User journey UI | Not implemented | Phase 6 |
 | Automated accessibility test of the new UI | Partially | structural tests only; no axe run against a generated report yet |

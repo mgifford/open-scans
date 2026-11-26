@@ -1,8 +1,10 @@
 # Assisted collectors (Phase 3 design)
 
-**Status:** design only. No collector code exists. Phase 1 (coverage and the manual
-assessment workspace) is merged on `main` as `6d8fbdc9` (PR #437). This note specifies
-the Phase 3 collector layer so it can be built without changing the default scan.
+**Status:** Phase 3a is implemented (opt-in capture pass, artifact, validator and
+tests) on `docs/assessment-phase-3-design`, PR #438. The report inventory (3b), the
+record link (3b) and the workflow opt-in (3c) are not implemented. Phase 1 is merged on
+`main` as `6d8fbdc9` (PR #437). This note specifies the collector layer so it can be
+built without changing the default scan.
 
 **Applies to:** `scanner/assessment/`, `scanner/run-scan.mjs`, the report renderer and
 the assessment record schema.
@@ -132,8 +134,10 @@ and lazy-loading behaviour predictable and makes the artifact reproducible.
 - Navigation failures are recorded per page with the first line of the error, bounded
   to 200 characters. There are no automatic retries in Phase 3: a retry changes what
   the evidence is and doubles the cost.
-- Traversal is limited to the top document. Open shadow roots are traversed; closed
-  ones and cross-origin frames are not and are counted as skipped.
+- Traversal is limited to the top document. iframes and shadow hosts are counted and
+  skipped: an open shadow root cannot be reached by a document-level CSS path, and a
+  closed root cannot be detected at all. The counts say what was skipped, not what was
+  reviewed.
 
 ### Caps
 
@@ -212,6 +216,7 @@ modified.
       "capturedAt": "2026-11-26T21:38:10.000Z",
       "iframesSkipped": 2,
       "shadowRootsSkipped": 0,
+      "counts": { "headings": 1, "images": 2, "links": 3, "signals": 1 },
       "truncated": { "headings": false, "images": false, "links": false },
       "error": null,
       "headings": [],
@@ -242,6 +247,7 @@ modified.
   "attributes": {
     "role": null,
     "ariaHidden": false,
+    "ariaLabel": null,
     "displayNone": false,
     "visibilityHidden": false,
     "tabIndex": null
@@ -261,6 +267,11 @@ Link items add `link: { "href": "…", "target": null, "rel": null, "imageOnly":
   of the item among items of its kind on that page.
 - `signalCatalogue` defines every id that can appear in `signals`. An id used in
   `signals` but absent from the catalogue is a validation error.
+- `counts` mirrors the item arrays and the signal total; the validator rejects a
+  mismatch.
+- `iframesSkipped` and `shadowRootsSkipped` count top-document iframes and open shadow
+  hosts that were not traversed. Closed shadow roots cannot be detected, so
+  `shadowRootsSkipped` is a lower bound, never a complete count.
 - `signals` contains only observed conditions. Absence means "not detected", never
   "passed".
 - `itemId` is a 16-hex-character hash of `reportId`, page URL, kind, ordinal, locator
@@ -443,7 +454,8 @@ scan, and a green local check must not hide a missing inventory.
 | Report surface (Phase 3b) | no-JS tables readable, record prefill, no coverage-count change | `assessment-report.test.mjs` plus the browser check |
 
 The fixture run follows `npm run validate:assessment-report`: it is a development tool,
-needs an installed Playwright browser, and is not part of `npm test`.
+needs an installed Playwright browser, and is not part of `npm test`. The first four
+layers and the fixture run exist in 3a; the report-surface checks land with 3b.
 
 Testing the browser-side extractor needs a real browser; a Node-only test of a
 serialised function would prove nothing. Pure logic therefore lives in a module the
@@ -454,11 +466,11 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 
 ## 12. Rollout
 
-| Step | Scope | Done when |
+| Step | Scope | Status |
 | :--- | :--- | :--- |
-| 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | artifact validates; default scan unchanged and proven by test; caps and truncation tested |
-| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | browser check passes; coverage counts unchanged; measured overhead within section 10 |
-| 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | a human review of the measured overhead and of 3b's rendered text; explicit opt-in only |
+| 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
+| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | Not implemented. Done when a browser check passes, coverage counts are unchanged, and measured overhead is within section 10. |
+| 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | Not implemented. Done after a human review of the measured overhead and of 3b's rendered text; explicit opt-in only. |
 
 3c is deliberately last. A workflow change is a cost and privacy decision, not a code
 decision, and it must not make the assisted pass look like part of the default scan.
@@ -514,13 +526,13 @@ has been reviewed against a real published report.
 
 | Capability | Status | Verification |
 | :--- | :--- | :--- |
-| This design note | Written, unreviewed | — |
-| `a11y-assisted-collectors/1` artifact | Not implemented | — |
-| Headings / images / links capture | Not implemented | — |
-| Accessible-name subset | Not implemented | — |
-| Signal catalogue | Not implemented | — |
-| `--assisted` gate | Not implemented | — |
-| Report inventory section | Not implemented | — |
-| `collectorItemId` record link | Not implemented | — |
-| Workflow opt-in | Not implemented | — |
-| Measured overhead | Not measured | — |
+| This design note | Written, unreviewed | PR #438 |
+| `a11y-assisted-collectors/1` artifact | Implemented (3a) | `tests/unit/assessment-collectors.test.mjs`; `npm run validate:assisted-collectors <artifact.json>` |
+| Headings / images / links capture | Implemented (3a, opt-in) | fixture run over `tests/fixtures/assessment-collectors` in WebKit |
+| Accessible-name subset | Implemented (3a) | unit tests for precedence, cycle safety, depth cap and empty names; fixture names |
+| Signal catalogue | Implemented (3a) | one unit case per signal; fixture signals |
+| `--assisted` gate | Implemented (3a) | gate tests plus the no-capture test for the default scan |
+| Report inventory section | Not implemented (3b) | — |
+| `collectorItemId` record link | Not implemented (3b) | — |
+| Workflow opt-in | Not implemented (3c) | — |
+| Measured overhead | Not measured | the fixture run measures correctness only, not scan overhead |

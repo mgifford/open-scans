@@ -1,13 +1,59 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-26
-**Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3 collector
-design on `docs/assessment-phase-3-design` (PR #438, draft)
+**Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3a assisted
+collectors on `docs/assessment-phase-3-design` (PR #438, draft; opt-in only)
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26: Phase 3a assisted collectors (opt-in)
+
+Implemented on `docs/assessment-phase-3-design` (PR #438, draft) on top of the
+design entry below. The default scan still runs no collector:
+
+- `scanner/assessment/collectors/model.mjs` — accessible-name subset, signals,
+  stable `col_` ids, caps and total-cap trimming, artifact validation. The
+  validator rejects verdict fields (`outcome`, `severity`, `wcag`, …), unknown
+  signal ids, duplicate or malformed item ids, count mismatches and a false
+  `complete` status.
+- `scanner/assessment/collectors/extract.mjs` — browser-side facts (headings,
+  images, links, name graph). Top document only: iframes and open shadow hosts
+  are counted and skipped; closed shadow roots cannot be detected.
+- `scanner/assessment/collectors/capture.mjs` — `--assisted` /
+  `OPEN_SCANS_ASSISTED` gate, sequential capture with the per-page settle delay
+  the engines used, duplicate final URLs recorded as not-captured, artifact
+  written as `assessment-collectors.json`.
+- `scanner/run-scan.mjs` — positional arguments preserved, unknown flags warned
+  about, collectors run only after every automated artifact is written and never
+  touch `report.json`.
+- `scripts/validate-assisted-collectors.mjs` — validates an artifact file, or
+  captures `tests/fixtures/assessment-collectors` and asserts names, signals and
+  item-id stability.
+
+Verified on 2026-11-26:
+
+- `npm run lint` — exit 0.
+- `node --test tests/unit/assessment-collectors.test.mjs` — 14 pass, 0 fail.
+- `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm run validate:assisted-collectors -- tests/fixtures/assessment-collectors --browser=webkit`
+  — 2 pages, 7 headings, 6 images, 7 links, 13 signals; ids stable across two
+  captures; artifact validated. The file mode also accepted a real `complete`
+  artifact and a `not-run` artifact produced without the browser path.
+- Full suite — 1108 tests, 1102 pass, 1 fail, 5 skipped. The failure is the known
+  `generate-reports-html` "should group reports by ISO week" timezone case
+  (25 !== 37); it is not a regression.
+
+Not verified: no end-to-end `--assisted` scan against a live site; no Chromium
+or Firefox fixture run; no measured overhead; nothing renders the inventory in a
+report yet (3b), so the artifact is the only surface.
+
+Next safe step: 3b — inventory section, record prefill and the optional
+`collectorItemId` — then measure the assisted overhead on the 6-page reference
+scan. Do not enable 3c before both.
 
 ---
 
@@ -34,6 +80,9 @@ measured; every row of its status table says so.
 Next safe step: review the artifact contract (sections 5–7) and the accname
 subset before writing 3a code, then build 3a with a test proving the default
 scan still launches no collector and writes no artifact.
+
+**Update, later on 2026-11-26:** 3a was implemented on the same branch; see the
+entry above. The design note is no longer code-free.
 
 ---
 
