@@ -24,6 +24,38 @@ This repository welcomes multiple AI coding agents and tools. This document prov
 4. **Node Version**: >= 20 (see package.json engines)
 5. **Stdout/Stderr**: Scanner modules MUST output structured data (JSON) to stdout and progress/diagnostic messages to stderr. Workflows parse stdout as JSON - any non-JSON output breaks parsing. See `.github/copilot-instructions.md` for detailed examples.
 
+### Accessibility Assessment Boundaries
+
+Reports include an assessment coverage section and a local manual assessment workspace.
+When changing anything in `scanner/assessment/`, `scanner/data/wcag-spine/` or the report
+sections that render them:
+
+1. **Evidence is not a conclusion.** A mapped rule has not evaluated a WCAG criterion.
+   Never derive a pass from the absence of findings, and never add a percentage,
+   conformance claim or score.
+2. **Automated-only scanning stays cheap.** Do not add a browser launch, navigation,
+   screenshot, network request or model call to the default scan for assessment features.
+   Coverage must remain derived from artifacts the scan already produced.
+3. **Human records are separate from scan evidence.** Do not write assessment records into
+   `report.json` or mutate automated findings when a reviewer records an outcome.
+4. **State failures honestly.** If local storage, a save, an import or clipboard access
+   fails, say so. Never report data as saved when it is only in memory.
+5. **Preserve contradictions.** When the same record id arrives with different content,
+   keep both and link them; do not overwrite.
+6. **The catalogue is versioned and hashed.** Regenerate the WCAG Spine snapshot with
+   `npm run build:assessment-catalogue` and verify it with
+   `npm run check:assessment-catalogue`; do not hand-edit the snapshot.
+7. **Upstream reuse needs a manifest entry.** Any Accessibility Insights adaptation needs
+   a row in `docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md` with commit, licence, local path
+   and tests before it is merged.
+
+Run `npm run validate:assessment-report <report.json> --browser=webkit` to check a
+generated report in a real browser from `file://`. It needs an installed Playwright
+browser; it is not part of `npm test`.
+
+See [docs/ASSESSMENT-ARCHITECTURE.md](docs/ASSESSMENT-ARCHITECTURE.md) and
+[docs/MANUAL-ASSESSMENT.md](docs/MANUAL-ASSESSMENT.md).
+
 ### Security Best Practices (Public Data)
 
 Even though this project scans public URLs and publishes public reports, treat all code and workflow changes with security hygiene:

@@ -1,0 +1,16 @@
+{
+  "schema": "wcag-spine-snapshot/1",
+  "sourceUrl": "https://mgifford.github.io/wcag-spine/data/master_spine.json",
+  "sourceRepository": "https://github.com/mgifford/wcag-spine",
+  "catalogueVersion": "wcag-spine-2.2-2026-11-26",
+  "generated": "2026-11-26",
+  "wcagVersion": "2.2",
+  "axeVersion": "4.14",
+  "contentSha256": "0fa9693eb0d3a8b97a7734f19e3ae0f6f07255486bbc79759d1d5bfbfab01bbf",
+  "bytes": 191706,
+  "successCriteriaCount": 86,
+  "vendoredAt": "2026-11-26T19:00:37.122Z",
+  "vendoredBy": "scanner/update-assessment-catalogue.mjs",
+  "licenceNote": "Derived from W3C WCAG, ACT Rules, ARRM and implementation data. See docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md and the upstream repository for source attribution.",
+  "transitional": true
+}

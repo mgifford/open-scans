@@ -53,6 +53,24 @@ measurement.
 |---|---|---|---|
 | `spec-kitty-cli` | unpinned (`pyproject.toml`) | managed by `uv lock` when synced | Check upstream package metadata |
 
+## Vendored data (not a code dependency)
+
+| Component | Version / identity | Purpose | License / terms | Location |
+|---|---|---|---|---|
+| WCAG Spine catalogue snapshot | `wcag-spine-2.2-2026-11-26`, sha256 `0fa9693e…bbf`, 191,706 bytes | WCAG success criteria, ACT rule associations, ARRM tasks, Trusted Tester step labels and functional performance criteria used by the assessment coverage report | Derived from W3C WCAG, ACT Rules and ARRM; see upstream repository terms and `docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md` | `scanner/data/wcag-spine/master_spine.json` and `PROVENANCE.json` |
+
+The snapshot is refreshed with `npm run build:assessment-catalogue` and verified with
+`npm run check:assessment-catalogue`. It is content-hashed and versioned; the hash is
+recorded in every generated coverage artifact.
+
+The assessment coverage code adds **no npm dependencies**. It uses only Node built-ins
+(`node:fs`, `node:crypto`) and browser APIs available in every supported browser
+(`localStorage`, `Blob`, `URL.createObjectURL`, optional Clipboard API).
+
+Microsoft Accessibility Insights for Web code is **not** included in this repository.
+If it is adapted later, the MIT copyright and licence notice must be preserved and the
+adaptation recorded in `docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md`.
+
 ## Version-control and update process
 
 When dependencies change:

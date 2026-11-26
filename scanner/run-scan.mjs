@@ -23,6 +23,8 @@ import { getEngineExecution, formatEngineExecution } from "./engine-execution.mj
 import { buildObservationArtifact, classifyLocator, isSpecificLocator } from "./observations.mjs";
 import { correlateObservations } from "./correlation.mjs";
 import { buildActCoverage, renderActCoverageMarkdown } from "./act-coverage.mjs";
+import { loadCatalogue } from "./assessment/catalogue.mjs";
+import { buildAssessmentCoverage, formatAssessmentCoverageMarkdown } from "./assessment/coverage.mjs";
 import { renderCorrelationMarkdown } from "./correlation-report.mjs";
 import { compareRuns, findPreviousCorrelationPath, renderHistoryMarkdown } from "./history-compare.mjs";
 import { buildPatternInventory, patternInventoryToCsv } from "./pattern-inventory.mjs";
@@ -3230,6 +3232,12 @@ export function toMarkdownReport(summary, axeVersion = "4.11") {
     }
   }
 
+  const coverageMarkdown = formatAssessmentCoverageMarkdown(summary);
+  if (coverageMarkdown) {
+    lines.push("");
+    lines.push(coverageMarkdown.trimEnd());
+  }
+
   return `${lines.join("\n")}\n`;
 }
 
@@ -4181,6 +4189,22 @@ async function main() {
     ...actCoverageArtifact.summary
   };
 
+  // Assessment coverage: which criteria have automated evidence, which do not,
+  // and what automation cannot establish. Derived from the artifacts above, so
+  // an automated-only scan pays no additional browser or network cost.
+  const assessmentCatalogue = loadCatalogue();
+  summary.assessmentCoverage = buildAssessmentCoverage({
+    summary,
+    catalogue: assessmentCatalogue,
+    actCoverage: actCoverageArtifact,
+    generatedAt: scannedAt
+  });
+  const assessmentRedaction = { changed: 0 };
+  redactStringsDeep(summary.assessmentCoverage, assessmentRedaction);
+  if (assessmentRedaction.changed > 0) {
+    console.error(`[redact] Sanitized ${assessmentRedaction.changed} string(s) in assessment-coverage.json`);
+  }
+
   // Log warning if scan was incomplete
   if (skippedDueToTimeout > 0) {
     console.warn(`WARNING: Scan incomplete. ${skippedDueToTimeout} URLs were skipped due to timeout.`);
@@ -4202,6 +4226,7 @@ async function main() {
   const observationsPath = join(outputDir, "observations.json");
   const correlationPath = join(outputDir, "correlation.json");
   const actCoveragePath = join(outputDir, "act-coverage.json");
+  const assessmentCoveragePath = join(outputDir, "assessment-coverage.json");
   const markdownPath = join(outputDir, "report.md");
   const htmlPath = join(outputDir, "report.html");
   const csvPath = join(outputDir, "report.csv");
@@ -4289,6 +4314,7 @@ async function main() {
   writeFileSync(observationsPath, JSON.stringify(observationArtifact, null, 2) + "\n", "utf8");
   writeFileSync(correlationPath, JSON.stringify(correlationArtifact, null, 2) + "\n", "utf8");
   writeFileSync(actCoveragePath, JSON.stringify(actCoverageArtifact, null, 2) + "\n", "utf8");
+  writeFileSync(assessmentCoveragePath, JSON.stringify(summary.assessmentCoverage, null, 2) + "\n", "utf8");
   if (historyComparison) {
     writeFileSync(join(outputDir, "history-comparison.json"), JSON.stringify(historyComparison, null, 2) + "\n", "utf8");
   }

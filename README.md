@@ -109,6 +109,27 @@ Human evaluation remains essential, particularly for issues involving meaning, c
 
 See the [multi-engine evidence documentation](docs/multi-engine-evidence.md).
 
+### Accessibility assessment coverage and manual testing
+
+Every report now includes an **Accessibility Assessment Coverage** section and a local
+**Manual assessment** workspace. Both are available in automated-only reports.
+
+- Coverage shows, per WCAG success criterion, which automated rules were mapped, which
+  produced a result, which reported a violation, and what automation cannot establish.
+- A prominent notice says when no manual assessment has been recorded. It is not a
+  substitute for manual testing performed elsewhere.
+- Guided manual procedures (essential and comprehensive) can be used directly in a
+  downloaded report, and professional or lived-experience observations can be recorded.
+- Assessment records are stored in your browser or exported as JSON. Nothing is uploaded,
+  and the automated evidence is never modified.
+- Manual barriers that no scanner found can be recorded and turned into developer issue
+  reports (copy or Markdown download).
+
+Automated-only scanning remains the default and costs no additional browser work. The
+report still works offline; see
+[assessment architecture](docs/ASSESSMENT-ARCHITECTURE.md) and
+[manual assessment](docs/MANUAL-ASSESSMENT.md).
+
 ## Related projects
 
 Open Scans is part of a broader collection of complementary open-source tools.
@@ -176,6 +197,11 @@ Important limitations include:
 - Rule coverage varies between engines.
 - Correlating findings across tools requires sufficient evidence about rules and targets.
 - Some findings require manual verification.
+- Assessment coverage is not accessibility coverage: a mapped rule has not evaluated a
+  criterion, and missing findings are not evidence of conformance.
+- Rule-level execution is unknown for engines that only record failing rule identifiers.
+- Manual assessment recording is not yet available for assisted collectors, keyboard
+  interaction sequences or user journeys.
 - Changes in testing conditions can affect historical comparisons.
 - Performance estimates and sustainability models have different limitations from direct measurements.
 
@@ -199,6 +225,12 @@ Detailed information is maintained separately to keep this README focused.
 
 - [Scanner documentation](scanner/README.md)
 - [Multi-engine evidence and comparisons](docs/multi-engine-evidence.md)
+- [Assessment architecture](docs/ASSESSMENT-ARCHITECTURE.md)
+- [Manual assessment](docs/MANUAL-ASSESSMENT.md)
+- [Assessment data schema](docs/ASSESSMENT-DATA-SCHEMA.md)
+- [Assessment resource budget](docs/ASSESSMENT-RESOURCE-BUDGET.md)
+- [Accessibility Insights attribution](docs/ACCESSIBILITY-INSIGHTS-ATTRIBUTION.md)
+- [VITAL integration handoff](docs/VITAL-INTEGRATION-HANDOFF.md)
 - [ACT laboratory](act-lab/README.md)
 - [Pattern and container inventory](docs/pattern-inventory.md)
 - [Accessibility evidence for Firefox Energy Scanner](docs/accessibility-context.md)
