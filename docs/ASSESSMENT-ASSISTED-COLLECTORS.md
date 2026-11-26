@@ -1,9 +1,8 @@
 # Assisted collectors (Phase 3 design)
 
 **Status:** design only. No collector code exists. Phase 1 (coverage and the manual
-assessment workspace) is implemented on `feat/assessment-phase-1`, PR #437, not merged.
-This note specifies the Phase 3 collector layer so it can be built without changing the
-default scan.
+assessment workspace) is merged on `main` as `6d8fbdc9` (PR #437). This note specifies
+the Phase 3 collector layer so it can be built without changing the default scan.
 
 **Applies to:** `scanner/assessment/`, `scanner/run-scan.mjs`, the report renderer and
 the assessment record schema.
@@ -370,7 +369,7 @@ must not fall back to a different scan's inventory.
 
 ## 9. Records link
 
-Phase 3b adds one optional field, additively, after the Phase 1 schema work merges:
+Phase 3b adds one optional field, additively, on top of the merged Phase 1 schema:
 
 ```json
 "elementIdentity": {
@@ -457,8 +456,8 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 3c is deliberately last. A workflow change is a cost and privacy decision, not a code
 decision, and it must not make the assisted pass look like part of the default scan.
 
-Do not switch the default scan to assisted, and do not enable 3c while PR #437 is
-unmerged and the Phase 1 report surface is still under review.
+Do not switch the default scan to assisted. Do not enable 3c before 3b's rendered text
+has been reviewed against a real published report.
 
 ---
 
