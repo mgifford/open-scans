@@ -244,6 +244,22 @@ The following development was attributed to DeepSeek Harness (`deepseek-flash`).
 Limitations recorded: the 5% wall-clock target is missed and the budget decision is left
 to the maintainer; 25-page runs, Chromium/Firefox and memory are unmeasured.
 
+### November 2026: Collector name-graph fix
+
+| Work | Contribution |
+|---|---|
+| Defect | A 200-node name-graph cap blanked every name after the 200th item on a page; 393 of 742 signals on the measured six-page artifact were false `link-name-empty` signals |
+| Name capture | Every collected item now gets a name node; only nodes first reached through `aria-labelledby` are capped. Missing names are `captured: false` / `not-captured`, not empty |
+| Accessible names | `aria-labelledby` reads an image's `alt` and concatenates all references; text and name truncation is recorded |
+| Capture state | A total-item-cap trim is `partial`; duplicate and cap shortfalls are reported separately |
+| Report | Single colour scheme and name-graph caps are stated; `report.md` only claims an inventory when the HTML re-render succeeded |
+| Publish path | All three scan workflows copy `assessment-coverage.json` and `assessment-collectors.json` when present |
+| Verification | 1124 tests, 1123 pass, 0 fail, 1 skipped; WebKit inventory and collector validators pass; a 250-link fixture page and a synthetic 252-link page resolve every name |
+| Measurement | 6 pages: 1,253 items, 349 signals, 1.95 MB artifact, 14.5–16.7 s at the default settle |
+
+Limitations recorded: the 25-page targets, JS-heavy pages, Chromium/Firefox collector
+runs and peak memory remain unmeasured.
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

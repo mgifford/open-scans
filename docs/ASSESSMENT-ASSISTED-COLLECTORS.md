@@ -3,9 +3,10 @@
 **Status:** Phase 3a is implemented and merged (opt-in capture pass, artifact,
 validator and tests; PR #438). Phase 3b is implemented and merged (report inventory,
 record prefill and `collectorItemId` link; PR #441). On 2026-11-27 the maintainer accepted
-**13.5 s for the six-page reference scan** as the assisted budget (14–18 s observed at the
-default settle); this supersedes the original 5% target and unblocks the workflow opt-in
-(3c), which is still not implemented. The 25-page targets are unmeasured. Phase 1 is
+**13.5 s for the six-page reference scan** as the nominal assisted budget (14.5–16.7 s
+observed after the name-graph fix); this supersedes the original 5% target. The workflow
+opt-in (3c) is still not implemented and needs a human review of the rendered 3b text
+first. The 25-page targets are unmeasured. Phase 1 is
 merged as `6d8fbdc9` (PR #437). Unmet requirements are tracked in
 [`ASSESSMENT-ARCHITECTURE.md`](ASSESSMENT-ARCHITECTURE.md) §11.
 
@@ -154,10 +155,17 @@ and lazy-loading behaviour predictable and makes the artifact reproducible.
 | Items total | 3,000 | 5,000 | run marked `partial`, per-page flags set |
 | HTML snippet | 300 characters | 500 | truncated on a code-point boundary |
 | Text and name | 200 characters | 400 | truncated; `length` keeps the original length |
+| Referenced-name nodes | 200 | 200 | page `nameGraphCapped = true`; some names may be incomplete |
 
 Caps are recorded in the artifact under `capture.caps`, so a reader can tell a short
 page from a truncated one. Truncation is never silent and never summarised as "all
 elements".
+
+Every collected heading, image and link always gets its own name node. The
+referenced-name cap applies only to nodes first discovered through `aria-labelledby`,
+so it can never blank the name of an item that is in the inventory. That distinction was
+added on 2026-11-27 after a 200-node graph cap blanked every name after the 200th item
+on a page; see §6.
 
 ---
 
@@ -248,7 +256,10 @@ modified.
     "value": "rates.png",
     "source": "img-alt",
     "branches": ["img-alt"],
-    "empty": false
+    "empty": false,
+    "captured": true,
+    "truncated": false,
+    "length": 9
   },
   "attributes": {
     "role": null,
@@ -297,11 +308,16 @@ subset of AccName 1.2, not an implementation of it.
 
 | Step | Source | Recorded as |
 | :--- | :--- | :--- |
-| 1 | `aria-labelledby`, ids resolved in the top document, recursion depth ≤ 5, cycle-safe | `aria-labelledby` |
+| 1 | `aria-labelledby`, ids resolved in the top document, recursion depth ≤ 5, cycle-safe, all references concatenated in order | `aria-labelledby` |
 | 2 | `aria-label` with non-empty trimmed value | `aria-label` |
-| 3 | Native: image `alt`; heading text content; link text content, or the `alt` of a sole image child when the link has no text | `img-alt`, `text-content`, `img-alt-descendant` |
+| 3 | Native: image `alt` (including an image referenced by `aria-labelledby`); heading text content; link text content, or the `alt` of a sole image child when the link has no text | `img-alt`, `text-content`, `img-alt-descendant` |
 | 4 | `title` attribute | `title` |
 | 5 | Nothing | `none`, with `empty: true` |
+| — | The item's own name node was not captured | `not-captured`, with `captured: false` |
+
+`captured: false` and `source: "not-captured"` are not empty names. They mean the
+capture could not compute a name, so `link-name-empty` and `heading-empty` are not
+emitted for them. The rendered table says "(name not captured)" instead.
 
 Recorded limitations, repeated in the artifact and the report:
 
@@ -313,6 +329,7 @@ Recorded limitations, repeated in the artifact and the report:
   differ.
 - A name is recorded as found. It is not judged for usefulness or for matching the
   visible label; the visible-text mismatch case is a separate signal.
+- A name over 200 characters is truncated; `truncated` and `length` make that visible.
 
 If a finding depends on the exact accessible name, the reviewer confirms it in the
 browser's accessibility inspector. The report says so next to the names, not only in
@@ -384,7 +401,8 @@ the report smaller and avoids two representations drifting apart. If measurement
 the embedded inventory pushing the report past roughly 5 MB, the fallback is to embed
 only the first 50 items per kind per page with an explicit "inventory truncated in this
 report; see the sidecar" notice — never a silent difference between the artifact and the
-rendered tables. Measured on the 6-page reference scan: +1.53 MB, 1,254 items.
+rendered tables. Measured on the 6-page reference scan: +1.53 MB, 1,253 items, 349
+signals after the 2026-11-27 name fix.
 
 Regenerating a report from `report.json` alone cannot reproduce an inventory it does not
 have. `generateInteractiveHtml()` gains an optional collector argument; without it the
@@ -449,7 +467,7 @@ The reason for that split: a failed collector must not unpublish a valid automat
 scan, and a green local check must not hide a missing inventory.
 
 **Budget decision, 2026-11-27.** The six-page 5% target was not met. The maintainer
-accepted 13.5 s as the absolute six-page budget instead. The settle-delay remeasurement
+accepted 13.5 s as the nominal six-page budget instead. The settle-delay remeasurement
 and the reasoning are in
 [`ASSESSMENT-RESOURCE-BUDGET.md`](ASSESSMENT-RESOURCE-BUDGET.md) §9. The 25-page targets
 are unchanged and unmeasured.
@@ -466,7 +484,7 @@ are unchanged and unmeasured.
 | Caps | truncation flags, counts, hard maximum | same file |
 | Gate | default scan launches no collector browser, writes no artifact, and leaves `report.json` byte-identical with collectors enabled | same file, against the exported gate |
 | Artifact validation | unknown signal id, missing catalogue, bad item id, malformed page all rejected | same file |
-| Browser fixture run (optional, needs a browser) | real DOM capture over local fixture pages: headings, images, links, empty names, aria-labelledby recursion, shadow root, iframe count | `npm run validate:assisted-collectors <fixture-dir> --browser=webkit` |
+| Browser fixture run (optional, needs a browser) | real DOM capture over local fixture pages: headings, images, links, empty names, aria-labelledby recursion, shadow root, iframe count, and a 250-link page that crosses the old 200-node boundary | `npm run validate:assisted-collectors <fixture-dir> --browser=webkit` |
 | Report surface (Phase 3b) | no-JS tables readable, record prefill, no coverage-count change | `assessment-report.test.mjs` plus the browser check |
 
 The fixture run follows `npm run validate:assessment-report`: it is a development tool,
@@ -485,7 +503,7 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 | Step | Scope | Status |
 | :--- | :--- | :--- |
 | 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
-| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented and merged** (PR #441). The six-page budget was accepted at 13.5 s nominal (14–18 s observed) on 2026-11-27; the 25-page targets are unmeasured. |
+| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented and merged** (PR #441); name-graph fix on 2026-11-27. The six-page budget was accepted at 13.5 s nominal (14.5–16.7 s observed after the fix); the 25-page targets are unmeasured. |
 | 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | Not implemented. Done after a human review of the measured overhead and of 3b's rendered text; explicit opt-in only. |
 
 3c is deliberately last. A workflow change is a cost and privacy decision, not a code
@@ -551,4 +569,4 @@ has been reviewed against a real published report.
 | Report inventory section | Implemented (3b) | `tests/unit/assessment-inventory.test.mjs`; `npm run validate:assessment-inventory -- --browser=webkit` (prefill, save and axe) |
 | `collectorItemId` record link | Implemented (3b) | unit tests for valid, malformed and absent ids; saved record inspected in WebKit |
 | Workflow opt-in | Not implemented (3c) | — |
-| Measured overhead | Measured and accepted (3b) | 6 pages: 13.5 s nominal (14–18 s observed); artifact 1.85 MB; report +1.53 MB. One page truncated at the 300-link cap |
+| Measured overhead | Measured and accepted (3b) | 6 pages: 13.5 s nominal (14.5–16.7 s observed after the name fix); artifact 1.95 MB; 349 signals; report +1.53 MB. One page truncated at the 300-link cap |
