@@ -132,6 +132,9 @@ and lazy-loading behaviour predictable and makes the artifact reproducible.
 - Browser, viewport, colour scheme and executable resolution come from the same
   scan context the engines use, so `PUPPETEER_EXECUTABLE_PATH` handling and
   `PLAYWRIGHT_EXECUTABLE_PATH` overrides are not re-implemented at a new call site.
+- One colour scheme is captured per scan: `dark` when requested, otherwise light. A
+  `both` scan is not inventoried twice; the artifact records the scheme and the report
+  states that the inventory is single-scheme.
 - Navigation uses the same wait mode and timeout as the automated engines, and the
   same page-load delay, so the DOM captured is the DOM the engines saw.
 - No clicking, scrolling, typing, hovering or resizing. Content that only appears
