@@ -169,13 +169,50 @@ total scan time.
 
 | Measure | Target | Measured | Result |
 | :--- | :--- | :--- | :--- |
-| Added wall-clock, 6 pages | ≤ 5% of the reference scan | 13,544 ms = **5.8%** of 233,572 ms | **Missed** |
-| `assessment-collectors.json` | ≤ 4 MB at 25 pages / 3,000 items | 1.85 MB at 6 pages / 1,254 items | Met for this fixture; 25 pages unmeasured |
+| Added wall-clock, 6 pages | ≤ 5% of the reference scan | 13,544 ms = 5.8% of 233,572 ms; remeasured 14.3–18.1 s | **Accepted** as an absolute 13.5 s budget (2026-11-27) |
+| `assessment-collectors.json` | ≤ 4 MB at 25 pages / 3,000 items | 1.85 MB at 6 pages / 1,253 items | Met for this fixture; 25 pages unmeasured |
 | Added report HTML | ≤ 2 MB raw | 1,532,263 bytes (1,081,055 → 2,613,318) | Met |
 | Browser processes | 1 at a time | 1 | Met |
 
-No page hit a cap; nothing was truncated. Per-page item counts ranged from 12 to 404
-(headings, images and links combined).
+Per-page item counts ranged from 12 to 421 (headings, images and links combined).
+**One cap was hit:** `activity.html` reached the 300-link per-kind cap, so its link
+table is truncated. The report and the artifact both say so. An earlier version of this
+section said nothing was truncated; that was wrong and is corrected here.
+
+### Decision (2026-11-27)
+
+The maintainer accepted **13.5 seconds as the budget for the six-page reference scan**.
+The 5% figure was the design's initial target; the accepted budget is absolute. This is
+recorded as a deliberate decision, not a quiet adjustment of the threshold.
+
+Because the measured range at the default 2-second settle was 14.3–18.1 s, treat 13.5 s
+as the nominal budget and 14–18 s as the observed range; the difference is network
+variance, not collector work. The decision unblocks Phase 3c.
+
+### Settle-delay remeasurement (2026-11-27)
+
+Same six pages, same browser and viewport, two runs per setting. `runAssistedCapture`
+launches a fresh browser per run, so these figures include launch cost.
+
+| Settle delay | Runs (ms) | Median | Items | Signals | Artifact bytes |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| 2,000 ms (default) | 18,136 / 14,261 | 18,136 | 1,253 | 742 | 1,853,813 |
+| 1,000 ms | 13,920 / 15,357 | 15,357 | 1,253 | 742 | 1,853,813 |
+| 500 ms | 14,300 / 14,422 | 14,422 | 1,253 | 742 | 1,853,813 |
+
+The inventory was **identical at every setting**: same item count, same signal count,
+same bytes. On these static pages the settle delay changes only how long the pass waits.
+
+Shortening it is not recommended now:
+
+- it saves about 1–3 s, not the 9 s a simple delay subtraction would suggest;
+- navigation is the floor at roughly 14 s for these six pages, so the original 5% target
+  is unreachable even at a 500 ms settle;
+- the design deliberately uses the engine's settle delay so the captured DOM is the DOM
+  the engines saw. Giving that up for a small gain needs evidence from JS-heavy pages
+  first.
+
+Re-measure on a JS-heavy fixture before changing the default. The 2-second delay stays.
 
 ### Why the 5% target was missed
 
@@ -187,17 +224,12 @@ not just how long it takes.
 The design's prescribed action for a missed target is to reduce the default page cap. That
 does not help a 6-page run where every page is already inside the cap.
 
-### Decision required
+### Options not taken
 
-This was not decided unilaterally:
-
-1. **Accept 5.8%.** 13.5 seconds on a 3.9-minute scan, recorded as a deliberate change to
-   the target with a reason.
-2. **Shorten the assisted settle delay** (for example to 1 second) and re-measure, with a
-   documented difference between the collector DOM and the engine DOM.
-3. **Capture an explicit subset of pages** for the assisted profile.
-
-Do not raise the 5% target without one of those recorded.
+1. **Shorten the assisted settle delay.** Measured: no inventory change on this fixture,
+   about 1–3 s saved. Not taken; re-measure on JS-heavy pages first.
+2. **Capture an explicit subset of pages.** No guidance was given and no subset selection
+   is implemented. It remains an option for 25-page runs, not a current behaviour.
 
 ### What this does not measure
 

@@ -1,10 +1,8 @@
 # AI session handoff and learnings
 
-**Last updated:** 2026-11-26
-**Open Scans checkpoint:** `a7102a37` on `main` (PR #437 and PR #438 merged); Phase 3a
-assisted collectors merged, opt-in only; Phase 3b implemented in PR #441; 3c not started
-**Open assessment stack (merge bottom-up):** #439 requirements backlog → #440 CI gate →
-#441 3b inventory
+**Last updated:** 2026-11-27
+**Open Scans checkpoint:** `c0890ea4` on `main` (PRs #439, #440 and #441 merged);
+Phase 3b merged, 3c not started
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -12,6 +10,43 @@ was verified, not the full requirement set.
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-27: 3b merged, budget accepted, settle remeasured
+
+The three stacked PRs merged on `main` = `c0890ea4`: #439 requirements backlog, #440 CI
+gate, #441 Phase 3b. No assessment PRs remain open. The working tree is clean.
+
+**Budget decision.** 13.5 seconds is the accepted six-page assisted budget (maintainer,
+2026-11-27). The original 5% design target is superseded by this absolute budget. The
+change is recorded in `ASSESSMENT-RESOURCE-BUDGET.md` §9 and the design note; it was not
+applied silently. Phase 3c is unblocked.
+
+**Settle-delay remeasurement** (two runs per setting, same six pages):
+
+| Settle | Runs (ms) | Items | Signals | Bytes |
+| :--- | :--- | ---: | ---: | ---: |
+| 2,000 ms (default) | 18,136 / 14,261 | 1,253 | 742 | 1,853,813 |
+| 1,000 ms | 13,920 / 15,357 | 1,253 | 742 | 1,853,813 |
+| 500 ms | 14,300 / 14,422 | 1,253 | 742 | 1,853,813 |
+
+The inventory is identical at every setting. Navigation is the floor at about 14 s, so
+the 5% target was unreachable even at 500 ms. Shortening the settle saves 1–3 s and gives
+up the engine-DOM comparability the design requires; it is **not** changed. Re-measure on
+a JS-heavy fixture before considering it.
+
+**Correction.** `activity.html` reaches the 300-link per-kind cap, so its link table is
+truncated. The earlier "no truncation" statement in the resource budget was wrong and is
+fixed. The accepted artifact for six pages is 1.85 MB with 1,253 items.
+
+**Not verified.** The 25-page targets (4 MB artifact, 15% wall-clock), JS-heavy pages,
+Chromium/Firefox, and peak memory. Page-subset selection is not implemented and no
+guidance was given, so it remains an option for long runs rather than a behaviour.
+
+**Next safe step.** Phase 3c in a new session: workflow opt-in (issue field or
+`ASSISTED:` trigger, workflow input, cost note using the accepted budget). Do not start
+Phase 2 in the same change.
 
 ---
 
