@@ -40,11 +40,14 @@ Verified locally on 2026-11-26 with `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers` 
 A run without a browser is not equivalent: Puppeteer-based Equal Access then fails in
 `run-scan-output.test.mjs` rather than skipping, which is why the gate installs Chromium.
 
-Not verified: the workflow has not executed on GitHub Actions. The Ubuntu runner's
-apt/browser install time and the committed-report checkout size (about 3.7 GB) are
-unmeasured. The gate does not run the opt-in browser validators
-(`validate:assessment-report`, `validate:assisted-collectors`); they remain local or
-manual.
+Verified in CI on 2026-11-26: workflow run `45923187615` ("Lint and unit tests")
+passed on GitHub Actions in **2m53s**, including checkout, `npm ci`, lint, the Chromium
+install with system dependencies, the Puppeteer path export and the full suite. The
+checkout of the committed report artifacts (about 3.7 GB) fits inside the 20-minute job
+timeout.
+
+Not verified in CI: the opt-in browser validators (`validate:assessment-report`,
+`validate:assisted-collectors`) are not part of the gate; they remain local or manual.
 
 Next safe step: watch the first run, then make the check required in branch protection
 if it is stable. Phase 3b remains the next product step.
