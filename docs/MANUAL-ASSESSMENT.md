@@ -1,8 +1,9 @@
 # Manual assessment
 
-**Status:** Phase 1. Guided procedures and local recording are implemented. Assisted
-collectors (headings, images, links), keyboard/focus interaction assessment and user
-journey testing are not implemented — see the status table at the end.
+**Status:** Phase 1 core is implemented. Assisted collectors (headings, images, links)
+are implemented behind the explicit opt-in (3a/3b merged; 3c in review). Keyboard/focus
+interaction assessment and user journey testing are not implemented — see the status
+table at the end.
 
 This document explains what the report's manual assessment workspace does, how to use
 it, and what it cannot establish.
