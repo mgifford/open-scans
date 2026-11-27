@@ -153,6 +153,12 @@ jobs:
           cp .scan-output/observations.json "${{ steps.meta.outputs.report_dir }}/observations.json"
           cp .scan-output/correlation.json "${{ steps.meta.outputs.report_dir }}/correlation.json"
           cp .scan-output/act-coverage.json "${{ steps.meta.outputs.report_dir }}/act-coverage.json"
+          if [ -f .scan-output/assessment-coverage.json ]; then
+            cp .scan-output/assessment-coverage.json "${{ steps.meta.outputs.report_dir }}/assessment-coverage.json"
+          fi
+          if [ -f .scan-output/assessment-collectors.json ]; then
+            cp .scan-output/assessment-collectors.json "${{ steps.meta.outputs.report_dir }}/assessment-collectors.json"
+          fi
           if [ -f .scan-output/history-comparison.json ]; then
             cp .scan-output/history-comparison.json "${{ steps.meta.outputs.report_dir }}/history-comparison.json"
           fi
