@@ -29,6 +29,7 @@ export const NAME_SOURCES = Object.freeze([
   "text-content",
   "title",
   "depth-limit",
+  "not-captured",
   "none"
 ]);
 
@@ -207,7 +208,7 @@ export function resolveAccessibleName({ graph, nodeId, kind }, { maxDepth = 5 } 
   const nodes = graph instanceof Map ? graph : new Map(Object.entries(graph ?? {}));
   const start = nodes.get(nodeId);
   if (!start) {
-    return { value: "", source: "none", branches: [], empty: true };
+    return { value: "", source: "not-captured", branches: [], empty: true, captured: false };
   }
 
   function fromNode(node, depth, visited) {
@@ -217,6 +218,9 @@ export function resolveAccessibleName({ graph, nodeId, kind }, { maxDepth = 5 } 
     }
     const branches = [];
 
+    // AccName concatenates every referenced node's name in document order. A
+    // single inaccessible reference must not stop the later ones resolving.
+    const parts = [];
     for (const refId of node.labelledBy ?? []) {
       if (visited.has(refId)) {
         branches.push("cycle-skipped");
@@ -227,11 +231,17 @@ export function resolveAccessibleName({ graph, nodeId, kind }, { maxDepth = 5 } 
       const nextVisited = new Set(visited);
       nextVisited.add(refId);
       const resolved = fromNode(refNode, depth + 1, nextVisited);
-      if (resolved && resolved.value) {
-        branches.push("aria-labelledby", ...resolved.branches);
-        return { value: resolved.value, source: "aria-labelledby", branches, empty: false };
-      }
-      if (resolved) branches.push(...resolved.branches);
+      if (!resolved) continue;
+      branches.push(...resolved.branches);
+      if (resolved.value) parts.push(resolved.value);
+    }
+    if (parts.length > 0) {
+      return {
+        value: parts.join(" "),
+        source: "aria-labelledby",
+        branches: ["aria-labelledby", ...branches],
+        empty: false
+      };
     }
 
     const labelled = normaliseText(node.ariaLabel);
@@ -239,12 +249,19 @@ export function resolveAccessibleName({ graph, nodeId, kind }, { maxDepth = 5 } 
       return { value: labelled, source: "aria-label", branches: ["aria-label"], empty: false };
     }
 
-    if (kind === "image") {
-      if (node.alt !== null && node.alt !== undefined) {
-        const alt = normaliseText(node.alt);
-        return { value: alt, source: "img-alt", branches: ["img-alt"], empty: alt === "" };
+    // An <img> node's alt is a name input wherever that node is referenced. An
+    // empty alt contributes nothing except for the image item itself, whose
+    // resolved state is an empty img-alt.
+    if (node.alt !== null && node.alt !== undefined) {
+      const alt = normaliseText(node.alt);
+      if (alt) {
+        return { value: alt, source: "img-alt", branches: ["img-alt"], empty: false };
+      }
+      if (kind === "image") {
+        return { value: "", source: "img-alt", branches: ["img-alt"], empty: true };
       }
     }
+
     if (kind === "link" || kind === "heading") {
       const text = normaliseText(node.text);
       if (text) {
@@ -269,7 +286,7 @@ export function resolveAccessibleName({ graph, nodeId, kind }, { maxDepth = 5 } 
   }
 
   const resolved = fromNode(start, 0, new Set([nodeId]));
-  return resolved ?? { value: "", source: "none", branches: [], empty: true };
+  return { ...(resolved ?? { value: "", source: "none", branches: [], empty: true }), captured: true };
 }
 
 /** Stable item id: same page, same element, same id across runs. */
@@ -302,7 +319,11 @@ export function detectItemSignals(item) {
   }
 
   if (item.kind === "link") {
-    if (item.accessibleName.empty) {
+    // "Not captured" and "depth limit" are not empty names: the item's own
+    // name node always exists now, but a future cap regression must not turn
+    // an uncomputed name into a finding-shaped signal.
+    const nameUnavailable = ["not-captured", "depth-limit"].includes(item.accessibleName.source);
+    if (item.accessibleName.empty && !nameUnavailable) {
       signals.push({ id: "link-name-empty", detail: "computed name is empty" });
     }
     const text = normaliseText(item.text).toLowerCase();
@@ -320,7 +341,12 @@ export function detectItemSignals(item) {
     }
   }
 
-  if (item.kind === "heading" && item.accessibleName.empty && normaliseText(item.text) === "") {
+  if (
+    item.kind === "heading" &&
+    item.accessibleName.empty &&
+    !["not-captured", "depth-limit"].includes(item.accessibleName.source) &&
+    normaliseText(item.text) === ""
+  ) {
     signals.push({ id: "heading-empty", detail: "heading has no text and no computed name" });
   }
 
@@ -351,6 +377,7 @@ function buildItem(rawItem, { reportId, pageUrl, kind, caps, graph }) {
   const text = normaliseText(rawItem.text);
   const accessibleName = resolveAccessibleName({ graph, nodeId: rawItem.nameNodeId, kind });
   const nameValue = truncate(accessibleName.value, caps.maxNameChars);
+  const nameTruncated = Array.from(accessibleName.value).length > caps.maxNameChars;
   const locator = String(rawItem.locator ?? "");
   const itemId = buildItemId({
     reportId,
@@ -370,14 +397,17 @@ function buildItem(rawItem, { reportId, pageUrl, kind, caps, graph }) {
     htmlSnippet: truncate(normaliseText(rawItem.htmlSnippet), caps.maxSnippetChars),
     text: {
       raw: truncate(String(rawItem.text ?? ""), caps.maxNameChars),
-      normalised: text,
+      normalised: truncate(text, caps.maxNameChars),
       length: Array.from(text).length
     },
     accessibleName: {
       value: nameValue,
       source: accessibleName.source,
       branches: [...accessibleName.branches],
-      empty: accessibleName.empty
+      empty: accessibleName.empty,
+      captured: accessibleName.captured !== false,
+      truncated: nameTruncated,
+      length: Array.from(accessibleName.value).length
     },
     attributes: buildAttributes(rawItem.attributes)
   };
@@ -479,6 +509,7 @@ export function buildPageInventory(rawPage, { reportId, caps } = {}) {
     capturedAt: rawPage?.capturedAt ?? null,
     iframesSkipped: Number.isFinite(rawPage?.iframesSkipped) ? rawPage.iframesSkipped : 0,
     shadowRootsSkipped: Number.isFinite(rawPage?.shadowRootsSkipped) ? rawPage.shadowRootsSkipped : 0,
+    nameGraphCapped: rawPage?.nameGraphCapped === true,
     truncated,
     error: rawPage?.error ?? null,
     counts: {
@@ -542,6 +573,7 @@ export function buildFailedPage({ url, error, capturedAt = null }) {
     capturedAt,
     iframesSkipped: 0,
     shadowRootsSkipped: 0,
+    nameGraphCapped: false,
     truncated: { headings: false, images: false, links: false },
     error: message,
     counts: { headings: 0, images: 0, links: 0, signals: 0 },
@@ -638,6 +670,9 @@ export function validateCollectorArtifact(artifact) {
       if (typeof page?.url !== "string" || !page.url) fail(`${where}.url is required`);
       if (!PAGE_STATUSES.includes(page?.status)) fail(`${where}.status must be one of ${PAGE_STATUSES.join(", ")}`);
       if (!page?.truncated || typeof page.truncated !== "object") fail(`${where}.truncated is required`);
+      if ("nameGraphCapped" in (page ?? {}) && typeof page.nameGraphCapped !== "boolean") {
+        fail(`${where}.nameGraphCapped must be a boolean when present`);
+      }
       if (!("error" in (page ?? {}))) fail(`${where}.error is required (null when captured)`);
       for (const key of ["headings", "images", "links"]) {
         if (!Array.isArray(page?.[key])) {
@@ -661,6 +696,21 @@ export function validateCollectorArtifact(artifact) {
             fail(`${itemWhere}.accessibleName.source is not a known source`);
           }
           if (typeof item?.accessibleName?.empty !== "boolean") fail(`${itemWhere}.accessibleName.empty must be a boolean`);
+          if ("captured" in (item.accessibleName ?? {}) && typeof item.accessibleName.captured !== "boolean") {
+            fail(`${itemWhere}.accessibleName.captured must be a boolean when present`);
+          }
+          if (item?.accessibleName?.captured === false && item?.accessibleName?.source !== "not-captured") {
+            fail(`${itemWhere}.accessibleName.captured false requires source "not-captured"`);
+          }
+          if (item?.accessibleName?.captured !== false && item?.accessibleName?.source === "not-captured") {
+            fail(`${itemWhere}.accessibleName.source "not-captured" requires captured false`);
+          }
+          if ("truncated" in (item.accessibleName ?? {}) && typeof item.accessibleName.truncated !== "boolean") {
+            fail(`${itemWhere}.accessibleName.truncated must be a boolean when present`);
+          }
+          if ("length" in (item.accessibleName ?? {}) && (!Number.isInteger(item.accessibleName.length) || item.accessibleName.length < 0)) {
+            fail(`${itemWhere}.accessibleName.length must be a non-negative integer when present`);
+          }
           if (!item?.attributes || typeof item.attributes !== "object") fail(`${itemWhere}.attributes is required`);
           if (!Array.isArray(item?.signals)) {
             fail(`${itemWhere}.signals must be an array`);

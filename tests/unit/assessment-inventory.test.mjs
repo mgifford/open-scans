@@ -188,6 +188,30 @@ test("hostile collector text is escaped in tables and prefill attributes", () =>
   assert.match(html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
 });
 
+test("an uncomputed name is labelled, not presented as empty", () => {
+  const raw = makeRawPage({
+    links: [
+      {
+        ordinal: 0,
+        locator: "html > body > p > a",
+        htmlSnippet: '<a href="https://example.com/more">Real link text</a>',
+        href: "https://example.com/more",
+        target: null,
+        rel: null,
+        imageOnly: false,
+        nativeAlt: null,
+        text: "Real link text",
+        nameNodeId: null,
+        attributes: { role: null, ariaHidden: false, ariaLabel: null, displayNone: false, visibilityHidden: false, tabIndex: null }
+      }
+    ]
+  });
+  const artifact = makeArtifact({ pages: [buildPageInventory(raw, { reportId: REPORT_ID, caps: DEFAULT_CAPS })] });
+  const html = renderCollectorInventory(artifact);
+  assert.match(html, /name not captured/);
+  assert.ok(!html.includes("Link has no computed name"), "an uncomputed name must not be shown as an empty-name signal");
+});
+
 test("the inventory does not change coverage counts", () => {
   const summary = makeSummary();
   const coverage = buildAssessmentCoverage({ summary, catalogue });

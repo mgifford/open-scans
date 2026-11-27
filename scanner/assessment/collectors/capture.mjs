@@ -214,6 +214,9 @@ export async function runAssistedCapture({
   const inventory = [];
   let navigationCount = 0;
   let totalItems = 0;
+  let totalCapTrimmed = false;
+  let duplicateNotCaptured = 0;
+  let capNotCaptured = 0;
   let browserVersion = null;
 
   let context;
@@ -246,6 +249,7 @@ export async function runAssistedCapture({
         return;
       }
       if (seenFinalUrls.has(targetUrl)) {
+        duplicateNotCaptured += 1;
         inventory.push(
           buildNotCapturedPage({
             url: targetUrl,
@@ -263,7 +267,7 @@ export async function runAssistedCapture({
         const facts = await page.evaluate(collectPageFacts, {
           maxSnippetChars: caps.maxSnippetChars,
           maxNameChars: caps.maxNameChars,
-          maxGraphNodes: 200
+          maxReferencedNodes: 200
         });
         facts.finalUrl = facts.url;
         facts.url = String(target?.url ?? facts.url);
@@ -272,6 +276,7 @@ export async function runAssistedCapture({
         const itemCount = built.counts.headings + built.counts.images + built.counts.links;
         const remaining = Math.max(0, caps.maxItemsTotal - totalItems);
         const trimmed = itemCount > remaining ? trimPageToTotal(built, remaining) : built;
+        if (itemCount > remaining) totalCapTrimmed = true;
         totalItems += trimmed.counts.headings + trimmed.counts.images + trimmed.counts.links;
         inventory.push(trimmed);
       } catch (error) {
@@ -283,6 +288,7 @@ export async function runAssistedCapture({
     const withinPageCap = requested.slice(0, caps.maxPages);
     for (const target of withinPageCap) {
       if (totalItems >= caps.maxItemsTotal) {
+        capNotCaptured += 1;
         inventory.push(
           buildNotCapturedPage({
             url: String(target?.finalUrl || target?.url || ""),
@@ -295,6 +301,7 @@ export async function runAssistedCapture({
       await captureOne(target);
     }
     for (const target of requested.slice(caps.maxPages)) {
+      capNotCaptured += 1;
       inventory.push(
         buildNotCapturedPage({
           url: String(target?.finalUrl || target?.url || ""),
@@ -312,7 +319,14 @@ export async function runAssistedCapture({
 
   const failed = inventory.filter((page) => page.status === "failed").length;
   const notCaptured = inventory.filter((page) => page.status === "not-captured").length;
-  const status = failed + notCaptured > 0 ? "partial" : "complete";
+  const status = failed + notCaptured > 0 || totalCapTrimmed ? "partial" : "complete";
+
+  const reasons = [];
+  if (failed > 0) reasons.push(`${failed} page(s) failed to capture`);
+  if (duplicateNotCaptured > 0) reasons.push(`${duplicateNotCaptured} page(s) resolved to a final URL already captured`);
+  if (capNotCaptured > 0) reasons.push(`${capNotCaptured} page(s) were not captured because a cap was reached`);
+  if (totalCapTrimmed) reasons.push("the total item cap trimmed one or more captured pages");
+  const reason = reasons.length > 0 ? reasons.join("; ") : null;
 
   const result = finish(
     {
@@ -326,12 +340,7 @@ export async function runAssistedCapture({
       pagesCaptured: inventory.length - failed - notCaptured,
       pagesFailed: failed,
       navigationCount,
-      reason:
-        notCaptured > 0
-          ? `${notCaptured} page(s) were not captured because a cap was reached`
-          : failed > 0
-            ? `${failed} page(s) failed to capture`
-            : null
+      reason
     },
     inventory
   );

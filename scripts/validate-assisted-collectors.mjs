@@ -119,7 +119,7 @@ async function captureOnce({ pages, browser, catalogue, outputDir }) {
     },
     outputDir,
     pageLoadDelayMs: 0,
-    caps: { maxPages: 10, maxItemsPerKindPerPage: 50 }
+    caps: { maxPages: 10, maxItemsPerKindPerPage: 300 }
   });
 }
 
@@ -129,12 +129,25 @@ function assertFixtureBehaviour(artifact, failures) {
   };
 
   const pages = artifact.pages;
-  check(pages.length === 2, `expected 2 fixture pages, got ${pages.length}`);
+  check(pages.length === 3, `expected 3 fixture pages, got ${pages.length}`);
   const pageA = pages.find((page) => page.url.includes("page-a.html"));
   const pageB = pages.find((page) => page.url.includes("page-b.html"));
+  const pageC = pages.find((page) => page.url.includes("page-c.html"));
   check(Boolean(pageA), "page-a.html was not captured");
   check(Boolean(pageB), "page-b.html was not captured");
-  if (!pageA || !pageB) return;
+  check(Boolean(pageC), "page-c.html was not captured");
+  if (!pageA || !pageB || !pageC) return;
+
+  check(pageC.links.length === 250, `page C captured ${pageC.links.length} links, expected 250`);
+  check(
+    pageC.links[249]?.accessibleName.value === "Link 250",
+    `page C's 250th link name was "${pageC.links[249]?.accessibleName.value}"`
+  );
+  check(pageC.nameGraphCapped === false, "page C unexpectedly hit the referenced-name node cap");
+  check(
+    !pageC.links.some((item) => signalIds(item).includes("link-name-empty")),
+    "page C produced a false link-name-empty signal after item 200"
+  );
 
   check(artifact.capture.status === "complete", `capture status was ${artifact.capture.status}, expected complete`);
   check(pageA.iframesSkipped === 1, `page A iframe count was ${pageA.iframesSkipped}, expected 1`);
@@ -205,6 +218,10 @@ function assertFixtureBehaviour(artifact, failures) {
     for (const kind of ["headings", "images", "links"]) {
       for (const item of page[kind]) {
         check(!item.itemId.includes("undefined"), `item id contains undefined on ${page.url}`);
+        check(item.accessibleName.captured !== false, `a name was not captured on ${page.url} (${kind})`);
+        if (kind !== "image" && item.text.normalised && !item.accessibleName.value) {
+          check(false, `${kind} with text has an empty name on ${page.url}: ${item.text.normalised}`);
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync, appendFileSync, renameSync, existsSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync, appendFileSync, renameSync, existsSync, unlinkSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { join } from "node:path";
@@ -4413,28 +4413,39 @@ async function main() {
       // The write is atomic: a partial file is never published.
       const collectorArtifact = collectorOutcome?.artifact ?? null;
       if (collectorArtifact) {
+        let reportHtmlUpdated = false;
+        const pendingHtmlPath = `${htmlPath}.pending`;
         try {
           const reportHtml = generateInteractiveHtml(summary, remediationResult, trendData, {
             correlation: correlationArtifact,
             observations: observationArtifact,
             actCoverage: actCoverageArtifact
           }, collectorArtifact);
-          const pendingHtmlPath = `${htmlPath}.pending`;
           writeFileSync(pendingHtmlPath, reportHtml, "utf8");
           renameSync(pendingHtmlPath, htmlPath);
+          reportHtmlUpdated = true;
         } catch (error) {
           console.error(`⚠️ assisted inventory not added to report.html: ${error instanceof Error ? error.message : String(error)}`);
+          try {
+            if (existsSync(pendingHtmlPath)) unlinkSync(pendingHtmlPath);
+          } catch {
+            // A stale pending file is not a reason to fail the scan.
+          }
         }
-        try {
-          const captured = collectorArtifact.capture?.pagesCaptured ?? 0;
-          const requested = collectorArtifact.capture?.pagesRequested ?? 0;
-          const status = collectorArtifact.capture?.status;
-          const line = status === "complete" || status === "partial"
-            ? `\nAssisted inventory: ${captured} of ${requested} pages captured; see assessment-collectors.json.\n`
-            : `\nAssisted inventory: not captured${collectorArtifact.capture?.reason ? ` (${collectorArtifact.capture.reason})` : ""}.\n`;
-          appendFileSync(markdownPath, line, "utf8");
-        } catch (error) {
-          console.error(`⚠️ assisted inventory line not added to report.md: ${error instanceof Error ? error.message : String(error)}`);
+        // Keep report.md and report.html consistent: only claim an inventory in
+        // the Markdown when the HTML render that contains it succeeded.
+        if (reportHtmlUpdated) {
+          try {
+            const captured = collectorArtifact.capture?.pagesCaptured ?? 0;
+            const requested = collectorArtifact.capture?.pagesRequested ?? 0;
+            const status = collectorArtifact.capture?.status;
+            const line = status === "complete" || status === "partial"
+              ? `\nAssisted inventory: ${captured} of ${requested} pages captured; see assessment-collectors.json.\n`
+              : `\nAssisted inventory: not captured${collectorArtifact.capture?.reason ? ` (${collectorArtifact.capture.reason})` : ""}.\n`;
+            appendFileSync(markdownPath, line, "utf8");
+          } catch (error) {
+            console.error(`⚠️ assisted inventory line not added to report.md: ${error instanceof Error ? error.message : String(error)}`);
+          }
         }
       }
     } catch (error) {
