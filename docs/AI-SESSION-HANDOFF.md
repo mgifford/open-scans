@@ -1,8 +1,8 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-27
-**Open Scans checkpoint:** `c0890ea4` on `main` (PRs #439, #440 and #441 merged);
-Phase 3b merged, 3c not started
+**Open Scans checkpoint:** `69b6a070` on `main` (PRs #439, #440, #441 and #442 merged);
+Phase 3b merged, the name-graph fix is in PR #443, 3c not started
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -13,17 +13,85 @@ schemas or tests.
 
 ---
 
+### 2026-11-27 (later): collector name-graph fix
+
+Branch `fix/collector-name-graph`, PR #443. The budget PR #442 merged as `69b6a070`
+before this work started.
+
+**Defect fixed.** A 200-node name-graph cap blanked every accessible name after the 200th
+item on a page. On the pre-fix six-page artifact that was 393 of 1,253 items (31%), and
+393 of 742 signals (53%) were false `link-name-empty` signals; 347 of those were on links
+with visible text. `activity.html` alone had 146. The cap now applies only to nodes first
+discovered through `aria-labelledby`; every collected heading, image and link always gets
+its own node. An uncomputed name is recorded as `captured: false` /
+`source: "not-captured"` and is neither signalled nor rendered as "(empty)".
+
+Also fixed:
+
+- `aria-labelledby` now reads an image's `alt` when the reference is an image, and
+  concatenates every reference in document order.
+- `text.normalised` is capped like `text.raw`; `accessibleName` records `truncated` and
+  `length`.
+- A total-item-cap trim marks the capture `partial`; it could previously stay `complete`.
+- Duplicate-URL and cap shortfalls are reported separately instead of both as "cap".
+- The report states the single captured colour scheme and any page whose referenced-name
+  nodes were capped.
+- `report.md` only claims an inventory when the `report.html` re-render succeeded; a
+  failed rename removes its `.pending` file.
+- `scan-request.yml`, `scan-issue-queue.yml` and `scheduled-scan-queue.yml` copy
+  `assessment-coverage.json` and `assessment-collectors.json` when present.
+
+**Re-measured 2026-11-27** (same six pages, after the fix, two runs per settle):
+
+| Settle | Runs (ms) | Items | Signals | Artifact bytes |
+| :--- | :--- | ---: | ---: | ---: |
+| 2,000 ms (default) | 16,724 / 14,511 | 1,253 | 349 | 1,950,578 |
+| 1,000 ms | 15,200 / 14,886 | 1,253 | 349 | 1,950,578 |
+| 500 ms | 14,546 / 15,593 | 1,253 | 349 | 1,950,578 |
+
+The artifact grew from 1.85 MB to 1.95 MB because names are now populated. The rendered
+report grew from 1,081,055 to 2,609,166 bytes (+1,528,111). Items are unchanged at
+1,253; signals fell from 742 to 349 because the false empty-name signals disappeared.
+`activity.html` still hits the 300-link cap. The default-settle range is 14.5–16.7 s
+(6.2–7.2% of the reference scan); 13.5 s remains the accepted nominal budget, not a
+ceiling.
+
+**Verified 2026-11-27:**
+
+- `npm run lint` exit 0.
+- Full suite: **1124 tests, 1123 pass, 0 fail, 1 skipped**.
+- `npm run validate:assessment-inventory -- --browser=webkit`: ok; 0 axe violations, 0
+  console errors, two incomplete checks (`aria-prohibited-attr`, `color-contrast`).
+- `npm run validate:assisted-collectors -- tests/fixtures/assessment-collectors --browser=webkit`:
+  ok, now 3 fixture pages / 8 headings / 6 images / 257 links, including a 250-link page
+  whose 250th name resolves and whose names produce no false `link-name-empty` signal.
+- Synthetic 252-link page: 0 empty names, 0 `link-name-empty` signals; multi-reference
+  `aria-labelledby` returns "Part one Part two"; a reference to an image returns its alt.
+- `npm run check:assessment-catalogue`: ok, unchanged hash.
+- GitHub Actions on PR #443 at `c2f75408`: `Lint and unit tests` pass (2m54s),
+  `bdd-acceptance` pass (1m42s), AccessLint pass.
+
+**Not verified:** the 25-page targets, JS-heavy pages, Chromium/Firefox collector runs
+and peak memory.
+
+**Next safe step:** merge #443; make `Lint and unit tests` a required check (branch
+protection is still not enabled); get a human review of the rendered 3b text; then 3c.
+Do not start Phase 2 in the same change.
+
+---
+
 ### 2026-11-27: 3b merged, budget accepted, settle remeasured
 
 The three stacked PRs merged on `main` = `c0890ea4`: #439 requirements backlog, #440 CI
 gate, #441 Phase 3b. No assessment PRs remain open. The working tree is clean.
 
 **Budget decision.** 13.5 seconds is the accepted six-page assisted budget (maintainer,
-2026-11-27). The original 5% design target is superseded by this absolute budget. The
-change is recorded in `ASSESSMENT-RESOURCE-BUDGET.md` §9 and the design note; it was not
-applied silently. Phase 3c is unblocked.
+2026-11-27). The original 5% design target is superseded by this absolute 13.5 s figure.
+The change is recorded in `ASSESSMENT-RESOURCE-BUDGET.md` §9 and the design note; it was
+not applied silently. Phase 3c is unblocked by the budget; the later fix entry adds a
+human-review condition before 3c starts.
 
-**Settle-delay remeasurement** (two runs per setting, same six pages):
+**Settle-delay remeasurement** (pre-fix; two runs per setting, same six pages):
 
 | Settle | Runs (ms) | Items | Signals | Bytes |
 | :--- | :--- | ---: | ---: | ---: |
@@ -38,7 +106,8 @@ a JS-heavy fixture before considering it.
 
 **Correction.** `activity.html` reaches the 300-link per-kind cap, so its link table is
 truncated. The earlier "no truncation" statement in the resource budget was wrong and is
-fixed. The accepted artifact for six pages is 1.85 MB with 1,253 items.
+fixed. The pre-fix artifact for six pages is 1.85 MB with 1,253 items; **superseded
+2026-11-27** by the name-graph fix entry above (1.95 MB, 349 signals).
 
 **Not verified.** The 25-page targets (4 MB artifact, 15% wall-clock), JS-heavy pages,
 Chromium/Firefox, and peak memory. Page-subset selection is not implemented and no
@@ -51,6 +120,10 @@ Phase 2 in the same change.
 ---
 
 ### 2026-11-26: Phase 3b assisted element inventory
+
+> **Superseded 2026-11-27:** the measured 1.85 MB artifact contained 393 false
+> `link-name-empty` signals from a 200-node name-graph cap. See the name-graph fix entry
+> at the top of this file for the corrected artifact and the code change.
 
 Branch `feat/assessment-inventory-3b`, commit `958db8dc`, PR #441. Stacked on
 `ci/assessment-quality-gate` (PR #440), which is stacked on
@@ -89,7 +162,10 @@ still opt-in; the default scan is unchanged.
   **5.8%** of the 233,572 ms reference scan against a 5% target; 1,254 items; artifact
   1.85 MB; report 1.08 MB → 2.61 MB (+1.53 MB, within the 2 MB target).
 
-**Budget miss — decision required**
+**Budget miss — resolved 2026-11-27**
+
+The maintainer accepted 13.5 s nominal; see the budget entry above. The original options
+are kept below for history.
 
 The 5% target was missed by 0.8 points; the cost is one navigation plus the required
 2-second settle per page. The design's prescribed action (lower the page cap) does not
@@ -189,7 +265,7 @@ Verified on 2026-11-26:
 - `node --test tests/unit/assessment-collectors.test.mjs` — 15 pass, 0 fail.
 - `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm run validate:assisted-collectors -- tests/fixtures/assessment-collectors --browser=webkit`
   — 2 pages, 7 headings, 6 images, 7 links, 13 signals; ids stable across two
-  captures; artifact validated. The file mode also accepted a real `complete`
+  captures of the same report id; artifact validated. The file mode also accepted a real `complete`
   artifact and a `not-run` artifact produced without the browser path.
 - Full suite — 1109 tests, 1103 pass, 1 fail, 5 skipped. The failure is the known
   `generate-reports-html` "should group reports by ISO week" timezone case
@@ -685,17 +761,19 @@ remove that objection.
 
 ### Open Scans
 
-Last full run (2026-11-24, `main` = `6dcf832`):
+Last full run (2026-11-27, branch `fix/collector-name-graph` based on `69b6a070`):
 
 ```text
-PUPPETEER_CACHE_DIR=.tmp/puppeteer npm test
-1032 tests, 1026 pass, 1 pre-existing failure, 5 skipped
+PUPPETEER_EXECUTABLE_PATH=<chrome-headless-shell> \
+  PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm test
+1124 tests, 1123 pass, 0 fail, 1 skipped
 ```
 
-The one failure is the existing timezone-dependent `generate-reports-html`
-test. Do not describe it as a regression unless the failure changes. Older
-notes quote 853 tests; that figure predates the Sa11y and evidence work and is
-stale.
+The timezone-dependent `generate-reports-html` ISO-week failure is **fixed** (REQ-20);
+do not describe it as a regression or an expected failure. Older notes quote 1032,
+1008 or 853 tests; those figures predate the Sa11y, assessment and collector work and are
+stale. The local run used Node v22.23.5 while `engines` requires >= 24; CI runs Node 24,
+so do not draw engine conclusions from a local run.
 
 Other gates:
 
@@ -704,7 +782,9 @@ npm run lint
 npm run test:bdd
 ```
 
-BDD: 4 scenarios, 1 passed, 3 browser-dependent skipped.
+BDD (2026-11-27, local with Playwright browsers available): 4 scenarios, 4 passed,
+29 steps passed. Older notes say 1 passed / 3 skipped; that was a run without the
+browser dependencies.
 
 Performance issue driver:
 
@@ -840,6 +920,22 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
     `results/scan-*.json` and `results/summary_*.json`. They are not part of a change;
     remove them before committing. The durable fix is still to point the Equal Access
     test at a gitignored directory.
+30. **A shared graph cap must never cap the items.** The name graph stopped at 200 nodes
+    while the item cap was 300 per kind per page, so every item after the 200th got an
+    empty name. Cap the referenced nodes, not the collected items. The cap is invisible
+    in `capture.caps` unless it is recorded; `nameGraphCapped` now does.
+31. **"Empty" and "not computed" are different states.** A missing node was turned into
+    `link-name-empty`: 393 of 742 signals were false, 347 on links with visible text.
+    New items record `captured: false` / `source: "not-captured"` and emit no signal.
+32. **A sidecar named in report.md must be on the publish path.** `report.md` said "see
+    assessment-collectors.json", but no workflow copied it (or
+    `assessment-coverage.json`). The three scan workflows now copy both when present.
+33. **A "median" of two runs is not the upper value.** The settle table was generated by
+    a helper returning `sorted[floor(n / 2)]`, which is the worst of two. Show both runs
+    and label the worst, or compute the mean.
+34. **Fixtures smaller than the cap cannot prove the cap.** The collector fixtures have
+    fewer than 200 items, so they all passed while the real artifact was 31% blank. Check
+    the measured artifact for name coverage, not only the fixture contract.
 
 ---
 
@@ -865,6 +961,10 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
    blockers for the accessibility handoff.
 8. Do not delete the stale unmerged `copilot/fix-puppeteer-connection-error`
    branch without checking whether its work is still wanted.
+9. Make `Lint and unit tests` a required check in branch protection. The API still
+   reports "Branch not protected"; the workflow exists but nothing requires it.
+10. Before 3c, get a human review of the rendered 3b inventory and keep the name-coverage
+    assertion in `validate-assisted-collectors`; a fixture pass alone is not enough.
 
 ---
 

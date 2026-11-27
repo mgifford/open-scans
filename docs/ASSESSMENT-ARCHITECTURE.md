@@ -284,7 +284,7 @@ Passing results are never transferred between unrelated scans.
 | Capability | Phase | Why not now |
 | :--- | :--- | :--- |
 | Accessibility Insights JSON import | 2 | needs real sample exports and a documented version matrix |
-| Heading, image and link collectors | 3b | Phase 3a capture is merged; the report inventory and record link are not. See §11 REQ-02/REQ-03 |
+| Heading, image and link collectors | 3b | Implemented and merged behind `--assisted`; the workflow opt-in (3c) and the 25-page measurement remain. See §11 REQ-02/REQ-03 |
 | Additional custom rules | 4 | needs the Phase 3 collector contract |
 | Keyboard and focus interaction assessment | 5 | needs bounded interaction budgets and real key events |
 | User journey records and UI | 6 | schema is ready (`journey`), UI and task definitions are not |
@@ -318,7 +318,7 @@ them, and were absent from earlier status reporting.
 | :--- | :--- | :--- | :--- | :--- |
 | REQ-01 | Accessibility Insights assessment JSON import (§17) | 2 | Not started | Supported export versions established from real sample files; mapping and provenance documented; invalid and partial imports rejected safely; round-trip tests; uncertainty preserved where the export does not say how a result was determined |
 | REQ-02 | Collector context fields: semantic region, nearby text, accessible description, link/button context, repeated-name data (§12) | 3a.1 / 3b | Partial — 3a captures name, text, locator, role and caption only | The fields exist with caps and tests, or the collector contract explicitly removes them with a recorded rationale. The current design lists only judgement fields as excluded |
-| REQ-03 | Collector inventory in the report, record prefill, `collectorItemId`, `report.md` line (§12, §18) | 3b | Partial — implemented, browser-checked and merged; six-page budget accepted at 13.5 s nominal (14–18 s observed) on 2026-11-27 | The 25-page targets and item-cap behaviour are measured |
+| REQ-03 | Collector inventory in the report, record prefill, `collectorItemId`, `report.md` line (§12, §18) | 3b | Partial — implemented, browser-checked and merged; six-page budget accepted at 13.5 s nominal (14.5–16.7 s observed after the 2026-11-27 name-graph fix); artifact 1.95 MB, 1,253 items, 349 signals | The 25-page targets are measured |
 | REQ-04 | Workflow opt-in for assisted scans: issue field or trigger, cost note (§5) | 3c | Not started | Explicit opt-in exists; a human has reviewed the measured overhead and the rendered 3b text; the default scan is unaffected |
 | REQ-05 | Evaluation profile visible in the scan configuration and the generated report (§5) | 1.1 | Not started | The report states automated-only vs automated-plus-assisted vs extended, and lists enabled collectors; `report.json` carries the same profile |
 | REQ-06 | Rule execution manifest completeness: requested rules/tags, enabled and disabled rules with reasons, configuration fingerprint, frame/shadow coverage (§8) | 1.1 | Partial — engine status, outcome counts and observed/failing ids only | The manifest records these without inflating artifacts, and the report states when execution cannot be established |
@@ -362,7 +362,7 @@ them, and were absent from earlier status reporting.
 | `file://` storage behaviour | Verified (WebKit) | `validate-assessment-report.mjs` saves a record and restores it after reload |
 | Clipboard on `file://` | **Not verified** | fallback is implemented but unexercised in a real `file://` browser; see REQ-21 |
 | Accessibility Insights import | Not implemented | Phase 2 |
-| Assistive collectors | Implemented (3a capture + 3b inventory) | Opt-in `--assisted` capture, `assessment-collectors.json`, report inventory and record prefill; six-page budget accepted at 13.5 s nominal (14–18 s observed, 2026-11-27); 25-page unmeasured (REQ-03). Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
+| Assistive collectors | Implemented (3a capture + 3b inventory) | Opt-in `--assisted` capture, `assessment-collectors.json`, report inventory and record prefill; six-page budget accepted at 13.5 s nominal (14.5–16.7 s observed after the 2026-11-27 name-graph fix); 25-page unmeasured (REQ-03). Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
 | Keyboard/focus assessment | Not implemented | Phase 5 |
 | User journey UI | Not implemented | Phase 6 |
 | Automated accessibility test of the new UI | Implemented (WebKit) | `validate-assessment-report.mjs` runs axe on a generated report: 0 violations, 2 incomplete checks unresolved (REQ-22) |

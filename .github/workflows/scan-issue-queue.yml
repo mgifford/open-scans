@@ -279,6 +279,12 @@ jobs:
                 fs.copyFileSync(`${scanOutputDir}/observations.json`, `${reportDir}/observations.json`);
                 fs.copyFileSync(`${scanOutputDir}/correlation.json`, `${reportDir}/correlation.json`);
                 fs.copyFileSync(`${scanOutputDir}/act-coverage.json`, `${reportDir}/act-coverage.json`);
+                if (fs.existsSync(`${scanOutputDir}/assessment-coverage.json`)) {
+                  fs.copyFileSync(`${scanOutputDir}/assessment-coverage.json`, `${reportDir}/assessment-coverage.json`);
+                }
+                if (fs.existsSync(`${scanOutputDir}/assessment-collectors.json`)) {
+                  fs.copyFileSync(`${scanOutputDir}/assessment-collectors.json`, `${reportDir}/assessment-collectors.json`);
+                }
                 if (fs.existsSync(`${scanOutputDir}/history-comparison.json`)) {
                   fs.copyFileSync(`${scanOutputDir}/history-comparison.json`, `${reportDir}/history-comparison.json`);
                 }

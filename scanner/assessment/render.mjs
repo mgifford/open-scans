@@ -1009,8 +1009,9 @@ export function renderCollectorInventory(collectors) {
 
   const captured = capture?.pagesCaptured ?? pages.filter((page) => page.status === "captured").length;
   const requested = capture?.pagesRequested ?? pages.length;
+  const anyNameGraphCapped = pages.some((page) => page?.nameGraphCapped === true);
   const statusNote = capture?.status === "partial"
-    ? `<p class="assessment-help assessment-state assessment-state--unknown">Capture was partial: ${captured} of ${requested} requested pages were captured.${capture?.reason ? ` ${escapeHtml(capture.reason)}` : ""}</p>`
+    ? `<p class="assessment-help assessment-state assessment-state--unknown">Capture was partial: ${captured} of ${requested} requested pages were captured.${capture?.reason ? ` Reason: ${escapeHtml(capture.reason)}.` : ""}</p>`
     : "";
 
   const pageHtml = pages
@@ -1035,7 +1036,11 @@ export function renderCollectorInventory(collectors) {
             <li>Top document only: iframes and shadow roots are counted, not captured.</li>
             <li>No interaction, scrolling, typing or hovering; content that appears later is not captured.</li>
             <li>Accessible names come from a DOM subset of AccName 1.2, not from the browser's accessibility tree.</li>
+            <li>The inventory was captured in the ${escapeHtml(capture?.colorScheme ?? "light")} colour scheme only; a scan that runs both colour schemes is not inventoried twice.</li>
             <li>Caps truncate the inventory; each page states when a table was cut.</li>
+            ${anyNameGraphCapped
+              ? "<li>On at least one page the referenced-name node cap was reached; some accessible names may be incomplete.</li>"
+              : ""}
             <li>A captured element is not evidence that a criterion was evaluated.</li>
           </ul>
         </details>
@@ -1056,6 +1061,10 @@ function renderInventoryPage(page, signalTitles, signalCatalogue) {
         </details>`;
   }
 
+  const nameGraphNote = page?.nameGraphCapped
+    ? `<p class="assessment-help assessment-state assessment-state--unknown">This page reached the referenced-name node cap; some accessible names may be incomplete.</p>`
+    : "";
+
   const truncationNote = (kind) =>
     truncated[kind]
       ? `<p class="assessment-help assessment-state assessment-state--unknown">This table was truncated by the collector cap; later ${kind} are not shown. The sidecar artifact records the same truncation.</p>`
@@ -1066,12 +1075,13 @@ function renderInventoryPage(page, signalTitles, signalCatalogue) {
           ${page?.iframesSkipped || page?.shadowRootsSkipped
             ? `<p class="assessment-help">Skipped: ${page.iframesSkipped ?? 0} iframe(s), ${page.shadowRootsSkipped ?? 0} shadow root(s). Their contents were not reviewed.</p>`
             : ""}
+          ${nameGraphNote}
           <h4>Headings</h4>
           ${truncationNote("headings")}
           ${renderInventoryTable(page.headings, "heading", url, signalTitles, [
             { label: "Level", value: (item) => item.heading?.level ?? "—" },
             { label: "Text", value: (item) => item.text?.raw ?? "" },
-            { label: "Accessible name", value: (item) => item.accessibleName?.value ?? "" }
+            { label: "Accessible name", value: accessibleNameCell }
           ])}
           <h4>Images</h4>
           ${truncationNote("images")}
@@ -1086,7 +1096,7 @@ function renderInventoryPage(page, signalTitles, signalCatalogue) {
             {
               label: "Alternative and source",
               value: (item) =>
-                `${item.accessibleName?.value || "(empty)"} (${item.accessibleName?.source ?? "none"})`
+                `${accessibleNameCell(item)} (${item.accessibleName?.source ?? "none"})`
             }
           ])}
           <h4>Links</h4>
@@ -1094,10 +1104,15 @@ function renderInventoryPage(page, signalTitles, signalCatalogue) {
           ${renderInventoryTable(page.links, "link", url, signalTitles, [
             { label: "Text", value: (item) => item.text?.raw ?? "" },
             { label: "Destination", value: (item) => item.link?.href ?? "" },
-            { label: "Accessible name", value: (item) => item.accessibleName?.value ?? "" }
+            { label: "Accessible name", value: accessibleNameCell }
           ])}
           ${renderSignalExplanations(page, signalTitles, signalCatalogue)}
         </details>`;
+}
+
+function accessibleNameCell(item) {
+  if (item?.accessibleName?.captured === false) return "(name not captured)";
+  return item?.accessibleName?.value || "(empty)";
 }
 
 function renderInventoryTable(items, kind, pageUrl, signalTitles, columns) {

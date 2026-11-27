@@ -24,7 +24,8 @@ import {
 } from "../../scanner/assessment/collectors/model.mjs";
 import {
   maybeRunAssistedCollectors,
-  resolveScanArgs
+  resolveScanArgs,
+  runAssistedCapture
 } from "../../scanner/assessment/collectors/capture.mjs";
 
 const REPO_ROOT = fileURLToPath(new URL("../..", import.meta.url));
@@ -63,6 +64,10 @@ function nameNode(overrides = {}) {
     labelledBy: [],
     ...overrides
   };
+}
+
+function signalIdsOf(item) {
+  return (item?.signals ?? []).map((signal) => signal.id);
 }
 
 function rawPage(overrides = {}) {
@@ -347,6 +352,78 @@ test("item ids are stable for an unchanged page and change with the element", ()
   );
 });
 
+test("every item after the 200th still resolves its accessible name", () => {
+  const nameGraph = [];
+  const links = [];
+  for (let index = 0; index < 250; index += 1) {
+    nameGraph.push({ id: `n${index}`, ...nameNode({ text: `Link ${index}` }) });
+    links.push({
+      ordinal: index,
+      locator: `html > body > a:nth-of-type(${index + 1})`,
+      htmlSnippet: `<a href="/${index}">Link ${index}</a>`,
+      href: `https://example.com/${index}`,
+      target: null,
+      rel: null,
+      imageOnly: false,
+      nativeAlt: null,
+      text: `Link ${index}`,
+      nameNodeId: `n${index}`,
+      attributes: attributes()
+    });
+  }
+  const page = buildPageInventory(
+    rawPage({ nameGraph, headings: [], images: [], links }),
+    { reportId: REPORT_ASSOCIATION.reportId, caps: DEFAULT_CAPS }
+  );
+  assert.equal(page.links.length, 250);
+  assert.equal(page.links.filter((item) => item.accessibleName.empty).length, 0);
+  assert.equal(page.links.filter((item) => signalIdsOf(item).includes("link-name-empty")).length, 0);
+  assert.equal(page.links[245].accessibleName.value, "Link 245");
+});
+
+test("a missing name node is recorded as not captured, not as an empty name", () => {
+  const page = buildPageInventory(
+    rawPage({
+      nameGraph: [],
+      headings: [],
+      images: [],
+      links: [
+        {
+          ordinal: 0,
+          locator: "html > body > a",
+          htmlSnippet: '<a href="/docs">Real link text</a>',
+          href: "https://example.com/docs",
+          target: null,
+          rel: null,
+          imageOnly: false,
+          nativeAlt: null,
+          text: "Real link text",
+          nameNodeId: null,
+          attributes: attributes()
+        }
+      ]
+    }),
+    { reportId: REPORT_ASSOCIATION.reportId, caps: DEFAULT_CAPS }
+  );
+  const item = page.links[0];
+  assert.equal(item.accessibleName.captured, false);
+  assert.equal(item.accessibleName.source, "not-captured");
+  assert.equal(item.accessibleName.empty, true);
+  assert.ok(!signalIdsOf(item).includes("link-name-empty"), "an uncomputed name must not be a finding-shaped signal");
+});
+
+test("aria-labelledby resolves an image alternative and concatenates references", () => {
+  const graph = new Map([
+    ["link", { id: "link", ...nameNode({ labelledBy: ["logo"] }) }],
+    ["logo", { id: "logo", ...nameNode({ alt: "Company logo" }) }],
+    ["multi", { id: "multi", ...nameNode({ labelledBy: ["part-a", "part-b"] }) }],
+    ["part-a", { id: "part-a", ...nameNode({ text: "Part one" }) }],
+    ["part-b", { id: "part-b", ...nameNode({ text: "Part two" }) }]
+  ]);
+  assert.equal(resolveAccessibleName({ graph, nodeId: "link", kind: "link" }).value, "Company logo");
+  assert.equal(resolveAccessibleName({ graph, nodeId: "multi", kind: "link" }).value, "Part one Part two");
+});
+
 test("per-kind caps truncate and every truncation is recorded", () => {
   const page = rawPage({
     nameGraph: [
@@ -473,8 +550,11 @@ test("long text is truncated while the original length is kept", () => {
     caps: resolveCaps({ maxNameChars: 20, maxSnippetChars: 40 })
   });
   assert.equal(built.links[0].text.raw.length, 20);
+  assert.equal(built.links[0].text.normalised.length, 20);
   assert.equal(built.links[0].text.length, 400);
   assert.equal(built.links[0].accessibleName.value.length, 20);
+  assert.equal(built.links[0].accessibleName.length, 400);
+  assert.equal(built.links[0].accessibleName.truncated, true);
   assert.ok(built.links[0].htmlSnippet.length <= 40);
 });
 
@@ -520,6 +600,64 @@ test("an automated-only scan never calls the collector capture", async () => {
     assert.equal(called, 0, "capture must not be called when collection is not requested");
     assert.deepEqual(readdirSync(directory), [], "the default scan must write no collector artifact");
     assert.ok(!readdirSync(directory).includes(ARTIFACT_FILE));
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("a total-item cap trim is reported as partial, not complete", async () => {
+  const directory = mkdtempSync(join(tmpdir(), "open-scans-collectors-"));
+  const facts = {
+    url: "https://example.com/",
+    title: "Example",
+    capturedAt: "2026-11-26T12:00:00.000Z",
+    iframesSkipped: 0,
+    shadowRootsSkipped: 0,
+    nameGraph: [
+      { id: "n0", ...nameNode({ text: "One" }) },
+      { id: "n1", ...nameNode({ text: "Two" }) }
+    ],
+    headings: [],
+    images: [],
+    links: [0, 1].map((index) => ({
+      ordinal: index,
+      locator: `html > body > a:nth-of-type(${index + 1})`,
+      htmlSnippet: `<a href="/${index}">Link ${index}</a>`,
+      href: `https://example.com/${index}`,
+      target: null,
+      rel: null,
+      imageOnly: false,
+      nativeAlt: null,
+      text: `Link ${index}`,
+      nameNodeId: `n${index}`,
+      attributes: attributes()
+    }))
+  };
+  const page = {
+    goto: async () => {},
+    waitForTimeout: async () => {},
+    evaluate: async () => structuredClone(facts)
+  };
+  const browser = {
+    version: async () => "1",
+    newContext: async () => ({ newPage: async () => page }),
+    close: async () => {}
+  };
+  try {
+    const outcome = await runAssistedCapture({
+      pages: [{ url: "https://example.com/", finalUrl: "https://example.com/", pageLoadDelayMs: 0 }],
+      scanContext: { browser: "chromium", viewport: { width: 800, height: 600 }, colorScheme: "light" },
+      catalogue: CATALOGUE,
+      reportAssociation: REPORT_ASSOCIATION,
+      outputDir: directory,
+      pageLoadDelayMs: 0,
+      caps: { maxItemsTotal: 1 },
+      deps: { playwright: { chromium: { launch: async () => browser } } }
+    });
+    assert.equal(outcome.artifact.capture.status, "partial");
+    assert.match(outcome.artifact.capture.reason, /total item cap trimmed/);
+    assert.equal(outcome.artifact.pages[0].links.length, 1);
+    assert.equal(outcome.artifact.pages[0].truncated.links, true);
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }

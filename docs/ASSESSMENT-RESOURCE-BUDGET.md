@@ -160,18 +160,22 @@ unverified. Nothing in this phase uses a model at runtime.
 
 ---
 
-## 9. Phase 3b assisted inventory (measured 2026-11-26)
+## 9. Phase 3b assisted inventory (measured 2026-11-26, re-measured 2026-11-27)
 
 Method: `runAssistedCapture` against the six pages of the reference scan, same browser,
 viewport, colour scheme and 2-second settle delay the design requires. This is the
 standalone collector pass (no engines), so it measures the **added** wall-clock, not the
 total scan time.
 
+The 2026-11-27 re-measurement ran after the name-graph fix (see below). The figures in
+the table are from that run; the 13,544 ms figure in the first row is the original
+pre-fix run and is kept for history.
+
 | Measure | Target | Measured | Result |
 | :--- | :--- | :--- | :--- |
-| Added wall-clock, 6 pages | ≤ 5% of the reference scan | 13,544 ms = 5.8% of 233,572 ms; remeasured 14.3–18.1 s | **Accepted** as an absolute 13.5 s budget (2026-11-27) |
-| `assessment-collectors.json` | ≤ 4 MB at 25 pages / 3,000 items | 1.85 MB at 6 pages / 1,253 items | Met for this fixture; 25 pages unmeasured |
-| Added report HTML | ≤ 2 MB raw | 1,532,263 bytes (1,081,055 → 2,613,318) | Met |
+| Added wall-clock, 6 pages | ≤ 5% of the reference scan | 13,544 ms = 5.8% pre-fix; post-fix 14.5–16.7 s = 6.2–7.2% | **Accepted** as the 13.5 s nominal budget (absolute, not a percentage; 2026-11-27) |
+| `assessment-collectors.json` | ≤ 4 MB at 25 pages / 3,000 items | 1.95 MB at 6 pages / 1,253 items / 349 signals | Met for this fixture; 25 pages unmeasured |
+| Added report HTML | ≤ 2 MB raw | 1,528,111 bytes (1,081,055 → 2,609,166) | Met |
 | Browser processes | 1 at a time | 1 | Met |
 
 Per-page item counts ranged from 12 to 421 (headings, images and links combined).
@@ -179,26 +183,40 @@ Per-page item counts ranged from 12 to 421 (headings, images and links combined)
 table is truncated. The report and the artifact both say so. An earlier version of this
 section said nothing was truncated; that was wrong and is corrected here.
 
+**Correction, 2026-11-27.** The original 1.85 MB artifact contained 742 signals, of
+which 393 were `link-name-empty` signals caused by a 200-node name-graph cap: every item
+after the 200th on a page had no graph node, so its name was reported as empty. The cap
+now applies only to nodes discovered through `aria-labelledby`; every collected item
+always gets its own node. After the fix the artifact is 1.95 MB (the names are populated)
+and carries 349 signals. The false empty-name signals are gone; the remaining signals
+are the image-alt, generic-link, new-window and aria-label cases.
+
 ### Decision (2026-11-27)
 
-The maintainer accepted **13.5 seconds as the budget for the six-page reference scan**.
-The 5% figure was the design's initial target; the accepted budget is absolute. This is
-recorded as a deliberate decision, not a quiet adjustment of the threshold.
+The maintainer accepted **13.5 seconds as the nominal budget for the six-page reference
+scan**. The 5% figure was the design's initial target; the accepted figure is absolute,
+not a percentage. This is recorded as a deliberate decision, not a quiet adjustment of
+the threshold.
 
-Because the measured range at the default 2-second settle was 14.3–18.1 s, treat 13.5 s
-as the nominal budget and 14–18 s as the observed range; the difference is network
-variance, not collector work. The decision unblocks Phase 3c.
+Because the measured range at the default 2-second settle was 14.5–16.7 s after the fix
+(14.3–18.1 s before it), treat 13.5 s as the nominal budget and 14.5–16.7 s as the
+observed range; the difference is network variance, not collector work. The decision
+unblocks the budget gate for Phase 3c; 3c still needs a human review of the rendered 3b
+text.
 
 ### Settle-delay remeasurement (2026-11-27)
 
 Same six pages, same browser and viewport, two runs per setting. `runAssistedCapture`
 launches a fresh browser per run, so these figures include launch cost.
 
-| Settle delay | Runs (ms) | Median | Items | Signals | Artifact bytes |
+| Settle delay | Runs (ms) | Worst (ms) | Items | Signals | Artifact bytes |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| 2,000 ms (default) | 18,136 / 14,261 | 18,136 | 1,253 | 742 | 1,853,813 |
-| 1,000 ms | 13,920 / 15,357 | 15,357 | 1,253 | 742 | 1,853,813 |
-| 500 ms | 14,300 / 14,422 | 14,422 | 1,253 | 742 | 1,853,813 |
+| 2,000 ms (default) | 16,724 / 14,511 | 16,724 | 1,253 | 349 | 1,950,578 |
+| 1,000 ms | 15,200 / 14,886 | 15,200 | 1,253 | 349 | 1,950,578 |
+| 500 ms | 14,546 / 15,593 | 15,593 | 1,253 | 349 | 1,950,578 |
+
+Two runs do not give a meaningful arithmetic median, so the table shows the worst run at
+each setting. The earlier table called the worst value a "median"; that label was wrong.
 
 The inventory was **identical at every setting**: same item count, same signal count,
 same bytes. On these static pages the settle delay changes only how long the pass waits.
@@ -206,7 +224,7 @@ same bytes. On these static pages the settle delay changes only how long the pas
 Shortening it is not recommended now:
 
 - it saves about 1–3 s, not the 9 s a simple delay subtraction would suggest;
-- navigation is the floor at roughly 14 s for these six pages, so the original 5% target
+- navigation is the floor at roughly 14.5 s for these six pages, so the original 5% target
   is unreachable even at a 500 ms settle;
 - the design deliberately uses the engine's settle delay so the captured DOM is the DOM
   the engines saw. Giving that up for a small gain needs evidence from JS-heavy pages
@@ -217,7 +235,7 @@ Re-measure on a JS-heavy fixture before changing the default. The 2-second delay
 ### Why the 5% target was missed
 
 The cost is dominated by one navigation plus the 2-second settle per page: roughly 12 of
-the 13.5 seconds. The design deliberately uses the same settle delay as the engines so the
+every 14.5–16.7 seconds. The design deliberately uses the same settle delay as the engines so the
 captured DOM is the DOM the engines saw. Shortening it would change what the inventory is,
 not just how long it takes.
 

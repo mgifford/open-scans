@@ -14,7 +14,12 @@
 
 export function collectPageFacts(options = {}) {
   const maxSnippetChars = Number(options.maxSnippetChars) > 0 ? Number(options.maxSnippetChars) : 300;
-  const maxGraphNodes = Number(options.maxGraphNodes) > 0 ? Number(options.maxGraphNodes) : 200;
+  // This cap applies only to nodes first discovered through aria-labelledby.
+  // Every collected heading, image and link always gets its own graph node, so
+  // the cap can never blank the name of an item the inventory contains.
+  const maxReferencedNodes = Number(options.maxReferencedNodes ?? options.maxGraphNodes) > 0
+    ? Number(options.maxReferencedNodes ?? options.maxGraphNodes)
+    : 200;
   const maxDepth = 5;
 
   const normalise = (value) =>
@@ -51,14 +56,24 @@ export function collectPageFacts(options = {}) {
   const elementIds = new WeakMap();
   const graph = new Map();
   let sequence = 0;
+  let referencedNodes = 0;
+  let nameGraphCapped = false;
 
   // Resolve aria-labelledby references into graph nodes, depth-limited and
   // cycle-safe (the WeakMap returns the existing id instead of recursing).
+  // Item nodes (depth 0) are never refused: a missing node would otherwise be
+  // indistinguishable from an element with no name.
   const ensureNode = (el, depth) => {
     if (!el) return null;
     const existing = elementIds.get(el);
     if (existing) return existing;
-    if (graph.size >= maxGraphNodes) return null;
+    if (depth > 0) {
+      if (referencedNodes >= maxReferencedNodes) {
+        nameGraphCapped = true;
+        return null;
+      }
+      referencedNodes += 1;
+    }
     const id = `n${sequence++}`;
     elementIds.set(el, id);
     const rawRefs = String(el.getAttribute("aria-labelledby") || "")
@@ -167,6 +182,7 @@ export function collectPageFacts(options = {}) {
     capturedAt: new Date().toISOString(),
     iframesSkipped: document.querySelectorAll("iframe").length,
     shadowRootsSkipped,
+    nameGraphCapped,
     nameGraph: Array.from(graph.values()),
     headings,
     images,
