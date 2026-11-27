@@ -1,0 +1,67 @@
+name: Unit Tests
+
+# Quality gate for every pull request and for pushes to main.
+#
+# This is the gate that was missing while the assessment work landed: the unit
+# suite only ran locally, so a regression could merge without any CI evidence.
+# It runs the same commands a reviewer runs locally (`npm run lint`, `npm test`).
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unit-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    name: Lint and unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # The suite includes browser-dependent tests: the Playwright
+      # accessibility checks, and run-scan.mjs, whose engines launch Chromium
+      # (Equal Access through Puppeteer). Install Chromium with system
+      # dependencies, then point Puppeteer at the same binary so the two
+      # launchers cannot disagree about which browser is available.
+      # Sa11y's public-fixture integration test stays opt-in (SA11Y_BROWSER_TEST)
+      # so the gate does not depend on a third-party site.
+      - name: Install Chromium for browser-dependent tests
+        timeout-minutes: 10
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: "120000"
+        run: npx playwright install --with-deps chromium
+
+      - name: Point Puppeteer-based engines at Chromium
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          import { chromium } from 'playwright';
+
+          appendFileSync(process.env.GITHUB_ENV, `PUPPETEER_EXECUTABLE_PATH=${chromium.executablePath()}\n`, 'utf8');
+          NODE
+
+      - name: Unit tests
+        run: npm test

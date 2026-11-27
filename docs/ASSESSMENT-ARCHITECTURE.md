@@ -335,7 +335,7 @@ them, and were absent from earlier status reporting.
 | REQ-17 | Keyboard and focus interaction assessment (§6.5, §13, §27) | 5 | Not started | Bounded sequences using real key events; traps and order changes are observations, not verdicts; budgets are enforced |
 | REQ-18 | Remaining custom-rule audit and integration; additional collectors (§6.4, §13) | 4 | Partial — 23 modules classified provisionally by name only | Each module is read and classified; selected collectors land with tests; deterministic rules stay separate |
 | REQ-19 | Axe configuration comparison, including whether omitting `wcag22aa` is a gap (§6.1) | 2 | Not started | Differences are documented with a configuration fingerprint; no silent rule-selection change |
-| REQ-20 | CI quality gate: lint and unit tests on pull requests; resolve or quarantine the ISO-week failure (§28) | 1.1 | Not started | A PR workflow runs the gates and the known failure is fixed or explicitly skipped with an issue |
+| REQ-20 | CI quality gate: lint and unit tests on pull requests; resolve or quarantine the ISO-week failure (§28) | 1.1 | Done | `unit-tests.yml` runs `npm run lint` and `npm test` on every pull request and on `main`; the ISO-week failure was fixed by grouping on UTC and has a timezone-independence test |
 | REQ-21 | Report browser matrix: Chromium, Firefox and WebKit from `file://`, including clipboard (§28) | 2 | Partial — WebKit storage verified; clipboard on `file://` not verified | The validator runs on all three engines or the gap is recorded per engine |
 | REQ-22 | Report's own accessibility: resolve the two axe incomplete checks and complete a manual screen-reader, forced-colours and reflow pass (§26) | 1.1 | Partial — 0 axe violations in WebKit; two incomplete checks unresolved | The incomplete checks are resolved or explained, and a documented manual pass exists |
 | REQ-23 | Longitudinally hosted assessment records, review intervals and freshness policy (§21) | 7 | Deferred by design — VITAL's responsibility | Documented contract exists; implementation belongs in VITAL, not Open Scans |
@@ -358,6 +358,7 @@ them, and were absent from earlier status reporting.
 | Offline self-contained report | Implemented | no external `<script src>` or stylesheet in tests |
 | Markdown coverage summary | Implemented | `formatAssessmentCoverageMarkdown()` in `coverage.mjs`; unit-tested |
 | Reproducible `file://` browser check | Implemented | `npm run validate:assessment-report <report.json> --browser=webkit` (needs a Playwright browser) |
+| CI quality gate (lint + unit tests) | Implemented | `.github/workflows/unit-tests.yml` runs `npm run lint` and `npm test` on pull requests and `main` (REQ-20) |
 | `file://` storage behaviour | Verified (WebKit) | `validate-assessment-report.mjs` saves a record and restores it after reload |
 | Clipboard on `file://` | **Not verified** | fallback is implemented but unexercised in a real `file://` browser; see REQ-21 |
 | Accessibility Insights import | Not implemented | Phase 2 |

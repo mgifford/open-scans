@@ -105,7 +105,9 @@ function formatReportScanContext(scanContext) {
  * @returns {string}
  */
 function getISOWeekKey(date) {
-  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  // `scannedAt` is an ISO instant. Bucket it by its UTC calendar date so the
+  // weekly view does not shift with the server's or reader's timezone.
+  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
   const day = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() + 4 - day);
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
@@ -152,7 +154,7 @@ export function computeWeeklyStats(reports) {
     .sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
     .map(([weekKey, stats]) => ({
       weekKey,
-      label: stats.firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+      label: stats.firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }),
       violations: stats.violations,
       urlsScanned: stats.urlsScanned,
       reportCount: stats.reportCount,

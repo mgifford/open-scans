@@ -13,6 +13,44 @@ schemas or tests.
 
 ---
 
+### 2026-11-26: unit-test quality gate (REQ-20)
+
+Branch `ci/assessment-quality-gate`, stacked on `docs/assessment-requirements-backlog`
+(PR #439). Two changes:
+
+- **ISO week grouping was timezone-dependent.** `getISOWeekKey` took the local
+  year/month/day of a UTC instant, so `2026-01-05T00:00Z` fell into the previous week
+  anywhere west of UTC; the bucket label had the same problem. It now uses UTC calendar
+  fields and formats the label in UTC. The existing test's expected values did not
+  change. A new test runs the same reports in child processes under `TZ=UTC` and
+  `TZ=America/Toronto` and requires identical buckets.
+- **`.github/workflows/unit-tests.yml`** runs `npm run lint` and `npm test` on every pull
+  request and on pushes to `main`. It installs Chromium with system dependencies and
+  points `PUPPETEER_EXECUTABLE_PATH` at the same binary, so the Playwright and Puppeteer
+  engines agree on which browser exists. Sa11y's public-fixture integration test stays
+  opt-in.
+
+Verified locally on 2026-11-26 with `PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers` and
+`PUPPETEER_EXECUTABLE_PATH` set to the installed Chromium:
+
+- `npm run lint` exit 0;
+- full suite — **1110 tests, 1109 pass, 0 fail, 1 skipped** (the Sa11y opt-in test);
+- `tests/unit/generate-reports-html.test.mjs` — 20 pass, including the timezone test.
+
+A run without a browser is not equivalent: Puppeteer-based Equal Access then fails in
+`run-scan-output.test.mjs` rather than skipping, which is why the gate installs Chromium.
+
+Not verified: the workflow has not executed on GitHub Actions. The Ubuntu runner's
+apt/browser install time and the committed-report checkout size (about 3.7 GB) are
+unmeasured. The gate does not run the opt-in browser validators
+(`validate:assessment-report`, `validate:assisted-collectors`); they remain local or
+manual.
+
+Next safe step: watch the first run, then make the check required in branch protection
+if it is stable. Phase 3b remains the next product step.
+
+---
+
 ### 2026-11-26: Phase 3a assisted collectors (opt-in)
 
 Implemented on `docs/assessment-phase-3-design` (PR #438, merged) on top of the
