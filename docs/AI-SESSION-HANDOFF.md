@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-27
 **Open Scans checkpoint:** `69b6a070` on `main` (PRs #439, #440, #441 and #442 merged);
-Phase 3b merged, the name-graph fix is in an open PR, 3c not started
+Phase 3b merged, the name-graph fix is in PR #443, 3c not started
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -15,8 +15,8 @@ schemas or tests.
 
 ### 2026-11-27 (later): collector name-graph fix
 
-Branch `fix/collector-name-graph`. The budget PR #442 merged as `69b6a070` before this
-work started.
+Branch `fix/collector-name-graph`, PR #443. The budget PR #442 merged as `69b6a070`
+before this work started.
 
 **Defect fixed.** A 200-node name-graph cap blanked every accessible name after the 200th
 item on a page. On the pre-fix six-page artifact that was 393 of 1,253 items (31%), and
@@ -72,7 +72,7 @@ ceiling.
 **Not verified:** the 25-page targets, JS-heavy pages, Chromium/Firefox collector runs
 and peak memory.
 
-**Next safe step:** merge this fix; make `Lint and unit tests` a required check (branch
+**Next safe step:** merge #443; make `Lint and unit tests` a required check (branch
 protection is still not enabled); get a human review of the rendered 3b text; then 3c.
 Do not start Phase 2 in the same change.
 
