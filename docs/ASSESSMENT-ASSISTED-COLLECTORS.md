@@ -523,7 +523,7 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 | :--- | :--- | :--- |
 | 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
 | 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented and merged** (PR #441); name-graph fix on 2026-11-27. The six-page budget was accepted at 13.5 s nominal (14.5–16.7 s observed after the fix); the 25-page targets are unmeasured. |
-| 3c | workflow opt-in: issue-template checkbox, `ASSISTED:` title keyword or `Assisted: yes`, parsed `request.assisted`, cost note in the issue template | **Implemented** behind explicit opt-in; the default scan is unchanged. The 25-page measurement remains open. |
+| 3c | workflow opt-in: issue-template checkbox, `ASSISTED:` title keyword or `Assisted: yes`, parsed `request.assisted`, cost note in the issue template | **Implemented** behind explicit opt-in; the default scan is unchanged. A real production assisted run and the 25-page measurement remain open. |
 
 3c was deliberately last. The issue field is the workflow input: `parse-issue.mjs`
 returns `assisted` and `run-scan.mjs` honours it, so the workflow does not need a separate
