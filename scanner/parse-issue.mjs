@@ -152,6 +152,29 @@ export function extractNamedValue(text, label) {
   return match?.[1]?.trim() || null;
 }
 
+function parseAssistedValue(value) {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return null;
+}
+
+/**
+ * Read the optional assisted-inventory opt-in from the issue form checkbox or a
+ * manually written "Assisted: yes" line. Absence is false; the default scan must
+ * not collect.
+ */
+export function extractBodyAssisted(body) {
+  if (!body) return false;
+  const named = parseAssistedValue(extractNamedValue(body, "Assisted"));
+  if (named !== null) return named;
+  const section = extractSection(body, "Assisted element inventory");
+  if (section) {
+    return /^\s*[-*]\s*\[[xX]\]/m.test(section);
+  }
+  return false;
+}
+
 function extractBodyScanContext(body) {
   if (!body) return {};
   const scanContextSection = extractSection(body, "Scan context");
@@ -205,7 +228,8 @@ function extractScanTitle(issueTitle) {
       engines: ["all"],
       viewport: null,
       colorScheme: null,
-      browser: null
+      browser: null,
+      assisted: false
     };
   }
 
@@ -238,6 +262,14 @@ function extractScanTitle(issueTitle) {
   if (/\bREMEDIATE\b/i.test(scanTitle)) {
     remediate = true;
     scanTitle = scanTitle.replace(/\bREMEDIATE\b/i, "").trim();
+  }
+
+  // Extract ASSISTED: keyword — opt-in flag for the assisted element inventory.
+  // The colon is required so a site title like "Assisted Living" does not opt in.
+  let assisted = false;
+  if (/\bASSISTED:\s*/i.test(scanTitle)) {
+    assisted = true;
+    scanTitle = scanTitle.replace(/\bASSISTED:\s*/i, "").trim();
   }
 
   // Extract TIME:N delay specification from the title (e.g. "TIME:5" = 5 second delay)
@@ -289,7 +321,8 @@ function extractScanTitle(issueTitle) {
     remediate,
     viewport,
     colorScheme,
-    browser
+    browser,
+    assisted
   };
 }
 
@@ -375,6 +408,7 @@ export function parseScanIssue(issueEvent) {
   const titleEngines = titleInfo.engines;
   const engines = bodyEngines ?? (titleEngines.length > 0 ? titleEngines : getDefaultEngines());
   const bodyScanContext = extractBodyScanContext(body);
+  const assisted = titleInfo.assisted === true || extractBodyAssisted(body);
   const scanContext = buildScanContext({
     viewport: bodyScanContext.viewport ?? titleInfo.viewport,
     colorScheme: bodyScanContext.colorScheme ?? titleInfo.colorScheme,
@@ -396,7 +430,8 @@ export function parseScanIssue(issueEvent) {
     pageLoadDelay: titleInfo.pageLoadDelay ?? 2,
     viewport: scanContext.viewport,
     colorScheme: scanContext.colorScheme,
-    browser: scanContext.browser
+    browser: scanContext.browser,
+    assisted
   };
 
   const validation = validateScanRequest(request);
@@ -414,6 +449,7 @@ export function parseScanIssue(issueEvent) {
     viewport: scanContext.viewport,
     colorScheme: scanContext.colorScheme,
     browser: scanContext.browser,
+    assisted,
     scanContext,
     needsCrawl,
     crawlBaseUrl,
@@ -475,6 +511,10 @@ export function validateScanRequest(candidate) {
 
   if (candidate.browser !== undefined && !normalizeBrowser(candidate.browser)) {
     errors.push("browser must be one of: chromium, firefox, webkit");
+  }
+
+  if (candidate.assisted !== undefined && typeof candidate.assisted !== "boolean") {
+    errors.push("assisted must be a boolean");
   }
 
   const knownKeys = new Set(Object.keys(scanRequestSchema.properties));

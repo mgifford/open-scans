@@ -12,6 +12,8 @@ body:
 
         > **Tip:** You can also use the [web form](https://mgifford.github.io/open-scans/) to pre-fill this template automatically.
 
+        > **Optional assisted inventory:** tick the checkbox at the end, or add `ASSISTED:` to the title / `Assisted: yes` to the body. Leave it off for the default scan.
+
   - type: textarea
     id: urls
     attributes:
@@ -102,3 +104,19 @@ body:
       default: 0
     validations:
       required: false
+
+  - type: checkboxes
+    id: assisted
+    attributes:
+      label: Assisted element inventory
+      description: |
+        Optional. Adds one extra browser pass per captured page and publishes
+        `assessment-collectors.json` beside the report. For six pages the measured cost is
+        about 13.5 seconds nominal (14.5–16.7 seconds observed) and about 1.95 MB. It
+        captures headings, images and links for a human to review, top document only,
+        without interaction or scrolling, and can be truncated by caps. It is not a
+        finding, a score or a WCAG conformance result. Leave unchecked for the default
+        scan, which launches no collector browser.
+      options:
+        - label: Capture the assisted inventory for manual review
+          required: false

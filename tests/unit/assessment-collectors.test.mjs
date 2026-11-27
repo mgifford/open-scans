@@ -683,4 +683,5 @@ test("run-scan reaches collectors only through the gated helper", () => {
   assert.ok(source.includes("maybeRunAssistedCollectors"), "run-scan must use the gated helper");
   assert.ok(!source.includes("runAssistedCapture("), "run-scan must not call the capture pass directly");
   assert.ok(source.includes("if (assistedRequested)"), "the collector step must stay behind the opt-in flag");
+  assert.ok(source.includes("request.assisted === true"), "run-scan must honor the issue/title opt-in");
 });
