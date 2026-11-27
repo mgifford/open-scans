@@ -1,8 +1,9 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-27
-**Open Scans checkpoint:** `69b6a070` on `main` (PRs #439, #440, #441 and #442 merged);
-Phase 3b merged, the name-graph fix is in PR #443, 3c not started
+**Open Scans checkpoint:** `92ed2ca9` on `main` (PRs #439, #440, #441, #442 and #443
+merged); Phase 3b and the name-graph fix are merged, branch protection requires
+`Lint and unit tests`, 3c not started
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -15,8 +16,8 @@ schemas or tests.
 
 ### 2026-11-27 (later): collector name-graph fix
 
-Branch `fix/collector-name-graph`, PR #443. The budget PR #442 merged as `69b6a070`
-before this work started.
+Branch `fix/collector-name-graph`, PR #443, **merged as `92ed2ca9`** on 2026-11-27. The
+budget PR #442 merged as `69b6a070` before this work started.
 
 **Defect fixed.** A 200-node name-graph cap blanked every accessible name after the 200th
 item on a page. On the pre-fix six-page artifact that was 393 of 1,253 items (31%), and
@@ -68,15 +69,19 @@ ceiling.
 - Synthetic 252-link page: 0 empty names, 0 `link-name-empty` signals; multi-reference
   `aria-labelledby` returns "Part one Part two"; a reference to an image returns its alt.
 - `npm run check:assessment-catalogue`: ok, unchanged hash.
-- GitHub Actions on PR #443 at `c2f75408`: `Lint and unit tests` pass (2m54s),
-  `bdd-acceptance` pass (1m42s), AccessLint pass.
+- Chromium: `validate:assessment-inventory --browser=chromium` ok and
+  `validate:assisted-collectors ... --browser=chromium` ok (3 pages, 257 links).
+- GitHub Actions on PR #443 at `bfa004c2`: `Lint and unit tests` pass (3m6s),
+  `bdd-acceptance` pass (1m59s), AccessLint pass. The PR merged as `92ed2ca9`.
 
-**Not verified:** the 25-page targets, JS-heavy pages, Chromium/Firefox collector runs
-and peak memory.
+**Not verified:** the 25-page targets, JS-heavy pages, peak memory, and Firefox. The
+Playwright Firefox 157.0 build installs but exits with "Could not find profile folder"
+under this file sandbox, for both validators; this is the same local-sandbox class as
+pitfall 17, not a code result. CI still runs Chromium only.
 
-**Next safe step:** merge #443; make `Lint and unit tests` a required check (branch
-protection is still not enabled); get a human review of the rendered 3b text; then 3c.
-Do not start Phase 2 in the same change.
+**Next safe step:** get a human review of the rendered 3b text; then 3c. Branch protection
+now requires `Lint and unit tests` on `main` (enabled 2026-11-27; admins may bypass). Do
+not start Phase 2 in the same change.
 
 ---
 
@@ -961,8 +966,10 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
    blockers for the accessibility handoff.
 8. Do not delete the stale unmerged `copilot/fix-puppeteer-connection-error`
    branch without checking whether its work is still wanted.
-9. Make `Lint and unit tests` a required check in branch protection. The API still
-   reports "Branch not protected"; the workflow exists but nothing requires it.
+9. Keep `Lint and unit tests` as the required status check on `main`. It was enabled on
+   2026-11-27 with `strict: false`, no review requirement, force pushes and deletions
+   disabled, and `enforce_admins: false` (an admin can still bypass). If the workflow or
+   job name changes, update the protection context to match.
 10. Before 3c, get a human review of the rendered 3b inventory and keep the name-coverage
     assertion in `validate-assisted-collectors`; a fixture pass alone is not enough.
 
