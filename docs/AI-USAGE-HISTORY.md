@@ -229,6 +229,21 @@ the Chromium install and the full suite. Limitations recorded: the opt-in browse
 validators are not part of the gate; the full suite still scans the repository's
 committed report artifacts (about 3.7 GB), which is slow but bounded by the job timeout.
 
+### November 2026: Assisted element inventory (Phase 3b)
+
+The following development was attributed to DeepSeek Harness (`deepseek-flash`).
+
+| Work | Contribution |
+|---|---|
+| Inventory | Per-page headings, images and links rendered inside the manual assessment section, with accessible names, deterministic signals and stated limits; readable without JavaScript |
+| Record link | Per-row prefill of page, locator, name, snippet, collector item id and suggested procedure; `elementIdentity.collectorItemId` added as an optional validated field |
+| Report integration | Atomic post-collection re-render of `report.html`, one `report.md` line, redaction of the artifact before it is written, honest no-capture state |
+| Verification | 9 unit tests, a committed WebKit validator (`validate:assessment-inventory`), a full-suite run and a measured overhead |
+| Measurement | 6 pages: 13.5 s added (5.8% of the reference scan against a 5% target), 1,254 items, 1.85 MB artifact, +1.53 MB report |
+
+Limitations recorded: the 5% wall-clock target is missed and the budget decision is left
+to the maintainer; 25-page runs, Chromium/Firefox and memory are unmeasured.
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

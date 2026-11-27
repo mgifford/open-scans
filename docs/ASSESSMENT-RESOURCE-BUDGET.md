@@ -160,7 +160,56 @@ unverified. Nothing in this phase uses a model at runtime.
 
 ---
 
-## 9. What was not measured
+## 9. Phase 3b assisted inventory (measured 2026-11-26)
+
+Method: `runAssistedCapture` against the six pages of the reference scan, same browser,
+viewport, colour scheme and 2-second settle delay the design requires. This is the
+standalone collector pass (no engines), so it measures the **added** wall-clock, not the
+total scan time.
+
+| Measure | Target | Measured | Result |
+| :--- | :--- | :--- | :--- |
+| Added wall-clock, 6 pages | ≤ 5% of the reference scan | 13,544 ms = **5.8%** of 233,572 ms | **Missed** |
+| `assessment-collectors.json` | ≤ 4 MB at 25 pages / 3,000 items | 1.85 MB at 6 pages / 1,254 items | Met for this fixture; 25 pages unmeasured |
+| Added report HTML | ≤ 2 MB raw | 1,532,263 bytes (1,081,055 → 2,613,318) | Met |
+| Browser processes | 1 at a time | 1 | Met |
+
+No page hit a cap; nothing was truncated. Per-page item counts ranged from 12 to 404
+(headings, images and links combined).
+
+### Why the 5% target was missed
+
+The cost is dominated by one navigation plus the 2-second settle per page: roughly 12 of
+the 13.5 seconds. The design deliberately uses the same settle delay as the engines so the
+captured DOM is the DOM the engines saw. Shortening it would change what the inventory is,
+not just how long it takes.
+
+The design's prescribed action for a missed target is to reduce the default page cap. That
+does not help a 6-page run where every page is already inside the cap.
+
+### Decision required
+
+This was not decided unilaterally:
+
+1. **Accept 5.8%.** 13.5 seconds on a 3.9-minute scan, recorded as a deliberate change to
+   the target with a reason.
+2. **Shorten the assisted settle delay** (for example to 1 second) and re-measure, with a
+   documented difference between the collector DOM and the engine DOM.
+3. **Capture an explicit subset of pages** for the assisted profile.
+
+Do not raise the 5% target without one of those recorded.
+
+### What this does not measure
+
+- A 25-page run, where the 4 MB artifact target and the 15% wall-clock target apply.
+- JS-heavy pages where the settle delay matters more (or less).
+- Peak memory, and Chromium or Firefox.
+- The second report render: `report.html` is rewritten after collection so the inventory
+  is included. The render itself is about 30 ms at this size and is not in the 13.5 s.
+
+---
+
+## 10. What was not measured
 
 - Peak memory during scan and report generation.
 - Cold-start report generation in CI (Node 24, GitHub runner).

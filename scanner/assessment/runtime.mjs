@@ -528,8 +528,10 @@ function buildRecordFromFindingForm(form) {
     .split(/[,\s]+/)
     .map((value) => value.trim())
     .filter((value) => /^\d\.\d\.\d+$/.test(value));
+  const locator = readFormValue(form, "elementLocator");
   return createRecord({
     kind: "finding",
+    assessmentDefinitionId: readFormValue(form, "assessmentDefinitionId") || null,
     title: readFormValue(form, "title"),
     testedUrl: readFormValue(form, "testedUrl"),
     component: readFormValue(form, "component"),
@@ -546,9 +548,79 @@ function buildRecordFromFindingForm(form) {
       browser: readFormValue(form, "browser") || describeBrowser().browser,
       assistiveTechnology: readFormValue(form, "assistiveTechnology")
     },
+    elementIdentity: locator
+      ? {
+          locator,
+          locatorType: readFormValue(form, "elementLocatorType") || "css",
+          accessibleName: readFormValue(form, "elementAccessibleName"),
+          htmlSnippet: readFormValue(form, "elementHtmlSnippet"),
+          collectorItemId: readFormValue(form, "collectorItemId") || null
+        }
+      : null,
     relationToAutomated: "none",
     provenance: { source: "open-scans-report" }
   });
+}
+
+const SUGGESTED_PROCEDURE_BY_KIND = Object.freeze({
+  heading: "manual-heading-structure",
+  image: "manual-alt-text-quality",
+  link: "manual-link-purpose"
+});
+
+function clearElementPrefill(form) {
+  for (const name of ["elementLocator", "elementAccessibleName", "elementHtmlSnippet", "collectorItemId"]) {
+    const field = form.elements.namedItem(name);
+    if (field) field.value = "";
+  }
+  const select = form.elements.namedItem("assessmentDefinitionId");
+  if (select) select.value = "";
+  const summary = document.getElementById("finding-element-summary");
+  const text = document.getElementById("finding-element-summary-text");
+  if (summary) summary.hidden = true;
+  if (text) text.textContent = "";
+}
+
+function prefillFindingFromItem(state, button) {
+  const row = button.closest("tr[data-collector-item]");
+  const form = document.getElementById("report-barrier");
+  if (!row || !form) return;
+  const kind = row.getAttribute("data-collector-kind") ?? "element";
+  const pageUrl = row.getAttribute("data-collector-page") ?? "";
+  const locator = row.getAttribute("data-collector-locator") ?? "";
+  const name = row.getAttribute("data-collector-name") ?? "";
+  const snippet = row.getAttribute("data-collector-snippet") ?? "";
+  const itemId = row.getAttribute("data-collector-item") ?? "";
+
+  form.elements.namedItem("testedUrl").value = pageUrl;
+  form.elements.namedItem("elementLocator").value = locator;
+  form.elements.namedItem("elementLocatorType").value = "css";
+  form.elements.namedItem("elementAccessibleName").value = name;
+  form.elements.namedItem("elementHtmlSnippet").value = snippet;
+  form.elements.namedItem("collectorItemId").value = itemId;
+  const suggested = SUGGESTED_PROCEDURE_BY_KIND[kind];
+  const procedureSelect = form.elements.namedItem("assessmentDefinitionId");
+  if (procedureSelect && suggested && [...procedureSelect.options].some((option) => option.value === suggested)) {
+    procedureSelect.value = suggested;
+  }
+  const titleField = form.elements.namedItem("title");
+  if (titleField && !titleField.value.trim()) {
+    titleField.value = `${kind.charAt(0).toUpperCase()}${kind.slice(1)} observation: ${name || locator || itemId}`.slice(0, 200);
+  }
+  const summary = document.getElementById("finding-element-summary");
+  const text = document.getElementById("finding-element-summary-text");
+  if (summary && text) {
+    text.textContent =
+      `Selected ${kind} from the assisted inventory: ${name || "(no accessible name)"}. ` +
+      `Locator: ${locator || "(not recorded)"}. This is an observation target, not a finding.`;
+    summary.hidden = false;
+  }
+  const heading = document.getElementById("report-barrier-heading");
+  if (heading) {
+    heading.setAttribute("tabindex", "-1");
+    heading.focus();
+  }
+  announce(state, `Selected ${kind}. Describe the barrier, choose an outcome, then save.`);
 }
 
 function buildRecordFromExperientialForm(form) {
@@ -575,6 +647,10 @@ function buildRecordFromExperientialForm(form) {
 }
 
 function wireForms(state) {
+  for (const button of document.querySelectorAll("[data-collector-prefill]")) {
+    button.addEventListener("click", () => prefillFindingFromItem(state, button));
+  }
+
   for (const button of document.querySelectorAll("[data-record-procedure]")) {
     button.addEventListener("click", () => {
       const procedureId = button.getAttribute("data-record-procedure");
@@ -618,6 +694,7 @@ function wireForms(state) {
       }
       formErrors(errorsContainer, []);
       form.reset();
+      if (kind === "finding") clearElementPrefill(form);
       const dateField = form.elements.namedItem("testingDate");
       if (dateField) dateField.value = new Date().toISOString().slice(0, 10);
       // Deliberately no focus move after recording an outcome. Some engines drop

@@ -1,9 +1,11 @@
 # Assisted collectors (Phase 3 design)
 
 **Status:** Phase 3a is implemented and merged (opt-in capture pass, artifact,
-validator and tests; PR #438). The report inventory (3b), the record link (3b) and the
-workflow opt-in (3c) are not implemented. Phase 1 is merged as `6d8fbdc9` (PR #437).
-Unmet requirements are tracked in
+validator and tests; PR #438). Phase 3b is implemented on `feat/assessment-inventory-3b`:
+the report inventory, record prefill and `collectorItemId` link. Its measured overhead is
+**5.8% of the reference scan against a 5% target**, so 3b is not marked complete until
+that budget is accepted or reduced (see §10). The workflow opt-in (3c) is not
+implemented. Phase 1 is merged as `6d8fbdc9` (PR #437). Unmet requirements are tracked in
 [`ASSESSMENT-ARCHITECTURE.md`](ASSESSMENT-ARCHITECTURE.md) §11.
 
 This note specifies the collector layer so it can be built without changing the default
@@ -373,11 +375,15 @@ No counts that imply coverage.
 ### Self-containment
 
 The published `report.html` remains self-contained: the inventory is embedded in the
-existing inline JSON block, bounded by the item caps. The artifact is also written
-beside the report. If measurement in Phase 3b shows an embedded inventory pushing the
-report past roughly 5 MB, the fallback is to embed only the first 50 items per kind per
-page with an explicit "inventory truncated in this report; see the sidecar" notice —
-never a silent difference between the artifact and the rendered tables.
+rendered tables, and the per-item data a record needs (locator, kind, page, accessible
+name, snippet, item id) travels in data attributes on each row. It is **not** duplicated
+into a second JSON copy inside the report: the rendered table is the single embedded
+form, and `assessment-collectors.json` remains the machine-readable artifact. This keeps
+the report smaller and avoids two representations drifting apart. If measurement shows
+the embedded inventory pushing the report past roughly 5 MB, the fallback is to embed
+only the first 50 items per kind per page with an explicit "inventory truncated in this
+report; see the sidecar" notice — never a silent difference between the artifact and the
+rendered tables. Measured on the 6-page reference scan: +1.53 MB, 1,254 items.
 
 Regenerating a report from `report.json` alone cannot reproduce an inventory it does not
 have. `generateInteractiveHtml()` gains an optional collector argument; without it the
@@ -472,7 +478,7 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 | Step | Scope | Status |
 | :--- | :--- | :--- |
 | 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
-| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | Not implemented. Done when a browser check passes, coverage counts are unchanged, and measured overhead is within section 10. |
+| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented**, budget unmet: browser check passes and coverage counts are unchanged, but measured added wall-clock is 13.5 s (5.8% of the reference scan) against a 5% target. Needs an explicit accept-or-reduce decision before 3c. |
 | 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | Not implemented. Done after a human review of the measured overhead and of 3b's rendered text; explicit opt-in only. |
 
 3c is deliberately last. A workflow change is a cost and privacy decision, not a code
@@ -535,7 +541,7 @@ has been reviewed against a real published report.
 | Accessible-name subset | Implemented (3a) | unit tests for precedence, cycle safety, depth cap and empty names; fixture names |
 | Signal catalogue | Implemented (3a) | one unit case per signal; fixture signals |
 | `--assisted` gate | Implemented (3a) | gate tests plus the no-capture test for the default scan |
-| Report inventory section | Not implemented (3b) | — |
-| `collectorItemId` record link | Not implemented (3b) | — |
+| Report inventory section | Implemented (3b) | `tests/unit/assessment-inventory.test.mjs`; `npm run validate:assessment-inventory -- --browser=webkit` (prefill, save and axe) |
+| `collectorItemId` record link | Implemented (3b) | unit tests for valid, malformed and absent ids; saved record inspected in WebKit |
 | Workflow opt-in | Not implemented (3c) | — |
-| Measured overhead | Not measured | the fixture run measures correctness only, not scan overhead |
+| Measured overhead | Measured (3b) | 6 pages: 13.5 s, 5.8% of the reference scan against a 5% target; artifact 1.85 MB; report +1.53 MB |

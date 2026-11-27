@@ -2,7 +2,9 @@
 
 **Last updated:** 2026-11-26
 **Open Scans checkpoint:** `a7102a37` on `main` (PR #437 and PR #438 merged); Phase 3a
-assisted collectors merged, opt-in only; 3b/3c not started
+assisted collectors merged, opt-in only; Phase 3b implemented in PR #441; 3c not started
+**Open assessment stack (merge bottom-up):** #439 requirements backlog → #440 CI gate →
+#441 3b inventory
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -10,6 +12,74 @@ was verified, not the full requirement set.
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-26: Phase 3b assisted element inventory
+
+Branch `feat/assessment-inventory-3b`, commit `958db8dc`, PR #441. Stacked on
+`ci/assessment-quality-gate` (PR #440), which is stacked on
+`docs/assessment-requirements-backlog` (PR #439); merge bottom-up. The assisted pass is
+still opt-in; the default scan is unchanged.
+
+**What exists**
+
+- A collapsed per-page inventory inside the Manual assessment section: headings, images
+  and links with computed accessible names, deterministic signals and a limitations
+  block. Readable without JavaScript.
+- Per-row **Record observation** prefill: page URL, CSS locator, accessible name, HTML
+  snippet, `collectorItemId` and a suggested procedure for the element kind. The
+  reviewer still chooses the outcome and method and writes the note; the element summary
+  clears after saving.
+- `elementIdentity.collectorItemId` (`col_` + 16 hex), additive and nullable, with
+  malformed values rejected rather than silently dropped.
+- `report.html` is re-rendered after collection and replaced atomically, and `report.md`
+  gains one inventory line. The collector artifact is redacted before it is written.
+- Without a capture the section is one sentence with the reason; coverage counts and
+  the missing-evidence notice are unchanged.
+- `npm run validate:assessment-inventory -- --browser=webkit` exercises the whole path.
+
+**Verified on 2026-11-26**
+
+- `npm run lint` exit 0.
+- Full suite with Chromium and `PUPPETEER_EXECUTABLE_PATH` set: **1119 tests, 1118 pass,
+  0 fail, 1 skipped** (Sa11y opt-in).
+- WebKit from `file://`: 3 inventory rows and buttons; prefill filled URL, locator,
+  accessible name, item id and suggested procedure; the saved record retained the item
+  id; the element summary cleared; **0 axe violations**, 0 console errors.
+- GitHub Actions on PR #441: `Lint and unit tests` pass (2m56s), `bdd-acceptance` pass
+  (1m53s), AccessLint pass. PR #440's unit gate passes (2m40s); PR #439 predates the
+  workflow and shows AccessLint only.
+- Measurement (standalone collector pass over the six reference pages): 13,544 ms,
+  **5.8%** of the 233,572 ms reference scan against a 5% target; 1,254 items; artifact
+  1.85 MB; report 1.08 MB → 2.61 MB (+1.53 MB, within the 2 MB target).
+
+**Budget miss — decision required**
+
+The 5% target was missed by 0.8 points; the cost is one navigation plus the required
+2-second settle per page. The design's prescribed action (lower the page cap) does not
+help a 6-page run. Recorded options: accept 5.8%, shorten the assisted settle delay and
+re-measure, or capture an explicit page subset. Do not raise the target quietly.
+
+**Not verified**
+
+- A 25-page run (4 MB artifact and 15% targets), JS-heavy pages, peak memory, Chromium
+  and Firefox.
+- The second report render cost is excluded from the 13.5 s; it is about 30 ms here.
+
+**Wrap-up state at this checkpoint**
+
+Working tree clean, no stashes, branch 4 commits ahead of `origin/main` and not behind;
+`npm run wrap-up` was run. The three PRs are open and unmerged by policy.
+
+**Next safe step**
+
+1. Merge the stack bottom-up (#439 → #440 → #441) and make `Lint and unit tests` a
+   required check in branch protection.
+2. Decide the 3b budget (accept 5.8%, shorten the assisted settle and re-measure, or
+   capture a subset) — see `ASSESSMENT-RESOURCE-BUDGET.md` §9.
+3. Then 3c (workflow opt-in) or Phase 2 (Accessibility Insights import), not both at
+   once. Phase 2 remains unstarted.
 
 ---
 

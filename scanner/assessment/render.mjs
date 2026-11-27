@@ -130,6 +130,12 @@ export const ASSESSMENT_CSS = `
     .assessment-procedure h4 { margin: 0 0 0.35rem; font-size: 1.05rem; }
     .assessment-procedure .assessment-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
     .assessment-procedure .assessment-badge { border: 1px solid var(--border); border-radius: 999px; padding: 0.05rem 0.5rem; font-size: 0.78rem; color: var(--muted); }
+    .assessment-badge--signal { color: var(--moderate); border-color: currentColor; margin: 0.1rem 0; display: inline-block; }
+    .assessment-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .assessment-inventory-table { font-size: 0.85rem; }
+    .assessment-inventory-table td { max-width: 32ch; overflow-wrap: anywhere; }
+    .assessment-element-summary { border-left: 4px solid var(--primary); background: var(--surface); padding: 0.5rem 0.75rem; border-radius: 0 4px 4px 0; }
+    .assessment-element-summary p { margin: 0; }
     .assessment-procedure ol, .assessment-procedure ul { margin: 0.35rem 0; padding-left: 1.25rem; max-width: 72ch; }
     .assessment-procedure li { margin: 0.2rem 0; }
     .assessment-procedure summary { cursor: pointer; }
@@ -643,9 +649,32 @@ function renderFindingForm() {
               </div>
             </div>
             <div class="assessment-field">
+              <label for="finding-procedure">Related procedure (optional)</label>
+              <select id="finding-procedure" name="assessmentDefinitionId" aria-describedby="finding-procedure-help">
+                <option value="">No specific procedure</option>
+                ${listProcedures()
+                  .map(
+                    (procedure) =>
+                      `<option value="${escapeHtml(procedure.id)}">${escapeHtml(procedure.title)} (WCAG ${escapeHtml(
+                        procedure.criteria.join(", ")
+                      )})</option>`
+                  )
+                  .join("")}
+              </select>
+              <p class="assessment-help" id="finding-procedure-help">Choosing a procedure links the barrier to the method you used. It does not change the outcome.</p>
+            </div>
+            <div class="assessment-field">
               <label for="finding-notes">Reproduction steps and notes</label>
               <textarea id="finding-notes" name="reviewerNotes" rows="3"></textarea>
             </div>
+            <div class="assessment-element-summary" id="finding-element-summary" hidden>
+              <p class="assessment-help" id="finding-element-summary-text"></p>
+            </div>
+            <input type="hidden" id="finding-element-locator" name="elementLocator">
+            <input type="hidden" id="finding-element-locator-type" name="elementLocatorType" value="css">
+            <input type="hidden" id="finding-element-name" name="elementAccessibleName">
+            <input type="hidden" id="finding-element-snippet" name="elementHtmlSnippet">
+            <input type="hidden" id="finding-collector-item" name="collectorItemId">
             <div class="assessment-field">
               <label for="finding-verification">Verification</label>
               <select id="finding-verification" name="verification">${verificationOptions("self-attested")}</select>
@@ -735,7 +764,7 @@ function renderExperientialForm() {
  *
  * @param {{coverage: object, report: object}} options
  */
-export function renderAssessmentWorkspace({ coverage, report, pages = [] }) {
+export function renderAssessmentWorkspace({ coverage, report, pages = [], collectors = null }) {
   const essential = listProcedures({ pathway: "essential" });
   const comprehensive = listProcedures({ pathway: "comprehensive" });
   const comprehensiveOnly = comprehensive.filter((procedure) => !procedure.pathways.includes("essential"));
@@ -829,6 +858,8 @@ export function renderAssessmentWorkspace({ coverage, report, pages = [] }) {
         </p>
         ${renderFindingForm()}
       </section>
+
+      ${renderCollectorInventory(collectors)}
 
       <section id="recorded-assessments" aria-labelledby="recorded-assessments-heading">
         <h3 id="recorded-assessments-heading">Recorded assessments</h3>
@@ -935,4 +966,208 @@ export function renderAssessmentContextScript({ report, catalogue, schemaVersion
   // `<` is escaped so a page title containing "</script>" cannot end the block.
   const json = JSON.stringify(payload).replace(/</g, "\\u003c");
   return `<script type="application/json" id="assessment-context">${json}</script>`;
+}
+
+/**
+ * Assisted element inventory.
+ *
+ * Facts only: what the collectors captured, with deterministic signals and a
+ * plain statement of what each signal does not mean. No row is a finding, and
+ * no signal is a pass or a failure.
+ *
+ * The per-item data needed to prefill a record lives in data attributes on the
+ * row, so the inventory is not duplicated into a second JSON copy inside the
+ * report. The sidecar `assessment-collectors.json` remains the machine-readable
+ * artifact.
+ *
+ * @param {object|null} collectors `a11y-assisted-collectors/1` artifact
+ * @returns {string}
+ */
+export function renderCollectorInventory(collectors) {
+  const capture = collectors?.capture ?? null;
+  const pages = Array.isArray(collectors?.pages) ? collectors.pages : [];
+  const signalCatalogue = new Map(
+    (collectors?.signalCatalogue ?? []).map((signal) => [signal.id, signal])
+  );
+  const signalTitles = new Map([...signalCatalogue].map(([id, signal]) => [id, signal.title ?? id]));
+
+  const heading = `<h3 id="assisted-inventory-heading">Assisted element inventory</h3>`;
+
+  if (!collectors || capture?.status === "not-run" || pages.length === 0) {
+    const reason = capture?.reason ? ` ${escapeHtml(capture.reason)}` : "";
+    return `<section id="assisted-inventory" aria-labelledby="assisted-inventory-heading">
+        ${heading}
+        <p class="assessment-intro">
+          No assisted inventory was captured in this scan.${reason}
+        </p>
+        <p class="assessment-help">
+          An inventory records headings, images and links so a reviewer can inspect them. It is
+          not evidence that any element is accessible or inaccessible.
+        </p>
+      </section>`;
+  }
+
+  const captured = capture?.pagesCaptured ?? pages.filter((page) => page.status === "captured").length;
+  const requested = capture?.pagesRequested ?? pages.length;
+  const statusNote = capture?.status === "partial"
+    ? `<p class="assessment-help assessment-state assessment-state--unknown">Capture was partial: ${captured} of ${requested} requested pages were captured.${capture?.reason ? ` ${escapeHtml(capture.reason)}` : ""}</p>`
+    : "";
+
+  const pageHtml = pages
+    .map((page) => renderInventoryPage(page, signalTitles, signalCatalogue))
+    .join("\n        ");
+
+  return `<section id="assisted-inventory" aria-labelledby="assisted-inventory-heading">
+        ${heading}
+        <p class="assessment-intro">
+          These are the headings, images and links the collectors observed in the captured pages.
+          They are facts for a reviewer to inspect, not findings. A signal below means a condition
+          was detected; it does not mean the element fails a WCAG success criterion.
+        </p>
+        <p class="assessment-meta">
+          Captured ${captured} of ${requested} requested page(s), top document only, without
+          interaction or scrolling. Browser: ${escapeHtml(capture?.browser ?? "unknown")}.
+        </p>
+        ${statusNote}
+        <details class="assessment-limitations">
+          <summary>Limitations of this inventory</summary>
+          <ul>
+            <li>Top document only: iframes and shadow roots are counted, not captured.</li>
+            <li>No interaction, scrolling, typing or hovering; content that appears later is not captured.</li>
+            <li>Accessible names come from a DOM subset of AccName 1.2, not from the browser's accessibility tree.</li>
+            <li>Caps truncate the inventory; each page states when a table was cut.</li>
+            <li>A captured element is not evidence that a criterion was evaluated.</li>
+          </ul>
+        </details>
+        ${pageHtml}
+      </section>`;
+}
+
+function renderInventoryPage(page, signalTitles, signalCatalogue) {
+  const url = String(page?.finalUrl || page?.url || "");
+  const label = url || "page not recorded";
+  const counts = page?.counts ?? {};
+  const truncated = page?.truncated ?? {};
+
+  if (page?.status === "failed" || page?.status === "not-captured") {
+    return `<details class="assessment-procedure">
+          <summary>${escapeHtml(label)} — not captured</summary>
+          <p class="assessment-help">This page has no inventory: ${escapeHtml(page?.error ?? page?.reason ?? "unknown reason")}.</p>
+        </details>`;
+  }
+
+  const truncationNote = (kind) =>
+    truncated[kind]
+      ? `<p class="assessment-help assessment-state assessment-state--unknown">This table was truncated by the collector cap; later ${kind} are not shown. The sidecar artifact records the same truncation.</p>`
+      : "";
+
+  return `<details class="assessment-procedure" data-collector-page="${escapeHtml(url)}">
+          <summary>${escapeHtml(label)} — ${counts.headings ?? 0} headings, ${counts.images ?? 0} images, ${counts.links ?? 0} links</summary>
+          ${page?.iframesSkipped || page?.shadowRootsSkipped
+            ? `<p class="assessment-help">Skipped: ${page.iframesSkipped ?? 0} iframe(s), ${page.shadowRootsSkipped ?? 0} shadow root(s). Their contents were not reviewed.</p>`
+            : ""}
+          <h4>Headings</h4>
+          ${truncationNote("headings")}
+          ${renderInventoryTable(page.headings, "heading", url, signalTitles, [
+            { label: "Level", value: (item) => item.heading?.level ?? "—" },
+            { label: "Text", value: (item) => item.text?.raw ?? "" },
+            { label: "Accessible name", value: (item) => item.accessibleName?.value ?? "" }
+          ])}
+          <h4>Images</h4>
+          ${truncationNote("images")}
+          ${renderInventoryTable(page.images, "image", url, signalTitles, [
+            {
+              label: "Rendered size",
+              value: (item) =>
+                item.image?.renderedWidth != null && item.image?.renderedHeight != null
+                  ? `${item.image.renderedWidth}×${item.image.renderedHeight}`
+                  : "—"
+            },
+            {
+              label: "Alternative and source",
+              value: (item) =>
+                `${item.accessibleName?.value || "(empty)"} (${item.accessibleName?.source ?? "none"})`
+            }
+          ])}
+          <h4>Links</h4>
+          ${truncationNote("links")}
+          ${renderInventoryTable(page.links, "link", url, signalTitles, [
+            { label: "Text", value: (item) => item.text?.raw ?? "" },
+            { label: "Destination", value: (item) => item.link?.href ?? "" },
+            { label: "Accessible name", value: (item) => item.accessibleName?.value ?? "" }
+          ])}
+          ${renderSignalExplanations(page, signalTitles, signalCatalogue)}
+        </details>`;
+}
+
+function renderInventoryTable(items, kind, pageUrl, signalTitles, columns) {
+  const rows = Array.isArray(items) ? items : [];
+  if (rows.length === 0) {
+    return `<p class="assessment-empty">No ${kind}s were captured on this page.</p>`;
+  }
+  const caption = `${rows.length} captured ${kind}${rows.length === 1 ? "" : "s"}. Signals are observations, not findings.`;
+  return `<div class="assessment-table-wrap" role="region" tabindex="0" aria-label="${escapeHtml(caption)}">
+          <table class="assessment-table assessment-inventory-table">
+            <caption>${escapeHtml(caption)}</caption>
+            <thead>
+              <tr>
+                ${columns.map((column) => `<th scope="col">${escapeHtml(column.label)}</th>`).join("")}
+                <th scope="col">Signals</th>
+                <th scope="col">Record</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows
+                .map((item) => {
+                  const signals = (item.signals ?? []).map((signal) => signal.id);
+                  return `<tr data-collector-item="${escapeHtml(item.itemId)}" data-collector-kind="${escapeHtml(
+                    kind
+                  )}" data-collector-page="${escapeHtml(pageUrl)}" data-collector-locator="${escapeHtml(
+                    item.locator ?? ""
+                  )}" data-collector-name="${escapeHtml(item.accessibleName?.value ?? "")}" data-collector-snippet="${escapeHtml(
+                    item.htmlSnippet ?? ""
+                  )}" data-collector-signals="${escapeHtml(signals.join(" "))}">
+                    ${columns.map((column) => `<td>${escapeHtml(String(column.value(item) ?? ""))}</td>`).join("")}
+                    <td>${renderSignalBadges(signals, signalTitles)}</td>
+                    <td><button class="btn js-only" type="button" data-collector-prefill="${escapeHtml(
+                      item.itemId
+                    )}">Record observation<span class="assessment-visually-hidden"> about this ${escapeHtml(kind)}</span></button></td>
+                  </tr>`;
+                })
+                .join("\n              ")}
+            </tbody>
+          </table>
+        </div>`;
+}
+
+function renderSignalBadges(signals, signalTitles) {
+  if (!signals || signals.length === 0) {
+    return `<span class="assessment-empty">No signal detected</span>`;
+  }
+  return signals
+    .map((id) => `<span class="assessment-badge assessment-badge--signal">${escapeHtml(signalTitles.get(id) ?? id)}</span>`)
+    .join(" ");
+}
+
+function renderSignalExplanations(page, signalTitles, signalCatalogue) {
+  const ids = new Set();
+  for (const kind of ["headings", "images", "links"]) {
+    for (const item of page?.[kind] ?? []) {
+      for (const signal of item.signals ?? []) ids.add(signal.id);
+    }
+  }
+  if (ids.size === 0) return "";
+  return `<details class="assessment-limitations">
+            <summary>Signals on this page and what they do not mean</summary>
+            <ul>
+              ${[...ids]
+                .map((id) => {
+                  const entry = signalCatalogue.get(id);
+                  return `<li><strong>${escapeHtml(signalTitles.get(id) ?? id)}</strong>${
+                    entry?.doesNotMean ? ` — ${escapeHtml(entry.doesNotMean)}` : ""
+                  }</li>`;
+                })
+                .join("")}
+            </ul>
+          </details>`;
 }

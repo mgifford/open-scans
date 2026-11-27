@@ -137,6 +137,7 @@ const LIMITS = Object.freeze({
 });
 
 const WCAG_ID_RE = /^\d\.\d\.\d+$/;
+const COLLECTOR_ITEM_ID_RE = /^col_[a-f0-9]{16}$/;
 const CONTROL_CHARS_RE = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g;
 
 /**
@@ -239,7 +240,10 @@ export function normalizeRecord(input = {}) {
             ? source.elementIdentity.locatorType
             : "unknown",
           accessibleName: cleanString(source.elementIdentity.accessibleName, LIMITS.shortText),
-          htmlSnippet: cleanString(source.elementIdentity.htmlSnippet, LIMITS.text)
+          htmlSnippet: cleanString(source.elementIdentity.htmlSnippet, LIMITS.text),
+          collectorItemId: source.elementIdentity.collectorItemId
+            ? cleanString(source.elementIdentity.collectorItemId, 80)
+            : null
         }
       : null,
     occurrenceId: source.occurrenceId ? cleanString(source.occurrenceId, 80) : null,
@@ -351,6 +355,10 @@ export function validateRecord(record) {
   }
   if (record.outcome === "failed" && !record.actualBehaviour && !record.reviewerNotes) {
     errors.push("A failed outcome requires what was observed or a reviewer note.");
+  }
+  const collectorItemId = record.elementIdentity?.collectorItemId;
+  if (collectorItemId !== null && collectorItemId !== undefined && !COLLECTOR_ITEM_ID_RE.test(String(collectorItemId))) {
+    errors.push("elementIdentity.collectorItemId must match col_ followed by 16 lowercase hex characters.");
   }
   for (const ruleId of record.conflictsWith ?? []) {
     if (ruleId === record.recordId) errors.push("A record cannot conflict with itself.");

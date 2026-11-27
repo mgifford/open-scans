@@ -5,70 +5,222 @@
   "description": "A portable, versioned record of human accessibility assessment activity for one scan report. Automated evidence is never stored here; it remains in the immutable report.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "schemaVersion", "reportAssociation", "records"],
+  "required": [
+    "schema",
+    "schemaVersion",
+    "reportAssociation",
+    "records"
+  ],
   "properties": {
-    "schema": { "const": "a11y-assessment-document/1" },
-    "schemaVersion": { "const": 1 },
-    "documentId": { "type": "string", "maxLength": 200 },
-    "createdAt": { "type": "string", "format": "date-time" },
-    "updatedAt": { "type": "string", "format": "date-time" },
-    "exportedAt": { "type": ["string", "null"], "format": "date-time" },
-    "importedAt": { "type": ["string", "null"], "format": "date-time" },
+    "schema": {
+      "const": "a11y-assessment-document/1"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "documentId": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "exportedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "importedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
     "reportAssociation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reportId"],
+      "required": [
+        "reportId"
+      ],
       "properties": {
-        "reportId": { "type": "string", "maxLength": 300, "description": "Stable report identity. Never a file name or URL." },
-        "issueNumber": { "type": ["integer", "null"] },
-        "issueUrl": { "type": ["string", "null"] },
-        "scanTitle": { "type": ["string", "null"] },
-        "scannedAt": { "type": ["string", "null"] }
+        "reportId": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Stable report identity. Never a file name or URL."
+        },
+        "issueNumber": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "issueUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scanTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scannedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
     },
     "catalogue": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
       "properties": {
-        "catalogueVersion": { "type": ["string", "null"] },
-        "contentSha256": { "type": ["string", "null"], "pattern": "^[a-f0-9]{64}$" }
+        "catalogueVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentSha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        }
       }
     },
     "records": {
       "type": "array",
       "maxItems": 2000,
-      "items": { "$ref": "#/$defs/record" }
+      "items": {
+        "$ref": "#/$defs/record"
+      }
     },
-    "notes": { "type": "string", "maxLength": 20000 }
+    "notes": {
+      "type": "string",
+      "maxLength": 20000
+    }
   },
   "$defs": {
     "record": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schemaVersion", "recordId", "kind", "method", "outcome", "testingDate", "recordedAt", "verification"],
+      "required": [
+        "schemaVersion",
+        "recordId",
+        "kind",
+        "method",
+        "outcome",
+        "testingDate",
+        "recordedAt",
+        "verification"
+      ],
       "properties": {
-        "schemaVersion": { "const": 1 },
-        "recordId": { "type": "string", "maxLength": 80 },
-        "kind": { "enum": ["procedure", "finding", "evaluation", "journey"] },
-        "assessmentDefinitionId": { "type": ["string", "null"] },
-        "assessmentCatalogueVersion": { "type": ["string", "null"] },
-        "upstreamSource": { "type": ["string", "null"] },
-        "title": { "type": "string" },
-        "testedUrl": { "type": "string", "description": "Absolute http(s) URL, or empty when the record is not page-specific." },
-        "pageState": { "type": "string" },
-        "component": { "type": "string" },
-        "semanticRegion": { "type": "string" },
+        "schemaVersion": {
+          "const": 1
+        },
+        "recordId": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "kind": {
+          "enum": [
+            "procedure",
+            "finding",
+            "evaluation",
+            "journey"
+          ]
+        },
+        "assessmentDefinitionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "assessmentCatalogueVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "upstreamSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "testedUrl": {
+          "type": "string",
+          "description": "Absolute http(s) URL, or empty when the record is not page-specific."
+        },
+        "pageState": {
+          "type": "string"
+        },
+        "component": {
+          "type": "string"
+        },
+        "semanticRegion": {
+          "type": "string"
+        },
         "elementIdentity": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false,
           "properties": {
-            "locator": { "type": "string" },
-            "locatorType": { "enum": ["css", "xpath", "html", "none", "unknown"] },
-            "accessibleName": { "type": "string" },
-            "htmlSnippet": { "type": "string" }
+            "locator": {
+              "type": "string"
+            },
+            "locatorType": {
+              "enum": [
+                "css",
+                "xpath",
+                "html",
+                "none",
+                "unknown"
+              ]
+            },
+            "accessibleName": {
+              "type": "string"
+            },
+            "htmlSnippet": {
+              "type": "string"
+            },
+            "collectorItemId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^col_[a-f0-9]{16}$",
+              "description": "Opaque id of an assisted-collector inventory item, when the record came from one."
+            }
           }
         },
-        "occurrenceId": { "type": ["string", "null"] },
+        "occurrenceId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "method": {
           "enum": [
             "guided-manual",
@@ -80,11 +232,38 @@
             "ai-assisted"
           ]
         },
-        "scope": { "type": "string" },
-        "wcag": { "type": "array", "maxItems": 20, "items": { "type": "string", "pattern": "^\\d\\.\\d\\.\\d+$" } },
-        "act": { "type": "array", "maxItems": 20, "items": { "type": "string" } },
-        "arrmRoles": { "type": "array", "maxItems": 12, "items": { "type": "string" } },
-        "functionalPerformance": { "type": "array", "maxItems": 12, "items": { "type": "string" } },
+        "scope": {
+          "type": "string"
+        },
+        "wcag": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "pattern": "^\\d\\.\\d\\.\\d+$"
+          }
+        },
+        "act": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string"
+          }
+        },
+        "arrmRoles": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {
+            "type": "string"
+          }
+        },
+        "functionalPerformance": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {
+            "type": "string"
+          }
+        },
         "outcome": {
           "enum": [
             "not-evaluated",
@@ -97,30 +276,62 @@
             "requires-experiential-evaluation"
           ]
         },
-        "reviewerNotes": { "type": "string" },
-        "reproductionSteps": { "type": "string" },
-        "expectedBehaviour": { "type": "string" },
-        "actualBehaviour": { "type": "string" },
-        "userImpact": { "type": "string" },
-        "applicabilityEvidence": { "type": "string" },
+        "reviewerNotes": {
+          "type": "string"
+        },
+        "reproductionSteps": {
+          "type": "string"
+        },
+        "expectedBehaviour": {
+          "type": "string"
+        },
+        "actualBehaviour": {
+          "type": "string"
+        },
+        "userImpact": {
+          "type": "string"
+        },
+        "applicabilityEvidence": {
+          "type": "string"
+        },
         "environment": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "browser": { "type": "string" },
-            "browserVersion": { "type": "string" },
-            "os": { "type": "string" },
-            "assistiveTechnology": { "type": "string" },
-            "assistiveTechnologyVersion": { "type": "string" },
-            "viewport": { "type": "string" },
-            "zoom": { "type": "string" },
+            "browser": {
+              "type": "string"
+            },
+            "browserVersion": {
+              "type": "string"
+            },
+            "os": {
+              "type": "string"
+            },
+            "assistiveTechnology": {
+              "type": "string"
+            },
+            "assistiveTechnologyVersion": {
+              "type": "string"
+            },
+            "viewport": {
+              "type": "string"
+            },
+            "zoom": {
+              "type": "string"
+            },
             "preferences": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
-                "colorScheme": { "type": "string" },
-                "forcedColors": { "type": "string" },
-                "reducedMotion": { "type": "string" }
+                "colorScheme": {
+                  "type": "string"
+                },
+                "forcedColors": {
+                  "type": "string"
+                },
+                "reducedMotion": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -132,58 +343,182 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "type": { "type": "string" },
-              "description": { "type": "string" },
-              "ref": { "type": "string" }
+              "type": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "ref": {
+                "type": "string"
+              }
             }
           }
         },
-        "testingDate": { "type": "string", "description": "Date the test was performed (YYYY-MM-DD)." },
-        "recordedAt": { "type": "string", "format": "date-time" },
-        "importedAt": { "type": ["string", "null"], "format": "date-time" },
-        "reviewerRole": { "type": "string", "description": "Role, never a required real name or medical information." },
-        "verification": { "enum": ["unreviewed", "self-attested", "independently-reviewed", "disputed"] },
+        "testingDate": {
+          "type": "string",
+          "description": "Date the test was performed (YYYY-MM-DD)."
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "importedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "reviewerRole": {
+          "type": "string",
+          "description": "Role, never a required real name or medical information."
+        },
+        "verification": {
+          "enum": [
+            "unreviewed",
+            "self-attested",
+            "independently-reviewed",
+            "disputed"
+          ]
+        },
         "provenance": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "source": { "type": "string" },
-            "sourceAssessmentFormat": { "type": "string" },
-            "sourceRecordId": { "type": "string" }
+            "source": {
+              "type": "string"
+            },
+            "sourceAssessmentFormat": {
+              "type": "string"
+            },
+            "sourceRecordId": {
+              "type": "string"
+            }
           }
         },
-        "severity": { "enum": ["critical", "serious", "moderate", "minor", "unspecified"] },
-        "relationToAutomated": { "enum": ["none", "confirms", "disputes", "extends"] },
+        "severity": {
+          "enum": [
+            "critical",
+            "serious",
+            "moderate",
+            "minor",
+            "unspecified"
+          ]
+        },
+        "relationToAutomated": {
+          "enum": [
+            "none",
+            "confirms",
+            "disputes",
+            "extends"
+          ]
+        },
         "automatedFinding": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false,
           "properties": {
-            "engine": { "type": "string" },
-            "ruleId": { "type": "string" },
-            "instanceId": { "type": "string" },
-            "patternId": { "type": "string" },
-            "message": { "type": "string" }
+            "engine": {
+              "type": "string"
+            },
+            "ruleId": {
+              "type": "string"
+            },
+            "instanceId": {
+              "type": "string"
+            },
+            "patternId": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
           }
         },
-        "conflictsWith": { "type": "array", "maxItems": 10, "items": { "type": "string" } },
-        "staleSource": { "type": "boolean" },
-        "requiresRevalidation": { "type": "boolean" },
+        "conflictsWith": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string"
+          }
+        },
+        "staleSource": {
+          "type": "boolean"
+        },
+        "requiresRevalidation": {
+          "type": "boolean"
+        },
         "journey": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false,
           "properties": {
-            "taskDescription": { "type": "string" },
-            "startingUrl": { "type": "string" },
-            "intendedOutcome": { "type": "string" },
-            "steps": { "type": "array", "maxItems": 40, "items": { "type": "string" } },
-            "assistiveTechnology": { "type": "string" },
-            "interactionMethod": { "type": "string" },
-            "completionStatus": { "enum": ["completed", "completed-with-difficulty", "abandoned", "not-attempted"] },
-            "tabPresses": { "type": ["integer", "null"], "minimum": 0 },
-            "interactions": { "type": ["integer", "null"], "minimum": 0 },
-            "durationSeconds": { "type": ["integer", "null"], "minimum": 0 },
-            "barriers": { "type": "array", "maxItems": 20, "items": { "type": "string" } },
-            "assistanceRequired": { "type": "boolean" }
+            "taskDescription": {
+              "type": "string"
+            },
+            "startingUrl": {
+              "type": "string"
+            },
+            "intendedOutcome": {
+              "type": "string"
+            },
+            "steps": {
+              "type": "array",
+              "maxItems": 40,
+              "items": {
+                "type": "string"
+              }
+            },
+            "assistiveTechnology": {
+              "type": "string"
+            },
+            "interactionMethod": {
+              "type": "string"
+            },
+            "completionStatus": {
+              "enum": [
+                "completed",
+                "completed-with-difficulty",
+                "abandoned",
+                "not-attempted"
+              ]
+            },
+            "tabPresses": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "interactions": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "durationSeconds": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "barriers": {
+              "type": "array",
+              "maxItems": 20,
+              "items": {
+                "type": "string"
+              }
+            },
+            "assistanceRequired": {
+              "type": "boolean"
+            }
           }
         }
       }
