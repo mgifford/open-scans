@@ -3734,7 +3734,7 @@ async function main() {
   }
   const issueEventPath = scanArgs.issueEventPath;
   const outputDir = scanArgs.outputDir;
-  const assistedRequested = scanArgs.assisted;
+  let assistedRequested = scanArgs.assisted;
   if (!issueEventPath) {
     console.error("Usage: node scanner/run-scan.mjs <issue-event-json-file> [output-dir] [--assisted]");
     process.exit(1);
@@ -3756,6 +3756,10 @@ async function main() {
   }
 
   const request = parsed.value;
+  if (!assistedRequested && request.assisted === true) {
+    assistedRequested = true;
+    console.error("[assisted] requested by the issue field or ASSISTED title keyword");
+  }
   const engines = request.engines || ["all"];
   // axe always runs; ensure it's reflected in the engines list for reporting
   if (!engines.includes("all") && !engines.includes("axe")) {

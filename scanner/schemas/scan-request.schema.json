@@ -61,6 +61,10 @@
       "minimum": 0,
       "maximum": 300
     },
+    "assisted": {
+      "type": "boolean",
+      "description": "Explicit opt-in for the assisted element inventory. Absent or false keeps the default scan."
+    },
     "viewport": {
       "type": "object",
       "properties": {

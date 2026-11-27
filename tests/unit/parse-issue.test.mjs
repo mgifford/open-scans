@@ -1153,7 +1153,118 @@ test("parseScanIssue REMEDIATE keyword is case-insensitive", () => {
   assert.equal(result.value.scanTitle, "Government Site");
 });
 
+// ── ASSISTED / assisted inventory opt-in ───────────────────────────────────
+
+test("parseScanIssue defaults assisted to false", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 400,
+      html_url: "https://github.com/example/repo/issues/400",
+      title: "SCAN: Default scan",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, false);
+  assert.equal(result.value.assisted, false);
+});
+
+test("parseScanIssue detects the ASSISTED title keyword and strips it", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 401,
+      html_url: "https://github.com/example/repo/issues/401",
+      title: "SCAN: ASSISTED: Homepage",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, true);
+  assert.equal(result.value.assisted, true);
+  assert.equal(result.value.scanTitle, "Homepage");
+});
+
+test("parseScanIssue does not opt in on Assisted without a colon", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 405,
+      html_url: "https://github.com/example/repo/issues/405",
+      title: "SCAN: Assisted Living Directory",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, false);
+  assert.equal(result.value.scanTitle, "Assisted Living Directory");
+});
+
+test("parseScanIssue reads a checked issue-form assisted checkbox", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 402,
+      html_url: "https://github.com/example/repo/issues/402",
+      title: "SCAN: Checkbox scan",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com\n\n### Assisted element inventory\n- [X] Capture the assisted inventory for manual review"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, true);
+  assert.equal(result.value.assisted, true);
+});
+
+test("parseScanIssue ignores an unchecked assisted checkbox", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 403,
+      html_url: "https://github.com/example/repo/issues/403",
+      title: "SCAN: Unchecked scan",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com\n\n### Assisted element inventory\n- [ ] Capture the assisted inventory for manual review"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, false);
+});
+
+test("parseScanIssue reads Assisted: yes from a hand-written body", () => {
+  const result = parseScanIssue({
+    issue: {
+      number: 404,
+      html_url: "https://github.com/example/repo/issues/404",
+      title: "SCAN: Manual assist scan",
+      created_at: "2026-11-27T00:00:00Z",
+      user: { login: "octocat" },
+      body: "# URLs\nhttps://example.com\n\nAssisted: yes"
+    }
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.assisted, true);
+});
+
 // ── validateScanRequest ────────────────────────────────────────────────────
+
+test("validateScanRequest rejects a non-boolean assisted value", () => {
+  const result = validateScanRequest({
+    requestId: "123-abc",
+    issueNumber: 1,
+    issueUrl: "https://github.com/example/repo/issues/1",
+    submittedBy: "octocat",
+    submittedAt: "2026-03-27T00:00:00Z",
+    requestedUrls: ["https://example.com"],
+    assisted: "yes"
+  });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((error) => error.includes("assisted must be a boolean")));
+});
 
 test("validateScanRequest accepts a fully valid request object", () => {
   const request = {

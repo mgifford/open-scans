@@ -4,9 +4,10 @@
 validator and tests; PR #438). Phase 3b is implemented and merged (report inventory,
 record prefill and `collectorItemId` link; PR #441). On 2026-11-27 the maintainer accepted
 **13.5 s for the six-page reference scan** as the nominal assisted budget (14.5–16.7 s
-observed after the name-graph fix); this supersedes the original 5% target. The workflow
-opt-in (3c) is still not implemented and needs a human review of the rendered 3b text
-first. The 25-page targets are unmeasured. Phase 1 is
+observed after the name-graph fix); this supersedes the original 5% target. Phase 3c is
+implemented behind an explicit issue opt-in: an issue-template checkbox, an `ASSISTED`
+title keyword or `Assisted: yes` in the body, with the cost note in the template. The
+default scan is unchanged. The 25-page targets are unmeasured. Phase 1 is
 merged as `6d8fbdc9` (PR #437). Unmet requirements are tracked in
 [`ASSESSMENT-ARCHITECTURE.md`](ASSESSMENT-ARCHITECTURE.md) §11.
 
@@ -91,14 +92,29 @@ OPEN_SCANS_ASSISTED=1 node scanner/run-scan.mjs <issue-event.json> <output-dir>
 ```
 
 - `--assisted` wins over the environment variable.
-- Both are opt-in; a workflow must pass one explicitly, and section 12 defers that
-  workflow change until the budget is measured.
-- `run-scan.mjs` currently reads only `argv[2]` and `argv[3]`, so the flag parser must
-  leave those positions intact and ignore unknown flags with a warning rather than
-  silently reordering inputs.
+- All opt-in paths are explicit. The scan request also carries `assisted: true` when the
+  issue template checkbox is ticked, the title contains `ASSISTED:`, or the body has
+  `Assisted: yes`; `run-scan` reads that parsed request. The default request is
+  `assisted: false`.
+- `run-scan.mjs` reads only `argv[2]` and `argv[3]`, so the flag parser leaves those
+  positions intact and ignores unknown flags with a warning rather than silently
+  reordering inputs.
 
-Without the flag the collector module must not launch a browser, navigate or write an
-artifact. A regression test asserts exactly that (section 11).
+Without one of these opt-ins the collector module must not launch a browser, navigate or
+write an artifact. A regression test asserts exactly that (section 11).
+
+### Issue opt-in (3c)
+
+The issue template adds one optional checkbox, **Assisted element inventory**. A request
+also opts in with the `ASSISTED:` keyword in the issue title (for example
+`SCAN: ASSISTED: example.gov`) or with `Assisted: yes` in a hand-written body. The parser
+returns `assisted` on the scan request; the scan workflow needs no extra flag because the
+event body is parsed by `run-scan`.
+
+The template states the measured cost before the box is ticked: one extra browser pass per
+captured page, about 13.5 s nominal (14.5–16.7 s observed) and about 1.95 MB for six pages,
+top document only, no interaction or scrolling, caps can truncate. The inventory is not a
+finding, a score or a conformance result. The default scan launches no collector browser.
 
 ---
 
@@ -507,13 +523,14 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 | :--- | :--- | :--- |
 | 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
 | 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented and merged** (PR #441); name-graph fix on 2026-11-27. The six-page budget was accepted at 13.5 s nominal (14.5–16.7 s observed after the fix); the 25-page targets are unmeasured. |
-| 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | Not implemented. Done after a human review of the measured overhead and of 3b's rendered text; explicit opt-in only. |
+| 3c | workflow opt-in: issue-template checkbox, `ASSISTED:` title keyword or `Assisted: yes`, parsed `request.assisted`, cost note in the issue template | **Implemented** behind explicit opt-in; the default scan is unchanged. A real production assisted run and the 25-page measurement remain open. |
 
-3c is deliberately last. A workflow change is a cost and privacy decision, not a code
-decision, and it must not make the assisted pass look like part of the default scan.
+3c was deliberately last. The issue field is the workflow input: `parse-issue.mjs`
+returns `assisted` and `run-scan.mjs` honours it, so the workflow does not need a separate
+flag. That keeps the opt-in visible in the issue a human reads.
 
-Do not switch the default scan to assisted. Do not enable 3c before 3b's rendered text
-has been reviewed against a real published report.
+Do not switch the default scan to assisted. A real production assisted scan and the
+25-page measurement are still outstanding.
 
 ---
 
@@ -571,5 +588,5 @@ has been reviewed against a real published report.
 | `--assisted` gate | Implemented (3a) | gate tests plus the no-capture test for the default scan |
 | Report inventory section | Implemented (3b) | `tests/unit/assessment-inventory.test.mjs`; `npm run validate:assessment-inventory -- --browser=webkit` (prefill, save and axe) |
 | `collectorItemId` record link | Implemented (3b) | unit tests for valid, malformed and absent ids; saved record inspected in WebKit |
-| Workflow opt-in | Not implemented (3c) | — |
+| Workflow opt-in | Implemented (3c) | `parse-issue.test.mjs` covers checkbox, `ASSISTED` title and `Assisted: yes`; `run-scan` source test checks `request.assisted` |
 | Measured overhead | Measured and accepted (3b) | 6 pages: 13.5 s nominal (14.5–16.7 s observed after the name fix); artifact 1.95 MB; 349 signals; report +1.53 MB. One page truncated at the 300-link cap |

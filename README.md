@@ -200,8 +200,9 @@ Important limitations include:
 - Assessment coverage is not accessibility coverage: a mapped rule has not evaluated a
   criterion, and missing findings are not evidence of conformance.
 - Rule-level execution is unknown for engines that only record failing rule identifiers.
-- Manual assessment recording is not yet available for assisted collectors, keyboard
-  interaction sequences or user journeys.
+- Manual assessment recording is not yet available for keyboard interaction sequences or
+  user journeys. Assisted inventory rows can prefill a record; the reviewer still
+  chooses the outcome and writes the note.
 - Changes in testing conditions can affect historical comparisons.
 - Performance estimates and sustainability models have different limitations from direct measurements.
 
