@@ -68,6 +68,8 @@ ceiling.
 - Synthetic 252-link page: 0 empty names, 0 `link-name-empty` signals; multi-reference
   `aria-labelledby` returns "Part one Part two"; a reference to an image returns its alt.
 - `npm run check:assessment-catalogue`: ok, unchanged hash.
+- GitHub Actions on PR #443 at `c2f75408`: `Lint and unit tests` pass (2m54s),
+  `bdd-acceptance` pass (1m42s), AccessLint pass.
 
 **Not verified:** the 25-page targets, JS-heavy pages, Chromium/Firefox collector runs
 and peak memory.
