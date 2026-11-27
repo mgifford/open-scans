@@ -1,11 +1,12 @@
 # Assisted collectors (Phase 3 design)
 
 **Status:** Phase 3a is implemented and merged (opt-in capture pass, artifact,
-validator and tests; PR #438). Phase 3b is implemented on `feat/assessment-inventory-3b`:
-the report inventory, record prefill and `collectorItemId` link. Its measured overhead is
-**5.8% of the reference scan against a 5% target**, so 3b is not marked complete until
-that budget is accepted or reduced (see §10). The workflow opt-in (3c) is not
-implemented. Phase 1 is merged as `6d8fbdc9` (PR #437). Unmet requirements are tracked in
+validator and tests; PR #438). Phase 3b is implemented and merged (report inventory,
+record prefill and `collectorItemId` link; PR #441). On 2026-11-27 the maintainer accepted
+**13.5 s for the six-page reference scan** as the assisted budget (14–18 s observed at the
+default settle); this supersedes the original 5% target and unblocks the workflow opt-in
+(3c), which is still not implemented. The 25-page targets are unmeasured. Phase 1 is
+merged as `6d8fbdc9` (PR #437). Unmet requirements are tracked in
 [`ASSESSMENT-ARCHITECTURE.md`](ASSESSMENT-ARCHITECTURE.md) §11.
 
 This note specifies the collector layer so it can be built without changing the default
@@ -447,6 +448,12 @@ on the same condition, so local verification cannot pass silently.
 The reason for that split: a failed collector must not unpublish a valid automated
 scan, and a green local check must not hide a missing inventory.
 
+**Budget decision, 2026-11-27.** The six-page 5% target was not met. The maintainer
+accepted 13.5 s as the absolute six-page budget instead. The settle-delay remeasurement
+and the reasoning are in
+[`ASSESSMENT-RESOURCE-BUDGET.md`](ASSESSMENT-RESOURCE-BUDGET.md) §9. The 25-page targets
+are unchanged and unmeasured.
+
 ---
 
 ## 11. Tests and verification
@@ -478,7 +485,7 @@ judgement-bearing logic into the extractor where only the fixture run can see it
 | Step | Scope | Status |
 | :--- | :--- | :--- |
 | 3a | collector module, `a11y-assisted-collectors/1`, `--assisted`/`OPEN_SCANS_ASSISTED` gate, standalone validation script, unit and fixture tests | **Implemented** in PR #438. Artifact validates; the default scan is proven not to call the capture; caps, truncation, names, signals and item-id stability are tested. The fixture run passed in WebKit on 2026-11-26. |
-| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented**, budget unmet: browser check passes and coverage counts are unchanged, but measured added wall-clock is 13.5 s (5.8% of the reference scan) against a 5% target. Needs an explicit accept-or-reduce decision before 3c. |
+| 3b | report inventory section, record prefill, optional `collectorItemId`, `report.md` line, no-JS checks | **Implemented and merged** (PR #441). The six-page budget was accepted at 13.5 s nominal (14–18 s observed) on 2026-11-27; the 25-page targets are unmeasured. |
 | 3c | workflow opt-in: issue-template field or `ASSISTED:` trigger, workflow input, cost note in the issue template | Not implemented. Done after a human review of the measured overhead and of 3b's rendered text; explicit opt-in only. |
 
 3c is deliberately last. A workflow change is a cost and privacy decision, not a code
@@ -544,4 +551,4 @@ has been reviewed against a real published report.
 | Report inventory section | Implemented (3b) | `tests/unit/assessment-inventory.test.mjs`; `npm run validate:assessment-inventory -- --browser=webkit` (prefill, save and axe) |
 | `collectorItemId` record link | Implemented (3b) | unit tests for valid, malformed and absent ids; saved record inspected in WebKit |
 | Workflow opt-in | Not implemented (3c) | — |
-| Measured overhead | Measured (3b) | 6 pages: 13.5 s, 5.8% of the reference scan against a 5% target; artifact 1.85 MB; report +1.53 MB |
+| Measured overhead | Measured and accepted (3b) | 6 pages: 13.5 s nominal (14–18 s observed); artifact 1.85 MB; report +1.53 MB. One page truncated at the 300-link cap |
