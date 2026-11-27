@@ -260,6 +260,18 @@ to the maintainer; 25-page runs, Chromium/Firefox and memory are unmeasured.
 Limitations recorded: the 25-page targets, JS-heavy pages, Chromium/Firefox collector
 runs and peak memory remain unmeasured.
 
+### November 2026: Phase 3c assisted-scan opt-in
+
+| Work | Contribution |
+|---|---|
+| Opt-in | Issue-template checkbox, `ASSISTED:` title keyword and `Assisted: yes` body line parse to `request.assisted`; a colon is required for the title keyword so an ordinary title does not opt in |
+| Gate | `run-scan` reads the parsed request alongside the CLI flag and environment variable; the default scan stays unchanged and launches no collector browser |
+| Cost note | The issue template states the measured six-page cost (13.5 s nominal, 14.5–16.7 s observed, about 1.95 MB), the top-document and no-interaction limits, and that the inventory is not a finding or conformance result |
+| Verification | Lint, 1131 tests (1130 pass), 4/4 BDD scenarios, and 83 parse-issue tests covering the checkbox, title keyword, body line, default false, no-colon false positive and non-boolean validation |
+
+Limitations recorded: no real production assisted issue has run yet; 25-page runs,
+JS-heavy pages, peak memory and Firefox remain unmeasured.
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

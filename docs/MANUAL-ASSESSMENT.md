@@ -87,8 +87,9 @@ generates a usable developer issue from it.
 
 ### Assisted element inventory
 
-When a scan ran with the opt-in assisted profile (`--assisted` or
-`OPEN_SCANS_ASSISTED=1`), the report contains a collapsed inventory per captured page:
+When a scan ran with the opt-in assisted profile (`--assisted`,
+`OPEN_SCANS_ASSISTED=1`, the issue-template checkbox, `ASSISTED:` in the title, or
+`Assisted: yes` in the body), the report contains a collapsed inventory per captured page:
 headings, images and links, with computed accessible names and deterministic signals.
 It is evidence to inspect, not findings. A signal such as "Image has no alt attribute"
 records a condition; the report states what each signal does not mean.
@@ -257,7 +258,7 @@ implemented; copying and downloading are.
 | Per-record issue Markdown and JSON | Implemented |
 | Clipboard fallback | Implemented in code; `file://` behaviour needs manual validation |
 | Accessibility Insights JSON import | Not implemented (Phase 2) |
-| Heading / image / link collectors | Capture and report inventory (3a + 3b); opt-in only. See [ASSESSMENT-ARCHITECTURE.md](ASSESSMENT-ARCHITECTURE.md) §11 |
+| Heading / image / link collectors | Capture and report inventory (3a + 3b); explicit issue opt-in (3c); the default scan launches no collector. See [ASSESSMENT-ARCHITECTURE.md](ASSESSMENT-ARCHITECTURE.md) §11 |
 | Keyboard focus sequence recording | Not implemented (Phase 5) |
 | User journey tasks | Not implemented (Phase 6) |
 | Screenshots / recordings as evidence | Not implemented |

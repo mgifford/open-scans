@@ -1,9 +1,9 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-27
-**Open Scans checkpoint:** `92ed2ca9` on `main` (PRs #439, #440, #441, #442 and #443
-merged); Phase 3b and the name-graph fix are merged, branch protection requires
-`Lint and unit tests`, 3c not started
+**Open Scans checkpoint:** `8847e866` on `main` (PRs #439–#444 merged); Phase 3b and the
+name-graph fix are merged, branch protection requires `Lint and unit tests`, Phase 3c is
+implemented in PR #445 and not yet merged
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -11,6 +11,50 @@ was verified, not the full requirement set.
 This is the short handoff for a future AI session. It records current behaviour,
 known pitfalls and the next safe steps. It is not a substitute for the code,
 schemas or tests.
+
+---
+
+### 2026-11-27 (Phase 3c): explicit assisted-scan opt-in
+
+Branch `feat/assessment-workflow-optin`, PR #445. This implements the workflow opt-in
+without changing the default scan.
+
+**Opt-in paths**
+
+- Issue template checkbox **Assisted element inventory** (`.github/ISSUE_TEMPLATE/scan-request.yml`).
+- `ASSISTED:` in the issue title (the colon is required so a page title such as
+  "Assisted Living" does not opt in). The keyword is stripped from `scanTitle`.
+- `Assisted: yes` in a hand-written body.
+- `parse-issue.mjs` returns `assisted`, validates it as a boolean and includes it in the
+  request schema. `run-scan.mjs` enables collectors when the CLI flag, the environment
+  variable or `request.assisted` is true, and logs which path was used.
+- The issue event is the workflow input, so the issue-triggered, queued and scheduled
+  scan paths all honour it without a workflow-specific flag.
+- The issue template states the cost before opt-in: one extra browser pass per page,
+  about 13.5 s nominal (14.5–16.7 s observed) and about 1.95 MB for six pages, top
+  document only, no interaction or scrolling, caps can truncate; not a finding, score or
+  conformance result. Unchecked means no collector browser.
+
+**Verified 2026-11-27**
+
+- `npm run lint` exit 0.
+- Full suite: **1131 tests, 1130 pass, 0 fail, 1 skipped**.
+- `npm run test:bdd`: 4 scenarios, 4 passed, 29 steps.
+- `tests/unit/parse-issue.test.mjs`: 83 pass, including checkbox, `ASSISTED:` title,
+  `Assisted: yes`, default false, no-colon false positive and non-boolean validation.
+- The default-scan gate tests still prove no collector call and no artifact.
+
+**Not verified**
+
+- No real production assisted `SCAN:` issue has run yet; this needs a real issue after
+  merge.
+- The 25-page targets, JS-heavy pages, peak memory and Firefox remain unmeasured.
+
+**Next safe step**
+
+Merge #445, then run one real assisted six-page issue and confirm the report, inventory
+and `assessment-collectors.json` are published together. Then measure 25 pages before
+starting Phase 2.
 
 ---
 
@@ -771,7 +815,7 @@ Last full run (2026-11-27, branch `fix/collector-name-graph` based on `69b6a070`
 ```text
 PUPPETEER_EXECUTABLE_PATH=<chrome-headless-shell> \
   PLAYWRIGHT_BROWSERS_PATH=.tmp/pw-browsers npm test
-1124 tests, 1123 pass, 0 fail, 1 skipped
+1131 tests, 1130 pass, 0 fail, 1 skipped
 ```
 
 The timezone-dependent `generate-reports-html` ISO-week failure is **fixed** (REQ-20);
@@ -941,6 +985,10 @@ Playwright Firefox install can hang. Rerun before calling it a regression.
 34. **Fixtures smaller than the cap cannot prove the cap.** The collector fixtures have
     fewer than 200 items, so they all passed while the real artifact was 31% blank. Check
     the measured artifact for name coverage, not only the fixture contract.
+35. **An issue field is only an opt-in if run-scan reads the parsed request.** The
+    template checkbox, `ASSISTED:` title and `Assisted: yes` all end in
+    `request.assisted`; a workflow flag alone would not make the field work for queued or
+    scheduled scans. Keep the parse and the `run-scan` read tested together.
 
 ---
 
