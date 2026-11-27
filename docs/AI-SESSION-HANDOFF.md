@@ -13,6 +13,60 @@ schemas or tests.
 
 ---
 
+### 2026-11-26: Phase 3b assisted element inventory
+
+Branch `feat/assessment-inventory-3b`, stacked on `ci/assessment-quality-gate`
+(PR #440). The assisted pass is still opt-in; the default scan is unchanged.
+
+**What exists**
+
+- A collapsed per-page inventory inside the Manual assessment section: headings, images
+  and links with computed accessible names, deterministic signals and a limitations
+  block. Readable without JavaScript.
+- Per-row **Record observation** prefill: page URL, CSS locator, accessible name, HTML
+  snippet, `collectorItemId` and a suggested procedure for the element kind. The
+  reviewer still chooses the outcome and method and writes the note; the element summary
+  clears after saving.
+- `elementIdentity.collectorItemId` (`col_` + 16 hex), additive and nullable, with
+  malformed values rejected rather than silently dropped.
+- `report.html` is re-rendered after collection and replaced atomically, and `report.md`
+  gains one inventory line. The collector artifact is redacted before it is written.
+- Without a capture the section is one sentence with the reason; coverage counts and
+  the missing-evidence notice are unchanged.
+- `npm run validate:assessment-inventory -- --browser=webkit` exercises the whole path.
+
+**Verified on 2026-11-26**
+
+- `npm run lint` exit 0.
+- Full suite with Chromium and `PUPPETEER_EXECUTABLE_PATH` set: **1119 tests, 1118 pass,
+  0 fail, 1 skipped** (Sa11y opt-in).
+- WebKit from `file://`: 3 inventory rows and buttons; prefill filled URL, locator,
+  accessible name, item id and suggested procedure; the saved record retained the item
+  id; the element summary cleared; **0 axe violations**, 0 console errors.
+- Measurement (standalone collector pass over the six reference pages): 13,544 ms,
+  **5.8%** of the 233,572 ms reference scan against a 5% target; 1,254 items; artifact
+  1.85 MB; report 1.08 MB → 2.61 MB (+1.53 MB, within the 2 MB target).
+
+**Budget miss — decision required**
+
+The 5% target was missed by 0.8 points; the cost is one navigation plus the required
+2-second settle per page. The design's prescribed action (lower the page cap) does not
+help a 6-page run. Recorded options: accept 5.8%, shorten the assisted settle delay and
+re-measure, or capture an explicit page subset. Do not raise the target quietly.
+
+**Not verified**
+
+- A 25-page run (4 MB artifact and 15% targets), JS-heavy pages, peak memory, Chromium
+  and Firefox.
+- The second report render cost is excluded from the 13.5 s; it is about 30 ms here.
+
+**Next safe step**
+
+Decide the budget, then 3c (workflow opt-in) only after that decision and a human review
+of the rendered text. Phase 2 remains unstarted.
+
+---
+
 ### 2026-11-26: unit-test quality gate (REQ-20)
 
 Branch `ci/assessment-quality-gate`, stacked on `docs/assessment-requirements-backlog`

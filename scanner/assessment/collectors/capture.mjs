@@ -134,6 +134,7 @@ export async function runAssistedCapture({
   pageLoadDelayMs = 2000,
   caps: capOverrides,
   env = process.env,
+  redact = null,
   deps = {}
 } = {}) {
   const caps = resolveCaps({ ...(capOverrides ?? {}) });
@@ -159,6 +160,9 @@ export async function runAssistedCapture({
       pages: inventory,
       generatedAt: finishedAt
     });
+    // Redact before the artifact reaches disk: page titles, names and snippets
+    // can contain credentials, and this file is published beside the report.
+    if (typeof redact === "function") redact(artifact);
     const artifactPath = writeArtifact(outputDir, artifact);
     return { status: artifact.capture.status, artifact, artifactPath };
   };

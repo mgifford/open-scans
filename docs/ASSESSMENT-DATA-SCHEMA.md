@@ -89,7 +89,8 @@ success criterion.
     "locator": "#skip-to-form",
     "locatorType": "css",
     "accessibleName": "Skip to form",
-    "htmlSnippet": "<a id=\"skip-to-form\" href=\"#payment\">Skip to form</a>"
+    "htmlSnippet": "<a id=\"skip-to-form\" href=\"#payment\">Skip to form</a>",
+    "collectorItemId": null
   },
   "occurrenceId": null,
   "method": "assistive-technology",
@@ -170,6 +171,15 @@ not be presented as professional expertise or lived experience.
   must be rechecked against the current page.
 
 Verification and freshness are separate fields. Neither is encoded in `outcome`.
+
+### Assisted-collector link
+
+`elementIdentity.collectorItemId` optionally records the assisted-inventory item a
+record came from (`col_` followed by 16 lowercase hex characters). It is nullable and
+additive: no `schemaVersion` bump. A malformed value fails validation rather than being
+silently dropped. The id is kept across import and marked with the same
+`staleSource`/`requiresRevalidation` flags as the rest of the record, because the
+element may no longer exist in another scan.
 
 ### Conflict preservation
 

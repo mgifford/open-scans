@@ -366,7 +366,7 @@ function renderPatternInventorySection(inventory, esc) {
     </section>`;
 }
 
-export function generateInteractiveHtml(summary, remediationResult = null, trendData = null, correlationReport = null) {
+export function generateInteractiveHtml(summary, remediationResult = null, trendData = null, correlationReport = null, collectors = null) {
   const { enhanced, scanTitle, issueNumber, issueUrl, scannedAt, totalElapsedMs, totalSubmitted, acceptedCount, scannedCount, darkModeUrlCount, reducedMotionUrlCount, highContrastUrlCount, forcedColorsUrlCount, reducedTransparencyUrlCount, results } = summary;
   const scanContext = buildScanContext(summary.scanContext);
   const correlationSection = correlationReport ? renderCorrelationHtml(correlationReport) : "";
@@ -391,7 +391,8 @@ export function generateInteractiveHtml(summary, remediationResult = null, trend
   const assessmentWorkspaceSection = renderAssessmentWorkspace({
     coverage: assessmentCoverage,
     report: assessmentWorkspaceReport,
-    pages: assessmentPages
+    pages: assessmentPages,
+    collectors
   });
   const assessmentContextScript = renderAssessmentContextScript({
     report: assessmentWorkspaceReport,
