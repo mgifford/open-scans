@@ -1,10 +1,11 @@
 # Assessment architecture
 
-**Status:** Phase 1 implemented on `feat/assessment-phase-1`. Phases 2–7 are planned,
-not implemented. Phase 3 collectors are specified in
-[`ASSESSMENT-ASSISTED-COLLECTORS.md`](ASSESSMENT-ASSISTED-COLLECTORS.md) as a design
-only. See the status table at the end of this document before assuming a capability
-exists.
+**Status:** Phase 1 (coverage and local assessment) and Phase 3a (opt-in assisted
+capture) are merged on `main`. Phase 2, Phase 3b/3c and Phases 4–7 are not implemented.
+
+Section 11 is the authoritative list of unmet requirements, including several from the
+brief that no code, schema or test points at. Section 12 records what is verified. Read
+both before assuming a capability exists.
 
 This document explains how Open Scans adds automated, assisted and human
 accessibility assessment without changing the default automated scan, and where the
@@ -283,7 +284,7 @@ Passing results are never transferred between unrelated scans.
 | Capability | Phase | Why not now |
 | :--- | :--- | :--- |
 | Accessibility Insights JSON import | 2 | needs real sample exports and a documented version matrix |
-| Heading, image and link collectors | 3 | needs a DOM collector layer and accessible-name computation; designed in [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
+| Heading, image and link collectors | 3b | Phase 3a capture is merged; the report inventory and record link are not. See §11 REQ-02/REQ-03 |
 | Additional custom rules | 4 | needs the Phase 3 collector contract |
 | Keyboard and focus interaction assessment | 5 | needs bounded interaction budgets and real key events |
 | User journey records and UI | 6 | schema is ready (`journey`), UI and task definitions are not |
@@ -291,9 +292,57 @@ Passing results are never transferred between unrelated scans.
 | Per-page and per-component coverage filters | 2 | coverage is scan-level until observations are joined per page |
 | Screenshot capture and redaction UI | 3 | would add scan cost and privacy handling |
 
+This table lists work deferred by decision. It is not the full record: §11 also lists
+unmet requirements that were simply not started.
+
 ---
 
-## 11. Status table
+## 11. Tracked backlog of unmet requirements
+
+This is the authoritative list of requirements from the assessment brief that are not
+met. The handoff records what was verified; this table records what is still owed. It
+exists because several requirements have no code, schema or failing test to point at
+them, and were absent from earlier status reporting.
+
+**Rules for this table**
+
+- Update `State` in the same change that moves it; never mark a row done because a
+  related module exists.
+- `Done` requires the "Done when" condition to be evidenced by a test or a documented
+  manual check.
+- Never delete a row. A dropped requirement is marked `Dropped` with the decision and
+  date, so the omission stays visible.
+- Target phases refer to the brief's Phase 0–7 plan.
+
+| ID | Unmet requirement (brief section) | Target phase | State | Done when |
+| :--- | :--- | :--- | :--- | :--- |
+| REQ-01 | Accessibility Insights assessment JSON import (§17) | 2 | Not started | Supported export versions established from real sample files; mapping and provenance documented; invalid and partial imports rejected safely; round-trip tests; uncertainty preserved where the export does not say how a result was determined |
+| REQ-02 | Collector context fields: semantic region, nearby text, accessible description, link/button context, repeated-name data (§12) | 3a.1 / 3b | Partial — 3a captures name, text, locator, role and caption only | The fields exist with caps and tests, or the collector contract explicitly removes them with a recorded rationale. The current design lists only judgement fields as excluded |
+| REQ-03 | Collector inventory in the report, record prefill, `collectorItemId`, `report.md` line (§12, §18) | 3b | Not started | A browser check passes, coverage counts are unchanged when collectors run, and measured overhead is within the collector budget |
+| REQ-04 | Workflow opt-in for assisted scans: issue field or trigger, cost note (§5) | 3c | Not started | Explicit opt-in exists; a human has reviewed the measured overhead and the rendered 3b text; the default scan is unaffected |
+| REQ-05 | Evaluation profile visible in the scan configuration and the generated report (§5) | 1.1 | Not started | The report states automated-only vs automated-plus-assisted vs extended, and lists enabled collectors; `report.json` carries the same profile |
+| REQ-06 | Rule execution manifest completeness: requested rules/tags, enabled and disabled rules with reasons, configuration fingerprint, frame/shadow coverage (§8) | 1.1 | Partial — engine status, outcome counts and observed/failing ids only | The manifest records these without inflating artifacts, and the report states when execution cannot be established |
+| REQ-07 | Conformance target end to end: parse, preserve and report declared vs assumed (§9) | 1.1 | Partial — always default WCAG 2.2 AA; `buildScanContext` drops the field; the report says "declared target" | A target can be declared and survives into `scanContext` and the report; otherwise the report says "assumed default" and shows the source |
+| REQ-08 | Coverage filters by page, component or region, and ARRM role (§9) | 2 / 3b | Partial — responsibility filter only; coverage is scan-level | Per-page and per-component evidence is joined and the filters reflect it without implying component ownership |
+| REQ-09 | Page and component matching, unchanged-evidence detection and stale flags on earlier-scan import (§21) | 2 | Partial — revalidation flags only | Matching is evidence-based rather than URL equality, and stale evidence is identified without inheriting passes |
+| REQ-10 | Pre-export redaction of screenshots, selectors, snippets and notes (§25) | 3 | Not started | A reviewer can redact before export; the export warns that files may contain site evidence |
+| REQ-11 | Screenshots or recordings as record evidence (§19, §25) | 3 | Not started | Optional, bounded, redactable, and never captured by the default scan |
+| REQ-12 | Optional GitHub issue preparation in a user-selected repository (§19) | 2 | Not started | A reviewer can prepare an issue; nothing is submitted automatically; no secrets or unsolicited content |
+| REQ-13 | User journey recording and optional Top Task Finder import (§14) | 6 | Not started — schema field `journey` exists | Journeys can be defined and recorded with barriers, effort and environment; no universal thresholds; no real transactions |
+| REQ-14 | Accessibility Maturity Model proof-point mappings (§22) | 7 | Not started | Optional mappings identify potential supporting evidence; no automatic maturity classification |
+| REQ-15 | Accessibility statement, policy and feedback-channel discovery (§23) | 7 | Not started | Candidate vs retrieved vs reviewed is distinguished; no claim that a statement is absent because discovery failed; no unsolicited form submission |
+| REQ-16 | The 14 contextual evaluation fixtures from §27 | 2 | Not started | Fixtures exist with automated observations and human expectations recorded separately, without changing expectations to make tests pass |
+| REQ-17 | Keyboard and focus interaction assessment (§6.5, §13, §27) | 5 | Not started | Bounded sequences using real key events; traps and order changes are observations, not verdicts; budgets are enforced |
+| REQ-18 | Remaining custom-rule audit and integration; additional collectors (§6.4, §13) | 4 | Partial — 23 modules classified provisionally by name only | Each module is read and classified; selected collectors land with tests; deterministic rules stay separate |
+| REQ-19 | Axe configuration comparison, including whether omitting `wcag22aa` is a gap (§6.1) | 2 | Not started | Differences are documented with a configuration fingerprint; no silent rule-selection change |
+| REQ-20 | CI quality gate: lint and unit tests on pull requests; resolve or quarantine the ISO-week failure (§28) | 1.1 | Not started | A PR workflow runs the gates and the known failure is fixed or explicitly skipped with an issue |
+| REQ-21 | Report browser matrix: Chromium, Firefox and WebKit from `file://`, including clipboard (§28) | 2 | Partial — WebKit storage verified; clipboard on `file://` not verified | The validator runs on all three engines or the gap is recorded per engine |
+| REQ-22 | Report's own accessibility: resolve the two axe incomplete checks and complete a manual screen-reader, forced-colours and reflow pass (§26) | 1.1 | Partial — 0 axe violations in WebKit; two incomplete checks unresolved | The incomplete checks are resolved or explained, and a documented manual pass exists |
+| REQ-23 | Longitudinally hosted assessment records, review intervals and freshness policy (§21) | 7 | Deferred by design — VITAL's responsibility | Documented contract exists; implementation belongs in VITAL, not Open Scans |
+
+---
+
+## 12. Status table
 
 | Capability | Status | Verification |
 | :--- | :--- | :--- |
@@ -309,9 +358,10 @@ Passing results are never transferred between unrelated scans.
 | Offline self-contained report | Implemented | no external `<script src>` or stylesheet in tests |
 | Markdown coverage summary | Implemented | `formatAssessmentCoverageMarkdown()` in `coverage.mjs`; unit-tested |
 | Reproducible `file://` browser check | Implemented | `npm run validate:assessment-report <report.json> --browser=webkit` (needs a Playwright browser) |
-| `file://` storage and clipboard behaviour | **Not verified** | needs manual validation; documented in the resource budget |
+| `file://` storage behaviour | Verified (WebKit) | `validate-assessment-report.mjs` saves a record and restores it after reload |
+| Clipboard on `file://` | **Not verified** | fallback is implemented but unexercised in a real `file://` browser; see REQ-21 |
 | Accessibility Insights import | Not implemented | Phase 2 |
-| Assistive collectors | Partially (Phase 3a) | Opt-in `--assisted` capture and `assessment-collectors.json`; no report surface yet. Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
+| Assistive collectors | Partially (Phase 3a, merged) | Opt-in `--assisted` capture and `assessment-collectors.json`; no report surface yet (REQ-03). Design: [ASSESSMENT-ASSISTED-COLLECTORS.md](ASSESSMENT-ASSISTED-COLLECTORS.md) |
 | Keyboard/focus assessment | Not implemented | Phase 5 |
 | User journey UI | Not implemented | Phase 6 |
-| Automated accessibility test of the new UI | Partially | structural tests only; no axe run against a generated report yet |
+| Automated accessibility test of the new UI | Implemented (WebKit) | `validate-assessment-report.mjs` runs axe on a generated report: 0 violations, 2 incomplete checks unresolved (REQ-22) |
