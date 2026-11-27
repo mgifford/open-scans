@@ -214,6 +214,21 @@ opt-in and does not change the default scan.
 | Verification | 15 unit tests; two-page WebKit fixture run (7 headings, 6 images, 7 links, 13 signals); full suite 1109 tests with the known ISO-week failure unchanged |
 | Boundaries | No report surface (3b), no workflow opt-in (3c), no overhead measurement, WebKit only |
 
+### November 2026: Assessment quality gate
+
+The following development was attributed to DeepSeek Harness (`deepseek-flash`).
+
+| Work | Contribution |
+|---|---|
+| Weekly trend correctness | ISO week grouping now uses the UTC calendar date of the `scannedAt` instant instead of local calendar fields; the bucket label is formatted in UTC, so the weekly view no longer shifts west of UTC |
+| Regression test | A child-process test runs the same reports under `TZ=UTC` and `TZ=America/Toronto` and requires identical buckets, week keys and labels |
+| CI gate | `.github/workflows/unit-tests.yml` runs `npm run lint` and `npm test` on every pull request and on `main`, with read-only permissions and run cancellation; browser-dependent tests skip by design and the skip count stays visible |
+
+Verified in CI on 2026-11-26: workflow run `45923187615` passed in 2m53s, including
+the Chromium install and the full suite. Limitations recorded: the opt-in browser
+validators are not part of the gate; the full suite still scans the repository's
+committed report artifacts (about 3.7 GB), which is slow but bounded by the job timeout.
+
 ## Accountability and verification
 
 AI-generated content must be treated as proposed work rather than authoritative evidence.

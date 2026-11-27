@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { mkdtempSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { 
   findAllReports, 
   sortReportsByTime, 
@@ -299,6 +301,38 @@ describe('generate-reports-html', () => {
       assert.equal(weekly[0].violations, 37, 'First week should sum 20+5+10+2=37 violations');
       assert.equal(weekly[0].reportCount, 2, 'First week should have 2 reports');
       assert.equal(weekly[1].violations, 9, 'Second week: 8+1=9');
+    });
+
+    it('should group by UTC ISO week regardless of the process timezone', () => {
+      // Regression: the week key used local calendar fields for a UTC instant,
+      // so a report at 2026-01-05T00:00Z landed in the previous week anywhere
+      // west of UTC. Spawn two child processes with different TZ values and
+      // require identical output.
+      const scannerUrl = pathToFileURL(
+        fileURLToPath(new URL('../../scanner/generate-reports-html.mjs', import.meta.url))
+      ).href;
+      const script = `
+        import { computeWeeklyStats } from ${JSON.stringify(scannerUrl)};
+        const reports = [
+          { path: 'p1', data: { scannedAt: '2026-01-05T00:00:00.000Z', acceptedCount: 10, alfaTotals: { failed: 20 }, axeTotals: { failed: 5 } } },
+          { path: 'p2', data: { scannedAt: '2026-01-06T00:00:00.000Z', acceptedCount: 8, alfaTotals: { failed: 10 }, axeTotals: { failed: 2 } } },
+          { path: 'p3', data: { scannedAt: '2026-01-12T00:00:00.000Z', acceptedCount: 5, alfaTotals: { failed: 8 }, axeTotals: { failed: 1 } } },
+        ];
+        console.log(JSON.stringify(computeWeeklyStats(reports)));
+      `;
+      const runWithTimezone = (timezone) => JSON.parse(
+        execFileSync(process.execPath, ['--input-type=module', '-e', script], {
+          encoding: 'utf8',
+          env: { ...process.env, TZ: timezone },
+        })
+      );
+
+      const utc = runWithTimezone('UTC');
+      const toronto = runWithTimezone('America/Toronto');
+      assert.deepEqual(toronto, utc, 'weekly buckets must not depend on the host timezone');
+      assert.deepEqual(utc.map((week) => week.weekKey), ['2026-W02', '2026-W03']);
+      assert.equal(utc[0].violations, 37);
+      assert.equal(utc[0].label, 'Jan 5');
     });
 
     it('should return empty array for no reports', () => {
