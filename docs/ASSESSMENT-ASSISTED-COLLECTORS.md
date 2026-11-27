@@ -1,10 +1,13 @@
 # Assisted collectors (Phase 3 design)
 
-**Status:** Phase 3a is implemented (opt-in capture pass, artifact, validator and
-tests) on `docs/assessment-phase-3-design`, PR #438. The report inventory (3b), the
-record link (3b) and the workflow opt-in (3c) are not implemented. Phase 1 is merged on
-`main` as `6d8fbdc9` (PR #437). This note specifies the collector layer so it can be
-built without changing the default scan.
+**Status:** Phase 3a is implemented and merged (opt-in capture pass, artifact,
+validator and tests; PR #438). The report inventory (3b), the record link (3b) and the
+workflow opt-in (3c) are not implemented. Phase 1 is merged as `6d8fbdc9` (PR #437).
+Unmet requirements are tracked in
+[`ASSESSMENT-ARCHITECTURE.md`](ASSESSMENT-ARCHITECTURE.md) §11.
+
+This note specifies the collector layer so it can be built without changing the default
+scan.
 
 **Applies to:** `scanner/assessment/`, `scanner/run-scan.mjs`, the report renderer and
 the assessment record schema.

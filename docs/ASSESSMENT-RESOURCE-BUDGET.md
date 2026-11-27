@@ -166,6 +166,7 @@ unverified. Nothing in this phase uses a model at runtime.
 - Cold-start report generation in CI (Node 24, GitHub runner).
 - `file://` report behaviour across Chromium, Firefox and WebKit.
 - Runtime performance with large record counts.
-- Collector cost (not implemented).
+- Collector cost (Phase 3a capture exists; not measured yet — it is the Phase 3b gate,
+  REQ-03 in [ASSESSMENT-ARCHITECTURE.md](ASSESSMENT-ARCHITECTURE.md) §11).
 
 These are listed again in the Phase 1 handoff.

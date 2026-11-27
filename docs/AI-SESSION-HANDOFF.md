@@ -1,8 +1,10 @@
 # AI session handoff and learnings
 
 **Last updated:** 2026-11-26
-**Open Scans checkpoint:** `6d8fbdc9` on `main` (PR #437 merged); Phase 3a assisted
-collectors in PR #438 (opt-in only)
+**Open Scans checkpoint:** `a7102a37` on `main` (PR #437 and PR #438 merged); Phase 3a
+assisted collectors merged, opt-in only; 3b/3c not started
+**Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
+was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
 
 This is the short handoff for a future AI session. It records current behaviour,
@@ -13,7 +15,7 @@ schemas or tests.
 
 ### 2026-11-26: Phase 3a assisted collectors (opt-in)
 
-Implemented on `docs/assessment-phase-3-design` (PR #438, draft) on top of the
+Implemented on `docs/assessment-phase-3-design` (PR #438, merged) on top of the
 design entry below. The default scan still runs no collector:
 
 - `scanner/assessment/collectors/model.mjs` — accessible-name subset, signals,
@@ -49,7 +51,9 @@ Verified on 2026-11-26:
 
 Not verified: no end-to-end `--assisted` scan against a live site; no Chromium
 or Firefox fixture run; no measured overhead; nothing renders the inventory in a
-report yet (3b), so the artifact is the only surface.
+report yet (3b), so the artifact is the only surface. Unmet requirements, including the
+collector context fields, §22, §23 and §27, are tracked in
+`docs/ASSESSMENT-ARCHITECTURE.md` §11.
 
 Next safe step: 3b — inventory section, record prefill and the optional
 `collectorItemId` — then measure the assisted overhead on the 6-page reference
@@ -59,7 +63,7 @@ scan. Do not enable 3c before both.
 
 ### 2026-11-26: Phase 3 collector design (docs only)
 
-`docs/ASSESSMENT-ASSISTED-COLLECTORS.md` (PR #438, draft) specifies the assisted
+`docs/ASSESSMENT-ASSISTED-COLLECTORS.md` (PR #438, merged) specifies the assisted
 collector layer for headings, images and links, on `main` = `6d8fbdc9` after #437
 merged. It fixes the non-negotiable rules before any code exists: a collector
 inventories and never evaluates; no signal is a finding; no record is created
@@ -104,14 +108,14 @@ full-suite figure in the Phase 1 entry below is a local run, not CI evidence.
 
 Not run at this checkpoint: `npm test` — no code changed since that local run,
 so that figure still stands. **Correction, 22:07Z:** PR #437 was merged by the
-repository owner as `6d8fbdc9`; the "unmerged" statements above describe the
-21:30 checkpoint only.
+repository owner as `6d8fbdc9`. The Phase 1 entry below now records the merge; earlier
+"unmerged" wording described the 21:30 checkpoint only.
 
 ---
 
 ### 2026-11-26: assessment coverage and manual assessment (Phase 1)
 
-Branch `feat/assessment-phase-1`, based on `main` = `a760fe8`, commit `ba0e343`, PR #437. Not merged.
+PR #437, merged as `6d8fbdc9` (branch `feat/assessment-phase-1`, commit `ba0e343`).
 
 **What exists now**
 
