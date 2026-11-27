@@ -2,7 +2,9 @@
 
 **Last updated:** 2026-11-26
 **Open Scans checkpoint:** `a7102a37` on `main` (PR #437 and PR #438 merged); Phase 3a
-assisted collectors merged, opt-in only; 3b/3c not started
+assisted collectors merged, opt-in only; Phase 3b implemented in PR #441; 3c not started
+**Open assessment stack (merge bottom-up):** #439 requirements backlog → #440 CI gate →
+#441 3b inventory
 **Unmet requirements:** `docs/ASSESSMENT-ARCHITECTURE.md` §11. This handoff records what
 was verified, not the full requirement set.
 **Firefox Energy Scanner main:** `34a1f65` (same-viewport DOM gate and honest ancestor reporting)
@@ -15,8 +17,10 @@ schemas or tests.
 
 ### 2026-11-26: Phase 3b assisted element inventory
 
-Branch `feat/assessment-inventory-3b`, stacked on `ci/assessment-quality-gate`
-(PR #440). The assisted pass is still opt-in; the default scan is unchanged.
+Branch `feat/assessment-inventory-3b`, commit `958db8dc`, PR #441. Stacked on
+`ci/assessment-quality-gate` (PR #440), which is stacked on
+`docs/assessment-requirements-backlog` (PR #439); merge bottom-up. The assisted pass is
+still opt-in; the default scan is unchanged.
 
 **What exists**
 
@@ -43,6 +47,9 @@ Branch `feat/assessment-inventory-3b`, stacked on `ci/assessment-quality-gate`
 - WebKit from `file://`: 3 inventory rows and buttons; prefill filled URL, locator,
   accessible name, item id and suggested procedure; the saved record retained the item
   id; the element summary cleared; **0 axe violations**, 0 console errors.
+- GitHub Actions on PR #441: `Lint and unit tests` pass (2m56s), `bdd-acceptance` pass
+  (1m53s), AccessLint pass. PR #440's unit gate passes (2m40s); PR #439 predates the
+  workflow and shows AccessLint only.
 - Measurement (standalone collector pass over the six reference pages): 13,544 ms,
   **5.8%** of the 233,572 ms reference scan against a 5% target; 1,254 items; artifact
   1.85 MB; report 1.08 MB → 2.61 MB (+1.53 MB, within the 2 MB target).
@@ -60,10 +67,19 @@ re-measure, or capture an explicit page subset. Do not raise the target quietly.
   and Firefox.
 - The second report render cost is excluded from the 13.5 s; it is about 30 ms here.
 
+**Wrap-up state at this checkpoint**
+
+Working tree clean, no stashes, branch 4 commits ahead of `origin/main` and not behind;
+`npm run wrap-up` was run. The three PRs are open and unmerged by policy.
+
 **Next safe step**
 
-Decide the budget, then 3c (workflow opt-in) only after that decision and a human review
-of the rendered text. Phase 2 remains unstarted.
+1. Merge the stack bottom-up (#439 → #440 → #441) and make `Lint and unit tests` a
+   required check in branch protection.
+2. Decide the 3b budget (accept 5.8%, shorten the assisted settle and re-measure, or
+   capture a subset) — see `ASSESSMENT-RESOURCE-BUDGET.md` §9.
+3. Then 3c (workflow opt-in) or Phase 2 (Accessibility Insights import), not both at
+   once. Phase 2 remains unstarted.
 
 ---
 
